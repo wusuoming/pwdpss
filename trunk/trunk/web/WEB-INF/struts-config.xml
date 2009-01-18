@@ -1647,6 +1647,28 @@
 				path="/count/thismonthcountresultPrint.jsp">
 			</forward>
 			</action>
+			
+			
+			
+			<action path="/UIcorporationcountPrintAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIcorporationcountPrintAction"
+			scope="request"
+			input="/count/thismonthcountresult.jsp">
+			<forward name="corporationpriceprint"
+				path="/count/corporationpriceprint.jsp">
+			</forward>
+			</action>
+			
+			
+			
+			<action path="/UIEveryWholeSaleCountAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIEveryWholeSaleCountAction"
+			scope="request"
+			input="/count/thismonthcountresult.jsp">
+			<forward name="everywholesale"
+				path="/count/wholesaleeverycount.jsp">
+			</forward>
+			</action>
 		<!--add by wangrongjia end   -->
 	</action-mappings>
 
