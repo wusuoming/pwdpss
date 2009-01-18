@@ -65,17 +65,34 @@ create by wangrongjia
 </head>
 
 <body class=interface>
+
+
+
+
+
+
+
+  
     <!--CONTENT BEGIN-->
+    
       <form name="fm" method="post" style="display:block;">
-        <table class=common width="100%" cellspacing="1" cellpadding="5" border=0>
+        <table class=common width="100%" cellspacing="1" cellpadding="5">
         <tr class=listtitle align="center">
-			<td class=title0 colspan="9"><B>趸售统计</B></td>
+			<td class=title0 colspan="7"><B>趸售统计</B></td>
 		</tr>
+
+         
+         
           <tr>
            <td class="title">趸售统计：</td>	
          <td class="input"><select name="wholesaleStyle" onchange="sexy()">
 				   <option value="3">按局统计</option>
 				  <option value="1">按电价统计</option>
+				  <option value="2">各局按电价统计</option>
+				
+				  
+				
+				  
               </select>	
           <td class="title">录入年月：</td>				
 				<td class=input>
@@ -88,6 +105,13 @@ create by wangrongjia
 					onmouseout="this.style.background=''" /></td>	
 					
           <td style="display:none;"><input styleClass="text" name="powerClass" type="text" value="2" ></td>
+          
+  
+          
+          
+          </tr>
+          
+          <tr>
             <td class="title" id="s">趸售公司：</td>	
          <td class="input" id="d"><select name="company" >
 				  <option value="gy">固阳</option>
@@ -100,7 +124,10 @@ create by wangrongjia
 			<td class=input>
 			<td class=input>
 			</tr>
-		  <tr><td colspan="7" align="center"><input class=button name="serch" type="button"  value=" 统计 " onClick="javascript:wholeSaleSerch();"></td>
+			
+			
+		  
+		  <tr class="listtitle" align="center"><td class=button align="center"><input class=button name="serch" type="button"  value=" 统计 " onClick="javascript:wholeSaleSerch();"></td>
 		 
 </tr>
         </table>
@@ -123,6 +150,10 @@ if(fm.inputDate.value ==''){
 	if(fm.wholesaleStyle.value=='3'){
 	fm.action="/iacontact/wholeSaleCount.do";
 	}
+	
+	if(fm.wholesaleStyle.value=='2'){
+	fm.action="/iacontact/UIEveryWholeSaleCountAction.do";
+	}
 	fm.submit();
 	
 	
@@ -130,13 +161,15 @@ if(fm.inputDate.value ==''){
 	
 }
 function sexy(){
+
 if(fm.wholesaleStyle.value=='3'){
 	s.style.display="";
 	d.style.display="";
 	
 }
 
-if(fm.wholesaleStyle.value=='1'){
+
+if(fm.wholesaleStyle.value=='1'||fm.wholesaleStyle.value=='2'){
 	s.style.display="none";
 	d.style.display="none";
 	

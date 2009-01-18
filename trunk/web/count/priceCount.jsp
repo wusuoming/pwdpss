@@ -230,7 +230,7 @@ String dianjinchun=(String)request.getAttribute("dianjinchun");
 					<span class="title"><font size="2"><%=shangyetax10%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumNotJuminFee10%></font></span>
+					<span class="title"><font size="2"><%=sumBusinessFee10%></font></span>
 				<br></td>
 				
 							
@@ -249,7 +249,7 @@ String dianjinchun=(String)request.getAttribute("dianjinchun");
 					<span class="title"><font size="2"><%=shengchantax10%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumBusinessFee10%></font></span>
+					<span class="title"><font size="2"><%=sumProduceFee10%></font></span>
 				<br></td>
 				
 							

@@ -79,7 +79,7 @@
 }
 </script>
 </head>
-<body class=interface>&nbsp; 
+<body class="interface" onload="javascript:doPrint();window.close()">&nbsp; 
 <html:errors />
 <%
 String dagongye10Power=request.getAttribute("dagongye10Power").toString();
@@ -817,20 +817,13 @@ LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)r
 			</tr>
 			
 	--%></table>
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button align="center"><input type=button class=button name=button2 value=" ´ò Ó¡ " onClick="getPage()">        </td> 
-        </tr> 
-    </table>
+	
 
 </form>
 </body>
 <script language="javascript">
-function getPage(){
-	var b=fm.StartMonth.value;
-strURL   =   "<%=request.getContextPath()%>/UIcorporationcountPrintAction.do?inputDate="+b;
-	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");
+function doPrint(){
+	window.print();
 }
 </script>
 
