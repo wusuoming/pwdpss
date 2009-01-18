@@ -1,5 +1,6 @@
 package com.elongway.pss.ui.count;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -24,6 +25,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
+		DecimalFormat df = new DecimalFormat("###0.00");
 		double allfee=0;
 		double alllilv=0;
 		double alltax=0;
@@ -41,14 +43,15 @@ public class UIEveryWholeSaleCountAction extends Action {
 		Collection colall=blLwDcodeFacade.findByConditions(" CODETYPE='WholeSaleCom'");
 		LwDcodeDto  lwDcodeDto=new LwDcodeDto();
 		Iterator itall=colall.iterator();
-		Collection list=new ArrayList();
+		Collection list = new ArrayList();
 		LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
 		BLLwWholeSaleSummaryFacade  blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
+		WholeSaleFee  wholeSaleFee=new WholeSaleFee();
 		while(itall.hasNext()){
 			lwDcodeDto=(LwDcodeDto)itall.next();
 			Collection colone=blLwWholeSaleSummaryFacade.findByConditions(" statMonth='"+statmonth+"' and upCompany='"+lwDcodeDto.getCodeCode()+"' and kv=10");
 			Collection colone35=blLwWholeSaleSummaryFacade.findByConditions(" statMonth='"+statmonth+"' and upCompany='"+lwDcodeDto.getCodeCode()+"' and kv=35");
-			WholeSaleFee  wholeSaleFee=new WholeSaleFee();
+			
 			double sanxiatax=0;
 			double sanxiafee=0;
 			double dianjintax=0;
@@ -125,7 +128,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 			Iterator itone35=colone35.iterator();
 			while(itone35.hasNext()){
 				
-				lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itone.next();
+				lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itone35.next();
 				jumindianliang35 += lwWholeSaleSummaryDto.getDenizenQuantity();
 				jumindianfee35+=lwWholeSaleSummaryDto.getDenizenFee();
 				feijumindianliang35 += lwWholeSaleSummaryDto.getUnDenizenQuantity();
@@ -181,7 +184,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 			wholeSaleFee.setGongyedianliang35(gongyedianliang35);
 			wholeSaleFee.setNongguandianliang35(nongguandianliang35);
 			wholeSaleFee.setNongguandianfee35(nongguandianfee35);
-			
+			wholeSaleFee.setComcode(lwDcodeDto.getCodeCName());
 			wholeSaleFee.setSumfee(sumfee);
 			wholeSaleFee.setSumpower(sumpower);
 			wholeSaleFee.setSumpower10(sumpower10);
@@ -225,10 +228,37 @@ public class UIEveryWholeSaleCountAction extends Action {
 				 alldianjintax+=dianjintax;
 				
 			}
+			wholeSaleFee.setSanxiafee(sanxiafee);
+			wholeSaleFee.setSanxiatax(sanxiatax);
+			wholeSaleFee.setJijinfee(jijinfee);
+			wholeSaleFee.setJijintax(jijintax);
+			wholeSaleFee.setDianjinfee(dianjinfee);
+			wholeSaleFee.setDianfeetax(dianjintax);
+			wholeSaleFee.setSumfee(sumfee);
+			wholeSaleFee.setSumfee10(sumfee10);
+			wholeSaleFee.setSumpower(sumpower);
+			wholeSaleFee.setSumpower10(sumpower10);
+			wholeSaleFee.setSumpower35(sumpower35);
+			wholeSaleFee.setLilvdianfee(lilv);
+			list.add(wholeSaleFee);
 		}
+		alltax=alldianfee/1.17*0.17;
+		httpServletRequest.setAttribute("list", list);
+		httpServletRequest.setAttribute("allfee", df.format(allfee));
+		httpServletRequest.setAttribute("alllilv", df.format(alllilv));
+		httpServletRequest.setAttribute("alltax", df.format(alltax));
+		httpServletRequest.setAttribute("allsanxia", df.format(allsanxia));
+		httpServletRequest.setAttribute("allsanxiatax", df.format(allsanxiatax));
+		httpServletRequest.setAttribute("jijin", df.format(jijin));
+		httpServletRequest.setAttribute("alljijintax", df.format(alljijintax));
+		httpServletRequest.setAttribute("alldianjin", df.format(alldianjin));
+		httpServletRequest.setAttribute("alldianjintax", df.format(alldianjintax));
+		httpServletRequest.setAttribute("alldianfee", df.format(alldianfee/1.17));
 		
+		httpServletRequest.setAttribute("alldianliang", df.format(alldianliang));
 		
-		return null;
+		httpServletRequest.setAttribute("inputDate", inputDate);
+		return actionMapping.findForward("everywholesale");
 	}
 
 }

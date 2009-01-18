@@ -134,7 +134,7 @@ public class UIThisMonthAllCountAction extends Action {
 					+ lwCorporationSummaryDto.getBeforPower()
 					+ lwCorporationSummaryDto.getLastPower();
 			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
-					+ lwCorporationSummaryDto.getPowerRateFee();
+					+ lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getPeakFee();
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
@@ -205,7 +205,7 @@ public class UIThisMonthAllCountAction extends Action {
 						+ notpepolepowergd + bizpowergd + industrypowergd)
 				* 0.002
 				* 0.88
-				+ (pepolepowerjt + notpepolepowerjt + bizpowerjt + industrypowerjt)
+				+ (pepolepowerjt + notpepolepowerjt + bizpowerjt + industrypowerjt +pepolepowergd + notpepolepowergd + bizpowergd + industrypowergd)
 				* 0.0031 * 0.88;
 		sumwc = sumwdianfee / 1.17;
 		sumwtax = sumwdianfee / 1.17 * 0.17;
@@ -310,12 +310,12 @@ public class UIThisMonthAllCountAction extends Action {
 		jijingy = pepolegy * 0.001 * 0.88 + (notpepolegy + bizgy + industrygy)
 				* 0.002 * 0.88 + (pepolegy + notpepolegy + bizgy + industrygy)
 				* 0.0031 * 0.88;
-		sumallfeejy = sumdianfeegy + sanxiagy + dianjingy + jijingy;
+		sumallfeegy = sumdianfeegy + sanxiagy + dianjingy + jijingy;
 
 		Collection dm = blLwWholeSaleSummaryFacade
 				.findByConditions(conditionwdm);
 
-		Iterator itdm = gy.iterator();
+		Iterator itdm = dm.iterator();
 		while (itdm.hasNext()) {
 			lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itdm.next();
 			pepoledm += lwWholeSaleSummaryDto.getDenizenQuantity();
@@ -333,7 +333,7 @@ public class UIThisMonthAllCountAction extends Action {
 		jijindm = pepoledm * 0.001 * 0.88 + (notpepoledm + bizgy + industrydm)
 				* 0.002 * 0.88 + (pepoledm + notpepoledm + bizdm + industrydm)
 				* 0.0031 * 0.88;
-		sumallfeejy = sumdianfeegy + sanxiagy + dianjingy + jijindm;
+		sumallfeedm = sumdianfeedm + sanxiadm + dianjingy + jijindm;
 
 		Collection jy = blLwWholeSaleSummaryFacade
 				.findByConditions(conditionwjy);
@@ -356,13 +356,13 @@ public class UIThisMonthAllCountAction extends Action {
 		jijinjy = pepolejy * 0.001 * 0.88 + (notpepolejy + bizjy + industryjy)
 				* 0.002 * 0.88 + (pepolejy + notpepolejy + bizjy + industryjy)
 				* 0.0031 * 0.88;
-		sumallfeejy = sumdianfeegy + sanxiagy + dianjingy + jijinjy;
+		sumallfeejy = sumdianfeejy + sanxiajy + dianjinjy + jijinjy;
 
 		Collection ty = blLwWholeSaleSummaryFacade
 				.findByConditions(conditionwty);
 
 		Iterator itty = ty.iterator();
-		while (itjy.hasNext()) {
+		while (itty.hasNext()) {
 			lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itty.next();
 			pepolety += lwWholeSaleSummaryDto.getDenizenQuantity();
 			notpepolety += lwWholeSaleSummaryDto.getUnDenizenQuantity();
@@ -379,7 +379,7 @@ public class UIThisMonthAllCountAction extends Action {
 		jijinty = pepolety * 0.001 * 0.88 + (notpepolety + bizty + industryty)
 				* 0.002 * 0.88 + (pepolety + notpepolety + bizty + industryty)
 				* 0.0031 * 0.88;
-		sumallfeejy = sumdianfeegy + sanxiagy + dianjingy + jijinty;
+		sumallfeety = sumdianfeety + sanxiaty + dianjinty + jijinty;
 
 		/**
 		 * 直供乡按局统计

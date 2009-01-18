@@ -41,7 +41,7 @@ public class UIPriceCountAction extends Action {
 		double sumBusinessFee10 = 0;
 		double sumFarmFee10 = 0;
 		double sumProduceFee10 = 0;
-
+		double loss=0;
 		double sumJuminPower35 = 0;
 		double sumFactoryPower35 = 0;
 		double sumNotJuminPower35 = 0;
@@ -120,21 +120,26 @@ public class UIPriceCountAction extends Action {
 			lwWholeSaleSummaryDto35 = (LwWholeSaleSummaryDto) it35.next();
 			sumJuminPower35 += lwWholeSaleSummaryDto35.getDenizenQuantity();
 			sumJuminFee35 += lwWholeSaleSummaryDto35.getDenizenFee();
-			sumFactoryPower35 += lwWholeSaleSummaryDto35.getIndustryQuantity();
-			sumFactoryFee35 += lwWholeSaleSummaryDto35.getIndustryPrice();
-			sumNotJuminPower35 += lwWholeSaleSummaryDto35
-					.getUnPointerQuantity();
+			
+			sumNotJuminPower35 += lwWholeSaleSummaryDto35.getUnDenizenQuantity()
+					;
 			sumNotJuminFee35 += lwWholeSaleSummaryDto35.getUnDenizenFee();
 			sumBusinessPower35 += lwWholeSaleSummaryDto35.getBizQuantity();
 			sumBusinessFee35 += lwWholeSaleSummaryDto35.getBizFee();
 			sumFarmPower35 += lwWholeSaleSummaryDto35.getFarmUseQuantity();
 			sumFarmFee35 += lwWholeSaleSummaryDto35.getFarmUseFee();
 			sumProducePower35 += lwWholeSaleSummaryDto35.getProductQuantity();
-			sumProduceFee35 += lwWholeSaleSummaryDto35.getPowerFee();
-			sumProduceFee35 += lwWholeSaleSummaryDto35.getIndustryFee();
+			sumAllPower+=lwWholeSaleSummaryDto35.getElectricQuantity();
+			sumProduceFee35 += lwWholeSaleSummaryDto35.getProductFee();
+			sumAllFee+=lwWholeSaleSummaryDto35.getSumFee();
 			if (lwWholeSaleSummaryDto35.getWholesaletype().equals("1")) {
 				sumFactoryPower35 += lwWholeSaleSummaryDto35
 						.getElectricQuantity();
+				sumFactoryFee35 += lwWholeSaleSummaryDto35.getSumFee()-lwWholeSaleSummaryDto35.getPowerRateFee();
+			}else{
+				
+				sumFactoryPower35 += lwWholeSaleSummaryDto35.getIndustryQuantity();
+				sumFactoryFee35 += lwWholeSaleSummaryDto35.getIndustryFee();
 			}
 			if (lwWholeSaleSummaryDto35.getUpCompany().equals("gy")
 					|| lwWholeSaleSummaryDto35.getUpCompany().equals("dm")) {
@@ -164,21 +169,27 @@ public class UIPriceCountAction extends Action {
 			lwWholeSaleSummaryDto10 = (LwWholeSaleSummaryDto) it10.next();
 			sumJuminPower10 += lwWholeSaleSummaryDto10.getDenizenQuantity();
 			sumJuminFee10 += lwWholeSaleSummaryDto10.getDenizenFee();
-			sumFactoryPower10 += lwWholeSaleSummaryDto10.getIndustryQuantity();
-			sumFactoryFee10 += lwWholeSaleSummaryDto10.getIndustryFee() ;
-			sumNotJuminPower10 += lwWholeSaleSummaryDto10
-					.getUnPointerQuantity();
+			
+			sumNotJuminPower10 += lwWholeSaleSummaryDto10.getUnDenizenQuantity()
+					;
+			sumAllPower+=lwWholeSaleSummaryDto10.getElectricQuantity();
 			sumNotJuminFee10 += lwWholeSaleSummaryDto10.getUnDenizenFee();
 			sumBusinessPower10 += lwWholeSaleSummaryDto10.getBizQuantity();
 			sumBusinessFee10 += lwWholeSaleSummaryDto10.getBizFee();
 			sumFarmPower10 += lwWholeSaleSummaryDto10.getFarmUseQuantity();
 			sumFarmFee10 += lwWholeSaleSummaryDto10.getFarmUseFee();
 			sumProducePower10 += lwWholeSaleSummaryDto10.getProductQuantity();
-			sumProduceFee10 += lwWholeSaleSummaryDto10.getPowerFee();
+			sumAllFee+=lwWholeSaleSummaryDto10.getSumFee();
 			sumProduceFee10 += lwWholeSaleSummaryDto10.getIndustryFee();
 			if (lwWholeSaleSummaryDto10.getWholesaletype().equals("1")) {
 				sumFactoryPower10 += lwWholeSaleSummaryDto10
 						.getElectricQuantity();
+				
+				sumFactoryFee10+=lwWholeSaleSummaryDto10.getSumFee()-lwWholeSaleSummaryDto10.getPowerRateFee();
+			}else{
+				
+				sumFactoryPower10 += lwWholeSaleSummaryDto10.getIndustryQuantity();
+				sumFactoryFee10 += lwWholeSaleSummaryDto10.getIndustryFee() ;
 			}
 			if (lwWholeSaleSummaryDto10.getUpCompany().equals("gy")
 					|| lwWholeSaleSummaryDto10.getUpCompany().equals("dm")) {
@@ -197,7 +208,7 @@ public class UIPriceCountAction extends Action {
 			kezaishengnotpepolePower += sumNotJuminPower10 + sumFactoryPower35
 					+ sumBusinessPower10;
 			kuquPower += sumJuminPower10 + sumNotJuminPower10
-					+ sumFactoryPower35 + sumBusinessPower10 + sumFarmPower10;
+					+ sumFactoryPower10 + sumBusinessPower10 + sumFarmPower10;
 		}
 
 		sanxiaFee = sanxiaPower * 0.004 * 0.88;
@@ -233,14 +244,14 @@ public class UIPriceCountAction extends Action {
 		shangyechun35 = sumBusinessFee35 / 1.17;
 		nongguanchun35 = sumFarmFee35 / 1.17;
 
-		sumAllPower = sumProducePower10 + sumJuminPower10 + sumNotJuminPower10
+		/*sumAllPower = sumProducePower10 + sumJuminPower10 + sumNotJuminPower10
 				+ sumFactoryPower10 + sumBusinessPower10 + sumFarmPower10
 				+ sumProducePower35 + sumJuminPower35 + sumNotJuminPower35
-				+ sumFactoryPower35 + sumBusinessPower35 + sumFarmPower35;
-		sumAllFee = sumProduceFee10 + sumJuminFee10 + sumNotJuminFee10
+				+ sumFactoryPower35 + sumBusinessPower35 + sumFarmPower35;*/
+		/*sumAllFee = sumProduceFee10 + sumJuminFee10 + sumNotJuminFee10
 				+ sumFactoryFee10 + sumBusinessFee10 + sumFarmFee10
 				+ sumProduceFee35 + sumJuminFee35 + sumNotJuminFee35
-				+ sumFactoryFee35 + sumBusinessFee35 + sumFarmFee35;
+				+ sumFactoryFee35 + sumBusinessFee35 + sumFarmFee35;*/
 		sumAllTax = jumintax10 + notjumintax10 + shengchantax10 + gongyetax10
 				+ shangyetax10 + nongguantax10 + jumintax35 + notjumintax35
 				+ shengchantax35 + gongyetax35 + shangyetax35 + nongguantax35;
