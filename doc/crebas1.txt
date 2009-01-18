@@ -1,0 +1,2258 @@
+/*==============================================================*/
+/* DBMS name:      ORACLE Version 10g                           */
+/* Created on:     2008-12-6 14:51:47                           */
+/*==============================================================*/
+
+
+alter table LWPowerLine
+   drop constraint FK_LWPOWERL_REFERENCE_LWLINECT;
+
+alter table LWTownPriceSummary
+   drop constraint FK_LWTOWNPR_REFERENCE_LWPOWERU;
+
+drop table LWAmmeter cascade constraints;
+
+drop table LWAmmeterChange cascade constraints;
+
+drop table LWCT cascade constraints;
+
+drop table LWCoporationUserInfo cascade constraints;
+
+drop table LWCorporationSummary cascade constraints;
+
+drop table LWDUser cascade constraints;
+
+drop table LWDcompany cascade constraints;
+
+drop table LWFactoryIndicator cascade constraints;
+
+drop table LWFactoryIndicatorBak cascade constraints;
+
+drop table LWLineCTPTAmmeter cascade constraints;
+
+drop table LWNewFactoryIndicator cascade constraints;
+
+drop table LWNewFactoryIndicatorBak cascade constraints;
+
+drop table LWPT cascade constraints;
+
+drop table LWPowerLine cascade constraints;
+
+drop table LWPowerUser cascade constraints;
+
+drop table LWProrate cascade constraints;
+
+drop table LWRateCode cascade constraints;
+
+drop table LWSalePrice cascade constraints;
+
+drop table LWSysUser cascade constraints;
+
+drop table LWTownIndicator cascade constraints;
+
+drop table LWTownIndicatorBak cascade constraints;
+
+drop table LWTownPriceSummary cascade constraints;
+
+drop table LWUserAmmeter cascade constraints;
+
+drop table LWWholeSaleIndicator cascade constraints;
+
+drop table LWWholeSaleIndicatorBak cascade constraints;
+
+drop table LWWholeSalePrice cascade constraints;
+
+drop table LWWholeSaleProrate cascade constraints;
+
+drop table LWWholeSalePurePrice cascade constraints;
+
+drop table LWWholeSaleSummary cascade constraints;
+
+drop table LWWholeSaleUserInfo cascade constraints;
+
+drop table LwAmmeterBook cascade constraints;
+
+drop table LwBookUser cascade constraints;
+
+drop index i_IDCODE;
+
+drop table LwDcode cascade constraints;
+
+drop table Transfor cascade constraints;
+
+/*==============================================================*/
+/* Table: LWAmmeter                                             */
+/*==============================================================*/
+create table LWAmmeter  (
+   AmmeterNo            VARCHAR2(20)                    not null,
+   AmmeterX             VARCHAR2(10),
+   AmmeterV             VARCHAR2(10),
+   AmmeterA             VARCHAR2(10),
+   AmmeterType          VARCHAR2(20),
+   FactoryName          VARCHAR2(60),
+   Coust                VARCHAR2(20),
+   Precision            VARCHAR2(20),
+   Rate                 VARCHAR2(20),
+   MAXNUM               INTEGER,
+   AllowYear            VARCHAR(8),
+   AllowDate            VARCHAR(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWAmmeter primary key (AmmeterNo)
+)
+  tablespace USERS;
+
+comment on column LWAmmeter.AmmeterNo is
+'表号';
+
+comment on column LWAmmeter.AmmeterX is
+'相';
+
+comment on column LWAmmeter.AmmeterV is
+'伏';
+
+comment on column LWAmmeter.AmmeterA is
+'安';
+
+comment on column LWAmmeter.AmmeterType is
+'型式';
+
+comment on column LWAmmeter.FactoryName is
+'厂名';
+
+comment on column LWAmmeter.Coust is
+'常数';
+
+comment on column LWAmmeter.Precision is
+'精度';
+
+comment on column LWAmmeter.Rate is
+'倍率';
+
+comment on column LWAmmeter.MAXNUM is
+'表溢出的最大值';
+
+comment on column LWAmmeter.AllowYear is
+'允许使用年限';
+
+comment on column LWAmmeter.AllowDate is
+'允许使用日期';
+
+comment on column LWAmmeter.ValidStatus is
+'是否有效';
+
+comment on column LWAmmeter.Flag is
+'标志';
+
+comment on column LWAmmeter.Remark is
+'注释';
+
+/*==============================================================*/
+/* Table: LWAmmeterChange                                       */
+/*==============================================================*/
+create table LWAmmeterChange  (
+   id                   VARCHAR2(20)                    not null,
+   UserNo               VARCHAR2(20),
+   UserName             VARCHAR2(20),
+   AmmeterNo            VARCHAR2(50),
+   AmmeterX             VARCHAR2(10),
+   AmmeterV             VARCHAR2(10),
+   AmmeterA             VARCHAR2(10),
+   AmmeterType          VARCHAR2(20),
+   FactoryName          VARCHAR2(60),
+   Coust                VARCHAR2(20),
+   Precision            VARCHAR2(20),
+   Rate                 VARCHAR2(20),
+   MAXNUM               INTEGER,
+   AllowYear            VARCHAR(8),
+   InstallWorkNum       NUMBER(14,4),
+   InstallIdleNum       NUMBER(14,4),
+   ErrorWorkNum         NUMBER(14,4),
+   ErrorIdleNum         NUMBER(14,4),
+   ChgIdleQuantity      NUMBER(14,4),
+   ChgWorkNum           NUMBER(14,4),
+   LastWorkNum          NUMBER(14,4),
+   LastIdleNum          NUMBER(14,4),
+   CT                   VARCHAR2(20),
+   PT                   VARCHAR2(20),
+   Signature            VARCHAR2(60),
+   InstallDate          VARCHAR2(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   useStyle             VARCHAR2(20),
+   factoryCcode         VARCHAR2(20),
+   constraint PK_LWAmmeterChange primary key (id)
+)
+  tablespace USERS;
+
+comment on column LWAmmeterChange.id is
+'表号';
+
+comment on column LWAmmeterChange.UserNo is
+'表号';
+
+comment on column LWAmmeterChange.UserName is
+'表号';
+
+comment on column LWAmmeterChange.AmmeterNo is
+'表号';
+
+comment on column LWAmmeterChange.AmmeterX is
+'相';
+
+comment on column LWAmmeterChange.AmmeterV is
+'伏';
+
+comment on column LWAmmeterChange.AmmeterA is
+'安';
+
+comment on column LWAmmeterChange.AmmeterType is
+'型式';
+
+comment on column LWAmmeterChange.FactoryName is
+'厂名';
+
+comment on column LWAmmeterChange.Coust is
+'常数';
+
+comment on column LWAmmeterChange.Precision is
+'精度';
+
+comment on column LWAmmeterChange.Rate is
+'倍率';
+
+comment on column LWAmmeterChange.MAXNUM is
+'表溢出的最大值';
+
+comment on column LWAmmeterChange.AllowYear is
+'允许使用年限';
+
+comment on column LWAmmeterChange.InstallWorkNum is
+'指针1';
+
+comment on column LWAmmeterChange.InstallIdleNum is
+'指针1';
+
+comment on column LWAmmeterChange.ErrorWorkNum is
+'指针1';
+
+comment on column LWAmmeterChange.ErrorIdleNum is
+'指针1';
+
+comment on column LWAmmeterChange.ChgIdleQuantity is
+'指针1';
+
+comment on column LWAmmeterChange.ChgWorkNum is
+'指针1';
+
+comment on column LWAmmeterChange.LastWorkNum is
+'指针1';
+
+comment on column LWAmmeterChange.LastIdleNum is
+'指针1';
+
+comment on column LWAmmeterChange.CT is
+'签名1';
+
+comment on column LWAmmeterChange.PT is
+'签名1';
+
+comment on column LWAmmeterChange.Signature is
+'签名1';
+
+comment on column LWAmmeterChange.InstallDate is
+'是否有效';
+
+comment on column LWAmmeterChange.ValidStatus is
+'是否有效';
+
+comment on column LWAmmeterChange.Flag is
+'标志';
+
+comment on column LWAmmeterChange.Remark is
+'注释';
+
+/*==============================================================*/
+/* Table: LWCT                                                  */
+/*==============================================================*/
+create table LWCT  (
+   Modus                VARCHAR2(100)                   not null,
+   CT                   VARCHAR2(20),
+   FactoryName          VARCHAR2(40),
+   Exact                NUMBER(14,4),
+   CTRate               NUMBER(14,4)                    not null,
+   FctoryCodeA          VARCHAR2(100),
+   FctoryCodeB          VARCHAR2(100),
+   FctoryCodeC          VARCHAR2(100),
+   Flag                 VARCHAR2(10),
+   ImportDate           VARCHAR2(20),
+   ValidStatus          VARCHAR2(10),
+   constraint PK_LWCT primary key (Modus)
+);
+
+/*==============================================================*/
+/* Table: LWCoporationUserInfo                                  */
+/*==============================================================*/
+create table LWCoporationUserInfo  (
+   UserNo               VARCHAR2(20)                    not null,
+   UserName             VARCHAR2(20),
+   Address              VARCHAR2(200),
+   accountBank          VARCHAR2(100),
+   taxNo                VARCHAR2(20),
+   accountNo            VARCHAR2(30),
+   industryType         VARCHAR2(20),
+   voltage              VARCHAR2(10),
+   lineNo               VARCHAR2(30),
+   ValidStatus          VARCHAR2(2),
+   Flag                 VARCHAR2(2),
+   rongliangPower       INTEGER,
+   needRate             INTEGER,
+   constraint PK_LWCOPORATIONUSERINFO primary key (UserNo)
+);
+
+/*==============================================================*/
+/* Table: LWCorporationSummary                                  */
+/*==============================================================*/
+create table LWCorporationSummary  (
+   LineCode             VARCHAR2(20)                    not null,
+   StatMonth            VARCHAR2(20)                    not null,
+   PowerClass           VARCHAR2(10)                    not null,
+   ElectricQuantity     NUMBER(14,2),
+   SanXiaFee            NUMBER(14,4),
+   Surcharge            NUMBER(14,4),
+   PowerFee             NUMBER(14,4),
+   UnDenizenQuantity    NUMBER(14,4),
+   PointerQuantity      NUMBER(14,4),
+   PointerPrice         NUMBER(14,4),
+   PointerFee           NUMBER(14,4),
+   UnDenizenPrice       NUMBER(14,4),
+   UnDenizenFee         NUMBER(14,4),
+   AjustRate            NUMBER(14,4),
+   PowerRateFee         NUMBER(14,4),
+   RateCode             NUMBER(14,4),
+   NeedQuantity         NUMBER(14,4),
+   NeedPrice            NUMBER(14,4),
+   NeedFee              NUMBER(14,4),
+   UserNo               VARCHAR2(20),
+   ContentQuantity      NUMBER(14,4),
+   ContentPrice         NUMBER(14,4),
+   ContentFee           NUMBER(14,4),
+   UnPointerQuantity    NUMBER(14,4),
+   SurchargePrice       NUMBER(14,4),
+   SanXiaPrice          NUMBER(14,4),
+   PowerPrice           NUMBER(14,4),
+   ValleyQuantity       NUMBER(14,4),
+   PeakQuantity         NUMBER(14,4),
+   PeakPrice            NUMBER(14,4),
+   ValleyPrice          NUMBER(14,4),
+   PeakFee              NUMBER(14,4),
+   ValleyFee            NUMBER(14,4),
+   LossQuantity         NUMBER(14,4),
+   Flag                 VARCHAR2(10),
+   Remark               VARCHAR2(200),
+   SumFee               NUMBER(14,4),
+   inputDate            VARCHAR2(20),
+   sumPointerQuantity   NUMBER(14,4),
+   quantityStyle        VARCHAR2(20),
+   beforPrice           NUMBER(14,4),
+   lastPrice            NUMBER(14,4),
+   beforPower           NUMBER(14,4),
+   lastPower            NUMBER(14,4),
+   beforFee             NUMBER(14,4),
+   lastFee              NUMBER(14,4),
+   ifchange             VARCHAR2(10),
+   constraint PK_LWCORPORATIONSUMMARY primary key (LineCode, StatMonth)
+);
+
+comment on column LWCorporationSummary.StatMonth is
+'--** 2008-08';
+
+comment on column LWCorporationSummary.PowerClass is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWCorporationSummary.ElectricQuantity is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWCorporationSummary.SanXiaFee is
+'--**0:无效--**1:有效';
+
+comment on column LWCorporationSummary.Surcharge is
+'--**0:无效--**1:有效';
+
+comment on column LWCorporationSummary.PointerQuantity is
+'--**0:无效--**1:有效';
+
+comment on column LWCorporationSummary.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWDUser                                               */
+/*==============================================================*/
+create table LWDUser  (
+   OperatorCode         VARCHAR2(10)                    not null,
+   Password             VARCHAR2(20),
+   ComCode              VARCHAR2(8),
+   CustomerCName        VARCHAR2(120),
+   CustomerEName        VARCHAR2(120),
+   IdentifyType         VARCHAR2(2),
+   IdentifyNumber       VARCHAR2(20),
+   Sex                  VARCHAR2(1),
+   Age                  NUMBER(15),
+   PhoneNumber          VARCHAR2(30),
+   FaxNumber            VARCHAR2(20),
+   Mobile               VARCHAR2(15),
+   Email                VARCHAR2(30),
+   ValidStatus          VARCHAR2(1)                     not null,
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_PrpDUser primary key (OperatorCode)
+)
+  tablespace USERS;
+
+comment on column LWDUser.OperatorCode is
+'操作员代码';
+
+comment on column LWDUser.Password is
+'密码';
+
+comment on column LWDUser.ComCode is
+'归属机构代码';
+
+comment on column LWDUser.CustomerCName is
+'Name	Code	Data Type	Length	Precision	Primary	Foreign Key	Mandatory
+操作员中文名称';
+
+comment on column LWDUser.CustomerEName is
+'操作员英文名称';
+
+comment on column LWDUser.IdentifyType is
+'证件类型';
+
+comment on column LWDUser.IdentifyNumber is
+'证件号码';
+
+comment on column LWDUser.Sex is
+'性别';
+
+comment on column LWDUser.Age is
+'年龄';
+
+comment on column LWDUser.PhoneNumber is
+'电话';
+
+comment on column LWDUser.FaxNumber is
+'传真';
+
+comment on column LWDUser.Mobile is
+'手机号码';
+
+comment on column LWDUser.Email is
+'E_mail信箱';
+
+comment on column LWDUser.ValidStatus is
+'--**0:无效--**1:有效';
+
+/*==============================================================*/
+/* Table: LWDcompany                                            */
+/*==============================================================*/
+create table LWDcompany  (
+   ComCode              VARCHAR2(8)                     not null,
+   ComCName             VARCHAR2(60)                    not null,
+   ComEName             VARCHAR2(80),
+   AddressCName         VARCHAR2(60),
+   AddressEName         VARCHAR2(80),
+   PostCode             VARCHAR2(6),
+   PhoneNumber          VARCHAR2(30),
+   TaxNumber            VARCHAR2(30),
+   UpperComCode         VARCHAR2(8)                     not null,
+   ValidStatus          VARCHAR2(1)                     not null,
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_PRPDCOMPANY primary key (ComCode)
+)
+  tablespace USERS;
+
+comment on table LWDcompany is
+'机构代码表';
+
+comment on column LWDcompany.ValidStatus is
+'--**0:无效--**1:有效';
+
+/*==============================================================*/
+/* Table: LWFactoryIndicator                                    */
+/*==============================================================*/
+create table LWFactoryIndicator  (
+   UserNo               VARCHAR2(20)                    not null,
+   ReadDate             VARCHAR2(20),
+   inputDate            VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   NeedQuantity         NUMBER(14,4),
+   RongliangQuantity    NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   PeopleThisWorkNum    NUMBER(14,4),
+   PeopleLastWorkNum    NUMBER(14,4),
+   PeopleThisIdleNum    NUMBER(14,4),
+   PeopleLastIdleNum    NUMBER(14,4),
+   PeopleRate           NUMBER(14,4),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   PeopleQuantity       NUMBER(14,4),
+   unChgAmmeterQuantity VARCHAR2(20),
+   pepoleUnChgAmmeterQuantity VARCHAR2(20),
+   username             VARCHAR2(20),
+   constraint PK_LWFACTORYINDICATOR primary key (UserNo, StatMonth)
+);
+
+comment on table LWFactoryIndicator is
+'大工业电表指针记录表';
+
+comment on column LWFactoryIndicator.UserNo is
+'户号';
+
+comment on column LWFactoryIndicator.ReadDate is
+'录入日期';
+
+comment on column LWFactoryIndicator.inputDate is
+'录入日期';
+
+comment on column LWFactoryIndicator.StatMonth is
+'录入日期';
+
+comment on column LWFactoryIndicator.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWFactoryIndicator.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWFactoryIndicator.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWFactoryIndicator.LastIdleNum is
+'上月无功指针数';
+
+comment on column LWFactoryIndicator.Rate is
+'倍率';
+
+comment on column LWFactoryIndicator.ReadQuantity is
+'抄见电量';
+
+comment on column LWFactoryIndicator.ExcepQuantity is
+'异常电量';
+
+comment on column LWFactoryIndicator.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWFactoryIndicator.CompensateQuantity is
+'退补电量';
+
+comment on column LWFactoryIndicator.LineLossQuantity is
+'线损电量';
+
+comment on column LWFactoryIndicator.TransLossQuantity is
+'变损电量';
+
+comment on column LWFactoryIndicator.NeedQuantity is
+'需量电量';
+
+comment on column LWFactoryIndicator.RongliangQuantity is
+'线损电量';
+
+comment on column LWFactoryIndicator.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWFactoryIndicator.PeopleThisWorkNum is
+'当月有功指针数';
+
+comment on column LWFactoryIndicator.PeopleLastWorkNum is
+'上月有功指针数';
+
+comment on column LWFactoryIndicator.PeopleThisIdleNum is
+'当月无功指针数';
+
+comment on column LWFactoryIndicator.PeopleLastIdleNum is
+'上月无功指针数';
+
+comment on column LWFactoryIndicator.PeopleRate is
+'倍率';
+
+comment on column LWFactoryIndicator.PeopleQuantity is
+'变损电量';
+
+/*==============================================================*/
+/* Table: LWFactoryIndicatorBak                                 */
+/*==============================================================*/
+create table LWFactoryIndicatorBak  (
+   UserNo               VARCHAR2(20)                    not null,
+   inputDate            VARCHAR2(20),
+   ReadDate             VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   NeedQuantity         NUMBER(14,4),
+   RongliangQuantity    NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   PeopleThisWorkNum    NUMBER(14,4),
+   PeopleLastWorkNum    NUMBER(14,4),
+   PeopleThisIdleNum    NUMBER(14,4),
+   PeopleLastIdleNum    NUMBER(14,4),
+   PeopleRate           NUMBER(14,4),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   PeopleQuantity       NUMBER(14,4),
+   unChgAmmeterQuantity VARCHAR2(20),
+   pepoleUnChgAmmeterQuantity VARCHAR2(20),
+   userName             VARCHAR2(20),
+   AmmeterStyle         VARCHAR2(20),
+   constraint PK_LWFACTORYINDICATORBAK primary key (UserNo, StatMonth)
+);
+
+comment on table LWFactoryIndicatorBak is
+'大工业电表指针记录备份表';
+
+comment on column LWFactoryIndicatorBak.UserNo is
+'户号';
+
+comment on column LWFactoryIndicatorBak.inputDate is
+'录入日期';
+
+comment on column LWFactoryIndicatorBak.ReadDate is
+'录入日期';
+
+comment on column LWFactoryIndicatorBak.StatMonth is
+'录入日期';
+
+comment on column LWFactoryIndicatorBak.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWFactoryIndicatorBak.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWFactoryIndicatorBak.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWFactoryIndicatorBak.LastIdleNum is
+'上月无功指针数';
+
+comment on column LWFactoryIndicatorBak.Rate is
+'倍率';
+
+comment on column LWFactoryIndicatorBak.ReadQuantity is
+'抄见电量';
+
+comment on column LWFactoryIndicatorBak.ExcepQuantity is
+'异常电量';
+
+comment on column LWFactoryIndicatorBak.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWFactoryIndicatorBak.CompensateQuantity is
+'退补电量';
+
+comment on column LWFactoryIndicatorBak.LineLossQuantity is
+'线损电量';
+
+comment on column LWFactoryIndicatorBak.TransLossQuantity is
+'变损电量';
+
+comment on column LWFactoryIndicatorBak.NeedQuantity is
+'需量电量';
+
+comment on column LWFactoryIndicatorBak.RongliangQuantity is
+'线损电量';
+
+comment on column LWFactoryIndicatorBak.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWFactoryIndicatorBak.PeopleThisWorkNum is
+'当月有功指针数';
+
+comment on column LWFactoryIndicatorBak.PeopleLastWorkNum is
+'上月有功指针数';
+
+comment on column LWFactoryIndicatorBak.PeopleThisIdleNum is
+'当月无功指针数';
+
+comment on column LWFactoryIndicatorBak.PeopleLastIdleNum is
+'上月无功指针数';
+
+comment on column LWFactoryIndicatorBak.PeopleRate is
+'倍率';
+
+comment on column LWFactoryIndicatorBak.PeopleQuantity is
+'变损电量';
+
+/*==============================================================*/
+/* Table: LWLineCTPTAmmeter                                     */
+/*==============================================================*/
+create table LWLineCTPTAmmeter  (
+   LineCode             VARCHAR2(20)                    not null,
+   CTModus              VARCHAR2(20)                    not null,
+   PTModus              VARCHAR2(20)                    not null,
+   PepoleAmmeterNo      VARCHAR2(20)                    not null,
+   AmmeterNo            VARCHAR2(20)                    not null,
+   Flag                 VARCHAR2(10),
+   ValidStatus          VARCHAR2(10),
+   inputDate            VARCHAR2(20),
+   constraint PK_LWLINECTPTAMMETER primary key (LineCode, CTModus, PTModus, AmmeterNo)
+);
+
+/*==============================================================*/
+/* Table: LWNewFactoryIndicator                                 */
+/*==============================================================*/
+create table LWNewFactoryIndicator  (
+   unChgAmmeterQuantity VARCHAR2(20),
+   UserNo               VARCHAR2(20)                    not null,
+   ReadDate             VARCHAR2(20),
+   inputDate            VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   NeedQuantity         NUMBER(14,4),
+   RongliangQuantity    NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   pepoleUnChgAmmeterQuantity VARCHAR2(20),
+   username             VARCHAR2(20),
+   unCompensateQuantity NUMBER(14,4),
+   AmmeterNo            VARCHAR2(20)                    not null,
+   AmmeterStyle         VARCHAR2(20),
+   workQuantity         VARCHAR2(20),
+   unworkQuantity       VARCHAR2(20),
+   constraint PK_LWNEWFACTORYINDICATOR primary key (UserNo, StatMonth, AmmeterNo)
+);
+
+comment on table LWNewFactoryIndicator is
+'大工业新电表指针记录表';
+
+comment on column LWNewFactoryIndicator.UserNo is
+'户号';
+
+comment on column LWNewFactoryIndicator.ReadDate is
+'录入日期';
+
+comment on column LWNewFactoryIndicator.inputDate is
+'录入日期';
+
+comment on column LWNewFactoryIndicator.StatMonth is
+'录入日期';
+
+comment on column LWNewFactoryIndicator.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWNewFactoryIndicator.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWNewFactoryIndicator.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWNewFactoryIndicator.LastIdleNum is
+'上月无功指针数';
+
+comment on column LWNewFactoryIndicator.Rate is
+'倍率';
+
+comment on column LWNewFactoryIndicator.ReadQuantity is
+'抄见电量';
+
+comment on column LWNewFactoryIndicator.ExcepQuantity is
+'异常电量';
+
+comment on column LWNewFactoryIndicator.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWNewFactoryIndicator.CompensateQuantity is
+'退补电量';
+
+comment on column LWNewFactoryIndicator.LineLossQuantity is
+'线损电量';
+
+comment on column LWNewFactoryIndicator.TransLossQuantity is
+'变损电量';
+
+comment on column LWNewFactoryIndicator.NeedQuantity is
+'需量电量';
+
+comment on column LWNewFactoryIndicator.RongliangQuantity is
+'线损电量';
+
+comment on column LWNewFactoryIndicator.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWNewFactoryIndicator.unCompensateQuantity is
+'退补电量';
+
+/*==============================================================*/
+/* Table: LWNewFactoryIndicatorBak                              */
+/*==============================================================*/
+create table LWNewFactoryIndicatorBak  (
+   unChgAmmeterQuantity VARCHAR2(20),
+   UserNo               VARCHAR2(20)                    not null,
+   ReadDate             VARCHAR2(20),
+   inputDate            VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   NeedQuantity         NUMBER(14,4),
+   RongliangQuantity    NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   pepoleUnChgAmmeterQuantity VARCHAR2(20),
+   username             VARCHAR2(20),
+   unCompensateQuantity NUMBER(14,4),
+   AmmeterNo            VARCHAR2(20)                    not null,
+   AmmeterStyle         VARCHAR2(20),
+   workQuantity         VARCHAR2(20),
+   unworkQuantity       VARCHAR2(20),
+   constraint PK_LWNEWFACTORYINDICATORBAK primary key (UserNo, StatMonth, AmmeterNo)
+);
+
+comment on table LWNewFactoryIndicatorBak is
+'大工业新电表指针备份表';
+
+comment on column LWNewFactoryIndicatorBak.UserNo is
+'户号';
+
+comment on column LWNewFactoryIndicatorBak.ReadDate is
+'录入日期';
+
+comment on column LWNewFactoryIndicatorBak.inputDate is
+'录入日期';
+
+comment on column LWNewFactoryIndicatorBak.StatMonth is
+'录入日期';
+
+comment on column LWNewFactoryIndicatorBak.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWNewFactoryIndicatorBak.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWNewFactoryIndicatorBak.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWNewFactoryIndicatorBak.LastIdleNum is
+'上月无功指针数';
+
+comment on column LWNewFactoryIndicatorBak.Rate is
+'倍率';
+
+comment on column LWNewFactoryIndicatorBak.ReadQuantity is
+'抄见电量';
+
+comment on column LWNewFactoryIndicatorBak.ExcepQuantity is
+'异常电量';
+
+comment on column LWNewFactoryIndicatorBak.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWNewFactoryIndicatorBak.CompensateQuantity is
+'退补电量';
+
+comment on column LWNewFactoryIndicatorBak.LineLossQuantity is
+'线损电量';
+
+comment on column LWNewFactoryIndicatorBak.TransLossQuantity is
+'变损电量';
+
+comment on column LWNewFactoryIndicatorBak.NeedQuantity is
+'需量电量';
+
+comment on column LWNewFactoryIndicatorBak.RongliangQuantity is
+'线损电量';
+
+comment on column LWNewFactoryIndicatorBak.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWNewFactoryIndicatorBak.unCompensateQuantity is
+'退补电量';
+
+/*==============================================================*/
+/* Table: LWPT                                                  */
+/*==============================================================*/
+create table LWPT  (
+   Modus                VARCHAR2(100)                   not null,
+   PT                   VARCHAR2(20),
+   FactoryName          VARCHAR2(40),
+   Exact                NUMBER(14,4),
+   PTRate               NUMBER(14,4)                    not null,
+   FctoryCodeA          VARCHAR2(100),
+   FctoryCodeB          VARCHAR2(100),
+   FctoryCodeC          VARCHAR2(100),
+   Flag                 VARCHAR2(10),
+   ImportDate           VARCHAR2(20),
+   ValidStatus          VARCHAR2(10),
+   constraint PK_LWPT primary key (Modus)
+);
+
+/*==============================================================*/
+/* Table: LWPowerLine                                           */
+/*==============================================================*/
+create table LWPowerLine  (
+   LineCode             VARCHAR2(20)                    not null,
+   LineCName            VARCHAR2(20),
+   LineEName            VARCHAR2(40),
+   ComCode              VARCHAR2(8),
+   TargetCode           VARCHAR(20),
+   SupplyType           VARCHAR(20),
+   CT                   NUMBER(14,4),
+   PT                   NUMBER(14,4),
+   VoltLevel            NUMBER(14,4),
+   SiFeLoss             NUMBER(14,4),
+   LossProp             NUMBER(14,4),
+   PriceCategory        VARCHAR(5),
+   LossFlag             VARCHAR(5),
+   Rate                 NUMBER(14,4),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWPowerLine primary key (LineCode)
+)
+  tablespace USERS;
+
+comment on column LWPowerLine.SupplyType is
+'1-直供乡，2-趸售工业，3-大工业，4-趸售';
+
+comment on column LWPowerLine.PriceCategory is
+'--** 1-县级趸售，2-县以上趸售，3-电镀电价，4-基本电价';
+
+comment on column LWPowerLine.LossFlag is
+'--** 1--变损，2-出线线损';
+
+/*==============================================================*/
+/* Table: LWPowerUser                                           */
+/*==============================================================*/
+create table LWPowerUser  (
+   UserNo               VARCHAR2(20)                    not null,
+   UserName             VARCHAR2(20),
+   Address              VARCHAR2(40),
+   TownCode             VARCHAR(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   SuperClass           VARCHAR2(20),
+   FactoryStyle         VARCHAR2(20),
+   WholeSaleStyle       VARCHAR2(10),
+   SaleVoltLevel        VARCHAR2(20),
+   LineCode             VARCHAR2(20),
+   constraint PK_PowerUser primary key (UserNo)
+)
+  tablespace USERS;
+
+/*==============================================================*/
+/* Table: LWProrate                                             */
+/*==============================================================*/
+create table LWProrate  (
+   UserNo               VARCHAR2(20)                    not null,
+   agricultural         NUMBER(14,4)                    not null,
+   Produce              NUMBER(14,4)                    not null,
+   Resident             NUMBER(14,4),
+   indecisive           NUMBER(14,4),
+   industry             NUMBER(14,4),
+   business             NUMBER(14,4),
+   InputDate            VARCHAR2(20),
+   ValidStatus          VARCHAR2(1)                     not null,
+   Remark               VARCHAR2(100),
+   Flag                 VARCHAR2(20),
+   constraint PK_LWProrate primary key (UserNo)
+)
+  tablespace USERS;
+
+comment on table LWProrate is
+'比例分摊表';
+
+comment on column LWProrate.UserNo is
+'户号';
+
+comment on column LWProrate.agricultural is
+'农灌';
+
+comment on column LWProrate.Produce is
+'生产';
+
+comment on column LWProrate.Resident is
+'居民';
+
+comment on column LWProrate.indecisive is
+'非居民';
+
+comment on column LWProrate.industry is
+'工业';
+
+comment on column LWProrate.business is
+'商业';
+
+comment on column LWProrate.InputDate is
+'录入时间';
+
+comment on column LWProrate.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWProrate.Remark is
+'注释';
+
+comment on column LWProrate.Flag is
+'标志';
+
+/*==============================================================*/
+/* Table: LWRateCode                                            */
+/*==============================================================*/
+create table LWRateCode  (
+   PowerFactor          VARCHAR2(10)                    not null,
+   UpPowerRate          NUMBER(14,4)                    not null,
+   LowPowerRate         NUMBER(14,4)                    not null,
+   SuppleType           VARCHAR2(20)                    not null,
+   AdjustRate           VARCHAR2(20)                    not null,
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWRATECODE primary key (PowerFactor, SuppleType)
+);
+
+comment on table LWRateCode is
+'调整率维护表';
+
+comment on column LWRateCode.SuppleType is
+'1-直供乡，2-趸售工业，3-大工业，4-趸售';
+
+comment on column LWRateCode.ValidStatus is
+'--**0:无效--**1:有效';
+
+/*==============================================================*/
+/* Table: LWSalePrice                                           */
+/*==============================================================*/
+create table LWSalePrice  (
+   PowerClass           VARCHAR2(10)                    not null,
+   PriceCategory        VARCHAR2(12)                    not null,
+   VoltageBegin         NUMBER(14,4)                    not null,
+   VoltageEnd           NUMBER(14,4)                    not null,
+   MaterialsType        VARCHAR2(5)                     not null,
+   Price                NUMBER(14,4),
+   ValidDate            VARCHAR2(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWSALEPRICE primary key (PowerClass, PriceCategory, VoltageBegin, VoltageEnd, MaterialsType)
+);
+
+comment on table LWSalePrice is
+'销售电价表';
+
+comment on column LWSalePrice.PowerClass is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWSalePrice.PriceCategory is
+'3-电镀电价，4-基本电价';
+
+comment on column LWSalePrice.VoltageBegin is
+'1-1-10KV，
+3-不满1KV，4-35-110KV，5-110-220KV，6-220KV及以上
+7-最大需量，8-变压器容量';
+
+comment on column LWSalePrice.VoltageEnd is
+'1-1-10KV，
+3-不满1KV，4-35-110KV，5-110-220KV，6-220KV及以上
+7-最大需量，8-变压器容量';
+
+comment on column LWSalePrice.MaterialsType is
+'只有大工业电价才有值。
+1-电炉铁合金、电解烧碱、合成氨、电炉钙镁、磷肥、电炉黄磷。
+2、电石，3-中、小化肥。
+
+';
+
+comment on column LWSalePrice.Price is
+'单价';
+
+comment on column LWSalePrice.ValidDate is
+'生效日期';
+
+comment on column LWSalePrice.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWSalePrice.Flag is
+'标志';
+
+comment on column LWSalePrice.Remark is
+'注释';
+
+/*==============================================================*/
+/* Table: LWSysUser                                             */
+/*==============================================================*/
+create table LWSysUser  (
+   UserCode             VARCHAR2(30)                    not null,
+   UserName             VARCHAR2(30),
+   Password             VARCHAR2(40),
+   CompanyCode          VARCHAR2(20),
+   PhoneNumber          VARCHAR2(30),
+   Email                VARCHAR2(50),
+   Fax                  VARCHAR2(30),
+   UserGrade            VARCHAR2(10)                    not null,
+   ValidStatus          CHAR(1)                         not null,
+   Flag                 VARCHAR2(2),
+   constraint PK_DUSER primary key (UserCode)
+);
+
+comment on column LWSysUser.UserCode is
+'主键';
+
+comment on column LWSysUser.UserName is
+'用户名称';
+
+comment on column LWSysUser.Password is
+'密码，md5加密';
+
+comment on column LWSysUser.CompanyCode is
+'机构名称';
+
+comment on column LWSysUser.PhoneNumber is
+'电话号码';
+
+comment on column LWSysUser.Email is
+'电子邮件';
+
+comment on column LWSysUser.Fax is
+'传真';
+
+comment on column LWSysUser.UserGrade is
+'用户权限';
+
+comment on column LWSysUser.ValidStatus is
+'(0失效/1有效)';
+
+comment on column LWSysUser.Flag is
+'标志';
+
+/*==============================================================*/
+/* Table: LWTownIndicator                                       */
+/*==============================================================*/
+create table LWTownIndicator  (
+   UserNo               VARCHAR2(20)                    not null,
+   UserName             VARCHAR2(20),
+   Address              VARCHAR2(100),
+   ReadDate             VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   TranferLossQuantity  NUMBER(14),
+   PeoplePrice          NUMBER(14,4),
+   NotPeoplePrice       NUMBER(14,4),
+   FarmPrice            NUMBER(14,4),
+   ProducePrice         NUMBER(14,4),
+   BusinessPrice        NUMBER(14,4),
+   Voltlevel            int,
+   IndustryPrice        NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   inputDate            VARCHAR2(20),
+   constraint PK_LWTOWNINDICATOR primary key (UserNo, StatMonth)
+);
+
+comment on table LWTownIndicator is
+'直供乡电表指针记录表';
+
+comment on column LWTownIndicator.UserNo is
+'户号';
+
+comment on column LWTownIndicator.UserName is
+'户号';
+
+comment on column LWTownIndicator.Address is
+'户号';
+
+comment on column LWTownIndicator.ReadDate is
+'录入日期';
+
+comment on column LWTownIndicator.StatMonth is
+'录入日期';
+
+comment on column LWTownIndicator.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWTownIndicator.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWTownIndicator.Rate is
+'倍率';
+
+comment on column LWTownIndicator.ReadQuantity is
+'抄见电量';
+
+comment on column LWTownIndicator.ExcepQuantity is
+'异常电量';
+
+comment on column LWTownIndicator.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWTownIndicator.CompensateQuantity is
+'退补电量';
+
+comment on column LWTownIndicator.TranferLossQuantity is
+'退补电量';
+
+comment on column LWTownIndicator.PeoplePrice is
+'退补电量';
+
+comment on column LWTownIndicator.NotPeoplePrice is
+'退补电量';
+
+comment on column LWTownIndicator.FarmPrice is
+'退补电量';
+
+comment on column LWTownIndicator.ProducePrice is
+'退补电量';
+
+comment on column LWTownIndicator.BusinessPrice is
+'退补电量';
+
+comment on column LWTownIndicator.Voltlevel is
+'退补电量';
+
+comment on column LWTownIndicator.IndustryPrice is
+'退补电量';
+
+comment on column LWTownIndicator.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWTownIndicator.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWTownIndicatorBak                                    */
+/*==============================================================*/
+create table LWTownIndicatorBak  (
+   UserNo               VARCHAR2(20)                    not null,
+   UserName             VARCHAR2(20),
+   Address              VARCHAR2(100),
+   ReadDate             VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   TranferLossQuantity  NUMBER(14),
+   PeoplePrice          NUMBER(14,4),
+   NotPeoplePrice       NUMBER(14,4),
+   FarmPrice            NUMBER(14,4),
+   ProducePrice         NUMBER(14,4),
+   BusinessPrice        NUMBER(14,4),
+   Voltlevel            int,
+   IndustryPrice        NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   inputDate            VARCHAR2(20),
+   constraint PK_LWTOWNINDICATORBAK primary key (UserNo, StatMonth)
+);
+
+comment on table LWTownIndicatorBak is
+'直供乡电表指针记录表';
+
+comment on column LWTownIndicatorBak.UserNo is
+'户号';
+
+comment on column LWTownIndicatorBak.UserName is
+'户号';
+
+comment on column LWTownIndicatorBak.Address is
+'户号';
+
+comment on column LWTownIndicatorBak.ReadDate is
+'录入日期';
+
+comment on column LWTownIndicatorBak.StatMonth is
+'录入日期';
+
+comment on column LWTownIndicatorBak.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWTownIndicatorBak.LastWorkNum is
+'上月有功指针数';
+
+comment on column LWTownIndicatorBak.Rate is
+'倍率';
+
+comment on column LWTownIndicatorBak.ReadQuantity is
+'抄见电量';
+
+comment on column LWTownIndicatorBak.ExcepQuantity is
+'异常电量';
+
+comment on column LWTownIndicatorBak.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWTownIndicatorBak.CompensateQuantity is
+'退补电量';
+
+comment on column LWTownIndicatorBak.TranferLossQuantity is
+'退补电量';
+
+comment on column LWTownIndicatorBak.PeoplePrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.NotPeoplePrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.FarmPrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.ProducePrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.BusinessPrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.Voltlevel is
+'退补电量';
+
+comment on column LWTownIndicatorBak.IndustryPrice is
+'退补电量';
+
+comment on column LWTownIndicatorBak.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWTownIndicatorBak.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWTownPriceSummary                                    */
+/*==============================================================*/
+create table LWTownPriceSummary  (
+   UserNo               VARCHAR2(20)                    not null,
+   LineCode             VARCHAR2(20),
+   StatMonth            VARCHAR2(20)                    not null,
+   ElectricFee          NUMBER(14,4),
+   PeopleQuantity       NUMBER(14,4),
+   PeopleScale          NUMBER(14,4),
+   PeoplePrice          NUMBER(14,4),
+   PeopleFee            NUMBER(14,4),
+   SumPeopleFee         NUMBER(14,4),
+   PeopleDianJin        NUMBER(14,4),
+   PeopleFeeSanXia      NUMBER(14,4),
+   PeopleJiJin          NUMBER(14,4),
+   PeopleKuQu           NUMBER(14,4),
+   NotPeopleQuantity    NUMBER(14,4),
+   NotPeopleScale       NUMBER(14,4),
+   NotPeoplePrice       NUMBER(14,4),
+   NotPeopleFee         NUMBER(14,4),
+   SumNotPeopleFee      NUMBER(14,4),
+   NotPeopleDianJin     NUMBER(14,4),
+   NotPeopleFeeSanXia   NUMBER(14,4),
+   NotPeopleJiJin       NUMBER(14,4),
+   NotPeopleKuQu        NUMBER(14,4),
+   FarmQuantity         NUMBER(14,4),
+   FarmScale            NUMBER(14,4),
+   FarmPrice            NUMBER(14,4),
+   FarmFee              NUMBER(14,4),
+   SumFarmFee           NUMBER(14,4),
+   FarmDianJin          NUMBER(14,4),
+   FarmSanXia           NUMBER(14,4),
+   FarmJiJin            NUMBER(14,4),
+   FarmKuQu             NUMBER(14,4),
+   ProduceQuantity      NUMBER(14,4),
+   ProduceScale         NUMBER(14,4),
+   ProducePrice         NUMBER(14,4),
+   ProduceFee           NUMBER(14,4),
+   SumProduceFee        NUMBER(14,4),
+   ProduceDianJin       NUMBER(14,4),
+   ProduceSanXia        NUMBER(14,4),
+   ProduceKuQu          NUMBER(14,4),
+   ProduceJiJin         NUMBER(14,4),
+   BizQuantity          NUMBER(14,4),
+   BizScale             NUMBER(14,4),
+   BizPrice             NUMBER(14,4),
+   BizFee               NUMBER(14,4),
+   SumBizFee            NUMBER(14,4),
+   BizDianJin           NUMBER(14,4),
+   BizSanXia            NUMBER(14,4),
+   BizKuQu              NUMBER(14,4),
+   BizJiJin             NUMBER(14,4),
+   IndustryQuantity     NUMBER(14,4),
+   IndustryScale        NUMBER(14,4),
+   IndustryPrice        NUMBER(14,4),
+   IndustryFee          NUMBER(14,4),
+   SumIndustryFee       NUMBER(14,4),
+   IndustryDianJin      NUMBER(14,4),
+   IndustrySanXia       NUMBER(14,4),
+   IndustryKuQu         NUMBER(14,4),
+   IndustryJiJin        NUMBER(14,4),
+   TranferLossQuantity  NUMBER(14),
+   RateCode             NUMBER(14,4),
+   AdjustValue          NUMBER(14,4),
+   RateFee              NUMBER(14,4),
+   Loan                 NUMBER(14,4),
+   SanXiaFee            NUMBER(14,4),
+   Surcharge            NUMBER(14,4),
+   MigrationFee         NUMBER(14,4),
+   SumQuantity          NUMBER(14,4),
+   SumFee               NUMBER(14,4),
+   SumDianJin           NUMBER(14,4),
+   SumSanXia            NUMBER(14,4),
+   SumJiJin             NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   SumKuQu              NUMBER(14,4),
+   inputDate            VARCHAR2(20),
+   constraint LWTownPriceSummary primary key (UserNo, StatMonth)
+);
+
+comment on table LWTownPriceSummary is
+'直供乡电费计算总表';
+
+comment on column LWTownPriceSummary.StatMonth is
+'--** 2008-08';
+
+comment on column LWTownPriceSummary.ElectricFee is
+'总电费';
+
+comment on column LWTownPriceSummary.PeopleQuantity is
+'居民电量';
+
+comment on column LWTownPriceSummary.PeopleScale is
+'居民比例';
+
+comment on column LWTownPriceSummary.PeoplePrice is
+'居民电价';
+
+comment on column LWTownPriceSummary.PeopleFee is
+'居民电费';
+
+comment on column LWTownPriceSummary.SumPeopleFee is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.PeopleDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.PeopleFeeSanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.PeopleJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.PeopleKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.NotPeopleQuantity is
+'非居民电量';
+
+comment on column LWTownPriceSummary.NotPeopleScale is
+'非居民比例';
+
+comment on column LWTownPriceSummary.NotPeoplePrice is
+'非居民电价';
+
+comment on column LWTownPriceSummary.NotPeopleFee is
+'非居民电费';
+
+comment on column LWTownPriceSummary.SumNotPeopleFee is
+'非居民电费合计';
+
+comment on column LWTownPriceSummary.NotPeopleDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.NotPeopleFeeSanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.NotPeopleJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.NotPeopleKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.FarmQuantity is
+'农灌电量';
+
+comment on column LWTownPriceSummary.FarmScale is
+'农灌比例';
+
+comment on column LWTownPriceSummary.FarmPrice is
+'农灌电价';
+
+comment on column LWTownPriceSummary.FarmFee is
+'农灌电费';
+
+comment on column LWTownPriceSummary.SumFarmFee is
+'农灌电费合计';
+
+comment on column LWTownPriceSummary.FarmDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.FarmSanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.FarmJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.FarmKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.ProduceQuantity is
+'农业生产电量';
+
+comment on column LWTownPriceSummary.ProduceScale is
+'农业生产比例';
+
+comment on column LWTownPriceSummary.ProducePrice is
+'农业生产电价';
+
+comment on column LWTownPriceSummary.ProduceFee is
+'农业生产电费';
+
+comment on column LWTownPriceSummary.SumProduceFee is
+'农业生产电费合计';
+
+comment on column LWTownPriceSummary.ProduceDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.ProduceSanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.ProduceKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.ProduceJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.BizQuantity is
+'商业电量';
+
+comment on column LWTownPriceSummary.BizScale is
+'商业比例';
+
+comment on column LWTownPriceSummary.BizPrice is
+'商业电价';
+
+comment on column LWTownPriceSummary.BizFee is
+'商业电费';
+
+comment on column LWTownPriceSummary.SumBizFee is
+'商业电费合计';
+
+comment on column LWTownPriceSummary.BizDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.BizSanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.BizKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.BizJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.IndustryQuantity is
+'非工业、普通工业电量';
+
+comment on column LWTownPriceSummary.IndustryScale is
+'非工业比例';
+
+comment on column LWTownPriceSummary.IndustryPrice is
+'非工业电价';
+
+comment on column LWTownPriceSummary.IndustryFee is
+'非工业电费';
+
+comment on column LWTownPriceSummary.SumIndustryFee is
+'非工业电费合计';
+
+comment on column LWTownPriceSummary.IndustryDianJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.IndustrySanXia is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.IndustryKuQu is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.IndustryJiJin is
+'居民电费合计';
+
+comment on column LWTownPriceSummary.TranferLossQuantity is
+'退补电量';
+
+comment on column LWTownPriceSummary.RateCode is
+'功率因数';
+
+comment on column LWTownPriceSummary.AdjustValue is
+'调整值';
+
+comment on column LWTownPriceSummary.RateFee is
+'力率电费';
+
+comment on column LWTownPriceSummary.Loan is
+'农业还贷资金';
+
+comment on column LWTownPriceSummary.SanXiaFee is
+'三峡';
+
+comment on column LWTownPriceSummary.Surcharge is
+'可再生能源附加费';
+
+comment on column LWTownPriceSummary.MigrationFee is
+'库区移民基金';
+
+comment on column LWTownPriceSummary.SumQuantity is
+'电量合计';
+
+comment on column LWTownPriceSummary.SumFee is
+'电费合计';
+
+comment on column LWTownPriceSummary.SumDianJin is
+'电金合计';
+
+comment on column LWTownPriceSummary.SumSanXia is
+'三峡合计';
+
+comment on column LWTownPriceSummary.SumJiJin is
+'--**0:无效--**1:有效';
+
+comment on column LWTownPriceSummary.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWTownPriceSummary.Flag is
+'标志';
+
+comment on column LWTownPriceSummary.Remark is
+'注释';
+
+comment on column LWTownPriceSummary.SumKuQu is
+'--**0:无效--**1:有效';
+
+comment on column LWTownPriceSummary.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWUserAmmeter                                         */
+/*==============================================================*/
+create table LWUserAmmeter  (
+   UserNo               VARCHAR2(20)                    not null,
+   UserName             VARCHAR2(20),
+   AmmeterNo            VARCHAR2(20)                    not null,
+   InstallDate          VARCHAR2(1),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWUserAmmeter primary key (UserNo, AmmeterNo)
+)
+  tablespace USERS;
+
+/*==============================================================*/
+/* Table: LWWholeSaleIndicator                                  */
+/*==============================================================*/
+create table LWWholeSaleIndicator  (
+   UserNo               VARCHAR2(20)                    not null,
+   StatMonth            VARCHAR2(20)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   UnCompensateQuantity NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   UnLineLossQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   UnTransLossQuantity  NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   workQuantity         VARCHAR2(20),
+   unworkQuantity       VARCHAR2(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   ReadDate             VARCHAR2(20),
+   inputDate            VARCHAR2(20),
+   unChgAmmeterQuantity NUMBER(14,4),
+   LossRate             NUMBER(14,4),
+   PowerCode            NUMBER(14,4),
+   ifCal                VARCHAR2(20),
+   constraint PK_LWWHOLESALEINDICATOR primary key (UserNo, StatMonth)
+);
+
+comment on table LWWholeSaleIndicator is
+'趸售电表指针记录表';
+
+comment on column LWWholeSaleIndicator.UserNo is
+'户号';
+
+comment on column LWWholeSaleIndicator.StatMonth is
+'录入日期';
+
+comment on column LWWholeSaleIndicator.LastWorkNum is
+'当月有功指针数';
+
+comment on column LWWholeSaleIndicator.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWWholeSaleIndicator.LastIdleNum is
+'当月无功指针数';
+
+comment on column LWWholeSaleIndicator.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWWholeSaleIndicator.Rate is
+'倍率';
+
+comment on column LWWholeSaleIndicator.ReadQuantity is
+'抄见电量';
+
+comment on column LWWholeSaleIndicator.ExcepQuantity is
+'异常电量';
+
+comment on column LWWholeSaleIndicator.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWWholeSaleIndicator.UnCompensateQuantity is
+'退补电量';
+
+comment on column LWWholeSaleIndicator.CompensateQuantity is
+'退补电量';
+
+comment on column LWWholeSaleIndicator.UnLineLossQuantity is
+'线损电量';
+
+comment on column LWWholeSaleIndicator.LineLossQuantity is
+'线损电量';
+
+comment on column LWWholeSaleIndicator.UnTransLossQuantity is
+'变损电量';
+
+comment on column LWWholeSaleIndicator.TransLossQuantity is
+'变损电量';
+
+comment on column LWWholeSaleIndicator.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleIndicator.ReadDate is
+'录入日期';
+
+comment on column LWWholeSaleIndicator.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWWholeSaleIndicatorBak                               */
+/*==============================================================*/
+create table LWWholeSaleIndicatorBak  (
+   UserNo               VARCHAR2(20)                    not null,
+   StatMonth            VARCHAR2(20)                    not null,
+   LastWorkNum          NUMBER(14,4)                    not null,
+   ThisWorkNum          NUMBER(14,4)                    not null,
+   LastIdleNum          NUMBER(14,4)                    not null,
+   ThisIdleNum          NUMBER(14,4)                    not null,
+   Rate                 NUMBER(14,4),
+   ReadQuantity         NUMBER(14,4),
+   ExcepQuantity        NUMBER(14,4),
+   ChgAmmeterQuantity   NUMBER(14,4),
+   UnCompensateQuantity NUMBER(14,4),
+   CompensateQuantity   NUMBER(14,4),
+   UnLineLossQuantity   NUMBER(14,4),
+   LineLossQuantity     NUMBER(14,4),
+   UnTransLossQuantity  NUMBER(14,4),
+   TransLossQuantity    NUMBER(14,4),
+   workQuantity         VARCHAR2(20),
+   unworkQuantity       VARCHAR2(20),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   inputDate            VARCHAR2(20),
+   ReadDate             VARCHAR2(20),
+   LossRate             NUMBER(14,4),
+   PowerCode            NUMBER(14,4),
+   unChgAmmeterQuantity NUMBER(14,4),
+   ifCal                VARCHAR2(20),
+   constraint PK_LWWHOLESALEINDICATORBAK primary key (UserNo, StatMonth)
+);
+
+comment on table LWWholeSaleIndicatorBak is
+'趸售电表指针记录备份表';
+
+comment on column LWWholeSaleIndicatorBak.UserNo is
+'户号';
+
+comment on column LWWholeSaleIndicatorBak.StatMonth is
+'录入日期';
+
+comment on column LWWholeSaleIndicatorBak.LastWorkNum is
+'当月有功指针数';
+
+comment on column LWWholeSaleIndicatorBak.ThisWorkNum is
+'当月有功指针数';
+
+comment on column LWWholeSaleIndicatorBak.LastIdleNum is
+'当月无功指针数';
+
+comment on column LWWholeSaleIndicatorBak.ThisIdleNum is
+'当月无功指针数';
+
+comment on column LWWholeSaleIndicatorBak.Rate is
+'倍率';
+
+comment on column LWWholeSaleIndicatorBak.ReadQuantity is
+'抄见电量';
+
+comment on column LWWholeSaleIndicatorBak.ExcepQuantity is
+'异常电量';
+
+comment on column LWWholeSaleIndicatorBak.ChgAmmeterQuantity is
+'换表电量';
+
+comment on column LWWholeSaleIndicatorBak.UnCompensateQuantity is
+'退补电量';
+
+comment on column LWWholeSaleIndicatorBak.CompensateQuantity is
+'退补电量';
+
+comment on column LWWholeSaleIndicatorBak.UnLineLossQuantity is
+'线损电量';
+
+comment on column LWWholeSaleIndicatorBak.LineLossQuantity is
+'线损电量';
+
+comment on column LWWholeSaleIndicatorBak.UnTransLossQuantity is
+'变损电量';
+
+comment on column LWWholeSaleIndicatorBak.TransLossQuantity is
+'变损电量';
+
+comment on column LWWholeSaleIndicatorBak.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleIndicatorBak.inputDate is
+'录入日期';
+
+comment on column LWWholeSaleIndicatorBak.ReadDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWWholeSalePrice                                      */
+/*==============================================================*/
+create table LWWholeSalePrice  (
+   PowerClass           VARCHAR2(10)                    not null,
+   SaleArea             VARCHAR2(12)                    not null,
+   VoltageBegin         NUMBER(14,4)                    not null,
+   VoltageEnd           NUMBER(14,4)                    not null,
+   Price                NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWWHOLESALEPRICE primary key (PowerClass, SaleArea, VoltageBegin, VoltageEnd)
+);
+
+comment on table LWWholeSalePrice is
+'趸售电价表';
+
+comment on column LWWholeSalePrice.PowerClass is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWWholeSalePrice.SaleArea is
+'1-县级趸售，2-县以下趸售';
+
+comment on column LWWholeSalePrice.VoltageBegin is
+'1-1-10KV，2-35KV及以上';
+
+comment on column LWWholeSalePrice.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSalePrice.Flag is
+'标志';
+
+comment on column LWWholeSalePrice.Remark is
+'注释';
+
+/*==============================================================*/
+/* Table: LWWholeSaleProrate                                    */
+/*==============================================================*/
+create table LWWholeSaleProrate  (
+   ComCode              VARCHAR2(20)                    not null,
+   CompanyName          VARCHAR2(20),
+   People               NUMBER(14,4),
+   NotPeople            NUMBER(14,4),
+   Farm                 NUMBER(14,4),
+   Produce              NUMBER(14,4),
+   Business             NUMBER(14,4),
+   Industry             NUMBER(14,4),
+   VoltLevel            VARCHAR2(20)                    not null,
+   InputDate            VARCHAR2(20),
+   ValidStatus          VARCHAR2(1),
+   Remark               VARCHAR2(100),
+   Flag                 VARCHAR2(20),
+   constraint PK_LWWholeSaleProrate primary key (ComCode, VoltLevel)
+)
+  tablespace USERS;
+
+comment on table LWWholeSaleProrate is
+'趸售比例分摊表';
+
+comment on column LWWholeSaleProrate.ComCode is
+'机构代码';
+
+comment on column LWWholeSaleProrate.CompanyName is
+'机构名称';
+
+comment on column LWWholeSaleProrate.People is
+'居民';
+
+comment on column LWWholeSaleProrate.NotPeople is
+'非居民';
+
+comment on column LWWholeSaleProrate.Farm is
+'农灌';
+
+comment on column LWWholeSaleProrate.Produce is
+'生产';
+
+comment on column LWWholeSaleProrate.Business is
+'商业';
+
+comment on column LWWholeSaleProrate.Industry is
+'非普工业';
+
+comment on column LWWholeSaleProrate.VoltLevel is
+'电压等级';
+
+comment on column LWWholeSaleProrate.InputDate is
+'录入时间';
+
+comment on column LWWholeSaleProrate.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleProrate.Remark is
+'注释';
+
+comment on column LWWholeSaleProrate.Flag is
+'标志';
+
+/*==============================================================*/
+/* Table: LWWholeSalePurePrice                                  */
+/*==============================================================*/
+create table LWWholeSalePurePrice  (
+   VoltLevel            VARCHAR2(30)                    not null,
+   ComCode              VARCHAR2(30)                    not null,
+   ComName              VARCHAR2(30),
+   PeoplePrice          NUMBER(14,4),
+   NotPeoplePrice       NUMBER(14,4),
+   FarmPrice            NUMBER(14,4),
+   ProducePrice         NUMBER(14,4),
+   BusinessPrice        NUMBER(14,4),
+   IndustryPrice        NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   constraint PK_LWWHOLESALEPUREPRICE primary key (VoltLevel, ComCode)
+);
+
+comment on table LWWholeSalePurePrice is
+'趸售纯电价表';
+
+comment on column LWWholeSalePurePrice.VoltLevel is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWWholeSalePurePrice.ComCode is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWWholeSalePurePrice.PeoplePrice is
+'1-县级趸售，2-县以下趸售';
+
+comment on column LWWholeSalePurePrice.NotPeoplePrice is
+'1-1-10KV，2-35KV及以上';
+
+comment on column LWWholeSalePurePrice.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSalePurePrice.Flag is
+'标志';
+
+comment on column LWWholeSalePurePrice.Remark is
+'注释';
+
+/*==============================================================*/
+/* Table: LWWholeSaleSummary                                    */
+/*==============================================================*/
+create table LWWholeSaleSummary  (
+   LineCode             VARCHAR2(20)                    not null,
+   StatMonth            VARCHAR2(20)                    not null,
+   PowerClass           VARCHAR2(10)                    not null,
+   ElectricQuantity     NUMBER(14,2),
+   PointerQuantity      NUMBER(14,4),
+   SanXiaFee            NUMBER(14,4),
+   Surcharge            NUMBER(14,4),
+   SumFee               NUMBER(14,4),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   Remark               VARCHAR2(100),
+   TransLoss            NUMBER(14,4),
+   LineLoss             NUMBER(14,4),
+   UnPointerQuantity    NUMBER(14,4),
+   RateCode             NUMBER(14,4),
+   AdjustRate           NUMBER(14,4),
+   FarmUseScale         NUMBER(14,4),
+   FarmUsePrice         NUMBER(14,4),
+   FarmUseQuantity      NUMBER(14,4),
+   FarmUseFee           NUMBER(14,4),
+   ProductScale         NUMBER(14,4),
+   ProductPrice         NUMBER(14,4),
+   ProductQuantity      NUMBER(14,4),
+   ProductFee           NUMBER(14,4),
+   DenizenScale         NUMBER(14,4),
+   DenizenPrice         NUMBER(14,4),
+   DenizenQuantity      NUMBER(14,4),
+   DenizenFee           NUMBER(14,4),
+   UnDenizenScale       NUMBER(14,4),
+   UnDenizenPrice       NUMBER(14,4),
+   UnDenizenQuantity    NUMBER(14,4),
+   UnDenizenFee         NUMBER(14,4),
+   IndustryScale        NUMBER(14,4),
+   IndustryPrice        NUMBER(14,4),
+   IndustryQuantity     NUMBER(14,4),
+   IndustryFee          NUMBER(14,4),
+   BizScale             NUMBER(14,4),
+   BizPrice             NUMBER(14,4),
+   BizQuantity          NUMBER(14,4),
+   BizFee               NUMBER(14,4),
+   PowerRateFee         NUMBER(14,4),
+   UpCompany            VARCHAR2(100),
+   PowerFee             NUMBER(14,4),
+   inputDate            VARCHAR2(20),
+   kv                   VARCHAR2(20),
+   wholesaletype        VARCHAR2(20),
+   workNum              NUMBER(14,4),
+   unWorkNum            NUMBER(14,4),
+   otherSurcharge       NUMBER(14,4),
+   constraint LWPriceSummary primary key (LineCode, StatMonth)
+);
+
+comment on table LWWholeSaleSummary is
+'趸售电费计算总表';
+
+comment on column LWWholeSaleSummary.StatMonth is
+'--** 2008-08';
+
+comment on column LWWholeSaleSummary.PowerClass is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWWholeSaleSummary.ElectricQuantity is
+'1-居民生活电价，2-非居民照明电价，3-商业电价，4-非工业、普通电价
+5-农业生产用电，6-贫困县农业排灌用电，7-大工业电价';
+
+comment on column LWWholeSaleSummary.PointerQuantity is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleSummary.SanXiaFee is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleSummary.Surcharge is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleSummary.SumFee is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleSummary.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LWWholeSaleSummary.inputDate is
+'录入日期';
+
+/*==============================================================*/
+/* Table: LWWholeSaleUserInfo                                   */
+/*==============================================================*/
+create table LWWholeSaleUserInfo  (
+   userNo               VARCHAR2(20)                    not null,
+   userName             VARCHAR2(20),
+   voltage              VARCHAR2(20),
+   validStatus          VARCHAR2(20),
+   flag                 VARCHAR2(20),
+   company              VARCHAR2(20),
+   phoneNo              VARCHAR2(20),
+   wholesaletype        VARCHAR2(20),
+   lineCode             VARCHAR2(20),
+   ifCal                VARCHAR2(20),
+   constraint PK_LWWHOLESALEUSERINFO primary key (userNo)
+);
+
+/*==============================================================*/
+/* Table: LwAmmeterBook                                         */
+/*==============================================================*/
+create table LwAmmeterBook  (
+   BookNo               VARCHAR2(20)                    not null,
+   BookName             VARCHAR2(20)                    not null,
+   BookType             VARCHAR2(4),
+   Remark               VARCHAR2(200),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   constraint PK_AmmeterBook primary key (BookNo)
+);
+
+comment on column LwAmmeterBook.BookNo is
+'表本号';
+
+comment on column LwAmmeterBook.BookName is
+'表本名';
+
+comment on column LwAmmeterBook.BookType is
+'1-直供乡2-趸售3-大工业';
+
+comment on column LwAmmeterBook.Remark is
+'备注';
+
+comment on column LwAmmeterBook.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LwAmmeterBook.Flag is
+'标志';
+
+/*==============================================================*/
+/* Table: LwBookUser                                            */
+/*==============================================================*/
+create table LwBookUser  (
+   BookNo               VARCHAR2(20)                    not null,
+   BookName             VARCHAR2(20),
+   UserNo               VARCHAR2(20)                    not null,
+   SerialNo             INT,
+   Remark               VARCHAR2(200),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   constraint PK_BookUser primary key (BookNo, UserNo)
+);
+
+comment on column LwBookUser.BookNo is
+'表本号';
+
+comment on column LwBookUser.BookName is
+'表本名';
+
+comment on column LwBookUser.UserNo is
+'1-直供乡2-趸售3-大工业';
+
+comment on column LwBookUser.SerialNo is
+'序号';
+
+comment on column LwBookUser.Remark is
+'备注';
+
+comment on column LwBookUser.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LwBookUser.Flag is
+'标志';
+
+/*==============================================================*/
+/* Table: LwDcode                                               */
+/*==============================================================*/
+create table LwDcode  (
+   CodeType             VARCHAR2(20)                    not null,
+   CodeCode             VARCHAR2(20)                    not null,
+   CodeCName            VARCHAR2(100),
+   CodeEName            VARCHAR2(60),
+   ValidStatus          VARCHAR2(1),
+   Flag                 VARCHAR2(20),
+   constraint PK_IDCODE primary key (CodeType, CodeCode)
+);
+
+comment on column LwDcode.CodeType is
+'接口代码类型';
+
+comment on column LwDcode.CodeCode is
+'代码';
+
+comment on column LwDcode.CodeCName is
+'代码中文名称';
+
+comment on column LwDcode.CodeEName is
+'代码英文名称';
+
+comment on column LwDcode.ValidStatus is
+'--**0:无效--**1:有效';
+
+comment on column LwDcode.Flag is
+'标志';
+
+/*==============================================================*/
+/* Index: i_IDCODE                                              */
+/*==============================================================*/
+create index i_IDCODE on LwDcode (
+   CodeType ASC,
+   CodeCode ASC
+);
+
+/*==============================================================*/
+/* Table: Transfor                                              */
+/*==============================================================*/
+create table Transfor  (
+   transforName         VARCHAR2(50),
+   phone                VARCHAR2(20),
+   kongzaiLoss          NUMBER(14,4),
+   suplyHour            NUMBER(14,4),
+   duanluLoss           NUMBER(14,4),
+   contentPower         NUMBER(14,4),
+   useHour              NUMBER(14,4),
+   kongzaiCT            NUMBER(14,4),
+   duanluPT             NUMBER(14,4),
+   ValidStatus          VARCHAR2(2),
+   flag                 VARCHAR2(2)
+);
+
+alter table LWPowerLine
+   add constraint FK_LWPOWERL_REFERENCE_LWLINECT foreign key (LineCode, , , )
+      references LWLineCTPTAmmeter (LineCode, CTModus, PTModus, AmmeterNo);
+
+alter table LWTownPriceSummary
+   add constraint FK_LWTOWNPR_REFERENCE_LWPOWERU foreign key (UserNo)
+      references LWPowerUser (UserNo);
+
