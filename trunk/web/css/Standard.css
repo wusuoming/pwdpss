@@ -1,0 +1,484 @@
+/*-------------------------------------------------------------------------*/
+/*    文件名称: ShStandard.css                                         */
+/*    文件功能: 定义交强险同业平台信息系统的标准页面样式       */
+/*  最近更新人: 应丹                                                       */
+/*最近更新日期: 2006-09-18                                                 */
+/*-------------------------------------------------------------------------*/
+
+/*--BODY的样式--*/
+    body { font-size:9pt;}
+
+
+/*--TABLE的样式--*/
+    table.common { width: 100%;
+                   font-size: 9pt;
+                   background-color:#ffffff}
+
+    table.three { width: 70%;
+                  font-size: 9pt }
+
+    table.two { width: 60%;
+                font-size: 9pt }
+
+    table.sub { width: 95%;
+                font-size:9pt }
+
+    table.policy {width: 98%;
+                 border:0;
+                 cellpadding:0;
+                 cellspacing:0;}
+                 
+    table.menu { width: 100%;
+                 font-size: 9pt;
+                 text-align:left;
+                 background-color:#4ca8eb;
+                 color: #ffffff}
+
+/*--TD的样式--*/
+    td{ font-size: 9pt}
+    
+    td.titleimage{ background-color: #0083da;}
+    td.titletext{ color: #005c9e}
+
+    td.formtitle { font-size: 9pt;
+                   font-weight: bold;
+                   background-color: #4D457A;
+                   text-align: center;
+                   color: #ffffff;}
+   td.top { font-size: 9pt;
+                   text-align: center;
+                   color: #ffffff;}
+
+    td.title { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 10%;
+               color: #333333 }
+    td.select { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 30px;
+               color: #333333 }
+    td.nerrow { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 60px;
+               color: #333333 }
+     
+    td.amchg { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 4%;
+               color: #333333 }          
+    td.title0 { background-color: #0083da;
+               font-size: 10.5pt;
+               text-align: center;
+               width: 10%;
+               height: 20;
+               color: #ffffff }  
+                            
+    td.title01 { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               color: #005c9e }
+
+    td.title1 { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 10%;
+               color: #000000 }
+               
+    td.title2 { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 10%;
+               color: #0083da }
+               
+    td.title12 { background-color: #eff9ff;
+               font-size: 9pt;
+               text-align: left;
+               width: 10%;
+               color: #0083da }
+
+    td.subformtitle { background-color: #eff9ff;
+                      text-align: left;
+                      color: #000000 }
+
+    td.centertitle { background-color: #AEC1AE;
+                     text-align: center;
+                     color: #000000 }
+
+    td.input { background-color: #eff9ff;
+               width: 20%; 
+               font-size: 9pt;
+               color: #000000}
+
+    td.text  { background-color: #EEECFA;
+               color: #000000 }
+    td.shorttext  { background-color: #EEECFA;
+    		   width: 10px;     		   
+               font-size: 9pt;
+               color: #000000 }
+
+    td.lefttitle { background-color: #6699CC;
+              text-align:left;
+               color: #FFFFFF }
+
+    td.titleLink {text-align:left;
+                 cursor: hand;
+                 background-color:#4ca8eb;
+                 color: #ffffff;
+                 font-size: 9pt;}
+                  
+    td.titleNoLink {text-align:center;
+                  color: #000000}
+
+    td.titleLink2{text-align:left;
+                  cursor: hand;
+                  color: #ffff00}
+                  
+    td.titleNoLink2 {text-align:left;
+                  color: #000000}
+
+    td.itemLink {text-align:left;
+                 cursor: hand;
+                 background-color:#4ca8eb;
+                 color: #ffffff;
+                 font-size: 9pt;}
+                 
+    td.disable {text-align:left;
+                 background-color:#BDCFBD;
+                 color: #000000}
+                 
+    td.itemLink1 {text-align:center;
+                  font-size: 9pt;
+                 cursor: hand;
+                 background-color:#0083da;
+                 color: #ffffff}
+                 
+		td.itemNoPermission {text-align:left;
+				                 background-color:#777bc4;
+				                 color: #000000;}
+		td.button { background-color: #ffffff;
+                text-align: center;
+                color: #000000 }
+
+    td.label_cn { font-size:24px;
+                   font-family:黑体;
+                   font-weight:bold;
+                   text-align:center;}
+
+    td.detail_cn { font-size:16px;
+                   font-family:楷体_GB2312;}
+
+    td.tk_cn {font-size:10.5pt;
+              font-family:楷体_GB2312;}
+
+
+    td.label_en {font-size:24px;
+                 font-weight:bold;
+                 text-align:center;
+                 font-family:"Times New Roman";}
+
+    td.detail_en { font-size:16px;
+                   font-family:"Times New Roman";}
+
+    td.tk_en {font-size:10.5pt;
+              font-family:"Times New Roman";}
+
+/*--TR的样式--*/
+    tr.listtitle { background-color: #0083da;
+                   text-align: center;
+                   color: #ffffff }
+
+    tr.listodd { background-color: #eff9ff;
+                 text-align: center;
+                 color: #0083da }
+                 
+    tr.listodd1 { background-color: #eff9ff;
+                 text-align: left;
+                 color: #0083da }
+                 
+    tr.else { background-color: #F4FAF1;
+                 text-align: center;
+                 color: #005c9e }
+
+    tr.listeven { background-color: #eff9ff;
+                  text-align: center;
+                  color: #0083da }
+                  
+    tr.listeven1 { background-color: #eff9ff;
+                  text-align: left;
+                  color: #0083da }
+
+    td.delete { background-color: #80FFFF;
+                  text-align: center;
+                  color: #FF0000 }
+
+/*--INPUT的样式--*/
+    input { font-size: 9pt;
+            }
+
+    input.common   { background-color: #ffffff;
+                     border: 1px #819E81 solid;
+                     height: 20px;
+                     width: 160px}
+                     
+    input.text   { background-color: #ffffff;
+                     border: 1px #0083da solid;
+                     width: 80%;
+                     color:#333333;
+                     font-size: 9pt}
+                     
+    input.logon   {  background-color: #ffffff;
+                     border: 1px #999999 solid;
+                     color:#666666;
+                     width: 90%}
+                     
+    input.commonYellow   { background-color: #FFFF00;
+                     border: 1px #819E81 solid;
+                     height: 20px;
+                     width: 160px}
+    
+    input.common1   { background-color: #E6E6E6;
+                     border: 1px #808080 solid;
+                     height: 18px;
+                     width: 120px}
+                     
+    input.readonly { width: 80%;
+                     background-color: #eff9ff;
+                     color: #333333;
+                     BORDER: none }
+
+    input.readonlyOnly {
+                     background-color: #EEECFA;
+                     color: #000000;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #EEECFA;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #EEECFA;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none }
+    
+    input.readonlyYellow {
+                     background-color: #FFFF00;
+                     color: #000000;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #EEECFA;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #EEECFA;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none }
+                     
+    input.listodd { width: 200px;
+                    background-color: #ffffff;
+                    color: #0083da;
+                    border-style: none;
+                    hight:100px }
+
+    input.listeven { width: 200px;
+                     background-color: #ffffff;
+                     color: #0083da;
+                     border-style: none }
+
+    input.code { background-color: #FFFFFF;
+                 border: 1px #9999CC solid;
+                 height: 20px;
+                 width: 160px}
+
+    input.codecode { background-color: #60C0F0;
+                 border: 1px #9999CC solid;
+                 height: 20px;
+                 width: 80%}
+
+    input.codename { background-color:  #60C0F0;
+                 border: 1px #9999CC solid;
+                 height: 20px;
+                 width: 110px}
+
+    input.keyvalue { width:200px;
+                     readonly;
+                     background-color: #A7B5D6;
+                     color: white;
+                     border-style: none }
+
+     input.formtitle { font-size: 9pt;
+                     font-weight: bold;
+                     background-color: #4D457A;
+                     text-align: center;
+                     color: #ffffff;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #4D457A;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #4D457A;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none }
+    input.readonlycheckbox{
+                     background-color: #C0C0C0
+                     }
+    input.readonlyradio{
+                     background-color: #C0C0C0
+                     }
+                     
+/*--按钮样式--*/
+INPUT.button {
+	color: #156bb7;
+	background-image: url(../images/bgbutton.gif);
+	text-align: center;
+	height: 24px;
+	width: 68px;
+	border: none;
+}  
+  
+/*--按钮样式--*/
+INPUT.bgbutton {
+	color: #0076cc;
+	background-image: url(../images/bglongbutton_1.gif);
+	text-align: center;
+	height: 24px;
+	width: 100px;
+	border: none;
+} 
+ 
+/*--长按钮样式--*/
+INPUT.longbutton {
+	color: #156bb7;
+	background-image: url(../images/bglongbutton.gif);
+	text-align: center;
+	height: 24px;
+	width: 100px;
+	border: none;
+}                 
+                     
+/*--TEXTAREA的样式--*/
+    textarea { font-size: 9pt;
+            }
+    textarea.common { background-color: #ffffff;
+                     border: 1px #9999CC solid;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #808080;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #808080;
+                     BORDER-RIGHT-WIDTH: 1px;
+                     BORDER-RIGHT-STYLE: solid;
+                     BORDER-RIGHT-COLOR: #808080;
+                     BORDER-LEFT-WIDTH: 1px;
+                     BORDER-LEFT-STYLE: solid;
+                     BORDER-LEFT-COLOR: #808080;
+                     wrap:off;}
+                     
+    textarea.readonly { background-color: #ffffff;
+                     border: 1px #9999CC solid;
+                     BORDER-TOP-WIDTH: 0px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #808080;
+                     BORDER-BOTTOM-WIDTH: 0px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #808080;
+                     BORDER-RIGHT-WIDTH: 0px;
+                     BORDER-RIGHT-STYLE: solid;
+                     BORDER-RIGHT-COLOR: #808080;
+                     BORDER-LEFT-WIDTH: 0px;
+                     BORDER-LEFT-STYLE: solid;
+                     BORDER-LEFT-COLOR: #808080;
+                     wrap:off;}
+    textarea.readonly2 { background-color: #F4FAF1;
+                     border: 1px #9999CC solid;
+                     BORDER-TOP-WIDTH: 0px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #808080;
+                     BORDER-BOTTOM-WIDTH: 0px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #808080;
+                     BORDER-RIGHT-WIDTH: 0px;
+                     BORDER-RIGHT-STYLE: solid;
+                     BORDER-RIGHT-COLOR: #808080;
+                     BORDER-LEFT-WIDTH: 0px;
+                     BORDER-LEFT-STYLE: solid;
+                     BORDER-LEFT-COLOR: #808080;
+                     wrap:off;}
+    textarea.inputtext {wrap:off;}
+    textarea.readonly1 { background-color: #EEECFA;
+                     color: #000000;
+                     BORDER-TOP-WIDTH: 0px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #EEECFA;
+                     BORDER-BOTTOM-WIDTH: 0px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #EEECFA;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none }
+
+    textarea.readonlyWhite { background-color: #FFFFFF;
+                     color: #000000;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #FFFFFF;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #FFFFFF;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none;
+                     FONT-SIZE: 11pt }
+     textarea.readonlyYellow { background-color: #FFFF00;
+                     color: #000000;
+                     BORDER-TOP-WIDTH: 1px;
+                     BORDER-TOP-STYLE: solid;
+                     BORDER-TOP-COLOR: #FFFFFF;
+                     BORDER-BOTTOM-WIDTH: 1px;
+                     BORDER-BOTTOM-STYLE: solid;
+                     BORDER-BOTTOM-COLOR: #FFFFFF;
+                     BORDER-RIGHT-STYLE: none;
+                     BORDER-LEFT-STYLE: none;
+                     FONT-SIZE: 11pt }
+                     
+
+
+/*--SELECT的样式--*/
+    select { width: 160px;
+             background-color: #ffffff }
+
+    select.code{background-color: #92FA9C }
+    select.query { width: 40px;
+                   background-color: #ffffff }
+
+/*--A的样式--*/
+
+    A.menu:link {text-decoration: none;color: #ffffff;}
+    A.menu:visited {text-decoration: none;color: #ffffff;}
+    A.menu:active {text-decoration: none;color: #ffffff;}
+    A.menu:hover {text-decoration: none;color: yellow; }
+    
+    A.menu1:link {text-decoration: none;color: #ffffff;}
+    A.menu1:visited {text-decoration: none;color: #ffffff;}
+    A.menu1:active {text-decoration: none;color: #ffffff;}
+    A.menu1:hover {text-decoration: none;color: yellow; }
+    
+    A:link {text-decoration: none;color: #800080;}
+    A:visited {text-decoration: none;color: #800080;}
+    A.active {text-decoration: none;color: #800080;}
+    A:hover {text-decoration: none;color: red; }
+
+
+/*--IMG的样式--*/
+    IMG.button { cursor:hand }
+
+
+/*--PRE的样式--*/
+    pre.tk_cn {font-size:10.5pt;
+               font-family:楷体_GB2312;}
+
+    pre.tk_en {font-size:10.5pt;
+               font-family:"Times New Roman";}
+               
+/*--DIV的样式--*/
+    div.menu{width:194px;}
+               

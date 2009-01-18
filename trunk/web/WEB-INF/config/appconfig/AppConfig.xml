@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GB2312" standalone="yes" ?>
+
+<AppConfig>
+  
+  <!-- 字段之间的分割符 -->
+  <FIELD_SEPARATOR>_FIELD_SEPARATOR_</FIELD_SEPARATOR>
+
+  <!-- 一组代码之间的分割符 -->
+  <GROUP_SEPARATOR>_GROUP_SEPARATOR_</GROUP_SEPARATOR>
+  
+  <!-- session最长时间 -->
+  <SESSION_EXPIRED_SECONDS>1800</SESSION_EXPIRED_SECONDS>
+  
+  <!-- 资源文件 -->
+  <MESSAGE_RESOURCES>resources.ReinsResources</MESSAGE_RESOURCES>
+
+  <!-- 应用数据库连接 -->
+  <IAContactDataSource>IAContactDataSource</IAContactDataSource>
+
+  <!-- 询价实效（小时） -->
+  <ClaimLimitHour>48</ClaimLimitHour>
+</AppConfig>
+

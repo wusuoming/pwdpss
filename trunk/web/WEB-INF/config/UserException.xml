@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="GB2312" standalone="yes" ?>
+
+<!DOCTYPE UserExceptions [
+  <!ELEMENT UserExceptions      (UserException+)>
+  <!ELEMENT UserException (#PCDATA | Error)*>
+  <!ELEMENT Error               (ErrorNo,ErrorMessage)>
+  <!ELEMENT ErrorCatalog        (#PCDATA)>
+  <!ELEMENT Description         (#PCDATA)>
+  <!ELEMENT ErrorNo             (#PCDATA)>
+  <!ELEMENT ErrorMessage        (#PCDATA)>
+  <!ATTLIST UserException
+		ErrorCatalog CDATA #REQUIRED
+		Description CDATA #REQUIRED
+	>
+]>
+
+<UserExceptions>
+	<UserException ErrorCatalog="-1" Description="OS">
+
+	</UserException>
+
+	<UserException ErrorCatalog="-2" Description="NET">
+
+	</UserException>
+
+	<UserException ErrorCatalog="-3" Description="DATABASE">
+		<Error>
+			<ErrorNo>200</ErrorNo>
+			<ErrorMessage>无满足条件的记录</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>201</ErrorNo>
+			<ErrorMessage>查询结果数据过多，请修改查询条件。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>202</ErrorNo>
+			<ErrorMessage>上传附件已存在，请确认后再上传。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>203</ErrorNo>
+			<ErrorMessage>上传附件太大，请确认后再上传。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>204</ErrorNo>
+			<ErrorMessage>上传附件命名相同，请更名后再上传。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-201</ErrorNo>
+			<ErrorMessage>SQL语句有语法错误</ErrorMessage>
+		</Error>
+	</UserException>
+
+	<UserException ErrorCatalog="-4" Description="MIDWARE">
+	</UserException>
+	<UserException ErrorCatalog="-5" Description="PROGRAM">
+	</UserException>
+	<UserException ErrorCatalog="-6" Description="BUSINESS">
+	<Error>
+		<ErrorNo>-701</ErrorNo>
+			<ErrorMessage>该用户没有配置比例分摊</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-702</ErrorNo>
+			<ErrorMessage>还没有进行月数据初始化</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-703</ErrorNo>
+			<ErrorMessage>该用户还没有安装电表</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-704</ErrorNo>
+			<ErrorMessage>已经进行了月数据初始化</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-705</ErrorNo>
+			<ErrorMessage>还没有进行指针初始化</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-706</ErrorNo>
+			<ErrorMessage>本月数据还没有进行初始化,请先执行直供乡月数据初始化功能</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-707</ErrorNo>
+			<ErrorMessage>本月数据还没有进行初始化,请先执行趸售月数据初始化功能</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-708</ErrorNo>
+			<ErrorMessage>本月数据还没有进行初始化,请先执行大工业月数据初始化功能</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-709</ErrorNo>
+			<ErrorMessage>没有需要指针初始化的用电用户</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-710</ErrorNo>
+			<ErrorMessage>系统中没有录入用电用户</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-711</ErrorNo>
+			<ErrorMessage>此表本中没有进行用户的配置</ErrorMessage>
+		</Error>
+<Error>
+			<ErrorNo>-712</ErrorNo>
+			<ErrorMessage>本月已经计算过电费</ErrorMessage>
+		</Error>
+	</UserException>
+	<UserException ErrorCatalog="-98" Description="APPLICATION">
+
+		<Error>
+			<ErrorNo>-901</ErrorNo>
+			<ErrorMessage>指定的记录起始位置,超出了满足条件结果集的记录数</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-902</ErrorNo>
+			<ErrorMessage>用户名或密码错误,请重新登录</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-903</ErrorNo>
+			<ErrorMessage>
+				该用户没有正确设置岗位权限,请系统管理员检查该用户在PrpUserGrade表中的岗位设置
+			</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-904</ErrorNo>
+			<ErrorMessage>无此用户</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-996</ErrorNo>
+			<ErrorMessage>不存在该配置项</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-997</ErrorNo>
+			<ErrorMessage>参数值为空</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-999</ErrorNo>
+			<ErrorMessage>Config类没有初始化</ErrorMessage>
+		</Error>
+
+		<Error>
+			<ErrorNo>-1000</ErrorNo>
+			<ErrorMessage>报案不存在</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1001</ErrorNo>
+			<ErrorMessage>用于测试</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1010</ErrorNo>
+			<ErrorMessage>您的登录账号闲置时间过长，为了安全起见，请重新登录。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1011</ErrorNo>
+			<ErrorMessage>没有设置SelfPage参数.</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1012</ErrorNo>
+			<ErrorMessage>非字符型字段不允许使用通配符进行查询</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1013</ErrorNo>
+			<ErrorMessage>非法的日期格式</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1014</ErrorNo>
+			<ErrorMessage>非法的数值格式</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1015</ErrorNo>
+			<ErrorMessage>查询条件按照|(或),:(区间)时,格式不正确</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1016</ErrorNo>
+			<ErrorMessage>配置文件config.xml中的配置项TOP_COMPANY有误</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1017</ErrorNo>
+			<ErrorMessage>用户代码表中没有定义该用户名的代码</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1018</ErrorNo>
+			<ErrorMessage>用户没有相应的查询权限</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1019</ErrorNo>
+			<ErrorMessage>新密码与重新输入不一致。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1020</ErrorNo>
+			<ErrorMessage>原密码错误，请重新输入。</ErrorMessage>
+		</Error>
+
+
+		<Error>
+			<ErrorNo>-1101</ErrorNo>
+			<ErrorMessage>用户已经存在，无法新建该用户。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1102</ErrorNo>
+			<ErrorMessage>任务已经存在，无法新建该任务。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1103</ErrorNo>
+			<ErrorMessage>参数已经存在，无法新建该参数。</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-1104</ErrorNo>
+			<ErrorMessage>岗位已经存在，无法新建该岗位。</ErrorMessage>
+		</Error>
+
+	</UserException>
+</UserExceptions>

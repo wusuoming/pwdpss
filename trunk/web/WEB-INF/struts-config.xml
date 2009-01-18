@@ -1,0 +1,1664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean name="menuForm"
+			type="com.elongway.pss.ui.view.common.MenuForm" />
+		<form-bean name="logonForm"
+			type="com.elongway.pss.ui.view.common.LogonForm" />
+		<form-bean name="updatePasswordForm"
+			type="com.elongway.pss.ui.view.common.UpdatePasswordForm" />
+		<form-bean name="iaContactForm"
+			type="com.elongway.pss.ui.view.iacontact.IAContactForm" />
+		<form-bean name="updatePasswordForm"
+			type="com.elongway.pss.ui.view.common.UpdatePasswordForm" />
+		<form-bean name="uploadForm"
+			type="com.elongway.pss.ui.view.common.UploadForm" />
+
+		<form-bean name="iaUserForm"
+			type="com.sinosoft.sinoiaci.ui.view.maintenance.IAUserForm" />
+		<form-bean name="iaSysUserForm"
+			type="com.elongway.pss.ui.view.system.IASysUserForm" />
+		<form-bean name="iaGradeTaskForm"
+			type="com.sinosoft.sinoiaci.ui.view.maintenance.IAGradeTaskForm" />
+		<form-bean name="iaDsysConfigForm"
+			type="com.sinosoft.sinoiaci.ui.view.maintenance.IADsysConfigForm" />
+		<form-bean name="iaTaskForm"
+			type="com.sinosoft.sinoiaci.ui.view.maintenance.IATaskForm" />
+		<form-bean name="iaGradeForm"
+			type="com.sinosoft.sinoiaci.ui.view.maintenance.IAGradeForm" />
+		<form-bean name="lwPowerLineForm"
+			type="com.elongway.pss.ui.view.maintenance.LWPowerLineForm" />
+		<form-bean name="lwUserLineForm"
+			type="com.elongway.pss.ui.view.maintenance.LWUserLineForm" />
+		<form-bean name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.view.maintenance.AddLWPowerUserForm" />
+
+		<!-- qiaoyl add 电表管理 20081008 begin -->
+		<form-bean name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.view.maintenance.UIGetAmmeterForm" />
+		<form-bean name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.view.maintenance.UILineAmmeterForm" />
+		<form-bean name="uiTownCalForm"
+			type="com.elongway.pss.ui.view.maintenance.UITownCalForm" />
+		<form-bean name="uiPriceForm"
+			type="com.elongway.pss.ui.view.price.UIPriceForm" />
+
+		<!-- qiaoyl add 电表管理 20081008 end -->
+		<!-- maintenance end -->
+
+
+
+	</form-beans>
+
+	<global-exceptions>
+		<exception key="exception" type="java.lang.Exception"
+			path="/common/pub/ErrorPage.jsp" />
+	</global-exceptions>
+
+	<global-forwards>
+		<forward name="logon" path="/common/pub/Logon.jsp" />
+		<forward name="Success" path="/common/pub/Success.jsp" />
+		<forward name="Message" path="/common/pub/Message.jsp" />
+		<forward name="Cancel" path="/common/pub/Blank.html" />
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions ============================== -->
+	<action-mappings>
+		<!-- ==========  qiaoyl add begin  ============================== -->
+		<!-- 电表管理跳转 20081008 add-->
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/forwordAmmeter">
+
+			<forward name="addFirstSuccess"
+				path="/maintenance/Ammeter/EditAmmeter.jsp" />
+			<forward name="firstSuccess"
+				path="/maintenance/Ammeter/QueryAmmeterOverview.jsp" />
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 增加电表 -->
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/addAmmeter">
+
+			<forward name="CreateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 查询电表 -->
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/queryAmmeter">
+			<forward name="Success"
+				path="/maintenance/Ammeter/QueryAmmeterList.jsp" />
+		</action>
+		<!-- 修改电表 -->
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/updateAmmeter">
+
+			<forward name="Success"
+				path="/maintenance/Ammeter/EditAmmeter.jsp" />
+			<forward name="UpdateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 删除电表 -->
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/deleteAmmeter">
+
+			<forward name="manySuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+			<forward name="oneSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+
+		<!-- 线路电表 20081014 add-->
+		<!--  第一次跳转 add-->
+		<action name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetLineAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/forwordLineAmmeter">
+
+			<forward name="addFirstSuccess"
+				path="/maintenance/Ammeter/EditLineAmmeter.jsp" />
+			<forward name="firstSuccess"
+				path="/maintenance/Ammeter/QueryLineAmmeterOverview.jsp" />
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 查询线路电表 -->
+		<action name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetLineAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/queryLineAmmeter">
+			<forward name="Success"
+				path="/maintenance/Ammeter/QueryLineAmmeterList.jsp" />
+		</action>
+
+		<!-- 增加线路电表配置 -->
+		<action name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostLineAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/addLineAmmeter">
+
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+
+		<!-- 修改线路电表 -->
+		<action name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostLineAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/updateLineAmmeter">
+
+			<forward name="Success"
+				path="/maintenance/Ammeter/EditLineAmmeter.jsp" />
+			<forward name="UpdateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 删除线路电表 -->
+		<action name="uiLineAmmeterForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostLineAmmeterAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/deleteLineAmmeter">
+
+			<forward name="manySuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+			<forward name="oneSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 直供乡电费计算首次查询 -->
+		<action name="uiTownCalForm"
+			type="com.elongway.pss.ui.dataInput.UIGetTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/calTownFee">
+			<forward name="firstSuccess"
+				path="/datainput/town/CalTownFeeInput.jsp" />
+			<forward name="townInputSuccess"
+				path="/datainput/town/TownFeeInput.jsp" />
+		</action>
+		<!-- 直供乡电费批量录入页面 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIListPostTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/townInput">
+
+			<forward name="townInputSuccess"
+				path="/datainput/town/TownFeeInput.jsp" />
+			<forward name="listSuccess"
+				path="/datainput/town/TownFeeCalList.jsp" />
+		</action>
+		<!-- 直供乡数据初始化录入页面 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIInitPostTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/datainit">
+
+			<forward name="townInputSuccess"
+				path="/maintenance/datainit/town/TownInitInput.jsp" />
+		</action>
+		<!-- 直供乡数据初始化保存页面 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIInitPostTownSaveAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/towninitsave">
+
+			<forward name="success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 直供乡表本批量录入页面 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIListBookTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/bookInput">
+
+			<forward name="townInputSuccess"
+				path="/datainput/town/TownFeeInput.jsp" />
+			<forward name="listSuccess"
+				path="/datainput/town/TownFeeCalList.jsp" />
+		</action>
+		<!-- 直供乡电费批量录入页面 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIPatchTownSaveAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/townSave">
+			<forward name="oneSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 直供乡电费计算统计首次 -->
+		<action name="uiTownCalForm"
+			type="com.elongway.pss.ui.dataInput.UIGetTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/townFeeStat">
+			<forward name="firstSuccess"
+				path="/datainput/town/QueryTownFeeInput.jsp" />
+		</action>
+
+		<!-- 直供乡电费计算统计首次 -->
+		<action name="uiTownCalForm"
+			type="com.elongway.pss.ui.dataInput.UIPostTownBillAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/townBill">
+			<forward name="Success"
+				path="/datainput/town/TownFeeBill.jsp" />
+		</action>
+
+		<!-- 直供乡电费计算 -->
+		<action type="com.elongway.pss.ui.dataInput.UIPostTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/saveAndCal">
+
+			<forward name="Success"
+				path="/datainput/town/CalTownFeeInput.jsp" />
+		</action>
+		<!-- 直供乡批量电费计算 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIPatchTownCalAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request" 
+			path="/patchAndCal">
+			<forward name="Success"
+				path="/datainput/town/TownFeeList.jsp" />
+		</action>
+
+		<!-- 直供乡电费统计 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIPostTownStatAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/saveAndStat">
+
+			<forward name="Success"
+				path="/datainput/town/QueryTownFeeInput.jsp" />
+		</action>
+		<!-- 直供乡按乡统计 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIPostTownStatAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/saveAndStat">
+
+			<forward name="Success"
+				path="/datainput/town/QueryTownFeeInput.jsp" />
+		</action>
+		
+		<!-- 直供乡按局统计查询 -->
+		<action
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownStat">
+			<forward name="Success"
+				path="/count/queryTownStat.jsp" />
+			<forward name="statSuccess"
+				path="/datainput/town/TownFeeStat.jsp" />
+		</action>
+		<action name="uiGetAmmeterForm"
+			type="com.elongway.pss.ui.control.common.pub.UIQueryCodeAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/QueryCodeList">
+			<forward name="Success"
+				path="/maintenance/Ammeter/QueryCodeRoleList.jsp" />
+			<forward name="Success1"
+				path="/price/QueryCodeLineList.jsp" />
+		</action>
+		<!-- 销售电价查询 -->
+		<action name="uiPriceForm"
+			type="com.elongway.pss.ui.control.price.UIGetPriceAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/salePriceQuery">
+
+			<forward name="firstSuccess"
+				path="/price/QuerySalePriceList.jsp" />
+			<forward name="wholeSuccess"
+				path="/price/QueryWholeSalePriceList.jsp" />
+		</action>
+    	<action name="uiPriceForm"
+			type="com.elongway.pss.ui.control.price.UIPostPriceAction"
+			validate="true" input="/common/pub/Title.jsp" parameter="method"
+			scope="session" path="/salePriceUpdate">
+
+			<forward name="firstSuccess"
+				path="/price/QuerySalePriceList.jsp" />
+		</action>
+		<!-- 查询表本信息 -->
+		<action path="/queryLWAmmeterBook"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="queryBookList"
+				path="/maintenance/ammeterbook/QueryLWAmmeterBook.jsp" />
+		</action>
+		<!-- 增加表本信息 -->
+		<action path="/addBook"
+			type="com.elongway.pss.ui.control.maintenance.UIaddLWAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="addSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 修改表本信息 -->
+		<action path="/updateBook"
+			type="com.elongway.pss.ui.control.maintenance.UIModifyLWAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/maintenance/ammeterbook/updateLWAmmeterBook.jsp" />
+		</action>
+		<!-- 修改保存表本信息 -->
+		<action path="/updateSave"
+			type="com.elongway.pss.ui.control.maintenance.UIModifySaveLWAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 删除表本信息 -->
+		<action path="/deleteBook"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 配置表本查询 -->
+		<action path="/configBookQuery"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryConfigAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/maintenance/ammeterbook/ConfigLWAmmeterBook.jsp" />
+		</action>
+		<!-- 保存配置表本 -->
+		<action path="/updateConfig"
+			type="com.elongway.pss.ui.control.maintenance.UIConfigSaveAmmeterBookAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 直供乡月数据初始化 -->
+		<action path="/townmonthinit"
+			type="com.elongway.pss.ui.control.datainit.town.UITownMonthDataInitAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 趸售月数据初始化 -->
+		<action path="/salemonthinit"
+			type="com.elongway.pss.ui.control.datainit.wholesale.UISaleMonthDataInitAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 大工业月数据初始化 -->
+		<action path="/factorymonthinit"
+			type="com.elongway.pss.ui.control.datainit.corporation.UIFactoryMonthDataInitAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 直供乡换表查询 -->
+		<action path="/chgQuery"
+			type="com.elongway.pss.ui.control.change.UIGetChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/change/queryLwUserAmmeter.jsp" />
+		</action>
+		<!-- 趸售换表查询 -->
+		<action path="/chgWholeQuery"
+			type="com.elongway.pss.ui.control.change.UIGetWholeChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/change/querySaleLwUserAmmeter.jsp" />
+		</action>
+		<!-- 大工业换表查询 -->
+		<action path="/UIViewAllAmmeterAction"
+			type="com.elongway.pss.ui.control.change.UIViewAllAmmeterAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="viewCorporationAllBiao"
+				path="/change/viewCorporationUserA.jsp" />
+		</action>
+		
+		
+		<action path="/chgFactoryQuery"
+			type="com.elongway.pss.ui.control.change.UIGetFactoryChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/change/queryFactoryLwUserAmmeter.jsp" />
+		</action>
+		<!-- 换表用户查询 -->
+		<action path="/chgAmmeterUser"
+			type="com.elongway.pss.ui.control.change.UIGetAmmeterUserAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/change/QueryLWChangeAmmeter.jsp" />
+			<forward name="forward2"
+				path="/change/QueryLWFactoryChangeAmmeter.jsp" />
+			<forward name="forward1"
+				path="/change/QueryLWWholeChangeAmmeter.jsp" />
+
+		</action>
+
+		<!-- 直供乡换表确认 -->
+		<action path="/updateChgAmmeter"
+			type="com.elongway.pss.ui.control.change.UIPostChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 趸售换表确认 -->
+		<action path="/updateWholeChgAmmeter"
+			type="com.elongway.pss.ui.control.change.UIWholePostChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<!-- 大工业换表确认 -->
+		<action path="/updateFactoryChgAmmeter"
+			type="com.elongway.pss.ui.control.change.UIFactoryPostChangeAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+
+		<action path="/queryLWPowerUser"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWChangeAmmeterAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="QueryLWPowerUser"
+				path="/maintenance/LWPowerUser/QueryLWPowerUser.jsp">
+			</forward>
+		</action>
+		<!-- 查询趸售比例分摊 -->
+		<action path="/querySaleProrate"
+			type="com.elongway.pss.ui.control.prorate.UIQueryLWSaleProrateAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="queryWholeProrateList"
+				path="/maintenance/prorate/QueryLWWholePriceProrate.jsp" />
+		</action>
+		<!-- 增加趸售比例分摊 -->
+		<action path="/addWholeProrate"
+			type="com.elongway.pss.ui.control.prorate.UIAddLWSaleProrateAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="queryWholeProrateList"
+				path="/maintenance/prorate/QueryLWWholePriceProrate.jsp" />
+		</action>
+		<!-- 修改趸售比例分摊 -->
+		<action path="/modifySaleProrate"
+			type="com.elongway.pss.ui.control.prorate.UIModifyLWSaleProrateAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="modifyWholeProrateList"
+				path="/maintenance/prorate/ModifyLWWholePriceProrate.jsp" />
+		</action>
+		<!-- 保存修改趸售比例分摊 -->
+		<action path="/modifyWholeProrate"
+			type="com.elongway.pss.ui.control.prorate.UIModifySaveLWSaleProrateAction"
+			scope="request" input="/common/pub/Title.jsp">
+			<forward name="queryWholeProrateList"
+				path="/maintenance/prorate/QueryLWWholePriceProrate.jsp" />
+		</action>
+		<!-- 追收电费首次查询 -->
+		<action path="/feeappendFirst"
+			type="com.elongway.pss.ui.control.feeappend.town.UIFeeAppendFirstQueryAction"
+			scope="request" input="/common/pub/Title.jsp">
+	    		<forward name="queryTownFeeAppendFirst"
+				path="/feeappend/town/townFeeAppendFirstQuery.jsp" />
+				<forward name="queryIndustryFeeAppendFirst"
+				path="/feeappend/industry/industryFeeAppendFirstQuery.jsp" />
+				<forward name="queryWholesaleFeeAppendFirst"
+				path="/feeappend/wholesale/wholesaleFeeAppendFirstQuery.jsp" />
+		</action>
+		<!-- 直供乡追收电费录入 -->
+		<action path="/townFeeAppendList"
+			type="com.elongway.pss.ui.control.feeappend.town.UIFeeAppendListAction"
+			scope="request" input="/common/pub/Title.jsp">
+	    		<forward name="queryTownFeeAppendList"
+				path="/feeappend/town/townFeeAppendInput.jsp" />
+				
+		</action>
+		<!-- 直供乡追收电费保存 -->
+		<action path="/townAppendSave"
+			type="com.elongway.pss.ui.control.feeappend.town.UITownFeeAppendSaveAction"
+			scope="request" input="/common/pub/Title.jsp">
+	    		<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+				
+		</action>
+		<!-- 直供乡追收电费计算-->
+		<action path="/townAppendCal"
+			type="com.elongway.pss.ui.control.feeappend.town.UITownFeeAppendSaveAction"
+			scope="request" input="/common/pub/Title.jsp">
+	    		<forward name="forward"
+				path="/common/pub/CreateSuccess.jsp" />
+				
+		</action>
+
+		<!-- ==========  qiaoyl add end   ============================== -->
+
+
+
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.fileupload.UIDownLoadWordAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/downLoadWord">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIGetIAContactListAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/queryIAContactList">
+			<forward name="Success"
+				path="/iacontact/QueryIAContactList.jsp" />
+		</action>
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIGetIAContactAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/queryIAContact">
+			<forward name="Success"
+				path="/iacontact/QueryIAContact.jsp" />
+		</action>
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIGetCreatIAContactAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/queryCreatIAContact">
+			<forward name="Success"
+				path="/iacontact/QueryCreatIAContact.jsp" />
+		</action>
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIPostIAContactAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/saveIAContact">
+			<forward name="CreateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIUpdateStatusAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/updateStatus">
+			<forward name="CreateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<action name="iaContactForm"
+			type="com.elongway.pss.ui.control.iacontact.UIPostUpdateIAContactAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/updateIAContact">
+			<forward name="CreateSuccess"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+
+		<action name="uploadForm"
+			type="com.elongway.pss.ui.control.fileupload.UIGetIADFileListAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/queryIADFileList">
+			<forward name="Success"
+				path="/fileupload/QueryIADFileList.jsp" />
+		</action>
+		<action name="uploadForm"
+			type="com.elongway.pss.ui.control.fileupload.UIGetIADFileAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/downLoadIADFile">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		<action name="uploadForm"
+			type="com.elongway.pss.ui.control.fileupload.UIDeleteIADFileAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/deleteIADFile">
+			<forward name="Success" path="/queryIADFileList.do" />
+		</action>
+		<action name="uploadForm"
+			type="com.elongway.pss.ui.control.fileupload.UIPostIADFileAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/upLoadIADFile">
+			<forward name="Success" path="/queryIADFileList.do" />
+		</action>
+
+
+
+		<!-- Process a user logon -->
+		<action name="menuForm"
+			type="com.elongway.pss.ui.control.common.pub.UIGetMenuAction"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			path="/mainMenu">
+			<forward name="Success" path="/common/pub/MainMenu.jsp" />
+		</action>
+		<action name="logonForm"
+			type="com.elongway.pss.ui.control.common.pub.UILogonAction"
+			input="logon" scope="request" path="/logon">
+			<forward name="Success" path="/common/pub/Hide.jsp" />
+		</action>
+
+		<action name="updatePasswordForm"
+			type="com.elongway.pss.ui.control.common.pub.UIGetUpdatePasswordAction"
+			input="/common/pub/UpdatePassword.jsp" scope="request"
+			path="/updatePassword">
+			<forward name="Success"
+				path="/common/pub/UpdatePassword.jsp" />
+		</action>
+
+		<action name="updatePasswordForm"
+			type="com.elongway.pss.ui.control.common.pub.UIPostPasswordAction"
+			input="/common/pub/UpdatePassword.jsp" scope="request"
+			path="/savePassword">
+		</action>
+
+
+
+		<!-- user and power action  -->
+		<action path="/UserManage" name="iaUserForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIUserManageAction"
+			scope="request" input="/system/power/UserManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/UserManageList" name="iaUserForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIUserManageListAction"
+			scope="request" input="/system/power/UserManageQuery.jsp">
+			<forward name="Success"
+				path="/system/power/UserManageList.jsp">
+			</forward>
+		</action>
+		<action path="/UserManageDelete" name="iaUserForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIUserManageDeleteAction"
+			scope="request" input="/system/power/UserManageList.jsp">
+			<forward name="Success" path="/UserManageList.do"></forward>
+		</action>
+
+
+		<action path="/SysUserManage" name="iaSysUserForm"
+			type="com.elongway.pss.ui.control.system.UISysUserManageAction"
+			scope="request" input="/system/SysUserManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/SysUserManageList" name="iaSysUserForm"
+			type="com.elongway.pss.ui.control.system.UISysUserManageListAction"
+			scope="request" input="/system/SysUserManageQuery.jsp">
+			<forward name="Success"
+				path="/system/SysUserManageList.jsp">
+			</forward>
+		</action>
+		<action path="/SysUserManageDelete" name="iaSysUserForm"
+			type="com.elongway.pss.ui.control.system.UISysUserManageDeleteAction"
+			scope="request" input="/system/SysUserManageList.jsp">
+			<forward name="Success" path="/SysUserManageList.do"></forward>
+		</action>
+
+
+		<action path="/PowerManage" name="iaGradeTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIPowerManageAction"
+			scope="request" input="/system/power/PowerManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/PowerManageList" name="iaGradeTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIPowerManageListAction"
+			scope="request" input="/system/power/PowerManageQuery.jsp">
+			<forward name="Success"
+				path="/system/power/PowerManageList.jsp">
+			</forward>
+		</action>
+		<action path="/PowerManageDelete" name="iaGradeTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIPowerManageDeleteAction"
+			scope="request" input="/system/power/PowerManageList.jsp">
+			<forward name="Success" path="/PowerManageList.do"></forward>
+		</action>
+
+		<action path="/SysConfigManage" name="iaDsysConfigForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UISysConfigAction"
+			scope="request" input="/system/sysconfig/SysConfigManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/SysConfigManageList" name="iaDsysConfigForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UISysConfigListAction"
+			scope="request" input="/system/sysconfig/SysConfigManageList.jsp">
+			<forward name="Success"
+				path="/system/sysconfig/SysConfigManageList.jsp">
+			</forward>
+		</action>
+		<action path="/SysConfigManageDelete" name="iaDsysConfigForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UISysConfigDeleteAction"
+			scope="request" input="/system/sysconfig/SysConfigManageList.jsp">
+			<forward name="Success" path="/SysConfigManageList.do"></forward>
+		</action>
+
+
+		<action path="/TaskManage" name="iaTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UITaskManageAction"
+			scope="request" input="/system/power/TaskManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/TaskManageList" name="iaTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UITaskManageListAction"
+			scope="request" input="/system/power/TaskManageQuery.jsp">
+			<forward name="Success"
+				path="/system/power/TaskManageList.jsp">
+			</forward>
+		</action>
+		<action path="/TaskManageDelete" name="iaTaskForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UITaskManageDeleteAction"
+			scope="request" input="/system/power/TaskManageList.jsp">
+			<forward name="Success" path="/TaskManageList.do"></forward>
+		</action>
+
+
+		<action path="/GradeManage" name="iaGradeForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIGradeManageAction"
+			scope="request" input="/system/power/GradeManage.jsp">
+			<forward name="Success"
+				path="/common/pub/CreateSuccess.jsp">
+			</forward>
+		</action>
+		<action path="/GradeManageList" name="iaGradeForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIGradeManageListAction"
+			scope="request" input="/system/power/GradeManageQuery.jsp">
+			<forward name="Success"
+				path="/system/power/GradeManageList.jsp">
+			</forward>
+		</action>
+		<action path="/GradeManageDelete" name="iaGradeForm"
+			type="com.sinosoft.sinoiaci.ui.control.maintenance.UIGradeManageDeleteAction"
+			scope="request" input="/system/power/GradeManageList.jsp">
+			<forward name="Success" path="/GradeManageList.do"></forward>
+		</action>
+		<!--add by wangrongjia   -->
+		<!--<action name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.BLLWPowerLine"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			parameter="method" path="/getLWPowerLineInfo">
+			<forward name="Success" path="/common/pub/Success.jsp" />
+			</action>		-->
+		<!--<action name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.BLLWPowerLine"
+			validate="true" input="/common/pub/Title.jsp" scope="request"
+			parameter="method" path="/addLWPowerLine">
+			<forward name="Success" path="/common/pub/Success.jsp" />
+			</action>-->
+
+
+
+
+		<!--add by wangrongjia   -->
+		<action path="/addLWPowerLine" name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWPowerLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/addLWPowerLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryLWPowerLine" name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWPowerLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/querryLWPowerLine.jsp">
+			<forward name="viewPowerLine"
+				path="/maintenance/LWPowerLine/querryLWPowerLineList.jsp">
+			</forward>
+		</action>
+		<action path="/editLWPowerLine" name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWPowerLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/modifyLWPowerLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/deleteLWPowerLine" name="lwPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWPowerLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/querryLWPowerLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryLWPowerUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWPowerUserAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="QueryLWPowerUser"
+				path="/maintenance/LWPowerUser/QueryLWPowerUser.jsp">
+			</forward>
+		</action>
+
+		<action path="/addLWPowerUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWPowerUserAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/addLWPowerUser.jsp">
+			<forward name="Success" path="/maintenance/LWPowerUser/QueryLWPowerUser.jsp"></forward>
+		</action>
+
+		<action path="/editLWPowerUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWPowerUserAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/modifyLWPowerUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<action path="/deleteLWPowerUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWPowerUserAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/deleteLWPowerUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<action path="/queryLWUserLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWUserLineAction"
+			scope="request"
+			input="/maintenance/LWUserLine/queryLWUserLine.jsp">
+			<forward name="viewLineUser"
+				path="/maintenance/LWUserLine/QueryLWUserLine.jsp">
+			</forward>
+
+		</action>
+		<action path="/addLWUserLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWUserLineAction"
+			scope="request" input="/maintenance/LWPowerLine/addLWUserLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<action path="/deleteLWUserLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWUserLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/deleteLWUserLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<action path="/editLWUserLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWUserLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/modifyLWUserLine.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryOneLWPowerUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWPowerUserAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="viewOnePowerUser"
+				path="/maintenance/LWPowerUser/modifyLWPowerUser.jsp">
+			</forward>
+		</action>
+		<!-- 查看直供乡用户 -->
+		<action path="/lWPowerUser" name="addLWPowerUserForm" type="com.elongway.pss.ui.control.maintenance.UIlwPowerUswerAction"
+		scope="request"
+		input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+		<forward name="lwPowerUser" path="/maintenance/LWPowerUser/viewLWPowerUser.jsp"></forward>
+		</action>
+		<!-- end -->
+		<action path="/queryOneLWPowerLine" name="LWPowerLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWPowerLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/QuerryLWPowerLine.jsp">
+			<forward name="viewOnePowerLine"
+				path="/maintenance/LWPowerLine/modifyLWPowerLine.jsp">
+			</forward>
+		</action>
+		<action path="/queryOneLWUserLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWUserLineAction"
+			scope="request"
+			input="/maintenance/LWPowerLine/QuerryLWPowerLine.jsp">
+			<forward name="viewOneUserLine"
+				path="/maintenance/LWUserLine/modifyLWUserLine.jsp">
+			</forward>
+		</action>
+
+		<action path="/corporationFeeCal" name="lwUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIcorporationFeeCalAction"
+			scope="request"
+			input="/datainput/corporation/corporationInput.jsp">
+			<forward name="showCorporation"
+				path="/datainput/corporation/corporationShowResult.jsp">
+			</forward>
+		</action>
+		<action path="/wholeSaleFeeCal" name="lwUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIWholesaleCalAction"
+			scope="request" input="/datainput/wholeSale/wholeSaleInput.jsp">
+			<forward name="wholeSale"
+				path="/datainput/wholeSale/wholeSaleShowResult.jsp">
+			</forward>
+		</action>
+		<action path="/wholeSaleCorporationCal" name="lwUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIWholesaleCorporationCalAction"
+			scope="request" input="/datainput/wholeSale/wholeSaleInput.jsp">
+			<forward name="wholesaleCorporation"
+				path="/datainput/wholeSale/wholeSaleCorporationShowResult.jsp">
+			</forward>
+		</action>
+		<action path="/wholeSaleFeeSerch" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIWholeSaleSearchAction"
+			scope="request" input="/feeSerch/wholeSale/wholeSaleSerch.jsp">
+			<forward name="wholeSale"
+				path="/datainput/wholeSale/wholeSaleShowResult.jsp">
+			</forward>
+		</action>
+		<action path="/wholeSaleOtherFeeSerch" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIWholeSaleCorporationSearchAction"
+			scope="request" input="/feeSerch/wholeSale/wholeSaleSerch.jsp">
+			<forward name="viewWholeOtherSaleResult"
+				path="/feeSerch/wholeSale/viewWholeSaleCorporationResult.jsp">
+			</forward>
+		</action>
+
+		<action path="/wholeSaleresultDel" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIWholeSaleSerchDelAction"
+			scope="request"
+			input="/feeSerch/wholeSale/viewWholeSaleResult.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/corporationFeeSerch" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UICorporationFeeSerchAction"
+			scope="request" input="/feeSerch/corporation/corporationSerch.jsp">
+			<forward name="showCorporation"
+				path="/feeSerch/corporation/viewCorporationOtherFeeResult.jsp">
+			</forward>
+		</action>
+		<action path="/corporationFeeDel" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UICorporationFeeDelAction"
+			scope="request"
+			input="/feeSerch/corporation/viewCorporationFeeResult.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/corporationFeeOtherCal" name="lwUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIcorporationFeeOtherCalAction"
+			scope="request"
+			input="/datainput/corporation/corporationInput.jsp">
+			<forward name="showCorporationOther"
+				path="/datainput/corporation/corporationOtherShowResult.jsp">
+			</forward>
+		</action>
+		<action path="/corporationOtherFeeSerch" name="lwUserLineForm"
+			type=" " scope="request"
+			input="/feeSerch/corporation/corporationSerch.jsp">
+			<forward name="corporationOtherFeeResult"
+				path="/feeSerch/corporation/viewCorporationOtherFeeResult.jsp">
+			</forward>
+		</action>
+
+		<action path="/wholeSaleCount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIWholeSaleFinalCountAction"
+			scope="request" input="/count/wholeSaleCount.jsp">
+			<forward name="viewWholeSaleCount"
+				path="/count/wholeSaleFinalCount.jsp">
+			</forward>
+		</action>
+		
+<action path="/wholeSaleprint" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIwholeSaleprintAction"
+			scope="request" input="/count/wholeSaleCount.jsp">
+			<forward name="WholeSaleprint"
+				path="/count/wholeSaleprint.jsp">
+			</forward>
+		</action>
+		
+		<action path="/corporationprint" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIcorporationPrintAction"
+			scope="request" input="/count/corpriationCount.jsp">
+			<forward name="corporationprint"
+				path="/count/corporationPrint.jsp">
+			</forward>
+		</action>
+		<action path="/countAllResult" name="lwUserLineForm"
+		type="com.elongway.pss.ui.count.CountAllResultPrintAction"
+		scope="request" input="/count/countAllResult.jsp">
+		<forward name="viewallcount" path="/count/countAllResultPrint.jsp"></forward>
+		</action>
+		<action path="/wholeSaleOtherCount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIWholeSaleCorporationCountAction"
+			scope="request" input="/count/wholeSaleCount.jsp">
+			<forward name="viewWholeOtherCount"
+				path="/count/wholeSaleCorporation.jsp">
+			</forward>
+		</action>
+		<action path="/corporationCount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIcorporationCountAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewCorporationCount"
+				path="/count/corporationFinalCount.jsp">
+			</forward>
+		</action>
+
+		<action path="/corporationOtherCount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIcorporationOtherCountAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewCorporationOtherCount"
+				path="/count/corporationOtherCount.jsp">
+			</forward>
+		</action>
+		<action path="/addLWindicator" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UILWINDICATORAction"
+			scope="request"
+			input="/maintenance/LWindicator/addLWindicator.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/viewLWindicator" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWindicatorAction"
+			scope="request"
+			input="/maintenance/LWindicator/queryLWindicator.jsp">
+			<forward name="viewLWindicatorList"
+				path="/maintenance/LWindicator/queryLWindicator.jsp">
+			</forward>
+		</action>
+		<action path="/editLWindicator" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWindicatorAction"
+			scope="request"
+			input="/maintenance/LWindicator/modifyLWindicator.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryOneLWindicator" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWindicatorAction"
+			scope="request"
+			input="/maintenance/LWindicator/modifyLWindicator.jsp">
+			<forward name="queryoneLWindicator"
+				path="/maintenance/LWindicator/modifyLWindicator.jsp">
+			</forward>
+		</action>
+		<action path="/deleteLWindicator" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWindicatorAction"
+			scope="request"
+			input="/maintenance/LWindicator/queryLWindicator.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+
+
+
+		<action path="/viewLWPT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWPTAction"
+			scope="request" input="/maintenance/LWPT/queryLWPT.jsp">
+			<forward name="viewLWPTList"
+				path="/maintenance/LWPT/queryLWPT.jsp">
+			</forward>
+		</action>
+		<action path="/editLWPT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWPTAction"
+			scope="request" input="/maintenance/LWPT/modifyLWPT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryOneLWPT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWPTLineAction"
+			scope="request" input="/maintenance/LWPT/modifyLWPT.jsp">
+			<forward name="queryoneLWPT"
+				path="/maintenance/LWPT/modifyLWPT.jsp">
+			</forward>
+		</action>
+		<action path="/deleteLWPT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWPTLineAction"
+			scope="request" input="/maintenance/LWPT/queryLWPT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/addLWPT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWPTAction"
+			scope="request" input="/maintenance/LWPT/addLWPT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/viewLWCT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWCTAction"
+			scope="request" input="/maintenance/LWCT/queryLWCT.jsp">
+			<forward name="viewLWCTList"
+				path="/maintenance/LWCT/queryLWCT.jsp">
+			</forward>
+		</action>
+		<action path="/editLWCT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWCTAction"
+			scope="request" input="/maintenance/LWCT/modifyLWCT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryOneLWCT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWCTLineAction"
+			scope="request" input="/maintenance/LWCT/modifyLWCT.jsp">
+			<forward name="queryoneLWCT"
+				path="/maintenance/LWCT/modifyLWCT.jsp">
+			</forward>
+		</action>
+		<action path="/deleteLWCT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWCTLineAction"
+			scope="request" input="/maintenance/LWCT/queryLWCT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/addLWCT" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWCTAction"
+			scope="request" input="/maintenance/LWCT/addLWCT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<!--<action path="/addLWCT"  name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWCTAction"
+			scope="request"
+			input="/maintenance/LWCT/addLWCT.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+			</action>
+			
+		-->
+		<action path="/viewLWLineRalation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWLineRalationAction"
+			scope="request"
+			input="/maintenance/LWLineRalation/queryLWLineRalation.jsp">
+			<forward name="viewLWLineRalationList"
+				path="/maintenance/LWLineRalation/queryLWLineRalation.jsp">
+			</forward>
+		</action>
+		<action path="/editLWLineRalation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWLineRalationAction"
+			scope="request"
+			input="/maintenance/LWLineRalation/modifyLWLineRalation.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/queryOneLWLineRalation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryOneLWLineRalationLineAction"
+			scope="request"
+			input="/maintenance/LWLineRalation/modifyLWLineRalation.jsp">
+			<forward name="queryoneLWLineRalation"
+				path="/maintenance/LWLineRalation/modifyLWLineRalation.jsp">
+			</forward>
+		</action>
+		<action path="/deleteLWLineRalation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWLineRalationAction"
+			scope="request"
+			input="/maintenance/LWLineRalation/queryLWLineRalation.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/addLWLineRalation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWLineRalationAction"
+			scope="request"
+			input="/maintenance/LWLineRalation/addLWLineRalation.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+
+		</action>
+		<!-- 大工业用户信息维护 -->
+		<action path="/delLWCorporation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWCorporationUserAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/viewcorporationUserList"
+			name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetCorporationUserListAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="corporationUserList"
+				path="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			</forward>
+		</action>
+		<action path="/editLWCorporation" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWCorporationUserAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/modifyLWCorporation.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/viewOneLWCorporationUser"
+			name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIViewOneLWCorporationUserAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="viewOneLWCorporation"
+				path="/maintenance/LWCorporationUserInfo/modifyLWCorporation.jsp">
+			</forward>
+		</action>
+		<!-- 查看大工业用户 -->
+		<action path="/lwCorporationUser" name="addLWPowerUserForm"
+		type="com.elongway.pss.ui.control.maintenance.UIlwCorporationUserAction"
+		scope="request"
+		input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+		<forward name="lwCorporation" path="/maintenance/LWCorporationUserInfo/viewCorporaction.jsp"></forward>
+		</action>
+		<action path="/addLWCorporation"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLWCorporationAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/addCorporationUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<!-- 趸售用户信息维护 -->
+		<action path="/addLWWholeSale"
+			type="com.elongway.pss.ui.control.maintenance.UIAddWholeSaleUserAction"
+			scope="request" input="/maintenance/LWWholeSale/addWholeSale.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/viewLWWholeSaleUserList" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetLWWholeSaleUserListAction"
+			scope="request"
+			input="/maintenance/LWWholeSale/wholeSaleUserList.jsp">
+			<forward name="viewLWWholeSaleList"
+				path="/maintenance/LWWholeSale/wholeSaleUserList.jsp">
+			</forward>
+		</action>
+		<action path="/viewOneLWWholeSaleUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIViewOneWholeSaleUserAction"
+			scope="request"
+			input="/maintenance/LWWholeSale/wholeSaleUserList.jsp">
+			<forward name="viewOneLWWholeSaleUser"
+				path="/maintenance/LWWholeSale/modifyWholeSaleUser.jsp">
+			</forward>
+		</action>
+		<!-- 查看趸售用户 -->
+		<action path="/lwWholeSaleUser" name="addLWPowerUserForm"
+		type="com.elongway.pss.ui.control.maintenance.WholeSaleUserAction"
+		scope="request"
+		input="/maintenance/LWWholeSale/wholeSaleUserList.jsp">
+		<forward name="wholeSaleUser" path="/maintenance/LWWholeSale/viewWholeSaleUser.jsp"></forward>
+		</action>
+		<action path="/deleteLWWholeSaleUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLWWholeSaleUserAction"
+			scope="request"
+			input="/maintenance/LWWholeSale/wholeSaleUserList.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/modifyLWWholeSaleUser" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLWWholeSaleUserAction"
+			scope="request"
+			input="/maintenance/LWWholeSale/modifyWholeSaleUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+
+
+		<!-- 趸售用户指针初始化信息维护 -->
+		<action path="/viewLWWholeSaleCompanyUser" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIGetCompanyTransforAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="wholeSalePointerinitialize"
+				path="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			</forward>
+		</action>
+		<action path="/viewLWWholeSalePointer" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UISavewholeSalePointerinitializeAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="wholeSalePointerinitializeList"
+				path="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitializeShow.jsp">
+			</forward>
+		</action>
+		<action path="/inputLWWholeSalePointer" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIWholeSalePointerInputAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="pathWholeSaleInput"
+				path="/datainput/wholeSale/pathWholeSaleInput.jsp">
+			</forward>
+		</action>
+		<action path="/inputLWWholeSalePointerShow"
+			name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveWholeSalePointerInputAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="pathWholeSaleInput"
+				path="/datainput/wholeSale/pathWholeSaleInput.jsp">
+			</forward>
+		</action>
+		<action path="/UIPathWholeSaleCalBefore" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIWholeSaleCalBeforAction"
+			scope="request"
+			input="/datainput/wholeSale/pathWholeSaleInput.jsp">
+			<forward name="pathWholeSaleCal"
+				path="/datainput/wholeSale/pathWholeSaleCal.jsp">
+			</forward>
+		</action>
+		<action path="/UIPathWholeSaleCal" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIPathWholeSaleCalAction"
+			scope="request"
+			input="/datainput/wholeSale/pathWholeSaleInput.jsp">
+			<forward name="newResult" path="/datainput/wholeSale/newResult.jsp"></forward>
+		</action>
+		<action path="/viewLWCorporationUser" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIcorporationPointerinitializeAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/corporationPointerinitialize.jsp">
+			<forward name="corporationPointerinitialize"
+				path="/maintenance/corporationPointerinitialize/corporationPointerinitialize.jsp">
+			</forward>
+		</action>
+		<action path="/viewLWCorporationSalePointer"
+			name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveCorporationPointerinitializeAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationPointerinitialize"
+				path="/maintenance/corporationPointerinitialize/corporationPointerinitializeShow.jsp">
+			</forward>
+		</action>
+		<action path="/corporationInputBefore" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIShowCorporationUserAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationInputBefore"
+				path="/datainput/corporation/corporationInputBefore.jsp">
+			</forward>
+		</action>
+		<action path="/corporationInput" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UICorporationInputAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationInput"
+				path="/datainput/corporation/corporationInput.jsp">
+			</forward>
+		</action>
+		<action path="/corporationInput" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UICorporationInputAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationInput"
+				path="/datainput/corporation/corporationInput.jsp">
+			</forward>
+		</action>
+		<action path="/UIShowWholeSaleAction" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIShowWholeSaleAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="wholeSaleUserinput"
+				path="/datainput/wholeSale/wholeSaleInput.jsp">
+			</forward>
+		</action>
+
+		<action path="/UIWholeSaleCalBefore" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIWholeSaleCalBeforeAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="wholeSaleUser"
+				path="/datainput/wholeSale/showWholeSaleUser.jsp">
+			</forward>
+		</action>
+		<!--登陆用户add by wangrongjia end   -->
+		<action path="/UIEditUser" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditUserAction"
+			scope="request" input="/maintenance/longonUser/modifyUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/UIDeleteUserAction" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteUserAction"
+			scope="request" input="/maintenance/longonUser/viewUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/UIviewOneSysuserAciton" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIviewOneSysuserAciton"
+			scope="request" input="/maintenance/longonUser/viewUser.jsp">
+			<forward name="viewOneUser"
+				path="/maintenance/longonUser/modifyUser.jsp">
+			</forward>
+		</action>
+		<action path="/UIAddUserAction" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddUserAction"
+			scope="request" input="/maintenance/longonUser/addUser.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<action path="/UIviewsysUserAction" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIviewsysUserAction"
+			scope="request" input="/maintenance/longonUser/viewUser.jsp">
+			<forward name="viewUser"
+				path="/maintenance/longonUser/viewUser.jsp">
+			</forward>
+		</action>
+		<action path="/UIcountWholeSaleAction" name="LWUserLineForm"
+			type="com.elongway.pss.ui.count.UIcountWholeSaleAction"
+			scope="request" input="/maintenance/longonUser/viewUser.jsp">
+			<forward name="showCount" path="/count/countWhosale.jsp"></forward>
+		</action>
+		<action path="/corporationcount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UICorporationFeeSerchAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showCorporation"
+				path="/count/corporationCount.jsp">
+			</forward>
+		</action>
+		<action path="/viewTransfor" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIqueryTransforAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showTransfor"
+				path="/maintenance/Transfor/viewTransfor.jsp">
+			</forward>
+		</action>
+		
+		<action path="/addTransfor" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddTransforAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showTransfor"
+				path="/maintenance/Transfor/viewTransfor.jsp">
+			</forward>
+		</action>
+		<action path="/transforInfo" name="lwUserLineForm" type="com.elongway.pss.ui.control.maintenance.UItransforInfoAction"
+		scope="request" input="/count/corporationSaleCountInput.jsp">
+		<forward name="showTransfor" path="/maintenance/Transfor/transforInfo.jsp"></forward>
+		</action>
+		<action path="/viewOneTransfor" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIviewOneTransforAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showOneTransfor"
+				path="/maintenance/Transfor/modifyTransfor.jsp">
+			</forward>
+		</action>
+		<action path="/editTransfor" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditTransforAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		
+		<action path="/deleteTransfor" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteTransforAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		
+			<action path="/wholeSaleLineCount" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIWholeSaleLineCountAction"
+			scope="request" input="/count/wholeSaleCount.jsp">
+			<forward name="viewCountResult"
+				path="/count/wholeSaleLineCount.jsp">
+			</forward>
+		</action>
+		<!--  大工业抄表指针录入 -->
+		<action path="/inputLWCorporationPointer" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UICorporationPointerInputAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="corporationPointerInput"
+				path="/datainput/corporation/corporationInputList.jsp">
+			</forward>
+		</action>
+		<action path="/viewLWCorporationPointer" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveCorporationPointerInputAction"
+			scope="request"
+			input="/maintenance/wholeSalePointerinitialize/wholeSalePointerinitialize.jsp">
+			<forward name="corporationSalePointerinitializeList"
+				path="/datainput/corporation/corporationInputList.jsp">
+			</forward>
+			</action>
+			<action path="/pointerInputBefore" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UIShowCorporationUserAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationInputBefore"
+				path="/datainput/corporation/pointerInputBefore.jsp">
+			</forward>
+		</action>
+		<action path="/corporationPointerInput" name="LWUserLineForm"
+			type="com.elongway.pss.ui.dataInput.UICorporationPointerInputAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="corporationInput"
+				path="/datainput/corporation/corporationPointerInput.jsp">
+			</forward>
+		</action>
+		<action path="/showCorporationPointer" name="LWUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveCorporationPointerInputAction"
+			scope="request"
+			input="/maintenance/corporationPointerinitialize/wholeSalePointerinitializeShow.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		<!--四金的维护   -->
+		<action path="/showsijin" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIShowFuJiaAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="showsijin" path="/maintenance/siJin/siJinList.jsp"></forward>
+		</action>
+		
+		<action path="/editsijin" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditSiJinAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="editsijin" path="/maintenance/siJin/modifySiJin.jsp"></forward>
+		</action>
+		
+		<action path="/savesijin" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveSiJinAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="editsijin" path="/maintenance/siJin/modifySiJin.jsp"></forward>
+		</action>
+		
+				<action path="/showwholesalePuer" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIViewWholeSalePurAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="showWholeSalePur" path="/maintenance/wholeSalePur/wholeSalePurList.jsp"></forward>
+		</action>
+		
+		<action path="/editwholeSalePur" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditWholeSalePurAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="editwholeSalePur" path="/maintenance/wholeSalePur/modifyWholeSalePur.jsp"></forward>
+		</action>
+		
+		<action path="/savewholeSale" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UISaveWholeSalePurAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="editwholeSalePur" path="/maintenance/wholeSalePur/modifyWholeSalePur.jsp"></forward>
+		</action>
+		
+		
+		<action path="/UIPriceCountAction" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.count.UIPriceCountAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="priceCount" path="/count/priceCount.jsp"></forward>
+		</action>
+		<action path="/corporationPriceCount" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.count.UICorporationPriceCountAction"
+			scope="request"
+			input="/maintenance/LWCorporationUserInfo/corporationUserList.jsp">
+			<forward name="corporationpriceCount" path="/count/corporationPriceCount.jsp"></forward>
+		</action>
+		
+		<action path="/viewLineLoss" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIqueryLineLossAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showLineLoss"
+				path="/maintenance/lineLoss/viewLineLoss.jsp">
+			</forward>
+		</action>
+		<!-- 查看线损 -->
+		<action path="/lineLossInfo" name="lwUserLineForm"
+		type="com.elongway.pss.ui.control.maintenance.UILineLossInfoAction"
+		scope="request" input="/count/corporationSaleCountInput.jsp">
+		<forward name="lineLossInfo" path="/maintenance/lineLoss/lineLossInfo.jsp"></forward>
+		</action>
+		<action path="/addLineLoss" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIAddLineLossAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showLineLoss"
+				path="/maintenance/lineLoss/viewLineLoss.jsp">
+			</forward>
+		</action>
+		
+		<action path="/viewOneLineLoss" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIviewOneLineLossAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="showOneLineLoss"
+				path="/maintenance/lineLoss/modifyLineLoss.jsp">
+			</forward>
+		</action>
+		<action path="/editLineLoss" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIEditLineLossAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		
+		<action path="/deleteLineLoss" name="lwUserLineForm"
+			type="com.elongway.pss.ui.control.maintenance.UIDeleteLineLossAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		
+		<action path="/serchAllLine" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIAllLineSerchAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewWholeOtherSaleResult"
+				path="/feeSerch/wholeSale/viewAllLine.jsp">
+			</forward>
+		</action>
+		<!--add by wangrongjia 趸售表本   -->
+		<action path="/UIWholeSaleBookSerchBefore" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIWholeSaleBookSerchBefore"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewWholealluser"
+				path="/feeSerch/wholeSale/wholeSaleLine.jsp">
+			</forward>
+		</action>
+		
+		<action path="/UIFinalBookAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIFinalBookAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewbook"
+				path="/feeSerch/wholeSale/wholeSaleBook.jsp">
+			</forward>
+		</action>
+		<action path="/wholeSaleBookPrint" name="lwUserLineForm"
+		type="com.elongway.pss.ui.allSerch.UIFinalBookPrintAction"
+		scope="request"
+		input="/feeSerch/wholeSale/wholeSaleBook.jsp"
+		>
+		<forward name="viewbook" path="/feeSerch/wholeSale/wholeSaleBookPrint.jsp"></forward>
+		</action>
+		<action path="/wholeSaleBookTwoPrint" name="lwUserLineForm" type="com.elongway.pss.ui.allSerch.UIFinalBookTwoPrintAction"
+		scope="request"
+		input="/feeSerch/wholeSale/wholeSaleBookTwo.jsp"
+		>
+		<forward name="viewbook" path="/feeSerch/wholeSale/wholeSaleBookTwoPrint.jsp"></forward>
+		</action>
+		<action path="/UIFinalBookTwoAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.allSerch.UIFinalBookTwoAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewbookTwo"
+				path="/feeSerch/wholeSale/wholeSaleBookTwo.jsp">
+			</forward>
+		</action>
+		
+			<action path="/UIAllCountAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIAllCountAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewallcount"
+				path="/count/countAllResult.jsp">
+			</forward>
+		</action>
+		
+		
+		<action path="/UIThisMonthAllCountAction" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIThisMonthAllCountAction"
+			scope="request" input="/count/corporationSaleCountInput.jsp">
+			<forward name="viewthisallcount"
+				path="/count/thismonthcountresult.jsp">
+			</forward>
+		</action>
+		<action path="/thismonthPrint" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIThisMonthAllCount"
+			scope="request"
+			input="/count/thismonthcountresult.jsp">
+			<forward name="viewthisallcount"
+				path="/count/thismonthcountresultPrint.jsp">
+			</forward>
+			</action>
+		<!--add by wangrongjia end   -->
+	</action-mappings>
+
+
+	<!-- ========== Controller Configuration ================================ -->
+	<controller>
+		<!-- The "input" parameter on "action" elements is the name of a
+			local or global "forward" rather than a module-relative path -->
+		<set-property value="true" property="inputForward" />
+	</controller>
+
+
+	<!-- ========== Message Resources Definitions =========================== -->
+	<message-resources parameter="resources.ApplicationResources" />
+</struts-config>
