@@ -232,12 +232,28 @@ create by wangrongjia
 		  	<td class=title >生产容量电价</td>
 		  	<td class=input><input name="shengChanRongliangPrice" readOnly=true type="text"  class="text" value="<%=lwCoporationUserInfoDto.getShengChanrongLiangPrice() %>"></td>
 		  </tr>
+		  <%
+		  	if(lwCoporationUserInfoDto.getShengChandianJinPrice()==lwCoporationUserInfoDto.getTingChandianJinPrice() ){
+		  	%>
+		  	<tr>
+		  	<td class=title >电金电价</td>
+		  	<td class=input><input name="tingChanDianJinPrice" readOnly=true type="text"  class="text" value="<%=lwCoporationUserInfoDto.getTingChandianJinPrice() %>"></td>
+		  	
+		  	<td class=input>
+		  	<td class=input>
+		  </tr>
+		  	
+		  	
+		  	<% 
+		  	}else{
+		   %>
 		  <tr>
 		  	<td class=title >生产时电金电价</td>
 		  	<td class=input><input name="tingChanDianJinPrice" readOnly=true type="text"  class="text" value="<%=lwCoporationUserInfoDto.getTingChandianJinPrice() %>"></td>
 		  	<td class=title >停产时电金电价</td>
 		  	<td class=input><input name="shengChanDianJinPrice" readOnly=true type="text"  class="text" value="<%=lwCoporationUserInfoDto.getShengChandianJinPrice() %>"></td>
 		  </tr>
+		  <%} %>
 		  <tr>
 		  	<td class=title >照明电量方式</td>
 		  	<td class="input" ><select name="pepoleFlag"  class="input" onchange="borc()" disabled>
