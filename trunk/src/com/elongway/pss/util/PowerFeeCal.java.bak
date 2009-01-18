@@ -1,0 +1,889 @@
+package com.elongway.pss.util;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+<<<<<<< .mine
+import com.elongway.pss.bl.facade.BLLwLineCTFacade;
+import com.elongway.pss.bl.facade.BLLwLinePTFacade;
+=======
+import org.apache.xerces.impl.dv.xs.DateTimeDV;
+
+>>>>>>> .r1034
+import com.elongway.pss.bl.facade.BLLwPowerLineFacade;
+import com.elongway.pss.bl.facade.BLLwRateCodeFacade;
+import com.elongway.pss.bl.facade.BLLwWholeSalePriceFacade;
+import com.elongway.pss.bl.facade.BLLwctFacade;
+import com.elongway.pss.bl.facade.BLLwindicatorFacade;
+<<<<<<< .mine
+import com.elongway.pss.bl.facade.BLLwptFacade;
+import com.elongway.pss.dto.domain.LwLineCTDto;
+import com.elongway.pss.dto.domain.LwLinePTDto;
+=======
+import com.elongway.pss.dto.domain.LwAmmeterIndicatorDto;
+>>>>>>> .r1034
+import com.elongway.pss.dto.domain.LwPowerLineDto;
+import com.elongway.pss.dto.domain.LwProrateDto;
+import com.elongway.pss.dto.domain.LwRateCodeDto;
+import com.elongway.pss.dto.domain.LwSalePriceDto;
+import com.elongway.pss.dto.domain.LwTownPriceSummaryDto;
+import com.elongway.pss.dto.domain.LwWholeSalePriceDto;
+import com.elongway.pss.dto.domain.LwctDto;
+import com.elongway.pss.dto.domain.LwindicatorDto;
+<<<<<<< .mine
+import com.elongway.pss.dto.domain.LwptDto;
+=======
+import com.sinosoft.sysframework.common.datatype.DateTime;
+>>>>>>> .r1034
+
+/**
+ * 电费计算公式 
+ * version 1.0 create by 王荣佳 2008 .10 .10
+ * 
+ */
+
+public class PowerFeeCal {
+	
+	public final static double zero = Double.parseDouble("0");
+	//电费总计
+	public double sumPowerFee(String meritoriousPointer,String unMeritoriousPointer,String lineNo,String inputDAte,String CT,String PT)throws Exception{
+		
+		String lastMonth=String.valueOf(Integer.parseInt(inputDAte.substring(4,6))-1);
+		if(lastMonth.length()==1){
+			lastMonth="0"+lastMonth;
+		}
+		String lastInputDate=inputDAte.substring(0, 4)+lastMonth;
+		LwindicatorDto lwindicatorDto=new LwindicatorDto();
+		BLLwindicatorFacade  blLwindicatorFacade=new BLLwindicatorFacade();
+		Collection Lwindicatorcollection=new ArrayList();
+		String conditions="1=1 and  lineNo='"+lineNo+"' and inputdate like '"+lastInputDate+"%'";
+		Lwindicatorcollection=blLwindicatorFacade.findByConditions(conditions);
+		Iterator it=Lwindicatorcollection.iterator();
+		
+		double sumPowerFee;
+		while(it.hasNext()){
+			lwindicatorDto=(LwindicatorDto)it.next();
+		}
+			
+		int lastmeritoriousPointer=lwindicatorDto.getThisWorkNum();
+		int lastunMeritoriousPointer=lwindicatorDto.getThisIdleNum();
+		String electrotherapy=String.valueOf(Integer.parseInt(meritoriousPointer)-lastmeritoriousPointer);// 电量
+		BLLwPowerLineFacade blLwPowerLineFacade=new BLLwPowerLineFacade();
+		PowerFeeCal  powerFeeCal=new PowerFeeCal();
+		double Rate=powerFeeCal.getRateCode(lineNo);
+		sumPowerFee=(Integer.parseInt(meritoriousPointer)-lastmeritoriousPointer)*Rate;
+		
+		return (double)(Math.round((double)sumPowerFee*10000)/10000);		
+		}
+	//获得电表上月的信息
+	public static LwindicatorDto getinfo(String lineNo,String inputDAte) throws Exception{
+		String lastMonth=String.valueOf(Integer.parseInt(inputDAte.substring(4,6))-1);
+		if(lastMonth.length()==1){
+			lastMonth="0"+lastMonth;
+		}
+		String lastInputDate=inputDAte.substring(0, 4)+lastMonth;
+		LwindicatorDto lwindicatorDto=new LwindicatorDto();
+		BLLwindicatorFacade  blLwindicatorFacade=new BLLwindicatorFacade();
+		Collection Lwindicatorcollection=new ArrayList();
+		String conditions="1=1 and  linecode='"+lineNo+"' and inputdate like '"+lastInputDate+"%'";
+		Lwindicatorcollection=blLwindicatorFacade.findByConditions(conditions);
+		Iterator it=Lwindicatorcollection.iterator();
+		
+		double sumPowerFee;
+		while(it.hasNext()){
+			lwindicatorDto=(LwindicatorDto)it.next();
+		}
+		return lwindicatorDto;
+	}
+		//获得调整值	
+		public static double adjustmentValue(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			
+			// -- 声明变量
+			if(PowerClass.equals("1")||PowerClass.equals("2")){
+				PowerClass="1";
+			}
+			LwRateCodeDto lwRateCodeDto=new LwRateCodeDto();
+			Collection rateCodecollection=new ArrayList();
+			BLLwRateCodeFacade blLwRateCodeFacade=new BLLwRateCodeFacade();
+			
+			// -- 得到功率因数
+			double powerFactor = adjustrate(meritoriousPointer, unMeritoriousPointer, PowerClass, lineNo, inputDAte);
+			
+			// -- 查找调整率
+			String sql="1=1 and POWERFACTOR ="+powerFactor+" and SUPPLETYPE='"+PowerClass+"'";			
+			rateCodecollection=blLwRateCodeFacade.findByConditions(sql);
+			Iterator ratecode=rateCodecollection.iterator();
+			while(ratecode.hasNext()){
+				lwRateCodeDto=(LwRateCodeDto)ratecode.next();
+			}						
+			return Double.parseDouble(lwRateCodeDto.getAdjustRate());	
+		}
+		//功率因素
+		public static double adjustrate(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			if(PowerClass.equals("1")||PowerClass.equals("2")){
+				PowerClass="1";
+			}
+			String lastMonth=String.valueOf(Integer.parseInt(inputDAte.substring(4,6))-1);
+			if(lastMonth.length()==1){
+				lastMonth="0"+lastMonth;
+			}
+			String lastInputDate=inputDAte.substring(0, 4)+lastMonth;
+			
+			double powerFactor;
+			LwindicatorDto lwindicatorDto=new LwindicatorDto();
+			BLLwindicatorFacade  blLwindicatorFacade=new BLLwindicatorFacade();
+			Collection Lwindicatorcollection=new ArrayList();
+			String conditions="1=1 and  linecode='"+lineNo+"' and STATMONTH like'"+lastInputDate+"%'";
+			Lwindicatorcollection=blLwindicatorFacade.findByConditions(conditions);
+			Iterator it=Lwindicatorcollection.iterator();
+			String electrotherapy;// 电量
+			double powerFactorTmp;
+			int lastmeritoriousPointer=0;
+			int lastunMeritoriousPointer=0;
+			while(it.hasNext()){
+				lwindicatorDto=(LwindicatorDto)it.next();
+				lastmeritoriousPointer = lwindicatorDto.getThisWorkNum();
+				lastunMeritoriousPointer = lwindicatorDto.getThisIdleNum();
+			}
+				
+			double bb=((Double.parseDouble(unMeritoriousPointer)-lastunMeritoriousPointer)*(Double.parseDouble(unMeritoriousPointer)-lastunMeritoriousPointer))/((Double.parseDouble(meritoriousPointer)-lastmeritoriousPointer)*(Double.parseDouble(meritoriousPointer)-lastmeritoriousPointer));
+			double aa=Math.sqrt(1+bb);
+			System.out.println("----------------------="+aa);
+			powerFactorTmp=(1/aa);
+			powerFactor=(double)((Math.round((double)powerFactorTmp*100)));
+			
+			return powerFactor;
+			
+			
+			
+		}
+		/**
+		 * 有功指针
+		 * @param meritoriousPointer
+		 * @param unMeritoriousPointer
+		 * @param PowerClass
+		 * @param lineNo
+		 * @param inputDAte
+		 * @return
+		 * @throws Exception
+		 */
+		public  static String electrotherapy(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte) throws Exception{
+			
+			String lastMonth=String.valueOf(Integer.parseInt(inputDAte.substring(4,6))-1);
+			if(lastMonth.length()==1){
+				lastMonth="0"+lastMonth;
+			}
+			String lastInputDate=inputDAte.substring(0, 4)+lastMonth;
+			LwindicatorDto lwindicatorDto= null;
+			BLLwindicatorFacade  blLwindicatorFacade=new BLLwindicatorFacade();
+			Collection Lwindicatorcollection=new ArrayList();
+			int lastmeritoriousPointer= 0;
+			int lastunMeritoriousPointer= 0;
+			String conditions="1=1 and  linecode='"+lineNo+"' and STATMONTH like'"+lastInputDate+"%'";
+			Lwindicatorcollection=blLwindicatorFacade.findByConditions(conditions);
+			Iterator it=Lwindicatorcollection.iterator();
+			
+			while (it.hasNext()) {
+			lwindicatorDto = (LwindicatorDto) it.next();
+		    }
+		if (lwindicatorDto != null) {
+			lastmeritoriousPointer = lwindicatorDto.getThisWorkNum();
+			lastunMeritoriousPointer = lwindicatorDto.getThisIdleNum();
+		}			
+			String electrotherapy=String.valueOf(Integer.parseInt(meritoriousPointer)-lastmeritoriousPointer);
+			return electrotherapy;
+		}
+//		总无功电量的计算公式
+		
+		public  String unelectrotherapy(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte) throws Exception{
+			String lastMonth=String.valueOf(Integer.parseInt(inputDAte.substring(4,6))-1);
+			if(lastMonth.length()==1){
+				lastMonth="0"+lastMonth;
+			}
+			String lastInputDate=inputDAte.substring(0, 4)+lastMonth;
+			LwindicatorDto lwindicatorDto=new LwindicatorDto();
+			BLLwindicatorFacade  blLwindicatorFacade=new BLLwindicatorFacade();
+			Collection Lwindicatorcollection=new ArrayList();
+			String conditions="1=1 and  linecode='"+lineNo+"' and STATMONTH like'"+lastInputDate+"%'";
+			Lwindicatorcollection=blLwindicatorFacade.findByConditions(conditions);
+			Iterator it=Lwindicatorcollection.iterator();
+			
+			double sumPowerFee;
+			while(it.hasNext()){
+				lwindicatorDto=(LwindicatorDto)it.next();
+			}
+				
+			int lastmeritoriousPointer=lwindicatorDto.getThisWorkNum();
+			int lastunMeritoriousPointer=lwindicatorDto.getThisIdleNum();
+			String unelectrotherapy=String.valueOf(Integer.parseInt(unMeritoriousPointer)-lastunMeritoriousPointer);// 电量
+			return unelectrotherapy;
+		}
+		//三峡金
+		public  Double  sanXiaFee(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte,String company)throws Exception{
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			Double sanXiaFee;
+			String nongGuan="";
+			if(company.equals("gy")||company.equals("dm")){
+				sanXiaFee=(Double.parseDouble(electrotherapy)-Double.parseDouble(nongGuan))*0.004*0.88;
+			}
+			else{
+				sanXiaFee=Double.parseDouble(electrotherapy)*0.004*0.88;
+			}
+			
+			return sanXiaFee;
+		}
+		public Double jiJinKeZaiSheng(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			String nongGuan="";
+			String nongYeShengChan="";
+			Double jiJinKeZaiSheng=(Double.parseDouble(electrotherapy)-Double.parseDouble(nongGuan)-Double.parseDouble(nongYeShengChan))*0.002*0.88;
+			return jiJinKeZaiSheng;
+			
+		}
+		public Double jiJinKuQu(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			String nongGuan="";
+			String nongYeShengChan="";
+			Double jiJinKuQu=(Double.parseDouble(electrotherapy)-Double.parseDouble(nongGuan)-Double.parseDouble(nongYeShengChan))*0.031*0.88;
+			return jiJinKuQu;
+		}
+		/**
+		 * 
+		 * @param meritoriousPointer 
+		 * @param unMeritoriousPointer
+		 * @param PowerClass
+		 * @param lineNo
+		 * @param inputDAte
+		 * @return
+		 * @throws Exception
+		 */
+		public Double dianJin(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			LwPowerLineDto  lwPowerLineDto=new LwPowerLineDto();
+			BLLwPowerLineFacade blLwPowerLineFacade=new BLLwPowerLineFacade();
+			lwPowerLineDto=blLwPowerLineFacade.findByPrimaryKey(lineNo);
+			String company= lwPowerLineDto.getComCode();
+			
+			String nongGuan="";
+			double dianJin;
+			if(PowerClass.equals("1")){
+			 dianJin=Double.parseDouble(electrotherapy)*0.002*0.88;
+			
+			}
+			if(company.equals("gy")||company.equals("dm")){
+				 dianJin=(Double.parseDouble(electrotherapy))*0.002*0.88;
+			}
+			else{
+				 dianJin=(Double.parseDouble(electrotherapy)-Double.parseDouble(nongGuan))*0.002*0.88;
+			}
+			return dianJin;
+			}
+		public Double daGongYeDianJin(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			double daGongYeDianJin;
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			daGongYeDianJin=Double.parseDouble(electrotherapy)*0.01;
+			return daGongYeDianJin;
+		}
+		public Double sanXiaJin(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			double sanXiaJin;
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			sanXiaJin=Double.parseDouble(electrotherapy)*0.04;
+			return sanXiaJin;
+		}
+		public Double jiJin(String meritoriousPointer,String unMeritoriousPointer,String PowerClass,String lineNo,String inputDAte)throws Exception{
+			double jiJin;
+			String electrotherapy=electrotherapy(meritoriousPointer,unMeritoriousPointer,PowerClass,lineNo,inputDAte);
+			jiJin=Double.parseDouble(electrotherapy)*0.0051;
+			return jiJin;
+		}
+		//取大工业和直供户的的电价的条件
+		public static String  basePowerPrice(String  lineCode,String powerClass) throws Exception{
+			String conditions="1=1 ";
+			BLLwPowerLineFacade blLwPowerLineFacade=new BLLwPowerLineFacade();
+			LwPowerLineDto lwPowerLineDto=new LwPowerLineDto();
+			lwPowerLineDto=blLwPowerLineFacade.findByPrimaryKey(lineCode);
+			double VoltLevel=lwPowerLineDto.getVoltLevel();
+			String sql=getSalePowerCondition(VoltLevel);
+			
+				conditions=" and powerClass='"+powerClass+"'"+sql;
+	
+			return conditions;
+		}
+		//获得倍率
+		public static double getRateCode(String lineCode) throws Exception{
+			double CT=0;
+			double PT=0;
+			BLLwctFacade  blLwctFacade=new BLLwctFacade();
+			BLLwptFacade  blLwptFacade=new BLLwptFacade();
+			LwctDto lwctDto=new LwctDto();
+			LwptDto lwptDto=new LwptDto();
+			String conditions="1=1 and flag=1 and linecode='"+lineCode+"'";
+			BLLwLineCTFacade  blLwLineCTFacade=new BLLwLineCTFacade();
+			LwLineCTDto  lwLineCTDto=new LwLineCTDto();
+			BLLwLinePTFacade  blLwLinePTFacade=new BLLwLinePTFacade();
+			LwLinePTDto  lwLinePTDto=new LwLinePTDto();
+			
+			Collection ct=blLwLineCTFacade.findByConditions(conditions);
+			Iterator ict=ct.iterator();
+			while(ict.hasNext()){
+				lwLineCTDto=(LwLineCTDto)ict.next();
+				String cttem=lwLineCTDto.getCtModus();
+				lwctDto =blLwctFacade.findByPrimaryKey(cttem);
+				CT=lwctDto.getCtRate();
+				
+			}
+			Collection pt=blLwLinePTFacade.findByConditions(conditions);
+			Iterator ipt=ct.iterator();
+			while(ict.hasNext()){
+				lwLinePTDto=(LwLinePTDto)ict.next();
+				String pttem=lwLinePTDto.getPtModus();
+				lwptDto =blLwptFacade.findByPrimaryKey(pttem);
+				PT=lwptDto.getPtRate();
+				
+			}
+			
+			double ratecode=CT*PT;
+			return ratecode;
+			
+			
+		}
+//		取趸售的电价的条件
+		public String  wholeSalePrice(String  lineCode) throws Exception{
+			String conditions="";
+			BLLwPowerLineFacade blLwPowerLineFacade=new BLLwPowerLineFacade();
+			LwPowerLineDto lwPowerLineDto=new LwPowerLineDto();
+			lwPowerLineDto=blLwPowerLineFacade.findByPrimaryKey(lineCode);
+			double VoltLevel=lwPowerLineDto.getVoltLevel();
+			
+			
+				conditions="  and VoltageEnd='"+VoltLevel+"'";
+			
+		
+			
+			return conditions;
+		}
+		public double  getWholePrice(String powerClass,String saleArea,String  lineCode) throws Exception{
+			String append=wholeSalePrice(lineCode);
+			String condions=" 1=1 and powerClass='"+powerClass+"'"+" and saleArea=1 "+append;
+			LwWholeSalePriceDto lwWholeSalePriceDto=new LwWholeSalePriceDto();
+			BLLwWholeSalePriceFacade blLwWholeSalePriceFacade=new BLLwWholeSalePriceFacade();
+			Collection coll =blLwWholeSalePriceFacade.findByConditions(condions);
+			Iterator it=coll.iterator();
+			if(it.hasNext()){
+				lwWholeSalePriceDto=(LwWholeSalePriceDto)it.next();
+				
+			}
+			double wholePrice=lwWholeSalePriceDto.getPrice();
+			return wholePrice;
+		}
+		public String deleteSql(String linecode , String inputdate){
+			String lastMonth=String.valueOf(Integer.parseInt(inputdate.substring(4,6)));
+			if(lastMonth.length()==1){
+				lastMonth="0"+lastMonth;
+			}
+			String lastInputDate=inputdate.substring(0, 4)+lastMonth;
+			String conditions="1=1 and  linecode='"+linecode+"' and STATMONTH like'"+lastInputDate+"%'";
+			return conditions;
+		}
+		/**
+		 * 直供乡总电费计算公式
+		 * 2008-10-16 add by qiaoyouliang
+		 * @param workNum 本月有功指针
+		 * @param rateCode 倍率
+		 * @param lwProrateDto 按户比例分摊
+		 * @param salePriceList 分摊电价
+		 * @param adjustRate 功率因数
+		 * @param adjustValue 调整值
+		 * @return 
+		 */
+		public static LwTownPriceSummaryDto townSumPowerFeeFormular(double workNum,
+			double rateCode, LwProrateDto lwProrateDto,
+			Collection<LwSalePriceDto> salePriceList, double adjustRate,
+			double adjustValue,String lineCode,String userNo,String statMonth) {
+
+		/***********************************************************************
+		 * 【0 -- 声明变量】
+		 **********************************************************************/
+		// 农灌比例
+		double farmUseScale = 0.0;
+		// 农灌电价
+		double farmUsePrice = 0.0;
+		/** 农灌电量 */
+		double farmUseQuantity = 0.0;
+		// 农灌电费
+		double farmUseFee = 0.0;
+
+		// 生产比例
+		double productScale = 0.0;
+		// 生产电价
+		double productPrice = 0.0;
+		// 生产电量
+		double productQuantity = 0.0;
+		// 生产电费
+		double productFee = 0.0;
+
+		// 居民比例
+		double peopleUseScale = 0.0;
+		// 居民电价
+		double peopleUsePrice = 0.0;
+		// 居民电量
+		double peopleUseQuantity = 0.0;
+		// 居民电费
+		double peopleUseFee = 0.0;
+
+		// 非居民比例
+		double notPeopleUseScale = 0.0;
+		// 非居民电价
+		double notPeopleUsePrice = 0.0;
+		// 非居民电量
+		double notPeopleUseQuantity = 0.0;
+		// 非居民电费
+		double notPeopleUseFee = 0.0;
+
+		// 非工业比例
+		double industryScale = 0.0;
+		// 非工业电价
+		double industryPrice = 0.0;
+		// 非工业电量
+		double industryQuantity = 0.0;
+		// 非工业电费
+		double industryFee = 0.0;
+
+		// 商业比例
+		double bizScale = 0.0;
+		// 商业电价
+		double bizPrice = 0.0;
+		// 商业电量
+		double bizQuantity = 0.0;
+		// 商业电费
+		double bizFee = 0.0;
+		// 分摊电价
+		double price = 0.0;
+		// 电价分类
+		String powerClass = "";
+		// 总电量
+		double sumPower = 0.0;
+		// 电金
+		double sumDianJin = 0.0;
+		// 三峡
+		double sumSanXia = 0.0;
+		// 基金
+		double sumJiJin = 0.0;
+		// 库区移民
+		double sumKuQu = 0.0;
+		// 电费合计
+		double sumFee = 0.0;
+		// 总电费
+		double electricityFee = 0.0;		
+		
+		// 居民电费合计
+		double sumPeopleFee = 0.0;    
+		// 非居民电费合计
+		double sunNotPeopleFee = 0.0;
+		// 农灌电费合计
+		double sumFarmFee = 0.0;      
+		// 农业生产电费合计
+		double sumProduceFee = 0.0;
+		// 商业电费合计
+		double sumBizFee = 0.0;       
+		// 非工业电费合计
+		double sumIndustryFee = 0.0;
+		// 电价 DTO
+		LwSalePriceDto lwSalePriceDto = null;
+
+		/***********************************************************************
+		 * 【1 -- 取得比例分摊的电价和分摊比例】
+		 **********************************************************************/
+		for (Iterator iterator = salePriceList.iterator(); iterator.hasNext();) {
+			lwSalePriceDto = (LwSalePriceDto) iterator.next();
+			price = lwSalePriceDto.getPrice();
+			powerClass = lwSalePriceDto.getPowerClass();
+			// 居民生活电价
+			if ("1".equals(powerClass)) {
+				peopleUsePrice = price;
+				peopleUseScale = lwProrateDto.getResident();
+				// 非居民照明电价
+			} else if ("2".equals(powerClass)) {
+				notPeopleUsePrice = price;
+				notPeopleUseScale = lwProrateDto.getIndecisive();
+				// 商业电价
+			} else if ("3".equals(powerClass)) {
+				bizPrice = price;
+				bizScale = lwProrateDto.getBusiness();
+				// 非工业、普通电价
+			} else if ("4".equals(powerClass)) {
+				industryPrice = price;
+				industryScale = lwProrateDto.getIndustry();
+				// 农业生产用电
+			} else if ("5".equals(powerClass)) {
+				productPrice = price;
+				productScale = lwProrateDto.getProduce();
+				// 贫困县农业排灌用电
+			} else {
+				farmUsePrice = price;
+				farmUseScale = lwProrateDto.getAgricultural();
+			}
+		}
+		/***********************************************************************
+		 * 【2 -- 计算总电量、力率电费】
+		 **********************************************************************/
+		// 总电量 = 本月有功指针×倍率；
+		sumPower = workNum * rateCode;
+
+		/***********************************************************************
+		 * 【3 -- 计算比例分摊电费、比例分摊电价】
+		 **********************************************************************/
+		// 农灌电量 = 总电量 * 农灌的比例
+		farmUseQuantity = sumPower * farmUseScale;
+		// 农灌电费 = 农灌电量 × 农灌电价
+		farmUseFee = farmUseQuantity * farmUsePrice;
+
+		// 生产电量 = 总电量 × 生产比例
+		productQuantity = sumPower * productScale;
+		// 生产电费 = 生产电量 × 生产电价
+		productFee = productQuantity * productPrice;
+		// 居民电量 = 总电量 × 居民比例
+		peopleUseQuantity = sumPower * peopleUseScale;
+		// 居民电费 = 居民电量 × 居民电价
+		peopleUseFee = peopleUseQuantity * peopleUsePrice;
+
+		// 非居民电量 = 总电量 × 非居民比例
+		notPeopleUseQuantity = sumPower * notPeopleUseScale;
+		// 非居民电费 = 非居民电量 × 非居民电价
+		notPeopleUseFee = notPeopleUseQuantity * notPeopleUsePrice;
+
+		// 非工业电量 = 总电量 × 非工业比例
+		industryQuantity = sumPower * industryScale;
+		// 非工业电费 = 非工业电量 × 非工业电价
+		industryFee = industryQuantity * industryPrice;
+		
+
+		// 商业电量 = 总电量 × 商业比例
+		bizQuantity = sumPower * bizScale;
+		// 商业电费 = 商业电量 × 商业电价
+		bizFee = bizQuantity * bizPrice;
+		// 电费合计 = 农灌 +　生产 + 居民 + 非居民 + 非普工业 + 商业
+		sumFee = farmUseFee + productFee + peopleUseFee + notPeopleUseFee
+				+ industryFee + bizFee;
+		
+		/***********************************************************************
+		 * 【5 -- 组织直供乡电费计算总表】
+		 **********************************************************************/
+		LwTownPriceSummaryDto lwTownPriceSummaryDto = new LwTownPriceSummaryDto();
+		// -- 调整值
+		lwTownPriceSummaryDto.setAdjustValue(adjustValue);
+		// -- 基础信息维护
+
+		
+		lwTownPriceSummaryDto.setSumQuantity(sumPower);
+		lwTownPriceSummaryDto.setLineCode(lineCode);
+		lwTownPriceSummaryDto.setRateCode(zero);
+		lwTownPriceSummaryDto.setRateFee(zero);
+		lwTownPriceSummaryDto.setStatMonth(statMonth);
+		// 电费合计
+		lwTownPriceSummaryDto.setSumFee(sumFee);
+		lwTownPriceSummaryDto.setUserNo(userNo);
+		lwTownPriceSummaryDto.setValidStatus("1");
+		// -- 组织商业用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setBizFee(bizFee);
+		lwTownPriceSummaryDto.setBizPrice(bizPrice);
+		lwTownPriceSummaryDto.setBizQuantity(bizQuantity);
+		lwTownPriceSummaryDto.setBizScale(bizScale);
+		// -- 组织农灌用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setFarmFee(farmUseFee);
+		lwTownPriceSummaryDto.setFarmPrice(farmUsePrice);
+		lwTownPriceSummaryDto.setFarmQuantity(farmUseQuantity);
+		lwTownPriceSummaryDto.setFarmScale(farmUseScale);
+		// -- 非工业、普通工业用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setIndustryFee(industryFee);
+		lwTownPriceSummaryDto.setIndustryPrice(industryPrice);
+		lwTownPriceSummaryDto.setIndustryQuantity(industryQuantity);
+		lwTownPriceSummaryDto.setIndustryScale(industryScale);
+		// -- 非居民用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setNotPeopleFee(notPeopleUseFee);
+		lwTownPriceSummaryDto.setNotPeoplePrice(notPeopleUsePrice);
+		lwTownPriceSummaryDto.setNotPeopleQuantity(notPeopleUseQuantity);
+		lwTownPriceSummaryDto.setNotPeopleScale(notPeopleUseScale);
+		// -- 居民用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setPeopleFee(peopleUseFee);
+		lwTownPriceSummaryDto.setPeoplePrice(peopleUsePrice);
+		lwTownPriceSummaryDto.setPeopleQuantity(peopleUseQuantity);
+		lwTownPriceSummaryDto.setPeopleScale(peopleUseScale);
+		// -- 农业生产用电的电费、电价、电量、比例
+		lwTownPriceSummaryDto.setProduceFee(productFee);
+		lwTownPriceSummaryDto.setProducePrice(productPrice);
+		lwTownPriceSummaryDto.setProduceQuantity(productQuantity);
+		lwTownPriceSummaryDto.setProduceScale(productScale);
+
+		/***********************************************************************
+		 * 【5 -- 计算四金并组织DTO：农业还贷资金、三峡建设资金、可再生能源附加费、库区移民】
+	 	 **********************************************************************/
+	  	// 农业还贷资金
+		sumDianJin = getTowndianJin(lwTownPriceSummaryDto, 0.02, 0.88);
+		// 三峡建设资金
+		sumSanXia = getTownsanXia(lwTownPriceSummaryDto, 0.004, 0.88);
+		// 可再生能源附加费
+		sumJiJin = getTownjiJin(lwTownPriceSummaryDto, 0.002, 0.88);
+		// 库区移民
+		sumKuQu = getTownkuQu(lwTownPriceSummaryDto, 0.0031, 0.88);		
+		// -- 为DTO 赋值
+		lwTownPriceSummaryDto.setSumDianJin(sumDianJin);	
+		lwTownPriceSummaryDto.setSumSanXia(sumSanXia);
+		lwTownPriceSummaryDto.setSumJiJin(sumJiJin);
+		lwTownPriceSummaryDto.setSumKuQu(sumKuQu);
+		
+		//总电费 = 电费合计+电金合计+三峡+基金合计+库区合计
+		electricityFee = sumFee + sumDianJin + sumSanXia + sumJiJin + sumKuQu;
+		lwTownPriceSummaryDto.setElectricFee(electricityFee);
+		/***********************************************************************
+		 * 【6 -- 计算农业还贷资金、三峡建设资金、可再生能源附加费、库区移民的比例分摊值】
+	 	 **********************************************************************/
+		// 比例分摊电金= 总电金×居民比例
+		double peopleDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getPeopleScale();
+		double notPeopleDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getNotPeopleScale();
+		double farmDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getFarmScale();
+		double produceDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getProduceScale();
+		double industryDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getIndustryScale();
+		double bizDianJin = lwTownPriceSummaryDto.getSumDianJin()*lwTownPriceSummaryDto.getBizScale();
+		
+		// 比例分摊三峡= 总三峡×居民比例
+		double peopleSanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getPeopleScale();          
+		double notPeopleSanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getNotPeopleScale();;
+		double farmSanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getFarmScale();          
+		double produceSanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getProduceScale();    ;
+		double industrySanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getIndustryScale();  
+		double bizSanXia = lwTownPriceSummaryDto.getSumSanXia()*lwTownPriceSummaryDto.getBizScale();      
+		
+		// 比例分摊基金= 总基金×居民比例
+		double peopleJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getPeopleScale();          
+		double notPeopleJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getNotPeopleScale();;
+		double farmJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getFarmScale();          
+		double produceJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getProduceScale();    ;
+		double industryJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getIndustryScale();  
+		double bizJiJin = lwTownPriceSummaryDto.getSumJiJin()*lwTownPriceSummaryDto.getBizScale();  
+		
+		// 比例分摊库区= 总库区×居民比例
+		double peopleKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getPeopleScale();          
+		double notPeopleKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getNotPeopleScale();;
+		double farmKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getFarmScale();          
+		double produceKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getProduceScale();    ;
+		double industryKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getIndustryScale();  
+		double bizKuQu = lwTownPriceSummaryDto.getSumKuQu()*lwTownPriceSummaryDto.getBizScale();       
+		
+		/***********************************************************************
+		 * 【7 -- 计算比例分摊电费合计信息】
+	 	 **********************************************************************/
+		// 居民电费合计 = 居民电费+居民电金+居民三峡+居民基金+居民库区
+		sumPeopleFee = peopleUseFee + peopleDianJin + peopleSanXia + peopleJiJin
+				+ peopleKuQu;
+		// 非居民电费合计 = 非居民电费+非居民电金+非居民三峡+非居民基金+非居民库区
+		sunNotPeopleFee = notPeopleUseFee + notPeopleDianJin + notPeopleSanXia
+				+ notPeopleJiJin + notPeopleKuQu;
+		// 农灌电费合计 = 农灌电费+农灌电金+农灌三峡+农灌基金+农灌库区
+		sumFarmFee = farmUseFee + farmDianJin + farmSanXia
+		+ farmJiJin + farmKuQu;
+		// 农业生产电费合计 = 农业生产电费+农业生产电金+农业生产三峡+农业生产基金+农业生产库区
+		sumProduceFee = productFee + produceDianJin + produceSanXia
+		+ produceJiJin + produceKuQu;
+		// 商业电费合计 = 商业电费+商业电金+商业三峡+商业基金+商业库区
+		sumBizFee = bizFee + bizDianJin + bizSanXia
+		+ bizJiJin + bizKuQu;
+		// 非工业电费合计 = 非工业电费+非工业电金+非工业三峡+非工业基金+非工业库区
+		sumIndustryFee = industryFee + industryDianJin + industrySanXia
+		+ industryJiJin + industryKuQu;
+		/***********************************************************************
+		 * 【8 -- 组织合计电费到DTO】
+		 **********************************************************************/
+		// 居民
+		lwTownPriceSummaryDto.setPeopleDianJin(peopleDianJin);
+		lwTownPriceSummaryDto.setPeopleFeeSanXia(peopleSanXia);
+		lwTownPriceSummaryDto.setPeopleJiJin(peopleJiJin);
+		lwTownPriceSummaryDto.setPeopleKuQu(peopleKuQu);
+		lwTownPriceSummaryDto.setSumPeopleFee(sumPeopleFee);
+		
+		// 非居民
+		lwTownPriceSummaryDto.setNotPeopleDianJin(notPeopleDianJin);
+		lwTownPriceSummaryDto.setNotPeopleFeeSanXia(notPeopleSanXia);
+		lwTownPriceSummaryDto.setNotPeopleJiJin(notPeopleJiJin);
+		lwTownPriceSummaryDto.setNotPeopleKuQu(notPeopleKuQu);
+		lwTownPriceSummaryDto.setSumNotPeopleFee(sunNotPeopleFee);
+		
+		// 农业生产
+		lwTownPriceSummaryDto.setProduceDianJin(produceDianJin);
+		lwTownPriceSummaryDto.setProduceSanXia(produceSanXia);
+		lwTownPriceSummaryDto.setProduceJiJin(produceJiJin);
+		lwTownPriceSummaryDto.setProduceKuQu(produceKuQu);
+		lwTownPriceSummaryDto.setSumProduceFee(sumProduceFee);
+		
+		// 农灌
+		lwTownPriceSummaryDto.setFarmDianJin(farmDianJin);
+		lwTownPriceSummaryDto.setFarmSanXia(farmSanXia);
+		lwTownPriceSummaryDto.setFarmJiJin(farmJiJin);
+		lwTownPriceSummaryDto.setFarmKuQu(farmKuQu);
+		lwTownPriceSummaryDto.setSumFarmFee(sumFarmFee);
+		
+		// 商业
+		lwTownPriceSummaryDto.setBizDianJin(bizDianJin);
+		lwTownPriceSummaryDto.setBizSanXia(bizSanXia);
+		lwTownPriceSummaryDto.setBizJiJin(bizJiJin);
+		lwTownPriceSummaryDto.setBizKuQu(bizKuQu);
+		lwTownPriceSummaryDto.setSumBizFee(sumBizFee);
+		
+		// 非普工业
+		lwTownPriceSummaryDto.setIndustryDianJin(industryDianJin);
+		lwTownPriceSummaryDto.setIndustrySanXia(industrySanXia);
+		lwTownPriceSummaryDto.setIndustryJiJin(industryJiJin);
+		lwTownPriceSummaryDto.setIndustryKuQu(industryKuQu);
+		lwTownPriceSummaryDto.setSumIndustryFee(sumIndustryFee);
+		
+		return lwTownPriceSummaryDto;
+	} 
+		/**
+		 * 根据输电线路的电压等级，组织条件
+		 * 
+		 * @param voltLevel
+		 * @return
+		 */
+		public static String getSalePowerCondition(double level){
+			
+			StringBuffer buffer = new StringBuffer();
+			// 不满1KV
+			if (level < 1) {
+				buffer.append(" and VoltageEnd='1' ");
+			}// 1-10KV
+			else if ((level <= 10 && level >= 1)) {
+				buffer.append(" and VoltageEnd='10' ");
+			}// 35-110KV以下
+			else if ((level < 110 && level >= 35)) {
+				buffer.append(" and VoltageEnd='110' ");
+			}// 110-220KV以下
+			else if ((level < 220 && level >= 110)) {
+				buffer.append(" and VoltageEnd='220' ");
+			}// 220及以下
+			else {
+				buffer.append(" and VoltageBegin='220' ");
+			}
+			
+			return buffer.toString();
+		}
+		/**
+		 * 计算直供乡农业还贷资金公式（电金）
+		 * @param lwTownPriceSummaryDto 电费计算DTO
+		 * @param price 价格
+		 * @param loss 损失
+		 * @return 直供乡电金
+		 */
+
+		public static double getTowndianJin(LwTownPriceSummaryDto lwTownPriceSummaryDto,
+			double price, double loss) {
+
+		double sumPower = 0.0;
+		double farmUseQuantity = 0.0;
+		if (lwTownPriceSummaryDto != null) {
+			// 总电量
+			sumPower = lwTownPriceSummaryDto.getSumQuantity();
+			// 农灌电量
+			farmUseQuantity = lwTownPriceSummaryDto.getFarmQuantity();
+		}
+		// 直供乡电金 = （总电量 - 农灌）× 0.02 × 0.88
+		return (sumPower - farmUseQuantity) * price * loss;
+	}
+		
+		/**
+		 * 计算直供乡三峡建设资金公式（三峡）
+		 * @param lwTownPriceSummaryDto 电费计算DTO
+		 * @param price 价格
+		 * @param loss 损失
+		 * @return 三峡
+		 */
+		public static double getTownsanXia(LwTownPriceSummaryDto lwTownPriceSummaryDto,
+			double price, double loss) {
+
+		double sumPower = 0.0;
+		if (lwTownPriceSummaryDto != null) {
+			// 总电量
+			sumPower = lwTownPriceSummaryDto.getSumQuantity();		
+		}
+		// 直供乡电金 = 总电量 × 0.004 × 0.88
+		return sumPower  * price * loss;
+	}
+		/**
+		 * 计算直供乡可再生能源附加费
+		 * @param lwTownPriceSummaryDto 电费计算DTO
+		 * @param price 价格
+		 * @param loss 损失
+		 * @return 基金
+		 */
+		public static double getTownjiJin(LwTownPriceSummaryDto lwTownPriceSummaryDto,
+			double price, double loss) {
+		// 总电量
+		double sumPower = 0.0;
+		// 农灌
+		double farmUseQuantity = 0.0;
+		// 农业生产
+		double produceQuantity = 0.0;
+		if (lwTownPriceSummaryDto != null) {
+			
+			sumPower = lwTownPriceSummaryDto.getSumQuantity();		
+			farmUseQuantity = lwTownPriceSummaryDto.getFarmQuantity();
+			produceQuantity = lwTownPriceSummaryDto.getProduceQuantity();
+			
+		}
+		// 直供乡可再生能源附加费 = （总电量 - 农灌 - 农业生产） × 0.002 × 0.88
+		return (sumPower - farmUseQuantity - produceQuantity)  * price * loss;
+	}
+		/**
+		 * 计算直供乡库区移民
+		 * @author qiaoyouliang 2008-10-15 add
+		 * @param lwTownPriceSummaryDto 电费计算DTO
+		 * @param price 价格
+		 * @param loss 损失
+		 * @return 库区
+		 */
+		public static double getTownkuQu(LwTownPriceSummaryDto lwTownPriceSummaryDto,
+			double price, double loss) {
+		// 总电量
+		double sumPower = 0.0;
+		// 农灌
+		double farmUseQuantity = 0.0;
+		// 农业生产
+		double produceQuantity = 0.0;
+		if (lwTownPriceSummaryDto != null) {
+			
+			sumPower = lwTownPriceSummaryDto.getSumQuantity();	
+			farmUseQuantity = lwTownPriceSummaryDto.getFarmQuantity();
+			produceQuantity = lwTownPriceSummaryDto.getProduceQuantity();
+			
+		}
+		// 库区移民 = （总电量 - 农灌 - 农业生产） × 0.0031 × 0.88
+		return (sumPower - farmUseQuantity - produceQuantity)  * price * loss;
+	}
+	/**
+	 * 保存电表指针
+	 */
+	public static void saveIndicator(LwAmmeterIndicatorDto dto){
+		// 表号
+		String ammetorNo = dto.getAmmeterNo();
+		// 当前指针
+		int currentNum= dto.getCurrentNum();
+		// 抄表日期
+		String readDate = dto.getReadAmmeterDate();
+		// 上表日期
+		String operateDate = dto.getOperateDate();
+		// 上表指针
+		int startNum = dto.getStartNum();
+		
+		DateTime dateTime = new DateTime(readDate,DateTime.YEAR_TO_MONTH);
+		
+	}
+	public static void main(String []args){
+		String dateTime = new DateTime("2008-01-10",DateTime.YEAR_TO_MONTH).addMonth(-1).toString();
+		System.out.println(dateTime);
+	}
+		
+	}
+		
+	
+
+
