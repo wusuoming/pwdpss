@@ -229,30 +229,57 @@ String sumallfeety=(String)request.getAttribute("sumallfeety");
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
 				<br></td>
+				<%
+					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+				 %>
+				 <td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
+				<br></td>
+				<%} else{%>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getElectricQuantity()%></font></span>
 				<br></td>
+				<%} %>
+				
+				<%
+					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+				 %>
+				 <td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17)%></font></span>
+				<br></td>
+				<%} else{%>
+				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17)%></font></span>
 				<br></td>
+				<%} %>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSanXiaFee()/1.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPowerFee()/1.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17)%></font></span>
 				<br></td>
+				<%
+					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+				 %>
+				 <td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17*0.17)%></font></span>
+				<br></td>
+				<%} else{%>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17*0.17)%></font></span>
 				<br></td>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17)%></font></span>
-				<br></td>
+				<%} %>
+				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPowerFee()/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17*0.17)%></font></span>
@@ -273,7 +300,7 @@ String sumallfeety=(String)request.getAttribute("sumallfeety");
 					<span class="title"><font size="2"><%=sumfpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
+					<span class="title"><font size="2"><%=sumfc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
