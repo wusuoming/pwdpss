@@ -95,7 +95,7 @@ public class UIAllCountAction extends Action {
 		while(itf.hasNext()){
 			lwCorporationSummaryDto =(LwCorporationSummaryDto)itf.next();
 			sumfpower+=lwCorporationSummaryDto.getSumPointerQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
-			sumfdianfee+=lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getPowerRateFee();
+			sumfdianfee+=lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getPeakFee();
 			summfdianjinall+=lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall+=lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall+=lwCorporationSummaryDto.getSurcharge();

@@ -24,6 +24,7 @@ public class UICorporationPriceCountAction extends Action {
 		
 		String serchDate=inputDate.substring(0, 7);
 		condition+=" and StatMonth = '"+serchDate+"'";
+		
 		DecimalFormat df = new DecimalFormat("###0.00");
 		double dagongye10=0;
 		double dagongye35=0;
@@ -33,7 +34,7 @@ public class UICorporationPriceCountAction extends Action {
 		double dianshi35=0;
 		double huafei10=0;
 		double huafei35=0;
-		
+		httpServletRequest.setAttribute("inputDate", inputDate);
 		double dagongye10Power=0;
 		double dagongye35Power=0;
 		double guitie10Power=0;
@@ -78,7 +79,26 @@ public class UICorporationPriceCountAction extends Action {
 		double sumTax=0;
 		double sumChun=0;
 		double sumFee=0;
+		//begin
+		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie1=PowerFeeCal.findonecorporation("3100", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie2=PowerFeeCal.findonecorporation("3101", serchDate);
 		
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye1=PowerFeeCal.findonecorporation("1056-1", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye2=PowerFeeCal.findonecorporation("1054", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye3=PowerFeeCal.findonecorporation("1052", serchDate);
+		
+		
+		
+		LwCorporationSummaryDto  lwCorporationSummaryDtohuafei=PowerFeeCal.findonecorporation("1084", serchDate);
+		
+		
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtoguitie1",lwCorporationSummaryDtoguitie1 );
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtoguitie2",lwCorporationSummaryDtoguitie2 );
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtodagongye1",lwCorporationSummaryDtodagongye1 );
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtodagongye2",lwCorporationSummaryDtodagongye2 );
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtodagongye3",lwCorporationSummaryDtodagongye3 );
+		 httpServletRequest.setAttribute("lwCorporationSummaryDtohuafei",lwCorporationSummaryDtohuafei );
+		//end
 		
 		 dagongye10=PowerFeeCal.getCountPrice("1","0");
 		 dagongye35=PowerFeeCal.getCountPrice("35","0");
@@ -89,6 +109,7 @@ public class UICorporationPriceCountAction extends Action {
 		 huafei10=PowerFeeCal.getCountPrice("1","3");
 		 huafei35=PowerFeeCal.getCountPrice("35","3");
 		 BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
+		 Collection colall=blLwCorporationSummaryFacade.findByConditions(condition);
 		 //dagongye
 		 Collection  coldagongye10=blLwCorporationSummaryFacade.findByConditions(" PointerPrice='"+dagongye10+"'");
 		 Iterator itdagongye10=coldagongye10.iterator();
@@ -409,6 +430,8 @@ public class UICorporationPriceCountAction extends Action {
 		 httpServletRequest.setAttribute("sumPower",Math.round(sumPower) );
 		 
 		 httpServletRequest.setAttribute("dagongye10Fee",df.format(dagongye10Fee) );
+		 
+		 httpServletRequest.setAttribute("colall",colall );
 		 
 		 httpServletRequest.setAttribute("dagongye35Fee",df.format(dagongye35Fee) );
 		 httpServletRequest.setAttribute("guitie10Fee",df.format(guitie10Fee) );
