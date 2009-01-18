@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 import com.elongway.pss.bl.facade.BLLwAmmeterChangeFacade;
 import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
+import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
 import com.elongway.pss.bl.facade.BLLwFactoryIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwLineCTFacade;
 import com.elongway.pss.bl.facade.BLLwLinePTFacade;
@@ -30,6 +31,7 @@ import com.elongway.pss.dto.domain.LwAmmeterChangeDto;
 import com.elongway.pss.dto.domain.LwAmmeterIndicatorDto;
 import com.elongway.pss.dto.domain.LwBookUserDto;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
+import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwFactoryIndicatorDto;
 import com.elongway.pss.dto.domain.LwLineCTDto;
 import com.elongway.pss.dto.domain.LwLinePTDto;
@@ -2011,6 +2013,13 @@ public class PowerFeeCal {
 				townSataDto2.setCompanyName("¶«¡¢Çà¡¢À¥¡¢¸ß");
 			}
 			return townSataDto2;
+		}
+	 public static LwCorporationSummaryDto findonecorporation(String userno,String date)  throws Exception{
+			
+			BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
+			LwCorporationSummaryDto  lwCorporationSummaryDto=new LwCorporationSummaryDto();
+			lwCorporationSummaryDto=blLwCorporationSummaryFacade.findByPrimaryKey(userno, date);
+			return  lwCorporationSummaryDto;
 		}
 	}
 	
