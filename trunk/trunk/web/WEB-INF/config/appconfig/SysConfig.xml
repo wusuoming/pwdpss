@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GB2312" standalone="yes" ?>
+
+<SysConfig>
+  <!-- 以下是可修改的系统参数 --> 
+
+  <!-- 查询结果页面默认显示的行数 -->
+  <ROWS_PERPAGE>10</ROWS_PERPAGE>
+  
+  <!-- 查询结果页面最大查询的行数 -->
+  <QUERY_MAXROWS>100</QUERY_MAXROWS>
+  
+  <FilePartition>\</FilePartition>
+  
+  <PACKAGE_DATA_DELIMITER>^</PACKAGE_DATA_DELIMITER>
+  
+</SysConfig>

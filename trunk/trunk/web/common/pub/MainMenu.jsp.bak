@@ -1,0 +1,377 @@
+<%@ page contentType="text/html; charset=gb2312" %>
+<%@ page import="com.elongway.pss.ui.control.common.pub.SysUser" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
+　 
+<%
+	SysUser sysUser = (SysUser) session.getAttribute("sysUser");
+	String userGrade = sysUser.getUserGrade();
+	String areaCode = sysUser.getAreaCode();
+%>
+
+<html> 
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=gb2312">
+    <link rel='stylesheet' type='text/css' href='/iacontact/css/Standard.css'>
+    <script languge=JavaScript>
+      function showMenu(divID){
+        if (divID.style.display == "")
+          divID.style.display="none";
+        else
+          divID.style.display="";
+      }
+      
+      function loadForm(){
+		document.styleSheets[0].href="/iacontact/css/Standard.css";
+      }
+      
+      function clickme(){
+        parent.fraRight.cols="*,0";
+      }
+      
+      function relogon()
+      {
+       parent.fraMain.rows= "0,*";
+       parent.fraSet.cols = "0%,0%,*";
+      }
+    </script>
+  <style type="text/css">
+ 
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ebf7ff;
+}
+-->
+</style>
+<style>
+    BODY {
+	BORDER-TOP-WIDTH: 0px;
+    BORDER-LEFT-WIDTH: 0px; 
+    BORDER-BOTTOM-WIDTH: 0px;
+    BORDER-RIGHT-WIDTH: 0px;
+    SCROLLBAR-FACE-COLOR:#ffffff;
+    SCROLLBAR-HIGHLIGHT-COLOR:#2591FF;
+    SCROLLBAR-SHADOW-COLOR:#2591FF;
+    SCROLLBAR-3DLIGHT-COLOR:#E7F3FF;
+    SCROLLBAR-ARROW-COLOR:#ffffff;
+    SCROLLBAR-TRACK-COLOR:#E7F3FF;
+    SCROLLBAR-DARKSHADOW-COLOR:#E7F3FF;
+}
+</style></head>
+
+  <body onload="loadForm()">
+    <!--查询统计-->
+   	
+<table border=0 cellpadding="0" cellspacing="0" class=menu>
+			<tr>
+				<td class=titleLink onclick="showMenu(T_dianfeiluru)">
+					<img src="../../images/dianfeiluru.gif" border="0">
+				</td>
+			</tr>
+		</table>
+		<div id=T_dianfeiluru style="" class=menu>
+			<table class=menu>
+				<tr>
+					<td>
+
+
+						<!--线路管理-->
+						<table class=menu>
+						<tr>
+								 <td class=titleLink>
+	                 		<app:menu page="/calTownFee.do?method=forwordTownCal&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡
+	                 		</app:menu>
+	                	</td>
+								</tr>
+								<tr>
+								 <td class=titleLink>
+	                 		<app:menu page="/datainput/town/PatchTownFeeInput.jsp?&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡批量录入
+	                 		</app:menu>
+	                	</td>
+								</tr>
+							<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/datainput/corporation/corporationInput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 大工业
+	                 		</app:menu>
+								</td>
+								</tr>
+								<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/datainput/wholeSale/wholeSaleInput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 趸售
+	                 		</app:menu>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<table border=0 cellpadding="0" cellspacing="0" class=menu>
+			<tr>
+				<td class=titleLink onclick="showMenu(T_MAINTAIN)">
+					<img src="../../images/chaxuntongji.gif" border="0">
+				</td>
+			</tr>
+		</table>
+		<div id=T_MAINTAIN style="" class=menu>
+			<table class=menu>
+				<tr>
+					<td>
+
+						<!--线路管理-->
+						<table class=menu>
+						<tr>
+								 <td class=titleLink>
+	                 		<app:menu page="/townFeeStat.do?method=forwordTownStat&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡查询
+	                 		</app:menu>
+	                	</td>
+								</tr>
+							<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/feeSerch/corporation/corporationSerch.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 大工业查询
+	                 		</app:menu>
+								</td>
+								</tr>
+								<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/feeSerch/wholeSale/wholeSaleSerch.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 趸售查询
+	                 		</app:menu>
+								</td>
+							</tr> 
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<table border=0 cellpadding="0" cellspacing="0" class=menu>
+			<tr>
+				<td class=titleLink onclick="showMenu(T_chaxutongji)">
+					<img src="../../images/chaxuntongji.gif" border="0">
+				</td>
+			</tr>
+		</table>
+		<div id=T_chaxutongji style="" class=menu>
+			<table class=menu>
+				<tr>
+					<td>
+						<!--线路管理-->
+						<table class=menu>
+							
+							<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/count/corporationSaleCountInput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 大工业按厂统计
+	                 		</app:menu>
+								</td>
+								</tr>
+								<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/count/wholeSaleCountInput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 趸售按线路统计
+	                 		</app:menu>
+								</td>
+							</tr>
+							<%--<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/count/wholeSaleCountInput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 趸售电压统计
+	                 		</app:menu>
+								</td>
+							</tr>
+						--%></table>
+					</td>
+				</tr>
+			</table>
+		</div>
+			
+
+		<table border=0 cellpadding="0" cellspacing="0" class=menu>
+
+      <tr>
+         <td class=titleLink onclick="showMenu(T_jichu)">
+           <img src="../../images/jichuxinxiweihu.gif" border="0">
+         </td>
+      </tr>
+  </table>
+ 			<div id=T_jichu style="display" class=menu >
+     		<table class=menu>
+     		  <tr>
+                <td>
+                
+             	  <!--新增表单信息-->
+                  <table class=menu>
+                 	<tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/queryAmmeter.do?method=queryAmmeter&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 电表信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                <!-- add by wangrongjia-->
+                <tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/viewLWPT.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 电压互感器信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                 	<tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/viewLWCT.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 电流互感器信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                 	<tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/viewLWLineRalation.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 配置线路信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                   <tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/queryLWPowerLine.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 线路信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                 	<tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/queryLWPowerUser.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 用电用户
+	                 		</app:menu>
+	                	</td>
+	                	</tr>
+	                	<tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/maintenance/LWUserLine/QueryLWUserLine.jsp" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 线路用户对照信息
+	                 		</app:menu>
+	                	</td>
+	                	</tr>
+	                	<%--<tr>
+	                	 <td class=titleLink>
+	                 		<app:menu page="/forwordLineAmmeter.do?method=forwordLineAmmeter&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 线路电表对照信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>--%>
+                 	<%--<tr>
+	                	 <td class=titleLink>
+	                 		<app:menu page="/maintenance/LWindicator/addLWindicator.jsp" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 电表记录信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                    --%><tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/salePriceQuery.do?method=salePriceQuery&menuflag=view&firstquery=1&UserCode=&CompanyCode=" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 销售电价
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                 <tr>
+                 	  <td class=titleLink>
+	                 		<app:menu page="/viewLWindicator.do" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 电表指针记录信息
+	                 		</app:menu>
+	                	</td>
+                 	</tr>
+                
+                </table>
+              
+
+				 <%
+  				 	if (userGrade.equals("2")) {
+  				 %>   
+				<!--个人用户-->
+ 					<table class=menu>
+                      <tr>
+                        <td class=titleLink onclick="showMenu(T_PTGL_RYQX_GRYH)">&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 个人用户</td>
+                      </tr>
+                    </table>            
+
+                    <div id=T_PTGL_RYQX_GRYH style="display:none">
+                      <table class=menu>
+                        
+	                        <tr>
+	                        	<td class=itemLink>&nbsp;&nbsp;&nbsp;&nbsp;
+	                         		<a class=menu href="../../system/SysUserManage.jsp?UserCode=&AreaCode=<%=areaCode%>&UserName=&Password=&CompanyCode=&PhoneNumber=&Email=&Fax=&UserGrade=0&ValidStatus=1&Flag=&action=Create" target="fraInterface">
+	                         			→ 新增用户
+	                         		</a> 
+	                        	</td>
+	                       	</tr>
+                      
+	                        <tr>
+	                        	<td class=itemLink>&nbsp;&nbsp;&nbsp;&nbsp;
+	                        		<a class=menu href="../../system/SysUserManageQuery.jsp" target="fraInterface">
+	                        			→ 查询用户
+	                        		</a> 
+	                        	</td>
+	                        </tr>	
+					  </table>  
+					</div>
+             	 <%
+             	 	}
+             	 %>
+       		    </td>
+       		  </tr>
+      		  </table>
+    		</div>  		
+    		
+    		
+                   
+    		
+   <!--■ 重新登录菜单-->
+	<table border="0" cellpadding=0 cellspacing=0 class=menu>
+		<tr>
+			<td class=itemLink>
+			<a class=menu href="/iacontact/index.jsp" target="fraInterface" onclick="return relogon();">
+			<img src="../../images/chongxindenglu.gif" border="0"></a>
+			</td>
+    	</tr>
+    	<tr>
+    		<td class=itemLink>
+				<a class=menu href="/iacontact/updatePassword.do" target="fraInterface">
+				<img src="../../images/xiugaimima.gif" border="0"></a>
+			</td>
+    	</tr>    	
+  </table>
+  </body>
+</html>
