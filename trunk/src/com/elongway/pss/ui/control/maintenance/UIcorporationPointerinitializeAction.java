@@ -35,7 +35,7 @@ public class UIcorporationPointerinitializeAction extends Action {
 		//BLLwFactoryIndicatorFacade blLwFactoryIndicatorFacade=new BLLwFactoryIndicatorFacade();
 		BLLwNewFactoryIndicatorFacade  blLwNewFactoryIndicatorFacade=new BLLwNewFactoryIndicatorFacade();
 		Collection wholesalePointer=new ArrayList();
-		wholesalePointer=blLwNewFactoryIndicatorFacade.findByConditions(" statMonth = '"+statMonth+"'");
+		wholesalePointer=blLwNewFactoryIndicatorFacade.findByConditions(" ");
 		
 		//BLLwCoporationUserInfoFacade blLwCoporationUserInfoFacade=new BLLwCoporationUserInfoFacade();
 		BLLwAmmeterChangeFacade  blLwAmmeterChangeFacade=new BLLwAmmeterChangeFacade();
