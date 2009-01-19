@@ -163,10 +163,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				double jiJin=(sumPower-agriculturalPower-producePower)*0.002*0.88;
 				LwWholeSaleSummaryDto lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
 				BLLwWholeSaleSummaryFacade  blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
-				Collection cofa=blLwWholeSaleSummaryFacade.findByConditions(powerFeeCal.deleteLineSql(UserName[i], inputdate));
-				if(cofa.size()>0){
-					throw new UserException(-6, -712, this.getClass().getName(),"该局已经算过费");
-				}
+				
 				blLwWholeSaleSummaryFacade.deleteByConditions(powerFeeCal.deleteLineSql(UserName[i], inputdate));
 				lwWholeSaleSummaryDto.setLineCode(UserName[i]);
 				lwWholeSaleSummaryDto.setStatMonth(inputdate);
@@ -177,8 +174,8 @@ public class UIPathWholeSaleCalAction extends Action {
 				lwWholeSaleSummaryDto.setSanXiaFee(sanXiaJin);
 				lwWholeSaleSummaryDto.setSurcharge(jiJin);
 				lwWholeSaleSummaryDto.setSumFee(sumFee);
-				lwWholeSaleSummaryDto.setTransLoss(Double.parseDouble(TransLossQuantity[i]));
-				lwWholeSaleSummaryDto.setLineLoss(Double.parseDouble(LineLossQuantity[i]));
+				lwWholeSaleSummaryDto.setTransLoss(Math.round(Double.parseDouble(TransLossQuantity[i])));
+				lwWholeSaleSummaryDto.setLineLoss(Math.round(Double.parseDouble(LineLossQuantity[i])));
 				lwWholeSaleSummaryDto.setRateCode(Double.parseDouble(rateCode[i]));
 				lwWholeSaleSummaryDto.setAdjustRate(AdjustRate);
 				lwWholeSaleSummaryDto.setFarmUseQuantity(agriculturalPower);
@@ -195,7 +192,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				lwWholeSaleSummaryDto.setDenizenFee(residentFee);
 				lwWholeSaleSummaryDto.setUnDenizenScale(indecisive);
 				lwWholeSaleSummaryDto.setUnDenizenQuantity(indecisivePower);
-				lwWholeSaleSummaryDto.setUnTransLoss(Double.parseDouble(unTransLossQuantity[i]));
+				lwWholeSaleSummaryDto.setUnTransLoss(Math.round(Double.parseDouble(unTransLossQuantity[i])));
 				lwWholeSaleSummaryDto.setUnDenizenPrice(indecisivePrice);
 				lwWholeSaleSummaryDto.setUnDenizenFee(indecisiveFee);
 				lwWholeSaleSummaryDto.setIndustryScale(industry);
@@ -313,7 +310,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				lwWholeSaleSummaryDto.setIndustryFee(workFee);
 				lwWholeSaleSummaryDto.setWorkNum(Double.parseDouble(ThisWorkNum[i]));
 				lwWholeSaleSummaryDto.setUnWorkNum(Double.parseDouble(LastWorkNum[i]));
-				//lwWholeSaleSummaryDto.setTransLoss(Double.parseDouble(TransLossQuantity[i]));
+				lwWholeSaleSummaryDto.setTransLoss(Math.round(Double.parseDouble(TransLossQuantity[i])));
 				lwWholeSaleSummaryDto.setDifferenceQuantity(differenceQuantity[i]);
 				lwWholeSaleSummaryDto.setRateCode(RateCode);
 				lwWholeSaleSummaryDto.setAdjustRate(AdjustRate);
@@ -322,11 +319,9 @@ public class UIPathWholeSaleCalAction extends Action {
 				lwWholeSaleSummaryDto.setUpCompany(flag[i]);
 				lwWholeSaleSummaryDto.setPowerFee(dianJin);
 				lwWholeSaleSummaryDto.setWholesaletype(wholeSaleStyle);
+				
 				blLwWholeSaleSummaryFacade.insert(lwWholeSaleSummaryDto);
-				Collection cofa=blLwWholeSaleSummaryFacade.findByConditions(powerFeeCal.deleteLineSql(UserName[i], inputdate));
-				if(cofa.size()>0){
-					throw new UserException(-6, -712, this.getClass().getName(),"该局已经算过费");
-				}
+				
 				BLLwAmmeterChangeFacade  blLwAmmeterChangeFacade=new BLLwAmmeterChangeFacade();
 				String conditiona="flag=1 and  userNo='"+UserName+"'";
 				Collection faca=blLwAmmeterChangeFacade.findByConditions(conditiona);
