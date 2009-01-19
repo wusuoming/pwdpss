@@ -12,10 +12,12 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
+import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
 import com.elongway.pss.bl.facade.BLLwFactoryIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwSalePriceFacade;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
+import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwFactoryIndicatorDto;
 import com.elongway.pss.dto.domain.LwNewFactoryIndicatorDto;
 import com.elongway.pss.dto.domain.LwSalePriceDto;
@@ -28,11 +30,18 @@ public class UICorporationInputAction extends Action {
 		BLLwCoporationUserInfoFacade blLwCoporationUserInfoFacade=new BLLwCoporationUserInfoFacade();
 		LwCoporationUserInfoDto lwCoporationUserInfoDto=blLwCoporationUserInfoFacade.findByPrimaryKey(UserNo);
 		String conditions="1=1 and UserNo='"+UserNo+"'";
+		String s=PowerFeeCal.getCurrentBillMonth();
 		//BLLwFactoryIndicatorFacade blLwFactoryIndicatorFacade=new BLLwFactoryIndicatorFacade();
 		BLLwNewFactoryIndicatorFacade  blLwNewFactoryIndicatorFacade=new BLLwNewFactoryIndicatorFacade();
 		Collection factiory=blLwNewFactoryIndicatorFacade.findByConditions(conditions);
 		if(factiory == null||factiory.size()==0){
 			throw new UserException(-6,-710,this.getClass().getName(),"请先对用户电表指针进行初始化");
+		}
+		BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
+		LwCorporationSummaryDto  lwCorporationSummaryDto=blLwCorporationSummaryFacade.findByPrimaryKey(UserNo,s );
+		if(lwCorporationSummaryDto!=null){
+			
+			throw new UserException(-6, -712, this.getClass().getName(),"该户已经算过费");
 		}
 		BLLwSalePriceFacade blLwSalePriceFacade=new BLLwSalePriceFacade();
 		LwSalePriceDto  lwSalePriceDtodianjin=blLwSalePriceFacade.findByPrimaryKey("8", "0", 0, 0, "0");

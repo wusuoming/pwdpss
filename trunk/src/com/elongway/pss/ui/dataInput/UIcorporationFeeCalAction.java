@@ -679,10 +679,7 @@ public class UIcorporationFeeCalAction extends Action {
 			
 			LwCorporationSummaryDto  lwCorporationSummaryDto=new LwCorporationSummaryDto();
 			BLLwCorporationSummaryFacade blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
-			Collection cofa=blLwCorporationSummaryFacade.findByConditions("1=1 and LineCode='"+UserNo+"'"+"and StatMonth='"+inputDate+"'");
-			if(cofa.size()>0){
-				throw new UserException(-6, -712, this.getClass().getName(),"该用户已经算过费");
-			}
+			
 			blLwCorporationSummaryFacade.deleteByConditions("1=1 and LineCode='"+UserNo+"'"+"and StatMonth='"+inputDate+"'");
 			lwCorporationSummaryDto.setLineCode(UserNo);
 			lwCorporationSummaryDto.setStatMonth(inputDate);
