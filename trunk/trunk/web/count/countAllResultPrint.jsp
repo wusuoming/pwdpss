@@ -4,6 +4,7 @@
 <%@page import="com.elongway.pss.dto.domain.LwTownIndicatorDto"%>
 <%@page import="com.elongway.pss.ui.view.price.UITownBill"%>
 <%@page import="com.elongway.pss.dto.custom.TownSataDto"%>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -122,7 +123,11 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		
-		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
