@@ -40,7 +40,7 @@ public class UIGetCompanyTransforAction extends Action {
 		// 得到当前结帐月
 		statMonth = PowerFeeCal.getCurrentBillMonth();
 		// 查找指针表中是否存在当月的指针记录
-		wholesalePointer=blLwWholeSaleIndicatorFacade.findByConditions(" statMonth = '"+statMonth+"'"+" and flag = '"+comcode+"'"+"order by userno");	
+		wholesalePointer=blLwWholeSaleIndicatorFacade.findByConditions("  flag = '"+comcode+"'"+"order by userno");	
 
 		// 查找所有的趸售用户
 		wholesaleUser=blLwWholeSaleUserInfoFacade.findByConditions(" COMPANY = '"+comcode+"'"+"order by userno");
