@@ -130,7 +130,7 @@ public class BLDataInitCustomAction {
 		
 		if(initList==null ||initList.size()==0 ){
 		// 1-取出上月指针数
-		lastListtemp = blLwNewFactoryIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
+		lastListtemp = blLwNewFactoryIndicatorFacade.findByConditions( " ");
 		// 2-将指针记录表DTO组织成指针记录备份表DTO
 		for (Iterator iterator = lastListtemp.iterator(); iterator.hasNext();) {
 			lwNewFactoryIndicatorDto = (LwNewFactoryIndicatorDto) iterator
@@ -140,7 +140,7 @@ public class BLDataInitCustomAction {
 			lastList.add(lwNewFactoryIndicatorBakDto);
 		}
 		// 3-再次取出上月指针数，但是在循环之后，即变成为本月指针数
-		lastBak = blLwNewFactoryIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
+		lastBak = blLwNewFactoryIndicatorFacade.findByConditions( " ");
 
 		// 4-循环结束之后，即可完成月数据初始化的DTO的组织
 		for (Iterator iterator = lastBak.iterator(); iterator.hasNext();) {
@@ -207,7 +207,7 @@ public class BLDataInitCustomAction {
 		Collection initList = blLwWholeSaleIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
 		if(initList==null ||initList.size()==0 ){
 		// 1-取出上月指针数
-		lastListtemp = blLwWholeSaleIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
+		lastListtemp = blLwWholeSaleIndicatorFacade.findByConditions( "");
 		// 2-将指针记录表DTO组织成指针记录备份表DTO
 		for (Iterator iterator = lastListtemp.iterator(); iterator.hasNext();) {
 			lwWholeSaleIndicatorDto = (LwWholeSaleIndicatorDto) iterator
@@ -217,7 +217,7 @@ public class BLDataInitCustomAction {
 			lastList.add(lwWholeSaleIndicatorBakDto);
 		}
 		// 3-再次取出上月指针数，但是在循环之后，即变成为本月指针数
-		lastBak = blLwWholeSaleIndicatorFacade.findByConditions(" statMonth = '"+statMonth+"'");
+		lastBak = blLwWholeSaleIndicatorFacade.findByConditions("");
 
 		// 4-循环结束之后，即可完成月数据初始化的DTO的组织
 		for (Iterator iterator = lastBak.iterator(); iterator.hasNext();) {
