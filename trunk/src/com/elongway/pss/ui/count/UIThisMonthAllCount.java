@@ -554,7 +554,7 @@ public class UIThisMonthAllCount extends Action {
 		httpServletRequest.setAttribute("sumallfeegy", df.format(sumallfeegy));
 		httpServletRequest.setAttribute("sumallfeedm", df.format(sumallfeedm));
 		httpServletRequest.setAttribute("sumallfeety", df.format(sumallfeety));
-
+		httpServletRequest.setAttribute("ssss", statmonth);
 		httpServletRequest.setAttribute("colf", colf);
 		return actionMapping.findForward("viewthisallcount");
 	}
