@@ -7,6 +7,7 @@
 <jsp:directive.page import="java.util.Iterator"/>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCorporationSummaryDto"/>
+<jsp:directive.page import="java.text.DecimalFormat"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <meta http-equiv=Content-Type content="text/html; charset=gb2312">
@@ -36,7 +37,7 @@
 <form name="fm" method="post" action="">
  <%
 		 LwCorporationSummaryDto corporation=(LwCorporationSummaryDto)request.getAttribute("LwCorporationSummaryDto2");
-		
+		DecimalFormat df = new DecimalFormat("###0.00");
 		
 		
 	if(corporation.getIfchange().equals("0")){
@@ -68,7 +69,7 @@
 			<td nowrap><span class="title"><%=corporation.getRateCode()%></span></td>
 			<td nowrap><span class="title">调整值</span></td>
 			<td nowrap><span class="title"><%=corporation.getAjustRate()%></span></td>
-            <td nowrap><span class="title"><%=corporation.getPowerRateFee()%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getPowerRateFee())%></span></td>
     </tr>
     <tr>
      <td nowrap><span class="title"></span></td>
@@ -131,25 +132,25 @@
     <tr>
       <td nowrap><span class="title">电费</span></td>
             <td nowrap><span class="title"></span></td>
-			<td nowrap><span class="title"><%=corporation.getPeakFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getUnDenizenFee()%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getPeakFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
 			<% 
 			if(corporation.getFlag().equals("2")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getContentFee()%> </span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getContentFee())%> </span></td>
 			<%} %>
 			<% 
 			if(corporation.getFlag().equals("1")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getNeedFee()%> </span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getNeedFee())%> </span></td>
 			<%} %>
-			<td nowrap><span class="title"><%=corporation.getPowerFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getSanXiaFee()%></span></td>
-            <td nowrap><span class="title"><%=corporation.getSurcharge() %></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getSurcharge()) %></span></td>
     </tr>
     <tr>
     <td nowrap><span class="title">电费合计</span></td>
-    <td nowrap><span class="title"><%=corporation.getSumFee()%></span></td>
+    <td nowrap><span class="title"><%=df.format(corporation.getSumFee())%></span></td>
     </tr>
     <%--
    
@@ -175,7 +176,7 @@
 			<td nowrap><span class="title"><%=corporation.getAjustRate()%></span></td>
 			<td nowrap><span class="title"></span></td>
 			<td nowrap><span class="title">力率电费</span></td>
-            <td nowrap><span class="title"><%=corporation.getPowerRateFee()%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getPowerRateFee())%></span></td>
     </tr>
     <tr>
       <td nowrap><span class="title"></span></td>
@@ -238,25 +239,25 @@
     <tr>
       <td nowrap><span class="title">电费</span></td>
             <td nowrap><span class="title"><%=corporation.getUnPointerQuantity()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getPointerFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getUnDenizenFee()%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getPointerFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
 			<% 
 			if(corporation.getFlag().equals("2")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getContentFee()%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getContentFee())%></span></td>
 			<%} %>
 			<% 
 			if(corporation.getFlag().equals("1")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getNeedFee()%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getNeedFee())%></span></td>
 			<%} %>
-			<td nowrap><span class="title"><%=corporation.getPowerFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getSanXiaFee()%></span></td>
-            <td nowrap><span class="title"><%=corporation.getSurcharge()%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getSurcharge())%></span></td>
     </tr>
     <tr>
     <td nowrap><span class="title">电费合计</span></td>
-    <td nowrap><span class="title"><%=corporation.getSumFee()%></span></td>
+    <td nowrap><span class="title"><%=df.format(corporation.getSumFee())%></span></td>
     </tr>
    
     
@@ -292,7 +293,7 @@
 			<td nowrap><span class="title"><%=corporation.getRateCode()%></span></td>
 			<td nowrap><span class="title">调整值</span></td>
 			<td nowrap><span class="title"><%=corporation.getAjustRate()%></span></td>
-            <td nowrap><span class="title"><%=corporation.getPowerRateFee()%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getPowerRateFee())%></span></td>
     </tr>
     <tr>
      <td nowrap><span class="title">电量</span></td>
@@ -354,26 +355,26 @@
     </tr>
     <tr>
       <td nowrap><span class="title">电费</span></td>
-            <td nowrap><span class="title"><%=corporation.getBeforFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getLastFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getUnDenizenFee()%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getBeforFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getLastFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
 			<% 
 			if(corporation.getFlag().equals("2")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getContentFee()%> </span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getContentFee())%> </span></td>
 			<%} %>
 			<% 
 			if(corporation.getFlag().equals("1")){
 			%>
-			<td nowrap><span class="title"><%=corporation.getNeedFee()%> </span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getNeedFee())%> </span></td>
 			<%} %>
-			<td nowrap><span class="title"><%=corporation.getPowerFee()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getSanXiaFee()%></span></td>
-            <td nowrap><span class="title"><%=corporation.getSurcharge() %></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
+            <td nowrap><span class="title"><%=df.format(corporation.getSurcharge()) %></span></td>
     </tr>
     <tr>
     <td nowrap><span class="title">电费合计</span></td>
-    <td nowrap><span class="title"><%=corporation.getSumFee()%></span></td>
+    <td nowrap><span class="title"><%=df.format(corporation.getSumFee())%></span></td>
     </tr>
     <%--
    
