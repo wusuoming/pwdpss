@@ -697,6 +697,7 @@ public class BLCalPowerFeeCustomFacade {
 		P0 = transfor.getKongzaiLoss();
 		// --短路电流
 		Pk = transfor.getDuanluLoss();
+		T=transfor.getSuplyHour();
 		// --额定容量
 		P = transfor.getSuplyHour();
 		t = transfor.getUseHour();
