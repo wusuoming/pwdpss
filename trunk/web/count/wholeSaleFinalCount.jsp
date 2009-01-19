@@ -173,7 +173,7 @@ BODY {
 			<table class=common width="500%" cellspacing="1" cellpadding="5">
 				<tr class=listtitle align="center">
 					<td class=title0 colspan="12">
-						<B>趸售 <%=statMonth%>结算单</B>
+						<B>趸售结算单</B>
 					</td>
 					<td nowrap colspan="2" style="display: none">
 						<span class="title"><input name="company"
@@ -183,7 +183,12 @@ BODY {
 						<span class="title"><input name="inputDate"
 								value="<%=statMonth%>" style="width: 65px"> </span>
 					</td>
-
+					
+				</tr>
+				<tr>
+				<td nowrap colspan="2">
+						<span class="title">月份:<%=statMonth%></span>
+					</td>
 				</tr>
 
 				<tr>
@@ -231,13 +236,47 @@ BODY {
 					<%
 						}
 					%>
+					
+				
+					
 					<td nowrap colspan="2">
 						<span class="title">户号</span>
 					</td>
+						<%
+						if (company.equals("gy")) {
+					%>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value=""
+						<span class="title"><input name="ss" value="20699999179"
 								style="width: 65px"> </span>
 					</td>
+					<%} %>
+						<%
+						if (company.equals("dm")) {
+					%>
+					<td nowrap colspan="2">
+						<span class="title"><input name="ss" value="20699999185"
+								style="width: 65px"> </span>
+					</td>
+					<%} %>
+					
+						<%
+						if (company.equals("ty")) {
+					%>
+					<td nowrap colspan="2">
+						<span class="title"><input name="ss" value="20699999178"
+								style="width: 65px"> </span>
+					</td>
+					<%} %>
+					
+						<%
+						if (company.equals("jy")) {
+					%>
+					<td nowrap colspan="2">
+						<span class="title"><input name="ss" value="20699999177"
+								style="width: 65px"> </span>
+					</td>
+					<%} %>
+					
 					<td nowrap colspan="2">
 						<span class="title">地址</span>
 					</td>
@@ -601,21 +640,21 @@ BODY {
 					<td nowrap colspan="2">
 						<span class="title"><%=indecisiveFee10%></span>
 					</td>
-
-
 					<td nowrap colspan="2">
-						<span class="title">非普工业/10KV</span>
+						<span class="title">非居民照明/35KV</span>
+					</td>
+
+					<td nowrap>
+						<span class="title"><%=indecisivePower35%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPower10%></span>
-					</td>
-					<td nowrap>
-						<span class="title"><%=indecisivePrice10%></span>
+						<span class="title"><%=indecisivePrice35%></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=industryFee10%></span>
+						<span class="title"><%=indecisiveFee35%></span>
 					</td>
 
+					
 				</tr>
 				<tr>
 
@@ -631,18 +670,22 @@ BODY {
 					<td nowrap colspan="2">
 						<span class="title"><%=residentFee10%></span>
 					</td>
+					
 					<td nowrap colspan="2">
-						<span class="title">农业排灌/10KV</span>
+						<span class="title">居民生活/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPower10%></span>
+						<span class="title"><%=residentPower35%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPrice10%></span>
+						<span class="title"><%=residentPrice35%></span>
 					</td>
-					<td nowrap>
-						<span class="title"><%=agriculturalFee10%></span>
+					<td nowrap colspan="2">
+						<span class="title"><%=residentFee35%></span>
 					</td>
+					
+					
+					
 				</tr>
 				<tr>
 
@@ -658,36 +701,38 @@ BODY {
 					<td nowrap colspan="2">
 						<span class="title"><%=produceFee10%></span>
 					</td>
+					
 					<td nowrap colspan="2">
-						<span class="title">商业/10KV</span>
+						<span class="title">农业生产/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPower10%></span>
+						<span class="title"><%=producePower35%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPrice10%></span>
+						<span class="title"><%=producePrice35%></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=businessFee10%></span>
+						<span class="title"><%=produceFee35%></span>
 					</td>
+					
 				</tr>
 
 
 				<tr>
-
-					<td nowrap colspan="2">
-						<span class="title">非居民照明/35KV</span>
-					</td>
-
-					<td nowrap>
-						<span class="title"><%=indecisivePower35%></span>
+				<td nowrap colspan="2">
+						<span class="title">非普工业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice35%></span>
+						<span class="title"><%=industryPower10%></span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=indecisivePrice10%></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=indecisiveFee35%></span>
+						<span class="title"><%=industryFee10%></span>
 					</td>
+				
+					
 
 
 					<td nowrap colspan="2">
@@ -705,19 +750,19 @@ BODY {
 
 				</tr>
 				<tr>
-
-					<td nowrap colspan="2">
-						<span class="title">居民生活/35KV</span>
+						<td nowrap colspan="2">
+						<span class="title">农业排灌/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPower35%></span>
+						<span class="title"><%=agriculturalPower10%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPrice35%></span>
+						<span class="title"><%=agriculturalPrice10%></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=residentFee35%></span>
+						<span class="title" ><%=agriculturalFee10%></span>
 					</td>
+					
 					<td nowrap colspan="2">
 						<span class="title">农业排灌/35KV</span>
 					</td>
@@ -733,19 +778,26 @@ BODY {
 				</tr>
 				<tr>
 
+					
 					<td nowrap colspan="2">
-						<span class="title">农业生产/35KV</span>
+						<span class="title">商业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePower35%></span>
+						<span class="title"><%=businessPower10%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePrice35%></span>
+						<span class="title"><%=businessPrice10%></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=produceFee35%></span>
+						<span class="title"><%=businessFee10%></span>
 					</td>
 					<td nowrap colspan="2">
+					
+					
+					
+					
+					
+					
 						<span class="title">商业/35KV</span>
 					</td>
 					<td nowrap>

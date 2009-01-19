@@ -150,6 +150,7 @@ String sumallfeejy=(String)request.getAttribute("sumallfeejy");
 String sumallfeegy=(String)request.getAttribute("sumallfeegy");
 String sumallfeedm=(String)request.getAttribute("sumallfeedm");
 String sumallfeety=(String)request.getAttribute("sumallfeety");
+String s=(String)request.getAttribute("inputDate");
 
 
 
@@ -167,8 +168,11 @@ String sumallfeety=(String)request.getAttribute("sumallfeety");
 	<tr>
 			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
-		
-		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=s.substring(0,7) %></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>

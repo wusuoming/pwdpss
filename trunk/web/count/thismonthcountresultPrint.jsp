@@ -8,6 +8,7 @@
 <jsp:directive.page import="com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCoporationUserInfoDto"/>
 <jsp:directive.page import="java.text.DecimalFormat"/>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -151,6 +152,7 @@ String sumallfeegy=(String)request.getAttribute("sumallfeegy");
 String sumallfeedm=(String)request.getAttribute("sumallfeedm");
 String sumallfeety=(String)request.getAttribute("sumallfeety");
 
+String inputDate1  =(String)request.getAttribute("ssss");
 
 
 
@@ -167,7 +169,11 @@ String sumallfeety=(String)request.getAttribute("sumallfeety");
 	<tr>
 			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
-		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+					</td>
+	</tr>
 		
 		<tr class=listtitle>
 				<td width="10%">

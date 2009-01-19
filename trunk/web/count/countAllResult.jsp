@@ -144,7 +144,11 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		
-		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
