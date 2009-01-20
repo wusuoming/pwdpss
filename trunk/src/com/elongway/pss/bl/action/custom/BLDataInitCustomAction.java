@@ -57,6 +57,7 @@ public class BLDataInitCustomAction {
 		LwPowerUserDto lwPowerUserDto = null;
 		Collection ammeterList = null;
 		double lastIndicator = 0;
+		String lastStatMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).addMonth(-1).toString();
 		
 		// 0-首先判断是否当月执行过初始化
 		Collection initList = blLwTownIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");	
@@ -64,7 +65,7 @@ public class BLDataInitCustomAction {
 		if(initList==null ||initList.size()==0 ){
 
 		// 1-取出上月指针数
-		lastListTemp = blLwTownIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
+		lastListTemp = blLwTownIndicatorFacade.findByConditions( " statMonth = '"+lastStatMonth+"'");
 		
 		// 2-将指针记录表DTO组织成指针记录备份表DTO
 		for (Iterator iterator = lastListTemp.iterator(); iterator.hasNext();) {
@@ -75,7 +76,7 @@ public class BLDataInitCustomAction {
 			lastList.add(lwTownIndicatorBakDto);
 		}
 		// 3-再次取出上月指针数，但是在循环之后，即变成为本月指针数
-		lastBak = blLwTownIndicatorFacade.findByConditions( " statMonth = '"+statMonth+"'");
+		lastBak = blLwTownIndicatorFacade.findByConditions( " statMonth = '"+lastStatMonth+"'");
 
 		// 4-循环结束之后，即可完成月数据初始化的DTO的组织
 		for (Iterator iterator = lastBak.iterator(); iterator.hasNext();) {

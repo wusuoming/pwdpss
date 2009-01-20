@@ -59,7 +59,7 @@ public class UIInitPostTownCalAction extends Action {
 		if(userList == null||userList.size()==0){
 			throw new UserException(-6,-710,this.getClass().getName(),"系统中没有录入用电用户");
 		}
-		initList = blLwTownIndicatorFacade.findByConditions(" statMonth = '"+statMonth+"' order by userno");	
+		initList = blLwTownIndicatorFacade.findByConditions("1=1  order by userno");	
 		int all = userList.size();
 		int count = 0;
 		// 得到已经初始化的指针数量。
