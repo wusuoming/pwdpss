@@ -60,8 +60,24 @@ interface IValue {
 	
 	/** 大工业电价分类	 */
 	public static final String INDUSTRY_PRICE_CODE = "7";
-	/** 大工业电价分类	 */
-	public static final String METERIALS_TYPE_CODE = "7";
+	/** 材料类型	 */
+	// 大工业
+	public static final String METERIALS_TYPE_0 = "0";
+	// 电炉
+	public static final String METERIALS_TYPE_1 = "1";
+	// 电石
+	public static final String METERIALS_TYPE_2 = "2";
+	// 化肥
+	public static final String METERIALS_TYPE_3 = "3";
+	// 	电价类型
+	// 大工业
+	public static final String 	POWERCLASS_7 = "7";
+	// 电炉
+	public static final String POWERCLASS_8 = "8";
+	// 电石
+	public static final String POWERCLASS_9 = "9";
+	// 化肥
+	public static final String POWERCLASS_10 = "10";
 	
 	
 }
