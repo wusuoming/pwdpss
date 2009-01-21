@@ -7,6 +7,7 @@
 <jsp:directive.page import="java.text.DecimalFormat"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCorporationSummaryDto"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCoporationUserInfoDto"/>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
