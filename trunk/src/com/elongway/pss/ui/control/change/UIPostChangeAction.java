@@ -104,8 +104,8 @@ public class UIPostChangeAction extends Action {
 		
 		// 5-将新表的上表指针更新到该用户的上月指针字段。		
 		LwTownIndicatorDto lwTownIndicatorDto = blLwTownIndicatorFacade.findByPrimaryKey(userNo, PowerFeeCal.getCurrentBillMonth());
-		lwTownIndicatorDto.setLastWorkNum(Integer.parseInt(installWorkNum));
-		lwTownIndicatorDto.setThisWorkNum(Integer.parseInt(installWorkNum));
+		lwTownIndicatorDto.setLastWorkNum(Double.parseDouble(installWorkNum));
+		lwTownIndicatorDto.setThisWorkNum(Double.parseDouble(installWorkNum));
 		
 		double chgWorkQuantity = changeAmmeterDto.getChgWorkQuantity();
 

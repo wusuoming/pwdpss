@@ -83,8 +83,11 @@ public class BLCalPowerFeeCustomFacade {
 		chgQuantity = lwTownIndicatorDto.getChgAmmeterQuantity();
 		exceptionQuantity = lwTownIndicatorDto.getExcepQuantity();
 		compensateQuantity = lwTownIndicatorDto.getCompensateQuantity();
-		sumQuantity = readQuantity + chgQuantity + exceptionQuantity
+		sumQuantity = readQuantity + chgQuantity 
 				+ compensateQuantity;
+		/**
+		 * 
+		 */
 
 		// 得到调整值
 		double adjustValue = 0;

@@ -87,25 +87,25 @@
 }
 function printCount(){
 	 var   strURL;     
-	 var tt = fm.dd.value;
-   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt;    
- 
+	 var tt = fm.statMonth.value;
+   strURL="<%=request.getContextPath()%>/townfeeprint.do?statMonth="+tt;    
+    alert(strURL);
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+}
+function doPrint(){
+	window.print();
 }
 </script>
 </head>
-<body class=interface>&nbsp; 
+<body onload="javascript:doPrint();window.close()">
 <html:errors />
 <%Collection billList = (Collection)request.getAttribute("billList");
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
-String inputDate = (String)request.getAttribute("statMonth");
 %>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
 	<table class=common width="500%" cellspacing="1" cellpadding="5" border="1">
-		<tr>
-			<td class=title0 colspan="11" style="display:none"><input type="hidden" name="dd" value="<%=inputDate%>"></td>
-		</tr>
+		
 		<%Collection resultList = (Collection)request.getAttribute("resultList"); 
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
@@ -189,26 +189,18 @@ String inputDate = (String)request.getAttribute("statMonth");
 				<br></td>	
 							
 			</tr>
-			
-		<%} %>
-		<tr>
-			<td nowrap colspan="11"></td>
-		</tr>
-		<tr>
+			<tr>
     <td  colspan="3">制表:</td>
     <td  colspan="3">审核:</td>
     <td></td>
     <td  colspan="3">负责人:</td>
   </tr>
+		<%} %>
+		
+		
   </table>
   
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printCount();"></td>
-            <td class=button align="center"><input type=button class=button name=button2 value=" 返回 " onClick="history.go(-1);">        </td> 
-        </tr> 
-    </table>
+	
 
 </form>
 </body>

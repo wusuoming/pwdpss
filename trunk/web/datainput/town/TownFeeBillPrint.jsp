@@ -80,12 +80,15 @@ function printCount(){
 	 var   strURL;     
 	 var tt = fm.statMonth.value;
    strURL="<%=request.getContextPath()%>/townfeeprint.do?statMonth="+tt;    
-
+    alert(strURL);
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+}
+function doPrint(){
+	window.print();
 }
 </script>
 </head>
-<body class=interface>
+<body onload="javascript:doPrint();window.close()">
 <html:errors />
 <%Collection billList = (Collection)request.getAttribute("billList");
 String statMonth = (String)request.getAttribute("statMonth");
@@ -144,11 +147,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
     <td></td>
     <td  colspan="3">负责人:</td>
   </tr>
-  </table>
-  <table width="100%">
-  <tr >
-        <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printCount();"></td>
-</tr>
+  
 </table>
 
 	

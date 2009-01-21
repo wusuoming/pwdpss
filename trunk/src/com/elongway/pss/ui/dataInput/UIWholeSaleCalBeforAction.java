@@ -37,9 +37,9 @@ public class UIWholeSaleCalBeforAction extends Action {
 		condition.append(" 1=1 ").append(tempCondition).append(" and ").append(" statmonth = '").append(statMonth).append("' and ").append("upcompany='").append(comcode).append("'");
 		calList = blLwWholeSaleSummaryFacade.findByConditions(condition.toString());			
 		
-		if(calList.size()>0){
-			throw new UserException(-6, -712, this.getClass().getName(),"该局已经算过费");
-		}
+//		if(calList.size()>0){
+//			throw new UserException(-6, -712, this.getClass().getName(),"该局已经算过费");
+//		}
 		httpServletRequest.setAttribute("allPointer", allPointer);
 		return actionMapping.findForward("pathWholeSaleCal");
 	}
