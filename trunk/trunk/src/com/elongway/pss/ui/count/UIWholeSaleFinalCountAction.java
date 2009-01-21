@@ -44,11 +44,11 @@ public class UIWholeSaleFinalCountAction extends Action {
 			double count35Fee=0;
 			double sum10Fee=0;
 			double sum35Fee=0;
-			
+			double sumwholesalefa=0;
 			double Rate10Fee=0;
 			double Rate35Fee=0;
-			long sum10Power=0;
-			long sum35power=0;
+			double sum10Power=0;
+			double sum35power=0;
 			long usum10power=0;
 			long usum35power=0;
 			double sumAllFee=0;
@@ -95,7 +95,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 			double unsumPower=0	;
 			double tax=0;
 			double differenceQuantity=0;
-			double differencePrice=0;
+			double differencePrice=0.2;
 			double differenceQuantityFee=0;
 			Iterator it10=kv10.iterator();
 			while(it10.hasNext()){
@@ -114,6 +114,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				}
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("1")){
 					industryPower10+=lwWholeSaleSummaryDto.getElectricQuantity();
+					 sumwholesalefa+=lwWholeSaleSummaryDto.getElectricQuantity();
 				}	
 				agriculturalFee10+=lwWholeSaleSummaryDto.getFarmUseFee();
 				produceFee10+=lwWholeSaleSummaryDto.getProductFee();
@@ -124,6 +125,8 @@ public class UIWholeSaleFinalCountAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
 			count10Fee=Math.round(count10Fee*100)/100;
@@ -145,6 +148,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				}
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("1")){
 					industryPower35+=lwWholeSaleSummaryDto.getPointerQuantity();
+					sumwholesalefa+=lwWholeSaleSummaryDto.getElectricQuantity();
 				}	
 				agriculturalFee35+=lwWholeSaleSummaryDto.getFarmUseFee();
 				produceFee35+=lwWholeSaleSummaryDto.getProductFee();
@@ -154,7 +158,9 @@ public class UIWholeSaleFinalCountAction extends Action {
 				businessFee35+=lwWholeSaleSummaryDto.getBizFee();
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
-				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();	
+				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
 			PowerFeeCal powerFeeCal1=new PowerFeeCal();
@@ -176,7 +182,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 			double industryPrice10=lwWholeSalePurePriceDto10.getIndustryPrice();
 			double businessPrice10=lwWholeSalePurePriceDto10.getBusinessPrice();
 		
-			sum10Fee=count10Fee+Rate10Fee;
+			
 			
 			
 			
@@ -212,13 +218,13 @@ public class UIWholeSaleFinalCountAction extends Action {
 			count35Fee=agriculturalFee35+produceFee35+residentFee35+indecisiveFee35+industryFee35+businessFee35;
 			//Rate35Fee=count35Fee*allPowerRateFee35;
 			differenceQuantityFee=differenceQuantity*differencePrice;
-			sumAllFee=agriculturalFee35+produceFee35+residentFee35+indecisiveFee35+industryFee35+businessFee35+agriculturalFee10+produceFee10+residentFee10+indecisiveFee10+industryFee10+businessFee10+powerRateFee+sanxiaFee+nongwanghaidaiFee+kezaishengpepoleFee+kezaishengnotpepoleFee+kuquFee;
+			sumAllFee+=sanxiaFee+nongwanghaidaiFee+kezaishengpepoleFee+kezaishengnotpepoleFee+kuquFee+differenceQuantityFee;
 			tax=sumAllFee/1.17*0.17;
 			
 			unsumPower=usum10power+usum35power;
 			BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
 			Collection all=blLwWholeSaleIndicatorFacade.findByConditions(conditionsAll);
-			sum35Fee=count35Fee+Rate35Fee;
+			
 			httpServletRequest.setAttribute("all", all);
 			httpServletRequest.setAttribute("company", company);
 			httpServletRequest.setAttribute("statMonth", serchDate);
@@ -228,6 +234,9 @@ public class UIWholeSaleFinalCountAction extends Action {
 			httpServletRequest.setAttribute("producePower10", df.format(producePower10));
 			httpServletRequest.setAttribute("residentPower10", df.format(residentPower10));
 			httpServletRequest.setAttribute("indecisivePower10", df.format(indecisivePower10));
+			
+			
+			httpServletRequest.setAttribute("sumwholesalefa", df.format(sumwholesalefa));
 			httpServletRequest.setAttribute("industryPower10", df.format(industryPower10));
 			httpServletRequest.setAttribute("agriculturalFee10", df.format(agriculturalFee10));
 			httpServletRequest.setAttribute("produceFee10", df.format(produceFee10));
@@ -266,6 +275,14 @@ public class UIWholeSaleFinalCountAction extends Action {
 			httpServletRequest.setAttribute("kuquFee", df.format(kuquFee));
 			httpServletRequest.setAttribute("sumPower", df.format(sumPower));
 			httpServletRequest.setAttribute("unsumPower", df.format(unsumPower));
+			
+			
+			httpServletRequest.setAttribute("sum10Power", df.format(sum10Power));
+			httpServletRequest.setAttribute("sum35power", df.format(sum35power));
+			httpServletRequest.setAttribute("sum10Fee", df.format(sum10Fee));
+			httpServletRequest.setAttribute("sum35Fee", df.format(sum35Fee));
+			
+			
 			
 			httpServletRequest.setAttribute("agriculturalPrice10", String.valueOf(agriculturalPrice10));
 			httpServletRequest.setAttribute("producePrice10", String.valueOf(producePrice10));
