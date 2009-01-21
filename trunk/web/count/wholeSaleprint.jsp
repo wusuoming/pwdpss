@@ -110,6 +110,11 @@
 		String differencePrice=(String)request.getAttribute("differencePrice");
 		String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee");
 		
+		String sum10Fee = (String) request.getAttribute("sum10Fee");
+						String sum35Fee = (String) request.getAttribute("sum35Fee");
+						String sum10Power = (String) request.getAttribute("sum10Power");
+						String sum35power = (String) request.getAttribute("sum35power");
+		
 %>
 		   <table style='width:80%' border="1" cellspacing="0">
   <tr class=listtitle align="center">
@@ -528,7 +533,43 @@
 				</tr>
 
     
-    
+    			<tr>
+
+					
+					<td nowrap colspan="2">
+						<span class="title">зм10KV</span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=sum10Power%></span>
+					</td>
+					<td nowrap>
+						<span class="title">&nbsp</span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=sum10Fee%></span>
+					</td>
+					<td nowrap colspan="2">
+					
+					
+					
+					
+					
+					
+						<span class="title">зм35KV</span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=sum35power%></span>
+					</td>
+					<td nowrap>
+						<span class="title">&nbsp</span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=sum35Fee%></span>
+					</td>
+				</tr>
+				
+
+    			
     
     
     
