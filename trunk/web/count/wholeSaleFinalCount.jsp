@@ -169,6 +169,20 @@ BODY {
 						.getAttribute("differencePrice");
 				String differenceQuantityFee = (String) request
 						.getAttribute("differenceQuantityFee");
+						
+						
+						
+						
+						
+						String sum10Fee = (String) request.getAttribute("sum10Fee");
+						String sum35Fee = (String) request.getAttribute("sum35Fee");
+						String sum10Power = (String) request.getAttribute("sum10Power");
+						String sum35power = (String) request.getAttribute("sum35power");
+						String sumwholesalefa = (String) request.getAttribute("sumwholesalefa");
+						
+						
+						
+						
 			%>
 			<table class=common width="500%" cellspacing="1" cellpadding="5">
 				<tr class=listtitle align="center">
@@ -812,6 +826,42 @@ BODY {
 				</tr>
 
 
+				<tr>
+
+					
+					<td nowrap colspan="2">
+						<span class="title">总10KV</span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=sum10Power%></span>
+					</td>
+					<td nowrap>
+						<span class="title">&nbsp</span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=sum10Fee%></span>
+					</td>
+					<td nowrap colspan="2">
+					
+					
+					
+					
+					
+					
+						<span class="title">总35KV</span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=sum35power%></span>
+					</td>
+					<td nowrap>
+						<span class="title">&nbsp</span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=sum35Fee%></span>
+					</td>
+				</tr>
+				
+
 
 
 
@@ -933,7 +983,7 @@ BODY {
 						<span class="title">资金合计</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value="<%=sumAllFee%>"
+						<span class="title"><input name="before" value="<%=sumAllFee%>" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 
@@ -942,27 +992,27 @@ BODY {
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends1" value=""
+						<span class="title"><input name="exends1" value="海明炉"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends2" value=""
+						<span class="title"><input name="exends2" value="0" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends3" value=""
+						<span class="title"><input name="exends3" value="多边电费"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends4" value=""
+						<span class="title"><input name="exends4" value="0" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends5" value=""
+						<span class="title"><input name="exends5" value="广播费"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends6" value=""
+						<span class="title"><input name="exends6" value="0" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 
@@ -970,7 +1020,7 @@ BODY {
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends7" value=""
+						<span class="title"><input name="exends7" value="总合计"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
@@ -1036,6 +1086,11 @@ BODY {
 		</form>
 	</body>
 	<script type="text/javascript">
+	function  sum(){
+	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value);
+	fm.exends8.value=last;
+	
+	}
 
   function   Printme()   
     
