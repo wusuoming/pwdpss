@@ -350,7 +350,7 @@ public class UIPathWholeSaleCalAction extends Action {
 		double sum35Fee=0;
 		double Rate10Fee=0;
 		double Rate35Fee=0;
-
+		double sumwholesalefa=0;
 		long sum10Power=0;
 		long sum35power=0;
 		long usum10power=0;
@@ -366,6 +366,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				
 				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
 			}
+			
 			
 			
 		}
