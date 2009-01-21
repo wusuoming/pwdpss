@@ -29,13 +29,12 @@ import com.elongway.pss.util.PowerFeeCal;
 
 
 /**
- * 直供乡计算电费 Action <br>
- * 计算、保存
+ * 直供乡按乡统计打印
  * 
  * @author 乔有良 add
  * @version 1.0 2008-10-16
  */
-public class UIPostTownBillAction extends Action {
+public class UIPostTownBillPrintAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
 		
 
@@ -127,7 +126,7 @@ public class UIPostTownBillAction extends Action {
 			return buffer.toString();
 		}
 		public static void main(String []args){
-			UIPostTownBillAction ui = new UIPostTownBillAction();
+			UIPostTownBillPrintAction ui = new UIPostTownBillPrintAction();
 			Collection a = new ArrayList();
 			LwPowerUserDto lwPowerUserDto1 = new LwPowerUserDto();
 			LwPowerUserDto lwPowerUserDto2 = new LwPowerUserDto();

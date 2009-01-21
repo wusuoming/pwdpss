@@ -286,6 +286,15 @@
 			<forward name="Success"
 				path="/datainput/town/QueryTownFeeInput.jsp" />
 		</action>
+		<!-- 直供乡按乡统计 打印 -->
+		<action
+			type="com.elongway.pss.ui.dataInput.UIPostTownBillPrintAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/townfeeprint">
+
+			<forward name="Success"
+				path="/datainput/town/TownFeeBillPrint.jsp" />
+		</action>
 		
 		<!-- 直供乡按局统计查询 -->
 		<action
@@ -297,6 +306,19 @@
 			<forward name="statSuccess"
 				path="/datainput/town/TownFeeStat.jsp" />
 		</action>
+		
+		<!-- 直供乡按局统计 打印-->
+		<action
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatPrintAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownStatPrint">
+			
+			<forward name="statSuccess"
+				path="/datainput/town/TownFeeStatPrint.jsp" />
+		</action>
+		
+		
+		
 		<action name="uiGetAmmeterForm"
 			type="com.elongway.pss.ui.control.common.pub.UIQueryCodeAction"
 			validate="true" input="/common/pub/Title.jsp" scope="request"
