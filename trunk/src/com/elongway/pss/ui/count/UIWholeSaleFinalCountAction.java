@@ -125,7 +125,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -159,7 +159,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -194,7 +194,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 			double industryPrice35=lwWholeSalePurePriceDto35.getIndustryPrice();
 			double businessPrice35=lwWholeSalePurePriceDto35.getBusinessPrice();
 			if(company.equals("gy")||company.equals("dm")){
-				sanxiaPower=producePower10+residentPower10+indecisivePower10+industryPower10+businessPower10+producePower35+residentPower35+indecisivePower35+industryPower35+businessPower35;
+				sanxiaPower=sumPower-agriculturalPower35-agriculturalPower10;
 				sanxiaFee=sanxiaPower*0.004*0.88;
 				
 			}else{
@@ -211,9 +211,13 @@ public class UIWholeSaleFinalCountAction extends Action {
 			}
 			kezaishengpepolePower=residentPower10+residentPower35;
 			kezaishengpepoleFee=kezaishengpepolePower*0.001*0.88;
-			kezaishengnotpepolePower=indecisivePower10+businessPower10+industryPower10+indecisivePower35+businessPower35+industryPower35;
+			//kezaishengnotpepolePower=indecisivePower10+businessPower10+industryPower10+indecisivePower35+businessPower35+industryPower35;
+			
+			kezaishengnotpepolePower=sumPower-agriculturalPower35-residentPower35-producePower35-agriculturalPower10-residentPower10-producePower10;
 			kezaishengnotpepoleFee=kezaishengnotpepolePower*0.002*0.88;
-			kuquPower=residentPower10+indecisivePower10+industryPower10+businessPower10+residentPower35+indecisivePower35+industryPower35+businessPower35;
+			//kuquPower=residentPower10+indecisivePower10+industryPower10+businessPower10+residentPower35+indecisivePower35+industryPower35+businessPower35;
+			kuquPower=sumPower-agriculturalPower35-producePower35-agriculturalPower10-producePower10;
+			
 			kuquFee=kuquPower*0.0031*0.88;
 			count35Fee=agriculturalFee35+produceFee35+residentFee35+indecisiveFee35+industryFee35+businessFee35;
 			//Rate35Fee=count35Fee*allPowerRateFee35;
@@ -230,33 +234,33 @@ public class UIWholeSaleFinalCountAction extends Action {
 			httpServletRequest.setAttribute("statMonth", serchDate);
 			httpServletRequest.setAttribute("sumAllFee", df.format(sumAllFee));
 			httpServletRequest.setAttribute("tax", df.format(tax));
-			httpServletRequest.setAttribute("agriculturalPower10", df.format(agriculturalPower10));
-			httpServletRequest.setAttribute("producePower10", df.format(producePower10));
-			httpServletRequest.setAttribute("residentPower10", df.format(residentPower10));
-			httpServletRequest.setAttribute("indecisivePower10", df.format(indecisivePower10));
+			httpServletRequest.setAttribute("agriculturalPower10", df.format(Math.round(agriculturalPower10)));
+			httpServletRequest.setAttribute("producePower10", df.format(Math.round(producePower10)));
+			httpServletRequest.setAttribute("residentPower10", df.format(Math.round(residentPower10)));
+			httpServletRequest.setAttribute("indecisivePower10", df.format(Math.round(indecisivePower10)));
 			
 			
 			httpServletRequest.setAttribute("sumwholesalefa", df.format(sumwholesalefa));
-			httpServletRequest.setAttribute("industryPower10", df.format(industryPower10));
+			httpServletRequest.setAttribute("industryPower10", df.format(Math.round(industryPower10)));
 			httpServletRequest.setAttribute("agriculturalFee10", df.format(agriculturalFee10));
 			httpServletRequest.setAttribute("produceFee10", df.format(produceFee10));
 			httpServletRequest.setAttribute("residentFee10", df.format(residentFee10));
 			httpServletRequest.setAttribute("indecisiveFee10", df.format(indecisiveFee10));
 			httpServletRequest.setAttribute("industryFee10", df.format(industryFee10));
 			httpServletRequest.setAttribute("businessFee10", df.format(businessFee10));
-			httpServletRequest.setAttribute("businessPower10", df.format(businessPower10));
-			httpServletRequest.setAttribute("agriculturalPower35", df.format(agriculturalPower35));
-			httpServletRequest.setAttribute("producePower35", df.format(producePower35));
-			httpServletRequest.setAttribute("residentPower35", df.format(residentPower35));
-			httpServletRequest.setAttribute("indecisivePower35", df.format(indecisivePower35));
-			httpServletRequest.setAttribute("industryPower35", df.format(industryPower35));
+			httpServletRequest.setAttribute("businessPower10", df.format(Math.round(businessPower10)));
+			httpServletRequest.setAttribute("agriculturalPower35", df.format(Math.round(agriculturalPower35)));
+			httpServletRequest.setAttribute("producePower35", df.format(Math.round(producePower35)));
+			httpServletRequest.setAttribute("residentPower35", df.format(Math.round(residentPower35)));
+			httpServletRequest.setAttribute("indecisivePower35", df.format(Math.round(indecisivePower35)));
+			httpServletRequest.setAttribute("industryPower35", df.format(Math.round(industryPower35)));
 			httpServletRequest.setAttribute("agriculturalFee35", df.format(agriculturalFee35));
 			httpServletRequest.setAttribute("produceFee35", df.format(produceFee35));
 			httpServletRequest.setAttribute("residentFee35", df.format(residentFee35));
 			httpServletRequest.setAttribute("indecisiveFee35", df.format(indecisiveFee35));
 			httpServletRequest.setAttribute("industryFee35", df.format(industryFee35));
 			httpServletRequest.setAttribute("businessFee35", df.format(businessFee35));
-			httpServletRequest.setAttribute("businessPower35", df.format(businessPower35));
+			httpServletRequest.setAttribute("businessPower35", df.format(Math.round(businessPower35)));
 			httpServletRequest.setAttribute("lineLoss", df.format(lineLoss));
 			httpServletRequest.setAttribute("trassLoss", df.format(trassLoss));
 			httpServletRequest.setAttribute("sumFee", df.format(sumFee));
@@ -264,21 +268,21 @@ public class UIWholeSaleFinalCountAction extends Action {
 			httpServletRequest.setAttribute("powerRateFee", df.format(powerRateFee));
 			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
 			
-			httpServletRequest.setAttribute("nongwanghaidaiPower", df.format(nongwanghaidaiPower));
-			httpServletRequest.setAttribute("kezaishengpepolePower", df.format(kezaishengpepolePower));
-			httpServletRequest.setAttribute("kezaishengnotpepolePower", df.format(kezaishengnotpepolePower));
-			httpServletRequest.setAttribute("kuquPower", df.format(kuquPower));
+			httpServletRequest.setAttribute("nongwanghaidaiPower", df.format(Math.round(nongwanghaidaiPower)));
+			httpServletRequest.setAttribute("kezaishengpepolePower", df.format(Math.round(kezaishengpepolePower)));
+			httpServletRequest.setAttribute("kezaishengnotpepolePower", df.format(Math.round(kezaishengnotpepolePower)));
+			httpServletRequest.setAttribute("kuquPower", df.format(Math.round(kuquPower)));
 			httpServletRequest.setAttribute("sanxiaFee", df.format(sanxiaFee));
 			httpServletRequest.setAttribute("nongwanghaidaiFee", df.format(nongwanghaidaiFee));
 			httpServletRequest.setAttribute("kezaishengpepoleFee", df.format(kezaishengpepoleFee));
 			httpServletRequest.setAttribute("kezaishengnotpepoleFee", df.format(kezaishengnotpepoleFee));
 			httpServletRequest.setAttribute("kuquFee", df.format(kuquFee));
-			httpServletRequest.setAttribute("sumPower", df.format(sumPower));
-			httpServletRequest.setAttribute("unsumPower", df.format(unsumPower));
+			httpServletRequest.setAttribute("sumPower", df.format(Math.round(sumPower)));
+			httpServletRequest.setAttribute("unsumPower", df.format(Math.round(unsumPower)));
 			
 			
-			httpServletRequest.setAttribute("sum10Power", df.format(sum10Power));
-			httpServletRequest.setAttribute("sum35power", df.format(sum35power));
+			httpServletRequest.setAttribute("sum10Power", df.format(Math.round(sum10Power)));
+			httpServletRequest.setAttribute("sum35power", df.format(Math.round(sum35power)));
 			httpServletRequest.setAttribute("sum10Fee", df.format(sum10Fee));
 			httpServletRequest.setAttribute("sum35Fee", df.format(sum35Fee));
 			

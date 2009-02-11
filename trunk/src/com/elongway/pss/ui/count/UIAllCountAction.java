@@ -12,8 +12,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
+import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 
@@ -81,10 +83,6 @@ public class UIAllCountAction extends Action {
 		double sumalljijintax=0;
 		
 		
-		
-		
-		
-		DecimalFormat df = new DecimalFormat("###0.00");
 		String conditions=" 1=1 and statmonth ='"+statmonth+"'";
 		String conditionwgd=" 1=1 and statmonth ='"+statmonth+"' and upcompany='gy' or upcompany='dm'";
 		String conditionwtj=" 1=1 and statmonth ='"+statmonth+"' and upcompany='ty' or upcompany='jy'";
@@ -99,68 +97,34 @@ public class UIAllCountAction extends Action {
 			summfdianjinall+=lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall+=lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall+=lwCorporationSummaryDto.getSurcharge();
-			
-			
-			
-			
-		}
-		BLLwWholeSaleSummaryFacade  blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
-		Collection colwgd=blLwWholeSaleSummaryFacade.findByConditions(conditionwgd);
-		LwWholeSaleSummaryDto  lwWholeSaleSummaryDtogd=new LwWholeSaleSummaryDto();
-		Iterator itwgd=colwgd.iterator();
-		while(itwgd.hasNext()){
-			lwWholeSaleSummaryDtogd=(LwWholeSaleSummaryDto)itwgd.next();
-			
-			 pepolepowergd+=lwWholeSaleSummaryDtogd.getDenizenQuantity();
-			 notpepolepowergd+=lwWholeSaleSummaryDtogd.getUnDenizenQuantity();
-			 bizpowergd+=lwWholeSaleSummaryDtogd.getBizQuantity();
-			 productpowergd+=lwWholeSaleSummaryDtogd.getProductQuantity();
-			 if(lwWholeSaleSummaryDtogd.getWholesaletype().equals("0")){
-			 industrypowergd+=lwWholeSaleSummaryDtogd.getIndustryQuantity();
-			 }
-			 if(lwWholeSaleSummaryDtogd.getWholesaletype().equals("1")){
-				 industrypowergd+=lwWholeSaleSummaryDtogd.getElectricQuantity();
-			 }
-			 farmpowergd+=lwWholeSaleSummaryDtogd.getFarmUseQuantity();
-			 sumwpower+=lwWholeSaleSummaryDtogd.getElectricQuantity();
-			 sumwdianfee+=lwWholeSaleSummaryDtogd.getSumFee();			 
-			
+			sumffee+=lwCorporationSummaryDto.getSumFee();
+		
 		}
 		
 		
-		Collection colwtj=blLwWholeSaleSummaryFacade.findByConditions(conditionwtj);
-		LwWholeSaleSummaryDto  lwWholeSaleSummaryDtotj=new LwWholeSaleSummaryDto();
-		Iterator itwtj=colwtj.iterator();
-		while(itwtj.hasNext()){
-			lwWholeSaleSummaryDtotj=(LwWholeSaleSummaryDto)itwtj.next();
-			
-			 pepolepowerjt+=lwWholeSaleSummaryDtotj.getDenizenQuantity();
-			 notpepolepowerjt+=lwWholeSaleSummaryDtotj.getUnDenizenQuantity();
-			 bizpowerjt+=lwWholeSaleSummaryDtotj.getBizQuantity();
-			 productpowerjt+=lwWholeSaleSummaryDtotj.getProductQuantity();
-			 if(lwWholeSaleSummaryDtotj.getWholesaletype().equals("0")){
-			 industrypowerjt+=lwWholeSaleSummaryDtotj.getIndustryQuantity();
-			 }
-			 if(lwWholeSaleSummaryDtotj.getWholesaletype().equals("1")){
-				 industrypowerjt+=lwWholeSaleSummaryDtotj.getElectricQuantity();
-			 }
-			 farmpowerjt+=lwWholeSaleSummaryDtotj.getFarmUseQuantity();
-			 sumwpower+=lwWholeSaleSummaryDtotj.getElectricQuantity();
-			 sumwdianfee+=lwWholeSaleSummaryDtotj.getSumFee();
-			
-		}
-		sumwsanxiaall=(pepolepowergd+notpepolepowergd+bizpowergd+productpowergd+industrypowergd+pepolepowerjt+notpepolepowerjt+bizpowerjt+productpowerjt+industrypowerjt+farmpowerjt)*0.004*0.88;
-		summwdianjinall=(pepolepowerjt+notpepolepowerjt+bizpowerjt+productpowerjt+industrypowerjt+pepolepowergd+notpepolepowergd+bizpowergd+productpowergd+industrypowergd)*0.02*0.88;
-		sumwjijinall=(pepolepowerjt+pepolepowergd)*0.001*0.88+(notpepolepowerjt+bizpowerjt+industrypowerjt+notpepolepowergd+bizpowergd+industrypowergd)*0.002*0.88+(pepolepowerjt+notpepolepowerjt+bizpowerjt+industrypowerjt+pepolepowergd+notpepolepowergd+bizpowergd+industrypowergd)*0.0031*0.88;
-		sumwc=sumwdianfee/1.17;
-		sumwtax=sumwdianfee/1.17*0.17;
-		sumwdianjintax=summwdianjinall/1.17*0.17;
-		sumwsanxiatax=sumwsanxiaall/1.17*0.17;
-		sumwjijintax=sumwjijinall/1.17*0.17;
 		
-		summwdianjin=summwdianjinall/1.17;
-		sumwsanxia=sumwsanxiaall/1.17;
-		sumwjijin=sumwjijinall/1.17;
+		DecimalFormat df = new DecimalFormat("###0.00");
+		
+		
+		
+		
+		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
+		LwAllWholeFeeDto lwAllWholeFeeDtogy=blLwAllWholeFeeFacade.findByPrimaryKey("gy", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtodm=blLwAllWholeFeeFacade.findByPrimaryKey("dm", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtoty=blLwAllWholeFeeFacade.findByPrimaryKey("ty", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtojy=blLwAllWholeFeeFacade.findByPrimaryKey("jy", statmonth);
+		
+		 sumwc=Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei());
+		 sumwfee=Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
+		 sumwpower=Double.parseDouble(lwAllWholeFeeDtogy.getPower1())+Double.parseDouble(lwAllWholeFeeDtoty.getPower1())+Double.parseDouble(lwAllWholeFeeDtodm.getPower1())+Double.parseDouble(lwAllWholeFeeDtojy.getPower1());
+		 sumwtax=Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax());
+		 summwdianjin=Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjin());
+		 sumwdianjintax=Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
+		 sumwsanxia=Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxia());
+		 sumwsanxiatax=Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
+		 sumwjijin=Double.parseDouble(lwAllWholeFeeDtogy.getJijin())+Double.parseDouble(lwAllWholeFeeDtoty.getJijin())+Double.parseDouble(lwAllWholeFeeDtodm.getJijin())+Double.parseDouble(lwAllWholeFeeDtojy.getJijin());
+		 sumwjijintax=Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
+		 sumwdianfee=((Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())))*1.17;
 		sumfc=sumfdianfee/1.17;
 		sumftax=sumfdianfee/1.17*0.17;
 		sumfdianjintax=summfdianjinall/1.17*0.17;
@@ -170,8 +134,8 @@ public class UIAllCountAction extends Action {
 		summfdianjin=summfdianjinall/1.17;
 		sumfsanxia=sumfsanxiaall/1.17;
 		sumfjijin=sumfjijinall/1.17;
-		sumffee=sumfdianfee+summfdianjinall+sumfsanxiaall+sumfjijinall;
-		sumwfee=sumwdianfee+summwdianjinall+sumwsanxiaall+sumwjijinall;
+		
+		
 		sumallfee=sumfdianfee+sumwdianfee;
 		sumallpower=sumfpower+sumwpower;
 		sumallc=sumwc+sumfc;

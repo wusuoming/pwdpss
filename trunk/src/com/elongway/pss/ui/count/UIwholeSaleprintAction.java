@@ -12,9 +12,12 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.elongway.pss.bl.action.domain.BLLwAllWholeFeeAction;
+import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSalePurePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
+import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwWholeSalePurePriceDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.PowerFeeCal;
@@ -25,6 +28,8 @@ public class UIwholeSaleprintAction extends Action {
 		String LineCode=httpServletRequest.getParameter("LineCode");
 		String wholesaleStyle=httpServletRequest.getParameter("wholesaleStyle"); 
 		String company=httpServletRequest.getParameter("company");
+		
+		String serchDate=inputDate.substring(0, 7);
 		String exends1 = httpServletRequest.getParameter("exends1");
 		String exends2 = httpServletRequest.getParameter("exends2");
 		String exends3 = httpServletRequest.getParameter("exends3");
@@ -43,6 +48,47 @@ public class UIwholeSaleprintAction extends Action {
 		String exends16 = httpServletRequest.getParameter("exends16");
 		String exends17 = httpServletRequest.getParameter("exends17");
 		String exends18 = httpServletRequest.getParameter("exends18");
+		DecimalFormat df = new DecimalFormat("###0.00");
+		
+		String zongdianliang = httpServletRequest.getParameter("zongdianliang");
+		String sum10fee = httpServletRequest.getParameter("sum10fee");
+		String sum35fee = httpServletRequest.getParameter("sum35fee");
+		String sanxia = httpServletRequest.getParameter("sanxia");
+		String dianjin = httpServletRequest.getParameter("dianjin");
+		String jijin1 = httpServletRequest.getParameter("jijin1");
+		String jijin2 = httpServletRequest.getParameter("jijin2");
+		String jijin3 = httpServletRequest.getParameter("jijin3");
+		
+		
+		LwAllWholeFeeDto lwAllWholeFeeDto=new LwAllWholeFeeDto();
+		lwAllWholeFeeDto.setCompany(company);
+		lwAllWholeFeeDto.setDianfei(df.format(Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee)));
+		lwAllWholeFeeDto.setDianfeitax(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17*0.17));
+		lwAllWholeFeeDto.setJijin(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17));
+		lwAllWholeFeeDto.setFujia1(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17*0.17));
+		lwAllWholeFeeDto.setDianjin(df.format(Double.parseDouble(dianjin)/1.17));
+		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)/1.17*0.17));
+		lwAllWholeFeeDto.setPower1(zongdianliang);
+		
+		lwAllWholeFeeDto.setSumfee(exends8);
+		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
+		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)/1.17*0.17));
+		lwAllWholeFeeDto.setHaiminglu(exends2);
+		lwAllWholeFeeDto.setDuobian(exends4);
+		lwAllWholeFeeDto.setFujia2(exends6);
+		lwAllWholeFeeDto.setInputdate(serchDate);
+		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
+		blLwAllWholeFeeFacade.delete(company, serchDate);
+		blLwAllWholeFeeFacade.insert(lwAllWholeFeeDto);
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		httpServletRequest.setAttribute("exends1", exends1);
 		httpServletRequest.setAttribute("exends2", exends2);
 		httpServletRequest.setAttribute("exends3", exends3);
@@ -63,8 +109,8 @@ public class UIwholeSaleprintAction extends Action {
 		httpServletRequest.setAttribute("exends18", exends18);
 		
 		String condition=" 1=1";
-		DecimalFormat df = new DecimalFormat("###0.00");
-			String serchDate=inputDate.substring(0, 7);
+		
+			
 			condition+=" and StatMonth like '"+serchDate+"%'";
 		
 			String conditions10=" upcompany='"+company+"'"+" and KV=10 and StatMonth='"+serchDate+"'";
@@ -131,25 +177,27 @@ public class UIwholeSaleprintAction extends Action {
 			double differencePrice=0.2;
 			double differenceQuantityFee=0;
 			Iterator it10=kv10.iterator();
+		
 			while(it10.hasNext()){
 				LwWholeSaleSummaryDto lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it10.next();
-				sum10Power+=lwWholeSaleSummaryDto.getPointerQuantity() ;
+				sum10Power+=lwWholeSaleSummaryDto.getElectricQuantity() ;
 				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
-				agriculturalPower10+=lwWholeSaleSummaryDto.getFarmUseQuantity();
+				agriculturalPower10+=Math.round(lwWholeSaleSummaryDto.getFarmUseQuantity());
 				producePower10+=lwWholeSaleSummaryDto.getProductQuantity();
+				businessPower10+=lwWholeSaleSummaryDto.getBizQuantity();
 				residentPower10+=lwWholeSaleSummaryDto.getDenizenQuantity();
 				indecisivePower10+=lwWholeSaleSummaryDto.getUnDenizenQuantity();
 				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
-				businessPower10+=lwWholeSaleSummaryDto.getBizQuantity();
 				differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("0")){
 					industryPower10+=lwWholeSaleSummaryDto.getIndustryQuantity();
 				}
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("1")){
-					industryPower10+=lwWholeSaleSummaryDto.getPointerQuantity();
+					industryPower10+=lwWholeSaleSummaryDto.getElectricQuantity();
+					 
 				}	
 				agriculturalFee10+=lwWholeSaleSummaryDto.getFarmUseFee();
-				produceFee10+=lwWholeSaleSummaryDto.getPowerFee();
+				produceFee10+=lwWholeSaleSummaryDto.getProductFee();
 				residentFee10+=lwWholeSaleSummaryDto.getDenizenFee();
 				indecisiveFee10+=lwWholeSaleSummaryDto.getUnDenizenFee();
 				industryFee10+=lwWholeSaleSummaryDto.getIndustryFee();
@@ -157,7 +205,8 @@ public class UIwholeSaleprintAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
+				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
 			count10Fee=Math.round(count10Fee*100)/100;
@@ -165,30 +214,33 @@ public class UIwholeSaleprintAction extends Action {
 			Iterator it35=kv35.iterator();
 			while(it35.hasNext()){
 				LwWholeSaleSummaryDto lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it35.next();
-				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
-				sum35power+=lwWholeSaleSummaryDto.getPointerQuantity();
+				
+				sum35power+=lwWholeSaleSummaryDto.getElectricQuantity()	;
 				usum35power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
-				agriculturalPower35+=lwWholeSaleSummaryDto.getFarmUseQuantity();
+				agriculturalPower35+=Math.round(lwWholeSaleSummaryDto.getFarmUseQuantity());
 				producePower35+=lwWholeSaleSummaryDto.getProductQuantity();
 				residentPower35+=lwWholeSaleSummaryDto.getDenizenQuantity();
 				indecisivePower35+=lwWholeSaleSummaryDto.getUnDenizenQuantity();
-				differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
 				businessPower35+=lwWholeSaleSummaryDto.getBizQuantity();
+				differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("0")){
 					industryPower35+=lwWholeSaleSummaryDto.getIndustryQuantity();
 				}
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("1")){
 					industryPower35+=lwWholeSaleSummaryDto.getPointerQuantity();
+					
 				}	
 				agriculturalFee35+=lwWholeSaleSummaryDto.getFarmUseFee();
-				produceFee35+=lwWholeSaleSummaryDto.getPowerFee();
+				produceFee35+=lwWholeSaleSummaryDto.getProductFee();
 				residentFee35+=lwWholeSaleSummaryDto.getDenizenFee();
 				indecisiveFee35+=lwWholeSaleSummaryDto.getUnDenizenFee();
 				industryFee35+=lwWholeSaleSummaryDto.getIndustryFee();
 				businessFee35+=lwWholeSaleSummaryDto.getBizFee();
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
-				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();	
+				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
+				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
 			PowerFeeCal powerFeeCal1=new PowerFeeCal();
@@ -207,81 +259,83 @@ public class UIwholeSaleprintAction extends Action {
 			double producePrice10=lwWholeSalePurePriceDto10.getProducePrice();
 			double residentPrice10=lwWholeSalePurePriceDto10.getPeoplePrice();
 			double indecisivePrice10=lwWholeSalePurePriceDto10.getNotPeoplePrice();
-			double industryPrice10=lwWholeSalePurePriceDto10.getBusinessPrice();
+			double industryPrice10=lwWholeSalePurePriceDto10.getIndustryPrice();
 			double businessPrice10=lwWholeSalePurePriceDto10.getBusinessPrice();
 		
 			
 			
 			
 			
-			
+			sumPower=sum10Power+sum35power;
 			double agriculturalPrice35=lwWholeSalePurePriceDto35.getFarmPrice();
 			double producePrice35=lwWholeSalePurePriceDto35.getProducePrice();
 			double residentPrice35=lwWholeSalePurePriceDto35.getPeoplePrice();
 			double indecisivePrice35=lwWholeSalePurePriceDto35.getNotPeoplePrice();
-			double industryPrice35=lwWholeSalePurePriceDto35.getBusinessPrice();
+			double industryPrice35=lwWholeSalePurePriceDto35.getIndustryPrice();
 			double businessPrice35=lwWholeSalePurePriceDto35.getBusinessPrice();
 			if(company.equals("gy")||company.equals("dm")){
-				sanxiaPower=producePower10+residentPower10+indecisivePower10+industryPower10+businessPower10+producePower35+residentPower35+indecisivePower35+industryPower35+businessPower35;
+				sanxiaPower=sumPower-agriculturalPower35-agriculturalPower10;
 				sanxiaFee=sanxiaPower*0.004*0.88;
 				
 			}else{
-				sanxiaPower=producePower10+residentPower10+indecisivePower10+industryPower10+businessPower10+producePower35+residentPower35+indecisivePower35+industryPower35+businessPower35+agriculturalPower35+agriculturalPower10;
+				sanxiaPower=sumPower;
 				sanxiaFee=sanxiaPower*0.004*0.88;
 			}
 			if(company.equals("gy")||company.equals("dm")){
-				nongwanghaidaiPower=producePower10+residentPower10+indecisivePower10+industryPower10+businessPower10+producePower35+residentPower35+indecisivePower35+industryPower35+businessPower35;
-				nongwanghaidaiFee=sanxiaPower*0.02*0.88;
+				nongwanghaidaiPower=sumPower-agriculturalPower35-agriculturalPower10;
+				nongwanghaidaiFee=nongwanghaidaiPower*0.02*0.88;
 				
 			}else{
-				nongwanghaidaiPower=producePower10+residentPower10+indecisivePower10+industryPower10+businessPower10+producePower35+residentPower35+indecisivePower35+industryPower35+businessPower35+agriculturalPower35+agriculturalPower10;
-				nongwanghaidaiFee=sanxiaPower*0.02*0.88;
+				nongwanghaidaiPower=sumPower-agriculturalPower35-agriculturalPower10;
+				nongwanghaidaiFee=nongwanghaidaiPower*0.02*0.88;
 			}
-			kezaishengpepolePower=residentPower10+indecisivePower35;
+			kezaishengpepolePower=residentPower10+residentPower35;
 			kezaishengpepoleFee=kezaishengpepolePower*0.001*0.88;
-			kezaishengnotpepolePower=indecisivePower10+businessPower10+industryPower10+indecisivePower35+businessPower35+industryPower35;
+			//kezaishengnotpepolePower=indecisivePower10+businessPower10+industryPower10+indecisivePower35+businessPower35+industryPower35;
+			
+			kezaishengnotpepolePower=sumPower-agriculturalPower35-residentPower35-producePower35-agriculturalPower10-residentPower10-producePower10;
 			kezaishengnotpepoleFee=kezaishengnotpepolePower*0.002*0.88;
-			kuquPower=residentPower10+indecisivePower10+industryPower10+businessPower10+residentPower35+indecisivePower35+industryPower35+businessPower35;
+			//kuquPower=residentPower10+indecisivePower10+industryPower10+businessPower10+residentPower35+indecisivePower35+industryPower35+businessPower35;
+			kuquPower=sumPower-agriculturalPower35-producePower35-agriculturalPower10-producePower10;
 			kuquFee=kuquPower*0.0031*0.88;
 			count35Fee=agriculturalFee35+produceFee35+residentFee35+indecisiveFee35+industryFee35+businessFee35;
 			//Rate35Fee=count35Fee*allPowerRateFee35;
 			differenceQuantityFee=differenceQuantity*differencePrice;
-			sumAllFee=agriculturalFee35+produceFee35+residentFee35+indecisiveFee35+industryFee35+businessFee35+agriculturalFee10+produceFee10+residentFee10+indecisiveFee10+industryFee10+businessFee10+powerRateFee+sanxiaFee+nongwanghaidaiFee+kezaishengpepoleFee+kezaishengnotpepoleFee+kuquFee;
+			sumAllFee+=sanxiaFee+nongwanghaidaiFee+kezaishengpepoleFee+kezaishengnotpepoleFee+kuquFee+differenceQuantityFee;
 			tax=sumAllFee/1.17*0.17;
-			sumPower=sum10Power+sum35power;
+			
 			unsumPower=usum10power+usum35power;
 			BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
 			Collection all=blLwWholeSaleIndicatorFacade.findByConditions(conditionsAll);
-			
 			httpServletRequest.setAttribute("all", all);
 			httpServletRequest.setAttribute("company", company);
 			httpServletRequest.setAttribute("statMonth", serchDate);
 			httpServletRequest.setAttribute("sumAllFee", df.format(sumAllFee));
 			httpServletRequest.setAttribute("tax", df.format(tax));
-			httpServletRequest.setAttribute("agriculturalPower10", df.format(agriculturalPower10));
-			httpServletRequest.setAttribute("producePower10", df.format(producePower10));
-			httpServletRequest.setAttribute("residentPower10", df.format(residentPower10));
-			httpServletRequest.setAttribute("indecisivePower10", df.format(indecisivePower10));
-			httpServletRequest.setAttribute("industryPower10", df.format(industryPower10));
+			httpServletRequest.setAttribute("agriculturalPower10", df.format(Math.round(agriculturalPower10)));
+			httpServletRequest.setAttribute("producePower10", df.format(Math.round(producePower10)));
+			httpServletRequest.setAttribute("residentPower10", df.format(Math.round(residentPower10)));
+			httpServletRequest.setAttribute("indecisivePower10", df.format(Math.round(indecisivePower10)));
+			httpServletRequest.setAttribute("industryPower10", df.format(Math.round(industryPower10)));
 			httpServletRequest.setAttribute("agriculturalFee10", df.format(agriculturalFee10));
 			httpServletRequest.setAttribute("produceFee10", df.format(produceFee10));
 			httpServletRequest.setAttribute("residentFee10", df.format(residentFee10));
 			httpServletRequest.setAttribute("indecisiveFee10", df.format(indecisiveFee10));
 			httpServletRequest.setAttribute("industryFee10", df.format(industryFee10));
 			httpServletRequest.setAttribute("businessFee10", df.format(businessFee10));
-			httpServletRequest.setAttribute("businessPower10", df.format(businessPower10));
-			httpServletRequest.setAttribute("agriculturalPower35", df.format(agriculturalPower35));
-			httpServletRequest.setAttribute("producePower35", df.format(producePower35));
-			httpServletRequest.setAttribute("residentPower35", df.format(residentPower35));
-			httpServletRequest.setAttribute("indecisivePower35", df.format(indecisivePower35));
-			httpServletRequest.setAttribute("industryPower35", df.format(industryPower35));
+			httpServletRequest.setAttribute("businessPower10", df.format(Math.round(businessPower10)));
+			httpServletRequest.setAttribute("agriculturalPower35", df.format(Math.round(agriculturalPower35)));
+			httpServletRequest.setAttribute("producePower35", df.format(Math.round(producePower35)));
+			httpServletRequest.setAttribute("residentPower35", df.format(Math.round(residentPower35)));
+			httpServletRequest.setAttribute("indecisivePower35", df.format(Math.round(indecisivePower35)));
+			httpServletRequest.setAttribute("industryPower35", df.format(Math.round(industryPower35)));
 			httpServletRequest.setAttribute("agriculturalFee35", df.format(agriculturalFee35));
 			httpServletRequest.setAttribute("produceFee35", df.format(produceFee35));
 			httpServletRequest.setAttribute("residentFee35", df.format(residentFee35));
 			httpServletRequest.setAttribute("indecisiveFee35", df.format(indecisiveFee35));
 			httpServletRequest.setAttribute("industryFee35", df.format(industryFee35));
 			httpServletRequest.setAttribute("businessFee35", df.format(businessFee35));
-			httpServletRequest.setAttribute("businessPower35", df.format(businessPower35));
+			httpServletRequest.setAttribute("businessPower35", df.format(Math.round(businessPower35)));
 			httpServletRequest.setAttribute("lineLoss", df.format(lineLoss));
 			httpServletRequest.setAttribute("trassLoss", df.format(trassLoss));
 			httpServletRequest.setAttribute("sumFee", df.format(sumFee));
@@ -290,8 +344,8 @@ public class UIwholeSaleprintAction extends Action {
 			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
 			
 			
-			httpServletRequest.setAttribute("sum10Power", df.format(sum10Power));
-			httpServletRequest.setAttribute("sum35power", df.format(sum35power));
+			httpServletRequest.setAttribute("sum10Power", df.format(Math.round(sum10Power)));
+			httpServletRequest.setAttribute("sum35power", df.format(Math.round(sum35power)));
 			httpServletRequest.setAttribute("sum10Fee", df.format(sum10Fee));
 			httpServletRequest.setAttribute("sum35Fee", df.format(sum35Fee));
 			
