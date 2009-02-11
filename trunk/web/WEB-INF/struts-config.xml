@@ -307,6 +307,8 @@
 				path="/datainput/town/TownFeeStat.jsp" />
 		</action>
 		
+		
+		
 		<!-- 直供乡按局统计 打印-->
 		<action
 			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatPrintAction"
@@ -316,9 +318,14 @@
 			<forward name="statSuccess"
 				path="/datainput/town/TownFeeStatPrint.jsp" />
 		</action>
-		
-		
-		
+			<!-- 直供乡按局统计 发行-->
+		<action
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatFaxingAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownFaxing">
+			<forward name="statSuccess"
+				path="/datainput/town/TownFeeStatFaxing.jsp" />
+		</action>
 		<action name="uiGetAmmeterForm"
 			type="com.elongway.pss.ui.control.common.pub.UIQueryCodeAction"
 			validate="true" input="/common/pub/Title.jsp" scope="request"
