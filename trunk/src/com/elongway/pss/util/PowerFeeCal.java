@@ -1839,7 +1839,12 @@ public class PowerFeeCal {
 	 */
 	public static double calTransferLoss(double P0, double T, double t,
 			double Pk, double Se, double AP, double AQ) {
-		double P = P0 * T + Pk * (AP * AP + AQ * AQ) / (Se * Se * t);
+		double P=0;
+		if(AP==0){
+		 P = 0;
+		}else{
+			P =P0 * T + Pk * (AP * AP + AQ * AQ) / (Se * Se * t);
+		}
 		return PowerFeeCal.getValue(P, AppConst.TWO_DOT_FLAG);
 	}
 	/**
