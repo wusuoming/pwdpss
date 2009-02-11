@@ -203,10 +203,16 @@ public class UIcorporationFeeCalAction extends Action {
 			PeakQuantity=Math.round(PointerQuantity-unDenizenFeePower-TransLosspower);
 		
 		}
+		double AdjustRate=0;
+		double RateCode=0;
 		
 		
-		double AdjustRate=powerFeeCal.poweradjustmentCorporationValue(String.valueOf(PointerQuantity) , String.valueOf(UnPointerQuantity), "3");
-		double RateCode=powerFeeCal.poweradjustrate(String.valueOf(PointerQuantity), String.valueOf(UnPointerQuantity));
+			 AdjustRate=powerFeeCal.poweradjustmentCorporationValue(String.valueOf(PointerQuantity) , String.valueOf(UnPointerQuantity), "3");
+			 RateCode=powerFeeCal.poweradjustrate(String.valueOf(PointerQuantity), String.valueOf(UnPointerQuantity));
+		
+	
+		
+	
 		double contentPower=0;
 		double needPower=0;
 		if(lwCoporationUserInfoDto.getIndustryType().equals("1")){

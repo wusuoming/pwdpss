@@ -120,7 +120,7 @@ public class UIPathWholeSaleCalAction extends Action {
 					LineLossQuantity[i]=LineLossQuantity[i];
 				}
 				double sumPower=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
-				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "2",rateCode[i]);
+				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "1",rateCode[i]);
 				runworkQuantity=runworkQuantity-Double.parseDouble(unTransLossQuantity[i]);
 				//double RateCode=powerFeeCal.poweradjustrate(String.valueOf(rworkQuantity), String.valueOf(runworkQuantity));
 				
@@ -278,7 +278,7 @@ public class UIPathWholeSaleCalAction extends Action {
 					LineLossQuantity[i]=LineLossQuantity[i];
 				}
 				double sumPower=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
-				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "2",rateCode[i]);
+				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "4",rateCode[i]);
 				double RateCode=powerFeeCal.poweradjustrate(String.valueOf(rworkQuantity), String.valueOf(runworkQuantity));
 				double industryPrice=lwWholeSalePurePriceDto.getIndustryPrice();
 				double workFee=sumPower*industryPrice;
@@ -350,7 +350,7 @@ public class UIPathWholeSaleCalAction extends Action {
 		double sum35Fee=0;
 		double Rate10Fee=0;
 		double Rate35Fee=0;
-		double sumwholesalefa=0;
+		
 		long sum10Power=0;
 		long sum35power=0;
 		long usum10power=0;
@@ -391,9 +391,9 @@ public class UIPathWholeSaleCalAction extends Action {
 		
 		PowerFeeCal powerFeeCal1=new PowerFeeCal();
 		double allRateCode10=powerFeeCal1.poweradjustrate(String.valueOf(sum10Power), String.valueOf(usum10power))/100;
-		double allPowerRateFee10=powerFeeCal1.poweradjustmentValue(String.valueOf(sum10Power), String.valueOf(usum10power), "1", String.valueOf(allRateCode10));
+		double allPowerRateFee10=powerFeeCal1.poweradjustmentValue(String.valueOf(sum10Power), String.valueOf(usum10power), "2", String.valueOf(allRateCode10));
 		double allRateCode35=powerFeeCal1.poweradjustrate(String.valueOf(sum35power), String.valueOf(usum35power))/100;
-		double allPowerRateFee35=powerFeeCal1.poweradjustmentValue(String.valueOf(sum35power), String.valueOf(usum35power), "1", String.valueOf(allRateCode35));
+		double allPowerRateFee35=powerFeeCal1.poweradjustmentValue(String.valueOf(sum35power), String.valueOf(usum35power), "2", String.valueOf(allRateCode35));
 		
 		LwWholeSaleProrateDto  lwWholeSaleProrateDto10=new LwWholeSaleProrateDto();
 		LwWholeSaleProrateDto  lwWholeSaleProrateDto35=new LwWholeSaleProrateDto();

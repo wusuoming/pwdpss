@@ -39,10 +39,10 @@ public class UICorporationInputAction extends Action {
 		}
 		BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
 		LwCorporationSummaryDto  lwCorporationSummaryDto=blLwCorporationSummaryFacade.findByPrimaryKey(UserNo,s );
-		if(lwCorporationSummaryDto!=null){
+		/*if(lwCorporationSummaryDto!=null){
 			
 			throw new UserException(-6, -712, this.getClass().getName(),"该户已经算过费");
-		}
+		}*/
 		BLLwSalePriceFacade blLwSalePriceFacade=new BLLwSalePriceFacade();
 		LwSalePriceDto  lwSalePriceDtodianjin=blLwSalePriceFacade.findByPrimaryKey("8", "0", 0, 0, "0");
 		//LwSalePriceDto  lwSalePriceDtosanxia=blLwSalePriceFacade.findByPrimaryKey("9", "0", 0, 0, "0");
