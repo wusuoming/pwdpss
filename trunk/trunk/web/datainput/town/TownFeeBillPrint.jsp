@@ -95,57 +95,56 @@ String statMonth = (String)request.getAttribute("statMonth");
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
-	<table width="100%">
+	<table width="100%" border="1" cellspacing="0">
 		<tr class=listtitle align="center">
 			<td class=title0 colspan="11"><B><font size="3">直供乡电费结算单</font></B></td>
 		</tr>
 		<tr>
-			<td class="blue" colspan="4">单位：包头市九原电力公司供电服务总站</td>
+			<td class="blue" colspan="4"><font size="3">单位：包头市九原电力公司供电服务总站</font></td>
 			<td class="blue" colspan="5"></td>
-			<td class="blue" colspan="5"><input type="text" name="statMonth" value="<%=statMonth%>"></td>
+			<td class="blue" colspan="2"><input type="text" name="statMonth"    value="<%=statMonth%>"  style="border:0"></td>
 		</tr>
 		<!--人员代码，姓名-->
 		<tr class=listtitle>
-			<td ><span class="title">项目/单位</span> </td>
+			<td ><span class="title"><font size="3">项目/单位</font></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			%>	
-			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><font color="F9FAFB"><%=dto.getTownName() %></font></a></span></td>
+			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><font color="F9FAFB" size="3"><%=dto.getTownName() %></font></a></span></td>
 			
 			<%}} %>
 			
 		</tr>
 		<tr>
-			<td class="title">电量</td>
+			<td class="title"><font size="3">电量</font></td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			
 			%>	
-			<td class="title"><%=dto.getPowerQuantity() %></td>
+			<td class="title"><font size="3"><%=dto.getPowerQuantity() %></font></td>
 			
 			<%}} %>
 			
 		</tr>
 	<tr>
-			<td class="title">电费 </td>
+			<td class="title"><font size="3">电费</font> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			
 			%>	
-			<td class="title"><%=dto.getPowerFee()%></td>
+			<td class="title"><font size="3"><%=dto.getPowerFee()%></font></td>
 			
 			<%}} %>
 			
 		</tr>
 	
 		 <tr>
-    <td  colspan="3">制表:</td>
-    <td  colspan="3">审核:</td>
-    <td></td>
-    <td  colspan="3">负责人:</td>
+    <td  colspan="4"><font size="3">制表:</font></td>
+    <td  colspan="4"><font size="3">审核:</font></td>
+    <td  colspan="3"><font size="3">负责人:</font></td>
   </tr>
   
 </table>

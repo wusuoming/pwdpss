@@ -104,101 +104,107 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 %>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
-	<table class=common width="500%" cellspacing="1" cellpadding="5" border="1">
-		
-		<%Collection resultList = (Collection)request.getAttribute("resultList"); 
+	
+	<%Collection resultList = (Collection)request.getAttribute("resultList"); 
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
 		%>
 		
+	<table class=common width="500%" cellspacing="0" cellpadding="5" border="1">
+		
+		
 		<tr>
-			<td class=title0 colspan="11"><font size="2">包头市农电公司<%=townSataDto.getStatMonth() %>电费电量发行单</font></td>
+			<td class=title0 colspan="11"><b><font size="4">包头市农电公司<%=townSataDto.getStatMonth() %>电费电量发行单</font></td>
 		</tr>
 		
 		<!--人员代码，姓名-->
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
+					<span class="title"><b><font size="4">单位</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">售电量</font></span>
+					<span class="title"><b><font size="4">售电量</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">纯电费</font></span>
+					<span class="title"><b><font size="4">纯电费</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><b><font size="4">电费税</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金</font></span>
+					<span class="title"><b><font size="4">电金</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><b><font size="4">电金税</font></b></span>
 				<br></td>			
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡</font></span>
+					<span class="title"><b><font size="4">三峡</font></b></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><b><font size="4">三峡税</font></b></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金</font></span>
+					<span class="title"><b><font size="4">基金</font></b></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><b><font size="4">基金税</font></b></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><b><font size="4">总计</font></b></span>
 				<br></td>	
 							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getCompanyName() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPower() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getSumPower() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPurePowerFee() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getPurePowerFee() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPowerFeeTax() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getPowerFeeTax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureDianJin() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getPureDianJin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getDianJinTax() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getDianJinTax() %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureSanXia() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getPureSanXia() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSanXiaTax() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getSanXiaTax() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureJiJin() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getPureJiJin() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getJiJinTax() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getJiJinTax() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPowerFee() %></font></span>
+					<span class="title"><font size="4"><%=townSataDto.getSumPowerFee() %></font></span>
 				<br></td>	
 							
 			</tr>
-			<tr>
-    <td  colspan="3">制表:</td>
-    <td  colspan="3">审核:</td>
-    <td></td>
-    <td  colspan="3">负责人:</td>
-  </tr>
+		
+  
+    </table>
+    <br>
+    <table class=common width="500%" cellspacing="0" cellpadding="5" >
+    <tr style="hight:60px">
+    <td height="30">
+    </td>
+    </tr>
+    </table>
 		<%} %>
 		
 		
-  </table>
+
   
 	
 

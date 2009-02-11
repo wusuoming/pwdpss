@@ -374,7 +374,7 @@ body {
 								</tr>
 								<tr>
 								 <td class=titleLink>
-	                 		<app:menu page="/queryTownfaxing.do?firstquery=1" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		<app:menu page="/queryTownFaxing.do?firstquery=1" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
 	                 		&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡购电发行单
 	                 		</app:menu>
 	                	</td>

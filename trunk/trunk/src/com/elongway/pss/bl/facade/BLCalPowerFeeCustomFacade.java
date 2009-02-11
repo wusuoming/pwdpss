@@ -93,7 +93,7 @@ public class BLCalPowerFeeCustomFacade {
 		double adjustValue = 0;
 		// 调用电费计算公式
 		LwTownPriceSummaryDto lwTownPriceSummaryDto = PowerFeeCal
-				.townSumPowerFeeFormular(sumQuantity, rate, lwProrateDto,
+				.townSumPowerFeeFormular(sumQuantity, exceptionQuantity, lwProrateDto,
 						price, 0, adjustValue, lineCode, userCode, statMonth);
 
 		return lwTownPriceSummaryDto;
@@ -600,6 +600,40 @@ public class BLCalPowerFeeCustomFacade {
 				AppConst.TWO_DOT_FLAG));
 		townSataDto.setSumPowerFee(PowerFeeCal.getValue(sumPowerFee,
 				AppConst.TWO_DOT_FLAG));
+
+		townSataDto.setStatMonth(statMonth);
+
+		return townSataDto;
+	}
+	/**
+	 * 直供乡按局统计
+	 * 
+	 * @param collection
+	 * @param statMonth
+	 * @param townCode
+	 * @return
+	 */
+	public TownSataDto townFaxingStatByCompany(Collection collection, String statMonth) {
+
+		LwTownPriceSummaryDto lwTownPriceSummaryDto = new LwTownPriceSummaryDto();
+
+		// 总电量
+		double sumPower = 0.0;
+		
+
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			LwTownPriceSummaryDto dto = (LwTownPriceSummaryDto) iterator.next();
+			// 电费维度的求和
+			sumPower = sumPower + dto.getRateCode();
+			
+
+		}
+		TownSataDto townSataDto = new TownSataDto();
+		
+
+		townSataDto.setSumPower(PowerFeeCal.getValue(sumPower,
+				AppConst.ZERO_DOT_FLAG));
+		
 
 		townSataDto.setStatMonth(statMonth);
 
