@@ -6,6 +6,7 @@
 <%@page import="com.elongway.pss.dto.custom.TownSataDto"%>
 <%@page import="com.elongway.pss.util.AppConst"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
+<%@page import="com.elongway.pss.dto.domain.LwDcodeDto"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -88,8 +89,9 @@
 function printCount(){
 	 var   strURL;     
 	 var tt = fm.dd.value;
-   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt;    
- 
+	 var company = fm.company.value;
+   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt+"&company="+company;    
+ alert(strURL);
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 </script>
@@ -102,11 +104,12 @@ String inputDate = (String)request.getAttribute("statMonth");
 %>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
-	<table class=common width="500%" cellspacing="1" cellpadding="5" border="1">
+	<table class=common width="500%" cellspacing="0" cellpadding="5" border="1" >
 		<tr>
 			<td class=title0 colspan="11" style="display:none"><input type="hidden" name="dd" value="<%=inputDate%>"></td>
 		</tr>
 		<%Collection resultList = (Collection)request.getAttribute("resultList"); 
+		
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
@@ -156,6 +159,7 @@ String inputDate = (String)request.getAttribute("statMonth");
 			<tr >
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
+					<input type="hidden" name="company" value="<%=townSataDto.getComCode()%>">
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getSumPower() %></font></span>
@@ -189,17 +193,15 @@ String inputDate = (String)request.getAttribute("statMonth");
 				<br></td>	
 							
 			</tr>
-			
-		<%} %>
-		<tr>
-			<td nowrap colspan="11"></td>
-		</tr>
-		<tr>
-    <td  colspan="3">制表:</td>
-    <td  colspan="3">审核:</td>
-    <td></td>
+			<tr>
+    <td  colspan="4">制表:</td>
+    <td  colspan="4">审核:</td>
+
     <td  colspan="3">负责人:</td>
   </tr>
+			
+		<%} %>
+		
   </table>
   
 	<table cellpadding="0" cellspacing="0" width="100%"> 

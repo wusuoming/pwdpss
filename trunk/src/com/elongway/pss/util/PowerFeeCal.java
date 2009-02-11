@@ -1043,7 +1043,7 @@ public class PowerFeeCal {
 		// -- 基础信息维护
 		lwTownPriceSummaryDto.setSumQuantity(PowerFeeCal.getValue(sumPower, AppConst.ZERO_DOT_FLAG));
 		lwTownPriceSummaryDto.setLineCode(lineCode);
-		lwTownPriceSummaryDto.setRateCode(zero);
+		lwTownPriceSummaryDto.setRateCode(rateCode);
 		lwTownPriceSummaryDto.setRateFee(zero);
 		lwTownPriceSummaryDto.setStatMonth(statMonth);
 		// 电费合计

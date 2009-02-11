@@ -75,6 +75,10 @@ create by wangrongjia
           <tr>
               <td align="center">所属供电公司：
             <%Collection list = (Collection)request.getAttribute("supplycom"); 
+            LwDcodeDto lwDcodeDto1 = new LwDcodeDto();
+		lwDcodeDto1.setCodeCode("sum");
+		lwDcodeDto1.setCodeCName("东、青、昆、高");
+		list.add(lwDcodeDto1);
           if(list!=null&&list.size()!=0){         
           %>
          <select name="company" >

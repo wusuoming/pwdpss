@@ -36,14 +36,13 @@ import com.sinosoft.sysframework.exceptionlog.UserException;
  * @author goodluck
  *
  */
-public class UIQueryTownStatAction extends Action {
+public class UIQueryTownStatFaxingAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
 		/** 0-声明变量 */
 		BLLwDcodeFacade blLwDcodeFacade = new BLLwDcodeFacade();
 		Collection<LwDcodeDto> comList = blLwDcodeFacade.findByConditions(" codetype = 'SupplyCom'");
-		
 		String firstquery = httpServletRequest.getParameter("firstquery");
 		BLCalPowerFeeCustomFacade blCalPowerFeeCustomFacade = new BLCalPowerFeeCustomFacade();
 		BLLwPowerUserFacade blLwPowerUserFacade = new BLLwPowerUserFacade();
@@ -57,72 +56,21 @@ public class UIQueryTownStatAction extends Action {
 		TownSataDto townSataDto = null;
 		Collection <TownSataDto>resultList = null;
 		resultList = new ArrayList<TownSataDto>();
-		Collection allList = new ArrayList<TownSataDto>();
 		
-		/** 1-进入查询页面 */
-		if(firstquery!=null){
-			httpServletRequest.setAttribute("supplycom", comList);
-			forward="Success";
-		}else{
-			/** 2-统计 */
-			// 得到机构代码
-			 company = httpServletRequest.getParameter("company");
-			 // 如果选择一个机构
-			 if((!"".equals(company))&&(!"sum".equals(company))){
-			 statMonth = httpServletRequest.getParameter("inputDate");
-			 statMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).toString();
-			 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
-			 condition = PowerFeeCal.getUserCondition(userList);
-			 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1 and statmonth = '"+statMonth+"' "+condition);
-			 townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(priceSummaryList, statMonth);
-			for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
-				LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator
-						.next();
-				if(lwDcodeDto.getCodeCode().equals(company)){
-					townSataDto.setComCode(lwDcodeDto.getCodeCode());
-					townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
-				}
-			}
-			resultList.add(townSataDto);
-			 httpServletRequest.setAttribute("resultList", resultList);
-			 httpServletRequest.setAttribute("statMonth", statMonth);
-			 forward = "statSuccess";
-			 }else if("sum".equals(company)){
-			
-				 for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
-						LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator
-								.next();
-					 company = lwDcodeDto.getCodeCode();
-					 statMonth = httpServletRequest.getParameter("inputDate");
-					 statMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).toString();
-					 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
-					 condition = PowerFeeCal.getUserCondition(userList);
-					 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1  and statmonth = '"+statMonth+"' "+condition);
-					 townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(priceSummaryList, statMonth);
-					 townSataDto.setComCode(company);
-					 townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
-					 resultList.add(townSataDto);
-					 
-					}
-				 townSataDto = PowerFeeCal.getSumCompanyStat(resultList, statMonth);
-				 townSataDto.setComCode("sum");
-				 allList.add(townSataDto);
-				 
-				 httpServletRequest.setAttribute("resultList", allList);
-				 httpServletRequest.setAttribute("statMonth", statMonth);
-				 forward = "statSuccess";
-			 }else{
+		
+		
+			 
 				 // 如果选择多个机构
 				 for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
 						LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator
 								.next();
-					 statMonth = httpServletRequest.getParameter("inputDate");
+					 company = lwDcodeDto.getCodeCode();
+					 statMonth = PowerFeeCal.getCurrentBillMonth();
 					 statMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).toString();
 					 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
-					 company = lwDcodeDto.getCodeCode();
 					 condition = PowerFeeCal.getUserCondition(userList);
 					 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1  and statmonth = '"+statMonth+"' "+condition);
-					 townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(priceSummaryList, statMonth);
+					 townSataDto = blCalPowerFeeCustomFacade.townFaxingStatByCompany(priceSummaryList, statMonth);
 					 townSataDto.setComCode(company);
 					 townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
 					 resultList.add(townSataDto);
@@ -133,8 +81,8 @@ public class UIQueryTownStatAction extends Action {
 				 httpServletRequest.setAttribute("resultList", resultList);
 				 httpServletRequest.setAttribute("statMonth", statMonth);
 				 forward = "statSuccess";
-			 }
-		}
+			 
+		
 		
 		return actionMapping.findForward(forward);
 
