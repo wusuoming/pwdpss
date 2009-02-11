@@ -117,7 +117,7 @@ String sumalljijin=(String)request.getAttribute("sumalljijin");
 String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 %>
 <form  name="fm" method="post">
-	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
+	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 		
 	<tr>
 			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
@@ -130,168 +130,168 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 	</tr>
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
+					<span class="title"><font size="3">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电量</font></span>
+					<span class="title"><font size="3">电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">纯电费</font></span>
+					<span class="title"><font size="3">纯电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><font size="3">电费税</font></span>
 				<br></td>
 		
 				<td nowrap width="10%">
-					<span class="title"><font size="2">合计</font></span>
+					<span class="title"><font size="3">合计</font></span>
 				<br></td>	
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金</font></span>
+					<span class="title"><font size="3">电金</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="3">电金税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡</font></span>
+					<span class="title"><font size="3">三峡</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="3">三峡税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金</font></span>
+					<span class="title"><font size="3">基金</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="3">基金税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><font size="3">总计</font></span>
 				<br></td>
 							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">大用户</font></span>
+					<span class="title"><font size="3">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfpower%></font></span>
+					<span class="title"><font size="3"><%=sumfpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfc%></font></span>
+					<span class="title"><font size="3"><%=sumfc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumftax%></font></span>
+					<span class="title"><font size="3"><%=sumftax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
+					<span class="title"><font size="3"><%=sumfdianfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summfdianjin%></font></span>
+					<span class="title"><font size="3"><%=summfdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
+					<span class="title"><font size="3"><%=sumfdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
+					<span class="title"><font size="3"><%=sumfsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
+					<span class="title"><font size="3"><%=sumfsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijin%></font></span>
+					<span class="title"><font size="3"><%=sumfjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="3"><%=sumfjijintax%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumffee%></font></span>
+					<span class="title"><font size="3"><%=sumffee%></font></span>
 				<br></td>
 				
 							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">趸售</font></span>
+					<span class="title"><font size="3">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwpower%></font></span>
+					<span class="title"><font size="3"><%=sumwpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwc%></font></span>
+					<span class="title"><font size="3"><%=sumwc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwtax%></font></span>
+					<span class="title"><font size="3"><%=sumwtax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
+					<span class="title"><font size="3"><%=sumwdianfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summwdianjin%></font></span>
+					<span class="title"><font size="3"><%=summwdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwdianjintax%></font></span>
+					<span class="title"><font size="3"><%=sumwdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxia%></font></span>
+					<span class="title"><font size="3"><%=sumwsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxiatax%></font></span>
+					<span class="title"><font size="3"><%=sumwsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijin%></font></span>
+					<span class="title"><font size="3"><%=sumwjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
+					<span class="title"><font size="3"><%=sumwjijintax%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwfee%></font></span>
+					<span class="title"><font size="3"><%=sumwfee%></font></span>
 				<br></td>			
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><font size="3">总计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallpower%></font></span>
+					<span class="title"><font size="3"><%=sumallpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallc%></font></span>
+					<span class="title"><font size="3"><%=sumallc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalltax%></font></span>
+					<span class="title"><font size="3"><%=sumalltax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfee%></font></span>
+					<span class="title"><font size="3"><%=sumallfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
+					<span class="title"><font size="3"><%=sumalldianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalldianjintax%></font></span>
+					<span class="title"><font size="3"><%=sumalldianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallsanxia%></font></span>
+					<span class="title"><font size="3"><%=sumallsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallsanxiatax%></font></span>
+					<span class="title"><font size="3"><%=sumallsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalljijin%></font></span>
+					<span class="title"><font size="3"><%=sumalljijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
+					<span class="title"><font size="3"><%=sumalljijintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallall%></font></span>
+					<span class="title"><font size="3"><%=sumallall%></font></span>
 				<br></td>
 							
 			</tr>

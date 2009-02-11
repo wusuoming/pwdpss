@@ -8,6 +8,7 @@
 <jsp:directive.page import="com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCoporationUserInfoDto"/>
 <jsp:directive.page import="java.text.DecimalFormat"/>
+<jsp:directive.page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -153,6 +154,12 @@ String sumallfeety=(String)request.getAttribute("sumallfeety");
 String s=(String)request.getAttribute("inputDate");
 
 
+LwAllWholeFeeDto  lwAllWholeFeeDtogy=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
+LwAllWholeFeeDto  lwAllWholeFeeDtodm=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
+LwAllWholeFeeDto  lwAllWholeFeeDtojy=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
+LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtoty");
+
+
 
 
 
@@ -234,7 +241,7 @@ String s=(String)request.getAttribute("inputDate");
 					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
 				<br></td>
 				<%
-					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
@@ -246,7 +253,7 @@ String s=(String)request.getAttribute("inputDate");
 				<%} %>
 				
 				<%
-					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17)%></font></span>
@@ -268,7 +275,7 @@ String s=(String)request.getAttribute("inputDate");
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17)%></font></span>
 				<br></td>
 				<%
-					if(lwCorporationSummaryDto.getLineCode().equals("3100")||lwCorporationSummaryDto.getLineCode().equals("3101")){
+					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17*0.17)%></font></span>
@@ -338,34 +345,34 @@ String s=(String)request.getAttribute("inputDate");
 					<span class="title"><font size="2">Ωº«¯</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumpowerjy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumdianfeejy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sanxiajy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=dianjinjy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=jijinjy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumdianfeejy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanxiajy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianjinjy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jijinjy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfeejy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSumfee()%></font></span>
 				<br></td>
 				
 					
@@ -375,35 +382,35 @@ String s=(String)request.getAttribute("inputDate");
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2">¥Ô√Ø∆Ï</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumpowerdm%></font></span>
+					<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumdianfeedm%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sanxiadm%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=dianjindm%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=jijindm%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumdianfeedm)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanxiadm)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianjindm)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jijindm)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfeedm%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSumfee()%></font></span>
 				<br></td>
 				
 					
@@ -414,36 +421,37 @@ String s=(String)request.getAttribute("inputDate");
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2">Õ¡”“</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumpowerty%></font></span>
+					<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumdianfeety%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sanxiaty%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=dianjinty%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=jijinty%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumdianfeety)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanxiaty)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianjinty)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jijinty)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfeety%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSumfee()%></font></span>
 				<br></td>
+				
 				
 					
 			</tr>
@@ -454,37 +462,36 @@ String s=(String)request.getAttribute("inputDate");
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2">πÃ—Ù</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumpowergy%></font></span>
+						<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumdianfeegy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sanxiagy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=dianjingy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=jijingy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumdianfeegy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanxiagy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianjingy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jijingy)*0.17)%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfeegy%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSumfee()%></font></span>
 				<br></td>
-				
 					
 			</tr>
 			
@@ -600,7 +607,7 @@ String s=(String)request.getAttribute("inputDate");
 					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallfee%></font></span>
+					<span class="title"><font size="2"><%=sumallall%></font></span>
 				<br></td>
 				
 							
