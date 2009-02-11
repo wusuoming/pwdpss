@@ -169,7 +169,7 @@
 						 %>
 						<td class="input" ><input name="ammeterStyle" value="非居民照明"  readonly="readonly" style="width:65px"></td>
 						<%} %>
-						<td class="input" ><input name="Rate" value="<%=lwFactoryIndicatorDto.getRate()%>"  style="width:65px"></td>
+						<td class="input" ><input name="Rate" value="<%=Math.round(lwFactoryIndicatorDto.getRate())%>"  style="width:65px"></td>
 						<td class="input" ><input name="LastWorkNum" value="<%=lwFactoryIndicatorDto.getLastWorkNum()%>"  readonly="readonly" style="width:65px"></td>
 						
 						
@@ -221,13 +221,13 @@
 			<td nowrap><span class="title">退补无功电量</span></td>
 			<td nowrap colspan="2"><span class="title"><input name="ee" value=""  style="width:65px"></span></td>
 			<td nowrap><span class="title">总有功电量</span></td>
-			<td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
+			<td nowrap><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
 
     </tr>
      <tr>
    
            <td nowrap><span class="title">无功总电量</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getUnPointerQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getUnPointerQuantity())%></span></td>
 			<td nowrap><span class="title">力率标准值</span></td>
 			<td nowrap colspan="2"><span class="title">0.90</span></td>
 			<td nowrap><span class="title">力率实际值</span></td>
@@ -258,7 +258,7 @@
             if(corporation.getQuantityStyle().equals("")&&corporation.getIfchange().equals("0")){
        
              %>
-             <td nowrap colspan="2"><span class="title"><%=corporation.getPointerQuantity()%></span></td>
+             <td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getPointerQuantity())%></span></td>
               <td nowrap><span class="title"><%=corporation.getPointerPrice()%></span></td>
             	 <td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPointerFee())%></span></td>
              <%} %>
@@ -266,20 +266,20 @@
               if(corporation.getQuantityStyle().equals("1")&&corporation.getIfchange().equals("0")){
           
               %>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getPeakQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getPeakQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getPeakPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPeakFee())%></span></td>
 			<%} %>
 			<%
               if(corporation.getIfchange().equals("1")){
               %>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getBeforPower()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getBeforPower())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getBeforPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getBeforFee())%></span></td>
 			<%} %>
 			
 			<td nowrap><span class="title">非居民照明</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getUnDenizenQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getUnDenizenQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getUnDenizenPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
 
@@ -287,25 +287,25 @@
      <tr>
    
            <td nowrap><span class="title">三峡基金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getElectricQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getSanXiaPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
 			<td nowrap><span class="title">基金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getElectricQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getSurchargePrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSurcharge())%></span></td>
     </tr>
     <tr>
    
            <td nowrap><span class="title">电金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getElectricQuantity()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getPointerPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
 			<%
               if(corporation.getQuantityStyle().equals("1")){
               %>
 			<td nowrap><span class="title">大工业</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getLastPower()%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getLastPower())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getLastPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getLastFee())%></span></td>
     	<%} %>

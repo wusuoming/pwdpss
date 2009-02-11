@@ -139,22 +139,22 @@
             <%
             if(company.equals("gy")){
              %>
-			<td nowrap colspan="2" ><span class="title">固阳</span></td>
+			<td nowrap colspan="2" ><span class="title">固阳农电局</span></td>
 			<%} %>
 			 <%
             if(company.equals("dm")){
              %>
-			<td nowrap colspan="2" width="50%"><span class="title">达茂</span></td>
+			<td nowrap colspan="2" width="50%"><span class="title">达茂农电局</span></td>
 			<%} %>
 			 <%
             if(company.equals("jy")){
              %>
-			<td nowrap colspan="2" ><span class="title">九原</span></td>
+			<td nowrap colspan="2" ><span class="title">九原农电局</span></td>
 			<%} %>
 			 <%
             if(company.equals("ty")){
              %>
-			<td nowrap colspan="2" ><span class="title">土右</span></td>
+			<td nowrap colspan="2" ><span class="title">土右农电局</span></td>
 			<%} %>
 			<td nowrap colspan="2"><span class="title">户号</span></td>
 			<%
@@ -266,7 +266,7 @@
 						<td class="input" ><input name="ammeterStyle" value="考核表"  readonly="readonly" style="width:65px"></td>
 						<%} %>
 						<td class="input" ><input name="Rate" value="<%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售"  style="width:65px" readonly="readonly"></td>
-						<td class="input" ><input name="Rate" value="<%=lwWholeSaleIndicatorDto.getRate()%>"  style="width:65px" readonly="readonly"></td>
+						<td class="input" ><input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorDto.getRate())%>"  style="width:65px" readonly="readonly"></td>
 						<td class="input" ><input name="LastWorkNum" value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>"  readonly="readonly" style="width:65px"></td>
 						
 						
@@ -311,14 +311,14 @@
 			<td nowrap><span class="title"><input name="dd" value=""  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title">退补无功电量</span></td>
 			<td nowrap><span class="title"><input name="ee" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">总有功电量</span></td>
-			<td nowrap><span class="title"><%=sumPower%></span></td>
+								<td nowrap colspan="2"><span class="title">总有功电量</span></td>
+			<td nowrap><span class="title"><input name="zongdianliang" value="<%=Math.round(Double.parseDouble(sumPower))%>"  style="width:65px"></span></td>
 
     </tr>
      <tr>
    
            <td nowrap colspan="2"><span class="title">无功总电量</span></td>
-			<td nowrap ><span class="title"><%=unsumPower%></span></td>
+			<td nowrap ><span class="title"><%=Math.round(Double.parseDouble(unsumPower))%></span></td>
 			<td nowrap colspan="2"><span class="title">力率标准值</span></td>
 			<td nowrap><span class="title">0.80</span></td>
 			<td nowrap colspan="2"><span class="title">力率实际值</span></td>
@@ -353,7 +353,7 @@
 					</td>
 
 					<td nowrap>
-						<span class="title"><%=indecisivePower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower10))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=indecisivePrice10%></span>
@@ -366,7 +366,7 @@
 					</td>
 
 					<td nowrap>
-						<span class="title"><%=indecisivePower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=indecisivePrice35%></span>
@@ -383,7 +383,7 @@
 						<span class="title">居民生活/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(residentPower10))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=residentPrice10%></span>
@@ -396,7 +396,7 @@
 						<span class="title">居民生活/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(residentPower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=residentPrice35%></span>
@@ -414,7 +414,7 @@
 						<span class="title">农业生产/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(producePower10))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=producePrice10%></span>
@@ -427,7 +427,7 @@
 						<span class="title">农业生产/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(producePower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=producePrice35%></span>
@@ -444,10 +444,10 @@
 						<span class="title">非普工业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(industryPower10))%></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice10%></span>
+						<span class="title"><%=industryPrice10%></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><%=industryFee10%></span>
@@ -460,7 +460,7 @@
 						<span class="title">非普工业/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(industryPower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=industryPrice35%></span>
@@ -475,7 +475,7 @@
 						<span class="title">农业排灌/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower10))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=agriculturalPrice10%></span>
@@ -488,7 +488,7 @@
 						<span class="title">农业排灌/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=agriculturalPrice35%></span>
@@ -504,7 +504,7 @@
 						<span class="title">商业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPower10%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(businessPower10))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=businessPrice10%></span>
@@ -522,7 +522,7 @@
 						<span class="title">商业/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPower35%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(businessPower35))%></span>
 					</td>
 					<td nowrap>
 						<span class="title"><%=businessPrice35%></span>
@@ -540,13 +540,13 @@
 						<span class="title">总10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=sum10Power%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(sum10Power))%></span>
 					</td>
 					<td nowrap>
 						<span class="title">&nbsp</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=sum10Fee%></span>
+						<span class="title"><input name="sum10fee" value="<%=sum10Fee%>"  style="width:65px"></span>
 					</td>
 					<td nowrap colspan="2">
 					
@@ -558,13 +558,13 @@
 						<span class="title">总35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=sum35power%></span>
+						<span class="title"><%=Math.round(Double.parseDouble(sum35power))%></span>
 					</td>
 					<td nowrap>
 						<span class="title">&nbsp</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=sum35Fee%></span>
+						<span class="title"><input name="sum35fee" value="<%=sum35Fee%>"style="width:65px"></span>
 					</td>
 				</tr>
 				
@@ -581,36 +581,36 @@
    
             <td nowrap colspan="2"><span class="title">三峡</span></td>
            
-			<td nowrap><span class="title"><%=sanxiaPower%></span></td>
+			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(sanxiaPower))%></span></td>
 			<td nowrap><span class="title">0.004</span></td>
-			<td nowrap colspan="2"><span class="title"><%=sanxiaFee%></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="sanxia" value="<%=sanxiaFee%>"style="width:65px"></span></td>
 			
 			
 			<td nowrap colspan="2"><span class="title">农网还贷</span></td>
-			<td nowrap><span class="title"><%=nongwanghaidaiPower%></span></td>
+			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(nongwanghaidaiPower))%></span></td>
 			<td nowrap><span class="title">0.02</span></td>
-			<td nowrap colspan="2"><span class="title"><%=nongwanghaidaiFee%></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="dianjin" value="<%=nongwanghaidaiFee%>"style="width:65px"></span></td>
 
     </tr>
      <tr>
    
            <td nowrap colspan="2"><span class="title">库区移民</span></td>
-			<td nowrap><span class="title"><%=kuquPower%></span></td>
+			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kuquPower))%></span></td>
 			<td nowrap><span class="title">0.0031</span></td>
-			<td nowrap colspan="2"><span class="title"><%=kuquFee%></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="jijin1" value="<%=kuquFee%>"style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title">可再生能源</span></td>
-			<td nowrap><span class="title"><%=kezaishengpepolePower%></span></td>
+			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kezaishengpepolePower))%></span></td>
 			<td nowrap><span class="title">0.001</span></td>
-			<td nowrap colspan="2"><span class="title"><%=kezaishengpepoleFee%></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="jijin2" value="<%=kezaishengpepoleFee%>"style="width:65px"></span></td>
     </tr>
     <tr>
    
            <td nowrap colspan="2"><span class="title">可再生能源</span></td>
-			<td nowrap><span class="title"><%=kezaishengnotpepolePower%></span></td>
+			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kezaishengnotpepolePower))%></span></td>
 			<td nowrap><span class="title">0.002</span></td>
-			<td nowrap colspan="2"><span class="title"><%=kezaishengnotpepoleFee%></span></td>
-			<td nowrap colspan="2"><span class="title">差别电价</span></td>
-			<td nowrap><span class="title"><input name="ss" value="<%=differenceQuantity%>"  style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="jijin3" value="<%=kezaishengnotpepoleFee%>"style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title">差别电费</span></td>
+			<td nowrap><span class="title"><input name="ss" value="<%=Math.round(Double.parseDouble(differenceQuantity))%>"  style="width:65px"></span></td>
 			<td nowrap><span class="title"><input name="ss" value="<%=differencePrice%>"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="ss" value="<%=differenceQuantityFee%>"  style="width:65px"></td>
     </tr>
