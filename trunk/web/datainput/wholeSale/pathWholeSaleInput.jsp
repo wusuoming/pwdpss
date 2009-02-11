@@ -6,6 +6,7 @@
 <jsp:directive.page import="java.util.Iterator" />
 <jsp:directive.page
 	import="com.elongway.pss.dto.domain.LwWholeSaleIndicatorDto" />
+<jsp:directive.page import="com.elongway.pss.bl.facade.BLLwWholeSaleUserInfoFacade"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -86,7 +87,7 @@
 			</table>
 			<table class=common width="100%" cellspacing="1" cellpadding="5">
 				<tr class=listtitle align="center">
-					<td class=title0 colspan="19" width="100%">
+					<td class=title0 colspan="20" width="100%">
 						<B><font size="3">趸售抄表指针录入页面</font> </B>
 					</td>
 				</tr>
@@ -97,6 +98,9 @@
 				<tr class=listtitle>
 					<td nowrap>
 						<span class="title">线路名称 </span>
+					</td>
+					<td nowrap>
+						<span class="title">电话 </span>
 					</td>
 					<td nowrap>
 						<span class="title">上月有功指针</span>
@@ -172,6 +176,19 @@
 							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" style="border:0"
 							readonly="readonly" style="width:65px">
 					</td>
+					<%
+					BLLwWholeSaleUserInfoFacade  blLwWholeSaleUserInfoFacade=new BLLwWholeSaleUserInfoFacade();
+					LwWholeSaleUserInfoDto lwWholeSaleUserInfoDto=blLwWholeSaleUserInfoFacade.findByPrimaryKey(lwWholeSaleIndicatorDto.getUserNo());
+					
+					 %>
+					 
+					 <td class="input" align="center">
+						<input name="ssss"
+							value="<%=lwWholeSaleUserInfoDto.getLineCode()%>"
+							  style="width:65px" readonly="readonly"  style="border:0">
+					</td>
+					 
+					 
 					<td class="input" align="center">
 						<input name="LastWorkNum"
 							value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>"
