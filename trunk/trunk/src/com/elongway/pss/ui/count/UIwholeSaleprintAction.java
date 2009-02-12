@@ -62,7 +62,7 @@ public class UIwholeSaleprintAction extends Action {
 		
 		LwAllWholeFeeDto lwAllWholeFeeDto=new LwAllWholeFeeDto();
 		lwAllWholeFeeDto.setCompany(company);
-		lwAllWholeFeeDto.setDianfei(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17));
+		lwAllWholeFeeDto.setDianfei(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))));
 		lwAllWholeFeeDto.setDianfeitax(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17*0.17));
 		lwAllWholeFeeDto.setJijin(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17));
 		lwAllWholeFeeDto.setFujia1(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17*0.17));
