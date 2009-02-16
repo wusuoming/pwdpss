@@ -107,7 +107,7 @@ String sumwsanxiatax=(String)request.getAttribute("sumwsanxiatax");
 String sumwjijin=(String)request.getAttribute("sumwjijin");
 String sumwjijintax=(String)request.getAttribute("sumwjijintax");
 
-String sumallfee=(String)request.getAttribute("sumwjijintax");
+String sumallfee=(String)request.getAttribute("sumallfee");
 String sumallpower=request.getAttribute("sumallpower").toString();
 String sumallc=(String)request.getAttribute("sumallc");
 String sumalltax=(String)request.getAttribute("sumalltax");
