@@ -299,7 +299,7 @@
    
            <td nowrap><span class="title">µç½ð</span></td>
 			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getPointerPrice()%></span></td>
+			<td nowrap><span class="title"><%=corporation.getPowerPrice()%></span></td>
 			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
 			<%
               if(corporation.getQuantityStyle().equals("1")){
