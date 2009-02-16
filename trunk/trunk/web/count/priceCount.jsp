@@ -144,8 +144,7 @@ String sum48 = df.format(Double.parseDouble(lwAllWholeFeeDto.getDianjin())/1.17*
 String sum49 = df.format(Double.parseDouble(lwAllWholeFeeDto.getDianjin()));
 String sum50 = df.format((Double.parseDouble(lwAllWholeFeeDto.getSanxia()))/1.17+(Double.parseDouble(lwAllWholeFeeDto.getJijin()))/1.17+(Double.parseDouble(lwAllWholeFeeDto.getDianjin()))/1.17);
 String sum51 = df.format((Double.parseDouble(lwAllWholeFeeDto.getSanxia()))/1.17*0.17+(Double.parseDouble(lwAllWholeFeeDto.getJijin()))/1.17*0.17+(Double.parseDouble(lwAllWholeFeeDto.getDianjin()))/1.17*0.17);
-
-
+ 
 %>
 	<form name="fm" method="post">
 		<table class=common width="500%" border="1" cellspacing="1"
@@ -643,17 +642,17 @@ String sum51 = df.format((Double.parseDouble(lwAllWholeFeeDto.getSanxia()))/1.17
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sum50 %></font>
+					<span class="title"><font size="2"></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sum51 %></font>
+					<span class="title"><font size="2"></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sum49)+Double.parseDouble(sum46)+Double.parseDouble(sum43)) %></font>
+					<span class="title"><font size="2"><%=df.format(lwAllWholeFeeDto.getSumfee()) %></font>
 					</span>
 					<br>
 				</td>

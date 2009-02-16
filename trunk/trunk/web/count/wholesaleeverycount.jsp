@@ -106,6 +106,8 @@
 		 LwAllWholeFeeDto lwAllWholeFeeDtogy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
 		LwAllWholeFeeDto lwAllWholeFeeDtodm = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
+		//求总电量
+		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
 		 %>
 		<tr class=listtitle>
 				<td width="10%">
@@ -333,16 +335,16 @@
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia3() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
@@ -594,16 +596,16 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia3() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
@@ -855,16 +857,16 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia3() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
@@ -1116,16 +1118,16 @@
 			
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfei() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfeitax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia3() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
@@ -1196,37 +1198,37 @@
 					<span class="title"><font size="2"></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwpower") %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwc") %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwtax")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getFujia3() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxia")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxiatax")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwjijin")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwjijintax")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("summwdianjin")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwdianjintax")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("sumwfee") %></font></span>
 				<br></td>
 				
 						
