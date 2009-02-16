@@ -274,7 +274,7 @@ public class UIThisMonthAllCountAction extends Action {
 				 sumtjijintax += townSataDto1.getJiJinTax();
 				 sumalltfee += townSataDto1.getSumPowerFee();
 		 }
-		 sumwc=Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei());
+		 sumwc=(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei()))/1.17;
 		 sumwfee=Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
 		 sumwpower=Double.parseDouble(lwAllWholeFeeDtogy.getPower1())+Double.parseDouble(lwAllWholeFeeDtoty.getPower1())+Double.parseDouble(lwAllWholeFeeDtodm.getPower1())+Double.parseDouble(lwAllWholeFeeDtojy.getPower1());
 		 sumwtax=Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax());
