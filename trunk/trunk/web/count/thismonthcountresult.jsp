@@ -348,7 +348,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
@@ -386,7 +386,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
@@ -425,7 +425,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
@@ -466,7 +466,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
