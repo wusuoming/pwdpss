@@ -813,33 +813,17 @@ BODY {
 						<span class="title"><input name="sum35fee" value="<%=sum35Fee%>"style="width:65px"></span>
 					</td>
 				</tr>
-				
-
-    			
-    
-    
-    
-    
-    
-    
-    
     <tr>
-   
             <td nowrap colspan="2"><span class="title">三峡</span></td>
-           
 			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(sanxiaPower))%></span></td>
 			<td nowrap><span class="title">0.004</span></td>
 			<td nowrap colspan="2"><span class="title"><input name="sanxia" value="<%=sanxiaFee%>"style="width:65px"></span></td>
-			
-			
 			<td nowrap colspan="2"><span class="title">农网还贷</span></td>
 			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(nongwanghaidaiPower))%></span></td>
 			<td nowrap><span class="title">0.02</span></td>
 			<td nowrap colspan="2"><span class="title"><input name="dianjin" value="<%=nongwanghaidaiFee%>"style="width:65px"></span></td>
-
     </tr>
      <tr>
-   
            <td nowrap colspan="2"><span class="title">库区移民</span></td>
 			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kuquPower))%></span></td>
 			<td nowrap><span class="title">0.0031</span></td>
@@ -873,7 +857,7 @@ BODY {
 						<span class="title">利率电费</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=powerRateFee%></span>
+						<span class="title"><input type="text" name="liLvDianFei" readOnly=true value="<%=powerRateFee%>"></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title">税</span>
@@ -1052,12 +1036,12 @@ BODY {
    var FarmUseMoney35kv = fm.FarmUseMoney35kv.value;
    var BizQuantity35kv = fm.BizQuantity35kv.value;
    var BizMoney35kv = fm.BizMoney35kv.value;
-    
+    var liLvDianFei = fm.liLvDianFei.value;
   var   strURL;     
   var a=fm.company.value;
   var b=fm.inputDate.value;
     
-  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends1="+exends1+"&&exends2="+exends2+"&&exends3="+exends3+"&&exends4="+exends4+"&&exends5="+exends5+"&&exends6="+exends6+"&&exends7="+exends7+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv;     
+  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends1="+exends1+"&&exends2="+exends2+"&&exends3="+exends3+"&&exends4="+exends4+"&&exends5="+exends5+"&&exends6="+exends6+"&&exends7="+exends7+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei;     
     
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
   

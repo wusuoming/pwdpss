@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.elongway.pss.bl.action.domain.BLLwAllWholeFeeAction;
 import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorFacade;
@@ -86,7 +85,8 @@ public class UIwholeSaleprintAction extends Action {
 		String FarmUseMoney35kv = httpServletRequest.getParameter("FarmUseMoney35kv");
 		String BizQuantity35kv = httpServletRequest.getParameter("BizQuantity35kv");
 		String BizMoney35kv = httpServletRequest.getParameter("BizMoney35kv");
-		LwWholeSaleDetailDto lwWholeSaleDetailDto = new LwWholeSaleDetailDto ();
+		String liLvDianFei = httpServletRequest.getParameter("liLvDianFei");
+		LwWholeSaleDetailDto lwWholeSaleDetailDto = new LwWholeSaleDetailDto();
 		lwWholeSaleDetailDto.setCompanyName(company);
 		lwWholeSaleDetailDto.setInputDate(inputDate);
 		lwWholeSaleDetailDto.setUnDenizenQuantity10kv(Double.parseDouble(UnDenizenQuantity10kv));
@@ -118,9 +118,8 @@ public class UIwholeSaleprintAction extends Action {
 		bLLwWholeSaleDetailFacade.delete(company,inputDate);
 		bLLwWholeSaleDetailFacade.insert(lwWholeSaleDetailDto);
 		
-		
-		
 		LwAllWholeFeeDto lwAllWholeFeeDto=new LwAllWholeFeeDto();
+		lwAllWholeFeeDto.setFujia3(liLvDianFei);
 		lwAllWholeFeeDto.setCompany(company);
 		lwAllWholeFeeDto.setDianfei(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17));
 		lwAllWholeFeeDto.setDianfeitax(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17*0.17));

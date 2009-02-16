@@ -50,6 +50,41 @@ public class UIEveryWholeSaleCountAction extends Action {
 		LwAllWholeFeeDto lwAllWholeFeeDtodm = new LwAllWholeFeeDto();
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = new LwAllWholeFeeDto();
 		LwAllWholeFeeDto lwAllWholeFeeDtoty = new LwAllWholeFeeDto();
+		
+		double sumwfee = 0;
+		double sumwpower = 0;
+		double sumwtax = 0;
+		double sumwc = 0;
+		double summwdianjin = 0;
+		double sumwdianjintax = 0;
+		double sumwsanxia = 0;
+		double sumwsanxiatax = 0;
+		double sumwjijin = 0;
+		double sumwjijintax = 0;
+
+		
+		 sumwc=(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei()))/1.17;
+		 sumwfee=Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
+		 sumwpower=Double.parseDouble(lwAllWholeFeeDtogy.getPower1())+Double.parseDouble(lwAllWholeFeeDtoty.getPower1())+Double.parseDouble(lwAllWholeFeeDtodm.getPower1())+Double.parseDouble(lwAllWholeFeeDtojy.getPower1());
+		 sumwtax=Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax());
+		 summwdianjin=Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjin());
+		 sumwdianjintax=Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
+		 sumwsanxia=Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxia());
+		 sumwsanxiatax=Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
+		 sumwjijin=Double.parseDouble(lwAllWholeFeeDtogy.getJijin())+Double.parseDouble(lwAllWholeFeeDtoty.getJijin())+Double.parseDouble(lwAllWholeFeeDtodm.getJijin())+Double.parseDouble(lwAllWholeFeeDtojy.getJijin());
+		 sumwjijintax=Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
+		 httpServletRequest.setAttribute("sumwc", sumwc);
+		 httpServletRequest.setAttribute("sumwfee", sumwfee);
+		 httpServletRequest.setAttribute("sumwpower",sumwpower);
+		 httpServletRequest.setAttribute("sumwtax", sumwtax);
+		 httpServletRequest.setAttribute("summwdianjin", summwdianjin);
+		 httpServletRequest.setAttribute("sumwdianjintax", sumwdianjintax);
+		 httpServletRequest.setAttribute("sumwsanxia", sumwsanxia);
+		 httpServletRequest.setAttribute("sumwsanxiatax", sumwsanxiatax);
+		 httpServletRequest.setAttribute("sumwjijin", sumwjijin);
+		 httpServletRequest.setAttribute("sumwjijintax", sumwjijintax);
+		
+		
 		lwAllWholeFeeDtogy = bLLwAllWholeFeeFacade.findByPrimaryKey("gy",inputDate);
 		lwAllWholeFeeDtodm = bLLwAllWholeFeeFacade.findByPrimaryKey("dm",inputDate);
 		lwAllWholeFeeDtojy = bLLwAllWholeFeeFacade.findByPrimaryKey("jy",inputDate);
