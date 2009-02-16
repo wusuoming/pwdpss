@@ -29,8 +29,8 @@ public class UIAllLineSerchAction extends Action {
 		
 		PowerFeeCal  powerFeeCal=new PowerFeeCal();
 		DecimalFormat df = new DecimalFormat("###0.00");
-		String conditions10=" upcompany='"+comcode+"'"+" and KV=10 and StatMonth='"+inputdate+"'"+" and WHOLESALETYPE=0 order by linecode";
-		String conditions35=" upcompany='"+comcode+"'"+" and KV=35 and StatMonth='"+inputdate+"'"+" and WHOLESALETYPE=0 order by linecode" ;
+		String conditions10=" upcompany='"+comcode+"'"+" and KV=10 and StatMonth='"+inputdate+"'"+"  order by linecode";
+		String conditions35=" upcompany='"+comcode+"'"+" and KV=35 and StatMonth='"+inputdate+"'"+"   order by linecode" ;
 		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
 		Collection kv10=blLwWholeSaleSummaryFacade.findByConditions(conditions10);
 		Collection kv35=blLwWholeSaleSummaryFacade.findByConditions(conditions35);
