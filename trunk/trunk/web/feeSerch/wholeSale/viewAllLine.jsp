@@ -101,7 +101,7 @@
 			 %>
 
 					<tr >
-						<td class="input" align="center"><input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><%=lwWholeSaleSummaryDto.getLineCode()%><%--<input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>--%>
 						<td class="input" align="center"><input   name="workPointer" value="<%=lwWholeSaleSummaryDto.getWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="unworkPointer" value="<%=lwWholeSaleSummaryDto.getUnWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="pointerPower" value="<%=lwWholeSaleSummaryDto.getPointerQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
