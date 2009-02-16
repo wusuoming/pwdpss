@@ -31,11 +31,6 @@ create by wangrongjia
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwUserLineDto"/>
 <jsp:directive.page import="java.util.Collection"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwAmmeterChangeDto"/>
-
-
-
-
-  
 <title></title>
 <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
 <link rel="stylesheet" type="text/css" href="/iacontact/css/Standard.css">
@@ -54,7 +49,7 @@ create by wangrongjia
     <!--CONTENT BEGIN-->
     
       <form name="fm" method="post">
-        <table id="table_userMain" class="fix_table" border="0">
+        <table id="table_userMain" class="fix_table" border="0" width="100%">
          <tr class=listtitle align="center">
 			<td class=title0 colspan="8"><B>修改大工业用电用户</B></td>
 		</tr>
@@ -419,7 +414,6 @@ function codeQueryLine(field)
 }
 function codeQueryAmmeter(field)
 {
-	
 	if(event.type=="keyup")
 	{
 		var charCode=window.event.keyCode;

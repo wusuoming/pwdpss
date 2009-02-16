@@ -5,37 +5,36 @@ import com.sinosoft.sysframework.log.*;
 import com.sinosoft.sysframework.common.util.*;
 import com.sinosoft.sysframework.common.datatype.*;
 import com.sinosoft.sysframework.reference.DBManager;
-import com.elongway.pss.dto.domain.IADCompanyDto;
-import com.elongway.pss.bl.action.domain.BLIADCompanyAction;
+import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
+import com.elongway.pss.bl.action.domain.BLLwWholeSaleDetailAction;
 
 /**
  * ★★★★★警告：本文件不允许手工修改！！！请使用JToolpad生成！<br>
- * 这是IADCompany的业务逻辑对象Facade基类<br>
- * 创建于 JToolpad(1.5.1) Vendor:zhouxianli1978@msn.com
+ * 这是LWWholeSaleDetail-趸售费用明细表的业务逻辑对象Facade基类<br>
  */
-public class BLIADCompanyFacadeBase{
-    private static Logger logger = Logger.getLogger(BLIADCompanyFacadeBase.class);
+public class BLLwWholeSaleDetailFacadeBase{
+    private static Logger logger = Logger.getLogger(BLLwWholeSaleDetailFacadeBase.class);
 
     /**
      * 构造函数
      */
-    public BLIADCompanyFacadeBase(){
+    public BLLwWholeSaleDetailFacadeBase(){
     }
 
     /**
      * 插入一条数据
-     * @param iADCompanyDto iADCompanyDto
+     * @param lwWholeSaleDetailDto lwWholeSaleDetailDto
      * @throws Exception
      */
-    public void insert(IADCompanyDto iADCompanyDto)
+    public void insert(LwWholeSaleDetailDto lwWholeSaleDetailDto)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //插入记录
-            blIADCompanyAction.insert(dbManager,iADCompanyDto);
+            blLwWholeSaleDetailAction.insert(dbManager,lwWholeSaleDetailDto);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -47,19 +46,19 @@ public class BLIADCompanyFacadeBase{
 
     /**
      * 按主键删除一条数据
-     * @param companyCode CompanyCode
-     * @param areaCode AreaCode
+     * @param companyName 公司名称
+     * @param inputDate 统计日期
      * @throws Exception
      */
-    public void delete(String companyCode,String areaCode)
+    public void delete(String companyName,String inputDate)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //删除记录
-            blIADCompanyAction.delete(dbManager,companyCode,areaCode);
+            blLwWholeSaleDetailAction.delete(dbManager,companyName, inputDate);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -77,12 +76,12 @@ public class BLIADCompanyFacadeBase{
     public void deleteByConditions(String conditions)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //按条件删除记录
-            blIADCompanyAction.deleteByConditions(dbManager,conditions);
+            blLwWholeSaleDetailAction.deleteByConditions(dbManager,conditions);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -94,18 +93,18 @@ public class BLIADCompanyFacadeBase{
 
     /**
      * 按主键更新一条数据(主键本身无法变更)
-     * @param iADCompanyDto iADCompanyDto
+     * @param lwWholeSaleDetailDto lwWholeSaleDetailDto
      * @throws Exception
      */
-    public void update(IADCompanyDto iADCompanyDto)
+    public void update(LwWholeSaleDetailDto lwWholeSaleDetailDto)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //更新记录
-            blIADCompanyAction.update(dbManager,iADCompanyDto);
+            blLwWholeSaleDetailAction.update(dbManager,lwWholeSaleDetailDto);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -117,27 +116,27 @@ public class BLIADCompanyFacadeBase{
 
     /**
      * 按主键查找一条数据
-     * @param companyCode CompanyCode
-     * @param areaCode AreaCode
-     * @return iADCompanyDto iADCompanyDto
+     * @param companyName 公司名称
+     * @param inputDate 统计日期
+     * @return lwWholeSaleDetailDto lwWholeSaleDetailDto
      * @throws Exception
      */
-    public IADCompanyDto findByPrimaryKey(String companyCode,String areaCode)
+    public LwWholeSaleDetailDto findByPrimaryKey(String companyName,String inputDate)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         //声明DTO
-        IADCompanyDto iADCompanyDto = null;
+        LwWholeSaleDetailDto lwWholeSaleDetailDto = null;
         try{
             dbManager.open("pssDataSource");
             //查询数据,赋值给DTO
-            iADCompanyDto = blIADCompanyAction.findByPrimaryKey(dbManager,companyCode, areaCode);
+            lwWholeSaleDetailDto = blLwWholeSaleDetailAction.findByPrimaryKey(dbManager,companyName, inputDate);
         }catch(Exception exception){
             throw exception;
         }finally{
             dbManager.close();
         }
-        return iADCompanyDto;
+        return lwWholeSaleDetailDto;
     }
 
     /**
@@ -157,10 +156,10 @@ public class BLIADCompanyFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
-            pageRecord = blIADCompanyAction.findByConditions(dbManager,conditions,pageNo,rowsPerPage);
+            pageRecord = blLwWholeSaleDetailAction.findByConditions(dbManager,conditions,pageNo,rowsPerPage);
         }catch(Exception exception){
             throw exception;
         }finally{
@@ -172,7 +171,7 @@ public class BLIADCompanyFacadeBase{
     /**
      * 按条件查询多条数据
      * @param conditions 查询条件
-     * @return Collection 包含iADCompanyDto的集合
+     * @return Collection 包含lwWholeSaleDetailDto的集合
      * @throws Exception
      */
     public Collection findByConditions(String conditions)
@@ -184,10 +183,10 @@ public class BLIADCompanyFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
-            collection = blIADCompanyAction.findByConditions(dbManager,conditions);
+            collection = blLwWholeSaleDetailAction.findByConditions(dbManager,conditions);
         }catch(Exception exception){
             throw exception;
         }finally{
@@ -210,10 +209,10 @@ public class BLIADCompanyFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLIADCompanyAction blIADCompanyAction = new BLIADCompanyAction();
+        BLLwWholeSaleDetailAction blLwWholeSaleDetailAction = new BLLwWholeSaleDetailAction();
         try{
             dbManager.open("pssDataSource");
-            rowCount = blIADCompanyAction.getCount(dbManager,conditions);
+            rowCount = blLwWholeSaleDetailAction.getCount(dbManager,conditions);
         }catch(Exception exception){
             throw exception;
         }finally{

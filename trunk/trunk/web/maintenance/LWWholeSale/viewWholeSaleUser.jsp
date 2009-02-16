@@ -55,7 +55,7 @@ create by wangrongjia
     <!--CONTENT BEGIN-->
     
       <form name="fm" >
-        <table id="table_userMain" class="fix_table" border="0">
+        <table id="table_userMain" class="fix_table" border="0" width="100%">
          <tr class=listtitle align="center">
 			<td class=title0 colspan="8"><B>修改趸售用户</B></td>
 		</tr>
@@ -112,7 +112,7 @@ create by wangrongjia
         </table>
          <table width="100%">
 		<tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>配置电表信息</B></td>
+			<td class=title0 colspan="13"><B>配置电表信息</B></td>
 		</tr>
 		
 	<% List list=(List)request.getAttribute("ua");
@@ -156,51 +156,34 @@ create by wangrongjia
 					onmouseover="this.style.background='#4CA8EB';"
 					onmouseout="this.style.background=''" /></td>
 		</tr>
-	
-		
 	</table>
-	
-		
-	
     <br />
 <!--一大堆的按钮-->
-
     <table width="50%" border="0" cellspacing="0" cellpadding="0" align="center">  
       <tr>
         <td class=button><input name="back" type="button" class=button value="返回" onClick="javascript:history.go(-1);"></td>
       </tr>
     </table>
-
-
 <!--Button End-->
 </form>
 <br />
-  
 <script language="javascript">
 function modifyWholeSaleUser(){
-
  fm.action="/iacontact/modifyLWWholeSaleUser.do";
 fm.submit();
- 
 }
 function isHaveProrate(){
 	if(fm.wholeSaleType.value=="0"){
 		aa.style.display="";
 		bb.style.display="";
 		cc.style.display="";
-		
 	}if(fm.wholeSaleType.value=="1"){
 		aa.style.display="none";
 		bb.style.display="none";
 		cc.style.display="none";
-		
 	}
-
-
 }
-
 function addWholeSaleUser(){
-
  if(fm.transformerName.value ==''){
    alert('户号不能为空！'); 
    return false;

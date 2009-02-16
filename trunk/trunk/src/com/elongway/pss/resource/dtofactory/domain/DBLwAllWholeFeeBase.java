@@ -311,9 +311,8 @@ public class DBLwAllWholeFeeBase{
         dbManager.setString(1,company);
         dbManager.setString(2,inputdate);
         ResultSet resultSet = dbManager.executePreparedQuery();
-        LwAllWholeFeeDto lwAllWholeFeeDto = null;
+        LwAllWholeFeeDto  lwAllWholeFeeDto = new LwAllWholeFeeDto();
         if(resultSet.next()){
-            lwAllWholeFeeDto = new LwAllWholeFeeDto();
             lwAllWholeFeeDto.setCompany(dbManager.getString(resultSet,1));
             lwAllWholeFeeDto.setInputdate(dbManager.getString(resultSet,2));
             lwAllWholeFeeDto.setPower1(dbManager.getString(resultSet,3));
