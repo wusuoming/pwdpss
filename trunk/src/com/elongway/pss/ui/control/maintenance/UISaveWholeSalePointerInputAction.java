@@ -102,8 +102,6 @@ public class UISaveWholeSalePointerInputAction extends Action {
 			if(differenceQuantity[i].equals("")||differenceQuantity[i]==null){
 				differenceQuantity[i]="0";
 			}
-			
-			
 			lwWholeSaleIndicatorDto.setUserNo(UserName[i]);
 			lwWholeSaleIndicatorDto.setIfCal(ifCal[i]);
 			lwWholeSaleIndicatorDto.setThisWorkNum(Double.parseDouble(ThisWorkNum[i]));
@@ -138,10 +136,7 @@ public class UISaveWholeSalePointerInputAction extends Action {
 				lwAmmeterChangeDto.setRate(Rate[i]);
 				blLwAmmeterChangeFacade.update(lwAmmeterChangeDto);
 			}
-			
-		
 				blLwWholeSaleIndicatorFacade.update(lwWholeSaleIndicatorDto);
-			
 		}
 		Collection allPointer=new ArrayList();
 		allPointer=blLwWholeSaleIndicatorFacade.findByConditions(conditions);

@@ -14,10 +14,12 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.action.domain.BLLwAllWholeFeeAction;
 import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
+import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSalePurePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
 import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
+import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
 import com.elongway.pss.dto.domain.LwWholeSalePurePriceDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.PowerFeeCal;
@@ -60,6 +62,64 @@ public class UIwholeSaleprintAction extends Action {
 		String jijin3 = httpServletRequest.getParameter("jijin3");
 		
 		
+		String UnDenizenQuantity10kv = httpServletRequest.getParameter("UnDenizenQuantity10kv");
+		String UnDenizenMoney10kv = httpServletRequest.getParameter("UnDenizenMoney10kv");
+		String DenizenQuantity10kv = httpServletRequest.getParameter("DenizenQuantity10kv");
+		String DenizenMoney10kv = httpServletRequest.getParameter("DenizenMoney10kv");
+		String ProductQuantity10kv = httpServletRequest.getParameter("ProductQuantity10kv");
+		String ProductMoney10kv = httpServletRequest.getParameter("ProductMoney10kv");
+		String UnIndustryQuantity10kv = httpServletRequest.getParameter("UnIndustryQuantity10kv");
+		String UnIndustryMoney10kv = httpServletRequest.getParameter("UnIndustryMoney10kv");
+		String FarmUseQuantity10kv = httpServletRequest.getParameter("FarmUseQuantity10kv");
+		String FarmUseMoney10kv = httpServletRequest.getParameter("FarmUseMoney10kv");
+		String BizQuantity10kv = httpServletRequest.getParameter("BizQuantity10kv");
+		String BizMoney10kv = httpServletRequest.getParameter("BizMoney10kv");
+		String UnDenizenQuantity35kv = httpServletRequest.getParameter("UnDenizenQuantity35kv");
+		String UnDenizenMoney35kv = httpServletRequest.getParameter("UnDenizenMoney35kv");
+		String DenizenQuantity35kv = httpServletRequest.getParameter("DenizenQuantity35kv");
+		String DenizenMoney35kv = httpServletRequest.getParameter("DenizenMoney35kv");
+		String ProductQuantity35kv = httpServletRequest.getParameter("ProductQuantity35kv");
+		String ProductMoney35kv = httpServletRequest.getParameter("ProductMoney35kv");
+		String UnIndustryQuantity35kv = httpServletRequest.getParameter("UnIndustryQuantity35kv");
+		String UnIndustryMoney35kv = httpServletRequest.getParameter("UnIndustryMoney35kv");
+		String FarmUseQuantity35kv = httpServletRequest.getParameter("FarmUseQuantity35kv");
+		String FarmUseMoney35kv = httpServletRequest.getParameter("FarmUseMoney35kv");
+		String BizQuantity35kv = httpServletRequest.getParameter("BizQuantity35kv");
+		String BizMoney35kv = httpServletRequest.getParameter("BizMoney35kv");
+		LwWholeSaleDetailDto lwWholeSaleDetailDto = new LwWholeSaleDetailDto ();
+		lwWholeSaleDetailDto.setCompanyName(company);
+		lwWholeSaleDetailDto.setInputDate(inputDate);
+		lwWholeSaleDetailDto.setUnDenizenQuantity10kv(Double.parseDouble(UnDenizenQuantity10kv));
+		lwWholeSaleDetailDto.setUnDenizenMoney10kv(Double.parseDouble(UnDenizenMoney10kv));
+		lwWholeSaleDetailDto.setDenizenQuantity10kv(Double.parseDouble(DenizenQuantity10kv));
+		lwWholeSaleDetailDto.setDenizenMoney10kv(Double.parseDouble(DenizenMoney10kv));
+		lwWholeSaleDetailDto.setProductQuantity10kv(Double.parseDouble(ProductQuantity10kv));
+		lwWholeSaleDetailDto.setProductMoney10kv(Double.parseDouble(ProductMoney10kv));
+		lwWholeSaleDetailDto.setUnIndustryQuantity10kv(Double.parseDouble(UnIndustryQuantity10kv));
+		lwWholeSaleDetailDto.setUnIndustryMoney10kv(Double.parseDouble(UnIndustryMoney10kv));
+		lwWholeSaleDetailDto.setFarmUseQuantity10kv(Double.parseDouble(FarmUseQuantity10kv));
+		lwWholeSaleDetailDto.setFarmUseMoney10kv(Double.parseDouble(FarmUseMoney10kv));
+		lwWholeSaleDetailDto.setBizQuantity10kv(Double.parseDouble(BizQuantity10kv));
+		lwWholeSaleDetailDto.setBizMoney10kv(Double.parseDouble(BizMoney10kv));
+		lwWholeSaleDetailDto.setUnDenizenQuantity35kv(Double.parseDouble(UnDenizenQuantity35kv));
+		lwWholeSaleDetailDto.setUnDenizenMoney35kv(Double.parseDouble(UnDenizenMoney35kv));
+		lwWholeSaleDetailDto.setDenizenQuantity35kv(Double.parseDouble(DenizenQuantity35kv));
+		lwWholeSaleDetailDto.setDenizenMoney35kv(Double.parseDouble(DenizenMoney35kv));
+		lwWholeSaleDetailDto.setProductQuantity35kv(Double.parseDouble(ProductQuantity35kv));
+		lwWholeSaleDetailDto.setProductMoney35kv(Double.parseDouble(ProductMoney35kv));
+		lwWholeSaleDetailDto.setUnIndustryQuantity35kv(Double.parseDouble(UnIndustryQuantity35kv));
+		lwWholeSaleDetailDto.setUnIndustryMoney35kv(Double.parseDouble(UnIndustryMoney35kv));
+		lwWholeSaleDetailDto.setFarmUseQuantity35kv(Double.parseDouble(FarmUseQuantity35kv));
+		lwWholeSaleDetailDto.setFarmUseMoney35kv(Double.parseDouble(FarmUseMoney35kv));
+		lwWholeSaleDetailDto.setBizQuantity35kv(Double.parseDouble(BizQuantity35kv));
+		lwWholeSaleDetailDto.setBizMoney35kv(Double.parseDouble(BizMoney35kv));
+		
+		BLLwWholeSaleDetailFacade bLLwWholeSaleDetailFacade = new BLLwWholeSaleDetailFacade();
+		bLLwWholeSaleDetailFacade.delete(company,inputDate);
+		bLLwWholeSaleDetailFacade.insert(lwWholeSaleDetailDto);
+		
+		
+		
 		LwAllWholeFeeDto lwAllWholeFeeDto=new LwAllWholeFeeDto();
 		lwAllWholeFeeDto.setCompany(company);
 		lwAllWholeFeeDto.setDianfei(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17));
@@ -80,14 +140,6 @@ public class UIwholeSaleprintAction extends Action {
 		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
 		blLwAllWholeFeeFacade.delete(company, serchDate);
 		blLwAllWholeFeeFacade.insert(lwAllWholeFeeDto);
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		httpServletRequest.setAttribute("exends1", exends1);
 		httpServletRequest.setAttribute("exends2", exends2);

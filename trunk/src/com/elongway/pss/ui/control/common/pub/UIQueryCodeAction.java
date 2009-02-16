@@ -64,7 +64,7 @@ public class UIQueryCodeAction extends Action {
 			Collection collection = null;
 			List list = new ArrayList();
 			// 拼写条件子句
-			conditions.append(" 1=1 ").append(SqlUtils.convertString("lineCode", lineCode));
+			conditions.append(" 1=1 ").append(SqlUtils.convertString("lineCode",lineCode));
 			BLLwPowerLineFacade bllwPowerLineFacade = new BLLwPowerLineFacade ();
 			// 从线路表(PowerLine)查询出所有的线路
 			collection = bllwPowerLineFacade.findByConditions(conditions.toString());
@@ -81,7 +81,7 @@ public class UIQueryCodeAction extends Action {
 				list.add(selectBean);
 			}
 			uiGetAmmeterForm.setCount(count);
-			httpServletRequest.setAttribute("uiGetAmmeterForm", uiGetAmmeterForm);
+			httpServletRequest.setAttribute("uiGetAmmeterForm",uiGetAmmeterForm);
 			httpServletRequest.setAttribute("CodeForm",
 					"window.opener.uiGetAmmeterForm.LineCode");
 			httpServletRequest.setAttribute("list", list);
@@ -263,7 +263,7 @@ public class UIQueryCodeAction extends Action {
 					list.add(selectBean);
 				}
 				uiGetAmmeterForm.setCount(count);
-				httpServletRequest.setAttribute("uiGetAmmeterForm", uiGetAmmeterForm);
+				httpServletRequest.setAttribute("uiGetAmmeterForm",uiGetAmmeterForm);
 				httpServletRequest.setAttribute("CodeForm",
 						"window.opener.fm.LineCode");
 				httpServletRequest.setAttribute("list", list);

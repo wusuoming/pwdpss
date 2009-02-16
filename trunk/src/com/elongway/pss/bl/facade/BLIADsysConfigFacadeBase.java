@@ -61,7 +61,7 @@ public class BLIADsysConfigFacadeBase{
         	dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //É¾³ý¼ÇÂ¼
-            blIADsysConfigAction.delete(dbManager,parameterCode, parameterType, companyCode);
+            blIADsysConfigAction.delete(dbManager,parameterCode,parameterType,companyCode);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();

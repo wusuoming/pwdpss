@@ -585,10 +585,6 @@ BODY {
 		</tr>
     <tr>
     <tr>
-      
-      
-     
-        
             <td nowrap colspan="2"><span class="title">项目</span></td>
 			<td nowrap ><span class="title">电量</span></td>
 			<td nowrap "><span class="title">电价</span></td>
@@ -597,35 +593,32 @@ BODY {
 			<td nowrap ><span class="title">电量</span></td>
 			<td nowrap ><span class="title">电价</span></td>
 			<td nowrap colspan="2"><span class="title">金额</span></td>
- 
     </tr>
     <tr>
-
 					<td nowrap colspan="2">
 						<span class="title">非居民照明/10KV</span>
 					</td>
-
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="UnDenizenQuantity10kv" value="<%=Math.round(Double.parseDouble(indecisivePower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" readOnly="true" value="<%=indecisivePrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=indecisiveFee10%></span>
+						<span class="title"><input type="text" readOnly=true name="UnDenizenMoney10kv" value="<%=indecisiveFee10%>"></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title">非居民照明/35KV</span>
 					</td>
 
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="UnDenizenQuantity35kv" readOnly="true" value="<%=Math.round(Double.parseDouble(indecisivePower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" readOnly="true" value="<%=indecisivePrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=indecisiveFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="UnDenizenMoney35kv" readOnly="true" value="<%=indecisiveFee35%>"></span>
 					</td>
 
 					
@@ -636,26 +629,26 @@ BODY {
 						<span class="title">居民生活/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(residentPower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="DenizenQuantity10kv" value="<%=Math.round(Double.parseDouble(residentPower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=residentPrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=residentFee10%></span>
+						<span class="title"><input type="text" readOnly=true name="DenizenMoney10kv" value="<%=residentFee10%>"></span>
 					</td>
 					
 					<td nowrap colspan="2">
 						<span class="title">居民生活/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(residentPower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="DenizenQuantity35kv" value="<%=Math.round(Double.parseDouble(residentPower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=residentPrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=residentFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="DenizenMoney35kv" value="<%=residentFee35%>"></span>
 					</td>
 					
 					
@@ -667,26 +660,26 @@ BODY {
 						<span class="title">农业生产/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(producePower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="ProductQuantity10kv" value="<%=Math.round(Double.parseDouble(producePower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=producePrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=produceFee10%></span>
+						<span class="title"><input type="text" readOnly=true name="ProductMoney10kv" value="<%=produceFee10%>"></span>
 					</td>
 					
 					<td nowrap colspan="2">
 						<span class="title">农业生产/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(producePower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="ProductQuantity35kv" value="<%=Math.round(Double.parseDouble(producePower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=producePrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=produceFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="ProductMoney35kv" value="<%=produceFee35%>"></span>
 					</td>
 					
 				</tr>
@@ -697,13 +690,13 @@ BODY {
 						<span class="title">非普工业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(industryPower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="UnIndustryQuantity10kv" value="<%=Math.round(Double.parseDouble(industryPower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=industryPrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=industryFee10%></span>
+						<span class="title"><input type="text" readOnly=true name="UnIndustryMoney10kv" value="<%=industryFee10%>"></span>
 					</td>
 				
 					
@@ -713,13 +706,13 @@ BODY {
 						<span class="title">非普工业/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(industryPower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="UnIndustryQuantity35kv" value="<%=Math.round(Double.parseDouble(industryPower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=industryPrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=industryFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="UnIndustryMoney35kv" value="<%=industryFee35%>"></span>
 					</td>
 
 				</tr>
@@ -728,26 +721,26 @@ BODY {
 						<span class="title">农业排灌/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="FarmUseQuantity10kv" value="<%=Math.round(Double.parseDouble(agriculturalPower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=agriculturalPrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title" ><%=agriculturalFee10%></span>
+						<span class="title" ><input type="text" readOnly=true name="FarmUseMoney10kv" value="<%=agriculturalFee10%>"></span>
 					</td>
 					
 					<td nowrap colspan="2">
 						<span class="title">农业排灌/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="FarmUseQuantity35kv" value="<%=Math.round(Double.parseDouble(agriculturalPower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=agriculturalPrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=agriculturalFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="FarmUseMoney35kv" value="<%=agriculturalFee35%>"></span>
 					</td>
 				</tr>
 				<tr>
@@ -757,13 +750,13 @@ BODY {
 						<span class="title">商业/10KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(businessPower10))%></span>
+						<span class="title"><input type="text" readOnly=true name="BizQuantity10kv" value="<%=Math.round(Double.parseDouble(businessPower10))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPrice10%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=businessPrice10%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=businessFee10%></span>
+						<span class="title"><input type="text" readOnly=true name="BizMoney10kv" value="<%=businessFee10%>"></span>
 					</td>
 					<td nowrap colspan="2">
 					
@@ -775,13 +768,13 @@ BODY {
 						<span class="title">商业/35KV</span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(businessPower35))%></span>
+						<span class="title"><input type="text" readOnly=true name="BizQuantity35kv" value="<%=Math.round(Double.parseDouble(businessPower35))%>"></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPrice35%></span>
+						<span class="title"><input type="text" readOnly=true name="" value="<%=businessPrice35%>"></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=businessFee35%></span>
+						<span class="title"><input type="text" readOnly=true name="BizMoney35kv" value="<%=businessFee35%>"></span>
 					</td>
 				</tr>
 
@@ -1033,16 +1026,41 @@ BODY {
          var jijin1 = fm.jijin1.value;
           var jijin2 = fm.jijin2.value;
            var jijin3 = fm.jijin3.value;
-	                 
+   var UnDenizenQuantity10kv = fm.UnDenizenQuantity10kv.value;
+   var UnDenizenMoney10kv = fm.UnDenizenMoney10kv.value;
+   var DenizenQuantity10kv = fm.DenizenQuantity10kv.value;
+   var DenizenMoney10kv = fm.DenizenMoney10kv.value;
+   var ProductQuantity10kv = fm.ProductQuantity10kv.value;
+   var ProductMoney10kv = fm.ProductMoney10kv.value;
+   var UnIndustryQuantity10kv = fm.UnIndustryQuantity10kv.value;
+   var UnIndustryMoney10kv = fm.UnIndustryMoney10kv.value;
+   
+   var FarmUseQuantity10kv = fm.FarmUseQuantity10kv.value;
+   var FarmUseMoney10kv = fm.FarmUseMoney10kv.value;
+   
+   var BizQuantity10kv = fm.BizQuantity10kv.value;
+   var BizMoney10kv = fm.BizMoney10kv.value;
+   var UnDenizenQuantity35kv = fm.UnDenizenQuantity35kv.value;
+   var UnDenizenMoney35kv = fm.UnDenizenMoney35kv.value;
+   var DenizenQuantity35kv = fm.DenizenQuantity35kv.value;
+   var DenizenMoney35kv = fm.DenizenMoney35kv.value;
+   var ProductQuantity35kv = fm.ProductQuantity35kv.value;
+   var ProductMoney35kv = fm.ProductMoney35kv.value;
+   var UnIndustryQuantity35kv = fm.UnIndustryQuantity35kv.value;
+   var UnIndustryMoney35kv = fm.UnIndustryMoney35kv.value;
+   var FarmUseQuantity35kv = fm.FarmUseQuantity35kv.value;
+   var FarmUseMoney35kv = fm.FarmUseMoney35kv.value;
+   var BizQuantity35kv = fm.BizQuantity35kv.value;
+   var BizMoney35kv = fm.BizMoney35kv.value;
     
   var   strURL;     
   var a=fm.company.value;
   var b=fm.inputDate.value;
     
-  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends1="+exends1+"&&exends2="+exends2+"&&exends3="+exends3+"&&exends4="+exends4+"&&exends5="+exends5+"&&exends6="+exends6+"&&exends7="+exends7+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18;     
+  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends1="+exends1+"&&exends2="+exends2+"&&exends3="+exends3+"&&exends4="+exends4+"&&exends5="+exends5+"&&exends6="+exends6+"&&exends7="+exends7+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv;     
     
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
-    
+  
   }  
 
 </script>
