@@ -39,8 +39,5 @@ public class UIWholeSaleSearchAction extends Action {
 		
 		
 }
-	public static void main(String[] args) {
-		String s="2008-01-01";
-		System.out.print(s.substring(0, 7));
-	}
+	
 }
