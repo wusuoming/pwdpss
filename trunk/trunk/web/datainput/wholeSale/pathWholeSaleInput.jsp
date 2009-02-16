@@ -172,9 +172,10 @@
 				%>
 				<tr>
 					<td class="input" align="center">
+					<%=lwWholeSaleIndicatorDto.getUserNo()%>
 						<input name="UserName"
-							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" style="border:0"
-							readonly="readonly" style="width:65px">
+							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" 
+							readonly="readonly" type="hidden">
 					</td>
 					<%
 					BLLwWholeSaleUserInfoFacade  blLwWholeSaleUserInfoFacade=new BLLwWholeSaleUserInfoFacade();
