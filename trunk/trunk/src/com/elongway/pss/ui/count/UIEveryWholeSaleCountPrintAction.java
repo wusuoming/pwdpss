@@ -238,16 +238,18 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		 sumwsanxiatax=Double.parseDouble(sumwsanxiataxgy)+Double.parseDouble(sumwsanxiataxty)+Double.parseDouble(sumwsanxiataxdm)+Double.parseDouble(sumwsanxiataxjy);
 		 sumwjijin=Double.parseDouble(sumwjijingy)+Double.parseDouble(sumwjijinty)+Double.parseDouble(sumwjijindm)+Double.parseDouble(sumwjijinjy);
 		 sumwjijintax=Double.parseDouble(sumwjijintaxgy)+Double.parseDouble(sumwjijintaxty)+Double.parseDouble(sumwjijintaxdm)+Double.parseDouble(sumwjijintaxjy);
+		double Sumlilv = Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia3());
 		 httpServletRequest.setAttribute("sumwc", df.format(sumwc));
 		 httpServletRequest.setAttribute("sumwfee", df.format(sumwfee));
 		 httpServletRequest.setAttribute("sumwpower",Math.round(sumwpower));
 		 httpServletRequest.setAttribute("sumwtax", df.format(sumwtax));
 		 httpServletRequest.setAttribute("summwdianjin", df.format(summwdianjin));
-		 httpServletRequest.setAttribute("sumwdianjintax", sumwdianjintax);
+		 httpServletRequest.setAttribute("sumwdianjintax", df.format(sumwdianjintax));
 		 httpServletRequest.setAttribute("sumwsanxia", df.format(sumwsanxia));
 		 httpServletRequest.setAttribute("sumwsanxiatax", df.format(sumwsanxiatax));
 		 httpServletRequest.setAttribute("sumwjijin", df.format(sumwjijin));
 		 httpServletRequest.setAttribute("sumwjijintax", df.format(sumwjijintax));
+		 httpServletRequest.setAttribute("Sumlilv", df.format(Sumlilv));
 		
 		httpServletRequest.setAttribute("lwAllWholeFeeDtogy", lwAllWholeFeeDtogy);
 		httpServletRequest.setAttribute("lwAllWholeFeeDtodm", lwAllWholeFeeDtodm);

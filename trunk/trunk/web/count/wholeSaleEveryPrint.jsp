@@ -1207,7 +1207,7 @@
 					<span class="title"><font size="2"><%=request.getAttribute("sumwtax")%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getFujia3() %></font></span>
+					<span class="title"><font size="2"><%=request.getAttribute("Sumlilv") %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxia")%></font></span>
