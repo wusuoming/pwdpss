@@ -7,9 +7,7 @@
 <jsp:directive.page import="java.text.DecimalFormat"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCorporationSummaryDto"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCoporationUserInfoDto"/>
-<jsp:directive.page import="com.elongway.pss.dto.custom.WholeSaleFee"/>
-<%@page import="com.elongway.pss.dto.domain.LwWholeSaleDetailDto"%>
-<%@page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"%>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -19,7 +17,7 @@
 <head>
  <meta http-equiv=Content-Type content="text/html; charset=gb2312">
   
-<title>包头农电总公司趸售电费电量发行单</title>
+<title>包头农电总公司电费电量发行单</title>
 <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
 <app:css />
 <html:base />
@@ -85,1153 +83,239 @@
 </head>
 <body class=interface onload="javascript:printCount();window.close()">&nbsp; 
 <html:errors />
+<%
+String sumffee=(String)request.getAttribute("sumffee");
+String sumfpower=request.getAttribute("sumfpower").toString();
+String sumfdianfee=(String)request.getAttribute("sumfdianfee");
+String sumftax=(String)request.getAttribute("sumftax");
+String sumfc=(String)request.getAttribute("sumfc");
+String summfdianjin=(String)request.getAttribute("summfdianjin");
+String sumfdianjintax=(String)request.getAttribute("sumfdianjintax");
+String sumfsanxia=(String)request.getAttribute("sumfsanxia");
+String sumfsanxiatax=(String)request.getAttribute("sumfsanxiatax");
+String sumfjijin=(String)request.getAttribute("sumfjijin");
+String sumfjijintax=(String)request.getAttribute("sumfjijintax");
+String sumwfee=(String)request.getAttribute("sumwfee");
+String sumwpower=request.getAttribute("sumwpower").toString();
+String sumwdianfee=(String)request.getAttribute("sumwdianfee");
+String sumwtax=(String)request.getAttribute("sumwtax");
+String sumwc=(String)request.getAttribute("sumwc");
+String summwdianjin=(String)request.getAttribute("summwdianjin");
+String sumwdianjintax=(String)request.getAttribute("sumwdianjintax");
+String sumwsanxia=(String)request.getAttribute("sumwsanxia");
+String sumwsanxiatax=(String)request.getAttribute("sumwsanxiatax");
+String sumwjijin=(String)request.getAttribute("sumwjijin");
+String sumwjijintax=(String)request.getAttribute("sumwjijintax");
 
+String sumallfee=(String)request.getAttribute("sumallfee");
+String sumallpower=request.getAttribute("sumallpower").toString();
+String sumallc=(String)request.getAttribute("sumallc");
+String sumalltax=(String)request.getAttribute("sumalltax");
+String sumallall=(String)request.getAttribute("sumallall");
+String sumalldianjin=(String)request.getAttribute("sumalldianjin");
+String sumalldianjintax=(String)request.getAttribute("sumalldianjintax");
+String sumallsanxia=(String)request.getAttribute("sumallsanxia");
+String sumallsanxiatax=(String)request.getAttribute("sumallsanxiatax");
+String sumalljijin=(String)request.getAttribute("sumalljijin");
+String sumalljijintax=(String)request.getAttribute("sumalljijintax");
+
+
+
+
+
+
+
+
+
+
+%>
 <form  name="fm" method="post">
-
+ <%
+		 LwCorporationSummaryDto corporation=(LwCorporationSummaryDto)request.getAttribute("LwCorporationSummaryDto2");
+		 LwCoporationUserInfoDto lwCoporationUserInfoDto=(LwCoporationUserInfoDto)request.getAttribute("lwCoporationUserInfoDto");
+		Collection col=(List)request.getAttribute("colpoint");
+		String tax=(String)request.getAttribute("tax");
+		DecimalFormat df = new DecimalFormat("###0.00");
+		
+%>
 	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="4">包头市农电公司趸售电费电量发行单</font></td>
+			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		
-		<%
-		
-		DecimalFormat df = new DecimalFormat("###0.00");
-		LwWholeSaleDetailDto lwWholeSaleDetailDtogy = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtogy");
-		LwWholeSaleDetailDto lwWholeSaleDetailDtodm = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtodm");
-		LwWholeSaleDetailDto lwWholeSaleDetailDtojy = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtojy");
-		LwWholeSaleDetailDto lwWholeSaleDetailDtoty = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtoty");
-		 LwAllWholeFeeDto lwAllWholeFeeDtoty = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtoty");
-		 LwAllWholeFeeDto lwAllWholeFeeDtogy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
-		LwAllWholeFeeDto lwAllWholeFeeDtodm = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
-		LwAllWholeFeeDto lwAllWholeFeeDtojy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
-		//求总电量
-		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
-		 %>
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量10KV</font></span>
+					<span class="title"><font size="2">电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费10KV</font></span>
+					<span class="title"><font size="2">纯电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量10KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费10KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费10KV</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center" rowspan="5">
-					<span class="title"><font size="2">土右供电局</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizMoney10kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryMoney10kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量35KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费35KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizMoney35kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryMoney35kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总电量</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+		
+				<td nowrap width="10%">
+					<span class="title"><font size="2">合计</font></span>
+				<br></td>	
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电金</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
+				
+				<td nowrap width="10%">
 					<span class="title"><font size="2">电金税</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
-				<br></td>
-				
-						
-			</tr>
-			
-					<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getPower1()%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfeitax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia3() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxiatax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjintax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
-				<br></td>
-				
-						
-			</tr>
-			<tr class=listtitle>
-				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量10KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费10KV</font></span>
-				<br></td>	
-				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量10KV</font></span>
+					<span class="title"><font size="2">三峡</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费10KV</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center" rowspan="5">
-					<span class="title"><font size="2">达茂供电局</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizMoney10kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryMoney10kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量35KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费35KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizMoney35kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryMoney35kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总电量</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">三峡税</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">基金</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				
+				<td nowrap width="10%">
 					<span class="title"><font size="2">基金税</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
-				<br></td>
-				
-						
-			</tr>
-			
-				<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfeitax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia3() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxiatax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjintax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
-				<br></td>
-				
-						
-			</tr>
-			<tr class=listtitle>
-				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量10KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费10KV</font></span>
-				<br></td>	
-				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费10KV</font></span>
+					<span class="title"><font size="2">总计</font></span>
 				<br></td>
 							
 			</tr>
 			<tr >
-				<td nowrap width="10%"  align="center" rowspan="5">
-					<span class="title"><font size="2">九原供电局</font></span>
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumftax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=summfdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=sumffee%></font></span>
 				<br></td>
 				
-							
-			</tr>
-			<tr class=listtitle>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量35KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费35KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
 							
 			</tr>
 			<tr >
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizMoney35kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryMoney35kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总电量</font></span>
+					<span class="title"><font size="2">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
+					<span class="title"><font size="2"><%=sumwpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><font size="2"><%=sumwc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2"><%=sumwtax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2"><%=summwdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2"><%=sumwdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2"><%=sumwsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2"><%=sumwsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2"><%=sumwjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
+					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
 				<br></td>
 				
-						
-			</tr>
-			
-				<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
-				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfeitax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia3() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxiatax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjintax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
-				<br></td>
-				
-						
-			</tr>
-			<tr class=listtitle>
-				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量10KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费10KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">排灌电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费10KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量10KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费10KV</font></span>
-				<br></td>
-							
+					<span class="title"><font size="2"><%=sumwfee%></font></span>
+				<br></td>			
 			</tr>
 			<tr >
-				<td nowrap width="10%"  align="center" rowspan="5">
-					<span class="title"><font size="2">固阳供电局</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseMoney10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizMoney10kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryQuantity10kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryMoney10kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">居民电费35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电量35KV</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">非居民电费35KV</font></span>
-				<br></td>	
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">生产电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电量35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">商业电费35KV</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电量35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">工业电费35KV</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseMoney35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizMoney35kv() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryQuantity35kv() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryMoney35kv() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr class=listtitle>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总电量</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
-				<br></td>
-				
-						
-			</tr>
-			
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfeitax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia3() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxiatax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjintax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
-				<br></td>
-				
-						
-			</tr>
-			<tr class=listtitle>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2">总计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电量</font></span>
+					<span class="title"><font size="2"><%=sumallpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
+					<span class="title"><font size="2"><%=sumallc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><font size="2"><%=sumalltax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2"><%=sumallfee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2"><%=sumalldianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2"><%=sumallsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2"><%=sumallsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2"><%=sumalljijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
+					<span class="title"><font size="2"><%=sumallall%></font></span>
 				<br></td>
 							
-			</tr>
-			
-						<tr >
-						<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwpower") %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwc") %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwtax")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getFujia3() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxia")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxiatax")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwjijin")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwjijintax")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("summwdianjin")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwdianjintax")%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwfee") %></font></span>
-				<br></td>
-				
-						
 			</tr>
 	</table>
 
@@ -1239,7 +323,7 @@
 </body>
 <script language="javascript">
 function printCount(){
-  window.print();     
+window.print();
 }
 </script>
 

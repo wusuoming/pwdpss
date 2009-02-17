@@ -83,7 +83,7 @@ BODY {
 }
 </script>
 </head>
-<body class=interface onload="javascript:doPrint();window.close()">
+<body class=interface onload="javascript:getPage();window.close()">
 	.&nbsp;
 	<html:errors />
 	<%
@@ -145,6 +145,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 	<form name="fm" method="post">
 		<table class=common width="500%" border="1" cellspacing="1"
 			cellpadding="5">
+<input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>">
 			<tr>
 				<td class=title0 colspan="11">
 					<font size="4">包头市农电公司电费电量发行单</font>
@@ -182,7 +183,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getDenizenQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getDenizenQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -211,7 +212,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getUnDenizenQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnDenizenQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -239,7 +240,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getBizQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getBizQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -267,7 +268,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getProductQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getProductQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -295,7 +296,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getFarmUseQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getFarmUseQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -323,7 +324,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getUnIndustryQuantity10kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnIndustryQuantity10kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -352,7 +353,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getDenizenQuantity35kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getDenizenQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -380,7 +381,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getUnDenizenQuantity35kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnDenizenQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -408,7 +409,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getBizQuantity35kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getBizQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -436,7 +437,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getProductQuantity35kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getProductQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -464,7 +465,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDto.getFarmUseQuantity35kv() %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getFarmUseQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -492,7 +493,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getUnIndustryQuantity35kv()) %></font>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnIndustryQuantity35kv()) %></font>
 					</span>
 					<br>
 				</td>
@@ -539,7 +540,11 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					</span>
 					<br>
 				</td>
+
+
 			</tr>
+
+
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">三峡</font> </span>
@@ -550,20 +555,22 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getSanxia() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getSanxia())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getSanxiatax() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getSanxiatax())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">00</font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getSanxia())+Double.parseDouble(lwAllWholeFeeDto.getSanxiatax())) %></font>
 					</span>
 					<br>
 				</td>
+
+
 			</tr>
 			<tr>
 				<td nowrap width="10%" align="center">
@@ -575,21 +582,24 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getJijin() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getJijin())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getFujia1() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getFujia1())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">00</font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getJijin())+Double.parseDouble(lwAllWholeFeeDto.getFujia1())) %></font>
 					</span>
 					<br>
 				</td>
+
+
 			</tr>
+
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">电金</font> </span>
@@ -600,21 +610,24 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getDianjin() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianjin())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDto.getDianjintax() %></font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianjintax())) %></font>
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">00</font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianjin())+Double.parseDouble(lwAllWholeFeeDto.getDianjintax())) %></font>
 					</span>
 					<br>
 				</td>
+
+
 			</tr>
+
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总费用</font> </span>
@@ -635,17 +648,20 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">00</font>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getSumfee())) %></font>
 					</span>
 					<br>
 				</td>
 			</tr>
+
 		</table>
+
 	</form>
 </body>
 <script language="javascript">
-function doPrint(){
+function getPage(){
 	window.print();
 }
 </script>
+
 </html:html>

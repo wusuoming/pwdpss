@@ -165,41 +165,41 @@
 					<span class="title"><font size="2">土右供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getUnDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getUnDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getProductQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getProductMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getFarmUseQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getFarmUseMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getBizQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getBizMoney10kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getUnIndustryQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getUnIndustryMoney10kv()) %></font></span>
 				<br></td>
 				
 							
@@ -256,41 +256,41 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getUnDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getUnDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getProductQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getProductMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getProductMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getFarmUseQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getFarmUseMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getFarmUseMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getBizQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getBizMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getBizMoney35kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getUnIndustryQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtoty.getUnIndustryMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getUnIndustryMoney35kv()) %></font></span>
 				<br></td>
 				
 							
@@ -335,34 +335,34 @@
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getPower1()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getPower1()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianfeitax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia3() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxiatax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getJijin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getJijin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjintax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
@@ -426,41 +426,41 @@
 					<span class="title"><font size="2">达茂供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getUnDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getUnDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getProductQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getProductMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getFarmUseQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getFarmUseMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getBizQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getBizMoney10kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getUnIndustryQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getUnIndustryMoney10kv()) %></font></span>
 				<br></td>
 				
 							
@@ -517,41 +517,41 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getUnDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getUnDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getProductQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getProductMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getProductMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getFarmUseQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getFarmUseMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getFarmUseMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getBizQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getBizMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getBizMoney35kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getUnIndustryQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtodm.getUnIndustryMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getUnIndustryMoney35kv()) %></font></span>
 				<br></td>
 				
 							
@@ -596,34 +596,34 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtodm.getPower1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianfeitax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia3() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxiatax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getJijin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getJijin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjintax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
@@ -687,41 +687,41 @@
 					<span class="title"><font size="2">九原供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getUnDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getUnDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getProductQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getProductMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getFarmUseQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getFarmUseMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getBizQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getBizMoney10kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getUnIndustryQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getUnIndustryMoney10kv()) %></font></span>
 				<br></td>
 				
 							
@@ -778,41 +778,41 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getUnDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getUnDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getProductQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getProductMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getProductMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getFarmUseQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getFarmUseMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getFarmUseMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getBizQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getBizMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getBizMoney35kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getUnIndustryQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtojy.getUnIndustryMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getUnIndustryMoney35kv()) %></font></span>
 				<br></td>
 				
 							
@@ -857,34 +857,34 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtojy.getPower1()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianfeitax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia3() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxiatax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getJijin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getJijin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjintax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
@@ -948,41 +948,41 @@
 					<span class="title"><font size="2">固阳供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getUnDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getUnDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getProductQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getProductMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getFarmUseQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getFarmUseMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getBizQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getBizMoney10kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryQuantity10kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getUnIndustryQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryMoney10kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getUnIndustryMoney10kv()) %></font></span>
 				<br></td>
 				
 							
@@ -1039,41 +1039,41 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getUnDenizenQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnDenizenMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getUnDenizenMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getProductQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getProductMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getProductMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getFarmUseQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getFarmUseMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getFarmUseMoney35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getBizQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getBizMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getBizMoney35kv()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryQuantity35kv() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getUnIndustryQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwWholeSaleDetailDtogy.getUnIndustryMoney35kv() %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getUnIndustryMoney35kv()) %></font></span>
 				<br></td>
 				
 							
@@ -1118,34 +1118,34 @@
 			
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtogy.getPower1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfei() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianfeitax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia3() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getFujia3())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxiatax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getJijin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getJijin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjintax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
