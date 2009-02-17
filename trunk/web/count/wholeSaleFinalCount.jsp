@@ -964,8 +964,8 @@ BODY {
 			<table width="50%" cellspacing="0" cellpadding="0" align="center">
 				<tr>
 					<td class=button>
-						<input name="add" type="button" class=button value=" 打 印 "
-							onclick="javascript:Printme();sum()">
+						<input name="add" type="button" class=button value="打印并保存 "
+							onclick="Printme();sum()">
 					</td>
 				</tr>
 			</table>
@@ -973,6 +973,7 @@ BODY {
 	</body>
 	<script type="text/javascript">
 	function  sum(){
+	
 	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value);
 	fm.exends8.value=last;
 	
@@ -981,7 +982,7 @@ BODY {
   function   Printme()   
     
   {   
-	  
+	 
    var exends1 = fm.exends1.value;
    var exends2 = fm.exends2.value;
    var exends3 = fm.exends3.value;
@@ -1041,9 +1042,9 @@ BODY {
   var a=fm.company.value;
   var b=fm.inputDate.value;
     
-  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends1="+exends1+"&&exends2="+exends2+"&&exends3="+exends3+"&&exends4="+exends4+"&&exends5="+exends5+"&&exends6="+exends6+"&&exends7="+exends7+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei;     
-    
-  winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends2="+exends2+"&&exends4="+exends4+"&&exends6="+exends6+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei;     
+ 
+  window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
   
   }  
 

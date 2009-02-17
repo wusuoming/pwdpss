@@ -207,10 +207,18 @@ public class UIPriceCountAction extends Action {
 		double sanXiaSum = Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxia());
 		double jiJinSum = Double.parseDouble(lwAllWholeFeeDtogy.getJijin())+Double.parseDouble(lwAllWholeFeeDtodm.getJijin())+Double.parseDouble(lwAllWholeFeeDtojy.getJijin())+Double.parseDouble(lwAllWholeFeeDtoty.getJijin());
 		double dianJinSum = Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjin());
+		double sanXiaTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
+		double jiJinTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
+		double dianJinTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
+		double sumFee = Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
 		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
 		lwAllWholeFeeDto.setSanxia(sanXiaSum+"");
 		lwAllWholeFeeDto.setJijin(jiJinSum+"");
 		lwAllWholeFeeDto.setDianjin(dianJinSum+"");
+		lwAllWholeFeeDto.setSanxiatax(sanXiaTaxSum+"");
+		lwAllWholeFeeDto.setFujia1(jiJinTaxSum+"");
+		lwAllWholeFeeDto.setDianjintax(dianJinTaxSum+"");
+		lwAllWholeFeeDto.setSumfee(sumFee+"");
 		
 		
 		httpServletRequest.setAttribute("lwAllWholeFeeDto", lwAllWholeFeeDto);
