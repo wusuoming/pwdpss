@@ -32,6 +32,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 			HttpServletResponse httpServletResponse) throws Exception {
 		String inputDate = httpServletRequest.getParameter("inputDate");
 		inputDate = new DateTime(inputDate,DateTime.YEAR_TO_MONTH).toString();
+		httpServletRequest.setAttribute("inputDate", inputDate);
 		LwWholeSaleDetailDto lwWholeSaleDetailDtogy = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtodm = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtojy = new LwWholeSaleDetailDto();
