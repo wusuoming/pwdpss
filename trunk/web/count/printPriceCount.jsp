@@ -83,7 +83,7 @@ BODY {
 }
 </script>
 </head>
-<body class=interface>
+<body class=interface onload="javascript:doPrint();window.close()">
 	.&nbsp;
 	<html:errors />
 	<%
@@ -145,7 +145,6 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 	<form name="fm" method="post">
 		<table class=common width="500%" border="1" cellspacing="1"
 			cellpadding="5">
-<input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>">
 			<tr>
 				<td class=title0 colspan="11">
 					<font size="4">包头市农电公司电费电量发行单</font>
@@ -540,11 +539,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					</span>
 					<br>
 				</td>
-
-
 			</tr>
-
-
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">三峡</font> </span>
@@ -569,8 +564,6 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					</span>
 					<br>
 				</td>
-
-
 			</tr>
 			<tr>
 				<td nowrap width="10%" align="center">
@@ -596,10 +589,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					</span>
 					<br>
 				</td>
-
-
 			</tr>
-
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">电金</font> </span>
@@ -624,10 +614,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					</span>
 					<br>
 				</td>
-
-
 			</tr>
-
 			<tr>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总费用</font> </span>
@@ -653,26 +640,12 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 					<br>
 				</td>
 			</tr>
-
 		</table>
-		<table cellpadding="0" cellspacing="0" width="100%">
-			<tr>
-			<tr class="listtitle" align="center">
-				<td class=button align="center">
-					<input type=button class=button name=button2 value=" 打 印 "
-						onClick="getPage()">
-				</td>
-			</tr>
-		</table>
-
 	</form>
 </body>
 <script language="javascript">
-function getPage(){
-  var b=fm.inputDate.value;
-strURL   =   "<%=request.getContextPath()%>/UIpriceCountPrintAction.do?inputDate="+b;
-	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+function doPrint(){
+	window.print();
 }
 </script>
-
 </html:html>
