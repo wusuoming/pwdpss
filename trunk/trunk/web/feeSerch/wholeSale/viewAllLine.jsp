@@ -197,12 +197,17 @@
              <td class=input><input name="sum35Fee" type="text" class="text" value="<%=sum35Fee%>" ></td>
 					</tr>
 	--%></table>
+	
+	<table cellpadding="0" cellspacing="0" width="100%"> 
+        <tr> 
+        <tr class="listtitle" align="center">             
+            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="doPrint()">        </td> 
+        </tr> 
 	<!-- 按钮的显示-->
 </body>
 <script language="javascript">
-function savePointer(){
-	fm.action="/iacontact/inputLWWholeSalePointerShow.do";
-	fm.submit();
+function doPrint(){
+	window.print();
 }
 </script>
 </html>
