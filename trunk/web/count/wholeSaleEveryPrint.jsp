@@ -83,7 +83,7 @@
 }
 </script>
 </head>
-<body class=interface>&nbsp; 
+<body class=interface onload="javascript:printCount();window.close()">&nbsp; 
 <html:errors />
 
 <form  name="fm" method="post">
@@ -1234,20 +1234,12 @@
 						
 			</tr>
 	</table>
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button align="center"><input type=button class=button name=button2 value=" ´ò Ó¡ " onClick="printCount()">        </td> 
-        </tr> 
-    </table>
 
 </form>
 </body>
 <script language="javascript">
 function printCount(){
-  var b=fm.StartMonth.value;
-strURL   =   "<%=request.getContextPath()%>/wholeSaleEveryPrint.do?inputDate="+b;
-	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+window.print();
 }
 </script>
 
