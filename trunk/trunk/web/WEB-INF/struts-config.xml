@@ -1705,6 +1705,13 @@
 			>
 			<forward name="printPriceCount" path="/count/printPriceCount.jsp"></forward>
 			</action>
+			<action path="/wholeSaleEveryPrint" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIEveryWholeSaleCountPrintAction"
+			scope="request"
+			input="/count/wholesaleeverycount.jsp"
+			>
+			<forward name="wholeSaleEveryPrint" path="/count/wholeSaleEveryPrint.jsp"></forward>
+			</action>
 		<!--add by wangrongjia end   -->
 	</action-mappings>
 
