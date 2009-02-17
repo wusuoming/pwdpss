@@ -632,17 +632,17 @@
      
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends1" value="<%=request.getAttribute("exends1") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><input name="exends1" value="海明炉"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends2" value="<%=request.getAttribute("exends2") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends3" value="<%=request.getAttribute("exends3") %>"  style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="exends3" value="多边电费"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends4" value="<%=request.getAttribute("exends4") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends5" value="<%=request.getAttribute("exends5") %>"  style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="exends5" value="广播费"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends6" value="<%=request.getAttribute("exends6") %>"  style="width:65px"></span></td>
 			
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends7" value="<%=request.getAttribute("exends7") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><input name="exends7" value="总合计"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends8" value="<%=request.getAttribute("exends8") %>"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends9" value="<%=request.getAttribute("exends9") %>"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="exends10" value="<%=request.getAttribute("exends10") %>"  style="width:65px"></span></td>
