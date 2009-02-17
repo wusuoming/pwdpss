@@ -103,14 +103,7 @@ public class CountAllResultPrintAction extends Action {
 			sumffee+=lwCorporationSummaryDto.getSumFee();
 		
 		}
-		
-		
-		
 		DecimalFormat df = new DecimalFormat("###0.00");
-		
-		
-		
-		
 		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
 		LwAllWholeFeeDto lwAllWholeFeeDtogy=blLwAllWholeFeeFacade.findByPrimaryKey("gy", statmonth);
 		LwAllWholeFeeDto lwAllWholeFeeDtodm=blLwAllWholeFeeFacade.findByPrimaryKey("dm", statmonth);

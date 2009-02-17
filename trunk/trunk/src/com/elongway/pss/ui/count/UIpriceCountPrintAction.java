@@ -12,16 +12,15 @@ import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
 import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
-import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 
-public class UIPriceCountAction extends Action {
+public class UIpriceCountPrintAction extends Action{
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
 		String inputDate = httpServletRequest.getParameter("inputDate");
 		inputDate = new DateTime(inputDate,DateTime.YEAR_TO_MONTH).toString();
-		httpServletRequest.setAttribute("inputDate",inputDate);
+		httpServletRequest.setAttribute("inputDate", inputDate);
 		LwWholeSaleDetailDto lwWholeSaleDetailDtogy = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtodm = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtojy = new LwWholeSaleDetailDto();
@@ -218,7 +217,8 @@ public class UIPriceCountAction extends Action {
 		httpServletRequest.setAttribute("lwWholeSaleDetailDto",
 				lwWholeSaleDetailDto);
 		
-		return actionMapping.findForward("priceCount");
+				return actionMapping.findForward("printPriceCount");
+		
 	}
 
 }
