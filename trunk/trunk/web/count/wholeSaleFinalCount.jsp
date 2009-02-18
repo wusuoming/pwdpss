@@ -171,6 +171,12 @@ BODY {
 						.getAttribute("differenceQuantityFee");
 						
 						
+				String Rate10Fee = (String) request
+						.getAttribute("Rate10Fee");
+						String Rate35Fee = (String) request
+						.getAttribute("Rate35Fee");		
+						
+						
 						
 						
 						
@@ -791,7 +797,7 @@ BODY {
 						<span class="title"><%=Math.round(Double.parseDouble(sum10Power))%></span>
 					</td>
 					<td nowrap>
-						<span class="title">&nbsp</span>
+						<span class="title"><%=Rate10Fee%></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><input name="sum10fee" value="<%=sum10Fee%>"  style="width:65px"></span>
@@ -809,7 +815,7 @@ BODY {
 						<span class="title"><%=Math.round(Double.parseDouble(sum35power))%></span>
 					</td>
 					<td nowrap>
-						<span class="title">&nbsp</span>
+						<span class="title"><%=Rate35Fee%></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><input name="sum35fee" value="<%=sum35Fee%>"style="width:65px"></span>

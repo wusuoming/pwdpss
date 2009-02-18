@@ -121,6 +121,8 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 
 String statMonth = (String)request.getAttribute("statMonth");
 
+String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee");
+
 
 
 
@@ -144,7 +146,7 @@ String statMonth = (String)request.getAttribute("statMonth");
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		
 		<tr>
@@ -168,6 +170,11 @@ String statMonth = (String)request.getAttribute("statMonth");
 		
 				<td nowrap width="10%">
 					<span class="title"><font size="2">合计</font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费</font></span>
 				<br></td>	
 				
 				
@@ -216,6 +223,11 @@ String statMonth = (String)request.getAttribute("statMonth");
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=summfdianjin%></font></span>
 				<br></td>
@@ -257,6 +269,12 @@ String statMonth = (String)request.getAttribute("statMonth");
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
 				<br></td>
+				
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=summwdianjin%></font></span>
 				<br></td>
@@ -295,6 +313,10 @@ String statMonth = (String)request.getAttribute("statMonth");
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumallfee%></font></span>
+				<br></td>
+				
+					<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
