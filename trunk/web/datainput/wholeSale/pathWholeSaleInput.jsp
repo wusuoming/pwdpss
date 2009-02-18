@@ -451,27 +451,27 @@ function checkunWork()
 function checkLineLoss()
 {	
   
-    var count = document.getElementsByName('ThisWorkNum').length;
+    //var count = document.getElementsByName('ThisWorkNum').length;
    
-            if(count ==1){
+        //    if(count ==1){
             
-             if(fm.LossRate.value!=null&&fm.LossRate.value!=""){
+          //   if(fm.LossRate.value!=null&&fm.LossRate.value!=""){
            
-           	fm.LineLossQuantity.value = Math.round(fm.workQuantity.value *fm.LossRate.value);
+           	//fm.LineLossQuantity.value = Math.round(fm.workQuantity.value *fm.LossRate.value);
 			
-			}
-            }else{
+			//}
+            //}else{
         	
-            	for(var i=0;i<fm.ThisWorkNum.length;i++){
-            	if(fm.LossRate[i].value!=null&&fm.LossRate[i].value!=""){
+            	//for(var i=0;i<fm.ThisWorkNum.length;i++){
+            	//if(fm.LossRate[i].value!=null&&fm.LossRate[i].value!=""){
             	
             	
-            		fm.LineLossQuantity[i].value = Math.round(fm.workQuantity[i].value * fm.LossRate[i].value);
+            		//fm.LineLossQuantity[i].value = Math.round(fm.workQuantity[i].value * fm.LossRate[i].value);
             		
             	
-            	}
-            	}
-            }	
+            	//}
+            	//}
+            //}	
 }
 
 function  rateCode1(){
