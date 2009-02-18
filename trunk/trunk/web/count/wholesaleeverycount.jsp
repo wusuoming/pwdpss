@@ -106,6 +106,188 @@
 		 LwAllWholeFeeDto lwAllWholeFeeDtogy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
 		LwAllWholeFeeDto lwAllWholeFeeDtodm = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
+		
+		String  power1 = lwAllWholeFeeDtoty.getPower1();
+		if(power1.equals("")||power1==null){
+			power1="0";
+		}
+		String dianfei = lwAllWholeFeeDtoty.getDianfei();
+		if(dianfei.equals("")||dianfei==null){
+			dianfei="0";
+		}
+		String dianfeiTax = lwAllWholeFeeDtoty.getDianfeitax();
+		if(dianfeiTax.equals("")||dianfeiTax==null){
+			dianfeiTax="0";
+		}
+		String fuJia3 = lwAllWholeFeeDtoty.getFujia3();
+			if(fuJia3.equals("")||fuJia3==null){
+			fuJia3="0";
+		}
+		String sanXia = lwAllWholeFeeDtoty.getSanxia();
+		if(sanXia.equals("")||sanXia==null){
+			sanXia="0";
+		}
+		String sanXiaTax = lwAllWholeFeeDtoty.getSanxiatax();
+		if(sanXiaTax.equals("")||sanXiaTax==null){
+			sanXiaTax="0";
+		}
+		String jiJin = lwAllWholeFeeDtoty.getJijin();
+		if(jiJin.equals("")||jiJin==null){
+			jiJin="0";
+		}
+		String fuJia1 = lwAllWholeFeeDtoty.getFujia1();
+		if(fuJia1.equals("")||fuJia1==null){
+			fuJia1="0";
+		}
+		String dianJin = lwAllWholeFeeDtoty.getDianjin();
+		if(dianJin.equals("")||dianJin==null){
+			dianJin="0";
+		}
+		String dianJinTax = lwAllWholeFeeDtoty.getDianjintax();
+		if(dianJinTax.equals("")||dianJinTax==null){
+			dianJinTax="0";
+		}
+		String sumFee = lwAllWholeFeeDtoty.getSumfee();
+			if(sumFee.equals("")||sumFee==null){
+			sumFee="0";
+		}
+		
+		String power1dm = lwAllWholeFeeDtodm.getPower1();
+		if(power1dm.equals("")||power1dm==null){
+			power1dm="0";
+		}
+		String dianFeidm = lwAllWholeFeeDtodm.getDianfei();
+		if(dianFeidm.equals("")||dianFeidm==null){
+			dianFeidm="0";
+		}
+		
+		String Dianfeitaxdm = lwAllWholeFeeDtodm.getDianfeitax();
+			if(Dianfeitaxdm.equals("")||Dianfeitaxdm==null){
+			Dianfeitaxdm="0";
+		}
+		String Fujia3dm = lwAllWholeFeeDtodm.getFujia3();
+			if(Fujia3dm.equals("")||Fujia3dm==null){
+			Fujia3dm="0";
+		}
+		String Sanxiadm = lwAllWholeFeeDtodm.getSanxia();
+			if(Sanxiadm.equals("")||Sanxiadm==null){
+			Sanxiadm="0";
+		}
+		String Sanxiataxdm = lwAllWholeFeeDtodm.getSanxiatax();
+		if(Sanxiataxdm.equals("")||Sanxiataxdm==null){
+			Sanxiataxdm="0";
+		}
+		String Jijindm = lwAllWholeFeeDtodm.getJijin();
+		if(Jijindm.equals("")||Jijindm==null){
+			Jijindm="0";
+		}
+		String Fujia1dm = lwAllWholeFeeDtodm.getFujia1();
+		if(Fujia1dm.equals("")||Fujia1dm==null){
+			Fujia1dm="0";
+		}
+		String Dianjindm = lwAllWholeFeeDtodm.getDianjin();
+			if(Dianjindm.equals("")||Dianjindm==null){
+			Dianjindm="0";
+		}
+		String Dianjintaxdm = lwAllWholeFeeDtodm.getDianjintax();
+		if(Dianjintaxdm.equals("")||Dianjintaxdm==null){
+			Dianjintaxdm="0";
+		}
+		String Sumfeedm = lwAllWholeFeeDtodm.getSumfee();
+		if(Sumfeedm.equals("")||Sumfeedm==null){
+			Sumfeedm="0";
+		}
+		String Power1jy = lwAllWholeFeeDtojy.getPower1();
+		if(Power1jy.equals("")||Power1jy==null){
+			Power1jy="0";
+		}
+		String Dianfeijy = lwAllWholeFeeDtojy.getDianfei();
+		if(Dianfeijy.equals("")||Dianfeijy==null){
+			Dianfeijy="0";
+		}
+		String Dianfeitaxjy = lwAllWholeFeeDtojy.getDianfeitax();
+		if(Dianfeitaxjy.equals("")||Dianfeitaxjy==null){
+			Dianfeitaxjy="0";
+		}
+		String Fujia3jy = lwAllWholeFeeDtojy.getFujia3();
+			if(Fujia3jy.equals("")||Fujia3jy==null){
+			Fujia3jy="0";
+		}
+		String Sanxiajy = lwAllWholeFeeDtojy.getSanxia();
+		if(Sanxiajy.equals("")||Sanxiajy==null){
+			Sanxiajy="0";
+		}
+		String Sanxiataxjy = lwAllWholeFeeDtojy.getSanxiatax();
+		if(Sanxiataxjy.equals("")||Sanxiataxjy==null){
+			Sanxiataxjy="0";
+		}
+		String Jijinjy = lwAllWholeFeeDtojy.getJijin();
+		if(Jijinjy.equals("")||Jijinjy==null){
+			Jijinjy="0";
+		}
+		String Fujia1jy = lwAllWholeFeeDtojy.getFujia1();
+		if(Fujia1jy.equals("")||Fujia1jy==null){
+			Fujia1jy="0";
+		}
+		String Dianjinjy = lwAllWholeFeeDtojy.getDianjin();
+		if(Dianjinjy.equals("")||Dianjinjy==null){
+			Dianjinjy="0";
+		}
+		String Dianjintaxjy = lwAllWholeFeeDtojy.getDianjintax();
+		if(Dianjintaxjy.equals("")||Dianjintaxjy==null){
+			Dianjintaxjy="0";
+		}
+		String Sumfeejy = lwAllWholeFeeDtojy.getSumfee();
+		if(Sumfeejy.equals("")||Sumfeejy==null){
+			Sumfeejy="0";
+		}
+		String Power1gy = lwAllWholeFeeDtogy.getPower1();
+		if(Power1gy.equals("")||Power1gy==null){
+			Power1gy="0";
+		}
+		String Dianfeigy = lwAllWholeFeeDtogy.getDianfei();
+		if(Dianfeigy.equals("")||Dianfeigy==null){
+			Dianfeigy="0";
+		}
+		String Dianfeitaxgy = lwAllWholeFeeDtogy.getDianfeitax();
+		if(Dianfeitaxgy.equals("")||Dianfeitaxgy==null){
+			Dianfeitaxgy="0";
+		}
+		
+		String Fujia3gy = lwAllWholeFeeDtogy.getFujia3();
+		if(Fujia3gy.equals("")||Fujia3gy==null){
+			Fujia3gy="0";
+		}
+		String Sanxiagy = lwAllWholeFeeDtogy.getSanxia();
+			if(Sanxiagy.equals("")||Sanxiagy==null){
+			Sanxiagy="0";
+		}
+		String Sanxiataxgy = lwAllWholeFeeDtogy.getSanxiatax();
+		if(Sanxiataxgy.equals("")||Sanxiataxgy==null){
+			Sanxiataxgy="0";
+		}
+		String Jijingy = lwAllWholeFeeDtogy.getJijin();
+		if(Jijingy.equals("")||Jijingy==null){
+			Jijingy="0";
+		}
+		String Fujia1gy = lwAllWholeFeeDtogy.getFujia1();
+		if(Fujia1gy.equals("")||Fujia1gy==null){
+			Fujia1gy="0";
+		}
+		String Dianjingy = lwAllWholeFeeDtogy.getDianjin();
+			if(Dianjingy.equals("")||Dianjingy==null){
+			Dianjingy="0";
+		}
+		String Dianjintaxgy = lwAllWholeFeeDtogy.getDianjintax();
+		if(Dianjintaxgy.equals("")||Dianjintaxgy==null){
+			Dianjintaxgy="0";
+		}
+		String Sumfeegy = lwAllWholeFeeDtogy.getSumfee();
+			if(Sumfeegy.equals("")||Sumfeegy==null){
+			Sumfeegy="0";
+		}
+		
+		
 		//求总电量
 		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
 		 %>
@@ -335,37 +517,37 @@
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getPower1()))%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(power1))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianfei)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianfeiTax)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(fuJia3)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanXia)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanXiaTax)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getJijin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jiJin)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(fuJia1)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianJin)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianJinTax)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumFee))%></font></span>
 				<br></td>
 				
 						
@@ -596,37 +778,37 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtodm.getPower1())) %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(power1dm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianFeidm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianfeitaxdm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3dm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiadm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxdm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getJijin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijindm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1dm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjindm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxdm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeedm))%></font></span>
 				<br></td>
 				
 						
@@ -857,37 +1039,37 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtojy.getPower1()))%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(Power1jy))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianfeijy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianfeitaxjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3jy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiajy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getJijin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijinjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1jy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjinjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeejy))%></font></span>
 				<br></td>
 				
 						
@@ -1118,37 +1300,37 @@
 			
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtogy.getPower1())) %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(Power1gy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianfeigy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianfeitaxgy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getFujia3())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3gy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiagy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxgy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getJijin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijingy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1gy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjingy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxgy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSumfee() )) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeegy)) %></font></span>
 				<br></td>
 				
 						

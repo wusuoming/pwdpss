@@ -73,32 +73,32 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String dianfeity = lwAllWholeFeeDtoty.getDianfei();
 		String dianfeijy = lwAllWholeFeeDtojy.getDianfei();
 		String dianfeidm = lwAllWholeFeeDtodm.getDianfei();
-		if(lwAllWholeFeeDtogy.getDianfei().equals("")||lwAllWholeFeeDtogy.getDianfei()==null){
+		if(dianfeigy.equals("")||dianfeigy==null){
 			dianfeigy="0";
 		}
-		if(lwAllWholeFeeDtoty.getDianfei().equals("")||lwAllWholeFeeDtoty.getDianfei()==null){
+		if(dianfeity.equals("")||dianfeity==null){
 			dianfeity="0";
 		}
-		if(lwAllWholeFeeDtojy.getDianfei().equals("")||lwAllWholeFeeDtojy.getDianfei()==null){
+		if(dianfeijy.equals("")||dianfeijy==null){
 			dianfeijy="0";
 		}
-		if(lwAllWholeFeeDtodm.getDianfei().equals("")||lwAllWholeFeeDtodm.getDianfei()==null){
+		if(dianfeidm.equals("")||dianfeidm==null){
 			dianfeidm="0";
 		}
 		String sumFeegy = lwAllWholeFeeDtogy.getSumfee();
 		String sumFeety = lwAllWholeFeeDtoty.getSumfee();
 		String sumFeejy = lwAllWholeFeeDtojy.getSumfee();
 		String sumFeedm = lwAllWholeFeeDtodm.getSumfee();
-		if(lwAllWholeFeeDtogy.getSumfee().equals("")||lwAllWholeFeeDtogy.getSumfee()==null){
+		if(sumFeegy.equals("")||sumFeegy==null){
 			sumFeegy="0";
 		}
-		if(lwAllWholeFeeDtoty.getSumfee().equals("")||lwAllWholeFeeDtoty.getSumfee()==null){
+		if(sumFeety.equals("")||sumFeety==null){
 			sumFeety="0";
 		}
-		if(lwAllWholeFeeDtojy.getSumfee().equals("")||lwAllWholeFeeDtojy.getSumfee()==null){
+		if(sumFeejy.equals("")||sumFeejy==null){
 			sumFeejy="0";
 		}
-		if(lwAllWholeFeeDtodm.getSumfee().equals("")||lwAllWholeFeeDtodm.getSumfee()==null){
+		if(sumFeedm.equals("")||sumFeedm==null){
 			sumFeedm="0";
 		}
 		
@@ -106,16 +106,16 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String sumpowerty = lwAllWholeFeeDtoty.getPower1();
 		String sumpowerdm = lwAllWholeFeeDtodm.getPower1();
 		String sumpowerjy = lwAllWholeFeeDtojy.getPower1();
-		if(lwAllWholeFeeDtogy.getPower1().equals("")||lwAllWholeFeeDtogy.getPower1()==null){
+		if(sumwpowergy.equals("")||sumwpowergy==null){
 			sumwpowergy="0";
 		}
-		if(lwAllWholeFeeDtoty.getPower1().equals("")||lwAllWholeFeeDtoty.getPower1()==null){
+		if(sumpowerty.equals("")||sumpowerty==null){
 			sumpowerty="0";
 		}
-		if(lwAllWholeFeeDtodm.getPower1().equals("")||lwAllWholeFeeDtodm.getPower1()==null){
+		if(sumpowerdm.equals("")||sumpowerdm==null){
 			sumpowerdm="0";
 		}
-		if(lwAllWholeFeeDtojy.getPower1().equals("")||lwAllWholeFeeDtojy.getPower1()==null){
+		if(sumpowerjy.equals("")||sumpowerjy==null){
 			sumpowerjy="0";
 		}
 		
@@ -123,16 +123,16 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String sumwtaxty = lwAllWholeFeeDtoty.getDianfeitax();
 		String sumwtaxdm = lwAllWholeFeeDtodm.getDianfeitax();
 		String sumwtaxjy = lwAllWholeFeeDtojy.getDianfeitax();
-		if(lwAllWholeFeeDtogy.getDianfeitax().equals("")||lwAllWholeFeeDtogy.getDianfeitax()==null){
+		if(sumwtaxgy.equals("")||sumwtaxgy==null){
 			sumwtaxgy="0";
 		}
-		if(lwAllWholeFeeDtoty.getDianfeitax().equals("")||lwAllWholeFeeDtoty.getDianfeitax()==null){
+		if(sumwtaxty.equals("")||sumwtaxty==null){
 			sumwtaxty="0";
 		}
-		if(lwAllWholeFeeDtodm.getDianfeitax().equals("")||lwAllWholeFeeDtodm.getDianfeitax()==null){
+		if(sumwtaxdm.equals("")||sumwtaxdm==null){
 			sumwtaxdm="0";
 		}
-		if(lwAllWholeFeeDtojy.getDianfeitax().equals("")||lwAllWholeFeeDtojy.getDianfeitax()==null){
+		if(sumwtaxjy.equals("")||sumwtaxjy==null){
 			sumwtaxjy="0";
 		}
 		
@@ -140,16 +140,16 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String summwdianjinty = lwAllWholeFeeDtoty.getDianjin();
 		String summwdianjindm = lwAllWholeFeeDtodm.getDianjin();
 		String summwdianjinjy = lwAllWholeFeeDtojy.getDianjin();
-		if(lwAllWholeFeeDtogy.getDianjin().equals("")||lwAllWholeFeeDtogy.getDianjin()==null){
+		if(summwdianjingy.equals("")||summwdianjingy==null){
 			summwdianjingy="0";
 		}
-		if(lwAllWholeFeeDtoty.getDianjin().equals("")||lwAllWholeFeeDtoty.getDianjin()==null){
+		if(summwdianjinty.equals("")||summwdianjinty==null){
 			summwdianjinty="0";
 		}
-		if(lwAllWholeFeeDtodm.getDianjin().equals("")||lwAllWholeFeeDtodm.getDianjin()==null){
+		if(summwdianjindm.equals("")||summwdianjindm==null){
 			summwdianjindm="0";
 		}
-		if(lwAllWholeFeeDtojy.getDianjin().equals("")||lwAllWholeFeeDtojy.getDianjin()==null){
+		if(summwdianjinjy.equals("")||summwdianjinjy==null){
 			summwdianjinjy="0";
 		}
 		
@@ -157,16 +157,16 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String sumwdianjintaxty = lwAllWholeFeeDtoty.getDianjintax();
 		String sumwdianjintaxdm = lwAllWholeFeeDtodm.getDianjintax();
 		String sumwdianjintaxjy = lwAllWholeFeeDtojy.getDianjintax();
-		if(lwAllWholeFeeDtogy.getDianjintax().equals("")||lwAllWholeFeeDtogy.getDianjintax()==null){
+		if(sumwdianjintaxgy.equals("")||sumwdianjintaxgy==null){
 			sumwdianjintaxgy="0";
 		}
-		if(lwAllWholeFeeDtoty.getDianjintax().equals("")||lwAllWholeFeeDtoty.getDianjintax()==null){
+		if(sumwdianjintaxty.equals("")||sumwdianjintaxty==null){
 			sumwdianjintaxty="0";
 		}
-		if(lwAllWholeFeeDtodm.getDianjintax().equals("")||lwAllWholeFeeDtodm.getDianjintax()==null){
+		if(sumwdianjintaxdm.equals("")||sumwdianjintaxdm==null){
 			sumwdianjintaxdm="0";
 		}
-		if(lwAllWholeFeeDtojy.getDianjintax().equals("")||lwAllWholeFeeDtojy.getDianjintax()==null){
+		if(sumwdianjintaxjy.equals("")||sumwdianjintaxjy==null){
 			sumwdianjintaxjy="0";
 		}
 		
@@ -174,34 +174,34 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String sumwsanxiaty = lwAllWholeFeeDtoty.getSanxia();
 		String sumwsanxiadm = lwAllWholeFeeDtodm.getSanxia();
 		String sumwsanxiajy = lwAllWholeFeeDtojy.getSanxia();
-		if(lwAllWholeFeeDtogy.getSanxia().equals("")||lwAllWholeFeeDtogy.getSanxia()==null){
+		if(sumwsanxiagy.equals("")||sumwsanxiagy==null){
 			sumwsanxiagy="0";
 		}
-		if(lwAllWholeFeeDtoty.getSanxia().equals("")||lwAllWholeFeeDtoty.getSanxia()==null){
+		if(sumwsanxiaty.equals("")||sumwsanxiaty==null){
 			sumwsanxiaty="0";
 		}
-		if(lwAllWholeFeeDtodm.getSanxia().equals("")||lwAllWholeFeeDtodm.getSanxia()==null){
+		if(sumwsanxiadm.equals("")||sumwsanxiadm==null){
 			sumwsanxiadm="0";
 		}
-		if(lwAllWholeFeeDtojy.getSanxia().equals("")||lwAllWholeFeeDtojy.getSanxia()==null){
+		if(sumwsanxiajy.equals("")||sumwsanxiajy==null){
 			sumwsanxiajy="0";
 		}
 		String sumwsanxiataxgy = lwAllWholeFeeDtogy.getSanxiatax();
 		String sumwsanxiataxty = lwAllWholeFeeDtoty.getSanxiatax();
 		String sumwsanxiataxdm = lwAllWholeFeeDtodm.getSanxiatax();
 		String sumwsanxiataxjy = lwAllWholeFeeDtojy.getSanxiatax();
-		if(lwAllWholeFeeDtogy.getSanxiatax().equals("")|| lwAllWholeFeeDtogy.getSanxiatax()==null){
+		if(sumwsanxiataxgy.equals("")|| sumwsanxiataxgy==null){
 			sumwsanxiataxgy="0";
 		}
-		if(lwAllWholeFeeDtoty.getSanxiatax().equals("")|| lwAllWholeFeeDtoty.getSanxiatax()==null){
+		if(sumwsanxiataxty.equals("")|| sumwsanxiataxty==null){
 			sumwsanxiataxty="0";
 		}
 		
-		if(lwAllWholeFeeDtodm.getSanxiatax().equals("")|| lwAllWholeFeeDtodm.getSanxiatax()==null){
+		if(sumwsanxiataxdm.equals("")|| sumwsanxiataxdm==null){
 			sumwsanxiataxdm="0";
 		}
 		
-		if(lwAllWholeFeeDtojy.getSanxiatax().equals("")|| lwAllWholeFeeDtojy.getSanxiatax()==null){
+		if(sumwsanxiataxjy.equals("")|| sumwsanxiataxjy==null){
 			sumwsanxiataxjy="0";
 		}
 		
@@ -209,33 +209,49 @@ public class UIEveryWholeSaleCountAction extends Action {
 		String sumwjijinty = lwAllWholeFeeDtoty.getJijin();
 		String sumwjijindm = lwAllWholeFeeDtodm.getJijin();
 		String sumwjijinjy = lwAllWholeFeeDtojy.getJijin();
-		if(lwAllWholeFeeDtogy.getJijin().equals("")||lwAllWholeFeeDtogy.getJijin()==null){
+		if(sumwjijingy.equals("")||sumwjijingy==null){
 			sumwjijingy="0";
 		}
-		if(lwAllWholeFeeDtoty.getJijin().equals("")||lwAllWholeFeeDtoty.getJijin()==null){
+		if(sumwjijinty.equals("")||sumwjijinty==null){
 			sumwjijinty="0";
 		}
-		if(lwAllWholeFeeDtodm.getJijin().equals("")||lwAllWholeFeeDtodm.getJijin()==null){
+		if(sumwjijindm.equals("")||sumwjijindm==null){
 			sumwjijindm="0";
 		}
-		if(lwAllWholeFeeDtojy.getJijin().equals("")||lwAllWholeFeeDtojy.getJijin()==null){
+		if(sumwjijinjy.equals("")||sumwjijinjy==null){
 			sumwjijinjy="0";
 		}
 		String sumwjijintaxgy = lwAllWholeFeeDtogy.getFujia1();
 		String sumwjijintaxty = lwAllWholeFeeDtoty.getFujia1();
 		String sumwjijintaxdm = lwAllWholeFeeDtodm.getFujia1();
 		String sumwjijintaxjy = lwAllWholeFeeDtojy.getFujia1();
-		if(lwAllWholeFeeDtogy.getFujia1().equals("")||lwAllWholeFeeDtogy.getFujia1()==null){
+		if(sumwjijintaxgy.equals("")||sumwjijintaxgy==null){
 			sumwjijintaxgy="0";
 		}
-		if( lwAllWholeFeeDtoty.getFujia1().equals("")|| lwAllWholeFeeDtoty.getFujia1()==null){
+		if( sumwjijintaxty.equals("")|| sumwjijintaxty==null){
 			sumwjijintaxty="0";
 		}
-		if(lwAllWholeFeeDtodm.getFujia1().equals("")||lwAllWholeFeeDtodm.getFujia1()==null){
+		if(sumwjijintaxdm.equals("")||sumwjijintaxdm==null){
 			sumwjijintaxdm="0";
 		}
-		if(lwAllWholeFeeDtojy.getFujia1().equals("")||lwAllWholeFeeDtojy.getFujia1()==null){
+		if(sumwjijintaxjy.equals("")||sumwjijintaxjy==null){
 			sumwjijintaxjy="0";
+		}
+		String fuJia3ty = lwAllWholeFeeDtoty.getFujia3();
+		String fuJia3jy = lwAllWholeFeeDtojy.getFujia3();
+		String fuJia3dm = lwAllWholeFeeDtodm.getFujia3();
+		String fuJia3gy = lwAllWholeFeeDtogy.getFujia3();
+		if(fuJia3ty.equals("")||fuJia3ty==null){
+			fuJia3ty = "0";
+		}
+		if(fuJia3gy.equals("")||fuJia3gy==null){
+			fuJia3gy = "0";
+		}
+		if(fuJia3dm.equals("")||fuJia3dm==null){
+			fuJia3dm = "0";
+		}
+		if(fuJia3jy.equals("")||fuJia3jy==null){
+			fuJia3jy = "0";
 		}
 		DecimalFormat df = new DecimalFormat("###0.00");
 		 sumwc=(Double.parseDouble(dianfeigy)+Double.parseDouble(dianfeity)+Double.parseDouble(dianfeijy)+Double.parseDouble(dianfeidm))/1.17;
@@ -248,7 +264,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 		 sumwsanxiatax=Double.parseDouble(sumwsanxiataxgy)+Double.parseDouble(sumwsanxiataxty)+Double.parseDouble(sumwsanxiataxdm)+Double.parseDouble(sumwsanxiataxjy);
 		 sumwjijin=Double.parseDouble(sumwjijingy)+Double.parseDouble(sumwjijinty)+Double.parseDouble(sumwjijindm)+Double.parseDouble(sumwjijinjy);
 		 sumwjijintax=Double.parseDouble(sumwjijintaxgy)+Double.parseDouble(sumwjijintaxty)+Double.parseDouble(sumwjijintaxdm)+Double.parseDouble(sumwjijintaxjy);
-		 double Sumlilv = Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia3());
+		 double Sumlilv = Double.parseDouble(fuJia3ty)+Double.parseDouble(fuJia3dm)+Double.parseDouble(fuJia3jy)+Double.parseDouble(fuJia3gy);
 		 httpServletRequest.setAttribute("sumwc", df.format(sumwc));
 		 httpServletRequest.setAttribute("sumwfee", df.format(sumwfee));
 		 httpServletRequest.setAttribute("sumwpower",Math.round(sumwpower));

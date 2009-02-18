@@ -203,13 +203,138 @@ public class UIpriceCountPrintAction extends Action{
 		/*
 		 * 求各局三峡综合
 		 */
-		double sanXiaSum = Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxia());
-		double jiJinSum = Double.parseDouble(lwAllWholeFeeDtogy.getJijin())+Double.parseDouble(lwAllWholeFeeDtodm.getJijin())+Double.parseDouble(lwAllWholeFeeDtojy.getJijin())+Double.parseDouble(lwAllWholeFeeDtoty.getJijin());
-		double dianJinSum = Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjin());
-		double sanXiaTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
-		double jiJinTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
-		double dianJinTaxSum = Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
-		double sumFee = Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
+		System.out.println("--------->>>>"+lwAllWholeFeeDtogy.getSanxia());
+		System.out.println("--------->>>>"+lwAllWholeFeeDtodm.getSanxia());
+		System.out.println("--------->>>>"+lwAllWholeFeeDtojy.getSanxia());
+		String sanXiagy = lwAllWholeFeeDtogy.getSanxia();
+		String sanXiaty = lwAllWholeFeeDtoty.getSanxia();
+		String sanXiadm = lwAllWholeFeeDtodm.getSanxia();
+		String sanXiajy = lwAllWholeFeeDtojy.getSanxia();
+		String sanXiaTaxgy = lwAllWholeFeeDtogy.getSanxiatax();
+		String sanXiaTaxty = lwAllWholeFeeDtoty.getSanxiatax();
+		String sanXiaTaxdm = lwAllWholeFeeDtodm.getSanxiatax();
+		String sanXiaTaxjy = lwAllWholeFeeDtojy.getSanxiatax();
+		String jiJingy = lwAllWholeFeeDtogy.getJijin();
+		String jiJinty = lwAllWholeFeeDtoty.getJijin();
+		String jiJindm = lwAllWholeFeeDtodm.getJijin();
+		String jiJinjy = lwAllWholeFeeDtojy.getJijin();
+		String fuJia1gy = lwAllWholeFeeDtogy.getFujia1();
+		String fuJia1ty = lwAllWholeFeeDtoty.getFujia1();
+		String fuJia1dm = lwAllWholeFeeDtodm.getFujia1();
+		String fuJia1jy = lwAllWholeFeeDtojy.getFujia1();
+		String dianJingy = lwAllWholeFeeDtogy.getDianjin();
+		String dianJinty = lwAllWholeFeeDtoty.getDianjin();
+		String dianJindm = lwAllWholeFeeDtodm.getDianjin();
+		String dianJinjy = lwAllWholeFeeDtojy.getDianjin();
+		String dianJinTaxgy = lwAllWholeFeeDtogy.getDianjintax();
+		String dianJinTaxty = lwAllWholeFeeDtoty.getDianjintax();
+		String dianJinTaxdm = lwAllWholeFeeDtodm.getDianjintax();
+		String dianJinTaxjy = lwAllWholeFeeDtojy.getDianjintax();
+		String sumFeegy = lwAllWholeFeeDtogy.getSumfee();
+		String sumFeety = lwAllWholeFeeDtoty.getSumfee();
+		String sumFeedm = lwAllWholeFeeDtodm.getSumfee();
+		String sumFeejy = lwAllWholeFeeDtojy.getSumfee();
+		if(sumFeegy.equals("")||sumFeegy==null){
+			sumFeegy="0";
+		}
+		if(sumFeety.equals("")||sumFeety==null){
+			sumFeety="0";
+		}
+		if(sumFeedm.equals("")||sumFeedm==null){
+			sumFeedm="0";
+		}
+		if(sumFeejy.equals("")||sumFeejy==null){
+			sumFeejy="0";
+		}
+		
+		
+		if(dianJingy.equals("")||dianJingy==null){
+			dianJingy="0";
+		}
+		if(dianJinty.equals("")||dianJinty==null){
+			dianJinty="0";
+		}
+		if(dianJindm.equals("")||dianJindm==null){
+			dianJindm="0";
+		}
+		if(dianJinjy.equals("")||dianJinjy==null){
+			dianJinjy="0";
+		}
+		
+		if(dianJinTaxgy.equals("")||dianJinTaxgy==null){
+			dianJinTaxgy="0";
+		}
+		if(dianJinTaxty.equals("")||dianJinTaxty==null){
+			dianJinTaxty="0";
+		}
+		if(dianJinTaxdm.equals("")||dianJinTaxdm==null){
+			dianJinTaxdm="0";
+		}
+		if(dianJinTaxjy.equals("")||dianJinTaxjy==null){
+			dianJinTaxjy="0";
+		}
+		
+		
+		
+		
+		
+		if(jiJingy.equals("")||jiJingy==null){
+			jiJingy="0";
+		}
+		if(jiJinty.equals("")||jiJinty==null){
+			jiJinty="0";
+		}
+		if(jiJindm.equals("")||jiJindm==null){
+			jiJindm="0";
+		}
+		if(jiJinjy.equals("")||jiJinjy==null){
+			jiJinjy="0";
+		}
+		
+		if(fuJia1gy.equals("")||fuJia1gy==null){
+			fuJia1gy="0";
+		}
+		if(fuJia1ty.equals("")||fuJia1ty==null){
+			fuJia1ty="0";
+		}
+		if(fuJia1dm.equals("")||fuJia1dm==null){
+			fuJia1dm="0";
+		}
+		if(fuJia1jy.equals("")||fuJia1jy==null){
+			fuJia1jy="0";
+		}
+		
+		if(sanXiagy.equals("")||sanXiagy==null){
+			sanXiagy="0";
+		}
+		if(sanXiaty.equals("")||sanXiaty==null){
+			sanXiaty="0";
+		}
+		if(sanXiadm.equals("")||sanXiadm==null){
+			sanXiadm="0";
+		}
+		if(sanXiajy.equals("")||sanXiajy==null){
+			sanXiajy="0";
+		}
+		if(sanXiaTaxgy.equals("")||sanXiaTaxgy==null){
+			sanXiaTaxgy="0";
+		}
+		if(sanXiaTaxty.equals("")||sanXiaTaxty==null){
+			sanXiaTaxty="0";
+		}
+		if(sanXiaTaxdm.equals("")||sanXiaTaxdm==null){
+			sanXiaTaxdm="0";
+		}
+		if(sanXiaTaxjy.equals("")||sanXiaTaxjy==null){
+			sanXiaTaxjy="0";
+		}
+		double sanXiaSum = Double.parseDouble(sanXiagy)+Double.parseDouble(sanXiadm)+Double.parseDouble(sanXiajy)+Double.parseDouble(sanXiaty);
+		double jiJinSum = Double.parseDouble(jiJingy)+Double.parseDouble(jiJindm)+Double.parseDouble(jiJinty)+Double.parseDouble(jiJinjy);
+		double dianJinSum = Double.parseDouble(dianJinty)+Double.parseDouble(dianJindm)+Double.parseDouble(dianJinty)+Double.parseDouble(dianJinjy);
+		double sanXiaTaxSum = Double.parseDouble(sanXiaTaxgy)+Double.parseDouble(sanXiaTaxty)+Double.parseDouble(sanXiaTaxdm)+Double.parseDouble(sanXiaTaxjy);
+		double jiJinTaxSum = Double.parseDouble(fuJia1jy)+Double.parseDouble(fuJia1ty)+Double.parseDouble(fuJia1gy)+Double.parseDouble(fuJia1dm);
+		double dianJinTaxSum = Double.parseDouble(dianJinTaxjy)+Double.parseDouble(dianJinTaxgy)+Double.parseDouble(dianJinTaxdm)+Double.parseDouble(dianJinTaxty);
+		double sumFee = Double.parseDouble(sumFeejy)+Double.parseDouble(sumFeegy)+Double.parseDouble(sumFeedm)+Double.parseDouble(sumFeety);
 		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
 		lwAllWholeFeeDto.setSanxia(sanXiaSum+"");
 		lwAllWholeFeeDto.setJijin(jiJinSum+"");
@@ -224,8 +349,6 @@ public class UIpriceCountPrintAction extends Action{
 		
 		httpServletRequest.setAttribute("lwWholeSaleDetailDto",
 				lwWholeSaleDetailDto);
-		
-		
 				return actionMapping.findForward("printPriceCount");
 		
 	}
