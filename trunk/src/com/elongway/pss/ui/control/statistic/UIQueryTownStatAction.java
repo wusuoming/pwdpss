@@ -118,8 +118,9 @@ public class UIQueryTownStatAction extends Action {
 								.next();
 					 statMonth = httpServletRequest.getParameter("inputDate");
 					 statMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).toString();
-					 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
 					 company = lwDcodeDto.getCodeCode();
+					 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
+					
 					 condition = PowerFeeCal.getUserCondition(userList);
 					 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1  and statmonth = '"+statMonth+"' "+condition);
 					 townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(priceSummaryList, statMonth);

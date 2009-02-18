@@ -91,7 +91,7 @@ function printCount(){
 	 var tt = fm.dd.value;
 	 var company = fm.company.value;
    strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt+"&company="+company;    
- alert(strURL);
+ 
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 </script>
