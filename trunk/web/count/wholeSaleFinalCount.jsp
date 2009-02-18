@@ -362,7 +362,7 @@ BODY {
 						<B>表计信息</B>
 					</td>
 				</tr>
-				<tr>
+				<tr class=listtitle>
 					<td nowrap>
 						<span class="title">线路名称 </span>
 					</td>
@@ -422,7 +422,9 @@ BODY {
 						}
 				%>
 				<tr>
-					<td class="input"><%=lwWholeSaleIndicatorDto.getUserNo()%></td>
+					<td class="title" style="width:80px"><input name="ammeterNo"
+							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>"
+							readonly="readonly" style="diplay:none"></td>
 					<td class="input">
 						<input name="ammeterNo"
 							value="<%=lwAmmeterChangeDto.getAmmeterNo()%>"
@@ -433,7 +435,7 @@ BODY {
 					%>
 					<td class="input">
 						<input name="ammeterStyle" value="总表" readonly="readonly"
-							style="width: 65px">
+							>
 					</td>
 					<%
 						}
@@ -443,7 +445,7 @@ BODY {
 					%>
 					<td class="input">
 						<input name="ammeterStyle" value="考核表" readonly="readonly"
-							style="width: 65px">
+							>
 					</td>
 					<%
 						}

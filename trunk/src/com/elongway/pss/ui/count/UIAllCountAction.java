@@ -95,14 +95,24 @@ public class UIAllCountAction extends Action {
 		Iterator itf = colf.iterator();
 		while (itf.hasNext()) {
 			lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
+			
 			sumfpower += lwCorporationSummaryDto.getSumPointerQuantity()
 					+ lwCorporationSummaryDto.getBeforPower()
 					+ lwCorporationSummaryDto.getLastPower();
+			/**
+			 * modify by qiaoyouliang 20090218 baotou begin
+			 */
 			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 					+ lwCorporationSummaryDto.getPowerRateFee()
-					+ lwCorporationSummaryDto.getPeakFee();
-			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
-			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
+					+ lwCorporationSummaryDto.getPeakFee()
+					+ lwCorporationSummaryDto.getContentFee()
+					+ lwCorporationSummaryDto.getNeedFee()
+					+ lwCorporationSummaryDto.getUnDenizenFee();
+			/**
+			 * modify by qiaoyouliang 20090218 baotou end
+			 */
+			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
+			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
 			sumffee += lwCorporationSummaryDto.getSumFee();
 
@@ -120,54 +130,130 @@ public class UIAllCountAction extends Action {
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
 				.findByPrimaryKey("jy", statmonth);
 
-		sumwc = (Double
-				.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0"
-						: lwAllWholeFeeDtogy.getDianfei())
+//		sumwc = (Double
+//				.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0"
+//						: lwAllWholeFeeDtogy.getDianfei())
+//				+ Double
+//						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
+//								: lwAllWholeFeeDtoty.getDianfei())
+//				+ Double
+//						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei()) ? "0"
+//								: lwAllWholeFeeDtodm.getDianfei()) + Double
+//				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei()) ? "0"
+//						: lwAllWholeFeeDtojy.getDianfei())) / 1.17;
+		
+		sumwfee = Double
+				.parseDouble("".equals(lwAllWholeFeeDtogy.getSumfee()) ? "0"
+						: lwAllWholeFeeDtogy.getSumfee())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getSumfee()) ? "0"
+								: lwAllWholeFeeDtoty.getSumfee())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getSumfee()) ? "0"
+								: lwAllWholeFeeDtodm.getSumfee())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getSumfee()) ? "0"
+								: lwAllWholeFeeDtojy.getSumfee());
+		sumwpower = Double.parseDouble(""
+				.equals(lwAllWholeFeeDtogy.getPower1()) ? "0"
+				: lwAllWholeFeeDtogy.getPower1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getPower1()) ? "0"
+								: lwAllWholeFeeDtoty.getPower1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getPower1()) ? "0"
+								: lwAllWholeFeeDtodm.getPower1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getPower1()) ? "0"
+								: lwAllWholeFeeDtojy.getPower1());
+		sumwtax = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getDianfeitax()) ? "0" : lwAllWholeFeeDtogy.getDianfeitax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty
+						.getDianfeitax()) ? "0" : lwAllWholeFeeDtoty
+						.getDianfeitax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm
+						.getDianfeitax()) ? "0" : lwAllWholeFeeDtodm
+						.getDianfeitax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy
+						.getDianfeitax()) ? "0" : lwAllWholeFeeDtojy
+						.getDianfeitax());
+		summwdianjin = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getDianjin()) ? "0" : lwAllWholeFeeDtogy.getDianjin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianjin()) ? "0"
+								: lwAllWholeFeeDtoty.getDianjin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianjin()) ? "0"
+								: lwAllWholeFeeDtodm.getDianjin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getDianjin()) ? "0"
+								: lwAllWholeFeeDtojy.getDianjin());
+		sumwdianjintax = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getDianjintax()) ? "0" : lwAllWholeFeeDtogy.getDianjintax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty
+						.getDianjintax()) ? "0" : lwAllWholeFeeDtoty
+						.getDianjintax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm
+						.getDianjintax()) ? "0" : lwAllWholeFeeDtodm
+						.getDianjintax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy
+						.getDianjintax()) ? "0" : lwAllWholeFeeDtojy
+						.getDianjintax());
+		sumwsanxia = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getSanxia()) ? "0" : lwAllWholeFeeDtogy.getSanxia())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getSanxia()) ? "0"
+								: lwAllWholeFeeDtoty.getSanxia())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getSanxia()) ? "0"
+								: lwAllWholeFeeDtodm.getSanxia())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getSanxia()) ? "0"
+								: lwAllWholeFeeDtojy.getSanxia());
+		sumwsanxiatax = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getSanxiatax()) ? "0" : lwAllWholeFeeDtogy.getSanxiatax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty
+						.getSanxiatax()) ? "0" : lwAllWholeFeeDtoty
+						.getSanxiatax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm
+						.getSanxiatax()) ? "0" : lwAllWholeFeeDtodm
+						.getSanxiatax())
+				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy
+						.getSanxiatax()) ? "0" : lwAllWholeFeeDtojy
+						.getSanxiatax());
+		sumwjijin = Double
+				.parseDouble("".equals(lwAllWholeFeeDtogy.getJijin()) ? "0"
+						: lwAllWholeFeeDtogy.getJijin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getJijin()) ? "0"
+								: lwAllWholeFeeDtoty.getJijin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getJijin()) ? "0"
+								: lwAllWholeFeeDtodm.getJijin())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getJijin()) ? "0"
+								: lwAllWholeFeeDtojy.getJijin());
+		sumwjijintax = Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getFujia1()) ? "0" : lwAllWholeFeeDtogy.getFujia1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getFujia1()) ? "0"
+								: lwAllWholeFeeDtoty.getFujia1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getFujia1()) ? "0"
+								: lwAllWholeFeeDtodm.getFujia1())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1()) ? "0"
+								: lwAllWholeFeeDtojy.getFujia1());
+		sumwdianfee = ((Double.parseDouble("".equals(lwAllWholeFeeDtogy
+				.getDianfei()) ? "0" : lwAllWholeFeeDtogy.getDianfei())
 				+ Double
 						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
 								: lwAllWholeFeeDtoty.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei())?"0":lwAllWholeFeeDtodm.getDianfei()) + Double
-				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei())?"0":lwAllWholeFeeDtojy.getDianfei())) / 1.17;
-		sumwfee = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getSumfee())?"0":lwAllWholeFeeDtogy.getSumfee())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getSumfee())?"0":lwAllWholeFeeDtoty.getSumfee())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getSumfee())?"0":lwAllWholeFeeDtodm.getSumfee())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getSumfee())?"0":lwAllWholeFeeDtojy.getSumfee());
-		sumwpower = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getPower1())?"0":lwAllWholeFeeDtogy.getPower1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getPower1())?"0":lwAllWholeFeeDtoty.getPower1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getPower1())?"0":lwAllWholeFeeDtodm.getPower1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getPower1())?"0":lwAllWholeFeeDtojy.getPower1());
-		sumwtax = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfeitax())?"0":lwAllWholeFeeDtogy.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfeitax())?"0":lwAllWholeFeeDtoty.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfeitax())?"0":lwAllWholeFeeDtodm.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfeitax())?"0":lwAllWholeFeeDtojy.getDianfeitax());
-		summwdianjin = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianjin())?"0":lwAllWholeFeeDtogy.getDianjin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianjin())?"0":lwAllWholeFeeDtoty.getDianjin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianjin())?"0":lwAllWholeFeeDtodm.getDianjin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getDianjin())?"0":lwAllWholeFeeDtojy.getDianjin());
-		sumwdianjintax = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianjintax())?"0":lwAllWholeFeeDtogy.getDianjintax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianjintax())?"0":lwAllWholeFeeDtoty.getDianjintax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianjintax())?"0":lwAllWholeFeeDtodm.getDianjintax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getDianjintax())?"0":lwAllWholeFeeDtojy.getDianjintax());
-		sumwsanxia = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getSanxia())?"0":lwAllWholeFeeDtogy.getSanxia())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getSanxia())?"0":lwAllWholeFeeDtoty.getSanxia())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getSanxia())?"0":lwAllWholeFeeDtodm.getSanxia())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getSanxia())?"0":lwAllWholeFeeDtojy.getSanxia());
-		sumwsanxiatax = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getSanxiatax())?"0":lwAllWholeFeeDtogy.getSanxiatax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getSanxiatax())?"0":lwAllWholeFeeDtoty.getSanxiatax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getSanxiatax())?"0":lwAllWholeFeeDtodm.getSanxiatax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getSanxiatax())?"0":lwAllWholeFeeDtojy.getSanxiatax());
-		sumwjijin = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getJijin())?"0":lwAllWholeFeeDtogy.getJijin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getJijin())?"0":lwAllWholeFeeDtoty.getJijin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getJijin())?"0":lwAllWholeFeeDtodm.getJijin())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getJijin())?"0":lwAllWholeFeeDtojy.getJijin());
-		sumwjijintax = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getFujia1())?"0":lwAllWholeFeeDtogy.getFujia1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getFujia1())?"0":lwAllWholeFeeDtoty.getFujia1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getFujia1())?"0":lwAllWholeFeeDtodm.getFujia1())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1())?"0":lwAllWholeFeeDtojy.getFujia1());
-		sumwdianfee = ((Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei())?"0":lwAllWholeFeeDtogy.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei())?"0":lwAllWholeFeeDtoty.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei())?"0":lwAllWholeFeeDtodm.getDianfei()) + Double
-				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei())?"0":lwAllWholeFeeDtojy.getDianfei()))) * 1.17;
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei()) ? "0"
+								: lwAllWholeFeeDtodm.getDianfei()) + Double
+				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei()) ? "0"
+						: lwAllWholeFeeDtojy.getDianfei()))) * 1.17;
 		sumfc = sumfdianfee / 1.17;
 		sumftax = sumfdianfee / 1.17 * 0.17;
 		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
