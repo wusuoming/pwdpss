@@ -89,12 +89,29 @@ public class CountAllResultPrintAction extends Action {
 		double sumallsanxiatax = 0;
 		double sumalljijin = 0;
 		double sumalljijintax = 0;
+		
+		
+		double differenceQuantity=0;
+		double differencePrice=0.2;
+		double differenceQuantityFee=0;
 
 		String conditions = " 1=1 and statmonth ='" + statmonth + "'";
 		String conditionwgd = " 1=1 and statmonth ='" + statmonth
 				+ "' and upcompany='gy' or upcompany='dm'";
 		String conditionwtj = " 1=1 and statmonth ='" + statmonth
 				+ "' and upcompany='ty' or upcompany='jy'";
+		
+		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
+		Collection col=blLwWholeSaleSummaryFacade.findByConditions(conditions);
+		LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
+		Iterator it=col.iterator();
+		while(it.hasNext()){
+			lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it.next();
+			differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
+		}
+		
+		
+		
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
@@ -106,8 +123,11 @@ public class CountAllResultPrintAction extends Action {
 					+ lwCorporationSummaryDto.getBeforPower()
 					+ lwCorporationSummaryDto.getLastPower();
 			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
-					+ lwCorporationSummaryDto.getPowerRateFee()
-					+ lwCorporationSummaryDto.getPeakFee();
+			+ lwCorporationSummaryDto.getPowerRateFee()
+			+ lwCorporationSummaryDto.getPeakFee()
+			+ lwCorporationSummaryDto.getContentFee()
+			+ lwCorporationSummaryDto.getNeedFee()
+			+ lwCorporationSummaryDto.getUnDenizenFee();
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
@@ -127,14 +147,10 @@ public class CountAllResultPrintAction extends Action {
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
 				.findByPrimaryKey("jy", statmonth);
 
-		sumwc = (Double
-				.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0"
-						: lwAllWholeFeeDtogy.getDianfei())
-				+ Double
-						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
-								: lwAllWholeFeeDtoty.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei())?"0":lwAllWholeFeeDtodm.getDianfei()) + Double
-				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei())?"0":lwAllWholeFeeDtojy.getDianfei())) / 1.17;
+		sumwc=((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17;
 		sumwfee = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getSumfee())?"0":lwAllWholeFeeDtogy.getSumfee())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getSumfee())?"0":lwAllWholeFeeDtoty.getSumfee())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getSumfee())?"0":lwAllWholeFeeDtodm.getSumfee())
@@ -143,10 +159,10 @@ public class CountAllResultPrintAction extends Action {
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getPower1())?"0":lwAllWholeFeeDtoty.getPower1())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getPower1())?"0":lwAllWholeFeeDtodm.getPower1())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getPower1())?"0":lwAllWholeFeeDtojy.getPower1());
-		sumwtax = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfeitax())?"0":lwAllWholeFeeDtogy.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfeitax())?"0":lwAllWholeFeeDtoty.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfeitax())?"0":lwAllWholeFeeDtodm.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfeitax())?"0":lwAllWholeFeeDtojy.getDianfeitax());
+		sumwtax = ((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17*0.17;
 		summwdianjin = Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianjin())?"0":lwAllWholeFeeDtogy.getDianjin())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianjin())?"0":lwAllWholeFeeDtoty.getDianjin())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianjin())?"0":lwAllWholeFeeDtodm.getDianjin())
@@ -171,10 +187,7 @@ public class CountAllResultPrintAction extends Action {
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getFujia1())?"0":lwAllWholeFeeDtoty.getFujia1())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getFujia1())?"0":lwAllWholeFeeDtodm.getFujia1())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1())?"0":lwAllWholeFeeDtojy.getFujia1());
-		sumwdianfee = ((Double.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei())?"0":lwAllWholeFeeDtogy.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei())?"0":lwAllWholeFeeDtoty.getDianfei())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei())?"0":lwAllWholeFeeDtodm.getDianfei()) + Double
-				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei())?"0":lwAllWholeFeeDtojy.getDianfei()))) * 1.17;
+		sumwdianfee = sumwc+sumwtax;
 		sumfc = sumfdianfee / 1.17;
 		sumftax = sumfdianfee / 1.17 * 0.17;
 		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
@@ -244,6 +257,9 @@ public class CountAllResultPrintAction extends Action {
 		httpServletRequest.setAttribute("sumalljijin", df.format(sumalljijin));
 		httpServletRequest.setAttribute("sumalljijintax", df
 				.format(sumalljijintax));
+		
+		httpServletRequest.setAttribute("differenceQuantityFee", df
+				.format(differenceQuantity*0.2));
 		httpServletRequest.setAttribute("statMonth", statmonth);
 		return actionMapping.findForward("viewallcount");
 	}

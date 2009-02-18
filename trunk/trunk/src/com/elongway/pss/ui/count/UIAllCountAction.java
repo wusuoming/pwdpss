@@ -82,12 +82,30 @@ public class UIAllCountAction extends Action {
 		double sumallsanxiatax = 0;
 		double sumalljijin = 0;
 		double sumalljijintax = 0;
+		double differenceQuantity=0;
+		double differencePrice=0.2;
+		double differenceQuantityFee=0;
 
 		String conditions = " 1=1 and statmonth ='" + statmonth + "'";
-		String conditionwgd = " 1=1 and statmonth ='" + statmonth
-				+ "' and upcompany='gy' or upcompany='dm'";
-		String conditionwtj = " 1=1 and statmonth ='" + statmonth
-				+ "' and upcompany='ty' or upcompany='jy'";
+		String conditionwgy = " 1=1 and statmonth ='" + statmonth
+				+ "' and upcompany='gy' ";
+		String conditionwdm = " 1=1 and statmonth ='" + statmonth
+		+ "' and upcompany='dm' ";
+		
+		String conditionwjy = " 1=1 and statmonth ='" + statmonth
+		+ "' and upcompany='jy' ";
+		
+		String conditionwty = " 1=1 and statmonth ='" + statmonth
+		+ "' and upcompany='ty' ";
+		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
+		Collection col=blLwWholeSaleSummaryFacade.findByConditions(conditions);
+		LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
+		Iterator it=col.iterator();
+		while(it.hasNext()){
+			lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it.next();
+			differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
+		}
+		
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
@@ -129,18 +147,24 @@ public class UIAllCountAction extends Action {
 				.findByPrimaryKey("ty", statmonth);
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
 				.findByPrimaryKey("jy", statmonth);
-
-//		sumwc = (Double
-//				.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0"
-//						: lwAllWholeFeeDtogy.getDianfei())
-//				+ Double
-//						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
-//								: lwAllWholeFeeDtoty.getDianfei())
-//				+ Double
-//						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei()) ? "0"
-//								: lwAllWholeFeeDtodm.getDianfei()) + Double
-//				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei()) ? "0"
-//						: lwAllWholeFeeDtojy.getDianfei())) / 1.17;
+/*
+		sumwc = (Double
+				.parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0"
+						: lwAllWholeFeeDtogy.getSumfee())-(Double
+								.parseDouble("".equals(lwAllWholeFeeDtogy.getSanxia()) ? "0"
+										: lwAllWholeFeeDtogy.getSumfee())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
+								: lwAllWholeFeeDtoty.getDianfei())
+				+ Double
+						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei()) ? "0"
+								: lwAllWholeFeeDtodm.getDianfei()) + Double
+				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei()) ? "0"
+						: lwAllWholeFeeDtojy.getDianfei()) ));*/
+		sumwc=((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
+		(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
+		(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
+		(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17;
 		
 		sumwfee = Double
 				.parseDouble("".equals(lwAllWholeFeeDtogy.getSumfee()) ? "0"
@@ -166,17 +190,10 @@ public class UIAllCountAction extends Action {
 				+ Double
 						.parseDouble("".equals(lwAllWholeFeeDtojy.getPower1()) ? "0"
 								: lwAllWholeFeeDtojy.getPower1());
-		sumwtax = Double.parseDouble("".equals(lwAllWholeFeeDtogy
-				.getDianfeitax()) ? "0" : lwAllWholeFeeDtogy.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtoty
-						.getDianfeitax()) ? "0" : lwAllWholeFeeDtoty
-						.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm
-						.getDianfeitax()) ? "0" : lwAllWholeFeeDtodm
-						.getDianfeitax())
-				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy
-						.getDianfeitax()) ? "0" : lwAllWholeFeeDtojy
-						.getDianfeitax());
+		sumwtax = ((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
+				(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17*0.17;
 		summwdianjin = Double.parseDouble("".equals(lwAllWholeFeeDtogy
 				.getDianjin()) ? "0" : lwAllWholeFeeDtogy.getDianjin())
 				+ Double
@@ -244,16 +261,7 @@ public class UIAllCountAction extends Action {
 				+ Double
 						.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1()) ? "0"
 								: lwAllWholeFeeDtojy.getFujia1());
-		sumwdianfee = ((Double.parseDouble("".equals(lwAllWholeFeeDtogy
-				.getDianfei()) ? "0" : lwAllWholeFeeDtogy.getDianfei())
-				+ Double
-						.parseDouble("".equals(lwAllWholeFeeDtoty.getDianfei()) ? "0"
-								: lwAllWholeFeeDtoty.getDianfei())
-				+ Double
-						.parseDouble("".equals(lwAllWholeFeeDtodm.getDianfei()) ? "0"
-								: lwAllWholeFeeDtodm.getDianfei()) + Double
-				.parseDouble("".equals(lwAllWholeFeeDtojy.getDianfei()) ? "0"
-						: lwAllWholeFeeDtojy.getDianfei()))) * 1.17;
+		sumwdianfee = sumwc+sumwtax;
 		sumfc = sumfdianfee / 1.17;
 		sumftax = sumfdianfee / 1.17 * 0.17;
 		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
@@ -316,6 +324,9 @@ public class UIAllCountAction extends Action {
 				.format(sumalldianjin));
 		httpServletRequest.setAttribute("sumalldianjintax", df
 				.format(sumalldianjintax));
+		
+		httpServletRequest.setAttribute("differenceQuantityFee", df
+				.format(differenceQuantity*0.2));
 		httpServletRequest
 				.setAttribute("sumallsanxia", df.format(sumallsanxia));
 		httpServletRequest.setAttribute("sumallsanxiatax", df

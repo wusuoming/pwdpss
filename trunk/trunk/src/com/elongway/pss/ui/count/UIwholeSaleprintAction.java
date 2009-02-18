@@ -256,7 +256,8 @@ public class UIwholeSaleprintAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum10Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
+				Rate10Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -290,7 +291,8 @@ public class UIwholeSaleprintAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum35Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
+				Rate35Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -393,6 +395,9 @@ public class UIwholeSaleprintAction extends Action {
 			httpServletRequest.setAttribute("sumRateFee", df.format(sumRateFee));
 			httpServletRequest.setAttribute("powerRateFee", df.format(powerRateFee));
 			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
+			
+			httpServletRequest.setAttribute("Rate10Fee", df.format(Rate10Fee));
+			httpServletRequest.setAttribute("Rate35Fee", df.format(Rate35Fee));
 			
 			
 			httpServletRequest.setAttribute("sum10Power", df.format(Math.round(sum10Power)));
