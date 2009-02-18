@@ -279,7 +279,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				}
 				double sumPower=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
 				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "4",rateCode[i]);
-				double RateCode=powerFeeCal.poweradjustrate(String.valueOf(rworkQuantity), String.valueOf(runworkQuantity));
+				//double RateCode=powerFeeCal.poweradjustrate(String.valueOf(rworkQuantity), String.valueOf(runworkQuantity));
 				double industryPrice=lwWholeSalePurePriceDto.getIndustryPrice();
 				double workFee=sumPower*industryPrice;
 				runworkQuantity=runworkQuantity-Double.parseDouble(unTransLossQuantity[i]);
@@ -312,7 +312,7 @@ public class UIPathWholeSaleCalAction extends Action {
 				lwWholeSaleSummaryDto.setUnWorkNum(Double.parseDouble(LastWorkNum[i]));
 				lwWholeSaleSummaryDto.setTransLoss(Math.round(Double.parseDouble(TransLossQuantity[i])));
 				lwWholeSaleSummaryDto.setDifferenceQuantity(differenceQuantity[i]);
-				lwWholeSaleSummaryDto.setRateCode(RateCode);
+				lwWholeSaleSummaryDto.setRateCode(Double.parseDouble(rateCode[i]));
 				lwWholeSaleSummaryDto.setAdjustRate(AdjustRate);
 				lwWholeSaleSummaryDto.setWholesaletype("1");
 				lwWholeSaleSummaryDto.setPowerRateFee(powerRateFee);
