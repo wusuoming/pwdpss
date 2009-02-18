@@ -5,6 +5,7 @@
 <jsp:directive.page import="java.util.Iterator"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwWholeSaleIndicatorDto"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwWholeSaleSummaryDto"/>
+<jsp:directive.page import="java.text.DecimalFormat"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -90,7 +91,7 @@
 			//String allRateCode10=request.getAttribute("allRateCode10").toString();
 			//String allPowerRateFee10=request.getAttribute("allPowerRateFee10").toString();
 			//String usum10power=(String)request.getAttribute("usum10power");
-			
+				DecimalFormat df = new DecimalFormat("###0.00");	
 			List list10=(List)request.getAttribute("kv10");
 			if(list10!=null){
 			Iterator it10=list10.iterator();
@@ -104,16 +105,16 @@
 						<td class="input" align="center"><%=lwWholeSaleSummaryDto.getLineCode()%><%--<input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>--%>
 						<td class="input" align="center"><input   name="workPointer" value="<%=lwWholeSaleSummaryDto.getWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="unworkPointer" value="<%=lwWholeSaleSummaryDto.getUnWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="pointerPower" value="<%=lwWholeSaleSummaryDto.getPointerQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="unworkPower" value="<%=lwWholeSaleSummaryDto.getUnPointerQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="pointerPower" value="<%=Math.round(lwWholeSaleSummaryDto.getPointerQuantity())%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="unworkPower" value="<%=Math.round(lwWholeSaleSummaryDto.getUnPointerQuantity())%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="sumPower" value="<%=lwWholeSaleSummaryDto.getElectricQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
 						
 						<td class="input" align="center"><input   name="rateCode" value="<%=lwWholeSaleSummaryDto.getRateCode()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="ajustRate" value="<%=lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="powerFee" value="<%=lwWholeSaleSummaryDto.getPowerRateFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="sumFee" value="<%=lwWholeSaleSummaryDto.getSumFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="powerFee" value="<%=df.format(lwWholeSaleSummaryDto.getPowerRateFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="sumFee" value="<%=df.format(lwWholeSaleSummaryDto.getSumFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						</tr>
 					<%} 
 					}
@@ -149,6 +150,7 @@
 		//	String count35Fee=(String)request.getAttribute("count35Fee");
 			////String sum35power=(String)request.getAttribute("sum35power");
 			String Rate35Fee=(String)request.getAttribute("Rate35Fee");
+		
 		//
 			String allRateCode35=request.getAttribute("allRateCode35").toString();
 			//String allPowerRateFee35=request.getAttribute("allPowerRateFee35").toString();
@@ -163,15 +165,15 @@
 						<td class="input" align="center"><input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="workPointer" value="<%=lwWholeSaleSummaryDto.getWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="unworkPointer" value="<%=lwWholeSaleSummaryDto.getUnWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="pointerPower" value="<%=lwWholeSaleSummaryDto.getPointerQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="unworkPower" value="<%=lwWholeSaleSummaryDto.getUnPointerQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="pointerPower" value="<%=Math.round(lwWholeSaleSummaryDto.getPointerQuantity())%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="unworkPower" value="<%=Math.round(lwWholeSaleSummaryDto.getUnPointerQuantity())%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="sumPower" value="<%=lwWholeSaleSummaryDto.getElectricQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="sumPower" value="<%=Math.round(lwWholeSaleSummaryDto.getElectricQuantity())%>"  style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" align="center"><input   name="rateCode" value="<%=lwWholeSaleSummaryDto.getRateCode()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="ajustRate" value="<%=lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="powerFee" value="<%=lwWholeSaleSummaryDto.getPowerRateFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="sumFee" value="<%=lwWholeSaleSummaryDto.getSumFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="ajustRate" value="<%= lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="powerFee" value="<%=df.format(lwWholeSaleSummaryDto.getPowerRateFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="sumFee" value="<%=df.format(lwWholeSaleSummaryDto.getSumFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						</tr>
 					<%} 
 					}
