@@ -119,6 +119,8 @@ String sumallsanxiatax=(String)request.getAttribute("sumallsanxiatax");
 String sumalljijin=(String)request.getAttribute("sumalljijin");
 String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 
+String statMonth = (String)request.getAttribute("statMonth");
+
 
 
 
@@ -147,7 +149,7 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 		
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+						<span class="title">月份:<%=statMonth%></span>
 					</td>
 	</tr>
 		<tr class=listtitle>

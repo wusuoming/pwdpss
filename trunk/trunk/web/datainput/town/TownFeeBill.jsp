@@ -83,9 +83,22 @@ function printCount(){
 
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
+function   doPrintSetup(){    
+  //打印设置    
+  WB.ExecWB(8,1)    
+  }    
+  function   doPrintPreview(){    
+  //打印预览    
+  WB.ExecWB(7,1)    
+  }    
+  function   doprint(){    
+  //直接打印    
+  WB.ExecWB(6,6)    
+  }    
 </script>
 </head>
 <body class=interface>
+<OBJECT   classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2   height=10   id=WB   width=10></OBJECT>
 <html:errors />
 <%Collection billList = (Collection)request.getAttribute("billList");
 String statMonth = (String)request.getAttribute("statMonth");
@@ -148,6 +161,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
   <table width="100%">
   <tr >
         <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printCount();"></td>
+        
 </tr>
 </table>
 

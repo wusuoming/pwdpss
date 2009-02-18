@@ -84,6 +84,7 @@
 </head>
 <body class=interface>&nbsp; 
 <html:errors />
+
 <%
 DecimalFormat df = new DecimalFormat("###0.00");
 String sumffee=(String)request.getAttribute("sumffee");

@@ -80,7 +80,7 @@ function printCount(){
 	 var   strURL;     
 	 var tt = fm.statMonth.value;
    strURL="<%=request.getContextPath()%>/townfeeprint.do?statMonth="+tt;    
-    alert(strURL);
+    
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 function doPrint(){
@@ -106,12 +106,12 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 		</tr>
 		<!--人员代码，姓名-->
 		<tr class=listtitle>
-			<td ><span class="title"><font size="3">项目/单位</font></span> </td>
+			<td ><span class="title"><b><font size="3">项目/单位</font></b></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			%>	
-			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><font color="F9FAFB" size="3"><%=dto.getTownName() %></font></a></span></td>
+			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><b><font color="F9FAFB" size="3"><%=dto.getTownName() %></font></b></a></span></td>
 			
 			<%}} %>
 			
@@ -141,11 +141,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 			
 		</tr>
 	
-		 <tr>
-    <td  colspan="4"><font size="3">制表:</font></td>
-    <td  colspan="4"><font size="3">审核:</font></td>
-    <td  colspan="3"><font size="3">负责人:</font></td>
-  </tr>
+	
   
 </table>
 

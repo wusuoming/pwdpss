@@ -168,7 +168,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 
 %>
 <form  name="fm" method="post">
-	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
+	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
 		
 	<tr>
@@ -182,46 +182,46 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 		
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="3">单位</font></span>
+					<span class="title"><b><font size="3">单位</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="3">电量</font></span>
+					<span class="title"><b><font size="3">电量</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="3">电费</font></span>
+					<span class="title"><b><font size="3">电费</font></b></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="3">三峡基金</font></span>
+					<span class="title"><b><font size="3">三峡基金</font></b></span>
 				<br></td>
 		
 				<td nowrap width="10%">
-					<span class="title"><font size="3">电力资金</font></span>
+					<span class="title"><b><font size="3">电力资金</font></b></span>
 				<br></td>	
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="3">基金</font></span>
+					<span class="title"><b><font size="3">基金</font></b></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="3">电费税</font></span>
+					<span class="title"><b><font size="3">电费税</font></b></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="3">三峡税</font></span>
+					<span class="title"><b><font size="3">三峡税</font></b></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="3">电金税</font></span>
+					<span class="title"><b><font size="3">电金税</font></b></span>
 				<br></td>
 				
 			
 				<td nowrap width="10%">
-					<span class="title"><font size="3">基金税</font></span>
+					<span class="title"><b><font size="3">基金税</font></b></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="3">总计</font></span>
+					<span class="title"><b><font size="3">总计</font></b></span>
 				<br></td>
 							
 			</tr>

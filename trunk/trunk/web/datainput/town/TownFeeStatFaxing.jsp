@@ -97,6 +97,7 @@ function printCount(){
 function result()
 {	
     var count = document.getElementsByName('pureFee').length;
+   
     var sumPurefee = 0.0;
     var sumfee1 = 0.0;
     var sumfeeTax = 0.0;
@@ -116,42 +117,41 @@ function result()
             
             }else{
             	for(var i=0;i<count-1;i++){
-            	alert(fm.feeTax[i].value);
-                fm.feeTax[i].value = parseFloat(fm.pureFee[i].value) * 0.17;
-                fm.sanxiaTax[i].value = parseFloat(fm.sanxia[i].value) * 0.17;
-                fm.dianjinTax[i].value = parseFloat(fm.dianjin[i].value) * 0.17;
-                fm.jijinTax[i].value = parseFloat(fm.jijin[i].value)* 0.17;
-                fm.sumFee[i].value = parseFloat(fm.pureFee[i].value)+parseFloat(fm.feeTax[i].value)+parseFloat(fm.dianjin[i].value)+parseFloat(fm.dianjinTax[i].value)+parseFloat(fm.jijin[i].value)+parseFloat(fm.jijinTax[i].value)+parseFloat(fm.sanxia[i].value)+parseFloat(fm.sanxiaTax[i].value);
-                
-                alert('0');
-                
-                sumPurefee = parseFloat(sumPurefee) + parseFloat(fm.pureFee[i].value);
-                alert('2');
-                sumfeeTax = parseFloat(sumfeeTax) + parseFloat(fm.feeTax[i].value);
-                alert('4');
-                sumfee1  =  parseFloat(sumfee1)+parseFloat(fm.sumfee[i].value);
-      		   alert('3');
-     			sumsanxia = parseFloat(sumsanxia) + parseFloat(fm.sanxia[i].value);
-     					alert('3');
-    			sumsanxiaTax = parseFloat(sumsanxiaTax)+parseFloat(fm.sanxiaTax[i].value);
-    					alert('3');
-    			sumdianjin = parseFloat(sumdianjin)+parseFloat(fm.dianjin[i].value);
-			    sumdianjinTax = parseFloat(sumdianjinTax)+parseFloat(fm.dianjinTax[i].value);
-    			sumjijin =parseFloat(sumjijin)+ parseFloat(fm.jijin[i].value);
+                fm.feeTax[i].value = (parseFloat(fm.pureFee[i].value) * 0.17).toFixed(2);
+                fm.sanxiaTax[i].value = (parseFloat(fm.sanxia[i].value) * 0.17).toFixed(2);
+                fm.dianjinTax[i].value = (parseFloat(fm.dianjin[i].value) * 0.17).toFixed(2);
+                fm.jijinTax[i].value = (parseFloat(fm.jijin[i].value)* 0.17).toFixed(2);
+                fm.sumFee[i].value = (parseFloat(fm.pureFee[i].value)+parseFloat(fm.feeTax[i].value)+parseFloat(fm.dianjin[i].value)+parseFloat(fm.dianjinTax[i].value)+parseFloat(fm.jijin[i].value)+parseFloat(fm.jijinTax[i].value)+parseFloat(fm.sanxia[i].value)+parseFloat(fm.sanxiaTax[i].value)).toFixed(2);
+              
+                sumPurefee = (parseFloat(sumPurefee) + parseFloat(fm.pureFee[i].value)).toFixed(2);
+    
+                sumfeeTax = (parseFloat(sumfeeTax) + parseFloat(fm.feeTax[i].value)).toFixed(2);
+				
+				
+                sumfee1 = (parseFloat(sumfee1) + parseFloat(fm.sumFee[i].value)).toFixed(2);
+
+     			sumsanxia = (parseFloat(sumsanxia) + parseFloat(fm.sanxia[i].value)).toFixed(2);
+     				
+    			sumsanxiaTax = (parseFloat(sumsanxiaTax)+parseFloat(fm.sanxiaTax[i].value)).toFixed(2);
+    					
+    			sumdianjin = (parseFloat(sumdianjin)+parseFloat(fm.dianjin[i].value)).toFixed(2);
+			    sumdianjinTax = (parseFloat(sumdianjinTax)+parseFloat(fm.dianjinTax[i].value)).toFixed(2);
+    			sumjijin =(parseFloat(sumjijin)+ parseFloat(fm.jijin[i].value)).toFixed(2);
     		
-    			sumjijinTax = parseFloat(sumjijinTax)+parseFloat(fm.jijinTax[i].value);
+    			sumjijinTax = (parseFloat(sumjijinTax)+parseFloat(fm.jijinTax[i].value)).toFixed(2);
                
-                alert('1');
+
             	}
-            				fm.pureFee[count-1] = parseFloat(sumPurefee);
-							fm.feeTax[count-1] =parseFloat(sumfeeTax);
-							fm.sumfee[count-1]= parseFloat(sumfee1);    
-							fm.sanxia[count-1]= parseFloat(sumsanxia);
-							fm.sanxiaTax[count-1]= parseFloat(sumsanxiaTax);
-							fm.dianjin[count-1]= parseFloat(sumdianjin);
-							fm.dianjinTax[count-1]= parseFloat(sumdianjinTax);
-							fm.jijin[count-1]= parseFloat(sumjijin);
-							fm.jijinTax[count-1]= parseFloat(sumjijinTax);
+       
+            				fm.pureFee[count-1].value = parseFloat(sumPurefee);
+							fm.feeTax[count-1].value =parseFloat(sumfeeTax);
+							fm.sumFee[count-1].value= parseFloat(sumfee1);    
+							fm.sanxia[count-1].value= parseFloat(sumsanxia);
+							fm.sanxiaTax[count-1].value= parseFloat(sumsanxiaTax);
+							fm.dianjin[count-1].value= parseFloat(sumdianjin);
+							fm.dianjinTax[count-1].value= parseFloat(sumdianjinTax);
+							fm.jijin[count-1].value= parseFloat(sumjijin);
+							fm.jijinTax[count-1].value= parseFloat(sumjijinTax);
             	
             	
             }	
