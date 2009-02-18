@@ -162,6 +162,14 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 
 
 
+String differenceQuantity=request.getAttribute("differenceQuantity").toString();
+String differenceQuantitygy=request.getAttribute("differenceQuantitygy").toString();
+String differenceQuantitydm=request.getAttribute("differenceQuantitydm").toString();
+String differenceQuantityjy=request.getAttribute("differenceQuantityjy").toString();
+String differenceQuantityty=request.getAttribute("differenceQuantityty").toString();
+
+
+
 
 
 
@@ -174,7 +182,7 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
@@ -191,6 +199,9 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%">
 					<span class="title"><font size="2">电费</font></span>
 				<br></td>
+				
+				
+				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">三峡基金</font></span>
 				<br></td>
@@ -220,7 +231,9 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%">
 					<span class="title"><font size="2">基金税</font></span>
 				<br></td>
-				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费</font></span>
+				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">总计</font></span>
 				<br></td>
@@ -296,6 +309,11 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17*0.17)%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSumFee())%></font></span>
 				<br></td>
@@ -335,6 +353,11 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
 				<br></td>
+				
+					<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumffee%></font></span>
 				<br></td>
@@ -373,6 +396,10 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantityjy%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSumfee()%></font></span>
 				<br></td>
 				
@@ -410,6 +437,11 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantitydm%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSumfee()%></font></span>
 				<br></td>
@@ -449,6 +481,13 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantityty%></font></span>
+				<br></td>
+				
+				
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSumfee()%></font></span>
 				<br></td>
@@ -490,6 +529,11 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantitygy %></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSumfee()%></font></span>
 				<br></td>
@@ -528,6 +572,11 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantity%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumwfee%></font></span>
 				<br></td>
@@ -569,7 +618,12 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<br></td>	
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getJiJinTax() %></font></span>
-				<br></td>	
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+					
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getSumPowerFee() %></font></span>
 				<br></td>	
@@ -606,6 +660,10 @@ LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwA
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=differenceQuantity%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumallall%></font></span>

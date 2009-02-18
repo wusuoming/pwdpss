@@ -118,7 +118,7 @@ String sumallsanxia=(String)request.getAttribute("sumallsanxia");
 String sumallsanxiatax=(String)request.getAttribute("sumallsanxiatax");
 String sumalljijin=(String)request.getAttribute("sumalljijin");
 String sumalljijintax=(String)request.getAttribute("sumalljijintax");
-
+String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee");
 
 
 
@@ -141,15 +141,6 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
-	<tr>
-			<td class=title0 colspan="12"><font size="4">包头市农电公司电费电量发行单</font></td>
-		</tr>
-		
-		<tr>
-		<td nowrap colspan="2">
-						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
-					</td>
-	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
@@ -166,6 +157,11 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 		
 				<td nowrap width="10%">
 					<span class="title"><font size="2">合计</font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费</font></span>
 				<br></td>	
 				
 				
@@ -214,6 +210,11 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=summfdianjin%></font></span>
 				<br></td>
@@ -255,6 +256,12 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
 				<br></td>
+				
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=summwdianjin%></font></span>
 				<br></td>
@@ -293,6 +300,10 @@ String sumalljijintax=(String)request.getAttribute("sumalljijintax");
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumallfee%></font></span>
+				<br></td>
+				
+					<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumalldianjin%></font></span>

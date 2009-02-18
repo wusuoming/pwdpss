@@ -91,6 +91,18 @@
 			//String allRateCode10=request.getAttribute("allRateCode10").toString();
 			//String allPowerRateFee10=request.getAttribute("allPowerRateFee10").toString();
 			//String usum10power=(String)request.getAttribute("usum10power");
+			String sum10Fee=(String)request.getAttribute("sum10Fee");
+			String sum35Fee=(String)request.getAttribute("sum35Fee");
+			String Rate10Fee=(String)request.getAttribute("Rate10Fee");
+			String Rate35Fee=(String)request.getAttribute("Rate35Fee");
+			String sumfFee=(String)request.getAttribute("sumfFee");
+			String RatefFee=(String)request.getAttribute("RatefFee");
+			String sumfpower=(String)request.getAttribute("sumfpower");
+			String usumfpower=(String)request.getAttribute("usumfpower");
+			String sum10Power=(String)request.getAttribute("sum10Power");
+			String sum35power=(String)request.getAttribute("sum35power");
+			String usum10power=(String)request.getAttribute("usum10power");
+			String usum35power=(String)request.getAttribute("usum35power");
 				DecimalFormat df = new DecimalFormat("###0.00");	
 			List list10=(List)request.getAttribute("kv10");
 			if(list10!=null){
@@ -149,12 +161,7 @@
 						//String sum35Fee=(String)request.getAttribute("sum35Fee");
 		//	String count35Fee=(String)request.getAttribute("count35Fee");
 			////String sum35power=(String)request.getAttribute("sum35power");
-			String Rate35Fee=(String)request.getAttribute("Rate35Fee");
-		
-		//
-			String allRateCode35=request.getAttribute("allRateCode35").toString();
-			//String allPowerRateFee35=request.getAttribute("allPowerRateFee35").toString();
-			//String usum35power=(String)request.getAttribute("usum35power");
+			
 			List list35=(List)request.getAttribute("kv35");
 			if(list35!=null){
 			Iterator it35=list35.iterator();
@@ -198,7 +205,33 @@
             <td class=input><input name="Rate35Fee" type="text" class="text" value="<%=Rate35Fee%>" ></td>
              <td class=input><input name="sum35Fee" type="text" class="text" value="<%=sum35Fee%>" ></td>
 					</tr>
-	--%></table>
+					
+		
+	--%>
+	<tr>
+	<td nowrap><span class="title">10kv</span></td>
+			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title"><%=Rate10Fee%></span></td>
+				<td nowrap><span class="title">电费合计</span></td>
+				<td nowrap><span class="title"><%=sum10Fee%></span></td>
+	</tr>
+	<tr>
+	<td nowrap><span class="title">趸售工业</span></td>
+			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title"><%=RatefFee%></span></td>
+				<td nowrap><span class="title">电费合计</span></td>
+				<td nowrap><span class="title"><%=sumfFee%></span></td>
+	</tr>
+	
+	<tr>
+	<td nowrap><span class="title">35kv</span></td>
+			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title"><%=Rate35Fee%></span></td>
+				<td nowrap><span class="title">电费合计</span></td>
+				<td nowrap><span class="title"><%=sum35Fee%></span></td>
+	</tr>
+	
+	</table>
 	
 	<table cellpadding="0" cellspacing="0" width="100%"> 
         <tr> 
