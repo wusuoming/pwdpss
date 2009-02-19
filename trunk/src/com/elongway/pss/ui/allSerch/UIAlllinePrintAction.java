@@ -12,15 +12,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import com.elongway.pss.bl.facade.BLLwWholeSaleProrateFacade;
-import com.elongway.pss.bl.facade.BLLwWholeSalePurePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
-import com.elongway.pss.dto.domain.LwWholeSaleProrateDto;
-import com.elongway.pss.dto.domain.LwWholeSalePurePriceDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.PowerFeeCal;
 
-public class UIAllLineSerchAction extends Action {
+public class UIAlllinePrintAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
 		
 		String inputDate=httpServletRequest.getParameter("inputDate");

@@ -436,17 +436,17 @@ public class UIThisMonthAllCountAction extends Action {
 				+ Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())
 				+ Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
 
-		sumallfee = sumfdianfee + sumwdianfee + sumalltfee;
-		sumallpower = sumfpower + sumwpower + sumtpower;
-		sumallc = sumwc + sumfc + sumtc;
-		sumalltax = sumwtax + sumftax + sumttax;
-		sumallall = sumwfee + sumffee + sumttax;
-		sumalldianjin = summwdianjin + summfdianjin + summtdianjin;
-		sumalldianjintax = sumwdianjintax + sumfdianjintax + sumtdianjintax;
-		sumallsanxia = sumwsanxia + sumfsanxia + sumtsanxia;
-		sumallsanxiatax = sumwsanxiatax + sumfsanxiatax + sumtsanxiatax;
-		sumalljijin = sumwjijin + sumfjijin + sumtjijin;
-		sumalljijintax = sumwjijintax + sumfjijintax + sumtjijintax;
+		sumallfee = sumfdianfee + sumwdianfee + townSataDto.getPowerFee();
+		sumallpower = sumfpower + sumwpower + townSataDto.getSumPower();
+		sumallc = sumwc + sumfc + townSataDto.getPurePowerFee();
+		sumalltax = sumwtax + sumftax + townSataDto.getPowerFeeTax();
+		sumallall = sumwfee + sumffee + townSataDto.getSumPowerFee();
+		sumalldianjin = summwdianjin + summfdianjin + townSataDto.getPureDianJin();
+		sumalldianjintax = sumwdianjintax + sumfdianjintax + townSataDto.getDianJinTax();
+		sumallsanxia = sumwsanxia + sumfsanxia + townSataDto.getPureSanXia();
+		sumallsanxiatax = sumwsanxiatax + sumfsanxiatax + townSataDto.getSanXiaTax();
+		sumalljijin = sumwjijin + sumfjijin + townSataDto.getPureJiJin();
+		sumalljijintax = sumwjijintax + sumfjijintax + townSataDto.getJiJinTax();
 
 		httpServletRequest.setAttribute("sumffee", df.format(sumffee));
 		httpServletRequest.setAttribute("sumfpower", Math.round(sumfpower));
