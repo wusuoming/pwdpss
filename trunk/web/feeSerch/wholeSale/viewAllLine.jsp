@@ -105,6 +105,7 @@
 			String usum35power=(String)request.getAttribute("usum35power");
 				DecimalFormat df = new DecimalFormat("###0.00");	
 			List list10=(List)request.getAttribute("kv10");
+			List listf=(List)request.getAttribute("kvf");
 			if(list10!=null){
 			Iterator it10=list10.iterator();
 			while(it10.hasNext()){
@@ -130,30 +131,39 @@
 						</tr>
 					<%} 
 					}
-					%><%--
+					%>
+					
 					<tr>
-					<td nowrap><span class="title">10KV参与比例电费总计 </span></td>
-			<td nowrap><span class="title">有功电量</span></td>
-			<td nowrap><span class="title">无功电量</span></td>
-			<td nowrap><span class="title">功率因素</span></td>
-			<td nowrap><span class="title">调整值</span></td>
-			
-			<td nowrap><span class="title">总电费</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
-				<td nowrap><span class="title">电费合计</span></td>
-			
+					<td nowrap><span class="title">趸售工业</span></td>
 					</tr>
-					<tr>
-			 <td class=input>		
-            <td class=input><input name="sum10Power" type="text" class="text" value="<%=sum10Power%>" ></td>
-            <td class=input><input name="usum10power" type="text" class="text" value="<%=usum10power%>" ></td>
-             <td class=input><input name="allRateCode10" type="text" class="text" value="<%=allRateCode10%>" ></td>
-            <td class=input><input name="allPowerRateFee10" type="text" class="text" value="<%=allPowerRateFee10%>" ></td>
-             <td class=input><input name="count10Fee" type="text" class="text" value="<%=count10Fee%>" ></td>
-            <td class=input><input name="Rate10Fee" type="text" class="text" value="<%=Rate10Fee%>" ></td>
-             <td class=input><input name="sum10Fee" type="text" class="text" value="<%=sum10Fee%>" ></td>
-					</tr>
-						--%>
+					
+					
+					<%	if(listf!=null){
+			Iterator itf=listf.iterator();
+			while(itf.hasNext()){
+			LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itf.next();
+		
+			
+			 %>
+
+					<tr >
+						<td class="input" align="center"><%=lwWholeSaleSummaryDto.getLineCode()%><%--<input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>--%>
+						<td class="input" align="center"><input   name="workPointer" value="<%=lwWholeSaleSummaryDto.getWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="unworkPointer" value="<%=lwWholeSaleSummaryDto.getUnWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="pointerPower" value="<%=Math.round(lwWholeSaleSummaryDto.getPointerQuantity())%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="unworkPower" value="<%=Math.round(lwWholeSaleSummaryDto.getUnPointerQuantity())%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="sumPower" value="<%=lwWholeSaleSummaryDto.getElectricQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						
+						<td class="input" align="center"><input   name="rateCode" value="<%=lwWholeSaleSummaryDto.getRateCode()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="ajustRate" value="<%=lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="powerFee" value="<%=df.format(lwWholeSaleSummaryDto.getPowerRateFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" align="center"><input   name="sumFee" value="<%=df.format(lwWholeSaleSummaryDto.getSumFee())%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						</tr>
+					<%} 
+					}
+					%>
 						<tr>
 					<td nowrap><span class="title">35KV线路 </span></td>
 					</tr>
