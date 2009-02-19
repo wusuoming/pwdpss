@@ -112,6 +112,10 @@
                width: 20%; 
                font-size: 9pt;
                color: #000000}
+    td.inputprint { background-color: #eff9ff;
+               width: 20%; 
+               font-size: 9pt;
+               color: #000000}
 
     td.text  { background-color: #EEECFA;
                color: #000000 }
@@ -218,7 +222,12 @@
 /*--INPUTµÄÑùÊ½--*/
     input { font-size: 9pt;
             }
-
+ input.inputprint { background-color: #eff9ff;
+                border: 1px #819E81 solid;
+               font-size: 13pt;
+               
+               
+               color: #000000}
     input.common   { background-color: #ffffff;
                      border: 1px #819E81 solid;
                      height: 20px;

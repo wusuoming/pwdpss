@@ -182,7 +182,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=PowerFeeCal.getCurrentBillMonth()%></span>
+						<span class="title">月份:<%=inputDate1%></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
