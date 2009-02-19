@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=GBK"
 	pageEncoding="GBK"%>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"/>
+<jsp:directive.page import="java.text.DecimalFormat"/>
 <%
 	//response.setHeader("Content-disposition","attachment;filename=abc.xls");
 %>
@@ -64,6 +65,7 @@ BODY {
 	<body>
 		<form name="fm" method="post" action="">
 			<%
+			DecimalFormat df = new DecimalFormat("###0.00");
 				Collection col = (List) request.getAttribute("all");
 				String company = (String) request.getAttribute("company");
 				String statMonth = (String) request.getAttribute("statMonth");
@@ -949,7 +951,7 @@ BODY {
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends6" value="<%=lwAllWholeFeeDto.getFujia2() %>" onblur="sum()"
+						<span class="title"><input name="exends6" value="<%= lwAllWholeFeeDto.getFujia2() %>" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 
@@ -1027,7 +1029,7 @@ BODY {
 	function  sum(){
 	
 	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value);
-	fm.exends8.value=last;
+	fm.exends8.value=last.toFixed(2);
 	
 	}
 

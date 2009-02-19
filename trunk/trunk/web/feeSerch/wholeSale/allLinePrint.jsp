@@ -11,7 +11,7 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
 
-<html xhtml="true" locale="true">
+<html>
 <head>
  <meta http-equiv=Content-Type content="text/html; charset=gb2312">
   
@@ -50,7 +50,7 @@
        adding a calendar a matter of 1 or 2 lines of code. -->
   <script type="text/javascript" src="../../../../iacontact/common/pub/js/calendar-setup.js"></script>
 </head>
-<body class=interface>
+<body class="interface" onload="javascript:doPrint();window.close()">&nbsp; 
 <html:errors />
 
 <form  name="fm" method="post">
@@ -247,22 +247,10 @@
 	
 	</table>
 	
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="doPrint()">        </td> 
-        </tr> 
-	<!-- 按钮的显示-->
-</body>
+
 <script language="javascript">
 function doPrint(){
-	 var   strURL;     
-  var a=fm.comcode.value;
-  var b=fm.inputDate.value;
-    
-  strURL   =   "<%=request.getContextPath()%>/alllineprint.do?company="+a+"&&inputDate="+b;     
- 
-  window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+	 window.print();   
   
 }
 </script>

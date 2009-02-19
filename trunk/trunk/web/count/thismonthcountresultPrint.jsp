@@ -396,7 +396,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSumfee()%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee()))%></font></span>
 				<br></td>
 				
 					
@@ -439,7 +439,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSumfee()%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee()))%></font></span>
 				<br></td>
 				
 					
@@ -485,7 +485,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSumfee()%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee()))%></font></span>
 				<br></td>
 				
 				
@@ -531,7 +531,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSumfee()%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSumfee()))%></font></span>
 				<br></td>
 					
 			</tr>
@@ -584,7 +584,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
 		%>
-		<tr >
+	<tr >
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
 				<br></td>
@@ -595,13 +595,13 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="2"><%=townSataDto.getPurePowerFee() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureJiJin()%></font></span>
+					<span class="title"><font size="2"><%=townSataDto.getPureSanXia()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getPureDianJin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getDianJinTax() %></font></span>
+					<span class="title"><font size="2"><%=townSataDto.getPureJiJin() %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getPowerFeeTax() %></font></span>
