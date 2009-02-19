@@ -12,11 +12,13 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorBakFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleProrateFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSalePurePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
+import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwWholeSaleProrateDto;
 import com.elongway.pss.dto.domain.LwWholeSalePurePriceDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
@@ -231,6 +233,11 @@ public class UIWholeSaleFinalCountAction extends Action {
 			BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
 			Collection all=blLwWholeSaleIndicatorFacade.findByConditions(conditionsAll);
 			
+			BLLwAllWholeFeeFacade blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
+			LwAllWholeFeeDto  lwAllWholeFeeDto=blLwAllWholeFeeFacade.findByPrimaryKey(company, serchDate);
+			
+			
+			
 			httpServletRequest.setAttribute("all", all);
 			httpServletRequest.setAttribute("company", company);
 			httpServletRequest.setAttribute("statMonth", serchDate);
@@ -272,7 +279,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 			httpServletRequest.setAttribute("Rate10Fee", df.format(Rate10Fee));
 			httpServletRequest.setAttribute("Rate35Fee", df.format(Rate35Fee));
 			
-			
+			httpServletRequest.setAttribute("lwAllWholeFeeDto", lwAllWholeFeeDto);
 			
 			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
 			
