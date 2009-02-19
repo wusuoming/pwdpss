@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GBK"
 	pageEncoding="GBK"%>
+<jsp:directive.page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"/>
 <%
 	//response.setHeader("Content-disposition","attachment;filename=abc.xls");
 %>
@@ -176,6 +177,9 @@ BODY {
 						String Rate35Fee = (String) request
 						.getAttribute("Rate35Fee");		
 						
+						
+						LwAllWholeFeeDto  lwAllWholeFeeDto=(LwAllWholeFeeDto)request
+						.getAttribute("lwAllWholeFeeDto");
 						
 						
 						
@@ -882,6 +886,13 @@ BODY {
 					</td>
 
 				</tr>
+				<%
+					if(lwAllWholeFeeDto.equals("")){
+					
+					
+					
+				
+				 %>
 
 				<tr>
 
@@ -911,6 +922,39 @@ BODY {
 					</td>
 
 				</tr>
+				<%
+				}else{
+				 %>
+				 
+				<tr>
+
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends1" value="海明炉"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends2" value="<%=lwAllWholeFeeDto.getHaiminglu()%>" onblur="sum()"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends3" value="多边电费"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends4" value="<%=lwAllWholeFeeDto.getDuobian() %>" onblur="sum()"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends5" value="广播费"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends6" value="<%=lwAllWholeFeeDto.getFujia2() %>" onblur="sum()"
+								style="width: 65px"> </span>
+					</td>
+
+				</tr>
+				 <%} %>
 				<tr>
 
 					<td nowrap colspan="2">
