@@ -226,7 +226,7 @@
     <tr class=listtitle align="center">
 			<td class=title0 colspan="12"><B>表计信息</B></td>
 		</tr>
-      <tr>
+      <tr class=listtitle>
      <td nowrap><span class="title">线路名称 </span></td>
 			<td nowrap><span class="title">表号 </span></td>
 			<td nowrap><span class="title">类别</span></td>
@@ -258,7 +258,9 @@
 			}
 			 %>
 			<tr >
-						<td  ><%=lwWholeSaleIndicatorDto.getUserNo()%></td>
+						<td class="title" style="width:80px"><input name="ammeterNo"
+							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>"
+							readonly="readonly" style="diplay:none"></td>
 						<td  ><input name="ammeterNo" value="<%=lwAmmeterChangeDto.getAmmeterNo()%>"  readonly="readonly" style="width:65px"></td>
 						<%
 						if(lwWholeSaleUserInfoDto.getIfCal().equals("0") ){

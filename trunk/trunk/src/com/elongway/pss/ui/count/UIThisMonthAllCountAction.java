@@ -33,10 +33,10 @@ public class UIThisMonthAllCountAction extends Action {
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
 		BLLwDcodeFacade blLwDcodeFacade = new BLLwDcodeFacade();
-		String company = null;		
+		String company = null;
 		Collection userList = null;
 		String condition = null;
-		Collection priceSummaryList =null;
+		Collection priceSummaryList = null;
 		Collection resultList = new ArrayList();
 		TownSataDto townSataDto = new TownSataDto();
 		BLLwTownPriceSummaryFacade blLwTownPriceSummaryFacade = new BLLwTownPriceSummaryFacade();
@@ -60,8 +60,7 @@ public class UIThisMonthAllCountAction extends Action {
 		double sumfjijin = 0;
 		double sumfjijintax = 0;
 		double sumallffee = 0;
-		
-		
+
 		double sumtfee = 0;
 		double sumtpower = 0;
 		double sumtdianfee = 0;
@@ -116,24 +115,24 @@ public class UIThisMonthAllCountAction extends Action {
 		double sumallsanxia = 0;
 		double sumallsanxiatax = 0;
 		double sumalljijin = 0;
+
 		double sumalljijintax = 0;
 
 		DecimalFormat df = new DecimalFormat("###0.00");
 
 		String conditions = " 1=1 and statmonth ='" + statmonth + "'";
-		
+
 		String conditionsgy = " 1=1 and statmonth ='" + statmonth
-		+ "' and upcompany='gy' ";
-String conditionsdm = " 1=1 and statmonth ='" + statmonth
-+ "' and upcompany='dm' ";
+				+ "' and upcompany='gy' ";
+		String conditionsdm = " 1=1 and statmonth ='" + statmonth
+				+ "' and upcompany='dm' ";
 
-String conditionsjy = " 1=1 and statmonth ='" + statmonth
-+ "' and upcompany='jy' ";
+		String conditionsjy = " 1=1 and statmonth ='" + statmonth
+				+ "' and upcompany='jy' ";
 
-String conditionsty = " 1=1 and statmonth ='" + statmonth
-+ "' and upcompany='ty' ";
-		
-		
+		String conditionsty = " 1=1 and statmonth ='" + statmonth
+				+ "' and upcompany='ty' ";
+
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
@@ -145,79 +144,89 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 					+ lwCorporationSummaryDto.getBeforPower()
 					+ lwCorporationSummaryDto.getLastPower();
 			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
-			+ lwCorporationSummaryDto.getPowerRateFee()
-			+ lwCorporationSummaryDto.getPeakFee()
-			+ lwCorporationSummaryDto.getContentFee()
-			+ lwCorporationSummaryDto.getNeedFee()
-			+ lwCorporationSummaryDto.getUnDenizenFee();
+					+ lwCorporationSummaryDto.getPowerRateFee()
+					+ lwCorporationSummaryDto.getPeakFee()
+					+ lwCorporationSummaryDto.getContentFee()
+					+ lwCorporationSummaryDto.getNeedFee()
+					+ lwCorporationSummaryDto.getUnDenizenFee();
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-			sumffee+=lwCorporationSummaryDto.getSumFee();
+			sumffee += lwCorporationSummaryDto.getSumFee();
 
 		}
-		
+
 		// 四个局分别统计
-		
-		double differenceQuantity=0;
-		double differenceQuantitygy=0;
-		double differenceQuantitydm=0;
-		double differenceQuantityjy=0;
-		double differenceQuantityty=0;
-		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
-		
-		Collection col=blLwWholeSaleSummaryFacade.findByConditions(conditions);
-		Iterator it=col.iterator();
-		while(it.hasNext()){
-		LwWholeSaleSummaryDto	lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it.next();
-			differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
-		}
-		
-		
-		Collection colgy=blLwWholeSaleSummaryFacade.findByConditions(conditionsgy);
-		Iterator itgy=colgy.iterator();
-		while(itgy.hasNext()){
-		LwWholeSaleSummaryDto	lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itgy.next();
-			differenceQuantitygy+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
-		}
-		
-		
-		
-		Collection coldm=blLwWholeSaleSummaryFacade.findByConditions(conditionsdm);
-		Iterator itdm=coldm.iterator();
-		while(itdm.hasNext()){
-		LwWholeSaleSummaryDto	lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itdm.next();
-			differenceQuantitydm+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
-		}
-		
-		
-		Collection coljy=blLwWholeSaleSummaryFacade.findByConditions(conditionsjy);
-		Iterator itjy=coljy.iterator();
-		while(itjy.hasNext()){
-		LwWholeSaleSummaryDto	lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itjy.next();
-			differenceQuantityjy+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
-		}
-		
-		
-		Collection colty=blLwWholeSaleSummaryFacade.findByConditions(conditionsty);
-		Iterator itty=colty.iterator();
-		while(itty.hasNext()){
-		LwWholeSaleSummaryDto	lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itty.next();
-			differenceQuantityty+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
-		}
-		
-		
-		
-		
 
-		
-		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
-		LwAllWholeFeeDto lwAllWholeFeeDtogy=blLwAllWholeFeeFacade.findByPrimaryKey("gy", statmonth);
-		LwAllWholeFeeDto lwAllWholeFeeDtodm=blLwAllWholeFeeFacade.findByPrimaryKey("dm", statmonth);
-		LwAllWholeFeeDto lwAllWholeFeeDtoty=blLwAllWholeFeeFacade.findByPrimaryKey("ty", statmonth);
-		LwAllWholeFeeDto lwAllWholeFeeDtojy=blLwAllWholeFeeFacade.findByPrimaryKey("jy", statmonth);
-		
-		
+		double differenceQuantity = 0;
+		double differenceQuantitygy = 0;
+		double differenceQuantitydm = 0;
+		double differenceQuantityjy = 0;
+		double differenceQuantityty = 0;
+		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade = new BLLwWholeSaleSummaryFacade();
+
+		Collection col = blLwWholeSaleSummaryFacade
+				.findByConditions(conditions);
+		Iterator it = col.iterator();
+		while (it.hasNext()) {
+			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) it
+					.next();
+			differenceQuantity += Double
+					.parseDouble("".equals(lwWholeSaleSummaryDto
+							.getDifferenceQuantity()) ? "0"
+							: lwWholeSaleSummaryDto.getDifferenceQuantity());
+		}
+
+		Collection colgy = blLwWholeSaleSummaryFacade
+				.findByConditions(conditionsgy);
+		Iterator itgy = colgy.iterator();
+		while (itgy.hasNext()) {
+			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itgy
+					.next();
+			differenceQuantitygy += Double.parseDouble(lwWholeSaleSummaryDto
+					.getDifferenceQuantity());
+		}
+
+		Collection coldm = blLwWholeSaleSummaryFacade
+				.findByConditions(conditionsdm);
+		Iterator itdm = coldm.iterator();
+		while (itdm.hasNext()) {
+			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itdm
+					.next();
+			differenceQuantitydm += Double.parseDouble(lwWholeSaleSummaryDto
+					.getDifferenceQuantity());
+		}
+
+		Collection coljy = blLwWholeSaleSummaryFacade
+				.findByConditions(conditionsjy);
+		Iterator itjy = coljy.iterator();
+		while (itjy.hasNext()) {
+			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itjy
+					.next();
+			differenceQuantityjy += Double.parseDouble(lwWholeSaleSummaryDto
+					.getDifferenceQuantity());
+		}
+
+		Collection colty = blLwWholeSaleSummaryFacade
+				.findByConditions(conditionsty);
+		Iterator itty = colty.iterator();
+		while (itty.hasNext()) {
+			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itty
+					.next();
+			differenceQuantityty += Double.parseDouble(lwWholeSaleSummaryDto
+					.getDifferenceQuantity());
+		}
+
+		BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
+		LwAllWholeFeeDto lwAllWholeFeeDtogy = blLwAllWholeFeeFacade
+				.findByPrimaryKey("gy", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtodm = blLwAllWholeFeeFacade
+				.findByPrimaryKey("dm", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtoty = blLwAllWholeFeeFacade
+				.findByPrimaryKey("ty", statmonth);
+		LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
+				.findByPrimaryKey("jy", statmonth);
+
 		double sanxiagy = 0;
 		double jijingy = 0;
 		double dianjingy = 0;
@@ -269,8 +278,7 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 		double jijinty = 0;
 		double dianjinty = 0;
 		double sumallfeety = 0;
-		
-		
+
 		sumfc = sumfdianfee / 1.17;
 		sumftax = sumfdianfee / 1.17 * 0.17;
 		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
@@ -280,83 +288,165 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 		summfdianjin = summfdianjinall / 1.17;
 		sumfsanxia = sumfsanxiaall / 1.17;
 		sumfjijin = sumfjijinall / 1.17;
-		
+
 		sumwfee = sumwdianfee + summwdianjinall + sumwsanxiaall + sumwjijinall;
 		/**
 		 * 直供乡按局统计
 		 */
-	
+
 		// 得到四个局的几个代码
 		Collection<LwDcodeDto> comList = blLwDcodeFacade
-		.findByConditions(" codetype = 'SupplyCom'");
+				.findByConditions(" codetype = 'SupplyCom'");
 		// 得到四个局的统计数据
-		 for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
-				LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator
-						.next();
-			 company = lwDcodeDto.getCodeCode();
-			 inputDate = httpServletRequest.getParameter("inputDate");
-			 inputDate = new DateTime(inputDate,DateTime.YEAR_TO_MONTH).toString();
-			 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
-			 condition = PowerFeeCal.getUserCondition(userList);
-			 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1  and statmonth = '"+inputDate+"' "+condition);
-			 townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(priceSummaryList, inputDate);
-			 townSataDto.setComCode(company);
-			 townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
-			 resultList.add(townSataDto);			 
-			}
-		 // 四个局的统计汇总
-		 townSataDto = PowerFeeCal.getSumCompanyStat(resultList, inputDate);
-		 townSataDto.setCompanyName("小计");
-		 resultList.add(townSataDto);
-		 httpServletRequest.setAttribute("resultList", resultList);
-		 
-		 for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
-				TownSataDto townSataDto1 = (TownSataDto) iterator
-						.next();
-				
-				
-				 //sumtfee += ;
-				 sumtpower += townSataDto1.getSumPower();
-				 sumtdianfee += townSataDto1.getPurePowerFee();
-				 sumttax += townSataDto1.getPowerFeeTax();
-				 sumtc += townSataDto1.getPurePowerFee();
-				 summtdianjinall += townSataDto1.getSumJiJin();
-				 summtdianjin += townSataDto1.getPureDianJin();
-				 sumtdianjintax += townSataDto1.getDianJinTax();
-				 sumtsanxiaall += townSataDto1.getSumSanXia();
-				 sumtsanxia += townSataDto1.getPureSanXia();
-				 sumtsanxiatax += townSataDto1.getSanXiaTax();
-				 sumtjijinall += townSataDto1.getSumJiJin();
-				 sumtjijin += townSataDto1.getPureJiJin();
-				 sumtjijintax += townSataDto1.getJiJinTax();
-				 sumalltfee += townSataDto1.getSumPowerFee();
-		 }
-		 sumwc=((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17;
-		 sumwfee=Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())+Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())+Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())+Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
-		 sumwpower=Double.parseDouble(lwAllWholeFeeDtogy.getPower1())+Double.parseDouble(lwAllWholeFeeDtoty.getPower1())+Double.parseDouble(lwAllWholeFeeDtodm.getPower1())+Double.parseDouble(lwAllWholeFeeDtojy.getPower1());
-		 sumwtax = ((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1()))+
-					(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1()))-differenceQuantity*0.2)/1.17*0.17;
-		 summwdianjin=Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjin());
-		 sumwdianjintax=Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
-		 sumwsanxia=Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxia());
-		 sumwsanxiatax=Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())+Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
-		 sumwjijin=Double.parseDouble(lwAllWholeFeeDtogy.getJijin())+Double.parseDouble(lwAllWholeFeeDtoty.getJijin())+Double.parseDouble(lwAllWholeFeeDtodm.getJijin())+Double.parseDouble(lwAllWholeFeeDtojy.getJijin());
-		 sumwjijintax=Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
-		 
-		 sumallfee=sumfdianfee+sumwdianfee+sumalltfee; sumallpower=sumfpower+sumwpower+sumtpower;
-		 sumallc=sumwc+sumfc+sumtc; sumalltax=sumwtax+sumftax+sumttax;
-		 sumallall=sumwfee+sumffee+sumttax; sumalldianjin=summwdianjin+summfdianjin+summtdianjin;
-		 sumalldianjintax=sumwdianjintax+sumfdianjintax+sumtdianjintax;
-		 sumallsanxia=sumwsanxia+sumfsanxia+sumtsanxia;
-		 sumallsanxiatax=sumwsanxiatax+sumfsanxiatax+sumtsanxiatax;
-		 sumalljijin=sumwjijin+sumfjijin+sumtjijin;
-		 sumalljijintax=sumwjijintax+sumfjijintax+sumtjijintax;
-		 
+		for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
+			LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
+			company = lwDcodeDto.getCodeCode();
+			inputDate = httpServletRequest.getParameter("inputDate");
+			inputDate = new DateTime(inputDate, DateTime.YEAR_TO_MONTH)
+					.toString();
+			userList = blLwPowerUserFacade.findByConditions("superclass = '"
+					+ company + "'");
+			condition = PowerFeeCal.getUserCondition(userList);
+			priceSummaryList = blLwTownPriceSummaryFacade
+					.findByConditions(" 1=1  and statmonth = '" + inputDate
+							+ "' " + condition);
+			townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(
+					priceSummaryList, inputDate);
+			townSataDto.setComCode(company);
+			townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
+			resultList.add(townSataDto);
+		}
+		// 四个局的统计汇总
+		townSataDto = PowerFeeCal.getSumCompanyStat(resultList, inputDate);
+		townSataDto.setCompanyName("小计");
+		resultList.add(townSataDto);
+		httpServletRequest.setAttribute("resultList", resultList);
+
+		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
+			TownSataDto townSataDto1 = (TownSataDto) iterator.next();
+
+			// sumtfee += ;
+			sumtpower += townSataDto1.getSumPower();
+			sumtdianfee += townSataDto1.getPurePowerFee();
+			sumttax += townSataDto1.getPowerFeeTax();
+			sumtc += townSataDto1.getPurePowerFee();
+			summtdianjinall += townSataDto1.getSumJiJin();
+			summtdianjin += townSataDto1.getPureDianJin();
+			sumtdianjintax += townSataDto1.getDianJinTax();
+			sumtsanxiaall += townSataDto1.getSumSanXia();
+			sumtsanxia += townSataDto1.getPureSanXia();
+			sumtsanxiatax += townSataDto1.getSanXiaTax();
+			sumtjijinall += townSataDto1.getSumJiJin();
+			sumtjijin += townSataDto1.getPureJiJin();
+			sumtjijintax += townSataDto1.getJiJinTax();
+			sumalltfee += townSataDto1.getSumPowerFee();
+		}
+		sumwc = ((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getJijin()) - Double
+				.parseDouble(lwAllWholeFeeDtogy.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtodm.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtodm.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtoty.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtoty.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtojy.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtojy.getFujia1())) - differenceQuantity * 0.2) / 1.17;
+		sumwfee = Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getSumfee());
+		sumwpower = Double.parseDouble(lwAllWholeFeeDtogy.getPower1())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getPower1())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getPower1())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getPower1());
+		sumwtax = ((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())
+				- Double.parseDouble(lwAllWholeFeeDtogy.getJijin()) - Double
+				.parseDouble(lwAllWholeFeeDtogy.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtodm.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtodm.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtodm.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtoty.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtoty.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtoty.getFujia1()))
+				+ (Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())
+						- Double
+								.parseDouble(lwAllWholeFeeDtojy.getDianjintax())
+						- Double.parseDouble(lwAllWholeFeeDtojy.getJijin()) - Double
+						.parseDouble(lwAllWholeFeeDtojy.getFujia1())) - differenceQuantity * 0.2) / 1.17 * 0.17;
+		summwdianjin = Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getDianjin());
+		sumwdianjintax = Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax());
+		sumwsanxia = Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getSanxia());
+		sumwsanxiatax = Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax());
+		sumwjijin = Double.parseDouble(lwAllWholeFeeDtogy.getJijin())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getJijin())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getJijin())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getJijin());
+		sumwjijintax = Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())
+				+ Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())
+				+ Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())
+				+ Double.parseDouble(lwAllWholeFeeDtojy.getFujia1());
+
+		sumallfee = sumfdianfee + sumwdianfee + sumalltfee;
+		sumallpower = sumfpower + sumwpower + sumtpower;
+		sumallc = sumwc + sumfc + sumtc;
+		sumalltax = sumwtax + sumftax + sumttax;
+		sumallall = sumwfee + sumffee + sumttax;
+		sumalldianjin = summwdianjin + summfdianjin + summtdianjin;
+		sumalldianjintax = sumwdianjintax + sumfdianjintax + sumtdianjintax;
+		sumallsanxia = sumwsanxia + sumfsanxia + sumtsanxia;
+		sumallsanxiatax = sumwsanxiatax + sumfsanxiatax + sumtsanxiatax;
+		sumalljijin = sumwjijin + sumfjijin + sumtjijin;
+		sumalljijintax = sumwjijintax + sumfjijintax + sumtjijintax;
 
 		httpServletRequest.setAttribute("sumffee", df.format(sumffee));
 		httpServletRequest.setAttribute("sumfpower", Math.round(sumfpower));
@@ -389,23 +479,23 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 		httpServletRequest.setAttribute("sumwjijin", df.format(sumwjijin));
 		httpServletRequest
 				.setAttribute("sumwjijintax", df.format(sumwjijintax));
-		
-		  httpServletRequest.setAttribute("sumallfee", df.format(sumallfee));
-		  httpServletRequest.setAttribute("sumallpower",
-		  Math.round(sumallpower)); httpServletRequest.setAttribute("sumallc",
-		  df.format(sumallc)); httpServletRequest.setAttribute("sumalltax",
-		 df.format(sumalltax)); httpServletRequest.setAttribute("sumallall",
-		  df.format(sumallall));
-		  httpServletRequest.setAttribute("sumalldianjin",
-		 df.format(sumalldianjin));
-		 httpServletRequest.setAttribute("sumalldianjintax",
-		  df.format(sumalldianjintax));
-		  httpServletRequest.setAttribute("sumallsanxia",
-		  df.format(sumallsanxia));
-		  httpServletRequest.setAttribute("sumallsanxiatax",df.format(sumallsanxiatax));
-		 httpServletRequest.setAttribute("sumalljijin",df.format(sumalljijin));
-		  httpServletRequest.setAttribute("sumalljijintax",df.format(sumalljijintax));
-		 
+
+		httpServletRequest.setAttribute("sumallfee", df.format(sumallfee));
+		httpServletRequest.setAttribute("sumallpower", Math.round(sumallpower));
+		httpServletRequest.setAttribute("sumallc", df.format(sumallc));
+		httpServletRequest.setAttribute("sumalltax", df.format(sumalltax));
+		httpServletRequest.setAttribute("sumallall", df.format(sumallall));
+		httpServletRequest.setAttribute("sumalldianjin", df
+				.format(sumalldianjin));
+		httpServletRequest.setAttribute("sumalldianjintax", df
+				.format(sumalldianjintax));
+		httpServletRequest
+				.setAttribute("sumallsanxia", df.format(sumallsanxia));
+		httpServletRequest.setAttribute("sumallsanxiatax", df
+				.format(sumallsanxiatax));
+		httpServletRequest.setAttribute("sumalljijin", df.format(sumalljijin));
+		httpServletRequest.setAttribute("sumalljijintax", df
+				.format(sumalljijintax));
 
 		httpServletRequest.setAttribute("sanxiagy", df.format(sanxiagy / 1.17));
 		httpServletRequest.setAttribute("jijingy", df.format(jijingy / 1.17));
@@ -445,24 +535,28 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 		httpServletRequest.setAttribute("sumallfeety", df.format(sumallfeety));
 
 		httpServletRequest.setAttribute("colf", colf);
-		
-		
-		httpServletRequest.setAttribute("differenceQuantity", differenceQuantity*0.2);
-		httpServletRequest.setAttribute("differenceQuantitygy", differenceQuantitygy*0.2);
-		httpServletRequest.setAttribute("differenceQuantitydm", differenceQuantitydm*0.2);
-		httpServletRequest.setAttribute("differenceQuantityjy", differenceQuantityjy*0.2);
-		httpServletRequest.setAttribute("differenceQuantityty", differenceQuantityty*0.2);
-		
-		
-		httpServletRequest.setAttribute("lwAllWholeFeeDtogy", lwAllWholeFeeDtogy);
-		httpServletRequest.setAttribute("lwAllWholeFeeDtodm", lwAllWholeFeeDtodm);
-		httpServletRequest.setAttribute("lwAllWholeFeeDtojy", lwAllWholeFeeDtojy);
-		httpServletRequest.setAttribute("lwAllWholeFeeDtoty", lwAllWholeFeeDtoty);
-		
-		
-		
+
+		httpServletRequest.setAttribute("differenceQuantity",
+				differenceQuantity * 0.2);
+		httpServletRequest.setAttribute("differenceQuantitygy",
+				differenceQuantitygy * 0.2);
+		httpServletRequest.setAttribute("differenceQuantitydm",
+				differenceQuantitydm * 0.2);
+		httpServletRequest.setAttribute("differenceQuantityjy",
+				differenceQuantityjy * 0.2);
+		httpServletRequest.setAttribute("differenceQuantityty",
+				differenceQuantityty * 0.2);
+
+		httpServletRequest.setAttribute("lwAllWholeFeeDtogy",
+				lwAllWholeFeeDtogy);
+		httpServletRequest.setAttribute("lwAllWholeFeeDtodm",
+				lwAllWholeFeeDtodm);
+		httpServletRequest.setAttribute("lwAllWholeFeeDtojy",
+				lwAllWholeFeeDtojy);
+		httpServletRequest.setAttribute("lwAllWholeFeeDtoty",
+				lwAllWholeFeeDtoty);
+
 		return actionMapping.findForward("viewthisallcount");
 	}
 
-	
 }

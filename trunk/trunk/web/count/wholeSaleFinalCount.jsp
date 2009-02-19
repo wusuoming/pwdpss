@@ -1017,7 +1017,7 @@ BODY {
 				<tr>
 					<td class=button>
 						<input name="add" type="button" class=button value="´òÓ¡²¢±£´æ "
-							onclick="Printme();sum()">
+							onclick="sum();Printme();">
 					</td>
 				</tr>
 			</table>
