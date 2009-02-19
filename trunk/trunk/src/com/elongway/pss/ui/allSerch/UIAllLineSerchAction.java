@@ -27,6 +27,7 @@ public class UIAllLineSerchAction extends Action {
 		String comcode=httpServletRequest.getParameter("company");
 		String inputdate=inputDate.substring(0, 7);
 		
+		
 		PowerFeeCal  powerFeeCal=new PowerFeeCal();
 		DecimalFormat df = new DecimalFormat("###0.00");
 		String conditions10=" upcompany='"+comcode+"'"+" and KV=10 and StatMonth='"+inputdate+"'"+"  and wholesaletype='0' order by linecode";
@@ -99,6 +100,7 @@ public class UIAllLineSerchAction extends Action {
 		
 		httpServletRequest.setAttribute("kv10", kv10);
 		httpServletRequest.setAttribute("kv35", kv35);
+		httpServletRequest.setAttribute("kvf", kvf);
 		httpServletRequest.setAttribute("sum35Fee", df.format(sum35Fee));
 		httpServletRequest.setAttribute("sumfFee", df.format(sumfFee));
 		httpServletRequest.setAttribute("sum10Fee", df.format(sum10Fee));

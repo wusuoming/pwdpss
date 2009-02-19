@@ -396,6 +396,8 @@ public class UIwholeSaleprintAction extends Action {
 			httpServletRequest.setAttribute("powerRateFee", df.format(powerRateFee));
 			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
 			
+			httpServletRequest.setAttribute("sanxiaPower", df.format(sanxiaPower));
+			
 			httpServletRequest.setAttribute("Rate10Fee", df.format(Rate10Fee));
 			httpServletRequest.setAttribute("Rate35Fee", df.format(Rate35Fee));
 			

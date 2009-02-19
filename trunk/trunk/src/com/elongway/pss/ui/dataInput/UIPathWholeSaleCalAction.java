@@ -1,5 +1,6 @@
 package com.elongway.pss.ui.dataInput;
 
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.Collection;
@@ -119,9 +120,18 @@ public class UIPathWholeSaleCalAction extends Action {
 			else{
 					LineLossQuantity[i]=LineLossQuantity[i];
 				}
-				double sumPower=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
-				double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "1",rateCode[i]);
-				runworkQuantity=runworkQuantity-Double.parseDouble(unTransLossQuantity[i]);
+				double sumPower=0;
+				if("哈业变951".endsWith(UserName[i])||"哈业变952".endsWith(UserName[i])){
+					sumPower=rworkQuantity+Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
+					
+					rworkQuantity=rworkQuantity+Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
+				}else{
+				 sumPower=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
+				 runworkQuantity=runworkQuantity-Double.parseDouble(unTransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
+				 rworkQuantity=rworkQuantity-Double.parseDouble(TransLossQuantity[i])-Double.parseDouble(LineLossQuantity[i]);
+				}
+				 double AdjustRate=powerFeeCal.poweradjustmentValue(String.valueOf(rworkQuantity) , String.valueOf(runworkQuantity), "1",rateCode[i]);
+				
 				//double RateCode=powerFeeCal.poweradjustrate(String.valueOf(rworkQuantity), String.valueOf(runworkQuantity));
 				
 				LwWholeSaleProrateDto  lwWholeSaleProrateDto=powerFeeCal.getWholeProrate(UserName[i],flag[i]);
