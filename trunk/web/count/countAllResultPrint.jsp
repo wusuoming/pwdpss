@@ -136,11 +136,20 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 		Collection col=(List)request.getAttribute("colpoint");
 		String tax=(String)request.getAttribute("tax");
 		DecimalFormat df = new DecimalFormat("###0.00");
+		String statMonth = (String)request.getAttribute("statMonth");
 		
 %>
 	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
-	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
+	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("statMonth") %>"></td>
+		<tr>
+			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单</font></td>
+		</tr>
 		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=statMonth%></span>
+		</td>
+	    </tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>

@@ -121,16 +121,16 @@
 						String sum35power = (String) request.getAttribute("sum35power");
 		
 %>
-		   <table style='width:80%' border="1" cellspacing="0">
+		   <table style='width:100%' border="1" cellspacing="0">
   <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>趸售结算单</B></td>
+			<td class=title0 colspan="12"><B><font size="3">趸售结算单</font></B></td>
 				<td nowrap colspan="2" style="display: none"><span class="title"><input name="company" value="<%=company%>"  style="width:65px"></span></td>
 				<td nowrap colspan="2" style="display: none"><span class="title"><input name="inputDate" value="<%=statMonth%>"  style="width:65px"></span></td>
 				
 		</tr>
 		<tr>
 				<td nowrap colspan="2">
-						<span class="title">月份:<%=statMonth%></span>
+						<span class="title"><font size="3">月份:<%=statMonth%></font></span>
 					</td>
 				</tr>
 
@@ -139,43 +139,41 @@
       
 
         
-            <td nowrap colspan="2" ><span class="title">户名</span></td>
+            <td nowrap colspan="2" ><span class="title"><font size="3">户名</font></span></td>
             
             <%
             if(company.equals("gy")){
              %>
-			<td nowrap colspan="2" ><span class="title">固阳农电局</span></td>
+			<td nowrap colspan="2" ><span class="title"><font size="3">固阳农电局</font></span></td>
 			<%} %>
 			 <%
             if(company.equals("dm")){
              %>
-			<td nowrap colspan="2" width="50%"><span class="title">达茂农电局</span></td>
+			<td nowrap colspan="2" width="50%"><span class="title"><font size="3">达茂农电局</font></span></td>
 			<%} %>
 			 <%
             if(company.equals("jy")){
              %>
-			<td nowrap colspan="2" ><span class="title">九原农电局</span></td>
+			<td nowrap colspan="2" ><span class="title"><font size="3">九原农电局</font></span></td>
 			<%} %>
 			 <%
             if(company.equals("ty")){
              %>
-			<td nowrap colspan="2" ><span class="title">土右农电局</span></td>
+			<td nowrap colspan="2" ><span class="title"><font size="3">土右农电局</font></span></td>
 			<%} %>
-			<td nowrap colspan="2"><span class="title">户号</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">户号</font></span></td>
 			<%
 						if (company.equals("gy")) {
 					%>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value="20699999179"
-								style="width: 65px"> </span>
+						<span class="title"><font size="3">20699999179</font> </span>
 					</td>
 					<%} %>
 						<%
 						if (company.equals("dm")) {
 					%>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value="20699999185"
-								style="width: 65px"> </span>
+						<span class="title"><font size="3">20699999185</font> </span>
 					</td>
 					<%} %>
 					
@@ -183,8 +181,7 @@
 						if (company.equals("ty")) {
 					%>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value="20699999178"
-								style="width: 65px"> </span>
+						<span class="title"><font size="3">20699999178</font> </span>
 					</td>
 					<%} %>
 					
@@ -192,53 +189,52 @@
 						if (company.equals("jy")) {
 					%>
 					<td nowrap colspan="2">
-						<span class="title"><input name="ss" value="20699999177"
-								style="width: 65px"> </span>
+						<span class="title"><font size="3">20699999177</font></span>
 					</td>
 					<%} %>
-			<td nowrap colspan="2"><span class="title">地址</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">地址</font></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
 
     </tr>
     <tr>
    
-            <td nowrap colspan="2"><span class="title">开户行</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">税号</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">帐号</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
+            <td nowrap colspan="2"><span class="title"><font size="3">开户行</font></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">税号</font></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">帐号</font></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
 
     </tr>
      <tr>
    
-            <td nowrap colspan="2"><span class="title">行业分类</span></td>
-			<td nowrap colspan="2"><span class="title">趸售</span></td>
-			<td nowrap colspan="2"><span class="title">供电电压</span></td>
+            <td nowrap colspan="2"><span class="title"><font size="3">行业分类</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">趸售</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">供电电压</font></span></td>
 			
-			<td nowrap colspan="2"><span class="title">10KV , 35KV</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">10KV , 35KV</font></span></td>
 	
 			
-			<td nowrap colspan="2"><span class="title">供电线路</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">供电线路</font></span></td>
 			<td nowrap colspan="2"><span class="title"></span></td>
 
     </tr>
     <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>表计信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">表计信息</font></B></td>
 		</tr>
       <tr class=listtitle>
-     <td nowrap><span class="title">线路名称 </span></td>
-			<td nowrap><span class="title">表号 </span></td>
-			<td nowrap><span class="title">类别</span></td>
-			<td nowrap><span class="title">计费类别</span></td>
-			<td nowrap><span class="title">倍率</span></td>
-			<td nowrap><span class="title">上月有功</span></td>
-			<td nowrap><span class="title">本月有功</span></td>
-			<td nowrap><span class="title">有功电量</span></td>
-			<td nowrap><span class="title">上月无功</span></td>
-			<td nowrap><span class="title">本月无功	</span></td>
-			<td nowrap><span class="title">无功电量</span></td>
-			<td nowrap><span class="title">功率因素</span></td>
+     <td nowrap><span class="title"><font size="3">线路名称</font> </span></td>
+			<td nowrap><span class="title"><font size="3">表号</font> </span></td>
+			<td nowrap><span class="title"><font size="3">类别</font></span></td>
+			<td nowrap><span class="title"><font size="3">计费类别</font></span></td>
+			<td nowrap><span class="title"><font size="3">倍率</font></span></td>
+			<td nowrap><span class="title"><font size="3">上月有功</font></span></td>
+			<td nowrap><span class="title"><font size="3">本月有功</font></span></td>
+			<td nowrap><span class="title"><font size="3">有功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">上月无功</font></span></td>
+			<td nowrap><span class="title"><font size="3">本月无功</font></span></td>
+			<td nowrap><span class="title"><font size="3">无功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">功率因素</font></span></td>
 			
 
 			</tr>
@@ -258,36 +254,34 @@
 			}
 			 %>
 			<tr >
-						<td class="title" style="width:80px"><input name="ammeterNo"
-							value="<%=lwWholeSaleIndicatorDto.getUserNo()%>"
-							readonly="readonly" style="diplay:none"></td>
-						<td  ><input name="ammeterNo" value="<%=lwAmmeterChangeDto.getAmmeterNo()%>"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getUserNo()%></font></td>
+						<td  ><font size="3"><%=lwAmmeterChangeDto.getAmmeterNo()%></font></td>
 						<%
 						if(lwWholeSaleUserInfoDto.getIfCal().equals("0") ){
 						 %>
-						<td class="input" ><input name="ammeterStyle" value="总表"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3">总表</font></td>
 						<%} %>
 						<%
 						if(lwWholeSaleUserInfoDto.getIfCal().equals("1") ){
 						 %>
-						<td class="input" ><input name="ammeterStyle" value="考核表"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3">考核表</font></td>
 						<%} %>
-						<td class="input" ><input name="Rate" value="<%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售"  style="width:65px" readonly="readonly"></td>
-						<td class="input" ><input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorDto.getRate())%>"  style="width:65px" readonly="readonly"></td>
-						<td class="input" ><input name="LastWorkNum" value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售</font></td>
+						<td class="input" ><font size="3"><%=Math.round(lwWholeSaleIndicatorDto.getRate())%></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getLastWorkNum()%></font></td>
 						
 						
-						 <td class="input" ><input name="ThisWorkNum" value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>" readonly="readonly"  style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getThisWorkNum()%></font></td>
 						
-						 <td class="input" ><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getWorkQuantity() %>" readonly="readonly" style="width:65px"></td>
-						<td class="input" ><input name="LastIdleNum" value="<%=lwWholeSaleIndicatorDto.getLastIdleNum()%>"  readonly="readonly" style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getWorkQuantity() %></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getLastIdleNum()%></font></td>
 						
 						
 					
-						 <td class="input" ><input name="ThisIdleNum" value="<%=lwWholeSaleIndicatorDto.getThisIdleNum()%>"  readonly="readonly" style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getThisIdleNum()%></font></td>
 						
-						 <td class="input" ><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getUnworkQuantity()%>"  readonly="readonly" style="width:65px"></td>
-						<td class="input" ><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getPowerCode()%>"  readonly="readonly" style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getUnworkQuantity()%></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getPowerCode()%></font></td>
 						
 			</tr>
 			<%} %>
@@ -300,42 +294,42 @@
       
      
         
-            <td nowrap colspan="2"><span class="title" >有功变损</span></td>
-			<td nowrap ><span class="title"><%=trassLoss%></span></td>
-			<td nowrap colspan="2"><span class="title">无功变损</span></td>
-			<td nowrap ><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">有功线损</span></td>
-			<td nowrap ><span class="title"><%=lineLoss%></span></td>
-			<td nowrap colspan="2"><span class="title">无功线损</span></td>
-			<td nowrap ><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
+            <td nowrap colspan="2"><span class="title" ><font size="3">有功变损</font></span></td>
+			<td nowrap ><span class="title"><font size="3"><%=trassLoss%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">无功变损</font></span></td>
+			<td nowrap ><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">有功线损</font></span></td>
+			<td nowrap ><span class="title"><font size="3"><%=lineLoss%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">无功线损</font></span></td>
+			<td nowrap ><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
  
     </tr>
     <tr>
    
-            <td nowrap colspan="2"><span class="title">退补有功电量</span></td>
-			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">（其中旁路电量）</span></td>
-			<td nowrap><span class="title"><input name="dd" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">退补无功电量</span></td>
-			<td nowrap><span class="title"><input name="ee" value=""  style="width:65px"></span></td>
-								<td nowrap colspan="2"><span class="title">总有功电量</span></td>
-			<td nowrap><span class="title"><input name="zongdianliang" value="<%=Math.round(Double.parseDouble(sumPower))%>"  style="width:65px"></span></td>
+            <td nowrap colspan="2"><span class="title"><font size="3">退补有功电量</font></span></td>
+			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">（其中旁路电量）</font></span></td>
+			<td nowrap><span class="title"><input name="dd" value=""  style="width:65px" class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">退补无功电量</font></span></td>
+			<td nowrap><span class="title"><input name="ee" value=""  style="width:65px" class="inputprint"></span></td>
+								<td nowrap colspan="2"><span class="title"><font size="3">总有功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(sumPower))%></font></span></td>
 
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">无功总电量</span></td>
-			<td nowrap ><span class="title"><%=Math.round(Double.parseDouble(unsumPower))%></span></td>
-			<td nowrap colspan="2"><span class="title">力率标准值</span></td>
-			<td nowrap><span class="title">0.80</span></td>
-			<td nowrap colspan="2"><span class="title">力率实际值</span></td>
-			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">力率调整值</span></td>
-			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">无功总电量</font></span></td>
+			<td nowrap ><span class="title"><font size="3"><%=Math.round(Double.parseDouble(unsumPower))%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">力率标准值</font></span></td>
+			<td nowrap><span class="title"><font size="3">0.80</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">力率实际值</font></span></td>
+			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px"  class="inputprint"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">力率调整值</font></span></td>
+			<td nowrap><span class="title"><input name="ss" value=""  style="width:65px" class="inputprint"></span></td>
     </tr>
    
     <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>电费信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">电费信息</font></B></td>
 		</tr>
     <tr>
     <tr>
@@ -343,43 +337,43 @@
       
      
         
-            <td nowrap colspan="2"><span class="title">项目</span></td>
-			<td nowrap ><span class="title">电量</span></td>
-			<td nowrap "><span class="title">电价</span></td>
-			<td nowrap colspan="2"><span class="title">金额</span></td>
-			 <td nowrap colspan="2"><span class="title">项目</span></td>
-			<td nowrap ><span class="title">电量</span></td>
-			<td nowrap ><span class="title">电价</span></td>
-			<td nowrap colspan="2"><span class="title">金额</span></td>
+            <td nowrap colspan="2"><span class="title"><font size="3">项目</font></span></td>
+			<td nowrap ><span class="title"><font size="3">电量</font></span></td>
+			<td nowrap "><span class="title"><font size="3">电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">金额</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">项目</font></span></td>
+			<td nowrap ><span class="title"><font size="3">电量</font></span></td>
+			<td nowrap ><span class="title"><font size="3">电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">金额</font></span></td>
  
     </tr>
     <tr>
 
 					<td nowrap colspan="2">
-						<span class="title">非居民照明/10KV</span>
+						<span class="title"><font size="3">非居民照明/10KV</font></span>
 					</td>
 
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(indecisivePower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice10%></span>
+						<span class="title"><font size="3"><%=indecisivePrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=indecisiveFee10%></span>
+						<span class="title"><font size="3"><%=indecisiveFee10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title">非居民照明/35KV</span>
+						<span class="title"><font size="3">非居民照明/35KV</font></span>
 					</td>
 
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(indecisivePower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(indecisivePower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=indecisivePrice35%></span>
+						<span class="title"><font size="3"><%=indecisivePrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=indecisiveFee35%></span>
+						<span class="title"><font size="3"><%=indecisiveFee35%></font></span>
 					</td>
 
 					
@@ -387,29 +381,29 @@
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title">居民生活/10KV</span>
+						<span class="title"><font size="3">居民生活/10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(residentPower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(residentPower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPrice10%></span>
+						<span class="title"><font size="3"><%=residentPrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=residentFee10%></span>
+						<span class="title"><font size="3"><%=residentFee10%></font></span>
 					</td>
 					
 					<td nowrap colspan="2">
-						<span class="title">居民生活/35KV</span>
+						<span class="title"><font size="3">居民生活/35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(residentPower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(residentPower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=residentPrice35%></span>
+						<span class="title"><font size="3"><%=residentPrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=residentFee35%></span>
+						<span class="title"><font size="3"><%=residentFee35%></font></span>
 					</td>
 					
 					
@@ -418,29 +412,29 @@
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title">农业生产/10KV</span>
+						<span class="title"><font size="3">农业生产/10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(producePower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(producePower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePrice10%></span>
+						<span class="title"><font size="3"><%=producePrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=produceFee10%></span>
+						<span class="title"><font size="3"><%=produceFee10%></font></span>
 					</td>
 					
 					<td nowrap colspan="2">
-						<span class="title">农业生产/35KV</span>
+						<span class="title"><font size="3">农业生产/35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(producePower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(producePower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=producePrice35%></span>
+						<span class="title"><font size="3"><%=producePrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=produceFee35%></span>
+						<span class="title"><font size="3"><%=produceFee35%></font></span>
 					</td>
 					
 				</tr>
@@ -448,76 +442,76 @@
 
 				<tr>
 				<td nowrap colspan="2">
-						<span class="title">非普工业/10KV</span>
+						<span class="title"><font size="3">非普工业/10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(industryPower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(industryPower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPrice10%></span>
+						<span class="title"><font size="3"><%=industryPrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=industryFee10%></span>
+						<span class="title"><font size="3"><%=industryFee10%></font></span>
 					</td>
 				
 					
 
 
 					<td nowrap colspan="2">
-						<span class="title">非普工业/35KV</span>
+						<span class="title"><font size="3">非普工业/35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(industryPower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(industryPower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=industryPrice35%></span>
+						<span class="title"><font size="3"><%=industryPrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=industryFee35%></span>
+						<span class="title"><font size="3"><%=industryFee35%></font></span>
 					</td>
 
 				</tr>
 				<tr>
 						<td nowrap colspan="2">
-						<span class="title">农业排灌/10KV</span>
+						<span class="title"><font size="3">农业排灌/10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(agriculturalPower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPrice10%></span>
+						<span class="title"><font size="3"><%=agriculturalPrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title" ><%=agriculturalFee10%></span>
+						<span class="title" ><font size="3"><%=agriculturalFee10%></font></span>
 					</td>
 					
 					<td nowrap colspan="2">
-						<span class="title">农业排灌/35KV</span>
+						<span class="title"><font size="3">农业排灌/35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(agriculturalPower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(agriculturalPower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=agriculturalPrice35%></span>
+						<span class="title"><font size="3"><%=agriculturalPrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=agriculturalFee35%></span>
+						<span class="title"><font size="3"><%=agriculturalFee35%></font></span>
 					</td>
 				</tr>
 				<tr>
 
 					
 					<td nowrap colspan="2">
-						<span class="title">商业/10KV</span>
+						<span class="title"><font size="3">商业/10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(businessPower10))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(businessPower10))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPrice10%></span>
+						<span class="title"><font size="3"><%=businessPrice10%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=businessFee10%></span>
+						<span class="title"><font size="3"><%=businessFee10%></font></span>
 					</td>
 					<td nowrap colspan="2">
 					
@@ -526,16 +520,16 @@
 					
 					
 					
-						<span class="title">商业/35KV</span>
+						<span class="title"><font size="3">商业/35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(businessPower35))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(businessPower35))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=businessPrice35%></span>
+						<span class="title"><font size="3"><%=businessPrice35%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=businessFee35%></span>
+						<span class="title"><font size="3"><%=businessFee35%></font></span>
 					</td>
 				</tr>
 
@@ -544,16 +538,16 @@
 
 					
 					<td nowrap colspan="2">
-						<span class="title">总10KV</span>
+						<span class="title"><font size="3">总10KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(sum10Power))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(sum10Power))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Rate10Fee%></span>
+						<span class="title"><font size="3"><%=Rate10Fee%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="sum10fee" value="<%=sum10Fee%>"  style="width:65px"></span>
+						<span class="title"><font size="3"><%=sum10Fee%></font></span>
 					</td>
 					<td nowrap colspan="2">
 					
@@ -562,16 +556,16 @@
 					
 					
 					
-						<span class="title">总35KV</span>
+						<span class="title"><font size="3">总35KV</font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Math.round(Double.parseDouble(sum35power))%></span>
+						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(sum35power))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=Rate35Fee%></span>
+						<span class="title"><font size="3"><%=Rate35Fee%></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="sum35fee" value="<%=sum35Fee%>"style="width:65px"></span>
+						<span class="title"><font size="3"><%=sum35Fee%></font></span>
 					</td>
 				</tr>
 				
@@ -586,85 +580,85 @@
     
     <tr>
    
-            <td nowrap colspan="2"><span class="title">三峡</span></td>
+            <td nowrap colspan="2"><span class="title"><font size="3">三峡</font></span></td>
            
-			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(sanxiaPower))%></span></td>
-			<td nowrap><span class="title">0.004</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="sanxia" value="<%=sanxiaFee%>"style="width:65px"></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(sanxiaPower))%></span></td>
+			<td nowrap><span class="title"><font size="3">0.004</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=sanxiaFee%></font></span></td>
 			
 			
-			<td nowrap colspan="2"><span class="title">农网还贷</span></td>
-			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(nongwanghaidaiPower))%></span></td>
-			<td nowrap><span class="title">0.02</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="dianjin" value="<%=nongwanghaidaiFee%>"style="width:65px"></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">农网还贷</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(nongwanghaidaiPower))%></span></td>
+			<td nowrap><span class="title"><font size="3">0.02</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=nongwanghaidaiFee%><font size="3"></span></td>
 
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">库区移民</span></td>
-			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kuquPower))%></span></td>
-			<td nowrap><span class="title">0.0031</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="jijin1" value="<%=kuquFee%>"style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">可再生能源</span></td>
-			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kezaishengpepolePower))%></span></td>
-			<td nowrap><span class="title">0.001</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="jijin2" value="<%=kezaishengpepoleFee%>"style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">库区移民</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(kuquPower))%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><font size="3">0.0031</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=kuquFee%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">可再生能源</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(kezaishengpepolePower))%></font></span></td>
+			<td nowrap><span class="title"><font size="3">0.001</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=kezaishengpepoleFee%></font></span></td>
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title">可再生能源</span></td>
-			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kezaishengnotpepolePower))%></span></td>
-			<td nowrap><span class="title">0.002</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="jijin3" value="<%=kezaishengnotpepoleFee%>"style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title">差别电费</span></td>
-			<td nowrap><span class="title"><input name="ss" value="<%=Math.round(Double.parseDouble(differenceQuantity))%>"  style="width:65px"></span></td>
-			<td nowrap><span class="title"><input name="ss" value="<%=differencePrice%>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value="<%=differenceQuantityFee%>"  style="width:65px"></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">可再生能源</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(kezaishengnotpepolePower))%></font></span></td>
+			<td nowrap><span class="title"><font size="3">0.002</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=kezaishengnotpepoleFee%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">差别电费</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(Double.parseDouble(differenceQuantity))%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=differencePrice%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=differenceQuantityFee%></font></td>
     </tr>
 
      <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>合计信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">合计信息</font></B></td>
 		</tr>
     <tr>
      <tr>
    			
-           <td nowrap colspan="2"><span class="title">利率电费</span></td>
-			<td nowrap colspan="2"><span class="title"><%=powerRateFee%></span></td>
-			<td nowrap colspan="2"><span class="title">税</span></td>
-			<td nowrap colspan="2"><span class="title"><%=tax%></span></td>
-			<td nowrap colspan="2"><span class="title">资金合计</span></td>
-			<td nowrap colspan="2"><span class="title"><input name="ss" value="<%=sumAllFee%>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">利率电费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=powerRateFee%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">税</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=tax%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">资金合计</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=sumAllFee%></font></span></td>
 			
     </tr>
      
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends1" value="海明炉"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends2" value="<%=request.getAttribute("exends2") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends3" value="多边电费"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends4" value="<%=request.getAttribute("exends4") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends5" value="广播费"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends6" value="<%=request.getAttribute("exends6") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">海明炉</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends2") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">多边电费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends4") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">广播费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends6") %></font></span></td>
 			
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends7" value="总合计"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends8" value="<%=request.getAttribute("exends8") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends9" value="<%=request.getAttribute("exends9") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends10" value="<%=request.getAttribute("exends10") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends11" value="<%=request.getAttribute("exends11") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends12" value="<%=request.getAttribute("exends12") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">总合计</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends8") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends9") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends10") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends11") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends12") %></font></span></td>
 			
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends13" value="<%=request.getAttribute("exends13") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends14" value="<%=request.getAttribute("exends14") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends15" value="<%=request.getAttribute("exends15") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends16" value="<%=request.getAttribute("exends16") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends17" value="<%=request.getAttribute("exends17") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends18" value="<%=request.getAttribute("exends18") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends13") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends14") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends15") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends16") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends17") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends18") %></font></span></td>
 			
     </tr>
      </table>
