@@ -1040,7 +1040,7 @@ public class DBLwTownPriceSummaryBase{
                 supportPaging=true;
             }
         }
-        if(logger.isDebugEnabled()){
+        if(true){
             logger.debug(buffer.toString());
         }
         ResultSet resultSet = dbManager.executeQuery(buffer.toString());

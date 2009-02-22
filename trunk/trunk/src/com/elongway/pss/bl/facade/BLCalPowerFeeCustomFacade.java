@@ -613,18 +613,18 @@ public class BLCalPowerFeeCustomFacade {
 	 * @param townCode
 	 * @return
 	 */
-	public TownSataDto townFaxingStatByCompany(Collection collection, String statMonth) {
+	public TownSataDto townFaxingStatByCompany(Collection<LwTownIndicatorDto> collection, String statMonth) {
 
-		LwTownPriceSummaryDto lwTownPriceSummaryDto = new LwTownPriceSummaryDto();
+		LwTownIndicatorDto lwTownIndicatorDto = new LwTownIndicatorDto();
 
 		// 总电量
 		double sumPower = 0.0;
 		
 
 		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
-			LwTownPriceSummaryDto dto = (LwTownPriceSummaryDto) iterator.next();
-			// 电费维度的求和
-			sumPower = sumPower + dto.getRateCode();
+			LwTownIndicatorDto dto = (LwTownIndicatorDto) iterator.next();
+			// 发行电量 = 抄见电量+变损电量
+			sumPower = sumPower + dto.getReadQuantity()+dto.getTranferLossQuantity();
 			
 
 		}

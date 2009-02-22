@@ -80,16 +80,16 @@ public class UICorporationPriceCountAction extends Action {
 		double sumChun=0;
 		double sumFee=0;
 		//begin
-		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie1=PowerFeeCal.findonecorporation("3100", serchDate);
-		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie2=PowerFeeCal.findonecorporation("3101", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie1=PowerFeeCal.findonecorporation("20699999065", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtoguitie2=PowerFeeCal.findonecorporation("20699999072", serchDate);
 		
-		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye1=PowerFeeCal.findonecorporation("1056-1", serchDate);
-		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye2=PowerFeeCal.findonecorporation("1054", serchDate);
-		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye3=PowerFeeCal.findonecorporation("1052", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye1=PowerFeeCal.findonecorporation("20699999066", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye2=PowerFeeCal.findonecorporation("20699999067", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtodagongye3=PowerFeeCal.findonecorporation("20699999068", serchDate);
 		
 		
 		
-		LwCorporationSummaryDto  lwCorporationSummaryDtohuafei=PowerFeeCal.findonecorporation("1084", serchDate);
+		LwCorporationSummaryDto  lwCorporationSummaryDtohuafei=PowerFeeCal.findonecorporation("20699999069", serchDate);
 		
 		
 		 httpServletRequest.setAttribute("lwCorporationSummaryDtoguitie1",lwCorporationSummaryDtoguitie1 );

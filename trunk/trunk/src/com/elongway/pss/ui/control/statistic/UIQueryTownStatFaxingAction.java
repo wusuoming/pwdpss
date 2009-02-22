@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMapping;
 import com.elongway.pss.bl.facade.BLCalPowerFeeCustomFacade;
 import com.elongway.pss.bl.facade.BLLwDcodeFacade;
 import com.elongway.pss.bl.facade.BLLwPowerUserFacade;
+import com.elongway.pss.bl.facade.BLLwTownIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwTownPriceSummaryFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSalePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleProrateFacade;
@@ -24,6 +25,7 @@ import com.elongway.pss.dto.custom.SalePriceDto;
 import com.elongway.pss.dto.custom.TownSataDto;
 import com.elongway.pss.dto.domain.LwDcodeDto;
 import com.elongway.pss.dto.domain.LwPowerUserDto;
+import com.elongway.pss.dto.domain.LwTownIndicatorDto;
 import com.elongway.pss.dto.domain.LwWholeSaleProrateDto;
 import com.elongway.pss.dto.domain.LwWholeSalePurePriceDto;
 import com.elongway.pss.util.AppConst;
@@ -47,7 +49,8 @@ public class UIQueryTownStatFaxingAction extends Action {
 		BLCalPowerFeeCustomFacade blCalPowerFeeCustomFacade = new BLCalPowerFeeCustomFacade();
 		BLLwPowerUserFacade blLwPowerUserFacade = new BLLwPowerUserFacade();
 		BLLwTownPriceSummaryFacade blLwTownPriceSummaryFacade = new BLLwTownPriceSummaryFacade();
-		Collection priceSummaryList = null;
+		BLLwTownIndicatorFacade blLwTownIndicatorFacade = new BLLwTownIndicatorFacade();
+		Collection<LwTownIndicatorDto> indicatorList = null;
 		String condition = null;
 		String forward = null;
 		String company = null;
@@ -55,11 +58,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 		Collection<LwPowerUserDto> userList = null;
 		TownSataDto townSataDto = null;
 		Collection <TownSataDto>resultList = null;
-		resultList = new ArrayList<TownSataDto>();
-		
-		
-		
-			 
+		resultList = new ArrayList<TownSataDto>();			 
 				 // 如果选择多个机构
 				 for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
 						LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator
@@ -69,13 +68,13 @@ public class UIQueryTownStatFaxingAction extends Action {
 					 statMonth = new DateTime(statMonth,DateTime.YEAR_TO_MONTH).toString();
 					 userList =  blLwPowerUserFacade.findByConditions("superclass = '"+company+"'");
 					 condition = PowerFeeCal.getUserCondition(userList);
-					 priceSummaryList = blLwTownPriceSummaryFacade.findByConditions(" 1=1  and statmonth = '"+statMonth+"' "+condition);
-					 townSataDto = blCalPowerFeeCustomFacade.townFaxingStatByCompany(priceSummaryList, statMonth);
+					 indicatorList = blLwTownIndicatorFacade.findByConditions(" 1=1  and statmonth = '"+statMonth+"' "+condition);
+					 townSataDto = blCalPowerFeeCustomFacade.townFaxingStatByCompany(indicatorList, statMonth);
 					 townSataDto.setComCode(company);
 					 townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
 					 resultList.add(townSataDto);
 					 
-					}
+					} 
 				 townSataDto = PowerFeeCal.getSumCompanyStat(resultList, statMonth);
 				 resultList.add(townSataDto);
 				 httpServletRequest.setAttribute("resultList", resultList);

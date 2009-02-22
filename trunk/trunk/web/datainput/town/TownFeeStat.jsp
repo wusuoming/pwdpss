@@ -102,7 +102,7 @@ function printCount(){
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 String inputDate = (String)request.getAttribute("statMonth");
 %>
-<form  name="fm"
+<form  name="fm" method="post" 
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
 	<table class=common width="500%" cellspacing="0" cellpadding="5" border="1" >
 		<tr>
