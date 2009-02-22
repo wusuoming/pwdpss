@@ -99,8 +99,7 @@ function doPrint(){
 </head>
 <body onload="javascript:doPrint();window.close()">
 <html:errors />
-<%Collection billList = (Collection)request.getAttribute("billList");
-SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
+<% String statMonth = (String)request.getAttribute("statMonth");
 %>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
@@ -115,7 +114,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 		
 		
 		<tr>
-			<td class=title0 colspan="11"><b><font size="4">包头市农电公司<%=townSataDto.getStatMonth() %>电费电量发行单</font></td>
+			<td class=title0 colspan="11"><b><font size="4">包头市农电公司<%=statMonth %>电费电量发行单</font></td>
 		</tr>
 		
 		<!--人员代码，姓名-->
@@ -157,7 +156,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4"><%=townSataDto.getCompanyName() %></font></span>
+					<span class="title"><font size="4">顶顶顶顶</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="4"><%=townSataDto.getSumPower() %></font></span>

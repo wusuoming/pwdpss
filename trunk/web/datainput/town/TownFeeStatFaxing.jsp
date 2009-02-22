@@ -90,9 +90,17 @@ BODY {
 function printCount(){
 	 var   strURL;     
 	 var tt = fm.dd.value;
-   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt;    
- 
-  winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+	 var obj=document.getElementsByTagName("input");
+     var s="";
+    for(var i=0;i<obj.length;i++)
+    {
+         if(obj[i].type!="button")
+		    s+=obj[i].value+",";
+        
+}
+
+   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?s="+s;  
+   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 function result()
 {	
@@ -169,13 +177,12 @@ function result()
 					.getAttribute(AppConst.SYSUSER_SESSION);
 			String inputDate = (String) request.getAttribute("statMonth");
 	%>
-	<form name="fm" onsubmit="return validateUserQueryForm(this);"
-		enctype="multipart/form-data">
+	<form name="fm" method="post" onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
 		<table class=common width="500%" cellspacing="0" cellpadding="5"
 			border="1">
 			<tr>
 				<td class=title0 colspan="11" style="display: none">
-					bo
+					
 					<input type="hidden" name="dd" value="<%=inputDate%>">
 					<br>
 					<br>
@@ -251,6 +258,7 @@ function result()
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><%=townSataDto.getSumPower()%></span>
+					<input type="hidden" name="sumPower" value="<%=townSataDto.getSumPower()%>">
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
