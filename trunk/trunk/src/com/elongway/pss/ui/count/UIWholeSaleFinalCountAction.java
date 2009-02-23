@@ -34,11 +34,19 @@ public class UIWholeSaleFinalCountAction extends Action {
 		String condition=" 1=1";
 		DecimalFormat df = new DecimalFormat("###0.00");
 			String serchDate=inputDate.substring(0, 7);
+			String now=PowerFeeCal.getCurrentBillMonth();
 			condition+=" and StatMonth like '"+serchDate+"%'";
-		
+			String conditionsAll="";
 			String conditions10=" upcompany='"+company+"'"+" and KV=10 and StatMonth='"+serchDate+"'";
 			String conditions35=" upcompany='"+company+"'"+" and KV=35 and StatMonth='"+serchDate+"'" ;
-			String conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			if(now.equals(serchDate)){
+			 conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			}
+			else{
+				
+				conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			}
+			
 			BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
 			Collection kv10=blLwWholeSaleSummaryFacade.findByConditions(conditions10);
 			Collection kv35=blLwWholeSaleSummaryFacade.findByConditions(conditions35);
@@ -109,7 +117,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				businessPower10+=lwWholeSaleSummaryDto.getBizQuantity();
 				residentPower10+=lwWholeSaleSummaryDto.getDenizenQuantity();
 				indecisivePower10+=lwWholeSaleSummaryDto.getUnDenizenQuantity();
-				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
+				
 				differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("0")){
 					industryPower10+=lwWholeSaleSummaryDto.getIndustryQuantity();
@@ -233,12 +241,16 @@ public class UIWholeSaleFinalCountAction extends Action {
 			BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
 			Collection all=blLwWholeSaleIndicatorFacade.findByConditions(conditionsAll);
 			
+			BLLwWholeSaleIndicatorBakFacade blLwWholeSaleIndicatorBakFacade=new BLLwWholeSaleIndicatorBakFacade();
+			Collection allbak=blLwWholeSaleIndicatorBakFacade.findByConditions(conditionsAll);
+			
 			BLLwAllWholeFeeFacade blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
 			LwAllWholeFeeDto  lwAllWholeFeeDto=blLwAllWholeFeeFacade.findByPrimaryKey(company, serchDate);
 			
 			
 			
 			httpServletRequest.setAttribute("all", all);
+			httpServletRequest.setAttribute("allbak", allbak);
 			httpServletRequest.setAttribute("company", company);
 			httpServletRequest.setAttribute("statMonth", serchDate);
 			httpServletRequest.setAttribute("sumAllFee", df.format(sumAllFee));
