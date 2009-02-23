@@ -14,6 +14,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
+import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorBakFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSalePurePriceFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
@@ -29,6 +30,7 @@ public class UIwholeSaleprintAction extends Action {
 		String LineCode=httpServletRequest.getParameter("LineCode");
 		String wholesaleStyle=httpServletRequest.getParameter("wholesaleStyle"); 
 		String company=httpServletRequest.getParameter("company");
+		String now=PowerFeeCal.getCurrentBillMonth();
 		
 		String serchDate=inputDate.substring(0, 7);
 		String exends1 = httpServletRequest.getParameter("exends1");
@@ -166,7 +168,12 @@ public class UIwholeSaleprintAction extends Action {
 		
 			String conditions10=" upcompany='"+company+"'"+" and KV=10 and StatMonth='"+serchDate+"'";
 			String conditions35=" upcompany='"+company+"'"+" and KV=35 and StatMonth='"+serchDate+"'" ;
-			String conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			String conditionsAll="";
+			if(now.equals(serchDate)){
+			 conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			}else{
+				conditionsAll=" flag='"+company+"'"+"  and StatMonth='"+serchDate+"'" +" order by userNo";
+			}
 			BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade=new BLLwWholeSaleSummaryFacade();
 			Collection kv10=blLwWholeSaleSummaryFacade.findByConditions(conditions10);
 			Collection kv35=blLwWholeSaleSummaryFacade.findByConditions(conditions35);
@@ -359,8 +366,11 @@ public class UIwholeSaleprintAction extends Action {
 			
 			unsumPower=usum10power+usum35power;
 			BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
+			BLLwWholeSaleIndicatorBakFacade  blLwWholeSaleIndicatorBakFacade=new BLLwWholeSaleIndicatorBakFacade();
 			Collection all=blLwWholeSaleIndicatorFacade.findByConditions(conditionsAll);
+			Collection allbak=blLwWholeSaleIndicatorBakFacade.findByConditions(conditionsAll);
 			httpServletRequest.setAttribute("all", all);
+			httpServletRequest.setAttribute("allbak", allbak);
 			httpServletRequest.setAttribute("company", company);
 			httpServletRequest.setAttribute("statMonth", serchDate);
 			httpServletRequest.setAttribute("sumAllFee", df.format(sumAllFee));
