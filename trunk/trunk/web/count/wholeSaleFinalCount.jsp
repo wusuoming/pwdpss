@@ -1083,11 +1083,11 @@ BODY {
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends9" value=""
+						<span class="title"><input name="exends9" value="" 
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends10" value=""
+						<span class="title"><input name="exends10" value="" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">
