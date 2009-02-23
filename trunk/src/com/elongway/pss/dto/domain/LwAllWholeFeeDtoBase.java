@@ -45,6 +45,24 @@ public class LwAllWholeFeeDtoBase implements Serializable{
     private String fujia2 = "";
     /** 属性附加3 */
     private String fujia3 = "";
+    /** 属性附加4 */
+    private String fujia4 = "";
+    /** 属性附加5 */
+    private String fujia5 = "";
+    /** 属性附加6 */
+    private String fujia6 = "";
+    /** 属性附加7 */
+    private String fujia7 = "";
+    /** 属性附加8 */
+    private String fujia8 = "";
+    /** 属性附加9 */
+    private String fujia9 = "";
+    /** 属性附加10 */
+    private String fujia10 = "";
+    /** 属性附加11 */
+    private String fujia11 = "";
+    /** 属性附加12 */
+    private String fujia12 = "";
 
     /**
      *  默认构造方法,构造一个默认的LwAllWholeFeeDtoBase对象
@@ -322,5 +340,149 @@ public class LwAllWholeFeeDtoBase implements Serializable{
      */
     public String getFujia3(){
         return fujia3;
+    }
+
+    /**
+     * 设置属性附加4
+     * @param fujia4 待设置的属性附加4的值
+     */
+    public void setFujia4(String fujia4){
+        this.fujia4 = StringUtils.rightTrim(fujia4);
+    }
+
+    /**
+     * 获取属性附加4
+     * @return 属性附加4的值
+     */
+    public String getFujia4(){
+        return fujia4;
+    }
+
+    /**
+     * 设置属性附加5
+     * @param fujia5 待设置的属性附加5的值
+     */
+    public void setFujia5(String fujia5){
+        this.fujia5 = StringUtils.rightTrim(fujia5);
+    }
+
+    /**
+     * 获取属性附加5
+     * @return 属性附加5的值
+     */
+    public String getFujia5(){
+        return fujia5;
+    }
+
+    /**
+     * 设置属性附加6
+     * @param fujia6 待设置的属性附加6的值
+     */
+    public void setFujia6(String fujia6){
+        this.fujia6 = StringUtils.rightTrim(fujia6);
+    }
+
+    /**
+     * 获取属性附加6
+     * @return 属性附加6的值
+     */
+    public String getFujia6(){
+        return fujia6;
+    }
+
+    /**
+     * 设置属性附加7
+     * @param fujia7 待设置的属性附加7的值
+     */
+    public void setFujia7(String fujia7){
+        this.fujia7 = StringUtils.rightTrim(fujia7);
+    }
+
+    /**
+     * 获取属性附加7
+     * @return 属性附加7的值
+     */
+    public String getFujia7(){
+        return fujia7;
+    }
+
+    /**
+     * 设置属性附加8
+     * @param fujia8 待设置的属性附加8的值
+     */
+    public void setFujia8(String fujia8){
+        this.fujia8 = StringUtils.rightTrim(fujia8);
+    }
+
+    /**
+     * 获取属性附加8
+     * @return 属性附加8的值
+     */
+    public String getFujia8(){
+        return fujia8;
+    }
+
+    /**
+     * 设置属性附加9
+     * @param fujia9 待设置的属性附加9的值
+     */
+    public void setFujia9(String fujia9){
+        this.fujia9 = StringUtils.rightTrim(fujia9);
+    }
+
+    /**
+     * 获取属性附加9
+     * @return 属性附加9的值
+     */
+    public String getFujia9(){
+        return fujia9;
+    }
+
+    /**
+     * 设置属性附加10
+     * @param fujia10 待设置的属性附加10的值
+     */
+    public void setFujia10(String fujia10){
+        this.fujia10 = StringUtils.rightTrim(fujia10);
+    }
+
+    /**
+     * 获取属性附加10
+     * @return 属性附加10的值
+     */
+    public String getFujia10(){
+        return fujia10;
+    }
+
+    /**
+     * 设置属性附加11
+     * @param fujia11 待设置的属性附加11的值
+     */
+    public void setFujia11(String fujia11){
+        this.fujia11 = StringUtils.rightTrim(fujia11);
+    }
+
+    /**
+     * 获取属性附加11
+     * @return 属性附加11的值
+     */
+    public String getFujia11(){
+        return fujia11;
+    }
+
+    /**
+     * 设置属性附加12
+     * @param fujia12 待设置的属性附加12的值
+     */
+    public void setFujia12(String fujia12){
+        this.fujia12 = StringUtils.rightTrim(fujia12);
+    }
+
+    /**
+     * 获取属性附加12
+     * @return 属性附加12的值
+     */
+    public String getFujia12(){
+        return fujia12;
     }
 }

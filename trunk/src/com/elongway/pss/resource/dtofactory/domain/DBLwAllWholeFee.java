@@ -10,7 +10,7 @@ import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 
 /**
  * 这是LwAllWholeFee-趸售总费用表的数据访问对象类<br>
- * 创建于 2009-01-03 00:49:34.343<br>
+ * 创建于 2009-02-23 10:20:29.234<br>
  * JToolpad(1.6.0) Vendor:zhouxianli1978@msn.com
  */
 public class DBLwAllWholeFee extends DBLwAllWholeFeeBase{
