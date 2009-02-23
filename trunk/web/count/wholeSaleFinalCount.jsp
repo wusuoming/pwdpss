@@ -2,6 +2,8 @@
 	pageEncoding="GBK"%>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"/>
 <jsp:directive.page import="java.text.DecimalFormat"/>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
+<jsp:directive.page import="com.elongway.pss.dto.domain.LwWholeSaleIndicatorBakDto"/>
 <%
 	//response.setHeader("Content-disposition","attachment;filename=abc.xls");
 %>
@@ -67,6 +69,7 @@ BODY {
 			<%
 			DecimalFormat df = new DecimalFormat("###0.00");
 				Collection col = (List) request.getAttribute("all");
+				Collection colbak = (List) request.getAttribute("allbak");
 				String company = (String) request.getAttribute("company");
 				String statMonth = (String) request.getAttribute("statMonth");
 				String sumAllFee = (String) request.getAttribute("sumAllFee");
@@ -415,6 +418,12 @@ BODY {
 
 				</tr>
 				<%
+				String serchdate=(String)request.getAttribute("statMonth");
+				String now=PowerFeeCal.getCurrentBillMonth();
+				if(now.equals(serchdate)){
+				
+				 %>
+				<%
 					Iterator it = col.iterator();
 					while (it.hasNext()) {
 						LwWholeSaleIndicatorDto lwWholeSaleIndicatorDto = (LwWholeSaleIndicatorDto) it
@@ -516,6 +525,112 @@ BODY {
 
 				</tr>
 				<%
+					}
+					}else{
+				%>
+				<%
+					Iterator itbak = colbak.iterator();
+					while (itbak.hasNext()) {
+						LwWholeSaleIndicatorBakDto lwWholeSaleIndicatorBakDto = (LwWholeSaleIndicatorBakDto) itbak
+								.next();
+						String conditions = " flag=1 and userno='"
+								+ lwWholeSaleIndicatorBakDto.getUserNo() + "'";
+						BLLwAmmeterChangeFacade blLwAmmeterChangeFacade = new BLLwAmmeterChangeFacade();
+						BLLwWholeSaleUserInfoFacade blLwWholeSaleUserInfoFacade = new BLLwWholeSaleUserInfoFacade();
+						LwWholeSaleUserInfoDto lwWholeSaleUserInfoDto = blLwWholeSaleUserInfoFacade
+								.findByPrimaryKey(lwWholeSaleIndicatorBakDto.getUserNo());
+						Collection colat = blLwAmmeterChangeFacade
+								.findByConditions(conditions);
+						Iterator ad = colat.iterator();
+						LwAmmeterChangeDto lwAmmeterChangeDto = new LwAmmeterChangeDto();
+						while (ad.hasNext()) {
+							lwAmmeterChangeDto = (LwAmmeterChangeDto) ad.next();
+						}
+				%>
+				<tr>
+					<td class="title" style="width:80px"><input name="ammeterNo"
+							value="<%=lwWholeSaleIndicatorBakDto.getUserNo()%>"
+							readonly="readonly" style="diplay:none"></td>
+					<td class="input">
+						<input name="ammeterNo"
+							value="<%=lwAmmeterChangeDto.getAmmeterNo()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+					<%
+						if (lwWholeSaleUserInfoDto.getIfCal().equals("0")) {
+					%>
+					<td class="input">
+						<input name="ammeterStyle" value="总表" readonly="readonly"
+							>
+					</td>
+					<%
+						}
+					%>
+					<%
+						if (lwWholeSaleUserInfoDto.getIfCal().equals("1")) {
+					%>
+					<td class="input">
+						<input name="ammeterStyle" value="考核表" readonly="readonly"
+							>
+					</td>
+					<%
+						}
+					%>
+					<td class="input">
+						<input name="Rate"
+							value="<%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售"
+							style="width: 65px" readonly="readonly">
+					</td>
+					<td class="input">
+						<input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorBakDto.getRate())%>"
+							style="width: 65px" readonly="readonly">
+					</td>
+					<td class="input">
+						<input name="LastWorkNum"
+							value="<%=lwWholeSaleIndicatorBakDto.getLastWorkNum()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+
+
+					<td class="input">
+						<input name="ThisWorkNum"
+							value="<%=lwWholeSaleIndicatorBakDto.getThisWorkNum()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+
+					<td class="input">
+						<input name="workQuantity"
+							value="<%=lwWholeSaleIndicatorBakDto.getWorkQuantity()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+					<td class="input">
+						<input name="LastIdleNum"
+							value="<%=lwWholeSaleIndicatorBakDto.getLastIdleNum()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+
+
+
+					<td class="input">
+						<input name="ThisIdleNum"
+							value="<%=lwWholeSaleIndicatorBakDto.getThisIdleNum()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+
+					<td class="input">
+						<input name="workQuantity"
+							value="<%=lwWholeSaleIndicatorBakDto.getUnworkQuantity()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+					<td class="input">
+						<input name="workQuantity"
+							value="<%=lwWholeSaleIndicatorBakDto.getPowerCode()%>"
+							readonly="readonly" style="width: 65px">
+					</td>
+
+				</tr>
+				<%
+					}
 					}
 				%>
 
@@ -889,7 +1004,7 @@ BODY {
 
 				</tr>
 				<%
-					if(lwAllWholeFeeDto.equals("")){
+					if(lwAllWholeFeeDto==null){
 					
 					
 					
@@ -1027,8 +1142,30 @@ BODY {
 	</body>
 	<script type="text/javascript">
 	function  sum(){
+	var aaa=fm.exends10.value;
+	if(aaa==""||aaa==null){
+	aaa='0';
+	}
 	
-	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value);
+	var bbb=fm.exends12.value;
+	if(bbb==""||bbb==null){
+	bbb='0';
+	}
+	
+	if(fm.exends2.value==""||fm.exends2.value==null){
+	fm.exends2.value='0';
+	}
+	if(fm.exends4.value==""||fm.exends4.value==null){
+	fm.exends4.value='0';
+	}
+	
+	if(fm.exends6.value==""||fm.exends6.value==null){
+	fm.exends6.value='0';
+	}
+	
+	
+	
+	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value)+parseFloat(aaa)+parseFloat(bbb);
 	fm.exends8.value=last.toFixed(2);
 	
 	}

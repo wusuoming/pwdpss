@@ -16,6 +16,8 @@
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwAmmeterChangeDto"/>
 <jsp:directive.page import="com.elongway.pss.bl.facade.BLLwWholeSaleUserInfoFacade"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwWholeSaleUserInfoDto"/>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
+<jsp:directive.page import="com.elongway.pss.dto.domain.LwWholeSaleIndicatorBakDto"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -47,6 +49,7 @@
  <%
 		 
 		Collection col=(List)request.getAttribute("all");
+		Collection colbak = (List) request.getAttribute("allbak");
 		String company=(String)request.getAttribute("company");
 		String statMonth=(String)request.getAttribute("statMonth");
 		String sumAllFee=(String)request.getAttribute("sumAllFee");
@@ -239,6 +242,12 @@
 
 			</tr>
 			<%
+				String serchdate=(String)request.getAttribute("statMonth");
+				String now=PowerFeeCal.getCurrentBillMonth();
+				if(now.equals(serchdate)){
+				
+				 %>
+			<%
 			Iterator it=col.iterator();
 			while(it.hasNext()){
 			LwWholeSaleIndicatorDto lwWholeSaleIndicatorDto=(LwWholeSaleIndicatorDto)it.next();
@@ -284,7 +293,66 @@
 						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorDto.getPowerCode()%></font></td>
 						
 			</tr>
-			<%} %>
+			<%
+					}
+					}else{
+				%>
+				<%
+					Iterator itbak = colbak.iterator();
+					while (itbak.hasNext()) {
+						LwWholeSaleIndicatorBakDto lwWholeSaleIndicatorBakDto = (LwWholeSaleIndicatorBakDto) itbak
+								.next();
+						String conditions = " flag=1 and userno='"
+								+ lwWholeSaleIndicatorBakDto.getUserNo() + "'";
+						BLLwAmmeterChangeFacade blLwAmmeterChangeFacade = new BLLwAmmeterChangeFacade();
+						BLLwWholeSaleUserInfoFacade blLwWholeSaleUserInfoFacade = new BLLwWholeSaleUserInfoFacade();
+						LwWholeSaleUserInfoDto lwWholeSaleUserInfoDto = blLwWholeSaleUserInfoFacade
+								.findByPrimaryKey(lwWholeSaleIndicatorBakDto.getUserNo());
+						Collection colat = blLwAmmeterChangeFacade
+								.findByConditions(conditions);
+						Iterator ad = colat.iterator();
+						LwAmmeterChangeDto lwAmmeterChangeDto = new LwAmmeterChangeDto();
+						while (ad.hasNext()) {
+							lwAmmeterChangeDto = (LwAmmeterChangeDto) ad.next();
+						}
+				%>
+				<tr >
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getUserNo()%></font></td>
+						<td  ><font size="3"><%=lwAmmeterChangeDto.getAmmeterNo()%></font></td>
+						<%
+						if(lwWholeSaleUserInfoDto.getIfCal().equals("0") ){
+						 %>
+						<td class="input" ><font size="3">总表</font></td>
+						<%} %>
+						<%
+						if(lwWholeSaleUserInfoDto.getIfCal().equals("1") ){
+						 %>
+						<td class="input" ><font size="3">考核表</font></td>
+						<%} %>
+						<td class="input" ><font size="3"><%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售</font></td>
+						<td class="input" ><font size="3"><%=Math.round(lwWholeSaleIndicatorBakDto.getRate())%></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getLastWorkNum()%></font></td>
+						
+						
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getThisWorkNum()%></font></td>
+						
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getWorkQuantity() %></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getLastIdleNum()%></font></td>
+						
+						
+					
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getThisIdleNum()%></font></td>
+						
+						 <td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getUnworkQuantity()%></font></td>
+						<td class="input" ><font size="3"><%=lwWholeSaleIndicatorBakDto.getPowerCode()%></font></td>
+						
+			</tr>
+				<%
+					}
+					}
+				%>
+
+
 
     
 

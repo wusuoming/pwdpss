@@ -236,6 +236,10 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<td nowrap width="10%">
 					<span class="title"><font size="2">差别电费</font></span>
 				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费税</font></span>
+				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">总计</font></span>
 				<br></td>
@@ -315,6 +319,9 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
 				<br></td>
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
 				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSumFee())%></font></span>
@@ -359,6 +366,9 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
 				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
 				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumffee%></font></span>
@@ -398,7 +408,10 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantityjy%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17*0.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -441,7 +454,10 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantitydm%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17*0.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -485,10 +501,12 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantityty%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17)%></font></span>
 				<br></td>
 				
-				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17*0.17)%></font></span>
+				<br></td>
 				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee()))%></font></span>
@@ -533,7 +551,10 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantitygy %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17*0.17) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -576,7 +597,11 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantity%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -625,6 +650,9 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=0%></font></span>
 				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
 					
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getSumPowerFee() %></font></span>
@@ -665,7 +693,12 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=differenceQuantity%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumallall%></font></span>
