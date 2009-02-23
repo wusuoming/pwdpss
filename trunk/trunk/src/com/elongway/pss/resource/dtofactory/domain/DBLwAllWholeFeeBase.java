@@ -52,7 +52,16 @@ public class DBLwAllWholeFeeBase{
         buffer.append("Zhuijia,");
         buffer.append("Fujia1,");
         buffer.append("Fujia2,");
-        buffer.append("Fujia3 ");
+        buffer.append("Fujia3,");
+        buffer.append("Fujia4,");
+        buffer.append("Fujia5,");
+        buffer.append("Fujia6,");
+        buffer.append("Fujia7,");
+        buffer.append("Fujia8,");
+        buffer.append("Fujia9,");
+        buffer.append("Fujia10,");
+        buffer.append("Fujia11,");
+        buffer.append("Fujia12 ");
         buffer.append(") ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -74,11 +83,20 @@ public class DBLwAllWholeFeeBase{
             debugBuffer.append("'").append(lwAllWholeFeeDto.getZhuijia()).append("',");
             debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia1()).append("',");
             debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia2()).append("',");
-            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia3()).append("')");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia3()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia4()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia5()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia6()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia7()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia8()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia9()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia10()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia11()).append("',");
+            debugBuffer.append("'").append(lwAllWholeFeeDto.getFujia12()).append("')");
             logger.debug(debugBuffer.toString());
         }
 
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         dbManager.prepareStatement(buffer.toString());
         dbManager.setString(1,lwAllWholeFeeDto.getCompany());
         dbManager.setString(2,lwAllWholeFeeDto.getInputdate());
@@ -97,6 +115,15 @@ public class DBLwAllWholeFeeBase{
         dbManager.setString(15,lwAllWholeFeeDto.getFujia1());
         dbManager.setString(16,lwAllWholeFeeDto.getFujia2());
         dbManager.setString(17,lwAllWholeFeeDto.getFujia3());
+        dbManager.setString(18,lwAllWholeFeeDto.getFujia4());
+        dbManager.setString(19,lwAllWholeFeeDto.getFujia5());
+        dbManager.setString(20,lwAllWholeFeeDto.getFujia6());
+        dbManager.setString(21,lwAllWholeFeeDto.getFujia7());
+        dbManager.setString(22,lwAllWholeFeeDto.getFujia8());
+        dbManager.setString(23,lwAllWholeFeeDto.getFujia9());
+        dbManager.setString(24,lwAllWholeFeeDto.getFujia10());
+        dbManager.setString(25,lwAllWholeFeeDto.getFujia11());
+        dbManager.setString(26,lwAllWholeFeeDto.getFujia12());
         dbManager.executePreparedUpdate();
 
     }
@@ -126,9 +153,18 @@ public class DBLwAllWholeFeeBase{
         buffer.append("Zhuijia,");
         buffer.append("Fujia1,");
         buffer.append("Fujia2,");
-        buffer.append("Fujia3 ");
+        buffer.append("Fujia3,");
+        buffer.append("Fujia4,");
+        buffer.append("Fujia5,");
+        buffer.append("Fujia6,");
+        buffer.append("Fujia7,");
+        buffer.append("Fujia8,");
+        buffer.append("Fujia9,");
+        buffer.append("Fujia10,");
+        buffer.append("Fujia11,");
+        buffer.append("Fujia12 ");
         buffer.append(") ");
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         if(logger.isDebugEnabled()){
             logger.debug(buffer.toString());
         }
@@ -152,6 +188,15 @@ public class DBLwAllWholeFeeBase{
             dbManager.setString(15,lwAllWholeFeeDto.getFujia1());
             dbManager.setString(16,lwAllWholeFeeDto.getFujia2());
             dbManager.setString(17,lwAllWholeFeeDto.getFujia3());
+            dbManager.setString(18,lwAllWholeFeeDto.getFujia4());
+            dbManager.setString(19,lwAllWholeFeeDto.getFujia5());
+            dbManager.setString(20,lwAllWholeFeeDto.getFujia6());
+            dbManager.setString(21,lwAllWholeFeeDto.getFujia7());
+            dbManager.setString(22,lwAllWholeFeeDto.getFujia8());
+            dbManager.setString(23,lwAllWholeFeeDto.getFujia9());
+            dbManager.setString(24,lwAllWholeFeeDto.getFujia10());
+            dbManager.setString(25,lwAllWholeFeeDto.getFujia11());
+            dbManager.setString(26,lwAllWholeFeeDto.getFujia12());
             dbManager.addBatch();
         }
         dbManager.executePreparedUpdateBatch();
@@ -210,7 +255,16 @@ public class DBLwAllWholeFeeBase{
         buffer.append("Zhuijia = ?, ");
         buffer.append("Fujia1 = ?, ");
         buffer.append("Fujia2 = ?, ");
-        buffer.append("Fujia3 = ? ");
+        buffer.append("Fujia3 = ?, ");
+        buffer.append("Fujia4 = ?, ");
+        buffer.append("Fujia5 = ?, ");
+        buffer.append("Fujia6 = ?, ");
+        buffer.append("Fujia7 = ?, ");
+        buffer.append("Fujia8 = ?, ");
+        buffer.append("Fujia9 = ?, ");
+        buffer.append("Fujia10 = ?, ");
+        buffer.append("Fujia11 = ?, ");
+        buffer.append("Fujia12 = ? ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
             debugBuffer.append("UPDATE LwAllWholeFee SET ");
@@ -228,7 +282,16 @@ public class DBLwAllWholeFeeBase{
             debugBuffer.append("Zhuijia = '" + lwAllWholeFeeDto.getZhuijia() + "', ");
             debugBuffer.append("Fujia1 = '" + lwAllWholeFeeDto.getFujia1() + "', ");
             debugBuffer.append("Fujia2 = '" + lwAllWholeFeeDto.getFujia2() + "', ");
-            debugBuffer.append("Fujia3 = '" + lwAllWholeFeeDto.getFujia3() + "' ");
+            debugBuffer.append("Fujia3 = '" + lwAllWholeFeeDto.getFujia3() + "', ");
+            debugBuffer.append("Fujia4 = '" + lwAllWholeFeeDto.getFujia4() + "', ");
+            debugBuffer.append("Fujia5 = '" + lwAllWholeFeeDto.getFujia5() + "', ");
+            debugBuffer.append("Fujia6 = '" + lwAllWholeFeeDto.getFujia6() + "', ");
+            debugBuffer.append("Fujia7 = '" + lwAllWholeFeeDto.getFujia7() + "', ");
+            debugBuffer.append("Fujia8 = '" + lwAllWholeFeeDto.getFujia8() + "', ");
+            debugBuffer.append("Fujia9 = '" + lwAllWholeFeeDto.getFujia9() + "', ");
+            debugBuffer.append("Fujia10 = '" + lwAllWholeFeeDto.getFujia10() + "', ");
+            debugBuffer.append("Fujia11 = '" + lwAllWholeFeeDto.getFujia11() + "', ");
+            debugBuffer.append("Fujia12 = '" + lwAllWholeFeeDto.getFujia12() + "' ");
             debugBuffer.append("WHERE ");
             debugBuffer.append("Company=").append("'").append(lwAllWholeFeeDto.getCompany()).append("' AND ");
             debugBuffer.append("Inputdate=").append("'").append(lwAllWholeFeeDto.getInputdate()).append("'");
@@ -256,9 +319,18 @@ public class DBLwAllWholeFeeBase{
         dbManager.setString(13,lwAllWholeFeeDto.getFujia1());
         dbManager.setString(14,lwAllWholeFeeDto.getFujia2());
         dbManager.setString(15,lwAllWholeFeeDto.getFujia3());
+        dbManager.setString(16,lwAllWholeFeeDto.getFujia4());
+        dbManager.setString(17,lwAllWholeFeeDto.getFujia5());
+        dbManager.setString(18,lwAllWholeFeeDto.getFujia6());
+        dbManager.setString(19,lwAllWholeFeeDto.getFujia7());
+        dbManager.setString(20,lwAllWholeFeeDto.getFujia8());
+        dbManager.setString(21,lwAllWholeFeeDto.getFujia9());
+        dbManager.setString(22,lwAllWholeFeeDto.getFujia10());
+        dbManager.setString(23,lwAllWholeFeeDto.getFujia11());
+        dbManager.setString(24,lwAllWholeFeeDto.getFujia12());
         //设置条件字段;
-        dbManager.setString(16,lwAllWholeFeeDto.getCompany());
-        dbManager.setString(17,lwAllWholeFeeDto.getInputdate());
+        dbManager.setString(25,lwAllWholeFeeDto.getCompany());
+        dbManager.setString(26,lwAllWholeFeeDto.getInputdate());
         dbManager.executePreparedUpdate();
 
     }
@@ -291,7 +363,16 @@ public class DBLwAllWholeFeeBase{
         buffer.append("Zhuijia,");
         buffer.append("Fujia1,");
         buffer.append("Fujia2,");
-        buffer.append("Fujia3 ");
+        buffer.append("Fujia3,");
+        buffer.append("Fujia4,");
+        buffer.append("Fujia5,");
+        buffer.append("Fujia6,");
+        buffer.append("Fujia7,");
+        buffer.append("Fujia8,");
+        buffer.append("Fujia9,");
+        buffer.append("Fujia10,");
+        buffer.append("Fujia11,");
+        buffer.append("Fujia12 ");
         buffer.append("FROM LwAllWholeFee ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -311,8 +392,9 @@ public class DBLwAllWholeFeeBase{
         dbManager.setString(1,company);
         dbManager.setString(2,inputdate);
         ResultSet resultSet = dbManager.executePreparedQuery();
-        LwAllWholeFeeDto  lwAllWholeFeeDto = new LwAllWholeFeeDto();
+        LwAllWholeFeeDto lwAllWholeFeeDto = null;
         if(resultSet.next()){
+            lwAllWholeFeeDto = new LwAllWholeFeeDto();
             lwAllWholeFeeDto.setCompany(dbManager.getString(resultSet,1));
             lwAllWholeFeeDto.setInputdate(dbManager.getString(resultSet,2));
             lwAllWholeFeeDto.setPower1(dbManager.getString(resultSet,3));
@@ -330,6 +412,15 @@ public class DBLwAllWholeFeeBase{
             lwAllWholeFeeDto.setFujia1(dbManager.getString(resultSet,15));
             lwAllWholeFeeDto.setFujia2(dbManager.getString(resultSet,16));
             lwAllWholeFeeDto.setFujia3(dbManager.getString(resultSet,17));
+            lwAllWholeFeeDto.setFujia4(dbManager.getString(resultSet,18));
+            lwAllWholeFeeDto.setFujia5(dbManager.getString(resultSet,19));
+            lwAllWholeFeeDto.setFujia6(dbManager.getString(resultSet,20));
+            lwAllWholeFeeDto.setFujia7(dbManager.getString(resultSet,21));
+            lwAllWholeFeeDto.setFujia8(dbManager.getString(resultSet,22));
+            lwAllWholeFeeDto.setFujia9(dbManager.getString(resultSet,23));
+            lwAllWholeFeeDto.setFujia10(dbManager.getString(resultSet,24));
+            lwAllWholeFeeDto.setFujia11(dbManager.getString(resultSet,25));
+            lwAllWholeFeeDto.setFujia12(dbManager.getString(resultSet,26));
         }
         resultSet.close();
         return lwAllWholeFeeDto;
@@ -364,7 +455,16 @@ public class DBLwAllWholeFeeBase{
         buffer.append("Zhuijia,");
         buffer.append("Fujia1,");
         buffer.append("Fujia2,");
-        buffer.append("Fujia3 ");
+        buffer.append("Fujia3,");
+        buffer.append("Fujia4,");
+        buffer.append("Fujia5,");
+        buffer.append("Fujia6,");
+        buffer.append("Fujia7,");
+        buffer.append("Fujia8,");
+        buffer.append("Fujia9,");
+        buffer.append("Fujia10,");
+        buffer.append("Fujia11,");
+        buffer.append("Fujia12 ");
         buffer.append("FROM LwAllWholeFee WHERE ");
         buffer.append(conditions);
         boolean supportPaging = false;//数据库是否支持分页
@@ -428,6 +528,15 @@ public class DBLwAllWholeFeeBase{
             lwAllWholeFeeDto.setFujia1(dbManager.getString(resultSet,"Fujia1"));
             lwAllWholeFeeDto.setFujia2(dbManager.getString(resultSet,"Fujia2"));
             lwAllWholeFeeDto.setFujia3(dbManager.getString(resultSet,"Fujia3"));
+            lwAllWholeFeeDto.setFujia4(dbManager.getString(resultSet,"Fujia4"));
+            lwAllWholeFeeDto.setFujia5(dbManager.getString(resultSet,"Fujia5"));
+            lwAllWholeFeeDto.setFujia6(dbManager.getString(resultSet,"Fujia6"));
+            lwAllWholeFeeDto.setFujia7(dbManager.getString(resultSet,"Fujia7"));
+            lwAllWholeFeeDto.setFujia8(dbManager.getString(resultSet,"Fujia8"));
+            lwAllWholeFeeDto.setFujia9(dbManager.getString(resultSet,"Fujia9"));
+            lwAllWholeFeeDto.setFujia10(dbManager.getString(resultSet,"Fujia10"));
+            lwAllWholeFeeDto.setFujia11(dbManager.getString(resultSet,"Fujia11"));
+            lwAllWholeFeeDto.setFujia12(dbManager.getString(resultSet,"Fujia12"));
             collection.add(lwAllWholeFeeDto);
         }
         resultSet.close();

@@ -245,7 +245,7 @@ public class UIwholeSaleprintAction extends Action {
 				businessPower10+=lwWholeSaleSummaryDto.getBizQuantity();
 				residentPower10+=lwWholeSaleSummaryDto.getDenizenQuantity();
 				indecisivePower10+=lwWholeSaleSummaryDto.getUnDenizenQuantity();
-				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
+				
 				differenceQuantity+=Double.parseDouble(lwWholeSaleSummaryDto.getDifferenceQuantity());
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("0")){
 					industryPower10+=lwWholeSaleSummaryDto.getIndustryQuantity();
