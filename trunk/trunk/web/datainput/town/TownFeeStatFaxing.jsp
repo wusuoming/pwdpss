@@ -96,16 +96,13 @@ function printCount(){
     {
          if(obj[i].type!="button")
 		    s+=obj[i].value+",";
-        
 }
-
    strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?s="+s;  
-   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+    winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");   
 }
 function result()
 {	
     var count = document.getElementsByName('pureFee').length;
-   
     var sumPurefee = 0.0;
     var sumfee1 = 0.0;
     var sumfeeTax = 0.0;
@@ -115,7 +112,6 @@ function result()
     var sumdianjinTax = 0.0;
     var sumjijin = 0.0;
     var sumjijinTax = 0.0;
-     	
             if(count ==1){
             fm.feeTax.value = parseFloat(fm.pureFee.value) * 0.17;
             fm.sanxiaTax.value = parseFloat(fm.sanxia.value) * 0.17;
@@ -147,10 +143,7 @@ function result()
     			sumjijin =(parseFloat(sumjijin)+ parseFloat(fm.jijin[i].value)).toFixed(2);
     		
     			sumjijinTax = (parseFloat(sumjijinTax)+parseFloat(fm.jijinTax[i].value)).toFixed(2);
-               
-
             	}
-       
             				fm.pureFee[count-1].value = parseFloat(sumPurefee);
 							fm.feeTax[count-1].value =parseFloat(sumfeeTax);
 							fm.sumFee[count-1].value= parseFloat(sumfee1);    
@@ -177,7 +170,7 @@ function result()
 					.getAttribute(AppConst.SYSUSER_SESSION);
 			String inputDate = (String) request.getAttribute("statMonth");
 	%>
-	<form name="fm" method="post" onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
+	<form name="fm" method="post" onsubmit="return validateUserQueryForm(this);">
 		<table class=common width="500%" cellspacing="0" cellpadding="5"
 			border="1">
 			<tr>
@@ -343,6 +336,5 @@ function result()
 
 	</form>
 </body>
-
 
 </html:html>
