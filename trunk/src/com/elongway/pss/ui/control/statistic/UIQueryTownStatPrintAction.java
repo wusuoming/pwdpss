@@ -48,7 +48,7 @@ public class UIQueryTownStatPrintAction extends Action {
 		String forward = null;
 		Collection<TownSataDto> resultList = new ArrayList<TownSataDto>();
 		// 得到表单的数据
-		/*String s = (String) httpServletRequest.getParameter("s");
+		String s = (String) httpServletRequest.getParameter("s");
 		// 进行分解
 		String formValue[] = s.split(",");
 		statMonth = formValue[0];
@@ -72,11 +72,11 @@ public class UIQueryTownStatPrintAction extends Action {
 			townSataDto.setSumPowerFee(Double
 					.parseDouble(formValue[i * 10 + 10]));
 			resultList.add(townSataDto);
-		}*/
+		}
 		httpServletRequest.setAttribute("resultList", resultList);
 		httpServletRequest.setAttribute("statMonth", statMonth);
 
-		return actionMapping.findForward(forward);
+		return actionMapping.findForward("TownFeePrint1");
 
 	}
 

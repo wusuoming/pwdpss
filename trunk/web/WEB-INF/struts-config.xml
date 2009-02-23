@@ -1723,6 +1723,13 @@
 			>
 			<forward name="wholeSaleEveryPrint" path="/count/wholeSaleEveryPrint.jsp"></forward>
 			</action>
+			<action path="/queryTownStatPrint" 
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatPrintAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp"
+			>
+			<forward name="TownFeePrint1" path="/datainput/town/TownFeeStatPrint.jsp"></forward>
+			</action>
 		<!--add by wangrongjia end   -->
 	</action-mappings>
 

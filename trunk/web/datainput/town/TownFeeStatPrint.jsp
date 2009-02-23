@@ -39,72 +39,14 @@
 </STYLE>
 <script language="Javascript"
 	src="/iacontact/common/pub/StaticJavascript.jsp"></script>
-<script language="Javascript">
- function validateUserQueryForm(form)
-{
-   //添加日期型的合成函数
-  if(!(composeauUserBirthday() && composeauUserStartWorkDate() && composeauUserEnterDate())){
-     return false;
-  }
-   bValid = validateQueryForm(form);
-  if(bValid == true)
-  {
-      disabledImg(userForm,'userOverviewChaxun');
-  }
-   return bValid;
-}
-   
-  function AddForm(){
-  alert();  
-       var strURL = "<%=request.getContextPath()%>/townSave.do";
-       fm.action = strURL;
-	 
-        } 
-
-</script>
-<script language="javascript">
-   function codeQuery(field)
-{
-	if(event.type=="keyup")
-	{
-		var charCode=window.event.keyCode;
-		if(!(charCode==13 & window.event.ctrlKey))
-			return;
-	}
-	var vURL="<%=request.getContextPath()%>/QueryCodeList.do?CODE="+fm.userNo.value+"&TableName=lwProrate";
-
-	var newWindow=window.open(vURL,"GROUP","width=640,height=480,top=100,left=200,toolbar=0,location=0,directions=0,menubar=0,scrollbars=1,resizable=1,status=0");
-	newWindow.focus();
-	return newWindow;
-}
-</script>
-<script language="javascript">
-   function check()
-{
-	if(fm.userNo==null){
-	alert(fm.userNo.value);
-	}
-}
-function printCount(){
-	 var   strURL;     
-	 var tt = fm.statMonth.value;
-   strURL="<%=request.getContextPath()%>/townfeeprint.do?statMonth="+tt;    
-    alert(strURL);
-  winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
-}
-function doPrint(){
-	window.print();
-}
-</script>
 </head>
 <body onload="javascript:doPrint();window.close()">
 <html:errors />
 <% String statMonth = (String)request.getAttribute("statMonth");
 %>
-<form  name="fm"
-	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
-	
-	<%Collection resultList = (Collection)request.getAttribute("resultList"); 
+<form  name="fm">
+	<%
+	Collection resultList = (Collection)request.getAttribute("resultList"); 
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
@@ -152,11 +94,10 @@ function doPrint(){
 				<td nowrap width="10%">
 					<span class="title"><b><font size="4">总计</font></b></span>
 				<br></td>	
-							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">顶顶顶顶</font></span>
+					<span class="title"><font size="4"><%=townSataDto.getCompanyName()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="4"><%=townSataDto.getSumPower() %></font></span>
@@ -188,10 +129,7 @@ function doPrint(){
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="4"><%=townSataDto.getSumPowerFee() %></font></span>
 				<br></td>	
-							
 			</tr>
-		
-  
     </table>
     <br>
     <table class=common width="500%" cellspacing="0" cellpadding="5" >
@@ -201,14 +139,11 @@ function doPrint(){
     </tr>
     </table>
 		<%} %>
-		
-		
-
-  
-	
-
 </form>
 </body>
-
-
+<script>
+function doPrint(){
+	window.print();
+}
+</script>
 </html:html>
