@@ -177,6 +177,10 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 					<span class="title"><font size="2">差别电费</font></span>
 				<br></td>	
 				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费税</font></span>
+				<br></td>
+				
 				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">电金</font></span>
@@ -229,6 +233,10 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=summfdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
@@ -272,7 +280,11 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 				
 				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -315,8 +327,13 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 					<span class="title"><font size="2"><%=sumallfee%></font></span>
 				<br></td>
 				
-					<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><%=differenceQuantityFee%></font></span>
+					
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
