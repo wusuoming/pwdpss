@@ -296,6 +296,9 @@
 					<span class="title"><font size="2">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
@@ -387,6 +390,9 @@
 							
 			</tr>
 			<tr class=listtitle>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">总电量35KV</font></span>
+				<br></td>
 				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量35KV</font></span>
@@ -491,22 +497,22 @@
 					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2">广播费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2">海明炉</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2">多边电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
@@ -555,6 +561,9 @@
 			<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量10KV</font></span>
@@ -648,7 +657,9 @@
 							
 			</tr>
 			<tr class=listtitle>
-				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量35KV</font></span>
+				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量35KV</font></span>
 				<br></td>
@@ -752,22 +763,22 @@
 					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2">广播费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2">海明炉</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2">多边电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
@@ -817,6 +828,10 @@
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
 				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量10KV</font></span>
+				<br></td>
+				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量10KV</font></span>
 				<br></td>
@@ -909,6 +924,10 @@
 							
 			</tr>
 			<tr class=listtitle>
+			
+			<td nowrap width="10%">
+					<span class="title"><font size="2">总电量35KV</font></span>
+				<br></td>
 				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量35KV</font></span>
@@ -1013,22 +1032,22 @@
 					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2">广播费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2">海明炉</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2">多边电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
@@ -1078,6 +1097,10 @@
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
 				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量10KV</font></span>
+				<br></td>
+				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量10KV</font></span>
 				<br></td>
@@ -1170,6 +1193,10 @@
 							
 			</tr>
 			<tr class=listtitle>
+			
+			<td nowrap width="10%">
+					<span class="title"><font size="2">总电量35KV</font></span>
+				<br></td>
 				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量35KV</font></span>
@@ -1274,22 +1301,22 @@
 					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+					<span class="title"><font size="2">广播费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="2">海明炉</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+					<span class="title"><font size="2">多边电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
@@ -1336,41 +1363,57 @@
 						
 			</tr>
 			<tr class=listtitle>
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总计</font></span>
+				<td width="10%">
+					<span class="title"><font size="2">单位</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电量</font></span>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">居民电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电费税</font></span>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">居民电费10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡费</font></span>
+		
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民电费10KV</font></span>
+				<br></td>	
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">生产电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">三峡税</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">生产电费10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金费</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">排灌电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">基金税</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">排灌电费10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金费</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">商业电量10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">电金税</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">商业电费10KV</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">总电费</font></span>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电量10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电费10KV</font></span>
 				<br></td>
 							
 			</tr>
