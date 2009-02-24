@@ -25,11 +25,10 @@ import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwDcodeDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
-import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 
-public class UIThisMonthAllCountAction extends Action {
+public class UIAllYearCountAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
@@ -153,7 +152,7 @@ public class UIThisMonthAllCountAction extends Action {
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG);
+			sumffee += lwCorporationSummaryDto.getSumFee();
 
 		}
 
