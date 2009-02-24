@@ -273,7 +273,7 @@
 						<%
 						if(lwWholeSaleUserInfoDto.getIfCal().equals("1") ){
 						 %>
-						<td class="input" ><font size="3">考核表</font></td>
+						<td class="input" ><font size="3">套表</font></td>
 						<%} %>
 						<td class="input" ><font size="3"><%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售</font></td>
 						<td class="input" ><font size="3"><%=Math.round(lwWholeSaleIndicatorDto.getRate())%></font></td>
@@ -327,7 +327,7 @@
 						<%
 						if(lwWholeSaleUserInfoDto.getIfCal().equals("1") ){
 						 %>
-						<td class="input" ><font size="3">考核表</font></td>
+						<td class="input" ><font size="3">套表</font></td>
 						<%} %>
 						<td class="input" ><font size="3"><%=lwWholeSaleUserInfoDto.getVoltage()%>KV趸售</font></td>
 						<td class="input" ><font size="3"><%=Math.round(lwWholeSaleIndicatorBakDto.getRate())%></font></td>
@@ -612,7 +612,7 @@
 						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(sum10Power))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><font size="3"><%=Rate10Fee%></font></span>
+						<span class="title"><font size="3"><input name="ss" value=""  style="width:65px" class="inputprint"></font></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><font size="3"><%=sum10Fee%></font></span>
@@ -630,7 +630,7 @@
 						<span class="title"><font size="3"><%=Math.round(Double.parseDouble(sum35power))%></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><font size="3"><%=Rate35Fee%></font></span>
+						<span class="title"><font size="3"><input name="ss" value=""  style="width:65px" class="inputprint"></font></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><font size="3"><%=sum35Fee%></font></span>
