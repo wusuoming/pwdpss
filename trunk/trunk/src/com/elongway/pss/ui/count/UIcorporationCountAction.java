@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
 import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
+import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorBakFacade;
 import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
@@ -28,11 +29,16 @@ public class UIcorporationCountAction extends Action {
 	
 			String serchDate=inputDate.substring(0, 7);
 			condition+=" and StatMonth = '"+serchDate+"'";
+			
+			
+			
 		BLLwCoporationUserInfoFacade  blLwCoporationUserInfoFacade=new BLLwCoporationUserInfoFacade();
 		LwCoporationUserInfoDto  lwCoporationUserInfoDto=blLwCoporationUserInfoFacade.findByPrimaryKey(corporationName);
 		condition+=" and linecode='"+corporationName+"'";
-		String conditions="1=1 and userNo ='"+corporationName+"'";
+		String conditions="1=1 and userNo ='"+corporationName+"' and StatMonth = '"+serchDate+"'";
 		BLLwNewFactoryIndicatorFacade  blLwNewFactoryIndicatorFacade=new BLLwNewFactoryIndicatorFacade();
+		BLLwNewFactoryIndicatorBakFacade  blLwNewFactoryIndicatorBakFacade=new BLLwNewFactoryIndicatorBakFacade();
+		Collection colpointbak=blLwNewFactoryIndicatorBakFacade.findByConditions(conditions);
 		Collection colpoint=blLwNewFactoryIndicatorFacade.findByConditions(conditions);
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
 		LwCorporationSummaryDto LwCorporationSummaryDto2=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
@@ -50,6 +56,9 @@ public class UIcorporationCountAction extends Action {
 		httpServletRequest.setAttribute("LwCorporationSummaryDto2", LwCorporationSummaryDto2);
 		httpServletRequest.setAttribute("lwCoporationUserInfoDto", lwCoporationUserInfoDto);
 		httpServletRequest.setAttribute("colpoint", colpoint);
+		
+		httpServletRequest.setAttribute("colpointbak", colpointbak);
+		
 		httpServletRequest.setAttribute("tax", df.format(tax));
 		return actionMapping.findForward("viewCorporationCount");
 		

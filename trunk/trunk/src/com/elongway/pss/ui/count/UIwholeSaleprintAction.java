@@ -52,6 +52,7 @@ public class UIwholeSaleprintAction extends Action {
 		String exends17 = httpServletRequest.getParameter("exends17");
 		String exends18 = httpServletRequest.getParameter("exends18");
 		DecimalFormat df = new DecimalFormat("###0.00");
+	
 		
 		String zongdianliang = httpServletRequest.getParameter("zongdianliang");
 		String sum10fee = httpServletRequest.getParameter("sum10fee");
@@ -61,6 +62,11 @@ public class UIwholeSaleprintAction extends Action {
 		String jijin1 = httpServletRequest.getParameter("jijin1");
 		String jijin2 = httpServletRequest.getParameter("jijin2");
 		String jijin3 = httpServletRequest.getParameter("jijin3");
+		String chabiedianfei = httpServletRequest.getParameter("chabiedianfei");
+		
+		
+		String Power35 = httpServletRequest.getParameter("Power35");
+		String Power10 = httpServletRequest.getParameter("Power10");
 		
 		
 		String UnDenizenQuantity10kv = httpServletRequest.getParameter("UnDenizenQuantity10kv");
@@ -132,7 +138,9 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setPower1(zongdianliang);
 		lwAllWholeFeeDto.setFujia4(exends9);
 		lwAllWholeFeeDto.setFujia5(exends10);
-		
+		lwAllWholeFeeDto.setFujia11(Power10);
+		lwAllWholeFeeDto.setFujia9(chabiedianfei);
+		lwAllWholeFeeDto.setFujia12(Power35);
 		lwAllWholeFeeDto.setSumfee(exends8);
 		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
 		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)/1.17*0.17));
@@ -266,7 +274,7 @@ public class UIwholeSaleprintAction extends Action {
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
 				Rate10Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -301,7 +309,7 @@ public class UIwholeSaleprintAction extends Action {
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
 				Rate35Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			

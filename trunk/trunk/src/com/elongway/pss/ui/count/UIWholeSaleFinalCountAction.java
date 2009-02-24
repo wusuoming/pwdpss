@@ -136,7 +136,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
 				Rate10Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum10Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum10Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
 			
@@ -170,7 +170,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 				lineLoss+=lwWholeSaleSummaryDto.getLineLoss();
 				trassLoss+=lwWholeSaleSummaryDto.getTransLoss();
 				powerRateFee+=lwWholeSaleSummaryDto.getPowerRateFee();
-				sum35Fee+=lwWholeSaleSummaryDto.getSumFee();
+				sum35Fee+=lwWholeSaleSummaryDto.getSumFee()-lwWholeSaleSummaryDto.getPowerRateFee();
 				Rate35Fee+=lwWholeSaleSummaryDto.getPowerRateFee();
 				sumAllFee+=lwWholeSaleSummaryDto.getSumFee();
 			}
