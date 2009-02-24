@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
 import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
+import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorBakFacade;
 import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
@@ -57,7 +58,9 @@ public class UIcorporationPrintAction extends Action {
 		BLLwCoporationUserInfoFacade  blLwCoporationUserInfoFacade=new BLLwCoporationUserInfoFacade();
 		LwCoporationUserInfoDto  lwCoporationUserInfoDto=blLwCoporationUserInfoFacade.findByPrimaryKey(corporationName);
 		condition+=" and linecode='"+corporationName+"'";
-		String conditions="1=1 and userNo ='"+corporationName+"'";
+		String conditions="1=1 and userNo ='"+corporationName+"' and StatMonth = '"+serchDate+"'";
+		BLLwNewFactoryIndicatorBakFacade  blLwNewFactoryIndicatorBakFacade=new BLLwNewFactoryIndicatorBakFacade();
+		Collection colpointbak=blLwNewFactoryIndicatorBakFacade.findByConditions(conditions);
 		BLLwNewFactoryIndicatorFacade  blLwNewFactoryIndicatorFacade=new BLLwNewFactoryIndicatorFacade();
 		Collection colpoint=blLwNewFactoryIndicatorFacade.findByConditions(conditions);
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
@@ -71,7 +74,7 @@ public class UIcorporationPrintAction extends Action {
 		double tax=0;
 		
 		tax=LwCorporationSummaryDto2.getSumFee()/1.17*0.17;
-		
+		httpServletRequest.setAttribute("colpointbak", colpointbak);
 		
 		httpServletRequest.setAttribute("LwCorporationSummaryDto2", LwCorporationSummaryDto2);
 		httpServletRequest.setAttribute("lwCoporationUserInfoDto", lwCoporationUserInfoDto);

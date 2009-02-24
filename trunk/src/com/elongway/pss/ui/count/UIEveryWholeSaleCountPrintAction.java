@@ -23,6 +23,7 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		String inputDate = httpServletRequest.getParameter("inputDate");
 		inputDate = new DateTime(inputDate,DateTime.YEAR_TO_MONTH).toString();
 		httpServletRequest.setAttribute("inputDate", inputDate);
+		httpServletRequest.setAttribute("inputDate", inputDate);
 		LwWholeSaleDetailDto lwWholeSaleDetailDtogy = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtodm = new LwWholeSaleDetailDto();
 		LwWholeSaleDetailDto lwWholeSaleDetailDtojy = new LwWholeSaleDetailDto();
@@ -59,6 +60,9 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		double sumwsanxiatax = 0;
 		double sumwjijin = 0;
 		double sumwjijintax = 0;
+		
+		
+		
 		String dianfeigy = lwAllWholeFeeDtogy.getDianfei();
 		String dianfeity = lwAllWholeFeeDtoty.getDianfei();
 		String dianfeijy = lwAllWholeFeeDtojy.getDianfei();
@@ -176,6 +180,9 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		if(sumwsanxiajy.equals("")||sumwsanxiajy==null){
 			sumwsanxiajy="0";
 		}
+		
+		
+	
 		String sumwsanxiataxgy = lwAllWholeFeeDtogy.getSanxiatax();
 		String sumwsanxiataxty = lwAllWholeFeeDtoty.getSanxiatax();
 		String sumwsanxiataxdm = lwAllWholeFeeDtodm.getSanxiatax();
@@ -248,13 +255,86 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		 sumwfee=Double.parseDouble(sumFeegy)+Double.parseDouble(sumFeety)+Double.parseDouble(sumFeejy)+Double.parseDouble(sumFeedm);
 		 sumwpower=Double.parseDouble(sumwpowergy)+Double.parseDouble(sumpowerty)+Double.parseDouble(sumpowerdm)+Double.parseDouble(sumpowerjy);
 		 sumwtax=Double.parseDouble(sumwtaxgy)+Double.parseDouble(sumwtaxty)+Double.parseDouble(sumwtaxdm)+Double.parseDouble(sumwtaxjy);
-		 summwdianjin=Double.parseDouble(summwdianjingy)+Double.parseDouble(summwdianjinty)+Double.parseDouble(summwdianjindm)+Double.parseDouble(summwdianjinjy);
-		 sumwdianjintax=Double.parseDouble(sumwdianjintaxgy)+Double.parseDouble(sumwdianjintaxty)+Double.parseDouble(sumwdianjintaxdm)+Double.parseDouble(sumwdianjintaxjy);
-		 sumwsanxia=Double.parseDouble(sumwsanxiagy)+Double.parseDouble(sumwsanxiaty)+Double.parseDouble(sumwsanxiadm)+Double.parseDouble(sumwsanxiajy);
-		 sumwsanxiatax=Double.parseDouble(sumwsanxiataxgy)+Double.parseDouble(sumwsanxiataxty)+Double.parseDouble(sumwsanxiataxdm)+Double.parseDouble(sumwsanxiataxjy);
-		 sumwjijin=Double.parseDouble(sumwjijingy)+Double.parseDouble(sumwjijinty)+Double.parseDouble(sumwjijindm)+Double.parseDouble(sumwjijinjy);
-		 sumwjijintax=Double.parseDouble(sumwjijintaxgy)+Double.parseDouble(sumwjijintaxty)+Double.parseDouble(sumwjijintaxdm)+Double.parseDouble(sumwjijintaxjy);
+		 //summwdianjin=Double.parseDouble(summwdianjingy)+Double.parseDouble(summwdianjinty)+Double.parseDouble(summwdianjindm)+Double.parseDouble(summwdianjinjy);
+		 //sumwdianjintax=Double.parseDouble(sumwdianjintaxgy)+Double.parseDouble(sumwdianjintaxty)+Double.parseDouble(sumwdianjintaxdm)+Double.parseDouble(sumwdianjintaxjy);
+		 //sumwsanxia=Double.parseDouble(sumwsanxiagy)+Double.parseDouble(sumwsanxiaty)+Double.parseDouble(sumwsanxiadm)+Double.parseDouble(sumwsanxiajy);
+		 //sumwsanxiatax=Double.parseDouble(sumwsanxiataxgy)+Double.parseDouble(sumwsanxiataxty)+Double.parseDouble(sumwsanxiataxdm)+Double.parseDouble(sumwsanxiataxjy);
+		 //sumwjijin=Double.parseDouble(sumwjijingy)+Double.parseDouble(sumwjijinty)+Double.parseDouble(sumwjijindm)+Double.parseDouble(sumwjijinjy);
+		 //sumwjijintax=Double.parseDouble(sumwjijintaxgy)+Double.parseDouble(sumwjijintaxty)+Double.parseDouble(sumwjijintaxdm)+Double.parseDouble(sumwjijintaxjy);
 		 double Sumlilv = Double.parseDouble(fuJia3ty)+Double.parseDouble(fuJia3dm)+Double.parseDouble(fuJia3jy)+Double.parseDouble(fuJia3gy);
+		 LwWholeSaleDetailDto  lwWholeSaleDetailDto=new LwWholeSaleDetailDto();
+		 lwWholeSaleDetailDto.setDenizenQuantity10kv(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()+lwWholeSaleDetailDtogy.getDenizenQuantity10kv()+lwWholeSaleDetailDtojy.getDenizenQuantity10kv()+lwWholeSaleDetailDtoty.getDenizenQuantity10kv());
+		 lwWholeSaleDetailDto.setDenizenMoney10kv(lwWholeSaleDetailDtodm.getBizMoney10kv()+lwWholeSaleDetailDtogy.getBizMoney10kv()+lwWholeSaleDetailDtojy.getBizMoney10kv()+lwWholeSaleDetailDtoty.getBizMoney10kv());
+		 
+
+		 lwWholeSaleDetailDto.setDenizenQuantity35kv(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()+lwWholeSaleDetailDtogy.getDenizenQuantity35kv()+lwWholeSaleDetailDtojy.getDenizenQuantity35kv()+lwWholeSaleDetailDtoty.getDenizenQuantity35kv());
+		 		 lwWholeSaleDetailDto.setDenizenMoney35kv(lwWholeSaleDetailDtodm.getBizMoney35kv()+lwWholeSaleDetailDtogy.getBizMoney35kv()+lwWholeSaleDetailDtojy.getBizMoney35kv()+lwWholeSaleDetailDtoty.getBizMoney35kv());
+		 		lwWholeSaleDetailDto.setUnDenizenQuantity10kv(lwWholeSaleDetailDtodm.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtogy.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtojy.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtoty.getUnDenizenQuantity10kv());
+		 		lwWholeSaleDetailDto.setUnDenizenQuantity35kv(lwWholeSaleDetailDtodm.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtogy.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtojy.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtoty.getUnDenizenQuantity35kv());
+		 		lwWholeSaleDetailDto.setUnDenizenMoney10kv(lwWholeSaleDetailDtodm.getUnDenizenMoney10kv()+lwWholeSaleDetailDtogy.getUnDenizenMoney10kv()+lwWholeSaleDetailDtojy.getUnDenizenMoney10kv()+lwWholeSaleDetailDtoty.getUnDenizenMoney10kv());
+		 		lwWholeSaleDetailDto.setUnDenizenMoney35kv(lwWholeSaleDetailDtodm.getUnDenizenMoney35kv()+lwWholeSaleDetailDtogy.getUnDenizenMoney35kv()+lwWholeSaleDetailDtojy.getUnDenizenMoney35kv()+lwWholeSaleDetailDtoty.getUnDenizenMoney35kv());
+		 		 
+		 		lwWholeSaleDetailDto.setProductQuantity10kv(lwWholeSaleDetailDtodm.getProductQuantity10kv()+lwWholeSaleDetailDtogy.getProductQuantity10kv()+lwWholeSaleDetailDtojy.getProductQuantity10kv()+lwWholeSaleDetailDtoty.getProductQuantity10kv());
+		 		lwWholeSaleDetailDto.setProductMoney10kv(lwWholeSaleDetailDtodm.getProductMoney10kv()+lwWholeSaleDetailDtogy.getProductMoney10kv()+lwWholeSaleDetailDtojy.getProductMoney10kv()+lwWholeSaleDetailDtoty.getProductMoney10kv());
+		 		lwWholeSaleDetailDto.setProductQuantity35kv(lwWholeSaleDetailDtodm.getProductQuantity35kv()+lwWholeSaleDetailDtogy.getProductQuantity35kv()+lwWholeSaleDetailDtojy.getProductQuantity35kv()+lwWholeSaleDetailDtoty.getProductQuantity35kv());
+		 		lwWholeSaleDetailDto.setProductMoney35kv(lwWholeSaleDetailDtodm.getProductMoney35kv()+lwWholeSaleDetailDtogy.getProductMoney35kv()+lwWholeSaleDetailDtojy.getProductMoney35kv()+lwWholeSaleDetailDtoty.getProductMoney35kv());
+		 		
+		 		
+		 		lwWholeSaleDetailDto.setFarmUseQuantity10kv(lwWholeSaleDetailDtodm.getFarmUseQuantity10kv()+lwWholeSaleDetailDtogy.getFarmUseQuantity10kv()+lwWholeSaleDetailDtojy.getFarmUseQuantity10kv()+lwWholeSaleDetailDtoty.getFarmUseQuantity10kv());
+		 		lwWholeSaleDetailDto.setFarmUseMoney10kv(lwWholeSaleDetailDtodm.getFarmUseMoney10kv()+lwWholeSaleDetailDtogy.getFarmUseMoney10kv()+lwWholeSaleDetailDtojy.getFarmUseMoney10kv()+lwWholeSaleDetailDtoty.getFarmUseMoney10kv());
+		 		lwWholeSaleDetailDto.setFarmUseQuantity35kv(lwWholeSaleDetailDtodm.getFarmUseQuantity35kv()+lwWholeSaleDetailDtogy.getFarmUseQuantity35kv()+lwWholeSaleDetailDtojy.getFarmUseQuantity35kv()+lwWholeSaleDetailDtoty.getFarmUseQuantity35kv());
+		 		lwWholeSaleDetailDto.setFarmUseMoney35kv(lwWholeSaleDetailDtodm.getFarmUseMoney35kv()+lwWholeSaleDetailDtogy.getFarmUseMoney35kv()+lwWholeSaleDetailDtojy.getFarmUseMoney35kv()+lwWholeSaleDetailDtoty.getFarmUseMoney35kv());
+		 		
+		 		lwWholeSaleDetailDto.setBizQuantity10kv(lwWholeSaleDetailDtodm.getBizQuantity10kv()+lwWholeSaleDetailDtogy.getBizQuantity10kv()+lwWholeSaleDetailDtojy.getBizQuantity10kv()+lwWholeSaleDetailDtoty.getBizQuantity10kv());
+		 		lwWholeSaleDetailDto.setBizMoney10kv(lwWholeSaleDetailDtodm.getBizMoney10kv()+lwWholeSaleDetailDtogy.getBizMoney10kv()+lwWholeSaleDetailDtojy.getBizMoney10kv()+lwWholeSaleDetailDtoty.getBizMoney10kv());
+		 		lwWholeSaleDetailDto.setBizQuantity35kv(lwWholeSaleDetailDtodm.getBizQuantity35kv()+lwWholeSaleDetailDtogy.getBizQuantity35kv()+lwWholeSaleDetailDtojy.getBizQuantity35kv()+lwWholeSaleDetailDtoty.getBizQuantity35kv());
+		 		lwWholeSaleDetailDto.setBizMoney35kv(lwWholeSaleDetailDtodm.getBizMoney35kv()+lwWholeSaleDetailDtogy.getBizMoney35kv()+lwWholeSaleDetailDtojy.getBizMoney35kv()+lwWholeSaleDetailDtoty.getBizMoney35kv());
+		 		
+		 		lwWholeSaleDetailDto.setUnIndustryQuantity10kv(lwWholeSaleDetailDtodm.getUnIndustryQuantity10kv()+lwWholeSaleDetailDtogy.getUnIndustryQuantity10kv()+lwWholeSaleDetailDtojy.getUnIndustryQuantity10kv()+lwWholeSaleDetailDtoty.getUnIndustryQuantity10kv());
+		 		lwWholeSaleDetailDto.setUnIndustryMoney10kv(lwWholeSaleDetailDtodm.getUnIndustryMoney10kv()+lwWholeSaleDetailDtogy.getUnIndustryMoney10kv()+lwWholeSaleDetailDtojy.getUnIndustryMoney10kv()+lwWholeSaleDetailDtoty.getUnIndustryMoney10kv());
+		 		lwWholeSaleDetailDto.setUnIndustryQuantity35kv(lwWholeSaleDetailDtodm.getUnIndustryQuantity35kv()+lwWholeSaleDetailDtogy.getUnIndustryQuantity35kv()+lwWholeSaleDetailDtojy.getUnIndustryQuantity35kv()+lwWholeSaleDetailDtoty.getUnIndustryQuantity35kv());
+		 		lwWholeSaleDetailDto.setUnIndustryMoney35kv(lwWholeSaleDetailDtodm.getUnIndustryMoney35kv()+lwWholeSaleDetailDtogy.getUnIndustryMoney35kv()+lwWholeSaleDetailDtojy.getUnIndustryMoney35kv()+lwWholeSaleDetailDtoty.getUnIndustryMoney35kv());
+		 		String tuibudianfeegy=lwAllWholeFeeDtogy.getFujia5();
+		 		String tuibudianfeety=lwAllWholeFeeDtoty.getFujia5();
+		 		String tuibudianfeedm=lwAllWholeFeeDtodm.getFujia5();
+		 		String tuibudianfeejy=lwAllWholeFeeDtojy.getFujia5();
+		 		if(tuibudianfeegy.equals("")||tuibudianfeegy==null){
+		 			tuibudianfeegy="0";
+				}
+		 		
+		 		if(tuibudianfeety.equals("")||tuibudianfeety==null){
+		 			tuibudianfeety="0";
+				}
+		 		
+		 		if(tuibudianfeedm.equals("")||tuibudianfeedm==null){
+		 			tuibudianfeedm="0";
+				}
+		 		
+		 		if(tuibudianfeejy.equals("")||tuibudianfeejy==null){
+		 			tuibudianfeejy="0";
+				}
+		 		
+		 		LwAllWholeFeeDto  lwAllWholeFeeDto=new LwAllWholeFeeDto();
+		 		
+		 		lwAllWholeFeeDto.setFujia11(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getFujia11())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia11())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia11())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia11())));
+
+		 		lwAllWholeFeeDto.setFujia12(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getFujia12())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia12())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia12())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia12())));
+		 		
+		 		lwAllWholeFeeDto.setPower1(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getPower1())+Double.parseDouble(lwAllWholeFeeDtogy.getPower1())+Double.parseDouble(lwAllWholeFeeDtoty.getPower1())+Double.parseDouble(lwAllWholeFeeDtojy.getPower1())));
+		 		
+		 		lwAllWholeFeeDto.setDianfei(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())));
+		 		
+		 		lwAllWholeFeeDto.setDianfeitax(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax())));
+		 		
+		 		lwAllWholeFeeDto.setHaiminglu(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getHaiminglu())+Double.parseDouble(lwAllWholeFeeDtogy.getHaiminglu())+Double.parseDouble(lwAllWholeFeeDtoty.getHaiminglu())+Double.parseDouble(lwAllWholeFeeDtojy.getHaiminglu())));
+		 		
+		 		lwAllWholeFeeDto.setFujia2(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getFujia2())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia2())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia2())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia2())));
+		 		
+		 		lwAllWholeFeeDto.setFujia3(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())));
+		 		
+		 		lwAllWholeFeeDto.setDuobian(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getDuobian())+Double.parseDouble(lwAllWholeFeeDtogy.getDuobian())+Double.parseDouble(lwAllWholeFeeDtoty.getDuobian())+Double.parseDouble(lwAllWholeFeeDtojy.getDuobian())));
+		 		
+		 		lwAllWholeFeeDto.setFujia5(String.valueOf(Double.parseDouble(tuibudianfeejy)+Double.parseDouble(tuibudianfeety)+Double.parseDouble(tuibudianfeedm)+Double.parseDouble(tuibudianfeegy)));
 		 httpServletRequest.setAttribute("sumwc", df.format(sumwc));
 		 httpServletRequest.setAttribute("sumwfee", df.format(sumwfee));
 		 httpServletRequest.setAttribute("sumwpower",Math.round(sumwpower));
@@ -270,11 +350,12 @@ public class UIEveryWholeSaleCountPrintAction extends Action {
 		httpServletRequest.setAttribute("lwAllWholeFeeDtodm", lwAllWholeFeeDtodm);
 		httpServletRequest.setAttribute("lwAllWholeFeeDtojy", lwAllWholeFeeDtojy);
 		httpServletRequest.setAttribute("lwAllWholeFeeDtoty", lwAllWholeFeeDtoty);
-		
+		httpServletRequest.setAttribute("lwAllWholeFeeDto", lwAllWholeFeeDto);
 		httpServletRequest.setAttribute("lwWholeSaleDetailDtogy", lwWholeSaleDetailDtogy);
 		httpServletRequest.setAttribute("lwWholeSaleDetailDtodm", lwWholeSaleDetailDtodm);
 		httpServletRequest.setAttribute("lwWholeSaleDetailDtojy", lwWholeSaleDetailDtojy);
 		httpServletRequest.setAttribute("lwWholeSaleDetailDtoty", lwWholeSaleDetailDtoty);
+		httpServletRequest.setAttribute("lwWholeSaleDetailDto", lwWholeSaleDetailDto);
 		return actionMapping.findForward("wholeSaleEveryPrint");
 	}
 }
