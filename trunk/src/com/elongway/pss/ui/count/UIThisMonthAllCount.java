@@ -25,6 +25,7 @@ import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwDcodeDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
+import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 
@@ -150,7 +151,7 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-			sumffee+=lwCorporationSummaryDto.getSumFee();
+			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG);
 
 		}
 		
@@ -362,21 +363,21 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 
 		 
 
-		httpServletRequest.setAttribute("sumffee", df.format(sumffee));
-		httpServletRequest.setAttribute("sumfpower", Math.round(sumfpower));
-		httpServletRequest.setAttribute("sumfdianfee", df.format(sumfdianfee));
-		httpServletRequest.setAttribute("sumftax", df.format(sumftax));
-		httpServletRequest.setAttribute("sumfc", df.format(sumfc));
-		httpServletRequest
-				.setAttribute("summfdianjin", df.format(summfdianjin));
-		httpServletRequest.setAttribute("sumfdianjintax", df
-				.format(sumfdianjintax));
-		httpServletRequest.setAttribute("sumfsanxia", df.format(sumfsanxia));
-		httpServletRequest.setAttribute("sumfsanxiatax", df
-				.format(sumfsanxiatax));
-		httpServletRequest.setAttribute("sumfjijin", df.format(sumfjijin));
-		httpServletRequest
-				.setAttribute("sumfjijintax", df.format(sumfjijintax));
+			httpServletRequest.setAttribute("sumffee", df.format(Math.round(sumffee*100)/100));
+			httpServletRequest.setAttribute("sumfpower", Math.round(sumfpower));
+			httpServletRequest.setAttribute("sumfdianfee", df.format(Math.round(sumfdianfee*100)/100));
+			httpServletRequest.setAttribute("sumftax", df.format(Math.round(sumftax*100)/100));
+			httpServletRequest.setAttribute("sumfc", df.format(Math.round(sumfc*100)/100));
+			httpServletRequest
+					.setAttribute("summfdianjin", df.format(Math.round(summfdianjin*100)/100));
+			httpServletRequest.setAttribute("sumfdianjintax", df
+					.format(sumfdianjintax));
+			httpServletRequest.setAttribute("sumfsanxia", df.format(Math.round(sumfsanxia*100)/100));
+			httpServletRequest.setAttribute("sumfsanxiatax", df
+					.format(Math.round(sumfsanxiatax*100)/100));
+			httpServletRequest.setAttribute("sumfjijin", df.format(Math.round(sumfjijin*100)/100));
+			httpServletRequest
+					.setAttribute("sumfjijintax", df.format(Math.round( sumfjijintax*100)/100));
 		httpServletRequest.setAttribute("sumwfee", df.format(sumwfee));
 		httpServletRequest.setAttribute("sumwpower", Math.round(sumwpower));
 		httpServletRequest.setAttribute("sumwdianfee", df.format(sumwdianfee));

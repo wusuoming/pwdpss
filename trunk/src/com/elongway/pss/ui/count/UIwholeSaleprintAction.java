@@ -130,6 +130,8 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setDianjin(df.format(Double.parseDouble(dianjin)/1.17));
 		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)/1.17*0.17));
 		lwAllWholeFeeDto.setPower1(zongdianliang);
+		lwAllWholeFeeDto.setFujia4(exends9);
+		lwAllWholeFeeDto.setFujia5(exends10);
 		
 		lwAllWholeFeeDto.setSumfee(exends8);
 		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
