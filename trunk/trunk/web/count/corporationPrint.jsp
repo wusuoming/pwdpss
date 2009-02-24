@@ -12,6 +12,8 @@
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwFactoryIndicatorDto"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwNewFactoryIndicatorDto"/>
  <jsp:directive.page import="java.text.DecimalFormat"/>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
+<jsp:directive.page import="com.elongway.pss.dto.domain.LwNewFactoryIndicatorBakDto"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <meta http-equiv=Content-Type content="text/html; charset=gb2312">
@@ -45,9 +47,9 @@
 		Collection col=(List)request.getAttribute("colpoint");
 		String tax=(String)request.getAttribute("tax");
 		DecimalFormat df = new DecimalFormat("###0.00");
-		
+		Collection colbak=(List)request.getAttribute("colpointbak");
 %>
-		   <table style='width:100%' border="1" cellspacing="0">
+		   <table style='width:70%' border="1" cellspacing="0">
   <tr class=listtitle align="center">
 			<td class=title0 colspan="11"><B><font size="4">结算单</font></B></td>
 		</tr>
@@ -150,6 +152,7 @@
 
 			</tr>
 			<%
+			if(corporation.getStatMonth().equals(PowerFeeCal.getCurrentBillMonth())){
 			Iterator it=col.iterator();
 			while(it.hasNext()){
 			LwNewFactoryIndicatorDto lwFactoryIndicatorDto=(LwNewFactoryIndicatorDto)it.next();
@@ -190,8 +193,53 @@
 						<%} %>
 						
 			</tr>
-			<%} %>
-
+			<%} 
+			}else{
+			
+			
+			Iterator itbak=colbak.iterator();
+			while(itbak.hasNext()){
+			LwNewFactoryIndicatorBakDto lwNewFactoryIndicatorBakDto=(LwNewFactoryIndicatorBakDto)itbak.next();
+			%>
+			
+			<tr >
+						<td><font size="3"><%=lwCoporationUserInfoDto.getLineNo()%></font></td>
+						<td><font size="3"><%=lwNewFactoryIndicatorBakDto.getAmmeterNo()%></font></td>
+						<%
+						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("0") ){
+						 %>
+						<td class="input" ><font size="3">大工业</font></td>
+						<%} %>
+						<%
+						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("1") ){
+						 %>
+						<td class="input" ><font size="3">非居民照明</font></td>
+						<%} %>
+						<td class="input" ><font size="3"><%=Math.round(lwNewFactoryIndicatorBakDto.getRate())%></font></td>
+						<td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getLastWorkNum()%></font></td>
+						
+						
+						 <td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getThisWorkNum()%></font></td>
+						
+						 <td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getWorkQuantity() %></font></td>
+						<td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getLastIdleNum()%></font></td>
+						
+						
+					
+						 <td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getThisIdleNum()%></font></td>
+						
+						 <td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getUnworkQuantity()%></font></td>
+						<%
+						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("0") ){
+						 %>
+						<td class="input" ><font size="3"><%=corporation.getNeedPointer()%></font></td>
+						
+						<%} %>
+						
+			</tr>
+			<%
+			}}
+			 %>
     
   
 

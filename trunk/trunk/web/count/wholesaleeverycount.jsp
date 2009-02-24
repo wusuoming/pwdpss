@@ -92,20 +92,25 @@
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="4">包头市农电公司趸售电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司趸售电费电量发行单</font></td>
 		</tr>
 		
 		<%
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
+		
+		DecimalFormat df1 = new DecimalFormat("###0");
+		
 		LwWholeSaleDetailDto lwWholeSaleDetailDtogy = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtogy");
 		LwWholeSaleDetailDto lwWholeSaleDetailDtodm = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtodm");
 		LwWholeSaleDetailDto lwWholeSaleDetailDtojy = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtojy");
 		LwWholeSaleDetailDto lwWholeSaleDetailDtoty = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDtoty");
+		LwWholeSaleDetailDto lwWholeSaleDetailDto = (LwWholeSaleDetailDto)request.getAttribute("lwWholeSaleDetailDto");
 		 LwAllWholeFeeDto lwAllWholeFeeDtoty = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtoty");
 		 LwAllWholeFeeDto lwAllWholeFeeDtogy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
 		LwAllWholeFeeDto lwAllWholeFeeDtodm = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
+		LwAllWholeFeeDto lwAllWholeFeeDto = (LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDto");
 		
 		String  power1 = lwAllWholeFeeDtoty.getPower1();
 		if(power1.equals("")||power1==null){
@@ -288,8 +293,34 @@
 		}
 		
 		
+		
+		
+		
+		
+		
+		String tuibuty = lwAllWholeFeeDtoty.getFujia5();
+		if(tuibuty.equals("")||tuibuty==null){
+			tuibuty="0";
+		}
+		
+		
+			String tuibugy = lwAllWholeFeeDtogy.getFujia5();
+		if(tuibugy.equals("")||tuibugy==null){
+			tuibugy="0";
+		}
+		
+				String tuibudm = lwAllWholeFeeDtodm.getFujia5();
+		if(tuibudm.equals("")||tuibudm==null){
+			tuibudm="0";
+		}
+		
+			String tuibujy = lwAllWholeFeeDtojy.getFujia5();
+		if(tuibujy.equals("")||tuibujy==null){
+			tuibujy="0";
+		}
+		
 		//求总电量
-		LwAllWholeFeeDto lwAllWholeFeeDto = new LwAllWholeFeeDto();
+	
 		 %>
 		<tr class=listtitle>
 				<td width="10%">
@@ -348,6 +379,9 @@
 			<tr >
 				<td nowrap width="10%"  align="center" rowspan="5">
 					<span class="title"><font size="2">土右供电局</font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia11()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity10kv()) %></font></span>
@@ -442,7 +476,9 @@
 							
 			</tr>
 			<tr >
-				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia12()%></font></span>
+				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity35kv()) %></font></span>
 				<br></td>
@@ -461,7 +497,7 @@
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtoty.getProductMoney35kv()) %></font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+			<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getFarmUseQuantity35kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
@@ -507,14 +543,14 @@
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">退补电费</font></span>
-				<br></td>
+				<br></td><%--
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				--%><td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
 				<br></td>
 				
@@ -535,25 +571,20 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(fuJia3)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanXia)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getFujia2())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sanXiaTax)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getHaiminglu())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(jiJin)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDuobian())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(fuJia1)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(tuibuty)) %></font></span>
 				<br></td>
+	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianJin)) %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dianJinTax)) %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumFee))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia2())+Double.parseDouble(lwAllWholeFeeDtoty.getHaiminglu())+Double.parseDouble(tuibuty)+Double.parseDouble(lwAllWholeFeeDtoty.getDuobian()))%></font></span>
 				<br></td>
 				
 						
@@ -617,7 +648,10 @@
 					<span class="title"><font size="2">达茂供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia11() %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
@@ -710,8 +744,12 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia12() %></font></span>
 				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()) %></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney35kv()) %></font></span>
 				<br></td>
@@ -774,13 +812,13 @@
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				<%--<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				--%><td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
 				<br></td>
 				
@@ -801,25 +839,25 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3dm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiadm)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getFujia2())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxdm)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getHaiminglu())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijindm)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDuobian())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1dm)) %></font></span>
-				<br></td>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(tuibudm)) %></font></span>
+				<br></td><%--
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjindm)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxdm)) %></font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeedm))%></font></span>
+				--%><td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia2())+Double.parseDouble(lwAllWholeFeeDtodm.getHaiminglu())+Double.parseDouble(tuibudm)+Double.parseDouble(lwAllWholeFeeDtodm.getDuobian()))%></font></span>
 				<br></td>
 				
 						
@@ -884,8 +922,13 @@
 					<span class="title"><font size="2">九原供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getDenizenQuantity10kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia11()%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenQuantity10kv()) %></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenMoney10kv()) %></font></span>
 				<br></td>
@@ -979,8 +1022,13 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtojy.getDenizenQuantity35kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia12()%></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenQuantity10kv()) %></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtojy.getDenizenMoney35kv()) %></font></span>
 				<br></td>
@@ -1043,13 +1091,13 @@
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">退补电费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				<%--<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				--%><td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
 				<br></td>
 				
@@ -1070,25 +1118,25 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3jy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiajy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getFujia2())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxjy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getHaiminglu())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijinjy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDuobian())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1jy)) %></font></span>
-				<br></td>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(tuibujy)) %></font></span>
+				<br></td><%--
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjinjy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxjy)) %></font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeejy))%></font></span>
+				--%><td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia2())+Double.parseDouble(lwAllWholeFeeDtojy.getHaiminglu())+Double.parseDouble(tuibujy)+Double.parseDouble(lwAllWholeFeeDtojy.getDuobian()))%></font></span>
 				<br></td>
 				
 						
@@ -1153,8 +1201,13 @@
 					<span class="title"><font size="2">固阳供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getDenizenQuantity10kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia11()  %></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenQuantity10kv()) %></font></span>
+				<br></td>
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenMoney10kv()) %></font></span>
 				<br></td>
@@ -1248,8 +1301,14 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtogy.getDenizenQuantity35kv()) %></font></span>
+					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia12() %></font></span>
 				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenQuantity35kv()) %></font></span>
+				<br></td>
+				
+				
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtogy.getDenizenMoney35kv()) %></font></span>
 				<br></td>
@@ -1311,14 +1370,14 @@
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">退补电费</font></span>
-				<br></td>
+				<br></td><%--
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">附加2费</font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
+				--%><td nowrap width="10%" align="center">
 					<span class="title"><font size="2">总电费</font></span>
 				<br></td>
 				
@@ -1339,37 +1398,36 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia3gy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiagy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getFujia2())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sanxiataxgy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getHaiminglu())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Jijingy)) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDuobian())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Fujia1gy)) %></font></span>
-				<br></td>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(tuibugy)) %></font></span>
+				<br></td><%--
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjingy)) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxgy)) %></font></span>
 				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Sumfeegy)) %></font></span>
+				--%><td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia2())+Double.parseDouble(lwAllWholeFeeDtogy.getHaiminglu())+Double.parseDouble(tuibugy)+Double.parseDouble(lwAllWholeFeeDtogy.getDuobian()))%></font></span>
 				<br></td>
 				
 						
 			</tr>
-			<tr class=listtitle>
+		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">总电量10KV</font></span>
 				<br></td>
-				
 				<td nowrap width="10%">
 					<span class="title"><font size="2">居民电量10KV</font></span>
 				<br></td>
@@ -1417,43 +1475,221 @@
 				<br></td>
 							
 			</tr>
-			
-						<tr >
-						<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"></font></span>
+			<tr >
+				<td nowrap width="10%"  align="center" rowspan="5">
+					<span class="title"><font size="2">总计</font></span>
 				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df1.format(Double.parseDouble(lwAllWholeFeeDto.getFujia11())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnDenizenQuantity10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getUnDenizenMoney10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getProductQuantity10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getProductMoney10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getFarmUseQuantity10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getFarmUseMoney10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getBizQuantity10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getBizMoney10kv()) %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnIndustryQuantity10kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getUnIndustryMoney10kv()) %></font></span>
+				<br></td>
+				
+							
+			</tr>
+			<tr class=listtitle>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电量35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">居民电量35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">居民电费35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民电量35KV</font></span>
+				<br></td>
+		
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民电费35KV</font></span>
+				<br></td>	
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">生产电量35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">生产电费35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电量35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电费35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">商业电量35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">商业电费35KV</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电量35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">工业电费35KV</font></span>
+				<br></td>
+							
+			</tr>
+			<tr >
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df1.format(Double.parseDouble(lwAllWholeFeeDto.getFujia12())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenQuantity35kv()) %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenMoney35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnDenizenQuantity35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getUnDenizenMoney35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getProductQuantity35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getProductMoney35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getFarmUseQuantity35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getFarmUseMoney35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getBizQuantity35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getBizMoney35kv()) %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDto.getUnIndustryQuantity35kv()) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getUnIndustryMoney35kv()) %></font></span>
+				<br></td>
+				
+							
+			</tr>
+			<tr class=listtitle>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwpower") %></font></span>
+					<span class="title"><font size="2">总电量</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwc") %></font></span>
+					<span class="title"><font size="2">电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwtax")%></font></span>
+					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("Sumlilv") %></font></span>
+					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxia")%></font></span>
+					<span class="title"><font size="2">广播费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwsanxiatax")%></font></span>
+					<span class="title"><font size="2">海明炉</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwjijin")%></font></span>
+					<span class="title"><font size="2">多边电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwjijintax")%></font></span>
+					<span class="title"><font size="2">退补电费</font></span>
+				<br></td>
+				<%--<td nowrap width="10%" align="center">
+					<span class="title"><font size="2">附加1费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("summwdianjin")%></font></span>
+					<span class="title"><font size="2">附加2费</font></span>
+				<br></td>
+				--%><td nowrap width="10%" align="center">
+					<span class="title"><font size="2">总电费</font></span>
+				<br></td>
+				
+						
+			</tr>
+			
+				<tr >
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2"><%=df1.format(Double.parseDouble(lwAllWholeFeeDto.getPower1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwdianjintax")%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=request.getAttribute("sumwfee") %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianfeitax())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getFujia3())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getFujia2())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getHaiminglu())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDuobian())) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getFujia5())) %></font></span>
+				<br></td><%--
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjindm)) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxdm)) %></font></span>
+				<br></td>
+				--%><td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianfei())+Double.parseDouble(lwAllWholeFeeDto.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDto.getFujia3())+Double.parseDouble(lwAllWholeFeeDto.getFujia2())+Double.parseDouble(lwAllWholeFeeDto.getHaiminglu())+Double.parseDouble(lwAllWholeFeeDto.getFujia5())+Double.parseDouble(lwAllWholeFeeDto.getDuobian()))%></font></span>
 				<br></td>
 				
 						
