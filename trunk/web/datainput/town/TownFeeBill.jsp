@@ -107,7 +107,7 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
 	<table width="100%" cellspacing="0" border="0" >
 		<tr class=listtitle align="center">
-			<td class=title0 colspan="11"><B><font size="3"></font></B></td>
+			<td class=title0 colspan="10"><B><font size="3"></font></B></td>
 		</tr>
 		<tr>
 			<td class="blue" colspan="4">单位：包头市九原电力公司供电服务总站</td>
@@ -120,10 +120,11 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
+			if(!"mcx".equals(dto.getTownCode())){
 			%>	
 			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><font color="F9FAFB"><%=dto.getTownName() %></font></a></span></td>
 			
-			<%}} %>
+			<%}}} %>
 			
 		</tr>
 		<tr>
@@ -131,11 +132,11 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
-			
+			if(!"mcx".equals(dto.getTownCode())){
 			%>	
 			<td class="title"><%=dto.getPowerQuantity() %></td>
 			
-			<%}} %>
+			<%}}} %>
 			
 		</tr>
 	<tr>
@@ -143,11 +144,11 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
-			
+			if(!"mcx".equals(dto.getTownCode())){
 			%>	
 			<td class="title"><%=dto.getPowerFee()%></td>
 			
-			<%}} %>
+			<%}}} %>
 			
 		</tr>
 	

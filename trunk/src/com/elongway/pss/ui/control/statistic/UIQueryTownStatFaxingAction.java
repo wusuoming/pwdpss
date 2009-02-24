@@ -74,7 +74,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 			forward = "Success";
 		} else if(firstquery == null) {
 	
-			Collection goudianList = blLwTownGouDianFaxingFacade.findByConditions("statMonth = "+PowerFeeCal.getCurrentBillMonth());
+			Collection goudianList = blLwTownGouDianFaxingFacade.findByConditions("statMonth = '"+PowerFeeCal.getCurrentBillMonth()+"'");
 			if(goudianList.size()>0){
 				throw new UserException(-6,-704,this.getClass().getName(),PowerFeeCal.getCurrentBillMonth()+"购电结算单已经进行录入");
 			}
