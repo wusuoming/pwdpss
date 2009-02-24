@@ -69,6 +69,7 @@ public class UIPostTownStatFaxingAction extends Action {
 			gouDianDto.setStatMonth(statMonth);
 			gouDianDto.setTownCode(comCode[i]);
 			gouDianDto.setTownName(company[i]);
+			gouDianDto.setPowerQuantity(Double.parseDouble(sumPower[i]));
 			gouDianDto.setSumFee(Double.parseDouble(sumFee[i]));
 			gouDianDto.setPureFee(Double.parseDouble(pureFee[i]));
 			gouDianDto.setPowerFeeTax(Double.parseDouble(feeTax[i]));

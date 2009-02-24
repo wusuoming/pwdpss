@@ -89,16 +89,18 @@
 function printCount(){
 	 var   strURL;     
 	 var tt = fm.dd.value;
-	 var company = fm.company.value;
-   strURL="<%=request.getContextPath()%>/queryTownStatPrint.do?statMonth="+tt+"&company="+company;    
- 
+	 var company = fm.company1.value;
+   strURL="<%=request.getContextPath()%>/queryTownStatStatPrint.do?statMonth="+tt+"&company="+company;    
+ alert(strURL);
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 </script>
 </head>
 <body class=interface>&nbsp; 
 <html:errors />
-<%Collection billList = (Collection)request.getAttribute("billList");
+<%
+String company = (String)request.getAttribute("company");
+Collection billList = (Collection)request.getAttribute("billList");
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 String inputDate = (String)request.getAttribute("statMonth");
 %>
@@ -108,7 +110,11 @@ String inputDate = (String)request.getAttribute("statMonth");
 		<tr>
 			<td class=title0 colspan="11" style="display:none"><input type="hidden" name="dd" value="<%=inputDate%>"></td>
 		</tr>
-		<%Collection resultList = (Collection)request.getAttribute("resultList"); 
+		<input type="hidden" name="company1" value="<%=company%>">
+		<%
+		
+		
+		Collection resultList = (Collection)request.getAttribute("resultList"); 
 		
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
