@@ -75,7 +75,20 @@ create by wangrongjia
 			<td class=title0 colspan="7"><B>当月电费电量发行单</B></td>
 		</tr>
           <tr>
-         <td align="center">录入年月：				
+          <td class="title">选择：</td>	
+         <td class="input"><select name="counttype" onchange="sexy()">
+				   
+				  <option value="1">当月统计</option>
+				  <option value="2">累加统计</option>
+				
+				  
+				
+				  
+              </select>	
+              </td>
+          
+          
+         <td align="center"  style="display: " id='jianren'>录入年月：				
 				
 				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly"   />				
 			
@@ -97,13 +110,34 @@ create by wangrongjia
 </form>
 <script language="javascript">
 
+function sexy(){
+ 
+ if(fm.counttype.value=='1'){
+  jianren.style.display="";
+ }
+ if(fm.counttype.value=='2'){
+  jianren.style.display="none";
+ }
+
+}
+
 function corporationFeeCount(){
+if(fm.counttype.value=='1'){
 if(fm.inputDate.value==''){
 	alert("请录入年月!");
 	return;
+		
+}
+fm.action="/iacontact/UIThisMonthAllCountAction.do";
+}
+if(fm.counttype.value=='2'){
+
+	
+		fm.action="/iacontact/UIThisMonthAllCountAction.do";
+
 }
 
-	fm.action="/iacontact/UIThisMonthAllCountAction.do";
+
 	
 	
 	fm.submit();
