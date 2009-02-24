@@ -70,7 +70,12 @@ create by wangrongjia
       <form name="fm" method="post" style="display:block;">
        <table class=common width="100%" cellspacing="1" cellpadding="5" border=0>
         <tr class=listtitle align="center">
+         <%String flag = (String)request.getAttribute("flag"); 
+            if(flag==null){%>
 			<td class=title0 colspan="7"><B>直供乡统计</B></td>
+			<%}else{ %>
+			<td class=title0 colspan="7"><B>直供乡购电结算单查询</B></td>
+			<%} %>
 		</tr>        
           <tr>
               <td align="center">所属供电公司：
@@ -107,7 +112,12 @@ create by wangrongjia
         </table>
       <table cellpadding="0" cellspacing="0" width="100%">
 		<tr>
+		<%if(flag==null){%>
 			<td class=button align="center"><input type=button class=button name=button0 value=" 统  计 " onClick="javascript:wholeSaleSerch();"></td>
+			<%}else{ %>
+			<td class=button align="center"><input type=button class=button name=button0 value=" 查  询 " onClick="Search();"></td>
+			<td class=button align="center"><input type=button class=button name=button0 value=" 录  入 " onClick="input();"></td>
+			<%} %>
 	</table>
 </form>
 <script language="javascript">
@@ -119,9 +129,26 @@ if(fm.inputDate.value ==''){
 	fm.action="/iacontact/queryTownStat.do?";
 	fm.submit();
 	}
-	
-	
-	
+}
+
+function Search(){
+if(fm.inputDate.value ==''){
+   alert('请输入查询日期'); 
+   return false;
+ }else{
+	fm.action="/iacontact/queryTownFaxing.do?firstquery=query";
+	fm.submit();
+	}
+}
+
+function input(){
+if(fm.inputDate.value ==''){
+   alert('请输入查询日期'); 
+   return false;
+ }else{
+	fm.action="/iacontact/queryTownFaxing.do?";
+	fm.submit();
+	}
 }
 
 Calendar.setup({

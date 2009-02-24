@@ -56,7 +56,7 @@
 		
 		
 		<tr>
-			<td class=title0 colspan="11"><b><font size="4">包头市农电公司<%=statMonth %>电费电量发行单</font></td>
+			<td class=title0 colspan="11"><b><font size="4"><%=townSataDto.getCompanyName()%><%=statMonth %>电费电量发行单</font></td>
 		</tr>
 		
 		<!--人员代码，姓名-->

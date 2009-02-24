@@ -52,30 +52,33 @@ public class UIQueryTownStatPrintAction extends Action {
 		// 进行分解
 		String formValue[] = s.split(",");
 		statMonth = formValue[0];
-		int length = formValue.length / 10;
+		int length = formValue.length / 12;
 		for (int i = 0; i < length; i++) {
 			townSataDto = new TownSataDto();
-			townSataDto.setSumPower(Double.parseDouble(formValue[i * 10 + 1]));
+			
+			townSataDto.setCompanyName(formValue[i * 12 + 1]);
+			townSataDto.setComCode(formValue[i * 12 + 2]);
+			townSataDto.setSumPower(Double.parseDouble(formValue[i * 12 + 3]));
 			townSataDto.setPurePowerFee(Double
-					.parseDouble(formValue[i * 10 + 2]));
+					.parseDouble(formValue[i * 12 + 4]));
 			townSataDto.setPowerFeeTax(Double
-					.parseDouble(formValue[i * 10 + 3]));
+					.parseDouble(formValue[i * 12 + 5]));
 			townSataDto.setPureDianJin(Double
-					.parseDouble(formValue[i * 10 + 4]));
+					.parseDouble(formValue[i * 12 + 6]));
 			townSataDto
-					.setDianJinTax(Double.parseDouble(formValue[i * 10 + 5]));
+					.setDianJinTax(Double.parseDouble(formValue[i * 12 + 7]));
 			townSataDto
-					.setPureSanXia(Double.parseDouble(formValue[i * 10 + 6]));
-			townSataDto.setSanXiaTax(Double.parseDouble(formValue[i * 10 + 7]));
-			townSataDto.setPureJiJin(Double.parseDouble(formValue[i * 10 + 8]));
-			townSataDto.setJiJinTax(Double.parseDouble(formValue[i * 10 + 9]));
+					.setPureSanXia(Double.parseDouble(formValue[i * 12 + 8]));
+			townSataDto.setSanXiaTax(Double.parseDouble(formValue[i * 12 + 9]));
+			townSataDto.setPureJiJin(Double.parseDouble(formValue[i * 12 + 10]));
+			townSataDto.setJiJinTax(Double.parseDouble(formValue[i * 12 + 11]));
 			townSataDto.setSumPowerFee(Double
-					.parseDouble(formValue[i * 10 + 10]));
+					.parseDouble(formValue[i * 12 + 12]));
 			resultList.add(townSataDto);
 		}
 		httpServletRequest.setAttribute("resultList", resultList);
 		httpServletRequest.setAttribute("statMonth", statMonth);
-
+		forward = "success";
 		return actionMapping.findForward("TownFeePrint1");
 
 	}

@@ -306,7 +306,18 @@
 			<forward name="statSuccess"
 				path="/datainput/town/TownFeeStat.jsp" />
 		</action>
-		
+		<!-- 直供乡按局购电统计查询 -->
+		<action
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatFaxingAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownFaxingFirst">
+			<forward name="Success"
+				path="/count/queryTownStat.jsp" />
+			<forward name="statSuccess"
+				path="/datainput/town/TownFeeStat.jsp" />
+			<forward name="queryGouDian"
+				path="/datainput/town/QueryTownFeeStatFaxing.jsp" />
+		</action>
 		
 		
 		<!-- 直供乡按局统计 打印-->
@@ -317,6 +328,8 @@
 			
 			<forward name="statSuccess"
 				path="/datainput/town/TownFeeStatPrint.jsp" />
+				<forward name="success"
+				path="/common/pub/CreateSuccess.jsp" />
 		</action>
 			<!-- 直供乡按局统计 发行-->
 		<action
@@ -325,7 +338,19 @@
 			path="/queryTownFaxing">
 			<forward name="statSuccess"
 				path="/datainput/town/TownFeeStatFaxing.jsp" />
+				<forward name="queryGouDian"
+				path="/datainput/town/QueryTownFeeStatFaxing.jsp" />
 		</action>
+		
+		<!-- 直供乡购电发行保存-->
+		<action
+			type="com.elongway.pss.ui.control.statistic.UIPostTownStatFaxingAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownFaxingSave">
+				<forward name="success"
+				path="/common/pub/CreateSuccess.jsp" />
+		</action>
+		
 		<action name="uiGetAmmeterForm"
 			type="com.elongway.pss.ui.control.common.pub.UIQueryCodeAction"
 			validate="true" input="/common/pub/Title.jsp" scope="request"
@@ -1726,8 +1751,7 @@
 			<action path="/queryTownStatPrint" 
 			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatPrintAction"
 			scope="request"
-			input="/datainput/town/TownFeeStatFaxing.jsp"
-			>
+			input="/datainput/town/TownFeeStatFaxing.jsp">
 			<forward name="TownFeePrint1" path="/datainput/town/TownFeeStatPrint.jsp"></forward>
 			</action>
 		<!--add by wangrongjia end   -->
