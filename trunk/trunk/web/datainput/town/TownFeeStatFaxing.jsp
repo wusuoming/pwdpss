@@ -105,10 +105,12 @@ function save(){
 	 var   strURL;     
 	 var statMonth = fm.dd.value;
 	 strURL="<%=request.getContextPath()%>/queryTownFaxingSave.do?statMonth="+statMonth; 
+	 if(!confirm('是否要进行保存')){
+	 return false;
+	 }else{
 	 fm.action = strURL;
-	 alert(fm.action);
 	 fm.submit(); 
-      
+     }
 }
 
 

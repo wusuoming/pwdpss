@@ -135,10 +135,12 @@ public class UIThisMonthAllCountAction extends Action {
 				+ "' and upcompany='ty' ";
 
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
+		// 查找当月所有大工业的计算结果
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
 		LwCorporationSummaryDto lwCorporationSummaryDto = new LwCorporationSummaryDto();
 		Iterator itf = colf.iterator();
+		// 遍历结构，得出电量、电费、电金、三峡、基金、
 		while (itf.hasNext()) {
 			lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
 			sumfpower += lwCorporationSummaryDto.getSumPointerQuantity()
@@ -165,13 +167,14 @@ public class UIThisMonthAllCountAction extends Action {
 		double differenceQuantityjy = 0;
 		double differenceQuantityty = 0;
 		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade = new BLLwWholeSaleSummaryFacade();
-
+		// 当月趸售计算结果
 		Collection col = blLwWholeSaleSummaryFacade
 				.findByConditions(conditions);
 		Iterator it = col.iterator();
 		while (it.hasNext()) {
 			LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) it
 					.next();
+			// 得到各个局的差别电量
 			differenceQuantity += Double
 					.parseDouble("".equals(lwWholeSaleSummaryDto
 							.getDifferenceQuantity()) ? "0"

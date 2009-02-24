@@ -49,11 +49,11 @@
 %>
 		   <table style='width:100%' border="1" cellspacing="0">
   <tr class=listtitle align="center">
-			<td class=title0 colspan="11"><B>结算单</B></td>
+			<td class=title0 colspan="11"><B><font size="4">结算单</font></B></td>
 		</tr>
 	<tr>
 	<td nowrap colspan="2">
-						<span class="title">月份:<%=corporation.getStatMonth()%></span>
+						<span class="title"><font size="3">月份:<%=corporation.getStatMonth()%></font></span>
 					</td>
 	</tr>
     <tr>
@@ -61,67 +61,67 @@
       
       <td style="display:none"><input type="hidden" name="LineCode" value="<%=corporation.getLineCode()%>"></td>
             <td style="display:none"><input type="hidden" name="StartMonth" value="<%=corporation.getStatMonth()%>"></td>
-            <td nowrap ><span class="title">户名</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getUserName()%></span></td>
-			<td nowrap colspan="2"><span class="title">户号</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getUserNo()%></span></td>
-			<td nowrap colspan="2"><span class="title">地址</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getAddress()%></span></td>
+            <td nowrap ><span class="title"><font size="3">户名</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getUserName()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">户号</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getUserNo()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">地址</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getAddress()%></font></span></td>
  
     </tr>
     <tr>
    
-            <td nowrap><span class="title">开户行</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getAccountBank()%></span></td>
-			<td nowrap colspan="2"><span class="title">税号</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getTaxNo()%></span></td>
-			<td nowrap colspan="2"><span class="title">帐号</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getAccountNo()%></span></td>
+            <td nowrap><span class="title"><font size="3">开户行</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getAccountBank()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">税号</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getTaxNo()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">帐号</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getAccountNo()%></font></span></td>
 
     </tr>
      <tr>
    
-            <td nowrap><span class="title">行业分类</span></td>
-			<td nowrap colspan="2"><span class="title">大工业</span></td>
-			<td nowrap colspan="2"><span class="title">供电电压</span></td>
+            <td nowrap><span class="title"><font size="3">行业分类</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">大工业</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">供电电压</font></span></td>
 			<%
 			if(lwCoporationUserInfoDto.getVoltage().equals("1")){
 			 %>
-			<td nowrap colspan="2"><span class="title">1</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">1</font></span></td>
 			<%
 			}
 			 %>
 			 <%
 			if(lwCoporationUserInfoDto.getVoltage().equals("2")){
 			 %>
-			<td nowrap colspan="2"><span class="title">10</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">10</font></span></td>
 			<%
 			}
 			 %>
 			 <%
 			if(lwCoporationUserInfoDto.getVoltage().equals("3")){
 			 %>
-			<td nowrap colspan="2"><span class="title">35</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">35</font></span></td>
 			<%
 			}
 			 %>
 			 <%
 			if(lwCoporationUserInfoDto.getVoltage().equals("4")){
 			 %>
-			<td nowrap colspan="2"><span class="title">220</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">220</font></span></td>
 			<%
 			}
 			 %>
 			 <%
 			if(lwCoporationUserInfoDto.getVoltage().equals("5")){
 			 %>
-			<td nowrap colspan="2"><span class="title">220以上</span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">220以上</font></span></td>
 			<%
 			}
 			 %>
 			
 			<td nowrap colspan="2"><span class="title">供电线路</span></td>
-			<td nowrap colspan="2"><span class="title"><%=lwCoporationUserInfoDto.getLineNo()%></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getLineNo()%></font></span></td>
 
     </tr>
   
@@ -132,20 +132,20 @@
     
    
     <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>表计信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">表计信息</B></td>
 		</tr>
     <tr>
-     <td nowrap><span class="title">线路名称 </span></td>
-			<td nowrap><span class="title">表号 </span></td>
-			<td nowrap><span class="title">类别</span></td>
-			<td nowrap><span class="title">倍率</span></td>
-			<td nowrap><span class="title">上月有功</span></td>
-			<td nowrap><span class="title">本月有功</span></td>
-			<td nowrap><span class="title">有功电量</span></td>
-			<td nowrap><span class="title">上月无功</span></td>
-			<td nowrap><span class="title">本月无功	</span></td>
-			<td nowrap><span class="title">无功电量</span></td>
-			<td nowrap><span class="title">需量指示</span></td>
+     <td nowrap><span class="title"><font size="3">线路名称 </span></td>
+			<td nowrap><span class="title"><font size="3">表号 </font></span></td>
+			<td nowrap><span class="title"><font size="3">类别</font></span></td>
+			<td nowrap><span class="title"><font size="3">倍率</font></span></td>
+			<td nowrap><span class="title"><font size="3">上月有功</font></span></td>
+			<td nowrap><span class="title"><font size="3">本月有功</font></span></td>
+			<td nowrap><span class="title"><font size="3">有功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">上月无功</font></span></td>
+			<td nowrap><span class="title"><font size="3">本月无功</font></span></td>
+			<td nowrap><span class="title"><font size="3">无功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">需量指示</font></span></td>
 			
 
 			</tr>
@@ -156,36 +156,36 @@
 			
 			 %>
 			<tr >
-						<td  ><input name="lincode" value="<%=lwCoporationUserInfoDto.getLineNo()%>"  readonly="readonly" style="width:65px"></td>
-						<td  ><input name="ammeterNo" value="<%=lwFactoryIndicatorDto.getAmmeterNo()%>"  readonly="readonly" style="width:65px"></td>
+						<td><font size="3"><%=lwCoporationUserInfoDto.getLineNo()%></font></td>
+						<td><font size="3"><%=lwFactoryIndicatorDto.getAmmeterNo()%></font></td>
 						<%
 						if(lwFactoryIndicatorDto.getAmmeterStyle().equals("0") ){
 						 %>
-						<td class="input" ><input name="ammeterStyle" value="大工业"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3">大工业</font></td>
 						<%} %>
 						<%
 						if(lwFactoryIndicatorDto.getAmmeterStyle().equals("1") ){
 						 %>
-						<td class="input" ><input name="ammeterStyle" value="非居民照明"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3">非居民照明</font></td>
 						<%} %>
-						<td class="input" ><input name="Rate" value="<%=Math.round(lwFactoryIndicatorDto.getRate())%>"  style="width:65px"></td>
-						<td class="input" ><input name="LastWorkNum" value="<%=lwFactoryIndicatorDto.getLastWorkNum()%>"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3"><%=Math.round(lwFactoryIndicatorDto.getRate())%></font></td>
+						<td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getLastWorkNum()%></font></td>
 						
 						
-						 <td class="input" ><input name="ThisWorkNum" value="<%=lwFactoryIndicatorDto.getThisWorkNum()%>" onblur="workpower()"  style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getThisWorkNum()%></font></td>
 						
-						 <td class="input" ><input name="workQuantity" value="<%=lwFactoryIndicatorDto.getWorkQuantity() %>" style="width:65px"></td>
-						<td class="input" ><input name="LastIdleNum" value="<%=lwFactoryIndicatorDto.getLastIdleNum()%>"  readonly="readonly" style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getWorkQuantity() %></font></td>
+						<td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getLastIdleNum()%></font></td>
 						
 						
 					
-						 <td class="input" ><input name="ThisIdleNum" value="<%=lwFactoryIndicatorDto.getThisIdleNum()%>"  style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getThisIdleNum()%></font></td>
 						
-						 <td class="input" ><input name="workQuantity" value="<%=lwFactoryIndicatorDto.getUnworkQuantity()%>"  style="width:65px"></td>
+						 <td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getUnworkQuantity()%></font></td>
 						<%
 						if(lwFactoryIndicatorDto.getAmmeterStyle().equals("0") ){
 						 %>
-						<td class="input" ><input name="needPointer" value="<%=corporation.getNeedPointer()%>"  readonly="readonly" style="width:65px"></td>
+						<td class="input" ><font size="3"><%=corporation.getNeedPointer()%></font></td>
 						
 						<%} %>
 						
@@ -201,42 +201,42 @@
       
      
         
-            <td nowrap><span class="title">有功变损</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getLineLoss()%></span></td>
-			<td nowrap><span class="title">无功变损</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getUnLineLoss()%></span></td>
-			<td nowrap><span class="title">有功线损</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getLossQuantity()%></span></td>
-			<td nowrap><span class="title">无功线损</span></td>
-			<td nowrap><span class="title"><%=corporation.getUnLossQuantity()%></span></td>
+            <td nowrap><span class="title"><font size="3">有功变损</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getLineLoss()%></font></span></td>
+			<td nowrap><span class="title"><font size="3">无功变损</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getUnLineLoss()%></font></span></td>
+			<td nowrap><span class="title"><font size="3">有功线损</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getLossQuantity()%></font></span></td>
+			<td nowrap><span class="title"><font size="3">无功线损</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getUnLossQuantity()%></font></span></td>
  
     </tr>
     <tr>
    
-            <td nowrap><span class="title">退补有功电量</span></td>
+            <td nowrap><span class="title"><font size="3">退补有功电量</font></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="ss" value=""  style="width:65px"></span></td>
-			<td nowrap><span class="title">（其中旁路电量）</span></td>
+			<td nowrap><span class="title"><font size="3">（其中旁路电量）</font></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="dd" value=""  style="width:65px"></span></td>
-			<td nowrap><span class="title">退补无功电量</span></td>
+			<td nowrap><span class="title"><font size="3">退补无功电量</font></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="ee" value=""  style="width:65px"></span></td>
-			<td nowrap><span class="title">总有功电量</span></td>
-			<td nowrap><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
+			<td nowrap><span class="title"><font size="3">总有功电量</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font></span></td>
 
     </tr>
      <tr>
    
-           <td nowrap><span class="title">无功总电量</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getUnPointerQuantity())%></span></td>
-			<td nowrap><span class="title">力率标准值</span></td>
-			<td nowrap colspan="2"><span class="title">0.90</span></td>
-			<td nowrap><span class="title">力率实际值</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getAjustRate()%></span></td>
-			<td nowrap><span class="title">力率调整值</span></td>
-			<td nowrap><span class="title"><%=corporation.getRateCode()%></span></td>
+           <td nowrap><span class="title"><font size="3">无功总电量</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getUnPointerQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3">力率标准值</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">0.90</font></span></td>
+			<td nowrap><span class="title"><font size="3">力率实际值</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getAjustRate()%></font></span></td>
+			<td nowrap><span class="title"><font size="3">力率调整值</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getRateCode()%></font></span></td>
     </tr>
   
     <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>电费信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">电费信息</font></B></td>
 		</tr>
     <tr>
     <tr>
@@ -244,73 +244,73 @@
       
      
         
-            <td nowrap><span class="title">项目</span></td>
-			<td nowrap colspan="2"><span class="title">电量</span></td>
-			<td nowrap><span class="title">电价</span></td>
-			<td nowrap colspan="2"><span class="title">金额</span></td>
-			 <td nowrap><span class="title">项目</span></td>
-			<td nowrap colspan="2"><span class="title">电量</span></td>
-			<td nowrap><span class="title">电价</span></td>
-			<td nowrap colspan="2"><span class="title">金额</span></td>
+            <td nowrap><span class="title"><font size="3">项目</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">金额</font></span></td>
+			 <td nowrap><span class="title"><font size="3">项目</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">电量</font></span></td>
+			<td nowrap><span class="title"><font size="3">电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">金额</font></span></td>
  
     </tr>
     <tr>
    
-            <td nowrap><span class="title">大工业</span></td>
+            <td nowrap><span class="title"><font size="3">大工业</font></span></td>
             <%
             if(corporation.getQuantityStyle().equals("")&&corporation.getIfchange().equals("0")){
        
              %>
-             <td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getPointerQuantity())%></span></td>
-              <td nowrap><span class="title"><%=corporation.getPointerPrice()%></span></td>
-            	 <td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPointerFee())%></span></td>
+             <td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getPointerQuantity())%></font></span></td>
+              <td nowrap><span class="title"><font size="3"><%=corporation.getPointerPrice()%></font></span></td>
+            	 <td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getPointerFee())%></font></span></td>
              <%} %>
              <%
               if(corporation.getQuantityStyle().equals("1")&&corporation.getIfchange().equals("0")){
           
               %>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getPeakQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getPeakPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPeakFee())%></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getPeakQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getPeakPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getPeakFee())%></font></span></td>
 			<%} %>
 			<%
               if(corporation.getIfchange().equals("1")){
               %>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getBeforPower())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getBeforPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getBeforFee())%></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getBeforPower())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getBeforPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getBeforFee())%></font></span></td>
 			<%} %>
 			
-			<td nowrap><span class="title">非居民照明</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getUnDenizenQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getUnDenizenPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
+			<td nowrap><span class="title"><font size="3">非居民照明</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getUnDenizenQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getUnDenizenPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getUnDenizenFee())%></font></span></td>
 
     </tr>
      <tr>
    
-           <td nowrap><span class="title">三峡基金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getSanXiaPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
-			<td nowrap><span class="title">基金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getSurchargePrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSurcharge())%></span></td>
+           <td nowrap><span class="title"><font size="3">三峡基金</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getSanXiaPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getSanXiaFee())%></font></span></td>
+			<td nowrap><span class="title"><font size="3">基金</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getSurchargePrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getSurcharge())%></font></span></td>
     </tr>
     <tr>
    
-           <td nowrap><span class="title">电金</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getPowerPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
+           <td nowrap><span class="title"><font size="3">电金</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getPowerPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getPowerFee())%></font></span></td>
 			<%
               if(corporation.getQuantityStyle().equals("1")){
               %>
-			<td nowrap><span class="title">大工业</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getLastPower())%></span></td>
-			<td nowrap><span class="title"><%=corporation.getLastPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getLastFee())%></span></td>
+			<td nowrap><span class="title"><font size="3">大工业</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getLastPower())%></font>/span></td>
+			<td nowrap><span class="title"><font size="3"><%=corporation.getLastPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getLastFee())%></font></span></td>
     	<%} %>
     				<%
               if(corporation.getIfchange().equals("0")){
@@ -318,62 +318,62 @@
 			<td nowrap colspan="2"><span class="title"></span></td>
 			<td nowrap><span class="title"></span></td>
 			<td nowrap><span class="title"></span></td>
-			<td nowrap colspan="2" >j<span class="title"></span></td>
+			<td nowrap colspan="2" ><span class="title"></span></td>
     	<%} %>
     </tr>
   
      <tr class=listtitle align="center">
-			<td class=title0 colspan="12"><B>合计信息</B></td>
+			<td class=title0 colspan="12"><B><font size="3">合计信息</font></B></td>
 		</tr>
     <tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">容量</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getContentQuantity())%></span></td>
-			<td nowrap><span class="title">容量电价</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getContentPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title" colspan="2">容量电费</span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getContentFee())%></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">容量</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getContentQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3">容量电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getContentPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title" colspan="2"><font size="3">容量电费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getContentFee())%></font></span></td>
 			
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">需量</span></td>
-			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getNeedQuantity())%></span></td>
-			<td nowrap><span class="title">需量电价</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getNeedPrice()%></span></td>
-			<td nowrap colspan="2"><span class="title">需量电费</span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getNeedFee())%></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">需量</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getNeedQuantity())%></font></span></td>
+			<td nowrap><span class="title"><font size="3">需量电价</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getNeedPrice()%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">需量电费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getNeedFee())%></font></span></td>
 			
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">利率电费</span></td>
-			<td nowrap colspan="2"><span class="title"><%=corporation.getPowerRateFee()%></span></td>
-			<td nowrap><span class="title">税</span></td>
-			<td nowrap colspan="2"><span class="title"><%=tax%></span></td>
-			<td nowrap colspan="2"><span class="title">资金合计</span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSumFee())%></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">利率电费</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getPowerRateFee()%></font></span></td>
+			<td nowrap><span class="title"><font size="3">税</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=tax%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">资金合计</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getSumFee())%></font></span></td>
 			
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name="exends1" value="<%=request.getAttribute("exends1") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends2" value="<%=request.getAttribute("exends2") %>"  style="width:65px"></span></td>
-			<td nowrap><span class="title"><input name="exends3" value="<%=request.getAttribute("exends3") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends4" value="<%=request.getAttribute("exends4") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends5" value="<%=request.getAttribute("exends5") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends6" value="<%=request.getAttribute("exends6") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends1") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends2") %></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=request.getAttribute("exends3") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends4") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends5") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends6") %></font></span></td>
 			
     </tr>
     <tr>
    
-           <td nowrap colspan="2"><span class="title"><input name=exends7 value="<%=request.getAttribute("exends7") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends8" value="<%=request.getAttribute("exends8") %>"  style="width:65px"></span></td>
-			<td nowrap ><span class="title"><input name="exends9" value="<%=request.getAttribute("exends9") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends10" value="<%=request.getAttribute("exends10") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends11" value="<%=request.getAttribute("exends11") %>"  style="width:65px"></span></td>
-			<td nowrap colspan="2"><span class="title"><input name="exends12" value="<%=request.getAttribute("exends12") %>"  style="width:65px"></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends7") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends8") %></font></span></td>
+			<td nowrap ><span class="title"><font size="3"><%=request.getAttribute("exends9") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends10") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends11") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends12") %></font></span></td>
 			
     </tr>
      </table>
