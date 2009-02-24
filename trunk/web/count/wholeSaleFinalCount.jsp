@@ -1069,11 +1069,7 @@ BODY {
 						<span class="title"><input name="exends6" value="<%= lwAllWholeFeeDto.getFujia2() %>" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
-
-				</tr>
-				 <%} %>
-				<tr>
-
+					
 					<td nowrap colspan="2">
 						<span class="title"><input name="exends7" value="总合计"
 								style="width: 65px"> </span>
@@ -1088,6 +1084,27 @@ BODY {
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><input name="exends10" value="" onblur="sum()"
+								style="width: 65px"> </span>
+					</td>
+
+				</tr>
+				 <%} %>
+				<tr>
+
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends7" value="总合计"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends8" value="<%= lwAllWholeFeeDto.getSumfee() %>"
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends9" value="<%= lwAllWholeFeeDto.getFujia4() %>" 
+								style="width: 65px"> </span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends10" value="<%= lwAllWholeFeeDto.getFujia5() %>" onblur="sum()"
 								style="width: 65px"> </span>
 					</td>
 					<td nowrap colspan="2">

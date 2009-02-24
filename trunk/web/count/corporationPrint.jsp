@@ -296,7 +296,7 @@
 			<td nowrap><span class="title">»ù½ð</span></td>
 			<td nowrap colspan="2"><span class="title"><%=Math.round(corporation.getElectricQuantity())%></span></td>
 			<td nowrap><span class="title"><%=corporation.getSurchargePrice()%></span></td>
-			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSurchargePrice())%></span></td>
+			<td nowrap colspan="2"><span class="title"><%=df.format(corporation.getSurcharge())%></span></td>
     </tr>
     <tr>
    

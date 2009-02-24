@@ -269,44 +269,44 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17)%></font></span>
 				<br></td>
 				<%} else{%>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17)%></font></span>
 				<br></td>
 				<%} %>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSanXiaFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG) %></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPowerFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPeakFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17)%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17)%></font></span>
 				<br></td>
 				<%} %>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getPowerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSurcharge()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
