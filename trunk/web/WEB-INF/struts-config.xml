@@ -322,12 +322,12 @@
 		
 		<!-- 直供乡按局统计 打印-->
 		<action
-			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatPrintAction"
+			type="com.elongway.pss.ui.control.statistic.UIQueryTownStatStatPrintAction"
 			validate="true" input="/common/pub/Title.jsp" scope="session"
-			path="/queryTownStatPrint">
+			path="/queryTownStatStatPrint">
 			
 			<forward name="statSuccess"
-				path="/datainput/town/TownFeeStatPrint.jsp" />
+				path="/datainput/town/TownFeeStatStatPrint.jsp" />
 				<forward name="success"
 				path="/common/pub/CreateSuccess.jsp" />
 		</action>

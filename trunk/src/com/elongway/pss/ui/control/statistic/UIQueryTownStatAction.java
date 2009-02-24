@@ -69,6 +69,7 @@ public class UIQueryTownStatAction extends Action {
 			/** 2-统计 */
 			// 得到机构代码
 			company = httpServletRequest.getParameter("company");
+			httpServletRequest.setAttribute("company", company);
 			// 如果选择一个机构
 			if ((!"".equals(company)) && (!"sum".equals(company))) {
 				statMonth = httpServletRequest.getParameter("inputDate");

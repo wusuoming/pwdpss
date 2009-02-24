@@ -60,7 +60,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 		String forward = null;
 		String company = null;
 		String statMonth = null;
-		Collection<LwPowerUserDto> userList = null;
+		Collection<LwPowerUserDto> userList = null; 
 		TownSataDto townSataDto = null;
 		Collection<TownSataDto> resultList = null;
 		Collection<LwTownGouDianFaxingDto> queryResult = null;
@@ -73,8 +73,11 @@ public class UIQueryTownStatFaxingAction extends Action {
 			httpServletRequest.setAttribute("flag", flag);
 			forward = "Success";
 		} else if(firstquery == null) {
-
-			
+	
+			Collection goudianList = blLwTownGouDianFaxingFacade.findByConditions("statMonth = "+PowerFeeCal.getCurrentBillMonth());
+			if(goudianList.size()>0){
+				throw new UserException(-6,-704,this.getClass().getName(),PowerFeeCal.getCurrentBillMonth()+"购电结算单已经进行录入");
+			}
 				// 如果选择多个机构
 				for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
 					LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
@@ -93,7 +96,6 @@ public class UIQueryTownStatFaxingAction extends Action {
 					townSataDto.setComCode(company);
 					townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
 					resultList.add(townSataDto);
-
 				}
 				townSataDto = PowerFeeCal.getSumCompanyStat(resultList,
 						statMonth);
@@ -110,10 +112,14 @@ public class UIQueryTownStatFaxingAction extends Action {
 			statMonth = httpServletRequest.getParameter("inputDate");
 			statMonth = new DateTime(statMonth, DateTime.YEAR_TO_MONTH)
 					.toString();
+	
 			// 如果选择一个机构
-			if ((!"".equals(company)) && (!"sum".equals(company))) {
-				
+			if ((!"".equals(company)) && (!"sum".equals(company))) {				
 				lwTownGouDianFaxingDto = blLwTownGouDianFaxingFacade.findByPrimaryKey(company, statMonth);
+				LwDcodeDto lwDcodeDto1 = blLwDcodeFacade.findByPrimaryKey("SupplyCom", company);
+				if(lwTownGouDianFaxingDto==null){
+					throw new UserException(-6,-704,this.getClass().getName(),lwDcodeDto1.getCodeCName()+" "+statMonth+"购电结算单还没有进行录入");
+				}
 				queryResult = new ArrayList<LwTownGouDianFaxingDto>();
 				queryResult.add(lwTownGouDianFaxingDto);
 			}else if ("sum".equals(company)) {
@@ -122,6 +128,10 @@ public class UIQueryTownStatFaxingAction extends Action {
 				queryResult.add(lwTownGouDianFaxingDto);
 			} else {
 				queryResult  = blLwTownGouDianFaxingFacade.findByConditions("statMonth = '"+statMonth+"'");
+				if(queryResult==null||queryResult.size()==0){
+					throw new UserException(-6,-704,this.getClass().getName(),"直供乡"+statMonth+"购电结算单还没有进行录入");
+				}
+					
 			}
 			httpServletRequest.setAttribute("statMonth", statMonth);
 			httpServletRequest.setAttribute("company", company);
