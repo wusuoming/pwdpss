@@ -624,7 +624,7 @@ public class BLCalPowerFeeCustomFacade {
 		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
 			LwTownIndicatorDto dto = (LwTownIndicatorDto) iterator.next();
 			// 发行电量 = 抄见电量+变损电量
-			sumPower = sumPower + dto.getReadQuantity()+dto.getTranferLossQuantity();
+			sumPower = sumPower + dto.getExcepQuantity();
 			
 
 		}

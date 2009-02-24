@@ -6,6 +6,7 @@
 <%@page import="com.elongway.pss.dto.custom.TownSataDto"%>
 <%@page import="com.elongway.pss.util.AppConst"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
+<%@page import="com.elongway.pss.dto.domain.LwTownGouDianFaxingDto"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -176,6 +177,10 @@ function result()
 	&nbsp;
 	<html:errors />
 	<%
+	String requestCom = (String) request
+					.getAttribute("company");
+	String requestStatMonth = (String) request
+					.getAttribute("statMonth");
 		Collection billList = (Collection) request
 					.getAttribute("billList");
 			SysUser user = (SysUser) session
@@ -195,15 +200,15 @@ function result()
 			</tr>
 			<%
 				Collection resultList = (Collection) request
-							.getAttribute("resultList");
+							.getAttribute("queryResult");
 					for (Iterator iterator = resultList.iterator(); iterator
 							.hasNext();) {
-						TownSataDto townSataDto = (TownSataDto) iterator.next();
+						LwTownGouDianFaxingDto lwTownGouDianFaxingDto = (LwTownGouDianFaxingDto) iterator.next();
 			%>
 
 			<tr>
 				<td class=title0 colspan="11">
-					<font size="2"><%=townSataDto.getCompanyName()%><%=townSataDto.getStatMonth()%>电费电量发行单</font>
+					<font size="2"><%=lwTownGouDianFaxingDto.getTownName()%><%=lwTownGouDianFaxingDto.getStatMonth()%>电费电量发行单</font>
 				</td>
 			</tr>
 
@@ -257,60 +262,60 @@ function result()
 			</tr>
 			<tr>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompanyName()%></font>
-					<input type="hidden" name="company" value="<%=townSataDto.getCompanyName()%>">
-					<input type="hidden" name="comCode" value="<%=townSataDto.getComCode()%>">
+					<span class="title"><font size="2"><%=lwTownGouDianFaxingDto.getTownName()%></font>
+					<input type="hidden" name="company" value="<%=lwTownGouDianFaxingDto.getTownName()%>">
+					<input type="hidden" name="comCode" value="<%=lwTownGouDianFaxingDto.getTownCode()%>">
 					</span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><%=townSataDto.getSumPower()%></span>
-					<input type="hidden" name="sumPower" value="<%=townSataDto.getSumPower()%>">
+					<span class="title"><%=lwTownGouDianFaxingDto.getPowerQuantity()%></span>
+					<input type="hidden" name="sumPower" value="<%=lwTownGouDianFaxingDto.getPowerQuantity()%>">
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="pureFee"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getPureFee()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="feeTax"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getPowerFeeTax()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="dianjin"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getPureDianJin()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="dianjinTax"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getDianJinTax()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sanxia"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getPureSanXia()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sanxiaTax"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getSanXiaTax()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="jijin"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getPureJiJin()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="jijinTax"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getJiJinTax()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sumFee"
-							value="0.0" style="width: 80px" onblur="result();"> </span>
+							value="<%=lwTownGouDianFaxingDto.getSumFee()%>" style="width: 80px" > </span>
 					<br>
 				</td>
 
@@ -337,14 +342,11 @@ function result()
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<tr class="listtitle" align="center">
-				<td class=button>
-					<input name="add" type="button" class=button value=" 保 存 "
-						onClick="save();">
-				</td>
-			<!--  	<td class=button>
+				
+		 	<td class=button>
 					<input name="add" type="button" class=button value=" 打 印 "
 						onClick="printCount();">
-				</td> -->
+				</td> 
 				<td class=button align="center">
 					<input type=button class=button name=button2 value=" 返回 "
 						onClick="history.go(-1);">
