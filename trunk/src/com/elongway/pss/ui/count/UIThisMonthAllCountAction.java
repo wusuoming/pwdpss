@@ -152,8 +152,8 @@ public class UIThisMonthAllCountAction extends Action {
 					+ lwCorporationSummaryDto.getContentFee()
 					+ lwCorporationSummaryDto.getNeedFee()
 					+ lwCorporationSummaryDto.getUnDenizenFee();
-			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
-			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
+			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
+			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
 			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG);
 

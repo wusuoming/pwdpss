@@ -26,7 +26,7 @@ public class UICorporationPriceCountAction extends Action {
 		condition+=" and StatMonth = '"+serchDate+"'";
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
-		double dagongye10=0;
+		/*double dagongye10=0;
 		double dagongye35=0;
 		double guitie10=0;
 		double guitie35=0;
@@ -460,7 +460,227 @@ public class UICorporationPriceCountAction extends Action {
 		 httpServletRequest.setAttribute("sumChun",df.format(sumChun) );
 		 httpServletRequest.setAttribute("sumFee",df.format(sumFee) );
 		 
-		 httpServletRequest.setAttribute("sumFee",df.format(sumFee) );
+		 httpServletRequest.setAttribute("sumFee",df.format(sumFee) );*/
+		
+		double  dagongye10sumfee=0;
+		double   guitie10sumfee=0;
+		double   huafei35sumfee=0;
+		double contentfee=0;
+		double needfee=0;
+		double lilv=0;
+		double  dagongye10power=0;
+		double   guitie10power=0;
+		double   huafei35power=0; 
+		double sumallall=0;
+		double juminpower=0;
+		double juminfee=0;
+		double sumallpower=0;
+		
+		double dagongye10=PowerFeeCal.getCountPrice("1","0");
+		 /*dagongye35=PowerFeeCal.getCountPrice("35","0");*/
+		double guitie10=PowerFeeCal.getCountPrice("1","1");
+		/* guitie35=PowerFeeCal.getCountPrice("35","1");
+		 dianshi10=PowerFeeCal.getCountPrice("1","2");
+		 dianshi35=PowerFeeCal.getCountPrice("35","2");
+		 huafei10=PowerFeeCal.getCountPrice("1","3");*/
+		double huafei35=PowerFeeCal.getCountPrice("35","3");
+		
+		String condition10=" 1=1 and PointerPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String condition102=" 1=1 and PeakPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String condition103=" 1=1 and beforPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String condition104=" 1=1 and lastPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		//10kv普通打工
+		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
+		Collection  col10=blLwCorporationSummaryFacade.findByConditions(condition10);
+		Iterator it10=col10.iterator();
+		while(it10.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)it10.next();
+			dagongye10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			dagongye10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		//10KV普通
+		Collection  col102=blLwCorporationSummaryFacade.findByConditions(condition102);
+		Iterator it102=col102.iterator();
+		while(it102.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)it102.next();
+			dagongye10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			dagongye10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		//10kv普通
+		
+		Collection  col103=blLwCorporationSummaryFacade.findByConditions(condition103);
+		Iterator it103=col103.iterator();
+		while(it103.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)it103.next();
+			dagongye10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			dagongye10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		//10kv普通
+		
+		Collection  col104=blLwCorporationSummaryFacade.findByConditions(condition104);
+		Iterator it104=col104.iterator();
+		while(it104.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)it104.next();
+			dagongye10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			dagongye10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		
+		//硅铁10kv
+		
+		String conditionguitie10=" 1=1 and PointerPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String conditionguitie102=" 1=1 and PeakPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String conditionguitie103=" 1=1 and beforPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		String conditionguitie104=" 1=1 and lastPrice= +'"+dagongye10+"' and StatMonth= +'"+serchDate+"'";
+		//10kv硅铁打工
+		
+		Collection  colguitie10=blLwCorporationSummaryFacade.findByConditions(conditionguitie10);
+		Iterator itguitie10=colguitie10.iterator();
+		while(itguitie10.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie10.next();
+			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		
+		Collection  colguitie102=blLwCorporationSummaryFacade.findByConditions(conditionguitie102);
+		Iterator itguitie102=colguitie102.iterator();
+		while(itguitie102.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie102.next();
+			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		
+		Collection  colguitie103=blLwCorporationSummaryFacade.findByConditions(conditionguitie103);
+		Iterator itguitie103=colguitie103.iterator();
+		while(itguitie103.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie103.next();
+			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		Collection  colguitie104=blLwCorporationSummaryFacade.findByConditions(conditionguitie104);
+		Iterator itguitie104=colguitie104.iterator();
+		while(itguitie104.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie104.next();
+			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
+			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		//35化肥
+		
+		
+		String conditionhuafei10=" 1=1 and PointerPrice= +'"+huafei35+"' and StatMonth= +'"+serchDate+"'";
+		String conditionhuafei102=" 1=1 and PeakPrice= +'"+huafei35+"' and StatMonth= +'"+serchDate+"'";
+		String conditionhuafei103=" 1=1 and beforPrice= +'"+huafei35+"' and StatMonth= +'"+serchDate+"'";
+		String conditionhuafei104=" 1=1 and lastPrice= +'"+huafei35+"' and StatMonth= +'"+serchDate+"'";
+		//10kv普通打工
+		
+		Collection  colhuafei10=blLwCorporationSummaryFacade.findByConditions(conditionhuafei10);
+		Iterator ithuafei10=colhuafei10.iterator();
+		while(ithuafei10.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei10.next();
+			huafei35+=lwCorporationSummaryDto.getPointerFee();
+			huafei35+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		Collection  colhuafei102=blLwCorporationSummaryFacade.findByConditions(conditionhuafei102);
+		Iterator ithuafei102=colhuafei102.iterator();
+		while(ithuafei102.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei102.next();
+			huafei35+=lwCorporationSummaryDto.getPointerFee();
+			huafei35+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		
+		Collection  colhuafei103=blLwCorporationSummaryFacade.findByConditions(conditionhuafei103);
+		Iterator ithuafei103=colhuafei102.iterator();
+		while(ithuafei103.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei103.next();
+			huafei35+=lwCorporationSummaryDto.getPointerFee();
+			huafei35+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		Collection  colhuafei104=blLwCorporationSummaryFacade.findByConditions(conditionhuafei104);
+		Iterator ithuafei104=colhuafei104.iterator();
+		while(ithuafei104.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei104.next();
+			huafei35+=lwCorporationSummaryDto.getPointerFee();
+			huafei35+=lwCorporationSummaryDto.getElectricQuantity();
+			
+			
+		}
+		
+		Collection allcol=blLwCorporationSummaryFacade.findByConditions(condition);
+		Iterator itall=allcol.iterator();
+		while(itall.hasNext()){
+			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itall.next();
+			lilv+=lwCorporationSummaryDto.getPowerRateFee();
+			contentfee+=lwCorporationSummaryDto.getContentFee();
+			needfee+=lwCorporationSummaryDto.getNeedFee();
+			juminpower+=lwCorporationSummaryDto.getUnDenizenQuantity();
+			juminfee+=lwCorporationSummaryDto.getUnDenizenFee();
+			sumallall+=lwCorporationSummaryDto.getSumFee()-lwCorporationSummaryDto.getSanXiaFee()-lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getSurcharge();
+			sumallpower+=lwCorporationSummaryDto.getElectricQuantity();
+		}
+		
+		
+		httpServletRequest.setAttribute("dagongye10sumfee",df.format(dagongye10sumfee) );
+		 httpServletRequest.setAttribute("guitie10sumfee",df.format(guitie10sumfee) );
+		 httpServletRequest.setAttribute("huafei35sumfee",df.format(huafei35sumfee) );
+		 httpServletRequest.setAttribute("contentfee",df.format(contentfee) );
+		 httpServletRequest.setAttribute("needfee",df.format(needfee) );
+		 httpServletRequest.setAttribute("lilv",df.format(lilv) );
+		 httpServletRequest.setAttribute("dagongye10power",Math.round(dagongye10power) );
+		 httpServletRequest.setAttribute("guitie10power",Math.round(guitie10power) );
+		 httpServletRequest.setAttribute("huafei35power",Math.round(huafei35power) );
+		 httpServletRequest.setAttribute("sumallall",df.format(sumallall) );
+		 httpServletRequest.setAttribute("juminpower",df.format(juminpower) );
+		 httpServletRequest.setAttribute("juminfee",df.format(juminfee) );
+		 httpServletRequest.setAttribute("sumallpower",Math.round(sumallpower) );
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		 
 		 
 		return actionMapping.findForward("corporationpriceCount");
