@@ -79,7 +79,7 @@
 }
 </script>
 </head>
-<body class=interface>&nbsp; 
+<body onload="javascript:doPrint();window.close()">
 <html:errors />
 <%
 //String dagongye10Power=request.getAttribute("dagongye10Power").toString();
