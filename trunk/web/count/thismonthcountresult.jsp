@@ -621,7 +621,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPower() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(townSataDto.getSumPower()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=townSataDto.getPurePowerFee() %></font></span>

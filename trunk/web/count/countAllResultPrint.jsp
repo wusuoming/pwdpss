@@ -142,7 +142,7 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("statMonth") %>"></td>
 		<tr>
-			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		
 		<tr>
