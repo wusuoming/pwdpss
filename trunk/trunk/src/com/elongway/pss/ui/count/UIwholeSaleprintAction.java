@@ -136,11 +136,16 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setDianjin(df.format(Double.parseDouble(dianjin)/1.17));
 		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)/1.17*0.17));
 		lwAllWholeFeeDto.setPower1(zongdianliang);
+		//名称
 		lwAllWholeFeeDto.setFujia4(exends9);
+		//附加费用
 		lwAllWholeFeeDto.setFujia5(exends10);
 		lwAllWholeFeeDto.setFujia11(Power10);
+		//差别电费
 		lwAllWholeFeeDto.setFujia9(chabiedianfei);
+		//35KV电量
 		lwAllWholeFeeDto.setFujia12(Power35);
+		//总电费
 		lwAllWholeFeeDto.setSumfee(exends8);
 		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
 		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)/1.17*0.17));

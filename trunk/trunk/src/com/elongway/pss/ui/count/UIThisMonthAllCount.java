@@ -139,15 +139,28 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 		Iterator itf = colf.iterator();
 		while (itf.hasNext()) {
 			lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
-			sumfpower += lwCorporationSummaryDto.getSumPointerQuantity()
-					+ lwCorporationSummaryDto.getBeforPower()
-					+ lwCorporationSummaryDto.getLastPower();
-			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
-			+ lwCorporationSummaryDto.getPowerRateFee()
-			+ lwCorporationSummaryDto.getPeakFee()
-			+ lwCorporationSummaryDto.getContentFee()
-			+ lwCorporationSummaryDto.getNeedFee()
-			+ lwCorporationSummaryDto.getUnDenizenFee();
+			if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+				sumfpower +=lwCorporationSummaryDto.getPeakQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
+				}else{
+					sumfpower+=lwCorporationSummaryDto.getElectricQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
+				}
+				if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+				
+					sumfdianfee += lwCorporationSummaryDto.getPeakFee()
+					+ lwCorporationSummaryDto.getPowerRateFee()
+					
+					+ lwCorporationSummaryDto.getContentFee()
+					+ lwCorporationSummaryDto.getNeedFee()
+					+ lwCorporationSummaryDto.getUnDenizenFee()
+					+lwCorporationSummaryDto.getBeforFee()
+					+lwCorporationSummaryDto.getLastFee()
+					
+					;
+				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
+						+ lwCorporationSummaryDto.getPowerRateFee()
+						+ lwCorporationSummaryDto.getContentFee()
+						+ lwCorporationSummaryDto.getNeedFee()
+						+ lwCorporationSummaryDto.getUnDenizenFee();}
 			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
 			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
