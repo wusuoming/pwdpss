@@ -1701,11 +1701,9 @@
 			type="com.elongway.pss.ui.count.UIThisMonthAllCountAction"
 			scope="request" input="/count/corporationSaleCountInput.jsp">
 			<forward name="viewthisallcount"
-				path="/count/thismonthcountresult.jsp">
-			</forward>
+				path="/count/thismonthcountresult.jsp"/>
 			<forward name="leijicount"
-				path="/count/leijiresult.jsp">
-			</forward>
+				path="/count/leijiresult.jsp"/>
 		</action>
 		<action path="/thismonthPrint" name="lwUserLineForm"
 			type="com.elongway.pss.ui.count.UIThisMonthAllCount"
