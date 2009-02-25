@@ -157,18 +157,34 @@ public class UIThisMonthAllCountAction extends Action {
 				.findByConditions(conditions);
 		LwCorporationSummaryDto lwCorporationSummaryDto = new LwCorporationSummaryDto();
 		Iterator itf = colf.iterator();
+		
 		// 遍历结构，得出电量、电费、电金、三峡、基金、
 		while (itf.hasNext()) {
 			lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
-			sumfpower += lwCorporationSummaryDto.getSumPointerQuantity()
-					+ lwCorporationSummaryDto.getBeforPower()
-					+ lwCorporationSummaryDto.getLastPower();
-			sumfdianfee += lwCorporationSummaryDto.getPointerFee()
+			
+			if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+				sumfpower +=lwCorporationSummaryDto.getPeakQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
+				}else{
+					sumfpower+=lwCorporationSummaryDto.getElectricQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
+				}
+				if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+				
+					sumfdianfee += lwCorporationSummaryDto.getPeakFee()
 					+ lwCorporationSummaryDto.getPowerRateFee()
-					+ lwCorporationSummaryDto.getPeakFee()
+					
 					+ lwCorporationSummaryDto.getContentFee()
 					+ lwCorporationSummaryDto.getNeedFee()
-					+ lwCorporationSummaryDto.getUnDenizenFee();
+					+ lwCorporationSummaryDto.getUnDenizenFee()
+					+lwCorporationSummaryDto.getBeforFee()
+					+lwCorporationSummaryDto.getLastFee()
+					
+					;
+				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
+						+ lwCorporationSummaryDto.getPowerRateFee()
+						
+						+ lwCorporationSummaryDto.getContentFee()
+						+ lwCorporationSummaryDto.getNeedFee()
+						+ lwCorporationSummaryDto.getUnDenizenFee();}
 			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
 			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
