@@ -82,55 +82,84 @@
 <body class=interface>&nbsp; 
 <html:errors />
 <%
-String dagongye10Power=request.getAttribute("dagongye10Power").toString();
-String dagongye35Power=request.getAttribute("dagongye35Power").toString();
-String guitie10Power=request.getAttribute("guitie10Power").toString();
-String guitie35Power=request.getAttribute("guitie35Power").toString();
-String dianshi10Power=request.getAttribute("dianshi10Power").toString();
-String dianshi35Power=request.getAttribute("dianshi35Power").toString();
-String huafei10Power=request.getAttribute("huafei10Power").toString();
+//String dagongye10Power=request.getAttribute("dagongye10Power").toString();
+//String dagongye35Power=request.getAttribute("dagongye35Power").toString();
+//String guitie10Power=request.getAttribute("guitie10Power").toString();
+//String guitie35Power=request.getAttribute("guitie35Power").toString();
+//String dianshi10Power=request.getAttribute("dianshi10Power").toString();
+//String dianshi35Power=request.getAttribute("dianshi35Power").toString();
+//String huafei10Power=request.getAttribute("huafei10Power").toString();
 
-String huafei35Power=request.getAttribute("huafei35Power").toString();
-String sumPower=request.getAttribute("sumPower").toString();
+//String huafei35Power=request.getAttribute("huafei35Power").toString();
+//String sumPower=request.getAttribute("sumPower").toString();
 
-String dagongye10Fee=(String)request.getAttribute("dagongye10Fee");
-String dagongye35Fee=(String)request.getAttribute("dagongye35Fee");
-String guitie10Fee=(String)request.getAttribute("guitie10Fee");
-String guitie35Fee=(String)request.getAttribute("guitie35Fee");
-String dianshi10Fee=(String)request.getAttribute("dianshi10Fee");
-String dianshi35Fee=(String)request.getAttribute("dianshi35Fee");
-String huafei10Fee=(String)request.getAttribute("huafei10Fee");
-String huafei35Fee=(String)request.getAttribute("huafei35Fee");
-String dagongye10tax=(String)request.getAttribute("dagongye10tax");
-String dagongye35tax=(String)request.getAttribute("dagongye35tax");
-String guitie10tax=(String)request.getAttribute("guitie10tax");
-String guitie35tax=(String)request.getAttribute("guitie35tax");
-String dianshi10tax=(String)request.getAttribute("dianshi10tax");
-String dianshi35tax=(String)request.getAttribute("dianshi35tax");
-String huafei10tax=(String)request.getAttribute("huafei10tax");
-String huafei35tax=(String)request.getAttribute("huafei35tax");
-String dagongye10chun=(String)request.getAttribute("dagongye10chun");
-String dagongye35chun=(String)request.getAttribute("dagongye35chun");
-String guitie10chun=(String)request.getAttribute("guitie10chun");
-String guitie35chun=(String)request.getAttribute("guitie35chun");
-String dianshi10chun=(String)request.getAttribute("dianshi10chun");
-String dianshi35chun=(String)request.getAttribute("dianshi35chun");
-String huafei10chun=(String)request.getAttribute("huafei10chun");
-String huafei35chun=(String)request.getAttribute("huafei35chun");
-String sumTax=(String)request.getAttribute("sumTax");
-String sumChun=(String)request.getAttribute("sumChun");
-String sumFee=(String)request.getAttribute("sumFee");
+//String dagongye10Fee=(String)request.getAttribute("dagongye10Fee");
+//String dagongye35Fee=(String)request.getAttribute("dagongye35Fee");
+//String guitie10Fee=(String)request.getAttribute("guitie10Fee");
+//String guitie35Fee=(String)request.getAttribute("guitie35Fee");
+//String dianshi10Fee=(String)request.getAttribute("dianshi10Fee");
+//String dianshi35Fee=(String)request.getAttribute("dianshi35Fee");
+//String huafei10Fee=(String)request.getAttribute("huafei10Fee");
+//String huafei35Fee=(String)request.getAttribute("huafei35Fee");
+//String dagongye10tax=(String)request.getAttribute("dagongye10tax");
+//String dagongye35tax=(String)request.getAttribute("dagongye35tax");
+//String guitie10tax=(String)request.getAttribute("guitie10tax");
+//String guitie35tax=(String)request.getAttribute("guitie35tax");
+//String dianshi10tax=(String)request.getAttribute("dianshi10tax");
+//String dianshi35tax=(String)request.getAttribute("dianshi35tax");
+//String huafei10tax=(String)request.getAttribute("huafei10tax");
+//String huafei35tax=(String)request.getAttribute("huafei35tax");
+//String dagongye10chun=(String)request.getAttribute("dagongye10chun");
+//String dagongye35chun=(String)request.getAttribute("dagongye35chun");
+//String guitie10chun=(String)request.getAttribute("guitie10chun");
+//String guitie35chun=(String)request.getAttribute("guitie35chun");
+//String dianshi10chun=(String)request.getAttribute("dianshi10chun");
+//String dianshi35chun=(String)request.getAttribute("dianshi35chun");
+//String huafei10chun=(String)request.getAttribute("huafei10chun");
+//String huafei35chun=(String)request.getAttribute("huafei35chun");
+//String sumTax=(String)request.getAttribute("sumTax");
+//String sumChun=(String)request.getAttribute("sumChun");
+//String sumFee=(String)request.getAttribute("sumFee");
 
 	DecimalFormat df = new DecimalFormat("###0.00");
+	String dagongye10sumfee=(String)request.getAttribute("dagongye10sumfee");
+	
+	String guitie10sumfee=(String)request.getAttribute("guitie10sumfee");
+	
+	String huafei35sumfee=(String)request.getAttribute("huafei35sumfee");
+	
+	String contentfee=(String)request.getAttribute("contentfee");
+	
+	String needfee=(String)request.getAttribute("needfee");
+	
+	String lilv=(String)request.getAttribute("lilv");
+	
+	String dagongye10power=request.getAttribute("dagongye10power").toString();
+	
+	String guitie10power=request.getAttribute("guitie10power").toString();
+	
+	String huafei35power=request.getAttribute("huafei35power").toString();
+	
+	String sumallall=(String)request.getAttribute("sumallall");
+	
+	String juminfee=(String)request.getAttribute("juminfee");
+	
+	String juminpower=request.getAttribute("juminpower").toString();
+	
+	String sumallpower=request.getAttribute("sumallpower").toString();
+	
+	
+	
+	
 
 
-LwCorporationSummaryDto lwCorporationSummaryDtoguitie1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie1");
+//LwCorporationSummaryDto lwCorporationSummaryDtoguitie1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie1");
 
-LwCorporationSummaryDto lwCorporationSummaryDtoguitie2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie2");
-LwCorporationSummaryDto lwCorporationSummaryDtodagongye1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye1");
-LwCorporationSummaryDto lwCorporationSummaryDtodagongye2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye2");
-LwCorporationSummaryDto lwCorporationSummaryDtodagongye3=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye3");
-LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtohuafei");
+//LwCorporationSummaryDto lwCorporationSummaryDtoguitie2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie2");
+//LwCorporationSummaryDto lwCorporationSummaryDtodagongye1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye1");
+//LwCorporationSummaryDto lwCorporationSummaryDtodagongye2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye2");
+//LwCorporationSummaryDto lwCorporationSummaryDtodagongye3=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye3");
+//LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtohuafei");
 
  %>
 
@@ -147,8 +176,12 @@ LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)r
 				<td width="10%">
 					<span class="title"><font size="2">项目</font></span>
 				<br></td>
+				
+				<td width="10%">
+					<span class="title"><font size="2">电压等级</font></span>
+				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">工厂名</font></span>
+					<span class="title"><font size="2">电价</font></span>
 				<br></td>
 				
 				
@@ -163,660 +196,755 @@ LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)r
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡费</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">电金费</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">电金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">基金费</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">基金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
 					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 				
+			
+				
+				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">容量/需量电费</font></span>
+					<span class="title"><font size="2">需量电费</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">容量电费</font></span>
 				<br></td>
 		
-				<td nowrap width="10%">
-					<span class="title"><font size="2">总计</font></span>
-				<br></td>	
+				
 							
 			</tr>
 			<tr >
-				<td width="10%" rowspan="3">
-					<span class="title"><font size="2">大工业10KV</font></span>
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">居民生活</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye1.getUserNo()%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye1.getPointerQuantity()%></font></span>
+					<span class="title"><font size="2">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPointerFee()/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0.43</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSanXiaFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSanXiaFee()/1.17*0.17)%></font></span>
-				<br></td>
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSurcharge()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSurcharge()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtodagongye1.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtodagongye1.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSumFee())%></font></span>
-				<br></td>	
-							
 			</tr>
-			<tr >
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye2.getUserNo()%></font></span>
+					<span class="title"><font size="2">0.3769</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye2.getPointerQuantity()%></font></span>
+					<span class="title"><font size="2"><%=juminpower%></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getPointerFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17 ) %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17*0.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			
+			
+			</tr>
+			
+					<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">非居民照明</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">不满1KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.512</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getSanXiaFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.4731</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getSanXiaFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=juminpower %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getPowerFee()/1.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17*0.17) %></font></span>
 				<br></td>
-				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getPowerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
-				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getSurcharge()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
-				
+			
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getSurcharge()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtodagongye2.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtodagongye2.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye2.getSumFee())%></font></span>
-				<br></td>	
-							
+			
 			</tr>
 			
 			<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">商业</font></span>
+				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye3.getUserNo()%></font></span>
+					<span class="title"><font size="2">不满1KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.761</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye3.getPointerQuantity()%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getPointerFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.4731</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getSanXiaFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getSanXiaFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			
+			</tr>
+			<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">非普工业</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">不满1KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.493</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getPowerFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getPowerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.4842</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getSurcharge()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getSurcharge()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtodagongye3.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtodagongye3.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye3.getSumFee())%></font></span>
-				<br></td>	
-							
+			
 			</tr>
 			
+			<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">农业生产</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">不满1KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.371</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.337</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
 			
-				<tr >
-				<td width="10%" rowspan="1">
-					<span class="title"><font size="2">总计</font></span>
+			</tr>
+			
+			<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">排灌</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">&nbsp</font></span>
+					<span class="title"><font size="2">不满1KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.18</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtodagongye1.getPointerQuantity()+lwCorporationSummaryDtodagongye2.getPointerQuantity()+lwCorporationSummaryDtodagongye3.getPointerQuantity()%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPointerFee()/1.17+lwCorporationSummaryDtodagongye2.getPointerFee()/1.17+lwCorporationSummaryDtodagongye3.getPointerFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPointerFee()/1.17*0.17+lwCorporationSummaryDtodagongye2.getPointerFee()/1.17*0.17+lwCorporationSummaryDtodagongye3.getPointerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSanXiaFee()/1.17+lwCorporationSummaryDtodagongye2.getSanXiaFee()/1.17+lwCorporationSummaryDtodagongye3.getSanXiaFee()/1.17)%></font></span>
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
 				<br></td>
-				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSanXiaFee()/1.17*0.17+lwCorporationSummaryDtodagongye2.getSanXiaFee()/1.17*0.17+lwCorporationSummaryDtodagongye3.getSanXiaFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerFee()/1.17+lwCorporationSummaryDtodagongye2.getPowerFee()/1.17+lwCorporationSummaryDtodagongye3.getPowerFee()/1.17)%></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerFee()/1.17*0.17+lwCorporationSummaryDtodagongye2.getPowerFee()/1.17*0.17+lwCorporationSummaryDtodagongye3.getPowerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSurcharge()/1.17+lwCorporationSummaryDtodagongye2.getSurcharge()/1.17+lwCorporationSummaryDtodagongye3.getSurcharge()/1.17)%></font></span>
+					<span class="title"><font size="2">0.177</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSurcharge()/1.17*0.17+lwCorporationSummaryDtodagongye2.getSurcharge()/1.17*0.17+lwCorporationSummaryDtodagongye3.getSurcharge()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
 			
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getPowerRateFee()+lwCorporationSummaryDtodagongye2.getPowerRateFee()+lwCorporationSummaryDtodagongye3.getPowerRateFee())%></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">&nbsp</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtodagongye1.getSumFee()+lwCorporationSummaryDtodagongye2.getSumFee()+lwCorporationSummaryDtodagongye3.getSumFee())%></font></span>
-				<br></td>	
-							
+			
 			</tr>
 			
 			
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">硅铁10KV</font></span>
+					<span class="title"><font size="2">大工业</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtoguitie1.getUserNo()%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtoguitie1.getPeakQuantity()%></font></span>
+					<span class="title"><font size="2">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPeakFee()/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPeakFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0.18</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSanXiaFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">10KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.3939</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSanXiaFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dagongye10sumfee)/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dagongye10sumfee)/1.17*0.17) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerFee()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			
+			</tr>
+			<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">硅铁</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">10kv</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.3609</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerFee()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(guitie10sumfee)/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(guitie10sumfee)/1.17*0.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.3539</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSurcharge()/1.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0 </font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSurcharge()/1.17*0.17)%></font></span>
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
 				<br></td>
 				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtoguitie1.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtoguitie1.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSumFee())%></font></span>
-				<br></td>	
-								
+			
 			</tr>
 			
+					<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">电石</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">10kv</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.3137</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.2987</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0 </font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
 			
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
 			
-			
-			
-			<tr >
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtoguitie2.getUserNo()%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtoguitie2.getPeakQuantity()%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getPeakQuantity()/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getPeakFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getSanXiaFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getSanXiaFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getPowerFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getPowerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getSurcharge()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getSurcharge()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtoguitie2.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtoguitie2.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie2.getSumFee())%></font></span>
-				<br></td>	
-								
-				
-							
 			</tr>
 			
-			<tr >
-				<td width="10%" rowspan="1">
+					<tr >
+				<td width="10%" rowspan="2">
+					<span class="title"><font size="2">化肥</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">10kv</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.2249</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(huafei35sumfee)/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(huafei35sumfee)/1.17*0.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.26</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				
+			
+			</tr>
+			
+				<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2">35KV</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0.2987</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0 </font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			
+				
+			<td nowrap width="10%">
+					<span class="title"><font size="2">0</font></span>
+				<br></td>
+			</tr>
+			
+					<tr >
+				<td width="10%" rowspan="4">
 					<span class="title"><font size="2">总计</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">&nbsp</font></span>
+					<span class="title"><font size="2">非居民照明电量</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民照明电费</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">非居民照明电费税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtoguitie1.getPeakQuantity()+lwCorporationSummaryDtoguitie2.getPeakQuantity()%></font></span>
+					<span class="title"><font size="2">大工业电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPeakFee()/1.17+lwCorporationSummaryDtoguitie2.getPeakFee()/1.17)%></font></span>
+					<span class="title"><font size="2">大工业电费 </font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">大工业电费税</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPeakFee()/1.17*0.17+lwCorporationSummaryDtoguitie2.getPeakFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSanXiaFee()/1.17+lwCorporationSummaryDtoguitie2.getSanXiaFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSanXiaFee()/1.17*0.17+lwCorporationSummaryDtoguitie2.getSanXiaFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerFee()/1.17+lwCorporationSummaryDtoguitie2.getPowerFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerFee()/1.17*0.17+lwCorporationSummaryDtoguitie2.getPowerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSurcharge()/1.17+lwCorporationSummaryDtoguitie2.getSurcharge()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSurcharge()/1.17*0.17+lwCorporationSummaryDtoguitie2.getSurcharge()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getPowerRateFee()+lwCorporationSummaryDtoguitie2.getPowerRateFee())%></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">&nbsp</font></span>
+					<span class="title"><font size="2">利率电费</font></span>
 				<br></td>
 		
+				
+				
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2"><%=juminpower %></font></span>
+				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtoguitie1.getSumFee()+lwCorporationSummaryDtoguitie2.getSumFee())%></font></span>
-				<br></td>	
-								
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(juminfee)/1.17*0.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dagongye10power)+Double.parseDouble(guitie10power)+Double.parseDouble(huafei35power)) %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format((Double.parseDouble(dagongye10sumfee)+Double.parseDouble(guitie10sumfee)+Double.parseDouble(huafei35sumfee))/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=df.format((Double.parseDouble(dagongye10sumfee)+Double.parseDouble(guitie10sumfee)+Double.parseDouble(huafei35sumfee))/1.17*0.17) %></font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2"><%=lilv %></font></span>
+				<br></td>
+			
+				
+			
+			</tr>
+			<tr>
+					<td nowrap width="10%">
+					<span class="title"><font size="2">容量电费</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">需量电费</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">费用合计</font></span>
+				<br></td>
+			</tr>
+			<tr>
+			<td nowrap width="10%">
+					<span class="title"><font size="2"><%=contentfee %></font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2"><%=needfee%></font></span>
+				<br></td>
+					<td nowrap width="10%">
+					<span class="title"><font size="2"><%=sumallall %></font></span>
+				<br></td>
+			
 			</tr>
 			
 			
-			
-			
-			
-			
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">化肥35KV</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtohuafei.getUserNo()%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDtohuafei.getPointerQuantity()%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getPointerFee()/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getPointerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getSanXiaFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getSanXiaFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getPowerFee()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getPowerFee()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getSurcharge()/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getSurcharge()/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getPowerRateFee())%></font></span>
-				<br></td>
-				<%
-				if(lwCorporationSummaryDtohuafei.getFlag().equals("1")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getNeedFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-		<%
-				if(lwCorporationSummaryDtohuafei.getFlag().equals("2")){
-				 %>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getContentFee())%></font></span>
-				<br></td>
-		<%} %>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDtohuafei.getSumFee())%></font></span>
-				<br></td>	
-								
-				
-							
-			</tr><%--
-			
-			
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">三峡</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">基金</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				
-							
-			</tr>
-			
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">电金</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				
-							
-			</tr>
-			
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">总费用</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"></font></span>
-				<br></td>
-				
-							
-			</tr>
-			
-	--%></table>
+	</table>
 	<table cellpadding="0" cellspacing="0" width="100%"> 
         <tr> 
         <tr class="listtitle" align="center">             
