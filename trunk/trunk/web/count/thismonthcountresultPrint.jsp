@@ -328,6 +328,38 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			<%} %>
 			<tr >
 				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2">Ð¡¼Æ</font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfpower%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfc%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=summfdianjin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfjijin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumftax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
+				<br></td>
+				
+			<tr >
+				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="2">½¼Çø</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
