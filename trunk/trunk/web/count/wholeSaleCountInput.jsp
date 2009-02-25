@@ -87,8 +87,8 @@ create by wangrongjia
            <td class="title">趸售统计：</td>	
          <td class="input"><select name="wholesaleStyle" onchange="sexy()">
 				   <option value="3">按局统计</option>
-				  <option value="1">按电价统计</option>
-				  <option value="2">各局按电价统计</option>
+				<%--<option value="1">按电价统计</option>
+				  --%><option value="2">各局按电价统计</option>
 				
 				  
 				
@@ -144,9 +144,9 @@ if(fm.inputDate.value ==''){
    alert('请输入日期！'); 
    return false;
  }
-	if(fm.wholesaleStyle.value=='1'){
-	fm.action="/iacontact/UIPriceCountAction.do";
-	}
+	//if(fm.wholesaleStyle.value=='1'){
+	//fm.action="/iacontact/UIPriceCountAction.do";
+	//}
 	if(fm.wholesaleStyle.value=='3'){
 	fm.action="/iacontact/wholeSaleCount.do";
 	}

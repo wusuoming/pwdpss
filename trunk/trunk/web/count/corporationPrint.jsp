@@ -49,12 +49,12 @@
 		DecimalFormat df = new DecimalFormat("###0.00");
 		Collection colbak=(List)request.getAttribute("colpointbak");
 %>
-		   <table style='width:70%' border="1" cellspacing="0">
-  <tr class=listtitle align="center">
+		   <table width="100%" border="1" cellspacing="0" >
+  <tr class=listtitle align="center" >
 			<td class=title0 colspan="11"><B><font size="4">结算单</font></B></td>
 		</tr>
 	<tr>
-	<td nowrap colspan="2">
+	<td nowrap colspan="2" >
 						<span class="title"><font size="3">月份:<%=corporation.getStatMonth()%></font></span>
 					</td>
 	</tr>
@@ -68,8 +68,15 @@
 			<td nowrap colspan="2"><span class="title"><font size="3">户号</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getUserNo()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3">地址</font></span></td>
+			<%
+			if(lwCoporationUserInfoDto.getAddress().equals("")||lwCoporationUserInfoDto.getAddress()==null){
+			 %>
+			 <td nowrap colspan="2"><span class="title"><font size="3">&nbsp</font></span></td>
+			 <%
+			 }else{
+			  %>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getAddress()%></font></span></td>
- 
+ 			<%} %>
     </tr>
     <tr>
    
@@ -78,7 +85,16 @@
 			<td nowrap colspan="2"><span class="title"><font size="3">税号</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getTaxNo()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3">帐号</font></span></td>
+			
+			<%
+			if(lwCoporationUserInfoDto.getAccountNo().equals("")||lwCoporationUserInfoDto.getAccountNo()==null){
+			 %>
+			 <td nowrap colspan="2"><span class="title"><font size="3">&nbsp</font></span></td>
+			 <%
+			 }else{
+			  %>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getAccountNo()%></font></span></td>
+ 			<%} %>
 
     </tr>
      <tr>
@@ -123,8 +139,15 @@
 			 %>
 			
 			<td nowrap colspan="2"><span class="title">供电线路</span></td>
+			<%
+			if(lwCoporationUserInfoDto.getLineNo().equals("")||lwCoporationUserInfoDto.getLineNo()==null){
+			 %>
+			 <td nowrap colspan="2"><span class="title"><font size="3">&nbsp</font></span></td>
+			 <%
+			 }else{
+			  %>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=lwCoporationUserInfoDto.getLineNo()%></font></span></td>
-
+ 			<%} %>
     </tr>
   
     
@@ -231,8 +254,16 @@
 						 <td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getUnworkQuantity()%></font></td>
 						<%
 						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("0") ){
+						
 						 %>
 						<td class="input" ><font size="3"><%=corporation.getNeedPointer()%></font></td>
+						
+						<%} %>
+						<%
+						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("1") ){
+						
+						 %>
+						<td class="input" ><font size="3">&nbsp</font></td>
 						
 						<%} %>
 						
@@ -353,10 +384,10 @@
 			<td nowrap><span class="title"><font size="3"><%=corporation.getPowerPrice()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getPowerFee())%></font></span></td>
 			<%
-              if(corporation.getQuantityStyle().equals("1")){
+              if(corporation.getIfchange().equals("1")){
               %>
 			<td nowrap><span class="title"><font size="3">大工业</font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getLastPower())%></font>/span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getLastPower())%></font></span></td>
 			<td nowrap><span class="title"><font size="3"><%=corporation.getLastPrice()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getLastFee())%></font></span></td>
     	<%} %>
