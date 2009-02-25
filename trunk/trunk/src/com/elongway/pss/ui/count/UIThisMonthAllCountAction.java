@@ -311,6 +311,7 @@ public class UIThisMonthAllCountAction extends Action {
 		double jijinty = 0;
 		double dianjinty = 0;
 		double sumallfeety = 0;
+		
 
 		sumfc = sumfdianfee / 1.17;
 		sumftax = sumfdianfee / 1.17 * 0.17;
@@ -602,125 +603,200 @@ public class UIThisMonthAllCountAction extends Action {
 			 */
 			Collection colf = getCorporationSumStat(conditions);
 			// 趸售各个局累计计算条件
-//			String tempCondition =  this.getAddMonthCondition("2009-01", inputDate, "inputdate");
-//			String conditionsgy =tempCondition+" and upcompany='gy' ";
-//			String conditionsdm = tempCondition+ " and upcompany='dm' ";
-//			String conditionsjy = tempCondition+ " and upcompany='jy' ";
-//			String conditionsty = tempCondition+ " and upcompany='ty' ";
-//			
-//			LwCorporationSummaryDto lwCorporationSummaryDto = null;
-//			Iterator itf = colf.iterator();
-//			// 遍历结构，得出电量、电费、电金、三峡、基金、
-//			while (itf.hasNext()) {
-//				lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
-//				sumfpower += lwCorporationSummaryDto.getSumPointerQuantity()
-//						+ lwCorporationSummaryDto.getBeforPower()
-//						+ lwCorporationSummaryDto.getLastPower();
-//				sumfdianfee += lwCorporationSummaryDto.getPointerFee()
-//						+ lwCorporationSummaryDto.getPowerRateFee()
-//						+ lwCorporationSummaryDto.getPeakFee()
-//						+ lwCorporationSummaryDto.getContentFee()
-//						+ lwCorporationSummaryDto.getNeedFee()
-//						+ lwCorporationSummaryDto.getUnDenizenFee();
-//				summfdianjinall += lwCorporationSummaryDto.getSurcharge();
-//				sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
-//				sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-//				sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG);
-//			}		
+			String tempCondition =  this.getAddMonthCondition("2009-01", inputDate, "inputdate");
+			String conditionsgy =tempCondition+" and upcompany='gy' ";
+			String conditionsdm = tempCondition+ " and upcompany='dm' ";
+			String conditionsjy = tempCondition+ " and upcompany='jy' ";
+			String conditionsty = tempCondition+ " and upcompany='ty' ";
+			
+			TownSataDto townSataDto2 = null;
+			Iterator itf = colf.iterator();
+			double pureDianFee = 0;
+			double dianFeeTax = 0;
+			double pureSanXia = 0;
+			double pureDianJin = 0;
+			double sanXiaTax = 0;
+			double pureJiJin = 0;
+			double jiJinTax = 0;
+			double sumPowerFee = 0;
+			// 遍历结构，得出电量、电费、电金、三峡、基金、
+			while (itf.hasNext()) {
+				townSataDto2 = (TownSataDto) itf.next();
+				sumfpower += townSataDto2.getSumPower();
+				sumPowerFee+= townSataDto2.getSumPowerFee();
+				pureDianFee += townSataDto2.getPurePowerFee();
+				pureDianJin += townSataDto2.getPureDianJin();
+				dianFeeTax += townSataDto2.getDianJinTax();
+				pureSanXia+=townSataDto2.getPureSanXia();
+				
+				sanXiaTax+=townSataDto2.getSanXiaTax();
+				pureJiJin+=townSataDto2.getPureJiJin();
+				jiJinTax +=townSataDto2.getJiJinTax();
+			}		
+			townSataDto2 = new TownSataDto();
+			townSataDto2.setSumPower(sumfpower);
+			townSataDto2.setPurePowerFee(pureDianFee);
+			townSataDto2.setPowerFeeTax(PowerFeeCal.getValue(dianFeeTax,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureDianJin(PowerFeeCal.getValue(pureDianJin,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianFeeTax,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureSanXia(PowerFeeCal.getValue(pureSanXia,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setSanXiaTax(PowerFeeCal.getValue(sanXiaTax,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureJiJin(PowerFeeCal.getValue(pureJiJin,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setJiJinTax(PowerFeeCal.getValue(jiJinTax,
+					AppConst.TWO_DOT_FLAG));
+
+			townSataDto2.setSumPowerFee(PowerFeeCal.getValue(sumPowerFee,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto2.setCompanyName("小计");
+			colf.add(townSataDto2);			
+			
 			/**
 			 * 1 -- 得到累计所有趸售的计算结果
 			 */
-//			Collection col = blLwWholeSaleSummaryFacade
-//			.findByConditions(conditions);
-//	Iterator it = col.iterator();
-//	while (it.hasNext()) {
-//		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) it
-//				.next();
-//		// 得到各个局的差别电量
-//		differenceQuantity += Double
-//				.parseDouble("".equals(lwWholeSaleSummaryDto
-//						.getDifferenceQuantity()) ? "0"
-//						: lwWholeSaleSummaryDto.getDifferenceQuantity());
-//	}
-//
-//	Collection colgy = blLwWholeSaleSummaryFacade
-//			.findByConditions(conditionsgy);
-//	Iterator itgy = colgy.iterator();
-//	while (itgy.hasNext()) {
-//		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itgy
-//				.next();
-//		differenceQuantitygy += Double.parseDouble(lwWholeSaleSummaryDto
-//				.getDifferenceQuantity());
-//	}
-//
-//	Collection coldm = blLwWholeSaleSummaryFacade
-//			.findByConditions(conditionsdm);
-//	Iterator itdm = coldm.iterator();
-//	while (itdm.hasNext()) {
-//		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itdm
-//				.next();
-//		differenceQuantitydm += Double.parseDouble(lwWholeSaleSummaryDto
-//				.getDifferenceQuantity());
-//	}
-//
-//	Collection coljy = blLwWholeSaleSummaryFacade
-//			.findByConditions(conditionsjy);
-//	Iterator itjy = coljy.iterator();
-//	while (itjy.hasNext()) {
-//		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itjy
-//				.next();
-//		differenceQuantityjy += Double.parseDouble(lwWholeSaleSummaryDto
-//				.getDifferenceQuantity());
-//	}
-//
-//	Collection colty = blLwWholeSaleSummaryFacade
-//			.findByConditions(conditionsty);
-//	Iterator itty = colty.iterator();
-//	while (itty.hasNext()) {
-//		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = (LwWholeSaleSummaryDto) itty
-//				.next();
-//		differenceQuantityty += Double.parseDouble(lwWholeSaleSummaryDto
-//				.getDifferenceQuantity());
-//	}
-//	
-//	BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
-//	
-//	Collection<LwAllWholeFeeDto> allWholeFeeListgy =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'gy'");
-//	LwAllWholeFeeDto lwAllWholeFeeDtogy = this.getAllWholeFee(allWholeFeeListgy, "gy", inputDate);
-//	Collection allWholeFeeListdm =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'dm'");
-//	LwAllWholeFeeDto lwAllWholeFeeDtodm = this.getAllWholeFee(allWholeFeeListgy, "dm", inputDate);
-//	Collection allWholeFeeListty =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'ty'");
-//	LwAllWholeFeeDto lwAllWholeFeeDtoty = this.getAllWholeFee(allWholeFeeListgy, "ty", inputDate);
-//	Collection allWholeFeeListjy =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'jy'");
-//	LwAllWholeFeeDto lwAllWholeFeeDtojy = this.getAllWholeFee(allWholeFeeListgy, "jy", inputDate);
-//	
-//	Collection<LwDcodeDto> comList = blLwDcodeFacade
-//	.findByConditions(" codetype = 'SupplyCom'");
-//	// 得到四个局的统计数据
-//			for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
-//				LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
-//				company = lwDcodeDto.getCodeCode();
-//				
-//				userList = blLwPowerUserFacade
-//						.findByConditions("superclass = '" + company + "'");
-//				condition = PowerFeeCal.getUserCondition(userList);
-//				priceSummaryList = blLwTownPriceSummaryFacade
-//						.findByConditions(this.getAddMonthCondition("2009-01", inputDate, "statMonth")+ condition);
-//				townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(
-//						priceSummaryList, inputDate);
-//				townSataDto.setComCode(company);
-//				townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
-//				resultList.add(townSataDto);
-//			}
-//			// 四个局的统计汇总
-//			townSataDto = PowerFeeCal.getSumCompanyStat(resultList, inputDate);
-//			townSataDto.setCompanyName("小计");
-//			resultList.add(townSataDto);
+			
+	
+	BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
+	
+	Collection<LwAllWholeFeeDto> allWholeFeeListgy =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'gy'");
+	LwAllWholeFeeDto lwAllWholeFeeDtogy = this.getAllWholeFee(allWholeFeeListgy, "gy", inputDate);
+	Collection allWholeFeeListdm =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'dm'");
+	LwAllWholeFeeDto lwAllWholeFeeDtodm = this.getAllWholeFee(allWholeFeeListdm, "dm", inputDate);
+	Collection allWholeFeeListty =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'ty'");
+	LwAllWholeFeeDto lwAllWholeFeeDtoty = this.getAllWholeFee(allWholeFeeListty, "ty", inputDate);
+	Collection allWholeFeeListjy =blLwAllWholeFeeFacade.findByConditions(tempCondition+" and company = 'jy'");
+	LwAllWholeFeeDto lwAllWholeFeeDtojy = this.getAllWholeFee(allWholeFeeListjy, "jy", inputDate);
+	
+	Collection<LwAllWholeFeeDto> wholeResultList = new ArrayList<LwAllWholeFeeDto>();
+	wholeResultList.add(lwAllWholeFeeDtogy);
+	wholeResultList.add(lwAllWholeFeeDtodm);
+	wholeResultList.add(lwAllWholeFeeDtoty);
+	wholeResultList.add(lwAllWholeFeeDtojy);
+	double power1 =0D; 
+    /** 属性电费 */
+     double dianfei =0D;
+    /** 属性三峡 */
+     double sanxia =0D;
+    /** 属性电力资金 */
+     double dianjin =0D;
+    /** 属性基金 */
+     double jijin =0D;
+    /** 属性电费税 */
+     double dianfeitax =0D;
+    /** 属性三峡税 */
+     double sanxiatax =0D;
+    /** 属性电金税 */
+     double dianjintax =0D;
+    /** 属性总计 */
+     double sumfee =0D;
+    /** 属性海明炉 */
+     double haiminglu =0D;
+    /** 属性多边 */
+     double duobian =0D;
+    /** 属性追加 */
+     double zhuijia =0D;
+    /** 属性附加1 */
+     double fujia1 =0D;
+    /** 属性附加2 */
+     double fujia2 =0D;
+    /** 属性附加3 */
+     double fujia3 =0D;
+    /** 属性附加5 */
+     double fujia5 =0D;
+     /** 属性附加9 */
+     double fujia9 =0D;
+	LwAllWholeFeeDto o = new LwAllWholeFeeDto();
+	for (Iterator iterator = wholeResultList.iterator(); iterator.hasNext();) {
+		LwAllWholeFeeDto lwAllWholeFeeDto = (LwAllWholeFeeDto) iterator.next();
+		 power1 += Double.parseDouble(lwAllWholeFeeDto.getPower1());
+	    /** 属性电费 */
+	      dianfei +=Double.parseDouble(lwAllWholeFeeDto.getDianfei());
+	    /** 属性三峡 */
+	      sanxia +=Double.parseDouble(lwAllWholeFeeDto.getDianfei());
+	    /** 属性电力资金 */
+	      dianjin +=Double.parseDouble(lwAllWholeFeeDto.getDianjin());
+	    /** 属性基金 */
+	      jijin +=Double.parseDouble(lwAllWholeFeeDto.getJijin());
+	    /** 属性电费税 */
+	      dianfeitax +=Double.parseDouble(lwAllWholeFeeDto.getDianfeitax());
+	    /** 属性三峡税 */
+	      sanxiatax +=Double.parseDouble(lwAllWholeFeeDto.getSanxiatax());
+	    /** 属性电金税 */
+	      dianjintax +=Double.parseDouble(lwAllWholeFeeDto.getDianjintax());
+	    /** 属性总计 */
+	      sumfee +=Double.parseDouble(lwAllWholeFeeDto.getSumfee());
+	    /** 属性海明炉 */
+	      haiminglu +=Double.parseDouble(lwAllWholeFeeDto.getHaiminglu());
+	    /** 属性多边 */
+	      duobian +=Double.parseDouble(lwAllWholeFeeDto.getDuobian());
+	    /** 属性追加 */
+	      zhuijia +=Double.parseDouble(lwAllWholeFeeDto.getZhuijia());
+	    /** 属性附加1 */
+	      fujia1 +=Double.parseDouble(lwAllWholeFeeDto.getFujia1());
+	    /** 属性附加2 */
+	      fujia2 +=Double.parseDouble(lwAllWholeFeeDto.getFujia2());
+	    /** 属性附加3 */
+	      fujia3 +=Double.parseDouble(lwAllWholeFeeDto.getFujia3());
+	    /** 属性附加5 */
+	      fujia5 +=Double.parseDouble(lwAllWholeFeeDto.getFujia5());
+	     /** 属性附加9 */
+	      fujia9 +=Double.parseDouble(lwAllWholeFeeDto.getFujia9());
+	}
+	double puredianFei = sumfee- sanxia-sanxiatax-jijin-fujia1-dianjin-dianjintax-fujia9;
+	o.setPower1(new Double(power1).toString());
+    o.setDianfei(new Double(puredianFei/1.17).toString());
+    o.setSanxia(new Double(sanxia).toString());
+    o.setDianjin(new Double(dianjin).toString()) ;
+    o.setJijin(new Double(jijin).toString());
+    o.setDianfeitax(new Double(puredianFei/1.17*0.17).toString());
+    o.setSanxiatax(new Double(sanxiatax).toString()) ;
+    o.setDianjintax(new Double(dianjintax).toString()) ;
+    o.setSumfee(new Double(sumfee).toString()) ;
+    o.setHaiminglu(new Double(haiminglu).toString()) ;
+    o.setDuobian(new Double(duobian).toString()) ;
+    o.setZhuijia(new Double(zhuijia).toString()) ;
+    o.setFujia1(new Double(fujia1).toString()) ;
+    o.setFujia2(new Double(fujia2).toString()) ;
+    o.setFujia3(new Double(fujia3).toString()) ;
+    o.setFujia5(new Double(fujia5).toString()) ;
+    o.setFujia9(new Double(fujia9).toString());
+    o.setCompany("小计");
+    wholeResultList.add(o);
+    httpServletRequest.setAttribute("wholeResultList", wholeResultList);
+	
+	Collection<LwDcodeDto> comList = blLwDcodeFacade
+	.findByConditions(" codetype = 'SupplyCom'");
+	// 得到四个局的统计数据
+			for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
+				LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
+				company = lwDcodeDto.getCodeCode();
+				
+				userList = blLwPowerUserFacade
+						.findByConditions("superclass = '" + company + "'");
+				condition = PowerFeeCal.getUserCondition(userList);
+				priceSummaryList = blLwTownPriceSummaryFacade
+						.findByConditions(this.getAddMonthCondition("2009-01", inputDate, "statMonth")+ condition);
+				townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(
+						priceSummaryList, inputDate);
+				townSataDto.setComCode(company);
+				townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
+				resultList.add(townSataDto);
+			}
+			// 四个局的统计汇总
+			townSataDto = PowerFeeCal.getSumCompanyStat(resultList, inputDate);
+			townSataDto.setCompanyName("小计");
+			resultList.add(townSataDto);
 			httpServletRequest.setAttribute("resultList", resultList);
+			httpServletRequest.setAttribute("colf", colf);
 			httpServletRequest.setAttribute("inputDate", inputDate);
 			
 			
-			return actionMapping.findForward("viewthisallcount");
+			return actionMapping.findForward("leijicount");
 		}
 	}
 
@@ -731,117 +807,128 @@ public class UIThisMonthAllCountAction extends Action {
 				startMonth).append("' and '").append(endMonth).append("'");
 		return buffer.toString();
 	}
-	public Collection<LwCorporationSummaryDto> getCorporationSumStat(String conditions) throws Exception{
+	
+	/**
+	 * 大工业累计
+	 * @param conditions
+	 * @return
+	 * @throws Exception
+	 */
+	public Collection<TownSataDto> getCorporationSumStat(String conditions) throws Exception{
 		BLLwCoporationUserInfoFacade blLwCoporationUserInfoFacade = new BLLwCoporationUserInfoFacade();
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
-		String userNo = null;
-		String userNotemp =  null;
-		 String lineCode = "";
-	    /** 属性统计年月 */
-	     String statMonth = "";
-	    /** 属性用电分类 */
-	     String powerClass = "";
-	    /** 属性总电量 */
-	     double electricQuantity = 0D;
-	    /** 属性三峡 */
-	     double sanXiaFee = 0D;
-	    /** 属性基金 */
-	     double surcharge = 0D;
-	    /** 属性电金 */
-	     double powerFee = 0D;
-	    /** 属性非居民电量 */
-	     double unDenizenQuantity = 0D;
-	    /** 属性有功电量 */
-	     double pointerQuantity = 0D;
-	    /** 属性有功电价 */
-	     double pointerPrice = 0D;
-	    /** 属性有功电费 */
-	     double pointerFee = 0D;
-	    /** 属性非居民电价 */
-	     double unDenizenPrice = 0D;
-	    /** 属性非居民电费 */
-	     double unDenizenFee = 0D;
-	    /** 属性调整值 */
-	     double ajustRate = 0D;
-	    /** 属性力率电费 */
-	     double powerRateFee = 0D;
-	    /** 属性功率因素 */
-	     double rateCode = 0D;
-	    /** 属性需量电量 */
-	     double needQuantity = 0D;
-	    /** 属性需量电价 */
-	     double needPrice = 0D;
-	    /** 属性需量电费 */
-	     double needFee = 0D;
-	    /** 属性容量电量 */
-	     double contentQuantity = 0D;
-	    /** 属性容量电价 */
-	     double contentPrice = 0D;
-	    /** 属性容量电费 */
-	     double contentFee = 0D;
-	    /** 属性无功电量 */
-	     double unPointerQuantity = 0D;
-	    /** 属性基金电价 */
-	     double surchargePrice = 0D;
-	    /** 属性三峡金电价 */
-	     double sanXiaPrice = 0D;
-	    /** 属性电金电价 */
-	     double powerPrice = 0D;
-	    /** 属性谷段电量 */
-	     double valleyQuantity = 0D;
-	    /** 属性峰段电量 */
-	     double peakQuantity = 0D;
-	    /** 属性峰段电价 */
-	     double peakPrice = 0D;
-	    /** 属性谷段电j价 */
-	     double valleyPrice = 0D;
-	    /** 属性峰段电费 */
-	     double peakFee = 0D;
-	    /** 属性古段电费 */
-	     double valleyFee = 0D;
-	    /** 属性变损电量 */
-	     double lossQuantity = 0D;
-	    /** 属性标志位 */
-	     String flag = "";
-	    /** 属性注释 */
-	     String remark = "";
-	    /** 属性电费合计 */
-	     double sumFee = 0D;
-	    /** 属性录入日期 */
-	     String inputDate = "";
-	    /** 属性抄见电量 */
-	     double sumPointerQuantity = 0D;
-	    /** 属性电量类型 */
-	     String quantityStyle = "";
-	    /** 属性改变前电价 */
-	     double beforPrice = 0D;
-	    /** 属性改变后电价 */
-	     double lastPrice = 0D;
-	    /** 属性改变前电量 */
-	     double beforPower = 0D;
-	    /** 属性改变后电量 */
-	     double lastPower = 0D;
-	    /** 属性改变前电费 */
-	     double beforFee = 0D;
-	    /** 属性改变后电费 */
-	     double lastFee = 0D;
-	    /** 属性是否发生改变 */
-	     String ifchange = "";
-	    /** 属性需量指针 */
-	     double needPointer = 0D;
-	    /** 属性有功线损电量 */
-	     double lineLoss = 0D;
-	    /** 属性无功线损电量 */
-	     double unLineLoss = 0D;
-	    /** 属性无功变损电量 */
-	     double unLossQuantity = 0D;
+		
 		Collection <LwCoporationUserInfoDto>userList = blLwCoporationUserInfoFacade.findByConditions("1=1");
 		Collection<LwCorporationSummaryDto> priceList = blLwCorporationSummaryFacade.findByConditions(conditions);
-		Collection<LwCorporationSummaryDto> resultList = new ArrayList<LwCorporationSummaryDto>();
+		Collection<TownSataDto> resultList = new ArrayList<TownSataDto>();
 		LwCorporationSummaryDto summary = null;
+		String userName = null;
 		for (Iterator iterator = userList.iterator(); iterator.hasNext();) {
 			LwCoporationUserInfoDto user = (LwCoporationUserInfoDto) iterator.next();
+			String userNo = null;
+			String userNotemp =  null;
+			 String lineCode = "";
+		    /** 属性统计年月 */
+		     String statMonth = "";
+		    /** 属性用电分类 */
+		     String powerClass = "";
+		    /** 属性总电量 */
+		     double electricQuantity = 0D;
+		    /** 属性三峡 */
+		     double sanXiaFee = 0D;
+		    /** 属性基金 */
+		     double surcharge = 0D;
+		    /** 属性电金 */
+		     double powerFee = 0D;
+		    /** 属性非居民电量 */
+		     double unDenizenQuantity = 0D;
+		    /** 属性有功电量 */
+		     double pointerQuantity = 0D;
+		    /** 属性有功电价 */
+		     double pointerPrice = 0D;
+		    /** 属性有功电费 */
+		     double pointerFee = 0D;
+		    /** 属性非居民电价 */
+		     double unDenizenPrice = 0D;
+		    /** 属性非居民电费 */
+		     double unDenizenFee = 0D;
+		    /** 属性调整值 */
+		     double ajustRate = 0D;
+		    /** 属性力率电费 */
+		     double powerRateFee = 0D;
+		    /** 属性功率因素 */
+		     double rateCode = 0D;
+		    /** 属性需量电量 */
+		     double needQuantity = 0D;
+		    /** 属性需量电价 */
+		     double needPrice = 0D;
+		    /** 属性需量电费 */
+		     double needFee = 0D;
+		    /** 属性容量电量 */
+		     double contentQuantity = 0D;
+		    /** 属性容量电价 */
+		     double contentPrice = 0D;
+		    /** 属性容量电费 */
+		     double contentFee = 0D;
+		    /** 属性无功电量 */
+		     double unPointerQuantity = 0D;
+		    /** 属性基金电价 */
+		     double surchargePrice = 0D;
+		    /** 属性三峡金电价 */
+		     double sanXiaPrice = 0D;
+		    /** 属性电金电价 */
+		     double powerPrice = 0D;
+		    /** 属性谷段电量 */
+		     double valleyQuantity = 0D;
+		    /** 属性峰段电量 */
+		     double peakQuantity = 0D;
+		    /** 属性峰段电价 */
+		     double peakPrice = 0D;
+		    /** 属性谷段电j价 */
+		     double valleyPrice = 0D;
+		    /** 属性峰段电费 */
+		     double peakFee = 0D;
+		    /** 属性古段电费 */
+		     double valleyFee = 0D;
+		    /** 属性变损电量 */
+		     double lossQuantity = 0D;
+		    /** 属性标志位 */
+		     String flag = "";
+		    /** 属性注释 */
+		     String remark = "";
+		    /** 属性电费合计 */
+		     double sumFee = 0D;
+		    /** 属性录入日期 */
+		     String inputDate = "";
+		    /** 属性抄见电量 */
+		     double sumPointerQuantity = 0D;
+		    /** 属性电量类型 */
+		     String quantityStyle = "";
+		    /** 属性改变前电价 */
+		     double beforPrice = 0D;
+		    /** 属性改变后电价 */
+		     double lastPrice = 0D;
+		    /** 属性改变前电量 */
+		     double beforPower = 0D;
+		    /** 属性改变后电量 */
+		     double lastPower = 0D;
+		    /** 属性改变前电费 */
+		     double beforFee = 0D;
+		    /** 属性改变后电费 */
+		     double lastFee = 0D;
+		    /** 属性是否发生改变 */
+		     String ifchange = "";
+		    /** 属性需量指针 */
+		     double needPointer = 0D;
+		    /** 属性有功线损电量 */
+		     double lineLoss = 0D;
+		    /** 属性无功线损电量 */
+		     double unLineLoss = 0D;
+		    /** 属性无功变损电量 */
+		     double unLossQuantity = 0D;
 			userNo = user.getUserNo();
+			userName = user.getUserName();
+			TownSataDto townSataDto = null;
 			for (Iterator iterator2 = priceList.iterator(); iterator2.hasNext();) {
 				LwCorporationSummaryDto lwCorporationSummaryDto = (LwCorporationSummaryDto) iterator2
 						.next();
@@ -881,12 +968,7 @@ public class UIThisMonthAllCountAction extends Action {
 				      contentFee +=lwCorporationSummaryDto.getContentFee();
 				    /** 属性无功电量 */
 				      unPointerQuantity +=lwCorporationSummaryDto.getUnPointerQuantity();
-				    /** 属性基金电价 */
-				      surchargePrice +=lwCorporationSummaryDto.getSurchargePrice();
-				    /** 属性三峡金电价 */
-				      sanXiaPrice +=lwCorporationSummaryDto.getSanXiaPrice();
-				    /** 属性电金电价 */
-				      powerPrice +=lwCorporationSummaryDto.getPowerPrice();
+				   
 				    /** 属性谷段电量 */
 				      valleyQuantity +=lwCorporationSummaryDto.getValleyQuantity();
 				    /** 属性峰段电量 */
@@ -932,43 +1014,48 @@ public class UIThisMonthAllCountAction extends Action {
 				}
 				
 			}
-			  summary.setUserNo(userNo);
-			  summary.setSanXiaFee(sanXiaFee);
-		      summary.setPowerFee(powerFee);               
-		      summary.setUnDenizenQuantity(unDenizenQuantity);      
-		      summary.setPointerQuantity(pointerQuantity);        
-		      summary.setPointerPrice(pointerPrice);           
-		      summary.setPointerFee(pointerFee);             
-		      summary.setUnDenizenPrice(unDenizenPrice);         
-		      summary.setUnDenizenFee(unDenizenFee);           
-		      summary.setPowerRateFee(powerRateFee);           
-		      summary.setNeedQuantity(needQuantity);           
-		      summary.setNeedFee(needFee);                
-		      summary.setContentQuantity(contentQuantity);        
-		      summary.setContentPrice(contentPrice);           
-		      summary.setContentFee(contentFee);             
-		      summary.setUnPointerQuantity(unPointerQuantity);      
-		      summary.setSurchargePrice(surchargePrice);         
-		      summary.setSanXiaPrice(sanXiaPrice);            
-		      summary.setPowerPrice(powerPrice);             
-		      summary.setValleyQuantity(valleyQuantity);         
-		      summary.setPeakQuantity(peakQuantity);           
-		      summary.setPeakPrice(peakPrice);              
-		      summary.setValleyPrice(valleyPrice);            
-		      summary.setPeakFee(peakFee);                
-		      summary.setValleyFee(valleyFee);              
-		      summary.setLossQuantity(lossQuantity);           
-		      summary.setSumFee(sumFee);                 
-		      summary.setSumPointerQuantity(sumPointerQuantity);     
-		      summary.setBeforPower(beforPower);             
-		      summary.setLastPower(lastPower);              
-		      summary.setBeforFee(beforFee);               
-		      summary.setLastFee(lastFee);               
-		      summary.setNeedPointer(needPointer);           
-		      summary.setLineLoss(lineLoss);              
-		      summary.setUnLineLoss(unLineLoss);            
-		      summary.setUnLossQuantity(unLossQuantity);
-		      resultList.add(summary);
+			double purePowerFee = 0;
+			townSataDto = new TownSataDto();
+			if(("20699999065".equals(userNo))||"20699999072".equals(userNo)){
+				townSataDto.setSumPower(PowerFeeCal.getValue(peakQuantity,
+						AppConst.TWO_DOT_FLAG));
+				purePowerFee = (peakFee+contentFee +needFee+powerRateFee+unDenizenFee)/1.17;
+				townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,
+						AppConst.TWO_DOT_FLAG));
+				
+				
+			}
+			else{
+				townSataDto.setSumPower(PowerFeeCal.getValue(electricQuantity,
+						AppConst.TWO_DOT_FLAG));
+			    purePowerFee = (pointerFee+contentFee +needFee+powerRateFee+unDenizenFee)/1.17;
+				townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,
+						AppConst.TWO_DOT_FLAG));
+			}
+			townSataDto.setCompanyName(userName);
+			townSataDto.setPowerFeeTax(PowerFeeCal.getValue(purePowerFee*0.17,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setPureDianJin(PowerFeeCal.getValue(powerFee/1.17,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setDianJinTax(PowerFeeCal.getValue(((powerFee/1.17)*0.17),
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setPureSanXia(PowerFeeCal.getValue(sanXiaFee/1.17,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setSanXiaTax(PowerFeeCal.getValue(((sanXiaFee/1.17)*0.17),
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setPureJiJin(PowerFeeCal.getValue(surcharge/1.17,
+					AppConst.TWO_DOT_FLAG));
+			townSataDto.setJiJinTax(PowerFeeCal.getValue(((surcharge/1.17)*0.17),
+					AppConst.TWO_DOT_FLAG));
+
+			townSataDto.setSumPowerFee(PowerFeeCal.getValue(sumFee,
+					AppConst.TWO_DOT_FLAG));
+
+			townSataDto.setStatMonth(statMonth);
+			
+			
+			
+		      resultList.add(townSataDto);
 			
 		}
 		return resultList;
@@ -976,9 +1063,7 @@ public class UIThisMonthAllCountAction extends Action {
 	
 	public LwAllWholeFeeDto getAllWholeFee(Collection <LwAllWholeFeeDto> collection,String company,String statMonth){
 		LwAllWholeFeeDto lwAllWholeFeeDto2 = new LwAllWholeFeeDto();
-		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
-			LwAllWholeFeeDto lwAllWholeFeeDto = (LwAllWholeFeeDto) iterator.next();
-			 double power1 =0D; 
+		 double power1 =0D; 
 		    /** 属性电费 */
 		     double dianfei =0D;
 		    /** 属性三峡 */
@@ -1007,9 +1092,14 @@ public class UIThisMonthAllCountAction extends Action {
 		     double fujia2 =0D;
 		    /** 属性附加3 */
 		     double fujia3 =0D;
-		    /** 属性附加4 */
-		     double fujia4 =0D;
+		    /** 属性附加5 */
+		     double fujia5 =0D;
+		     /** 属性附加9 */
+		     double fujia9 =0D;
 		     
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			LwAllWholeFeeDto lwAllWholeFeeDto = (LwAllWholeFeeDto) iterator.next();
+			
 		     
 		      power1 += Double.parseDouble(lwAllWholeFeeDto.getPower1());
 			    /** 属性电费 */
@@ -1032,35 +1122,51 @@ public class UIThisMonthAllCountAction extends Action {
 			      haiminglu +=Double.parseDouble(lwAllWholeFeeDto.getHaiminglu());
 			    /** 属性多边 */
 			      duobian +=Double.parseDouble(lwAllWholeFeeDto.getDuobian());
-			    /** 属性追加 */
-			      zhuijia +=Double.parseDouble(lwAllWholeFeeDto.getZhuijia());
 			    /** 属性附加1 */
 			      fujia1 +=Double.parseDouble(lwAllWholeFeeDto.getFujia1());
 			    /** 属性附加2 */
 			      fujia2 +=Double.parseDouble(lwAllWholeFeeDto.getFujia2());
 			    /** 属性附加3 */
 			      fujia3 +=Double.parseDouble(lwAllWholeFeeDto.getFujia3());
-			    /** 属性附加4 */
-			      fujia4 +=Double.parseDouble(lwAllWholeFeeDto.getFujia4());
-		     
-			      lwAllWholeFeeDto2.setCompany(company);
-			      lwAllWholeFeeDto2.setPower1(new Double(power1).toString());
-			      lwAllWholeFeeDto2.setDianfei(new Double(dianfei).toString());
-			      lwAllWholeFeeDto2.setSanxia(new Double(sanxia).toString());
-			      lwAllWholeFeeDto2.setDianjin(new Double(dianjin).toString());
-			      lwAllWholeFeeDto2.setJijin(new Double(jijin).toString());
-			      lwAllWholeFeeDto2.setDianfeitax(new Double(dianfeitax).toString());
-			      lwAllWholeFeeDto2.setSanxiatax(new Double(sanxiatax).toString());
-			      lwAllWholeFeeDto2.setDianjintax(new Double(dianjintax).toString());
-			      lwAllWholeFeeDto2.setSumfee(new Double(sumfee).toString());
-			      lwAllWholeFeeDto2.setHaiminglu(new Double(haiminglu).toString());
-			      lwAllWholeFeeDto2.setDuobian(new Double(duobian).toString());
-			      lwAllWholeFeeDto2.setZhuijia(new Double(zhuijia).toString());
-			      lwAllWholeFeeDto2.setFujia1(new Double(fujia1).toString());
-			      lwAllWholeFeeDto2.setFujia2(new Double(fujia2).toString());
-			      lwAllWholeFeeDto2.setFujia3(new Double(fujia3).toString());
-			      lwAllWholeFeeDto2.setFujia4(new Double(fujia4).toString());   
+			    /** 属性附加5 */
+			      String tempFujia5 = lwAllWholeFeeDto.getFujia5();
+			      fujia5 +=Double.parseDouble((tempFujia5==null||"".equals(tempFujia5))?"0":tempFujia5);
+			      /** 属性附加9 差别*/
+			      String tempFujia9 = lwAllWholeFeeDto.getFujia9();
+			      fujia9 +=Double.parseDouble((tempFujia9==null||"".equals(tempFujia9))?"0":tempFujia9);
+			      
 		}
+		if("gy".equals(company)){
+			lwAllWholeFeeDto2.setCompany("固阳");	
+		}
+		if("dm".equals(company)){
+			lwAllWholeFeeDto2.setCompany("达贸");	
+		}
+		if("ty".equals(company)){
+			lwAllWholeFeeDto2.setCompany("土佑");	
+		}
+		if("jy".equals(company)){
+			lwAllWholeFeeDto2.setCompany("九原");	
+		}
+	
+		double puredianFei = sumfee- sanxia-sanxiatax-jijin-fujia1-dianjin-dianjintax-fujia9;
+	      lwAllWholeFeeDto2.setPower1(new Double(power1).toString());
+	      lwAllWholeFeeDto2.setDianfei(new Double(puredianFei/1.17).toString());
+	      lwAllWholeFeeDto2.setSanxia(new Double(sanxia).toString());
+	      lwAllWholeFeeDto2.setDianjin(new Double(dianjin).toString());
+	      lwAllWholeFeeDto2.setJijin(new Double(jijin).toString());
+	      lwAllWholeFeeDto2.setDianfeitax(new Double(puredianFei/1.17*0.17).toString());
+	      lwAllWholeFeeDto2.setSanxiatax(new Double(sanxiatax).toString());
+	      lwAllWholeFeeDto2.setDianjintax(new Double(dianjintax).toString());
+	      lwAllWholeFeeDto2.setSumfee(new Double(sumfee).toString());
+	      lwAllWholeFeeDto2.setHaiminglu(new Double(haiminglu).toString());
+	      lwAllWholeFeeDto2.setDuobian(new Double(duobian).toString());
+	      lwAllWholeFeeDto2.setZhuijia(new Double(zhuijia).toString());
+	      lwAllWholeFeeDto2.setFujia1(new Double(fujia1).toString());
+	      lwAllWholeFeeDto2.setFujia2(new Double(fujia2).toString());
+	      lwAllWholeFeeDto2.setFujia3(new Double(fujia3).toString());
+	      lwAllWholeFeeDto2.setFujia5(new Double(fujia5).toString());   
+	      lwAllWholeFeeDto2.setFujia9(new Double(fujia9).toString());   
 		return lwAllWholeFeeDto2;
 	}
 }
