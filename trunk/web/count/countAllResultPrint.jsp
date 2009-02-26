@@ -147,7 +147,7 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 		
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=statMonth%></span>
+						<span class="title"><font size="4">月份:<%=statMonth%></font></span>
 		</td>
 	    </tr>
 		<tr class=listtitle>
