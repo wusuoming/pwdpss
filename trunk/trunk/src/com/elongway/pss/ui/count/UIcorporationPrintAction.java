@@ -64,15 +64,35 @@ public class UIcorporationPrintAction extends Action {
 		BLLwNewFactoryIndicatorFacade  blLwNewFactoryIndicatorFacade=new BLLwNewFactoryIndicatorFacade();
 		Collection colpoint=blLwNewFactoryIndicatorFacade.findByConditions(conditions);
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
-		LwCorporationSummaryDto LwCorporationSummaryDto2=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
-		if(LwCorporationSummaryDto2==null){
+		LwCorporationSummaryDto LwCorporationSummaryDto3=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
+		
+		if(LwCorporationSummaryDto3==null){
 			throw new UserException(-6, -706, this.getClass().getName(),
 			"该用户还没有算过费！");
 		}
+		if(exends2.equals("")||exends2==null){
+			exends2="0";
+			
+		}
+		
+		LwCorporationSummaryDto LwCorporationSummaryDto4=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
+		
+		if(LwCorporationSummaryDto4.getUnLineLoss()==Double.parseDouble(exends2)){
+			
+			
+		}else{
+			LwCorporationSummaryDto4.setSumFee(LwCorporationSummaryDto4.getSumFee()+Double.parseDouble(exends2));
+			
+			LwCorporationSummaryDto4.setUnLineLoss(Double.parseDouble(exends2));
+			blLwCorporationSummaryFacade.update(LwCorporationSummaryDto4);
+		}
+		
+		//LwCorporationSummaryDto2.setSumFee(LwCorporationSummaryDto2.getSumFee()+Double.parseDouble(exends2));
+		//blLwCorporationSummaryFacade.update(LwCorporationSummaryDto2);
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
 		double tax=0;
-		
+		LwCorporationSummaryDto LwCorporationSummaryDto2=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
 		tax=LwCorporationSummaryDto2.getSumFee()/1.17*0.17;
 		httpServletRequest.setAttribute("colpointbak", colpointbak);
 		
