@@ -1714,6 +1714,16 @@
 			</forward>
 			</action>
 			
+			<action path="/thismonthSumPrint" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIThisMonthAllCountPrintAction"
+			scope="request"
+			input="/count/thismonthcountresult.jsp">
+			<forward name="sumStatPrint"
+				path="/count/leijiresultprint.jsp">
+			</forward>
+			</action>
+			
+			
 			
 			
 			<action path="/UIcorporationcountPrintAction" name="lwUserLineForm"

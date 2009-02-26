@@ -122,29 +122,14 @@ function sexy(){
 }
 
 function corporationFeeCount(){
-if(fm.counttype.value=='1'){
+
 if(fm.inputDate.value==''){
 	alert("ÇëÂ¼ÈëÄêÔÂ!");
 	return;
 		
 }
 fm.action="/iacontact/UIThisMonthAllCountAction.do";
-}
-if(fm.counttype.value=='2'){
-
-	
-		fm.action="/iacontact/UIThisMonthAllCountAction.do";
-
-}
-
-
-	
-	
-	fm.submit();
-	
-	
-	
-	
+fm.submit();	
 }
 Calendar.setup({
         inputField     :    "f_date_shqqs",     // id of the input field

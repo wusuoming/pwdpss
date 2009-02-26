@@ -25,7 +25,10 @@ public class TownSataDto {
 	// 总库区
 	double sumKuQu = 0.0;
 
-	
+	// 总库区
+	double pureChaBie = 0.0;
+	// 总库区
+	double chaBieTax = 0.0;
 
 	// 纯电金
 	double pureDianJin = 0.0;
@@ -150,5 +153,17 @@ public class TownSataDto {
 	}
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+	public double getPureChaBie() {
+		return pureChaBie;
+	}
+	public void setPureChaBie(double pureChaBie) {
+		this.pureChaBie = pureChaBie;
+	}
+	public double getChaBieTax() {
+		return chaBieTax;
+	}
+	public void setChaBieTax(double chaBieTax) {
+		this.chaBieTax = chaBieTax;
 	}
 }
