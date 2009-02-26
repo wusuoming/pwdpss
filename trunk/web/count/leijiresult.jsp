@@ -111,7 +111,7 @@ String s=(String)request.getAttribute("inputDate");
 
 %>
 <form  name="fm" method="post">
-	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
+	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>

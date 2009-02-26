@@ -71,7 +71,7 @@ create by wangrongjia
 <body class=interface>
     <!--CONTENT BEGIN-->
       <form name="fm" method="post">
-        <table class=common width="100%" cellspacing="1" cellpadding="5" border=0>
+        <table class=common width="100%" cellspacing="0" cellpadding="5" border=0>
         <tr class=listtitle align="center">
 			<td class=title0 colspan="9"><B>大工业统计</B></td>
 		</tr>

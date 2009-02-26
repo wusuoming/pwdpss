@@ -188,54 +188,54 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 	</tr>
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
+					<span class="title"><font size="5">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电量</font></span>
+					<span class="title"><font size="5">电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费</font></span>
+					<span class="title"><font size="5">电费</font></span>
 				<br></td>
 				
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡基金</font></span>
+					<span class="title"><font size="5">三峡基金</font></span>
 				<br></td>
 		
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电力资金</font></span>
+					<span class="title"><font size="5">电力资金</font></span>
 				<br></td>	
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金</font></span>
+					<span class="title"><font size="5">基金</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><font size="5">电费税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="5">三峡税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="5">电金税</font></span>
 				<br></td>
 				
 			
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="5">基金税</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">差别电费</font></span>
+					<span class="title"><font size="5">差别电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">差别电费税</font></span>
+					<span class="title"><font size="5">差别电费税</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><font size="5">总计</font></span>
 				<br></td>
 							
 			</tr>
@@ -252,17 +252,17 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			<tr >
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
+					<span class="title"><font size="5"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
 				<br></td>
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} %>
 				
@@ -270,56 +270,56 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} else{%>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} %>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG) %></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG) %></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%= df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} %>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="5"><%=0%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(lwCorporationSummaryDto.getSumFee())%></font></span>
+					<span class="title"><font size="5"><%=0%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="5"><%=df.format(lwCorporationSummaryDto.getSumFee())%></font></span>
 				<br></td>
 				
 				
@@ -328,76 +328,90 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			<%} %>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">小计</font></span>
+					<span class="title"><font size="5">小计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfpower%></font></span>
+					<span class="title"><font size="5"><%=sumfpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfc%></font></span>
+					<span class="title"><font size="5"><%=sumfc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
+					<span class="title"><font size="5"><%=sumfsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summfdianjin%></font></span>
+					<span class="title"><font size="5"><%=summfdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijin%></font></span>
+					<span class="title"><font size="5"><%=sumfjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumftax%></font></span>
+					<span class="title"><font size="5"><%=sumftax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
+					<span class="title"><font size="5"><%=sumfsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
+					<span class="title"><font size="5"><%=sumfdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="5"><%=sumfjijintax%></font></span>
 				<br></td>
+				
+					<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=0%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=0%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=sumffee%></font></span>
+				<br></td>
+				
+					
+			</tr>
 				
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">郊区</font></span>
+					<span class="title"><font size="5">郊区</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))/1.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjin() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getJijin()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getSanxiatax() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getDianjintax()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtojy.getFujia1() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityjy)/1.17*0.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee()))%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee()))%></font></span>
 				<br></td>
 				
 					
@@ -405,45 +419,45 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">达茂旗</font></span>
+					<span class="title"><font size="5">达茂旗</font></span>
 				<br></td>
 					<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getPower1()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))/1.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjin() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getJijin()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))/1.17*0.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))/1.17*0.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getSanxiatax() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getDianjintax()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtodm.getFujia1() %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee()))%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantitydm)/1.17*0.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee()))%></font></span>
 				<br></td>
 				
 					
@@ -452,46 +466,46 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">土右</font></span>
+					<span class="title"><font size="5">土右</font></span>
 				<br></td>
 					<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getPower1()))%></font></span>
+					<span class="title"><font size="5"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getPower1()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))/1.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))/1.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjin() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getJijin()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))/1.17*0.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))/1.17*0.17) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getSanxiatax() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getDianjintax()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17)%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtoty.getFujia1() %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee()))%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityty)/1.17*0.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee()))%></font></span>
 				<br></td>
 				
 				
@@ -502,45 +516,45 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			
 					<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">固阳</font></span>
+					<span class="title"><font size="5">固阳</font></span>
 				<br></td>
 						<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getPower1()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getPower1()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9()))/1.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9()))/1.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getSanxia() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjin() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getDianjin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getJijin()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getJijin()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9()))/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9()))/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getSanxiatax() %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getSanxiatax() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getDianjintax()%></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getDianjintax()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17) %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17*0.17) %></font></span>
+					<span class="title"><font size="5"><%=lwAllWholeFeeDtogy.getFujia1() %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSumfee()))%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17) %></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantitygy)/1.17*0.17) %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSumfee()))%></font></span>
 				<br></td>
 					
 			</tr>
@@ -548,46 +562,46 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">小计</font></span>
+					<span class="title"><font size="5">小计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwpower%></font></span>
+					<span class="title"><font size="5"><%=sumwpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwc%></font></span>
+					<span class="title"><font size="5"><%=sumwc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxia%></font></span>
+					<span class="title"><font size="5"><%=sumwsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summwdianjin%></font></span>
+					<span class="title"><font size="5"><%=summwdianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijin%></font></span>
+					<span class="title"><font size="5"><%=sumwjijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwtax%></font></span>
+					<span class="title"><font size="5"><%=sumwtax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxiatax%></font></span>
+					<span class="title"><font size="5"><%=sumwsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwdianjintax%></font></span>
+					<span class="title"><font size="5"><%=sumwdianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
+					<span class="title"><font size="5"><%=sumwjijintax%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwfee%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="5"><%=sumwfee%></font></span>
 				<br></td>
 				
 							
@@ -599,91 +613,91 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 		%>
 	<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getCompanyName() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(townSataDto.getSumPower()) %></font></span>
+					<span class="title"><font size="5"><%=Math.round(townSataDto.getSumPower()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPurePowerFee() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getPurePowerFee() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureSanXia()%></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getPureSanXia()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureDianJin() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getPureDianJin() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureJiJin() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getPureJiJin() %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPowerFeeTax() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getPowerFeeTax() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSanXiaTax() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getSanXiaTax() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getDianJinTax() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getDianJinTax() %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getJiJinTax() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getJiJinTax() %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="5"><%=0%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="5"><%=0%></font></span>
 				<br></td>
 					
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPowerFee() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getSumPowerFee() %></font></span>
 				<br></td>	
 							
 			</tr>
 		<%} %>
 		<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">合计</font></span>
+					<span class="title"><font size="5">合计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallpower%></font></span>
+					<span class="title"><font size="5"><%=sumallpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallc%></font></span>
+					<span class="title"><font size="5"><%=sumallc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallsanxia%></font></span>
+					<span class="title"><font size="5"><%=sumallsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
+					<span class="title"><font size="5"><%=sumalldianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalljijin%></font></span>
+					<span class="title"><font size="5"><%=sumalljijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalltax%></font></span>
+					<span class="title"><font size="5"><%=sumalltax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallsanxiatax%></font></span>
+					<span class="title"><font size="5"><%=sumallsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalldianjintax%></font></span>
+					<span class="title"><font size="5"><%=sumalldianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
+					<span class="title"><font size="5"><%=sumalljijintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
 				<br></td>
 				
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumallall%></font></span>
+					<span class="title"><font size="5"><%=sumallall%></font></span>
 				<br></td>
 				
 							
