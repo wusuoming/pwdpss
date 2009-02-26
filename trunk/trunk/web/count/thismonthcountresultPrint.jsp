@@ -179,11 +179,11 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 	
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="13"><font size="6">包头市农电公司电费电量发行单</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=inputDate1%></span>
+						<span class="title"><font size="4">月份:<%=inputDate1%></font></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
