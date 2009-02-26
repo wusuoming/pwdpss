@@ -23,6 +23,8 @@ import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
+import com.elongway.pss.util.AppConst;
+import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 import com.sinosoft.sysframework.exceptionlog.UserException;
 
@@ -141,10 +143,10 @@ public class CountAllResultPrintAction extends Action {
 						+ lwCorporationSummaryDto.getContentFee()
 						+ lwCorporationSummaryDto.getNeedFee()
 						+ lwCorporationSummaryDto.getUnDenizenFee();}
-			summfdianjinall += lwCorporationSummaryDto.getSurcharge();
-			sumfsanxiaall += lwCorporationSummaryDto.getPowerFee();
+			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
+			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-			sumffee += lwCorporationSummaryDto.getSumFee();
+			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG) ;
 
 		}
 
