@@ -199,9 +199,11 @@ public class UIcorporationFeeCalAction extends Action {
 		
 		if(AmmeterStyle.equals("1"))
 		{
-			
+			if(PointerQuantity==0){
+				PeakQuantity=0;
+			}else{
 			PeakQuantity=Math.round(PointerQuantity-unDenizenFeePower-TransLosspower);
-		
+			}
 		}
 		double AdjustRate=0;
 		double RateCode=0;
@@ -234,12 +236,12 @@ public class UIcorporationFeeCalAction extends Action {
 		double sumpower=0;
 		if(AmmeterStyle.equals("1"))
 		{
-			sumpower=Math.round(PointerQuantity-TransLosspower);
+			sumpower=Math.round(PointerQuantity-TransLosspower)+ammeterDuzenPower;;
 		}
 	
 		if(AmmeterStyle.equals("0"))
 		{
-			sumpower=Math.round(PointerQuantity-TransLosspower);
+			sumpower=Math.round(PointerQuantity-TransLosspower)+ammeterDuzenPower;
 		}
 		
 		
