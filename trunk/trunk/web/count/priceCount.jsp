@@ -143,7 +143,7 @@ String sum40 = df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()/1.17 + lwWho
 
 %>
 	<form name="fm" method="post">
-		<table class=common width="500%" border="1" cellspacing="1"
+		<table class=common width="500%" border="1" cellspacing="0"
 			cellpadding="5">
 <input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>">
 			<tr>

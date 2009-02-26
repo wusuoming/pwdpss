@@ -70,7 +70,7 @@ create by wangrongjia
     <!--CONTENT BEGIN-->
     
       <form name="fm" method="post">
-        <table class=common width="100%" cellspacing="1" cellpadding="5">
+        <table class=common width="100%" cellspacing="0" cellpadding="5">
         <tr class=listtitle align="center">
 			<td class=title0 colspan="7"><B>当月电费电量发行单</B></td>
 		</tr>

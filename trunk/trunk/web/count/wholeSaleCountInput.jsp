@@ -76,7 +76,7 @@ create by wangrongjia
     <!--CONTENT BEGIN-->
     
       <form name="fm" method="post" style="display:block;">
-        <table class=common width="100%" cellspacing="1" cellpadding="5">
+        <table class=common width="100%" cellspacing="0" cellpadding="5">
         <tr class=listtitle align="center">
 			<td class=title0 colspan="7"><B>ıª €Õ≥º∆</B></td>
 		</tr>

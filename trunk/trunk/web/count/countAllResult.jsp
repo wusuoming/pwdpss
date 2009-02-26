@@ -142,7 +142,7 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 		DecimalFormat df = new DecimalFormat("###0.00");
 		
 %>
-	<table class=common width="500%"  border="1" cellspacing="1" cellpadding="6">
+	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
