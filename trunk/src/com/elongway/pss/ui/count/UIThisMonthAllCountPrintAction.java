@@ -31,7 +31,7 @@ import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 
-public class UIThisMonthAllCountAction extends Action {
+public class UIThisMonthAllCountPrintAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
@@ -877,7 +877,7 @@ public class UIThisMonthAllCountAction extends Action {
 			httpServletRequest.setAttribute("counttype", counttype);
 			
 
-			return actionMapping.findForward("leijicount");
+			return actionMapping.findForward("sumStatPrint");
 		}
 	}
 

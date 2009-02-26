@@ -84,7 +84,7 @@
 }
 </script>
 </head>
-<body class=interface>&nbsp; 
+<body  class="interface" onload="javascript:doPrint();window.close()">&nbsp; 
 <html:errors />
 
 <%
@@ -116,52 +116,52 @@ String s=(String)request.getAttribute("inputDate");
 	<input type="hidden" name="counttype" value="<%=(String)request.getAttribute("counttype") %>">
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="4">包头市农电公司电费电量发行单（累计）</font></td>
+			<td class=title0 colspan="13"><font size="5">包头市农电公司电费电量发行单（累计）</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=s.substring(0,7) %></span>
+						<span class="title"><font size="5">月份:<%=s.substring(0,7) %></font></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="2">单位</font></span>
+					<span class="title"><font size="5">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">售电量</font></span>
+					<span class="title"><font size="5">售电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">纯电费</font></span>
+					<span class="title"><font size="5">纯电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费税</font></span>
+					<span class="title"><font size="5">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金</font></span>
+					<span class="title"><font size="5">电金</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电金税</font></span>
+					<span class="title"><font size="5">电金税</font></span>
 				<br></td>			
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡</font></span>
+					<span class="title"><font size="5">三峡</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">三峡税</font></span>
+					<span class="title"><font size="5">三峡税</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金</font></span>
+					<span class="title"><font size="5">基金</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">基金税</font></span>
+					<span class="title"><font size="5">基金税</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">差别电费</font></span>
+					<span class="title"><font size="5">差别电费</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">差别电费税</font></span>
+					<span class="title"><font size="5">差别电费税</font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><font size="5">总计</font></span>
 				<br></td>	
 							
 			</tr>
@@ -175,44 +175,44 @@ String s=(String)request.getAttribute("inputDate");
 		%>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getCompanyName() %></font></span>
 					<input type="hidden" name="company" value="<%=townSataDto.getComCode()%>">
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(townSataDto.getSumPower()) %></font></span>
+					<span class="title"><font size="5"><%=Math.round(townSataDto.getSumPower()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPurePowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPurePowerFee()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPowerFeeTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPowerFeeTax()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureDianJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureDianJin()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getDianJinTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getDianJinTax()) %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureSanXia()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureSanXia()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getSanXiaTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getSanXiaTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureJiJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureJiJin()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getJiJinTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getJiJinTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="5">0</font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="5">0</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getSumPowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getSumPowerFee()) %></font></span>
 				<br></td>	
 							
 			</tr>
@@ -223,44 +223,44 @@ String s=(String)request.getAttribute("inputDate");
 		%>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompany() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getCompany() %></font></span>
 					
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(townSataDto.getPower1())) %></font></span>
+					<span class="title"><font size="5"><%=Math.round(Double.parseDouble(townSataDto.getPower1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getDianfei())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getDianfei())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getDianfeitax())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getDianfeitax())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getDianjin())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getDianjin())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getDianjintax()) )%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getDianjintax()) )%></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getSanxia())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getSanxia())) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getSanxiatax())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getSanxiatax())) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getJijin())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getJijin())) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getFujia1())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getFujia1())) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getFujia9())/1.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getFujia9())/1.17) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getFujia9())/1.17*0.17) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getFujia9())/1.17*0.17) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(townSataDto.getSumfee())) %></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(townSataDto.getSumfee())) %></font></span>
 				<br></td>	
 							
 			</tr>
@@ -271,108 +271,106 @@ String s=(String)request.getAttribute("inputDate");
 		%>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto.getCompanyName() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto.getCompanyName() %></font></span>
 					<input type="hidden" name="company" value="<%=townSataDto.getComCode()%>">
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(townSataDto.getSumPower()) %></font></span>
+					<span class="title"><font size="5"><%=Math.round(townSataDto.getSumPower()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPurePowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPurePowerFee()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPowerFeeTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPowerFeeTax()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureDianJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureDianJin()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getDianJinTax() )%></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getDianJinTax() )%></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureSanXia()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureSanXia()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getSanXiaTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getSanXiaTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getPureJiJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getPureJiJin()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getJiJinTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getJiJinTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="5">0</font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="5">0</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto.getSumPowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto.getSumPowerFee()) %></font></span>
 				<br></td>	
 							
 			</tr>
 			<%}%>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=townSataDto1.getCompanyName() %></font></span>
+					<span class="title"><font size="5"><%=townSataDto1.getCompanyName() %></font></span>
 					
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(townSataDto1.getSumPower()) %></font></span>
+					<span class="title"><font size="5"><%=Math.round(townSataDto1.getSumPower()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPurePowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPurePowerFee()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPowerFeeTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPowerFeeTax()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPureDianJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPureDianJin()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getDianJinTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getDianJinTax()) %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPureSanXia()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPureSanXia()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getSanXiaTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getSanXiaTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPureJiJin()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPureJiJin()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getJiJinTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getJiJinTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getPureChaBie()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getPureChaBie()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getChaBieTax()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getChaBieTax()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(townSataDto1.getSumPowerFee()) %></font></span>
+					<span class="title"><font size="5"><%=df.format(townSataDto1.getSumPowerFee()) %></font></span>
 				<br></td>	
 							
 			</tr>
 	</table>
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="printCount();">        </td> 
-        </tr> 
-    </table>
+	
 
 </form>
 </body>
 <script language="javascript">
+function doPrint(){
+	window.print();
+}
 function printCount(){
   var b=fm.StartMonth.value;
   var counttype=fm.counttype.value;
  
 strURL = "<%=request.getContextPath()%>/thismonthSumPrint.do?inputDate="+b+"&counttype="+counttype;
-
+alert(strURL);
 	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");
     
 }
