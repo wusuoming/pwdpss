@@ -179,7 +179,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 	
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="6">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="13"><font size="6">包头市农电公司电费电量发行单（当月）</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
@@ -258,7 +258,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
