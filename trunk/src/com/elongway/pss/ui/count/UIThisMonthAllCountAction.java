@@ -164,7 +164,7 @@ public class UIThisMonthAllCountAction extends Action {
 				if (lwCorporationSummaryDto.getLineCode().equals("20699999065")
 						|| lwCorporationSummaryDto.getLineCode().equals(
 								"20699999072")) {
-					sumfpower += lwCorporationSummaryDto.getPeakQuantity()
+					sumfpower += lwCorporationSummaryDto.getElectricQuantity()
 							+ lwCorporationSummaryDto.getBeforPower()
 							+ lwCorporationSummaryDto.getLastPower();
 				} else {
@@ -1164,7 +1164,7 @@ public class UIThisMonthAllCountAction extends Action {
 			double purePowerFee = 0;
 			townSataDto = new TownSataDto();
 			if (("20699999065".equals(userNo)) || "20699999072".equals(userNo)) {
-				townSataDto.setSumPower(PowerFeeCal.getValue(peakQuantity,
+				townSataDto.setSumPower(PowerFeeCal.getValue(electricQuantity,
 						AppConst.TWO_DOT_FLAG));
 				purePowerFee = (peakFee + contentFee + needFee + powerRateFee + unDenizenFee) / 1.17;
 				townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,

@@ -264,7 +264,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getPeakQuantity())%></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
