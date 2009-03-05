@@ -474,6 +474,16 @@ body {
 											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 换表
 	                 		</app:menu>
 								</td>
+							</tr>		
+							<tr>
+								<td class=titleLink>
+									<app:menu
+										page="/queryLWProrateAppend.do?"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡电费追收
+	                 		</app:menu>
+								</td>
 							</tr>						
 						</table>
 

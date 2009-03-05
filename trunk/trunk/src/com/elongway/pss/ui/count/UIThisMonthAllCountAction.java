@@ -677,6 +677,7 @@ public class UIThisMonthAllCountAction extends Action {
 			double dianFeeTax = 0;
 			double pureSanXia = 0;
 			double pureDianJin = 0;
+			double dianJinTax = 0;
 			double sanXiaTax = 0;
 			double pureJiJin = 0;
 			double jiJinTax = 0;
@@ -687,8 +688,9 @@ public class UIThisMonthAllCountAction extends Action {
 				sumfpower += townSataDto2.getSumPower();
 				sumPowerFee += townSataDto2.getSumPowerFee();
 				pureDianFee += townSataDto2.getPurePowerFee();
+				dianFeeTax += townSataDto2.getPowerFeeTax();
 				pureDianJin += townSataDto2.getPureDianJin();
-				dianFeeTax += townSataDto2.getDianJinTax();
+				dianJinTax += townSataDto2.getDianJinTax();
 				pureSanXia += townSataDto2.getPureSanXia();
 
 				sanXiaTax += townSataDto2.getSanXiaTax();
@@ -702,7 +704,7 @@ public class UIThisMonthAllCountAction extends Action {
 					AppConst.TWO_DOT_FLAG));
 			townSataDto2.setPureDianJin(PowerFeeCal.getValue(pureDianJin,
 					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianFeeTax,
+			townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianJinTax,
 					AppConst.TWO_DOT_FLAG));
 			townSataDto2.setPureSanXia(PowerFeeCal.getValue(pureSanXia,
 					AppConst.TWO_DOT_FLAG));
@@ -891,12 +893,14 @@ public class UIThisMonthAllCountAction extends Action {
 
 	public TownSataDto getAllSumStat(TownSataDto factoryDto, TownSataDto townDto,
 			LwAllWholeFeeDto o) {
+		
 		double pureDianFee = 0;
 		double dianFeeTax = 0;
 		double pureSanXia = 0;
+		double sanXiaTax = 0;
 		double pureDianJin = 0;
 		double dianJinTax = 0;
-		double sanXiaTax = 0;
+		
 		double pureJiJin = 0;
 		double jiJinTax = 0;
 		double sumPowerFee = 0;
@@ -939,8 +943,7 @@ public class UIThisMonthAllCountAction extends Action {
 		townSataDto.setDianJinTax(dianJinTax);
 		townSataDto.setPureDianJin(pureDianJin);
 		townSataDto.setPureChaBie(chaBie);
-		townSataDto.setChaBieTax(chabieTax);
-		
+		townSataDto.setChaBieTax(chabieTax);		
 
 		return townSataDto;
 	}
@@ -956,9 +959,11 @@ public class UIThisMonthAllCountAction extends Action {
 			throws Exception {
 		BLLwCoporationUserInfoFacade blLwCoporationUserInfoFacade = new BLLwCoporationUserInfoFacade();
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
-
+		
+		// 查询所有大工业用户
 		Collection<LwCoporationUserInfoDto> userList = blLwCoporationUserInfoFacade
 				.findByConditions("1=1");
+		// 查询出大工业用户的算费信息。
 		Collection<LwCorporationSummaryDto> priceList = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
 		Collection<TownSataDto> resultList = new ArrayList<TownSataDto>();
@@ -1068,7 +1073,9 @@ public class UIThisMonthAllCountAction extends Action {
 			double unLineLoss = 0D;
 			/** 属性无功变损电量 */
 			double unLossQuantity = 0D;
+			// 用户代码
 			userNo = user.getUserNo();
+			// 用户名称
 			userName = user.getUserName();
 			TownSataDto townSataDto = null;
 			for (Iterator iterator2 = priceList.iterator(); iterator2.hasNext();) {
@@ -1102,7 +1109,6 @@ public class UIThisMonthAllCountAction extends Action {
 					powerRateFee += lwCorporationSummaryDto.getPowerRateFee();
 					/** 属性需量电量 */
 					needQuantity += lwCorporationSummaryDto.getNeedQuantity();
-
 					/** 属性需量电费 */
 					needFee += lwCorporationSummaryDto.getNeedFee();
 					/** 属性容量电量 */
@@ -1170,7 +1176,7 @@ public class UIThisMonthAllCountAction extends Action {
 				townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,
 						AppConst.TWO_DOT_FLAG));
 
-			} else {
+			}else {
 				townSataDto.setSumPower(PowerFeeCal.getValue(electricQuantity,
 						AppConst.TWO_DOT_FLAG));
 				purePowerFee = (pointerFee + contentFee + needFee

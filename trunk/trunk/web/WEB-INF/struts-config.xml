@@ -873,7 +873,33 @@
 			<forward name="QueryLWPowerUser"
 				path="/maintenance/LWPowerUser/QueryLWPowerUser.jsp">
 			</forward>
+			<forward name="selectUser"
+				path="/maintenance/LWPowerUser/QueryLWPowerUser.jsp">
+			</forward>
+			
 		</action>
+		
+		<action path="/queryLWProrateAppend" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIQueryLWProrateAppendAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="QueryLWPowerUser"
+				path="/maintenance/LWPowerUser/QueryLWProrateAppend.jsp">
+			</forward>
+		</action>
+		
+		
+		<action path="/postLWProrateAppend" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.maintenance.UIPostLWProrateAppendAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="QueryLWPowerUser"
+				path="/maintenance/prorateAppend/PostLWProrateAppend.jsp">
+			</forward>
+			
+			<forward name="success" path="/common/pub/Success.jsp"></forward>
+		</action>
+		
 
 		<action path="/addLWPowerUser" name="addLWPowerUserForm"
 			type="com.elongway.pss.ui.control.maintenance.UIAddLWPowerUserAction"
