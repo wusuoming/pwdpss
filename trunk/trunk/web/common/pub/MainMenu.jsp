@@ -327,6 +327,25 @@ body {
 	                 		</app:menu>
 								</td>
 							</tr>
+							<tr>
+								<td class=titleLink>
+									<app:menu page="/count/countAllNew.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 大户局当月比对
+	                 		</app:menu>
+								</td>
+							</tr>
+							
+							<tr>
+								<td class=titleLink>
+									<app:menu page="/count/viewcountAllNewinput.jsp"
+										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	                 		&nbsp;&nbsp;&nbsp;<img
+											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 大户局当月比对打印
+	                 		</app:menu>
+								</td>
+							</tr>
 							
 							
 							<tr>

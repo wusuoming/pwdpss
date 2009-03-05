@@ -276,12 +276,12 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} else{%>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} %>
 				<td nowrap width="10%"  align="center">

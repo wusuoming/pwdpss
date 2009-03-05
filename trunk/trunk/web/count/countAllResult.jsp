@@ -216,47 +216,47 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 					<span class="title"><font size="2">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfpower%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfpower" value="<%=sumfpower%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfc%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfc" value="<%=sumfc%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumftax%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" value="<%=sumftax%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" value="<%=sumfdianfee%>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=0%></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" value="<%=0%>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summfdianjin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" value="<%=0%>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumffee%></font></span>
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" value="<%=summfdianjin%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" value="<%=sumfdianjintax%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" value="<%=sumfsanxia%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" value="<%=sumfsanxiatax%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijin" value="<%=sumfjijin%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" value="<%=sumfjijintax%>"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumffee" value="<%=sumffee%>"></font></span>
 				<br></td>
 				
 							
@@ -266,48 +266,48 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 					<span class="title"><font size="2">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwpower%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwpower" value="<%=sumwpower%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwc%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwc" value="<%=sumwc%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwtax%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwtax" value="<%=sumwtax%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwdianfee" value="<%=sumwdianfee%>"></font></span>
 				<br></td>
 				
+				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfee" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=summwdianjin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwdianjintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxia%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwsanxiatax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=sumwfee%></font></span>
+					<span class="title"><font size="2"><input  name="lwsummwdianjin" value="<%=summwdianjin%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwdianjintax" value="<%=sumwdianjintax%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxia" value="<%=sumwsanxia%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" value="<%=sumwsanxiatax%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijin" value="<%=sumwjijin%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijintax" value="<%=sumwjijintax%>"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwfee" value="<%=sumwfee%>"></font></span>
 				<br></td>			
 			</tr>
 			<tr >
@@ -371,7 +371,36 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 <script language="javascript">
 function printCount(){
   var b=fm.StartMonth.value;
-strURL   =   "<%=request.getContextPath()%>/countAllResult.do?inputDate="+b;
+  var lwsumfpower=fm.lwsumfpower.value;
+  var lwsumfc=fm.lwsumfc.value;
+  var lwsumftax=fm.lwsumftax.value;
+  var lwsumfdianfee=fm.lwsumfdianfee.value;
+  var lwdiffrentfee=fm.lwdiffrentfee.value;
+  var lwdiffrentfeetax=fm.lwdiffrentfeetax.value;
+  var lwsummfdianjin=fm.lwsummfdianjin.value;
+  var lwsumfdianjintax=fm.lwsumfdianjintax.value;
+  var lwsumfsanxia=fm.lwsumfsanxia.value;
+  var lwsumfsanxiatax=fm.lwsumfsanxiatax.value;
+  var lwsumfjijin=fm.lwsumfjijin.value;
+  var lwsumfjijintax=fm.lwsumfjijintax.value;
+  var lwsumffee=fm.lwsumffee.value;
+  var lwsumwpower=fm.lwsumwpower.value;
+  var lwsumwc=fm.lwsumwc.value;
+  var lwsumwtax=fm.lwsumwtax.value;
+  var lwsumwdianfee=fm.lwsumwdianfee.value;
+  var lwdiffrentwfee=fm.lwdiffrentwfee.value;
+  var lwdiffrentwfeetax=fm.lwdiffrentwfeetax.value;
+  
+  var lwsummwdianjin=fm.lwsummwdianjin.value;
+  var lwsumwdianjintax=fm.lwsumwdianjintax.value;
+  var lwsumwsanxia=fm.lwsumwsanxia.value;
+  var lwsumwsanxiatax=fm.lwsumwsanxiatax.value;
+  var lwsumwjijin=fm.lwsumwjijin.value;
+  var lwsumwjijintax=fm.lwsumwjijintax.value;
+  var lwsumwfee=fm.lwsumwfee.value;
+  
+  
+strURL   =   "<%=request.getContextPath()%>/countAllResult.do?inputDate="+b+"&&lwsumfpower="+lwsumfpower+"&&lwsumfc="+lwsumfc+"&&lwsumftax="+lwsumftax+"&&lwsumfdianfee="+lwsumfdianfee+"&&lwdiffrentfee="+lwdiffrentfee+"&&lwdiffrentfeetax="+lwdiffrentfeetax+"&&lwsummfdianjin="+lwsummfdianjin+"&&lwsumfdianjintax="+lwsumfdianjintax+"&&lwsumfsanxia="+lwsumfsanxia+"&&lwsumfsanxiatax="+lwsumfsanxiatax+"&&lwsumfjijin="+lwsumfjijin+"&&lwsumfjijintax="+lwsumfjijintax+"&&lwsumffee="+lwsumffee+"&&lwsumwpower="+lwsumwpower+"&&lwsumwc="+lwsumwc+"&&lwsumwtax="+lwsumwtax+"&&lwsumwdianfee="+lwsumwdianfee+"&&lwdiffrentwfee="+lwdiffrentwfee+"&&lwdiffrentwfeetax="+lwdiffrentwfeetax+"&&lwsummwdianjin="+lwsummwdianjin+"&&lwsumwdianjintax="+lwsumwdianjintax+"&&lwsumwsanxia="+lwsumwsanxia+"&&lwsumwsanxiatax="+lwsumwsanxiatax+"&&lwsumwjijin="+lwsumwjijin+"&&lwsumwjijintax="+lwsumwjijintax+"&&lwsumwfee="+lwsumwfee;
 	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
 </script>
