@@ -154,13 +154,16 @@ String conditionsty = " 1=1 and statmonth ='" + statmonth
 					+ lwCorporationSummaryDto.getUnDenizenFee()
 					+lwCorporationSummaryDto.getBeforFee()
 					+lwCorporationSummaryDto.getLastFee()
+					+lwCorporationSummaryDto.getUnLineLoss();
 					
 					;
 				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 						+ lwCorporationSummaryDto.getPowerRateFee()
 						+ lwCorporationSummaryDto.getContentFee()
 						+ lwCorporationSummaryDto.getNeedFee()
-						+ lwCorporationSummaryDto.getUnDenizenFee();}
+						+ lwCorporationSummaryDto.getUnDenizenFee()
+				+lwCorporationSummaryDto.getUnLineLoss();
+				}
 			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
 			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();

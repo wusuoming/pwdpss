@@ -133,13 +133,17 @@ public class UIAllCountAction extends Action {
 					+ lwCorporationSummaryDto.getUnDenizenFee()
 					+lwCorporationSummaryDto.getBeforFee()
 					+lwCorporationSummaryDto.getLastFee()
+					+lwCorporationSummaryDto.getUnLineLoss()
 					
 					;
 				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 						+ lwCorporationSummaryDto.getPowerRateFee()
 						+ lwCorporationSummaryDto.getContentFee()
 						+ lwCorporationSummaryDto.getNeedFee()
-						+ lwCorporationSummaryDto.getUnDenizenFee();}
+						+ lwCorporationSummaryDto.getUnDenizenFee()
+						+lwCorporationSummaryDto.getUnLineLoss()
+						
+						;}
 			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
 			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();

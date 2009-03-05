@@ -184,6 +184,7 @@ public class UIThisMonthAllCountPrintAction extends Action {
 							+ lwCorporationSummaryDto.getUnDenizenFee()
 							+ lwCorporationSummaryDto.getBeforFee()
 							+ lwCorporationSummaryDto.getLastFee()
+							+lwCorporationSummaryDto.getUnLineLoss()
 
 					;
 				} else {
@@ -192,7 +193,8 @@ public class UIThisMonthAllCountPrintAction extends Action {
 
 							+ lwCorporationSummaryDto.getContentFee()
 							+ lwCorporationSummaryDto.getNeedFee()
-							+ lwCorporationSummaryDto.getUnDenizenFee();
+							+ lwCorporationSummaryDto.getUnDenizenFee()
+							+lwCorporationSummaryDto.getUnLineLoss();
 				}
 				summfdianjinall += lwCorporationSummaryDto.getPowerFee();
 				sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
