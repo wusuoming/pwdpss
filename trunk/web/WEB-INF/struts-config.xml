@@ -1765,6 +1765,53 @@
 			input="/datainput/town/TownFeeStatFaxing.jsp">
 			<forward name="TownFeePrint1" path="/datainput/town/TownFeeStatPrint.jsp"></forward>
 			</action>
+			
+			<action path="/UICountAllResultNewAction" 
+			type="com.elongway.pss.ui.count.UICountAllResultNewAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countallnew" path="/count/CountAllNewResult.jsp"></forward>
+			</action>
+			
+			
+			<action path="/UICountAllNewSaveAction" 
+			type="com.elongway.pss.ui.count.UICountAllNewSaveAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp" />
+			</action>
+			
+			
+			<action path="/UIViewCountNewResultAction" 
+			type="com.elongway.pss.ui.count.UIViewCountNewResultAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="viewcountallnew" path="/count/viewCountResultNew.jsp"></forward>
+			</action>
+			
+			
+			<action path="/UIViewCountNewResultPrintAction" 
+			type="com.elongway.pss.ui.count.UIViewCountNewResultPrintAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countallnewprint" path="/count/countResultNewPrint.jsp"></forward>
+			</action>
+			
+			
+			<action path="/UICountAllNewLjAction" 
+			type="com.elongway.pss.ui.count.UICountAllNewLjAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countallnewleijia" path="/count/countAllNewLeij.jsp"></forward>
+			</action>
+			
+				<action path="/UICountAllNewResultljPrintAction" 
+			type="com.elongway.pss.ui.count.UICountAllNewResultljPrintAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countallnewleijiaPrint" path="/count/countAllNewLjPrint.jsp"></forward>
+			</action>
+			
 		<!--add by wangrongjia end   -->
 	</action-mappings>
 
