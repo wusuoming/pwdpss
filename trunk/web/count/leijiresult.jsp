@@ -96,19 +96,6 @@ DecimalFormat df = new DecimalFormat("###0.00");
 
 String s=(String)request.getAttribute("inputDate");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 %>
 <form  name="fm" method="post">
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">

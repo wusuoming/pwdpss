@@ -113,8 +113,33 @@ function cancelUser(){
 	alert("将选中记录设置为无效！");
 }
 function searchUser(){
-	fm.action="/iacontact/queryLWPowerUser.do";
+
+	fm.action="/iacontact/queryLWPowerUser.do?";
+	alert(fm.action);
 	fm.submit();
+}
+function searchUser1(){
+
+	fm.action="/iacontact/queryLWPowerUser.do?op=1";
+	alert(fm.action);
+	fm.submit();
+}
+function adjustProrate(){
+  var str="";
+  var checkbox = document.getElementsByName("chooseUser");
+  var n = 0;
+                for(var j=0;j<checkbox.length;j++){
+                    if(checkbox[j].checked==true){
+                        n = n + 1;
+                    }
+                }
+ if(n==0){
+  alert("请选择要进行比例调整的用户！");
+  return false;
+ }else{
+	fm.action="/iacontact/postLWProrateAppend.do?op=1&&query=1";
+	fm.submit();
+	}
 }
 </script>
 		<STYLE>
@@ -198,8 +223,12 @@ BODY {
 					</td>
 				</tr>
 			</table>
+			<%String op = (String)request.getAttribute("op"); %>
 			<table cellpadding="0" cellspacing="0" width="100%">
 				<tr>
+				
+			
+				<%if(op==null){ %>
 					<td class=button align="center">
 						<input type=button class=button name=button0 value=" 查 询 "
 							onClick="searchUser();">
@@ -208,15 +237,23 @@ BODY {
 						<input type=button class=button name=button1 value="修  改"
 							onClick="update();">
 					</td>
-					<!-- 	  <td class=button align="center">
-					<input type=button class=button name=button8 value="删  除"
-						onClick="delUser();">
-				</td>
-				 -->
 					<td class=button align="center">
 						<input class=button name="add" type="button" value="新  增"
 							onClick="addUser();">
 					</td>
+					<%}else{ %>
+					<td class=button align="center">
+						<input type=button class=button name=button0 value=" 查 询 "
+							onClick="searchUser1();">
+					</td>
+					<td class=button align="center">
+						<input type=button class=button name=button1 value="调整比例"
+							onClick="adjustProrate();">
+					</td>
+					
+					<%} %>
+				
+					
 				</tr>
 			</table>
 			<%

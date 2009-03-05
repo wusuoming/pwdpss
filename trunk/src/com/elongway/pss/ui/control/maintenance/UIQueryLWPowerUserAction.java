@@ -35,6 +35,9 @@ public class UIQueryLWPowerUserAction extends Action {
 		// 声明变量
 		BLLwPowerUserFacade blLwPowerUserFacade = new BLLwPowerUserFacade();
 		String condition = null;
+		String forward = null;
+		String op = (String)httpServletRequest.getParameter("op");
+		
 		// 组织条件
 		condition = this.generateCondition(httpServletRequest);
 		BLLwDcodeFacade blLwDcodeFacade = new BLLwDcodeFacade();
@@ -66,7 +69,11 @@ public class UIQueryLWPowerUserAction extends Action {
 		String firstquery = httpServletRequest.getParameter("firstquery");
 		httpServletRequest.setAttribute("powerUser", powerUserList);
 		httpServletRequest.setAttribute("bookList", bookList);
-		return actionMapping.findForward("QueryLWPowerUser");
+		forward = "QueryLWPowerUser";
+		httpServletRequest.setAttribute("op", op);
+		
+		return actionMapping.findForward(forward);
+		
 	}
 
 	/**
