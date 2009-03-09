@@ -194,10 +194,7 @@
     		System.out.println("conditions=="+conditions);
     		Collection colfee=blLwWholeSaleSummaryFacade.findByConditions(conditions);
     		LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
-    			Iterator itfee=colfee.iterator();
-    			while(itfee.hasNext()){
-    			  lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itfee.next();
-    			}
+    			lwWholeSaleSummaryDto=blLwWholeSaleSummaryFacade.findByPrimaryKey(lwWholeSaleIndicatorDto.getUserNo(),lwWholeSaleIndicatorDto.getStatMonth());
      %>
      <tr>
    
@@ -219,13 +216,10 @@
     		while(itbak.hasNext()){
     		LwWholeSaleIndicatorBakDto  lwWholeSaleIndicatorBakDto=(LwWholeSaleIndicatorBakDto)itbak.next();
     		String conditions=" 1=1 and lineCode='"+lwWholeSaleIndicatorBakDto.getUserNo()+"'  and StatMonth like '"+date+"%'";;
-    		System.out.println("conditions=="+conditions);
+    		
     		Collection colfee=blLwWholeSaleSummaryFacade.findByConditions(conditions);
     		LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=new LwWholeSaleSummaryDto();
-    			Iterator itfee=colfee.iterator();
-    			while(itfee.hasNext()){
-    			  lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)itfee.next();
-    			}
+    			lwWholeSaleSummaryDto=blLwWholeSaleSummaryFacade.findByPrimaryKey(lwWholeSaleIndicatorBakDto.getUserNo(),lwWholeSaleIndicatorBakDto.getStatMonth());
      %>
      <tr>
    
