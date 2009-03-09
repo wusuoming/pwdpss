@@ -244,7 +244,7 @@
 			<%
 				String serchdate=(String)request.getAttribute("statMonth");
 				String now=PowerFeeCal.getCurrentBillMonth();
-				if(now.equals(serchdate)){
+				if(col!=null||!col.equals("")){
 				
 				 %>
 			<%

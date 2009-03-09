@@ -846,20 +846,32 @@
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title"><input name="exends1" value=""
+						<span class="title"><input name="exends1" value="<%=corporation.getInputDate() %>"
 								style="width:65px">
 						</span>
 					</td>
-					<td nowrap colspan="2">
+					<%if(corporation.getUnLineLoss()==0.0||corporation.getUnLineLoss()==0){
+					
+					
+					 %>
+					 <td nowrap colspan="2">
 						<span class="title"><input name="exends2" value=""
 								style="width:65px">
 						</span>
 					</td>
+					<%}else{ %>
+					<td nowrap colspan="2">
+						<span class="title"><input name="exends2" value="<%=corporation.getUnLineLoss() %>"
+								style="width:65px">
+						</span>
+					</td>
+					<%} %>
 					<td nowrap>
 						<span class="title"><input name="exends3" value=""
 								style="width:65px">
 						</span>
 					</td>
+					
 					<td nowrap colspan="2">
 						<span class="title"><input name="exends4" value=""
 								style="width:65px">
