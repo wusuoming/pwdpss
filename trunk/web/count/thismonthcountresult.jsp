@@ -384,6 +384,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getPower1()%></font></span>
 				<br></td>
+			
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))/1.17) %></font></span>
 				<br></td>
