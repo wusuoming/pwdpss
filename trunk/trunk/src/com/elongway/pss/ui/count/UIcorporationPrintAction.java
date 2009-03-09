@@ -82,7 +82,7 @@ public class UIcorporationPrintAction extends Action {
 			
 		}else{
 			LwCorporationSummaryDto4.setSumFee(LwCorporationSummaryDto4.getSumFee()+Double.parseDouble(exends2));
-			
+			LwCorporationSummaryDto4.setInputDate(exends1);
 			LwCorporationSummaryDto4.setUnLineLoss(Double.parseDouble(exends2));
 			blLwCorporationSummaryFacade.update(LwCorporationSummaryDto4);
 		}
