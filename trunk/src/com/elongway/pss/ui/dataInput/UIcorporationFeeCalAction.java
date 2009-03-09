@@ -236,12 +236,12 @@ public class UIcorporationFeeCalAction extends Action {
 		double sumpower=0;
 		if(AmmeterStyle.equals("1"))
 		{
-			sumpower=Math.round(PointerQuantity-TransLosspower)+ammeterDuzenPower;;
+			sumpower=Math.round(PeakQuantity)+ammeterDuzenPower;
 		}
 	
 		if(AmmeterStyle.equals("0"))
 		{
-			sumpower=Math.round(PointerQuantity-TransLosspower)+ammeterDuzenPower;
+			sumpower=Math.round(PointerQuantity-TransLosspower);
 		}
 		
 		
