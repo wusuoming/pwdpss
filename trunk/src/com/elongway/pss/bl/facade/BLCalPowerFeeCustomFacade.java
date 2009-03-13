@@ -1,8 +1,10 @@
 package com.elongway.pss.bl.facade;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+import com.elongway.pss.bl.action.domain.BLLwTownPriceSummaryProratAppendAction;
 import com.elongway.pss.dto.custom.SalePriceDto;
 import com.elongway.pss.dto.custom.TownSataDto;
 import com.elongway.pss.dto.domain.LineLossDto;
@@ -15,10 +17,13 @@ import com.elongway.pss.dto.domain.LwTownIndicatorAppendDto;
 import com.elongway.pss.dto.domain.LwTownIndicatorDto;
 import com.elongway.pss.dto.domain.LwTownPriceSummaryAppendDto;
 import com.elongway.pss.dto.domain.LwTownPriceSummaryDto;
+import com.elongway.pss.dto.domain.LwTownPriceSummaryProratAppendDto;
 import com.elongway.pss.dto.domain.TransforDto;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
+import com.sinosoft.sysframework.common.util.DataUtils;
 import com.sinosoft.sysframework.exceptionlog.UserException;
+import com.sinosoft.sysframework.reference.DBManager;
 
 /**
  * 计算电费 Action <br>
@@ -606,7 +611,31 @@ public class BLCalPowerFeeCustomFacade {
 		return townSataDto;
 	}
 	/**
-	 * 直供乡按局统计
+	 * 直供乡追收电费统计
+	 * @param collection 追收电费列表
+	 * @param statMonth 统计年月
+	 * @return 统计结果
+	 */
+	public TownSataDto townAppendStatByCompany(Collection <LwTownPriceSummaryProratAppendDto>collection, String statMonth) {
+		
+		// 声明变量
+		LwTownPriceSummaryDto lwTownPriceSummaryDto = null;
+		Collection<LwTownPriceSummaryDto> appendList = new ArrayList<LwTownPriceSummaryDto>();
+		
+		// 组织DTO
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			LwTownPriceSummaryProratAppendDto lwTownPriceSummaryProratAppendDto = (LwTownPriceSummaryProratAppendDto) iterator
+					.next();
+			lwTownPriceSummaryDto = new LwTownPriceSummaryDto();
+			DataUtils.copySimpleObject(lwTownPriceSummaryDto, lwTownPriceSummaryProratAppendDto);
+			appendList.add(lwTownPriceSummaryDto);
+		}
+		// 计算统计结果
+		return this.townStatByCompany(appendList, statMonth);
+	}
+	
+	/**
+	 * 直供乡发行电量统计
 	 * 
 	 * @param collection
 	 * @param statMonth
@@ -774,6 +803,34 @@ public class BLCalPowerFeeCustomFacade {
 		/** 3-计算线损 */
 		P = PowerFeeCal.calLineLoss(R, L, Ve, t, workQuantity, notWorkQuantity);
 		return P;
+	}
+	/**
+	 * 直供乡电费追加保存
+	 * @param collection
+	 * @param statMonth
+	 * @throws Exception
+	 */
+	public void deleteInsertAppend(Collection<LwTownPriceSummaryProratAppendDto>collection,String conditions) throws Exception{
+		DBManager dbManager = new DBManager();
+        BLLwTownPriceSummaryProratAppendAction blLwTownPriceSummaryProratAppendAction = new BLLwTownPriceSummaryProratAppendAction();
+        try{
+            dbManager.open("pssDataSource");
+            dbManager.beginTransaction();
+            //插入记录
+            blLwTownPriceSummaryProratAppendAction.deleteByConditions(dbManager, conditions);
+            for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+				LwTownPriceSummaryProratAppendDto lwTownPriceSummaryProratAppendDto = (LwTownPriceSummaryProratAppendDto) iterator
+						.next();
+				blLwTownPriceSummaryProratAppendAction.insert(dbManager, lwTownPriceSummaryProratAppendDto);		
+			}
+            
+            dbManager.commitTransaction();
+        }catch(Exception exception){
+            dbManager.rollbackTransaction();
+            throw exception;
+        }finally{
+            dbManager.close();
+        }
 	}
 
 }

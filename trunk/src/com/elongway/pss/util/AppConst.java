@@ -52,6 +52,15 @@ interface IFlag {
 	/** 原比例	 */
 	public static final String OLD_PRORATE_FLAG = "1";	
 	
+	/** 新算费信息	 */
+	public static final String NEW_CAL_FLAG = "1";	
+	
+	/** 原始算费信息 */
+	public static final String OLD_CAL_FLAG = "0";	
+	
+	/** 差额算费信息 */
+	public static final String CHA_CAL_FLAG = "9";	
+	
 	
 }
 /**

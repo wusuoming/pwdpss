@@ -5,36 +5,36 @@ import com.sinosoft.sysframework.log.*;
 import com.sinosoft.sysframework.common.util.*;
 import com.sinosoft.sysframework.common.datatype.*;
 import com.sinosoft.sysframework.reference.DBManager;
-import com.elongway.pss.dto.domain.LwTownIndicatorDto;
-import com.elongway.pss.bl.action.domain.BLLwTownIndicatorAction;
+import com.elongway.pss.dto.domain.LwTownProrateAppendDto;
+import com.elongway.pss.bl.action.domain.BLLwTownProrateAppendAction;
 
 /**
  * ★★★★★警告：本文件不允许手工修改！！！请使用JToolpad生成！<br>
- * 这是LWTownIndicator-直供乡电表指针记录表的业务逻辑对象Facade基类<br>
+ * 这是LWTownProrateAppend-比例分摊追加表的业务逻辑对象Facade基类<br>
  */
-public class BLLwTownIndicatorFacadeBase{
-    private static Logger logger = Logger.getLogger(BLLwTownIndicatorFacadeBase.class);
+public class BLLwTownProrateAppendFacadeBase{
+    private static Logger logger = Logger.getLogger(BLLwTownProrateAppendFacadeBase.class);
 
     /**
      * 构造函数
      */
-    public BLLwTownIndicatorFacadeBase(){
+    public BLLwTownProrateAppendFacadeBase(){
     }
 
     /**
      * 插入一条数据
-     * @param lwTownIndicatorDto lwTownIndicatorDto
+     * @param lwTownProrateAppendDto lwTownProrateAppendDto
      * @throws Exception
      */
-    public void insert(LwTownIndicatorDto lwTownIndicatorDto)
+    public void insert(LwTownProrateAppendDto lwTownProrateAppendDto)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //插入记录
-            blLwTownIndicatorAction.insert(dbManager,lwTownIndicatorDto);
+            blLwTownProrateAppendAction.insert(dbManager,lwTownProrateAppendDto);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -47,18 +47,18 @@ public class BLLwTownIndicatorFacadeBase{
     /**
      * 按主键删除一条数据
      * @param userNo 户号
-     * @param statMonth 账期
+     * @param flag 标志
      * @throws Exception
      */
-    public void delete(String userNo,String statMonth)
+    public void delete(String userNo,String flag)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //删除记录
-            blLwTownIndicatorAction.delete(dbManager,userNo, statMonth);
+            blLwTownProrateAppendAction.delete(dbManager,userNo, flag);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -76,12 +76,12 @@ public class BLLwTownIndicatorFacadeBase{
     public void deleteByConditions(String conditions)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //按条件删除记录
-            blLwTownIndicatorAction.deleteByConditions(dbManager,conditions);
+            blLwTownProrateAppendAction.deleteByConditions(dbManager,conditions);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -93,18 +93,18 @@ public class BLLwTownIndicatorFacadeBase{
 
     /**
      * 按主键更新一条数据(主键本身无法变更)
-     * @param lwTownIndicatorDto lwTownIndicatorDto
+     * @param lwTownProrateAppendDto lwTownProrateAppendDto
      * @throws Exception
      */
-    public void update(LwTownIndicatorDto lwTownIndicatorDto)
+    public void update(LwTownProrateAppendDto lwTownProrateAppendDto)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
             dbManager.beginTransaction();
             //更新记录
-            blLwTownIndicatorAction.update(dbManager,lwTownIndicatorDto);
+            blLwTownProrateAppendAction.update(dbManager,lwTownProrateAppendDto);
             dbManager.commitTransaction();
         }catch(Exception exception){
             dbManager.rollbackTransaction();
@@ -117,26 +117,26 @@ public class BLLwTownIndicatorFacadeBase{
     /**
      * 按主键查找一条数据
      * @param userNo 户号
-     * @param statMonth 账期
-     * @return lwTownIndicatorDto lwTownIndicatorDto
+     * @param flag 标志
+     * @return lwTownProrateAppendDto lwTownProrateAppendDto
      * @throws Exception
      */
-    public LwTownIndicatorDto findByPrimaryKey(String userNo,String statMonth)
+    public LwTownProrateAppendDto findByPrimaryKey(String userNo,String flag)
         throws Exception{
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         //声明DTO
-        LwTownIndicatorDto lwTownIndicatorDto = null;
+        LwTownProrateAppendDto lwTownProrateAppendDto = null;
         try{
             dbManager.open("pssDataSource");
             //查询数据,赋值给DTO
-            lwTownIndicatorDto = blLwTownIndicatorAction.findByPrimaryKey(dbManager,userNo, statMonth);
+            lwTownProrateAppendDto = blLwTownProrateAppendAction.findByPrimaryKey(dbManager,userNo, flag);
         }catch(Exception exception){
             throw exception;
         }finally{
             dbManager.close();
         }
-        return lwTownIndicatorDto;
+        return lwTownProrateAppendDto;
     }
 
     /**
@@ -156,10 +156,10 @@ public class BLLwTownIndicatorFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
-            pageRecord = blLwTownIndicatorAction.findByConditions(dbManager,conditions,pageNo,rowsPerPage);
+            pageRecord = blLwTownProrateAppendAction.findByConditions(dbManager,conditions,pageNo,rowsPerPage);
         }catch(Exception exception){
             throw exception;
         }finally{
@@ -171,10 +171,10 @@ public class BLLwTownIndicatorFacadeBase{
     /**
      * 按条件查询多条数据
      * @param conditions 查询条件
-     * @return Collection 包含lwTownIndicatorDto的集合
+     * @return Collection 包含lwTownProrateAppendDto的集合
      * @throws Exception
      */
-    public Collection <LwTownIndicatorDto>findByConditions(String conditions)
+    public Collection findByConditions(String conditions)
         throws Exception{
         Collection collection = new ArrayList();
 
@@ -183,10 +183,10 @@ public class BLLwTownIndicatorFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
-            collection = blLwTownIndicatorAction.findByConditions(dbManager,conditions);
+            collection = blLwTownProrateAppendAction.findByConditions(dbManager,conditions);
         }catch(Exception exception){
             throw exception;
         }finally{
@@ -209,10 +209,10 @@ public class BLLwTownIndicatorFacadeBase{
         }
 
         DBManager dbManager = new DBManager();
-        BLLwTownIndicatorAction blLwTownIndicatorAction = new BLLwTownIndicatorAction();
+        BLLwTownProrateAppendAction blLwTownProrateAppendAction = new BLLwTownProrateAppendAction();
         try{
             dbManager.open("pssDataSource");
-            rowCount = blLwTownIndicatorAction.getCount(dbManager,conditions);
+            rowCount = blLwTownProrateAppendAction.getCount(dbManager,conditions);
         }catch(Exception exception){
             throw exception;
         }finally{

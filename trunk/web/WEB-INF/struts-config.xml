@@ -887,6 +887,39 @@
 				path="/maintenance/LWPowerUser/QueryLWProrateAppend.jsp">
 			</forward>
 		</action>
+		<!-- 计算差额电费 -->
+		<action path="/calTownChaFee" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.feeappend.town.UITownFeeAppendCalProrateAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="calTownChaFeeForward"
+				path="/feeappend/town/TownFeeAppendList.jsp">
+			</forward>
+		</action>
+		
+		<!-- 追收电费查询 -->
+		<action path="/queryLWCalAppend" name="addLWPowerUserForm"
+			type="com.elongway.pss.ui.control.feeappend.town.UITownFeeAppendCalProrateAction"
+			scope="request"
+			input="/maintenance/LWPowerUser/querryLWPowerUser.jsp">
+			<forward name="queryAppend"
+				path="/feeappend/town/TownFeeProrateAppendCalList.jsp">
+			</forward>
+		</action>
+		
+		<!-- 直供乡追收电费统计 -->
+		<action
+			type="com.elongway.pss.ui.control.feeappend.town.UIQueryTownChaStatAction"
+			validate="true" input="/common/pub/Title.jsp" scope="session"
+			path="/queryTownchaStat">
+			<forward name="Success"
+				path="/feeappend/town/queryTownAppendStat.jsp" />
+			<forward name="statSuccess"
+				path="/datainput/town/TownFeeStat.jsp" />
+				<forward name="print"
+				path="/datainput/town/TownFeeStatStatPrint.jsp" />
+		</action>
+		
 		
 		
 		<action path="/postLWProrateAppend" name="addLWPowerUserForm"

@@ -94,15 +94,23 @@ function printCount(){
 
   winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
 }
+function printAppend(){
+	 var   strURL;     
+	 var tt = fm.dd.value;
+	 var appendflag = fm.appendflag.value;
+	 var company = fm.company1.value;
+   strURL="<%=request.getContextPath()%>/queryTownchaStat.do?inputDate="+tt+"&company="+company+"&appendflag="+appendflag+"&print=1";    
+
+  winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+}
 </script>
 </head>
 <body class=interface>&nbsp; 
 <html:errors />
 <%
 String company = (String)request.getAttribute("company");
-Collection billList = (Collection)request.getAttribute("billList");
-SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);
 String inputDate = (String)request.getAttribute("statMonth");
+	String appendFlag = (String)request.getAttribute("appendflag");
 %>
 <form  name="fm" method="post" 
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
@@ -111,18 +119,23 @@ String inputDate = (String)request.getAttribute("statMonth");
 			<td class=title0 colspan="11" style="display:none"><input type="hidden" name="dd" value="<%=inputDate%>"></td>
 		</tr>
 		<input type="hidden" name="company1" value="<%=company%>">
+		<input type="hidden" name="appendflag" value="<%=appendFlag%>">
 		<%
 		
 		
 		Collection resultList = (Collection)request.getAttribute("resultList"); 
-		
+	
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
 		%>
 		
 		<tr>
+			<%if(appendFlag == null){ %>
 			<td class=title0 colspan="11"><font size="2">包头市农电公司<%=townSataDto.getStatMonth() %>电费电量发行单</font></td>
+			<%}else{ %>
+			<td class=title0 colspan="11"><font size="2">包头市农电公司<%=townSataDto.getStatMonth() %>追补电费发行单</font></td>
+			<%} %>
 		</tr>
 		
 		<!--人员代码，姓名-->
@@ -213,7 +226,11 @@ String inputDate = (String)request.getAttribute("statMonth");
 	<table cellpadding="0" cellspacing="0" width="100%"> 
         <tr> 
         <tr class="listtitle" align="center">             
-            <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printCount();"></td>
+        <%if(appendFlag == null){ %>
+			 <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printCount();"></td>
+			<%}else{ %>
+			 <td class=button><input name="add" type="button" class=button value=" 打 印 " onClick="printAppend();"></td>
+			<%} %>
             <td class=button align="center"><input type=button class=button name=button2 value=" 返回 " onClick="history.go(-1);">        </td> 
         </tr> 
     </table>
