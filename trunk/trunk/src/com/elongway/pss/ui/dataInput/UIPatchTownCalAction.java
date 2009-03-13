@@ -73,7 +73,7 @@ public class UIPatchTownCalAction extends Action {
 						+ "' order by serialNo asc");
 		String condition = PowerFeeCal.getBookNoCondition(bookUserList);
 		collection = blLwTownIndicatorFacade
-				.findByConditions(" 1=1 " + condition);
+				.findByConditions(" 1=1 and statMonth = '"+new DateTime(inputDate,DateTime.YEAR_TO_MONTH)+"' " + condition);
 		if(collection!=null){
 		/***********************************************************************
 		 *    °æ2 -- º∆À„µÁ∑—°ø

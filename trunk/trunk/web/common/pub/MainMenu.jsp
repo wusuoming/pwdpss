@@ -476,17 +476,44 @@ body {
 								</td>
 							</tr>		
 							<tr>
-								<td class=titleLink>
-									<app:menu
-										page="/queryLWProrateAppend.do?"
-										rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
-	                 		&nbsp;&nbsp;&nbsp;<img
-											src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡电费追收
-	                 		</app:menu>
+								<td class=titleLink onclick="showMenu(T_append)">
+									&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_3.gif" border="0" align="absmiddle"> 直供乡电费追收
+	                 		
 								</td>
-							</tr>						
+							</tr>	
 						</table>
-
+<div id=T_append style="display:none" class=menu>
+									<table class=menu>
+										<tr>										
+												 <td class=titleLink>
+												 	
+	             							   	<table class=menu>
+	             							   	<tr>
+	             							   	 <td class=titleLink>
+	            				     		<app:menu page="/queryLWPowerUser.do?op=1" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	            				     		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_2.gif" border="0" > 修改比例
+	             					    		</app:menu>
+	             							   	</td>
+												
+										</tr>	
+											<tr>
+	             							   	 <td class=titleLink>
+	            				     		<app:menu page="/queryLWCalAppend.do?query=1" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	            				     		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_2.gif" border="0" > 计算
+	             					    		</app:menu>
+	             							   	</td>
+												
+										</tr>	
+										<tr>
+	             							   	 <td class=titleLink>
+	            				     		<app:menu page="/queryTownchaStat.do?firstquery=1" rgrade="1" wgrade="1" xgrade="1" target="fraInterface">
+	            				     		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../images/imgicon_2.gif" border="0" > 统计
+	             					    		</app:menu>
+	             							   	</td>												
+										</tr>
+												</table>	
+								  </table>
+						</div>
 					
 
 

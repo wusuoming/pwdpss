@@ -121,7 +121,7 @@ public class BLLwTownPriceSummaryFacadeBase{
      * @return lwTownPriceSummaryDto lwTownPriceSummaryDto
      * @throws Exception
      */
-    public LwTownPriceSummaryDto findByPrimaryKey(String userNo,String lineCode)
+    public LwTownPriceSummaryDto findByPrimaryKey(String userNo,String statMonth)
         throws Exception{
         DBManager dbManager = new DBManager();
         BLLwTownPriceSummaryAction blLwTownPriceSummaryAction = new BLLwTownPriceSummaryAction();
@@ -130,7 +130,7 @@ public class BLLwTownPriceSummaryFacadeBase{
         try{
             dbManager.open("pssDataSource");
             //查询数据,赋值给DTO
-            lwTownPriceSummaryDto = blLwTownPriceSummaryAction.findByPrimaryKey(dbManager,userNo, lineCode);
+            lwTownPriceSummaryDto = blLwTownPriceSummaryAction.findByPrimaryKey(dbManager,userNo, statMonth);
         }catch(Exception exception){
             throw exception;
         }finally{

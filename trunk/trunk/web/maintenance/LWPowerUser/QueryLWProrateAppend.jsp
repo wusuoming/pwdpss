@@ -2,8 +2,8 @@
 *********
 ******************
 查询用户信息页面  
-create by wangrongjia
-200810.09
+create by qiaoyouliang
+2009.3.4
 --%>
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
@@ -78,33 +78,17 @@ str+=checkbox[i].value+",";
 	 }
 	}
 }
-function update(){
- var str="";
-  var checkbox = document.getElementsByName("chooseUser");
-  var n = 0;
-                for(var j=0;j<checkbox.length;j++){
-                    if(checkbox[j].checked==true){
-                        n = n + 1;
-                    }
-                }
- if(n==0){
-  alert("!请选择要 修改的用户");
-  return false;
- }
- if(n>1){
-  alert("!一次只能修改一个用户");
-  return false;
- }
- else{
-     for(var i=0;i<checkbox.length;i++) 
-{ 
-if(checkbox[i].checked) {
- 
-str+=checkbox[i].value+",";
-     }
-     }
-	this.location="/iacontact/queryOneLWPowerUser.do?UserId="+str;
-	}
+function adjustProrate(){
+
+	fm.action="/iacontact/queryLWPowerUser.do?op=1";
+	fm.submit();
+}
+
+
+function calFee(){
+	
+	fm.action="<%=request.getContextPath()%>/calTownChaFee.do";
+	fm.submit();
 }
 //function delUser(){
 	//alert("批量删除记录！");
@@ -113,33 +97,8 @@ function cancelUser(){
 	alert("将选中记录设置为无效！");
 }
 function searchUser(){
-
-	fm.action="/iacontact/queryLWPowerUser.do?";
-	alert(fm.action);
+	fm.action="/iacontact/queryLWPowerUser.do";
 	fm.submit();
-}
-function searchUser1(){
-
-	fm.action="/iacontact/queryLWPowerUser.do?op=1";
-	alert(fm.action);
-	fm.submit();
-}
-function adjustProrate(){
-  var str="";
-  var checkbox = document.getElementsByName("chooseUser");
-  var n = 0;
-                for(var j=0;j<checkbox.length;j++){
-                    if(checkbox[j].checked==true){
-                        n = n + 1;
-                    }
-                }
- if(n==0){
-  alert("请选择要进行比例调整的用户！");
-  return false;
- }else{
-	fm.action="/iacontact/postLWProrateAppend.do?op=1&&query=1";
-	fm.submit();
-	}
 }
 </script>
 		<STYLE>
@@ -158,16 +117,9 @@ BODY {
 		<!--CONTENT BEGIN-->
 		<form name="fm" method="post">
 			<table class=common width="100%" cellspacing="1" cellpadding="5">
-			<%String op = (String)request.getAttribute("op"); %>
 				<tr class=listtitle align="center">
-		
-				
 					<td class=title0 colspan="7">
-							<%if(op==null){ %>
 						<B>查询用电用户信息</B>
-						<%} else{%>
-						<B>选择需要进行修改比例的用户</B>
-						<%} %>
 					</td>
 				</tr>
 				<tr>
@@ -183,84 +135,30 @@ BODY {
 					<td class=input>
 						<input class="text" name="UserName" type="text">
 					</td>
-					<%
-						BLLwAmmeterBookFacade blLwAmmeterBookFacade = new BLLwAmmeterBookFacade();
-							Collection bookList = blLwAmmeterBookFacade
-									.findByConditions(" 1=1 ");
-							String firstquery = (String) request.getAttribute("firstquery");
-							String bookNo = (String) request.getAttribute("bookNo");
-					%>
+					
 
-					<td class=title>
-						所属抄表本
-					</td>
-					<td class=input>
-						<select name="bookNo" class="input">
-							<%
-								if (firstquery != null) {
-							%>
-							<option value="" selected="selected">
-								全部
-							</option>
-							<%
-								} else {
-							%>
-							<option value="">
-								全部
-							</option>
-							<%
-								}
-							%>
-							<%
-								for (Iterator iterator = bookList.iterator(); iterator
-											.hasNext();) {
-										LwAmmeterBookDto o = (LwAmmeterBookDto) iterator.next();
-										if (o.getBookNo().equals(bookNo)) {
-							%>
-							<option value=<%=o.getBookNo()%> selected="selected"><%=o.getBookName()%></option>
-							<%
-								} else {
-							%>
-							<option value=<%=o.getBookNo()%>><%=o.getBookName()%></option>
-							<%
-								}
-									}
-							%>
-						</select>
-					</td>
+					
 				</tr>
 			</table>
-			
 			<table cellpadding="0" cellspacing="0" width="100%">
 				<tr>
-				
-			
-				<%if(op==null){ %>
 					<td class=button align="center">
-						<input type=button class=button name=button0 value=" 查 询 "
+						<input type=button class=button name=button0 value="查  询"
 							onClick="searchUser();">
-					</td>
-					<td class=button align="center">
-						<input type=button class=button name=button1 value="修  改"
-							onClick="update();">
-					</td>
-					<td class=button align="center">
-						<input class=button name="add" type="button" value="新  增"
-							onClick="addUser();">
-					</td>
-					<%}else{ %>
-					<td class=button align="center">
-						<input type=button class=button name=button0 value=" 查 询 "
-							onClick="searchUser1();">
 					</td>
 					<td class=button align="center">
 						<input type=button class=button name=button1 value="调整比例"
 							onClick="adjustProrate();">
 					</td>
-					
-					<%} %>
+					<td class=button align="center">
+						<input type=button class=button name=button1 value="计算差额电费"
+							onClick="calFee();">
+					</td>
 				
-					
+					<td class=button align="center">
+						<input class=button name="add" type="button" value="新  增"
+							onClick="addUser();">
+					</td>
 				</tr>
 			</table>
 			<%

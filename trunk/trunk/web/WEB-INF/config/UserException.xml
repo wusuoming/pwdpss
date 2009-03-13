@@ -99,9 +99,13 @@
 			<ErrorNo>-711</ErrorNo>
 			<ErrorMessage>此表本中没有进行用户的配置</ErrorMessage>
 		</Error>
-<Error>
+		<Error>
 			<ErrorNo>-712</ErrorNo>
 			<ErrorMessage>本月已经计算过电费</ErrorMessage>
+		</Error>
+		<Error>
+			<ErrorNo>-713</ErrorNo>
+			<ErrorMessage>还没有进行本月追收电费的计算</ErrorMessage>
 		</Error>
 	</UserException>
 	<UserException ErrorCatalog="-98" Description="APPLICATION">
