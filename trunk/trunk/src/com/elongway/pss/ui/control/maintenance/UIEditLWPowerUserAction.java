@@ -43,6 +43,7 @@ public class UIEditLWPowerUserAction extends Action {
 		String townCode=httpServletRequest.getParameter("townCode");
 		String lineCode=httpServletRequest.getParameter("lineCode");
 		String company = httpServletRequest.getParameter("company");
+		String voltLevel = httpServletRequest.getParameter("voltLevel");
 
 		LwPowerUserDto lwPowerUserDto=blLwPowerUserFacade.findByPrimaryKey(userNo);
 		lwPowerUserDto.setUserName(userName);
@@ -50,6 +51,7 @@ public class UIEditLWPowerUserAction extends Action {
 		lwPowerUserDto.setTownCode(townCode);
 		lwPowerUserDto.setLineCode(lineCode);
 		lwPowerUserDto.setSuperClass(company);
+		lwPowerUserDto.setSaleVoltLevel(voltLevel);
 		
 		// 表本信息
 		String bookNo = httpServletRequest.getParameter("bookNo");

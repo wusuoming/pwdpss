@@ -6,13 +6,31 @@
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%> 
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%> 
 <%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%> 
+<script language="Javascript"
+	src="/iacontact/common/pub/StaticJavascript.jsp"></script>
+	<!-- calendar stylesheet -->
+  <link rel="stylesheet" type="text/css" media="all" href="../../../../iacontact/css/calendar-win2k-cold-1.css" title="win2k-cold-1" />
 
+  <!-- main calendar program -->
+  <script type="text/javascript" src="../../../../iacontact/common/pub/js/calendar.js"></script>
+
+  <!-- language for the calendar -->
+
+  <script type="text/javascript" src="../../../../iacontact/common/pub/js/calendar-cn-utf8.js"></script>
+
+  <!-- the following script defines the Calendar.setup helper function, which makes
+       adding a calendar a matter of 1 or 2 lines of code. -->
+  <script type="text/javascript" src="../../../../iacontact/common/pub/js/calendar-setup.js"></script>
 <html:html xhtml="true" locale="true"> 
 <head> 
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+ <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
  <meta http-equiv=Content-Type content="text/html; charset=gb2312"> 
   
-<title>直供乡追收电费批量计算页面</title> 
+<title>直供乡追补电费批量计算页面</title> 
 <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
+<link rel="stylesheet" type="text/css" href="/iacontact/css/Standard.css">
+
 <app:css /> 
 <html:base /> 
 <STYLE>BODY { 
@@ -102,8 +120,8 @@ LwAmmeterBookDto lwAmmeterBookDto = (LwAmmeterBookDto)request.getAttribute("lwAm
         </tr> 
        <tr>
               
-          <td class=title0 colspan="6">选择需要进行追收电费的月份：
-				<input styleClass="text" name="appendDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
+         <td class=title0 colspan="6">追收电费年月：
+				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
 						value="2009-02"   />			
 				 <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
 					style="cursor: pointer; border: 1px solid #0083da;"
@@ -111,7 +129,7 @@ LwAmmeterBookDto lwAmmeterBookDto = (LwAmmeterBookDto)request.getAttribute("lwAm
 					onmouseover="this.style.background='#4CA8EB';"
 					onmouseout="this.style.background=''" />
 					&nbsp;<img src="../../images/redstar.gif" >	
-					</td>	
+					</td>
 					  <td class=title0 colspan="10"></td> 
           </tr>
         <tr class=listtitle> 

@@ -115,13 +115,11 @@ function cancelUser(){
 function searchUser(){
 
 	fm.action="/iacontact/queryLWPowerUser.do?";
-	alert(fm.action);
 	fm.submit();
 }
 function searchUser1(){
 
 	fm.action="/iacontact/queryLWPowerUser.do?op=1";
-	alert(fm.action);
 	fm.submit();
 }
 function adjustProrate(){

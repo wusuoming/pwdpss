@@ -45,10 +45,10 @@ create by wangrongjia
  <meta http-equiv=Content-Type content="text/html; charset=gb2312">
  <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
   
-<title>趸售查询页面</title>
+<title>直供乡统计</title>
 <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
 <link rel="stylesheet" type="text/css" href="/iacontact/css/Standard.css">
-<title>趸售查询页面</title>
+
 <app:css />
 <html:base />
 <link rel="stylesheet" type="text/css" media="all" href="/mimessage/css/calendar.css" title="win2k-cold-1" /> 
@@ -71,6 +71,7 @@ create by wangrongjia
        <table class=common width="100%" cellspacing="1" cellpadding="5" border=0>
         <tr class=listtitle align="center">
          <%String flag = (String)request.getAttribute("flag"); 
+         String faXing = (String)request.getAttribute("faXing"); 
             if(flag==null){%>
 			<td class=title0 colspan="7"><B>直供乡统计</B></td>
 			<%}else{ %>
@@ -78,7 +79,13 @@ create by wangrongjia
 			<%} %>
 		</tr>        
           <tr>
-              <td align="center">所属供电公司：
+          <%if(!"1".equals(faXing)) {%>
+          <td class="title">选择统计模式：
+	<select name="countStyle" >
+	<option value="1">按局统计</option>
+	<option value="2">按电价统计</option></select></td>
+	<%} %>
+              <td align="center" class="title">所属供电公司：
             <%Collection list = (Collection)request.getAttribute("supplycom"); 
             LwDcodeDto lwDcodeDto1 = new LwDcodeDto();
 		lwDcodeDto1.setCodeCode("sum");
@@ -86,7 +93,7 @@ create by wangrongjia
 		list.add(lwDcodeDto1);
           if(list!=null&&list.size()!=0){         
           %>
-         <select name="company" >
+        <select name="company" >
          <option value="">全部</option>		
          <%for(Iterator it = list.iterator();it.hasNext();) {
          	LwDcodeDto lwDcodeDto = (LwDcodeDto)it.next(); 	
@@ -98,8 +105,8 @@ create by wangrongjia
               <%}} %>
                    </select>	
                    </td>
-          <td align="center">统计年月：
-				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
+          <td align="center"  class="title">统计年月：
+				<input class="title" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
 						value="<% out.println(formatter.format(currentDate));%>"   />			
 				 <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
 					style="cursor: pointer; border: 1px solid #0083da;"
@@ -158,7 +165,20 @@ Calendar.setup({
         singleClick    :    true
     }); 
 
-
+function changeF(){
+if(fm.countStyle.value=="1"){
+a.style.display="";
+b.style.display="";
+c.style.display="";
+d.style.display="";
+}
+if(fm.countStyle.value=="2"){
+a.style.display="none";
+b.style.display="none";
+c.style.display="none";
+d.style.display="none";
+}
+}
 </script>
 <br />
   
