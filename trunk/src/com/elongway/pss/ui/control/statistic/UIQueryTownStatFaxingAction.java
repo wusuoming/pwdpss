@@ -50,6 +50,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 		Collection<LwDcodeDto> comList = blLwDcodeFacade
 				.findByConditions(" codetype = 'SupplyCom'");
 		String firstquery = httpServletRequest.getParameter("firstquery");
+		String faXing = httpServletRequest.getParameter("faxing");
 		String flag = httpServletRequest.getParameter("flag");
 		BLCalPowerFeeCustomFacade blCalPowerFeeCustomFacade = new BLCalPowerFeeCustomFacade();
 		BLLwPowerUserFacade blLwPowerUserFacade = new BLLwPowerUserFacade();
@@ -71,6 +72,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 		if ("1".equals(firstquery)) {
 			httpServletRequest.setAttribute("supplycom", comList);
 			httpServletRequest.setAttribute("flag", flag);
+			httpServletRequest.setAttribute("faXing", faXing);
 			forward = "Success";
 		} else if(firstquery == null) {
 	
