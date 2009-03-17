@@ -80,7 +80,7 @@
 }
 </script>
 </head>
-<body >
+<body  onload="javascript:doPrint();window.close()">
 <html:errors />
 
 
@@ -91,29 +91,29 @@
 		String countStyle = (String)request.getAttribute("countStyle");
 		%>
 	<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司<%=statMonth %>比例分摊电费发行单</font></td>
+			<td class=title0 colspan="14"><font size="4"><b>包头市农电公司<%=statMonth %>比例分摊电费发行单</b></font></td>
 <td style="display:none"><input type="hidden" name="StartMonth" value="<%=statMonth%>"><input type="hidden" name="countStyle" value="<%=countStyle%>"></td>
 		</tr>
 		
 		
 		<tr class=listtitle  style="height:30px">
 				<td width="10%" align="center">
-					<span class="title"><font size="2">项目</font></span>
+					<span class="title"><font size="3"><b>项目</b></font></span>
 				<br></td>
 				
 				<td width="10%" align="center">
-					<span class="title"><font size="2">电压等级</font></span>
+					<span class="title"><font size="3"><b>电压等级</b></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">售电量</font></span>
+					<span class="title"><font size="3"><b>售电量</b></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title" ><font size="2">电费</font></span>
+					<span class="title" ><font size="3"><b>电费</b></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2">合计(含税)</font></span>
+					<span class="title"><font size="3"><b>合计(含税)</b></font></span>
 				<br></td>				
 							
 			</tr>
@@ -128,22 +128,22 @@
 				
 				<%if(tempCount%count==1||count==1) {%>
 				<td width="10%"  align="center" rowspan=<%=count%>>
-					<span class="title"><font size="2"><%=feeDto.getClassId() %></font></span>
+					<span class="title"><font size="3"><b><%=feeDto.getClassId() %></b></font></span>
 				<br></td>
 				<%}%>
 				<td width="10%"  align="center">
-					<span class="title"><font size="2"><%=feeDto.getVoltLevelName() %></font></span>
+					<span class="title"><font size="3"><b><%=feeDto.getVoltLevelName() %></b></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getQuantity() %></font></span>
+					<span class="title"><font size="3"><b><%=feeDto.getQuantity() %></b></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getPowerFee() %></font></span>
+					<span class="title"><font size="3"><b><%=feeDto.getPowerFee() %></b></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getSumFee() %></font></span>
+					<span class="title"><font size="3"><b><%=feeDto.getSumFee() %></b></font></span>
 				<br></td>				
 							
 			</tr>
@@ -169,6 +169,11 @@ function getPage(){
 strURL   =   "<%=request.getContextPath()%>/queryTownStat.do?inputDate="+b+"&countStyle"+c+"&print=1";
 	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");
 }
+
+function doPrint(){
+	window.print();
+}
+
 </script>
 
 </html:html>

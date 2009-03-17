@@ -81,7 +81,7 @@ create by wangrongjia
           <tr>
           <%if(!"1".equals(faXing)) {%>
           <td class="title">选择统计模式：
-	<select name="countStyle" >
+	<select name="countStyle" onchange="changeF()">
 	<option value="1">按局统计</option>
 	<option value="2">按电价统计</option></select></td>
 	<%} %>
@@ -166,17 +166,11 @@ Calendar.setup({
     }); 
 
 function changeF(){
-if(fm.countStyle.value=="1"){
-a.style.display="";
-b.style.display="";
-c.style.display="";
-d.style.display="";
-}
+
+
 if(fm.countStyle.value=="2"){
-a.style.display="none";
-b.style.display="none";
-c.style.display="none";
-d.style.display="none";
+
+fm.company.disabled="disabled";
 }
 }
 </script>
