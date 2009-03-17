@@ -82,13 +82,10 @@
 }
 </script>
 </head>
-<body class=interface onload="javascript:printCount();window.close()">&nbsp; 
+<body class=interface>&nbsp; 
 <html:errors />
 <%
-LwShouShuTableDto wholesaleshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesaleshoushuLwShouShuTableDto");
 
-LwShouShuTableDto corporationshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("corporationshoushuLwShouShuTableDto");
-LwShouShuTableDto allshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("allshoushuLwShouShuTableDto");
 
 
 LwShouShuTableDto wholesaleduLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesaleduLwShouShuTableDto");
@@ -118,232 +115,13 @@ String inputDate=(String)request.getAttribute("inputDate");
 		
 %>
 
-	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
-	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
-		
-	<tr>
-			<td class=title0 colspan="14"><font size="4">大户局电费电量发行单</font></td>
-		</tr>
-		
-		<tr>
-		<td nowrap colspan="2">
-						<span class="title"><%=inputDate.substring(0,7) %>月</span>
-					</td>
-	</tr>
-		<tr class=listtitle>
-				<td width="10%">
-					<span class="title"><font size="4">单位</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电量</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">纯电费</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电费税</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="4">合计</font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费</font></span>
-				<br></td>	
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费税</font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电金</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">基金</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">基金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">总计</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">大用户</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianJin() %> </font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">趸售</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianJin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>			
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">总计</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianJin()%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>			
-			</tr>
-	</table>
+
 
 
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
-		<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
-		</tr>
+		<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 
 		<tr class=listtitle>
 				<td width="10%">
@@ -550,15 +328,123 @@ String inputDate=(String)request.getAttribute("inputDate");
 							
 			</tr>
 	</table>
-
+	<table cellpadding="0" cellspacing="0" width="100%"> 
+        <tr> 
+        <tr class="listtitle" align="center">             
+            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="printCount()">        </td> 
+        </tr> 
+    </table>
 
 </form>
 </body>
 <script language="javascript">
 function printCount(){
-window.print();
+	var b=fm.inputDate.value;
+strURL   =   "<%=request.getContextPath()%>/UICountAllNewLjPrintAction.do?inputDate="+b;
+	winPrint=window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+  
 }
+//function dianfei(){
+	//var fdianfeishui=0.0;
+	//var fdianfee=0.0;
+	//fdianfeishui=parseFloat(fm.lwsumfc.value)*0.17;
+	//fdianfee=fdianfeishui+parseFloat(fm.lwsumfc.value);
+	//fm.lwsumftax.value=fdianfeishui;
+	//fm.lwsumfdianfee.value=fdianfee;
+	
+//}
+//function chabie(){
+	//var chabieshui=0.0;
+	//chabieshui=parseFloat(fm.lwdiffrentfee.value)*0.17;
+	//fm.lwdiffrentfeetax.value=chabieshui;
+	
 
+
+//}
+
+//function jijin(){
+	//var jijinshui=0.0;
+	//jijinshui=parseFloat(fm.lwsumfjijin.value)*0.17;
+	//fm.lwsumfjijintax.value=jijinshui;
+	//}
+	//function dianjin(){
+	////var dianjinshui=0.0;
+	//dianjinshui=parseFloat(fm.lwsummfdianjin.value)*0.17;
+	//fm.lwsumfdianjintax.value=dianjinshui;
+	//}
+	
+	//function sanxia(){
+	///var sanxiashui=0.0;
+	///sanxiashui=parseFloat(fm.lwsumfsanxia.value)*0.17;
+	//fm.lwsumfsanxiatax.value=sanxiashui;
+	//}
+	//function fheji(){
+	//var heji=0.0;
+	//heji=parseFloat(fm.lwsumfc.value)+parseFloat(fm.lwsumftax.value)+parseFloat(fm.lwdiffrentfee.value)+parseFloat(fm.lwdiffrentfeetax.value)+parseFloat(fm.lwsummfdianjin.value)+parseFloat(fm.lwsumfdianjintax.value)+parseFloat(fm.lwsumfsanxia.value)+parseFloat(fm.lwsumfsanxiatax.value)+parseFloat(fm.lwsumfjijin.value)+parseFloat(fm.lwsumfjijintax.value);
+	//fm.lwsumffee.value=heji;
+	//}
+	
+	
+	
+	
+	//dunshou
+	//function wdianfei(){
+	//var wdianfeishui=0.0;
+	//var wdianfee=0.0;
+	//wdianfeishui=parseFloat(fm.lwsumwc.value)*0.17;
+	//wdianfee=wdianfeishui+parseFloat(fm.lwsumwc.value);
+	//fm.lwsumwtax.value=wdianfeishui;
+	//fm.lwsumwdianfee.value=wdianfee;
+	
+//}
+//function wchabie(){
+	//var wchabieshui=0.0;
+	//wchabieshui=parseFloat(fm.lwdiffrentwfee.value)*0.17;
+	//fm.lwdiffrentwfeetax.value=wchabieshui;
+	
+
+
+//}
+
+//function wjijin(){
+	//var wjijinshui=0.0;
+	//wjijinshui=parseFloat(fm.lwsumwjijin.value)*0.17;
+	////fm.lwsumwjijintax.value=wjijinshui;
+	//}
+	//function wdianjin(){
+	//var wdianjinshui=0.0;
+	//wdianjinshui=parseFloat(fm.lwsummwdianjin.value)*0.17;
+	//fm.lwsumwdianjintax.value=wdianjinshui;
+	//}
+	
+	//function wsanxia(){
+	//var wsanxiashui=0.0;
+	//wsanxiashui=parseFloat(fm.lwsumwsanxia.value)*0.17;
+	//fm.lwsumwsanxiatax.value=wsanxiashui;
+	//}
+	//function wheji(){
+	//var wheji=0.0;
+	//wheji=parseFloat(fm.lwsumwc.value)+parseFloat(fm.lwsumwtax.value)+parseFloat(fm.lwdiffrentwfee.value)+parseFloat(fm.lwdiffrentwfeetax.value)+parseFloat(fm.lwsummwdianjin.value)+parseFloat(fm.lwsumwdianjintax.value)+parseFloat(fm.lwsumwsanxia.value)+parseFloat(fm.lwsumwsanxiatax.value)+parseFloat(fm.lwsumwjijin.value)+parseFloat(fm.lwsumwjijintax.value);
+	//fm.lwsumwfee.value=wheji;
+	//}
+	//function allsum(){
+	//fm.lwsumallpower.value=parseFloat(fm.lwsumfpower.value)+parseFloat(fm.lwsumwpower.value);
+	
+	//fm.lwsumallc.value=parseFloat(fm.lwsumfc.value)+parseFloat(fm.lwsumwc.value);
+	//fm.lwsumalltax.value=parseFloat(fm.lwsumftax.value)+parseFloat(fm.lwsumwtax.value);
+	//fm.lwsumalldianfee.value=parseFloat(fm.lwsumfdianfee.value)+parseFloat(fm.lwsumwdianfee.value);
+	//fm.lwdiffrentallfee.value=parseFloat(fm.lwdiffrentfee.value)+parseFloat(fm.lwdiffrentwfee.value);
+	//fm.lwdiffrentallfeetax.value=parseFloat(fm.lwdiffrentfeetax.value)+parseFloat(fm.lwdiffrentwfeetax.value);
+	//fm.lwsummalldianjin.value=parseFloat(fm.lwsummfdianjin.value)+parseFloat(fm.lwsummwdianjin.value);
+	//fm.lwsumalldianjintax.value=parseFloat(fm.lwsumfdianjintax.value)+parseFloat(fm.lwsumwdianjintax.value);
+	//fm.lwsumallsanxia.value=parseFloat(fm.lwsumfsanxia.value)+parseFloat(fm.lwsumwsanxia.value);
+	//fm.lwsumallsanxiatax.value=parseFloat(fm.lwsumfsanxiatax.value)+parseFloat(fm.lwsumwsanxiatax.value);
+	//fm.lwsumalljijin.value=parseFloat(fm.lwsumfjijin.value)+parseFloat(fm.lwsumwjijin.value);
+	//fm.lwsumalljijintax.value=parseFloat(fm.lwsumfjijintax.value)+parseFloat(fm.lwsumwjijintax.value);
+	//fm.lwsumallfee.value=parseFloat(fm.lwsumffee.value)+parseFloat(fm.lwsumwfee.value);
+	
+	
+	//}
 	
 	
 	

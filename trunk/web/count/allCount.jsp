@@ -59,6 +59,17 @@ create by wangrongjia
 			<td class=title0 colspan="7"><B>当月电费电量发行单</B></td>
 		</tr>
           <tr>
+          <td class="title">选择：</td>	
+         <td class="input"><select name="counttype" >
+				   
+				  <option value="1">当月统计</option>
+				  <option value="2">累加统计</option>
+				
+				  
+				
+				  
+              </select>	
+              </td>
          <td align="center" >录入年月：			
 				
 				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly"   />				
@@ -79,7 +90,12 @@ if(fm.inputDate.value==''){
 	alert("请录入日期!");
 	return;
 }
+if(fm.counttype.value=='1'){
 	fm.action="/iacontact/UIAllCountAction.do";
+	}
+	if(fm.counttype.value=='2'){
+	fm.action="/iacontact/UIAllCountljAction.do";
+	}
 	fm.submit();
 }
 Calendar.setup({

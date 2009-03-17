@@ -82,13 +82,10 @@
 }
 </script>
 </head>
-<body class=interface onload="javascript:printCount();window.close()">&nbsp; 
+<body onload="javascript:doPrint();window.close()"> 
 <html:errors />
 <%
-LwShouShuTableDto wholesaleshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesaleshoushuLwShouShuTableDto");
 
-LwShouShuTableDto corporationshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("corporationshoushuLwShouShuTableDto");
-LwShouShuTableDto allshoushuLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("allshoushuLwShouShuTableDto");
 
 
 LwShouShuTableDto wholesaleduLwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesaleduLwShouShuTableDto");
@@ -118,232 +115,13 @@ String inputDate=(String)request.getAttribute("inputDate");
 		
 %>
 
-	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
-	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
-		
-	<tr>
-			<td class=title0 colspan="14"><font size="4">大户局电费电量发行单</font></td>
-		</tr>
-		
-		<tr>
-		<td nowrap colspan="2">
-						<span class="title"><%=inputDate.substring(0,7) %>月</span>
-					</td>
-	</tr>
-		<tr class=listtitle>
-				<td width="10%">
-					<span class="title"><font size="4">单位</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电量</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">纯电费</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电费税</font></span>
-				<br></td>
-		
-				<td nowrap width="10%">
-					<span class="title"><font size="4">合计</font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费</font></span>
-				<br></td>	
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费税</font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电金</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">电金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">基金</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">基金税</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">总计</font></span>
-				<br></td>
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">大用户</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianJin() %> </font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=corporationshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>
-				
-							
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">趸售</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianJin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=wholesaleshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>			
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">总计</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getPower() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getChunDianFei() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianFeiTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSumDianFee() %></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDiffrentFei() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDiffrentFeiTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianJin()%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getDianJinTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSanXia() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSanXiaTax() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getJijin() %></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getJinjinTax() %></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=allshoushuLwShouShuTableDto.getSumFee() %></font></span>
-				<br></td>			
-			</tr>
-	</table>
+
 
 
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
-		<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
-		</tr>
+		
 
 		<tr class=listtitle>
 				<td width="10%">
@@ -550,15 +328,19 @@ String inputDate=(String)request.getAttribute("inputDate");
 							
 			</tr>
 	</table>
-
+	<table cellpadding="0" cellspacing="0" width="100%"> 
+        <tr> 
+        <tr class="listtitle" align="center">             
+            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="printCount()">        </td> 
+        </tr> 
+    </table>
 
 </form>
 </body>
 <script language="javascript">
-function printCount(){
-window.print();
+function doPrint(){
+	window.print();
 }
-
 	
 	
 	

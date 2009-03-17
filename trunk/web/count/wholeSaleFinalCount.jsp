@@ -1271,9 +1271,31 @@ BODY {
   var   strURL;     
   var a=fm.company.value;
   var b=fm.inputDate.value;
+  var arr = '';////È¡Êý×é 
+ 	arr+=exends1+",";
+ 	arr+=exends2+",";
+ 	arr+=exends3+",";
+ 	arr+=exends4+",";
+ 	arr+=exends5+",";
+ 	arr+=exends6+",";
+ 	arr+=exends7+",";
+ 	arr+=exends8+",";
+ 	arr+=exends9+",";
+ 	arr+=exends10+",";
+ 	arr+=exends11+",";
+ 	arr+=exends12+",";
+ 	arr+=exends13+",";
+ 	arr+=exends14+",";
+ 	arr+=exends15+",";
+ 	arr+=exends16+",";
+ 	arr+=exends17+",";
+ 	arr+=exends18;
+ 	
+
+  
     
-  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&exends2="+exends2+"&&exends4="+exends4+"&&exends6="+exends6+"&&exends8="+exends8+"&&exends9="+exends9+"&&exends10="+exends10+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei+"&&Power10="+Power10+"&&Power35="+Power35+"&&chabiedianfei="+chabiedianfei;     
- 
+  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&arr="+arr+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei+"&&Power10="+Power10+"&&Power35="+Power35+"&&chabiedianfei="+chabiedianfei;     
+
   window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
   
   }  

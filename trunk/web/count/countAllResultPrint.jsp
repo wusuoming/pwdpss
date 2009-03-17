@@ -150,206 +150,278 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 						<span class="title"><font size="4">月份:<%=statMonth%></font></span>
 		</td>
 	    </tr>
+		</tr>
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="4">单位</font></span>
+					<span class="title"><font size="2">单位</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="4">电量</font></span>
+					<span class="title"><font size="2">电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="4">纯电费</font></span>
+					<span class="title"><font size="2">纯电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="4">电费税</font></span>
+					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 		
 				<td nowrap width="10%">
-					<span class="title"><font size="4">合计</font></span>
+					<span class="title"><font size="2">合计</font></span>
 				<br></td>
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="4">差别电费税</font></span>
+					<span class="title"><font size="2">差别电费</font></span>
 				<br></td>	
 				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费税</font></span>
+				<br></td>
+				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">电金</font></span>
+					<span class="title"><font size="2">电金</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">电金税</font></span>
+					<span class="title"><font size="2">电金税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡</font></span>
+					<span class="title"><font size="2">三峡</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">三峡税</font></span>
+					<span class="title"><font size="2">三峡税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">基金</font></span>
+					<span class="title"><font size="2">基金</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">基金税</font></span>
+					<span class="title"><font size="2">基金税</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="4">总计</font></span>
+					<span class="title"><font size="2">总计</font></span>
 				<br></td>
 							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">大用户</font></span>
+					<span class="title"><font size="2">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfpower%></font></span>
+					<span class="title"><font size="2"><%=sumfpower%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfpower" value="<%=sumfpower%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfc%></font></span>
+					<span class="title"><font size="2"><%=sumfc%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfc" value="<%=sumfc%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumftax%></font></span>
+					<span class="title"><font size="2"><%=sumftax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumftax" value="<%=sumftax%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfdianfee%></font></span>
+					<span class="title"><font size="2"><%=sumfdianfee%></font></span>
 				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=0%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=0%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=summfdianjin%></font></span>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" value="<%=sumfdianfee%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfdianjintax%></font></span>
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfsanxia%></font></span>
+					<span class="title"><font size="2"><%=0%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfsanxiatax%></font></span>
+					<span class="title"><font size="2"><%=summfdianjin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" value="<%=summfdianjin%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfjijin%></font></span>
+					<span class="title"><font size="2"><%=sumfdianjintax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" value="<%=sumfdianjintax%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="2"><%=sumfsanxia%></font></span>
 				<br></td>
-				
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" value="<%=sumfsanxia%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumffee%></font></span>
+					<span class="title"><font size="2"><%=sumfsanxiatax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" value="<%=sumfsanxiatax%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfjijin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfjijin" value="<%=sumfjijin%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumfjijintax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" value="<%=sumfjijintax%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumffee%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumffee" value="<%=sumffee%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				
 							
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">趸售</font></span>
+					<span class="title"><font size="2">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwpower%></font></span>
+					<span class="title"><font size="2"><%=sumwpower%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwpower" value="<%=sumwpower%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwc%></font></span>
+					<span class="title"><font size="2"><%=sumwc%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwc" value="<%=sumwc%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwtax%></font></span>
+					<span class="title"><font size="2"><%=sumwtax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwtax" value="<%=sumwtax%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwdianfee%></font></span>
+					<span class="title"><font size="2"><%=sumwdianfee%></font></span>
 				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=summwdianjin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwdianjintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwsanxia%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwsanxiatax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwjijin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwjijintax%></font></span>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwdianfee" value="<%=sumwdianfee%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumwfee%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+				<span class="title"><font size="2"><input  name="lwdiffrentwfee" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=summwdianjin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsummwdianjin" value="<%=summwdianjin%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwdianjintax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwdianjintax" value="<%=sumwdianjintax%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwsanxia%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwsanxia" value="<%=sumwsanxia%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwsanxiatax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" value="<%=sumwsanxiatax%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwjijin%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwjijin" value="<%=sumwjijin%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwjijintax%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwjijintax" value="<%=sumwjijintax%>" style="border: 0" readonly="readonly"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=sumwfee%></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center" style="display: none">
+					<span class="title"><font size="2"><input  name="lwsumwfee" value="<%=sumwfee%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>			
 			</tr>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="4">总计</font></span>
+					<span class="title"><font size="2">总计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallpower%></font></span>
+					<span class="title"><font size="2"><%=sumallpower%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallc%></font></span>
+					<span class="title"><font size="2"><%=sumallc%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumalltax%></font></span>
+					<span class="title"><font size="2"><%=sumalltax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallfee%></font></span>
+					<span class="title"><font size="2"><%=sumallfee%></font></span>
 				<br></td>
 				
-					<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
+					
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="4"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
+				<span class="title"><font size="2"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumalldianjin%></font></span>
+					<span class="title"><font size="2"><%=sumalldianjin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumalldianjintax%></font></span>
+					<span class="title"><font size="2"><%=sumalldianjintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallsanxia%></font></span>
+					<span class="title"><font size="2"><%=sumallsanxia%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallsanxiatax%></font></span>
+					<span class="title"><font size="2"><%=sumallsanxiatax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumalljijin%></font></span>
+					<span class="title"><font size="2"><%=sumalljijin%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumalljijintax%></font></span>
+					<span class="title"><font size="2"><%=sumalljijintax%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=sumallall%></font></span>
+					<span class="title"><font size="2"><%=sumallall%></font></span>
 				<br></td>
 							
 			</tr>

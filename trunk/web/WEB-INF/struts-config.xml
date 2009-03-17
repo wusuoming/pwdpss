@@ -1875,6 +1875,23 @@
 			<forward name="countallnewleijiaPrint" path="/count/countAllNewLjPrint.jsp"></forward>
 			</action>
 			
+			
+			
+			
+			<action path="/UIAllCountljAction" 
+			type="com.elongway.pss.ui.count.UIAllCountljAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countalllj" path="/count/allCountNewLj.jsp"></forward>
+			</action>
+			
+				<action path="/UICountAllNewLjPrintAction" 
+			type="com.elongway.pss.ui.count.UICountAllNewLjPrintAction"
+			scope="request"
+			input="/datainput/town/TownFeeStatFaxing.jsp">
+			<forward name="countallnewlj" path="/count/allCountNewLjPrint.jsp"></forward>
+			</action>
+			
 		<!--add by wangrongjia end   -->
 	</action-mappings>
 

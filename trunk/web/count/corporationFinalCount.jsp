@@ -824,6 +824,10 @@
 						<span class="title">利率电费</span>
 					</td>
 					<td nowrap colspan="2">
+					<%
+					System.out.println(corporation.getPowerRateFee());
+					
+					 %>
 						<span class="title"><%=df.format(corporation.getPowerRateFee())%>
 						</span>
 					</td>

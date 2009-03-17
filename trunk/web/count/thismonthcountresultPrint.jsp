@@ -88,18 +88,30 @@
 <html:errors />
 <%
 DecimalFormat df = new DecimalFormat("###0.00");
-String sumffee=(String)request.getAttribute("sumffee");
-String sumfpower=request.getAttribute("sumfpower").toString();
-String sumfdianfee=(String)request.getAttribute("sumfdianfee");
-String sumftax=(String)request.getAttribute("sumftax");
-String sumfc=(String)request.getAttribute("sumfc");
-String summfdianjin=(String)request.getAttribute("summfdianjin");
-String sumfdianjintax=(String)request.getAttribute("sumfdianjintax");
-String sumfsanxia=(String)request.getAttribute("sumfsanxia");
-String sumfsanxiatax=(String)request.getAttribute("sumfsanxiatax");
-String sumfjijin=(String)request.getAttribute("sumfjijin");
-String sumfjijintax=(String)request.getAttribute("sumfjijintax");
+//String sumffee=(String)request.getAttribute("sumffee");
+//String sumfpower=request.getAttribute("sumfpower").toString();
+//String sumfdianfee=(String)request.getAttribute("sumfdianfee");
+//String sumftax=(String)request.getAttribute("sumftax");
+//String sumfc=(String)request.getAttribute("sumfc");
+//String summfdianjin=(String)request.getAttribute("summfdianjin");
+//String sumfdianjintax=(String)request.getAttribute("sumfdianjintax");
+//String sumfsanxia=(String)request.getAttribute("sumfsanxia");
+//String sumfsanxiatax=(String)request.getAttribute("sumfsanxiatax");
+//String sumfjijin=(String)request.getAttribute("sumfjijin");
+//String sumfjijintax=(String)request.getAttribute("sumfjijintax");
 String sumwfee=(String)request.getAttribute("sumwfee");
+double sumffee=0;
+double sumfpower=0;
+double sumfdianfee=0;
+double sumftax=0;
+double sumfc=0;
+double summfdianjin=0;
+double sumfdianjintax=0;
+double sumfsanxia=0;
+double sumfsanxiatax=0;
+double sumfjijin=0;
+double sumfjijintax=0;
+TownSataDto sumtownSataDto=(TownSataDto)request.getAttribute("sumtownSataDto");
 String sumwpower=request.getAttribute("sumwpower").toString();
 String sumwdianfee=(String)request.getAttribute("sumwdianfee");
 String sumwtax=(String)request.getAttribute("sumwtax");
@@ -111,17 +123,29 @@ String sumwsanxiatax=(String)request.getAttribute("sumwsanxiatax");
 String sumwjijin=(String)request.getAttribute("sumwjijin");
 String sumwjijintax=(String)request.getAttribute("sumwjijintax");
 
-String sumallfee=(String)request.getAttribute("sumwjijintax");
-String sumallpower=request.getAttribute("sumallpower").toString();
-String sumallc=(String)request.getAttribute("sumallc");
-String sumalltax=(String)request.getAttribute("sumalltax");
-String sumallall=(String)request.getAttribute("sumallall");
-String sumalldianjin=(String)request.getAttribute("sumalldianjin");
-String sumalldianjintax=(String)request.getAttribute("sumalldianjintax");
-String sumallsanxia=(String)request.getAttribute("sumallsanxia");
-String sumallsanxiatax=(String)request.getAttribute("sumallsanxiatax");
-String sumalljijin=(String)request.getAttribute("sumalljijin");
-String sumalljijintax=(String)request.getAttribute("sumalljijintax");
+//String sumallfee=(String)request.getAttribute("sumwjijintax");
+//String sumallpower=request.getAttribute("sumallpower").toString();
+//String sumallc=(String)request.getAttribute("sumallc");
+//String sumalltax=(String)request.getAttribute("sumalltax");
+//String sumallall=(String)request.getAttribute("sumallall");
+//String sumalldianjin=(String)request.getAttribute("sumalldianjin");
+//String sumalldianjintax=(String)request.getAttribute("sumalldianjintax");
+//String sumallsanxia=(String)request.getAttribute("sumallsanxia");
+//String sumallsanxiatax=(String)request.getAttribute("sumallsanxiatax");
+//String sumalljijin=(String)request.getAttribute("sumalljijin");
+//String sumalljijintax=(String)request.getAttribute("sumalljijintax");
+double  sumallfee=0;
+double  sumallpower=0;
+double  sumallc=0;
+double  sumalltax=0;
+double  sumallall=0;
+double  sumalldianjin=0;
+double  sumalldianjintax=0;
+double  sumallsanxia=0;
+double  sumallsanxiatax=0;
+double  sumalljijin=0;
+double  sumalljijintax=0;
+
 
 
 
@@ -153,14 +177,15 @@ String sumallfeejy=(String)request.getAttribute("sumallfeejy");
 String sumallfeegy=(String)request.getAttribute("sumallfeegy");
 String sumallfeedm=(String)request.getAttribute("sumallfeedm");
 String sumallfeety=(String)request.getAttribute("sumallfeety");
-
-String inputDate1  =(String)request.getAttribute("ssss");
+String s=(String)request.getAttribute("inputDate");
 
 
 LwAllWholeFeeDto  lwAllWholeFeeDtogy=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtogy");
 LwAllWholeFeeDto  lwAllWholeFeeDtodm=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtodm");
 LwAllWholeFeeDto  lwAllWholeFeeDtojy=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtojy");
 LwAllWholeFeeDto  lwAllWholeFeeDtoty=(LwAllWholeFeeDto)request.getAttribute("lwAllWholeFeeDtoty");
+
+
 
 String differenceQuantity=request.getAttribute("differenceQuantity").toString();
 String differenceQuantitygy=request.getAttribute("differenceQuantitygy").toString();
@@ -172,7 +197,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 
 
 
-
+String inputDate1  =(String)request.getAttribute("ssss");
 %>
 <form  name="fm" method="post">
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
@@ -245,6 +270,26 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				while(itf.hasNext()){
 						lwCorporationSummaryDto=(LwCorporationSummaryDto)itf.next();
 						
+					sumfpower+=lwCorporationSummaryDto.getElectricQuantity();
+					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+					sumfc+=PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG);
+				 	}else{
+				 	sumfc+=PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG);
+				 	}
+				 	sumfsanxia+=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG);
+				 	summfdianjin+=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17,AppConst.TWO_DOT_FLAG);
+				 	sumfjijin+=PowerFeeCal.getValue((lwCorporationSummaryDto.getSurcharge()/1.17),AppConst.TWO_DOT_FLAG);
+				if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+				sumftax+=	PowerFeeCal.getValue(((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
+				
+				}else{
+				sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
+				}
+				sumfsanxiatax+=PowerFeeCal.getValue((lwCorporationSummaryDto.getSanXiaFee()- lwCorporationSummaryDto.getSanXiaFee()/1.17),AppConst.TWO_DOT_FLAG);
+				sumfdianjintax+= PowerFeeCal.getValue((lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getPowerFee()/1.17),AppConst.TWO_DOT_FLAG);
+				sumfjijintax+=PowerFeeCal.getValue((lwCorporationSummaryDto.getSurcharge()-lwCorporationSummaryDto.getSurcharge()/1.17),AppConst.TWO_DOT_FLAG);
+				 sumffee+=lwCorporationSummaryDto.getSumFee();
+						
 					
 				 
 				 
@@ -252,31 +297,49 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 			<tr >
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
+					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
 				<br></td>
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
+					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} %>
 				
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
+					
+				
+				
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
-				<%} else{%>
+				<%} else{
+				System.out.println(lwCorporationSummaryDto.getUserNo());
+				System.out.println(lwCorporationSummaryDto.getPointerFee());
+				System.out.println(lwCorporationSummaryDto.getContentFee());
+				System.out.println(lwCorporationSummaryDto.getNeedFee());
+				System.out.println(lwCorporationSummaryDto.getNeedFee());
+				System.out.println(lwCorporationSummaryDto.getPowerRateFee());
+				System.out.println(lwCorporationSummaryDto.getUnDenizenFee());
+					System.out.println(lwCorporationSummaryDto.getUnLineLoss());
+				
+				
+				%>
 				
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
+				
+				
+				
+				
 				<%} %>
 				<td nowrap width="10%"  align="center">
 					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG) %></font></span>
@@ -292,22 +355,22 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%= df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="5"><%= df.format(PowerFeeCal.getValue(((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee())/1.17*0.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} %>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue((lwCorporationSummaryDto.getSanXiaFee()- lwCorporationSummaryDto.getSanXiaFee()/1.17),AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue((lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getPowerFee()/1.17),AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=PowerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17*0.17,AppConst.TWO_DOT_FLAG)%></font></span>
+					<span class="title"><font size="5"><%=PowerFeeCal.getValue((lwCorporationSummaryDto.getSurcharge()-lwCorporationSummaryDto.getSurcharge()/1.17),AppConst.TWO_DOT_FLAG)%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%"  align="center">
@@ -323,6 +386,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				
+				
 							
 			</tr>
 			<%} %>
@@ -331,31 +395,31 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="5">小计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfpower%></font></span>
+					<span class="title"><font size="5"><%=Math.round( sumfpower)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfc%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfc)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfsanxia%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfsanxia)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=summfdianjin%></font></span>
+					<span class="title"><font size="5"><%=df.format(summfdianjin)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfjijin%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfjijin)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumftax%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumftax)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfsanxiatax%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfsanxiatax)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfdianjintax%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfdianjintax)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumfjijintax)%></font></span>
 				<br></td>
 				
 					<td nowrap width="10%" align="center">
@@ -366,7 +430,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumffee%></font></span>
+					<span class="title"><font size="5"><%=df.format(sumffee)%></font></span>
 				<br></td>
 				
 					
@@ -662,31 +726,36 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="5">合计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallpower%></font></span>
+					<span class="title"><font size="5"><%=Math.round( sumfpower + Double.parseDouble(sumwpower) + sumtownSataDto.getSumPower())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallc%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwc) + sumfc + sumtownSataDto.getPurePowerFee())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallsanxia%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwsanxia) + sumfsanxia
+					+ sumtownSataDto.getPureSanXia())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalldianjin%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(summwdianjin) + summfdianjin
+					+ sumtownSataDto.getPureDianJin())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalljijin%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwjijin) + sumfjijin + sumtownSataDto.getPureJiJin())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalltax%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwtax) + sumftax + sumtownSataDto.getPowerFeeTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallsanxiatax%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwsanxiatax)+ sumfsanxiatax
+					+ sumtownSataDto.getSanXiaTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalldianjintax%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwdianjintax) + sumfdianjintax
+					+ sumtownSataDto.getDianJinTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalljijintax%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwjijintax) + sumfjijintax
+					+ sumtownSataDto.getJiJinTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17)%></font></span>
@@ -697,7 +766,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantity)/1.17*0.17)%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallall%></font></span>
+					<span class="title"><font size="5"><%=df.format(Double.parseDouble(sumwfee) + sumffee + sumtownSataDto.getSumPowerFee())%></font></span>
 				<br></td>
 				
 							
