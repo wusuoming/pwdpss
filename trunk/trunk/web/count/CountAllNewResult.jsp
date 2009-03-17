@@ -117,7 +117,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">大户局电量发行单</font></td>
 		</tr>
 		
 		<tr>
@@ -187,43 +187,43 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="2">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfpower" value="<%=Math.round(corporationshoushulwShouShuTableDto.getPower()) %>" ></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfpower" value="<%=Math.round(corporationshoushulwShouShuTableDto.getPower()) %>" onblur="addpower()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfc" value="<%=corporationshoushulwShouShuTableDto.getChunDianFei() %>"   onblur="dianfei()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfc" value="<%=corporationshoushulwShouShuTableDto.getChunDianFei() %>"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumftax" value="<%=corporationshoushulwShouShuTableDto.getDianFeiTax() %>" onblur="dianfei()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" value="<%=corporationshoushulwShouShuTableDto.getDianFeiTax() %>" onblur="dianfei();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfdianfee" value="<%=corporationshoushulwShouShuTableDto.getSumDianFee() %>"></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwdiffrentfee" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="chabie()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" value="<%=corporationshoushulwShouShuTableDto.getSumDianFee() %>" onblur="addalldianfee()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFeiTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="chabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsummfdianjin" value="<%=corporationshoushulwShouShuTableDto.getDianJin() %> " onblur="dianjin()"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFeiTax() %>"onblur="adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" value="<%=corporationshoushulwShouShuTableDto.getDianJin() %> " onblur="dianjin();addlldianjin();addalldianjintax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfdianjintax" value="<%=corporationshoushulwShouShuTableDto.getDianJinTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" value="<%=corporationshoushulwShouShuTableDto.getDianJinTax() %>" onblur="addalldianjintax();"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfsanxia" value="<%=corporationshoushulwShouShuTableDto.getSanXia() %>" onblur="sanxia()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" value="<%=corporationshoushulwShouShuTableDto.getSanXia() %>" onblur="sanxia();addallsanxia();addallsanxiatax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" value="<%=corporationshoushulwShouShuTableDto.getSanXiaTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" value="<%=corporationshoushulwShouShuTableDto.getSanXiaTax() %>" onblur="addallsanxiatax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfjijin" value="<%=corporationshoushulwShouShuTableDto.getJijin() %>" onblur="jijin();fheji()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfjijin" value="<%=corporationshoushulwShouShuTableDto.getJijin() %>" onblur="jijin();addalljijin();addalljijintax();fheji()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfjijintax" value="<%=corporationshoushulwShouShuTableDto.getJinjinTax() %>" onblur="fheji()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" value="<%=corporationshoushulwShouShuTableDto.getJinjinTax() %>" onblur="addalljijintax();fheji()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -237,41 +237,41 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="2">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwpower" value="<%=Math.round( wholesaleshoushulwShouShuTableDto.getPower()) %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwpower" value="<%=Math.round( wholesaleshoushulwShouShuTableDto.getPower()) %>" onblur="addpower()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwc" value="<%=wholesaleshoushulwShouShuTableDto.getChunDianFei() %>" onblur="wdianfei()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwc" value="<%=wholesaleshoushulwShouShuTableDto.getChunDianFei() %>" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwtax" value="<%=wholesaleshoushulwShouShuTableDto.getDianFeiTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwtax" value="<%=wholesaleshoushulwShouShuTableDto.getDianFeiTax() %>" onblur="addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwdianfee" value="<%=wholesaleshoushulwShouShuTableDto.getSumDianFee() %>"></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentwfee" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="wchabie()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwdianfee" value="<%=wholesaleshoushulwShouShuTableDto.getSumDianFee() %>" onblur="addalldianfee()"></font></span>
 				<br></td>
 				
+				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFeiTax() %>"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfee" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="wchabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsummwdianjin" value="<%=wholesaleshoushulwShouShuTableDto.getDianJin() %>" onblur="wdianjin()"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFeiTax() %>" onblur="adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsummwdianjin" value="<%=wholesaleshoushulwShouShuTableDto.getDianJin() %>" onblur="wdianjin();addlldianjin();addalldianjintax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwdianjintax" value="<%=wholesaleshoushulwShouShuTableDto.getDianJinTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwdianjintax" value="<%=wholesaleshoushulwShouShuTableDto.getDianJinTax() %>" onblur="addalldianjintax();"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwsanxia" value="<%=wholesaleshoushulwShouShuTableDto.getSanXia() %>" onblur="wsanxia()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwsanxia" value="<%=wholesaleshoushulwShouShuTableDto.getSanXia() %>" onblur="wsanxia();addallsanxia();addallsanxiatax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" value="<%=wholesaleshoushulwShouShuTableDto.getSanXiaTax() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" value="<%=wholesaleshoushulwShouShuTableDto.getSanXiaTax() %>" onblur="addallsanxiatax()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwjijin" value="<%=wholesaleshoushulwShouShuTableDto.getJijin() %>" onblur="wjijin();wheji()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwjijin" value="<%=wholesaleshoushulwShouShuTableDto.getJijin() %>" onblur="wjijin();addalljijin();addalljijintax();wheji()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><input  name="lwsumwjijintax" value="<%=wholesaleshoushulwShouShuTableDto.getJinjinTax() %>" onblur="wheji();allsum()"></font></span>
@@ -334,9 +334,11 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 
 
 
-	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
+	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6" style="display: none">
 	
-		
+		<tr>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
+		</tr>
 
 		<tr class=listtitle>
 				<td width="10%">
@@ -658,6 +660,49 @@ function wjijin(){
 	fm.lwsumallfee.value=parseFloat(fm.lwsumffee.value)+parseFloat(fm.lwsumwfee.value);
 	
 	
+	}
+	function addpower(){
+	fm.lwsumallpower.value=parseFloat(fm.lwsumfpower.value)+parseFloat(fm.lwsumwpower.value);
+	}
+	function addallc(){
+	fm.lwsumallc.value=parseFloat(fm.lwsumfc.value)+parseFloat(fm.lwsumwc.value);
+	}
+	function addalltax(){
+	fm.lwsumalltax.value=parseFloat(fm.lwsumftax.value)+parseFloat(fm.lwsumwtax.value);
+	}
+	function addalldianfee(){
+	fm.lwsumalldianfee.value=parseFloat(fm.lwsumfdianfee.value)+parseFloat(fm.lwsumwdianfee.value);
+	}
+	function addalldianfee(){
+	fm.lwsumalldianfee.value=parseFloat(fm.lwsumfdianfee.value)+parseFloat(fm.lwsumwdianfee.value);
+	}
+	function adddiffrentallfee(){
+	fm.lwdiffrentallfee.value=parseFloat(fm.lwdiffrentfee.value)+parseFloat(fm.lwdiffrentwfee.value);
+	}
+	function adddiffrentallfeetax(){
+	fm.lwdiffrentallfeetax.value=parseFloat(fm.lwdiffrentfeetax.value)+parseFloat(fm.lwdiffrentwfeetax.value);
+	}
+	function addlldianjin(){
+	fm.lwsummalldianjin.value=parseFloat(fm.lwsummfdianjin.value)+parseFloat(fm.lwsummwdianjin.value);
+	}
+	
+	function addalldianjintax(){
+	fm.lwsumalldianjintax.value=parseFloat(fm.lwsumfdianjintax.value)+parseFloat(fm.lwsumwdianjintax.value);
+	}
+	function addallsanxia(){
+	fm.lwsumallsanxia.value=parseFloat(fm.lwsumfsanxia.value)+parseFloat(fm.lwsumwsanxia.value);
+	}
+	function addallsanxiatax(){
+	fm.lwsumallsanxiatax.value=parseFloat(fm.lwsumfsanxiatax.value)+parseFloat(fm.lwsumwsanxiatax.value);
+	}
+	function addalljijin(){
+	fm.lwsumalljijin.value=parseFloat(fm.lwsumfjijin.value)+parseFloat(fm.lwsumwjijin.value);
+	}
+	function addalljijintax(){
+	fm.lwsumalljijintax.value=parseFloat(fm.lwsumfjijintax.value)+parseFloat(fm.lwsumwjijintax.value);
+	}
+	function addallfee(){
+	fm.lwsumallfee.value=parseFloat(fm.lwsumffee.value)+parseFloat(fm.lwsumwfee.value);
 	}
 	
 	

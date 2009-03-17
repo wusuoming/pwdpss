@@ -78,13 +78,13 @@ create by wangrongjia
           <td class="title">选择：</td>	
          <td class="input"><select name="counttype" >
 				   
-				  <option value="1">当月统计</option>
+				  <option value="1">当月统计</option><%--
 				  <option value="2">累加统计</option>
 				
 				  
 				
 				  
-              </select>	
+              --%></select>	
               </td>
           
           
