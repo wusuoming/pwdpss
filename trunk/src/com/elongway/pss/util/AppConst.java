@@ -94,6 +94,22 @@ interface IValue {
 	// »¯·Ê
 	public static final String POWERCLASS_10 = "10";
 	
+	// ÐòºÅ-1
+	public static final String SERIALNO_1 = "1";
+	// ÐòºÅ-2
+	public static final String SERIALNO_2 = "2";
+	// ÐòºÅ-3
+	public static final String SERIALNO_3 = "3";
+	// ÐòºÅ-4
+	public static final String SERIALNO_4 = "4";
+	// ÐòºÅ-5
+	public static final String SERIALNO_5 = "5";
+	// ÐòºÅ-6
+	public static final String SERIALNO_6 = "6";
+	// ÐòºÅ-100
+	public static final String SERIALNO_900 = "900";
+	
+	
 	
 }
 

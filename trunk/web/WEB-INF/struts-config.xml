@@ -307,6 +307,8 @@
 				path="/datainput/town/TownFeeStat.jsp" />
 			<forward name="priceStat"
 				path="/datainput/town/TownPriceCount.jsp" />
+			<forward name="printPriceStat"
+				path="/datainput/town/TownPriceCountPrint.jsp" />
 		</action>
 		<!-- 直供乡按局购电统计查询 -->
 		<action
