@@ -36,6 +36,7 @@ import com.elongway.pss.dto.domain.LwSalePriceDto;
 import com.elongway.pss.dto.domain.LwUserLineDto;
 import com.elongway.pss.dto.domain.LwindicatorDto;
 import com.elongway.pss.ui.control.maintenance.BLLWUserLine;
+import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.exceptionlog.UserException;
 
@@ -252,14 +253,14 @@ public class UIcorporationFeeCalAction extends Action {
 		if(lwCoporationUserInfoDto.getIndustryType().equals("2")){
 		needPrice=powerFeeCal.xuliangFee(UserNo);
 		}
-		double unDenizenFee=unDenizenFeePower*pepolePrice;
+		double unDenizenFee=powerFeeCal.getValue(unDenizenFeePower*pepolePrice, AppConst.TWO_DOT_FLAG) ;
 		if(lwCoporationUserInfoDto.getIndustryType().equals("2")){
-		needFee=needPower*needPrice;
+		needFee=powerFeeCal.getValue(needPower*needPrice, AppConst.TWO_DOT_FLAG) ;
 		}
 		double contentFee=0;
-		double PointerFee=(isPointerQuantity-TransLosspower)*factoryprice;
+		double PointerFee=powerFeeCal.getValue((isPointerQuantity-TransLosspower)*factoryprice, AppConst.TWO_DOT_FLAG) ;
 		if(lwCoporationUserInfoDto.getIndustryType().equals("1")){
-			   contentFee=contentPower*contentPrice;
+			   contentFee=powerFeeCal.getValue(contentPower*contentPrice, AppConst.TWO_DOT_FLAG) ;
 		}
 		/*if(pdanjin.equals("")||pdanjin==null){
 			pdanjin="0";
@@ -268,13 +269,13 @@ public class UIcorporationFeeCalAction extends Action {
 		double guFee=ValleyQuantity*factoryprice;	
 		double dianJinFee=0;
 		if(lwCoporationUserInfoDto.getDianJinPower().equals("1")){
-		 dianJinFee=sumpower*dianjinPrice;//电金
+		 dianJinFee=powerFeeCal.getValue(sumpower*dianjinPrice, AppConst.TWO_DOT_FLAG) ;//电金
 		}
 		if(lwCoporationUserInfoDto.getDianJinPower().equals("2")){
-			 dianJinFee=unDenizenFeePower*dianjinPrice;//电金
+			 dianJinFee=powerFeeCal.getValue(unDenizenFeePower*dianjinPrice, AppConst.TWO_DOT_FLAG) ;//电金
 			}
-		double sanXiaFee=sumpower*0.004;//三峡金
-		double jiJinFee=sumpower*0.0051;//基金
+		double sanXiaFee=powerFeeCal.getValue(sumpower*0.004, AppConst.TWO_DOT_FLAG) ;//三峡金
+		double jiJinFee=powerFeeCal.getValue(sumpower*0.0051, AppConst.TWO_DOT_FLAG) ;//基金
 		double sumFee=0;
 		double sumotherFee=0;
 
@@ -300,12 +301,12 @@ public class UIcorporationFeeCalAction extends Action {
 		if(lwCoporationUserInfoDto.getIndustryType().equals("2")){
 			if(AmmeterStyle.equals("0")){
 				sumotherFee=needFee+unDenizenFee+PointerFee;
-				PowerRateFee=sumotherFee*AdjustRate;
+				PowerRateFee=powerFeeCal.getValue(sumotherFee*AdjustRate, AppConst.TWO_DOT_FLAG) ;
 				 sumFee=needFee+unDenizenFee+PointerFee+PowerRateFee+dianJinFee+sanXiaFee+jiJinFee;
 				}
 				if(AmmeterStyle.equals("1")){
 					sumotherFee=needFee+unDenizenFee+fengFee;
-					PowerRateFee=sumotherFee*AdjustRate;
+					PowerRateFee=powerFeeCal.getValue(sumotherFee*AdjustRate, AppConst.TWO_DOT_FLAG) ;
 					 sumFee=needFee+unDenizenFee+fengFee+PowerRateFee+dianJinFee+sanXiaFee+jiJinFee;
 					}
 			/*	if(AmmeterStyle.equals("2")){
@@ -624,8 +625,8 @@ public class UIcorporationFeeCalAction extends Action {
 			}
 			
 			
-			double factoryprice=powerFeeCal.factorySalePrice(state,UserNo);
-			double changefactoryprice=powerFeeCal.factorySalePrice(changestate,UserNo);
+			double factoryprice=powerFeeCal.corporationPrice(state,UserNo);
+			double changefactoryprice=powerFeeCal.corporationPrice(changestate,UserNo);
 			double pepolePrice=powerFeeCal.factoryPeoplePrice(UserNo);
 			double needPrice=0;
 			if(lwCoporationUserInfoDto.getIndustryType().equals("1")){
@@ -644,7 +645,7 @@ public class UIcorporationFeeCalAction extends Action {
 			
 			
 			double fengFee=(unchangePointerQuantity-unchangePointerQuantity*TransLoss/100)*factoryprice;
-			double changefengFee=(changePointerQuantity-changePointerQuantity*TransLoss)/100*changefactoryprice;
+			double changefengFee=(changePointerQuantity-changePointerQuantity*TransLoss/100)*changefactoryprice;
 			double guFee=ValleyQuantity*factoryprice;	
 			double dianJinFee=0;
 			double changePointerFee=changePointerQuantity*changefactoryprice;

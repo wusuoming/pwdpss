@@ -30,6 +30,7 @@ import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
 import com.sinosoft.sysframework.common.datatype.DateTime;
+import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UIThisMonthAllCountAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
@@ -184,6 +185,7 @@ public class UIThisMonthAllCountAction extends Action {
 							+ lwCorporationSummaryDto.getUnDenizenFee()
 							+ lwCorporationSummaryDto.getBeforFee()
 							+ lwCorporationSummaryDto.getLastFee()
+							+ lwCorporationSummaryDto.getUnLineLoss()
 
 					;
 				} else {
@@ -192,7 +194,8 @@ public class UIThisMonthAllCountAction extends Action {
 
 							+ lwCorporationSummaryDto.getContentFee()
 							+ lwCorporationSummaryDto.getNeedFee()
-							+ lwCorporationSummaryDto.getUnDenizenFee();
+							+ lwCorporationSummaryDto.getUnDenizenFee()
+					+ lwCorporationSummaryDto.getUnLineLoss();
 				}
 				summfdianjinall += lwCorporationSummaryDto.getPowerFee();
 				sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
@@ -201,6 +204,7 @@ public class UIThisMonthAllCountAction extends Action {
 						.getSumFee(), AppConst.TWO_DOT_FLAG);
 
 			}
+			System.out.println(sumfsanxiaall);
 
 			// 四个局分别统计
 
@@ -265,12 +269,30 @@ public class UIThisMonthAllCountAction extends Action {
 			BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
 			LwAllWholeFeeDto lwAllWholeFeeDtogy = blLwAllWholeFeeFacade
 					.findByPrimaryKey("gy", statmonth);
+			if(lwAllWholeFeeDtogy==null){
+				throw new UserException(-6, -706, this.getClass().getName(),
+				"固阳该月还没有算过费！");
+			}
 			LwAllWholeFeeDto lwAllWholeFeeDtodm = blLwAllWholeFeeFacade
 					.findByPrimaryKey("dm", statmonth);
+			
+			if(lwAllWholeFeeDtodm==null){
+				throw new UserException(-6, -706, this.getClass().getName(),
+				"达茂该月还没有算过费！");
+			}
 			LwAllWholeFeeDto lwAllWholeFeeDtoty = blLwAllWholeFeeFacade
 					.findByPrimaryKey("ty", statmonth);
+			
+			if(lwAllWholeFeeDtoty==null){
+				throw new UserException(-6, -706, this.getClass().getName(),
+				"土佑该月还没有算过费！");
+			}
 			LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
 					.findByPrimaryKey("jy", statmonth);
+			if(lwAllWholeFeeDtojy==null){
+				throw new UserException(-6, -706, this.getClass().getName(),
+				"九原该月还没有算过费！");
+			}
 
 			double sanxiagy = 0;
 			double jijingy = 0;
@@ -520,6 +542,8 @@ public class UIThisMonthAllCountAction extends Action {
 					+ townSataDto.getJiJinTax();
 
 			httpServletRequest.setAttribute("sumffee", df.format(sumffee));
+			httpServletRequest.setAttribute("sumtownSataDto", townSataDto);
+			
 			httpServletRequest.setAttribute("sumfpower", Math.round(sumfpower));
 			httpServletRequest.setAttribute("sumfdianfee", df
 					.format(sumfdianfee));

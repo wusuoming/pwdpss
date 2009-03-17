@@ -277,7 +277,7 @@ if(lwdiffrentwfee.equals("")||lwdiffrentwfee==null||lwdiffrentwfeetax.equals("")
 		}
 		
 		
-		
+		PowerFeeCal powerFeeCal=new PowerFeeCal();
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
@@ -285,6 +285,7 @@ if(lwdiffrentwfee.equals("")||lwdiffrentwfee==null||lwdiffrentwfeetax.equals("")
 		Iterator itf = colf.iterator();
 		while (itf.hasNext()) {
 			lwCorporationSummaryDto = (LwCorporationSummaryDto) itf.next();
+
 			if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				sumfpower +=lwCorporationSummaryDto.getElectricQuantity()+lwCorporationSummaryDto.getBeforPower()+lwCorporationSummaryDto.getLastPower();
 				}else{
@@ -300,8 +301,17 @@ if(lwdiffrentwfee.equals("")||lwdiffrentwfee==null||lwdiffrentwfeetax.equals("")
 					+ lwCorporationSummaryDto.getUnDenizenFee()
 					+lwCorporationSummaryDto.getBeforFee()
 					+lwCorporationSummaryDto.getLastFee()
-					+lwCorporationSummaryDto.getUnLineLoss()
-					
+					+lwCorporationSummaryDto.getUnLineLoss();
+					sumfc+=powerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()
+							+ lwCorporationSummaryDto.getPowerRateFee()
+							
+							+ lwCorporationSummaryDto.getContentFee()
+							+ lwCorporationSummaryDto.getNeedFee()
+							+ lwCorporationSummaryDto.getUnDenizenFee()
+							+lwCorporationSummaryDto.getBeforFee()
+							+lwCorporationSummaryDto.getLastFee()
+							+lwCorporationSummaryDto.getUnLineLoss())/1.17, AppConst.TWO_DOT_FLAG);
+					sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
 					;
 				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 						+ lwCorporationSummaryDto.getPowerRateFee()
@@ -309,15 +319,29 @@ if(lwdiffrentwfee.equals("")||lwdiffrentwfee==null||lwdiffrentwfeetax.equals("")
 						+ lwCorporationSummaryDto.getNeedFee()
 						+ lwCorporationSummaryDto.getUnDenizenFee()
 						+lwCorporationSummaryDto.getUnLineLoss();
+				sumfc+=powerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()
+						+ lwCorporationSummaryDto.getPowerRateFee()
+						+ lwCorporationSummaryDto.getContentFee()
+						+ lwCorporationSummaryDto.getNeedFee()
+						+ lwCorporationSummaryDto.getUnDenizenFee()
+						+lwCorporationSummaryDto.getUnLineLoss())/1.17, AppConst.TWO_DOT_FLAG)
+						
+						;
+				sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
 				
 				}
 			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
+			summfdianjin+=powerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfdianjintax+=powerFeeCal.getValue((lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getPowerFee()/1.17), AppConst.TWO_DOT_FLAG);
 			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
+			sumfsanxia+=powerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfsanxiatax+=powerFeeCal.getValue((lwCorporationSummaryDto.getSanXiaFee()-lwCorporationSummaryDto.getSanXiaFee()/1.17), AppConst.TWO_DOT_FLAG);
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
-			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(), AppConst.TWO_DOT_FLAG) ;
+			sumfjijin+=powerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfjijintax+=powerFeeCal.getValue((lwCorporationSummaryDto.getSurcharge()-lwCorporationSummaryDto.getSurcharge()/1.17), AppConst.TWO_DOT_FLAG);
+			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(),AppConst.TWO_DOT_FLAG);
 
 		}
-
 		DecimalFormat df = new DecimalFormat("###0.00");
 
 		BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
@@ -371,15 +395,7 @@ if(lwdiffrentwfee.equals("")||lwdiffrentwfee==null||lwdiffrentwfeetax.equals("")
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtodm.getFujia1())?"0":lwAllWholeFeeDtodm.getFujia1())
 				+ Double.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1())?"0":lwAllWholeFeeDtojy.getFujia1());
 		sumwdianfee = sumwc+sumwtax;
-		sumfc = sumfdianfee / 1.17;
-		sumftax = sumfdianfee / 1.17 * 0.17;
-		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
-		sumfsanxiatax = sumfsanxiaall / 1.17 * 0.17;
-		sumfjijintax = sumfjijinall / 1.17 * 0.17;
-
-		summfdianjin = summfdianjinall / 1.17;
-		sumfsanxia = sumfsanxiaall / 1.17;
-		sumfjijin = sumfjijinall / 1.17;
+		
 
 		sumallfee = sumfdianfee + sumwdianfee;
 		sumallpower = sumfpower + sumwpower;
