@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwShouShuTableFacade;
 import com.elongway.pss.dto.domain.LwShouShuTableDto;
+import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public  class UIViewCountNewResultAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
@@ -22,8 +23,16 @@ public  class UIViewCountNewResultAction extends Action {
 		BLLwShouShuTableFacade  blLwShouShuTableFacade=new BLLwShouShuTableFacade();
 		LwShouShuTableDto wholesalelwShouShuTableDto=new LwShouShuTableDto();
 		wholesalelwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "duwholesale");
+		if(wholesalelwShouShuTableDto==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		LwShouShuTableDto  corporationlwShouShuTableDto=new LwShouShuTableDto();
 		corporationlwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "ducorporation");
+		if(corporationlwShouShuTableDto==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		
 		LwShouShuTableDto lwShouShuTableDto=new LwShouShuTableDto();
 		lwShouShuTableDto.setPower(wholesalelwShouShuTableDto.getPower()+corporationlwShouShuTableDto.getPower());

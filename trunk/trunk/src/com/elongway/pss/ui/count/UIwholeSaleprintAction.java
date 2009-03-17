@@ -31,26 +31,10 @@ public class UIwholeSaleprintAction extends Action {
 		String wholesaleStyle=httpServletRequest.getParameter("wholesaleStyle"); 
 		String company=httpServletRequest.getParameter("company");
 		String now=PowerFeeCal.getCurrentBillMonth();
-		
+		String arry=httpServletRequest.getParameter("arr");
+		String arr[]=arry.split(",");
 		String serchDate=inputDate.substring(0, 7);
-		String exends1 = httpServletRequest.getParameter("exends1");
-		String exends2 = httpServletRequest.getParameter("exends2");
-		String exends3 = httpServletRequest.getParameter("exends3");
-		String exends4 = httpServletRequest.getParameter("exends4");
-		String exends5 = httpServletRequest.getParameter("exends5");
-		String exends6 = httpServletRequest.getParameter("exends6");
-		String exends7 = httpServletRequest.getParameter("exends7");
-		String exends8 = httpServletRequest.getParameter("exends8");
-		String exends9 = httpServletRequest.getParameter("exends9");
-		String exends10 = httpServletRequest.getParameter("exends10");
-		String exends11 = httpServletRequest.getParameter("exends11");
-		String exends12 = httpServletRequest.getParameter("exends12");
-		String exends13 = httpServletRequest.getParameter("exends13");
-		String exends14 = httpServletRequest.getParameter("exends14");
-		String exends15 = httpServletRequest.getParameter("exends15");
-		String exends16 = httpServletRequest.getParameter("exends16");
-		String exends17 = httpServletRequest.getParameter("exends17");
-		String exends18 = httpServletRequest.getParameter("exends18");
+		
 		DecimalFormat df = new DecimalFormat("###0.00");
 	
 		
@@ -137,44 +121,32 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)/1.17*0.17));
 		lwAllWholeFeeDto.setPower1(zongdianliang);
 		//名称
-		lwAllWholeFeeDto.setFujia4(exends9);
+		if(arr.length>8){
+		lwAllWholeFeeDto.setFujia4(arr[8]);
 		//附加费用
-		lwAllWholeFeeDto.setFujia5(exends10);
+		lwAllWholeFeeDto.setFujia5(arr[9]);
+		}
 		lwAllWholeFeeDto.setFujia11(Power10);
 		//差别电费
 		lwAllWholeFeeDto.setFujia9(chabiedianfei);
 		//35KV电量
 		lwAllWholeFeeDto.setFujia12(Power35);
 		//总电费
-		lwAllWholeFeeDto.setSumfee(exends8);
+		lwAllWholeFeeDto.setSumfee(arr[7]);
 		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
 		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)/1.17*0.17));
-		lwAllWholeFeeDto.setHaiminglu(exends2);
-		lwAllWholeFeeDto.setDuobian(exends4);
-		lwAllWholeFeeDto.setFujia2(exends6);
+		lwAllWholeFeeDto.setHaiminglu(arr[1]);
+		lwAllWholeFeeDto.setDuobian(arr[3]);
+		lwAllWholeFeeDto.setFujia2(arr[5]);
 		lwAllWholeFeeDto.setInputdate(serchDate);
 		BLLwAllWholeFeeFacade  blLwAllWholeFeeFacade=new BLLwAllWholeFeeFacade();
 		blLwAllWholeFeeFacade.delete(company, serchDate);
 		blLwAllWholeFeeFacade.insert(lwAllWholeFeeDto);
+		LwAllWholeFeeDto tem= blLwAllWholeFeeFacade.findByPrimaryKey(company, serchDate);
+		System.out.println("ssssssss"+tem.getFujia9());
 		
-		httpServletRequest.setAttribute("exends1", exends1);
-		httpServletRequest.setAttribute("exends2", exends2);
-		httpServletRequest.setAttribute("exends3", exends3);
-		httpServletRequest.setAttribute("exends4", exends4);
-		httpServletRequest.setAttribute("exends5", exends5);
-		httpServletRequest.setAttribute("exends6", exends6);
-		httpServletRequest.setAttribute("exends7", exends7);
-		httpServletRequest.setAttribute("exends8", exends8);
-		httpServletRequest.setAttribute("exends9", exends9);
-		httpServletRequest.setAttribute("exends10", exends10);
-		httpServletRequest.setAttribute("exends11", exends11);
-		httpServletRequest.setAttribute("exends12", exends12);
-		httpServletRequest.setAttribute("exends13", exends13);
-		httpServletRequest.setAttribute("exends14", exends14);
-		httpServletRequest.setAttribute("exends15", exends15);
-		httpServletRequest.setAttribute("exends16", exends16);
-		httpServletRequest.setAttribute("exends17", exends17);
-		httpServletRequest.setAttribute("exends18", exends18);
+		httpServletRequest.setAttribute("arr", arr);
+		
 		
 		String condition=" 1=1";
 		

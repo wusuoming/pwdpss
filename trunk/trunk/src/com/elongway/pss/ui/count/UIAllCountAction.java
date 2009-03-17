@@ -20,6 +20,7 @@ import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
+import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UIAllCountAction extends Action {
 
@@ -102,6 +103,7 @@ public class UIAllCountAction extends Action {
 		BLLwWholeSaleSummaryFacade blLwWholeSaleSummaryFacade = new BLLwWholeSaleSummaryFacade();
 		Collection col = blLwWholeSaleSummaryFacade
 				.findByConditions(conditions);
+		
 		LwWholeSaleSummaryDto lwWholeSaleSummaryDto = new LwWholeSaleSummaryDto();
 		Iterator it = col.iterator();
 		while (it.hasNext()) {
@@ -113,6 +115,12 @@ public class UIAllCountAction extends Action {
 		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
 		Collection colf = blLwCorporationSummaryFacade
 				.findByConditions(conditions);
+		
+		if(colf==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
+		PowerFeeCal powerFeeCal=new PowerFeeCal();
 		LwCorporationSummaryDto lwCorporationSummaryDto = new LwCorporationSummaryDto();
 		Iterator itf = colf.iterator();
 		while (itf.hasNext()) {
@@ -133,20 +141,44 @@ public class UIAllCountAction extends Action {
 					+ lwCorporationSummaryDto.getUnDenizenFee()
 					+lwCorporationSummaryDto.getBeforFee()
 					+lwCorporationSummaryDto.getLastFee()
-					+lwCorporationSummaryDto.getUnLineLoss()
-					
+					+lwCorporationSummaryDto.getUnLineLoss();
+					sumfc+=powerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()
+							+ lwCorporationSummaryDto.getPowerRateFee()
+							
+							+ lwCorporationSummaryDto.getContentFee()
+							+ lwCorporationSummaryDto.getNeedFee()
+							+ lwCorporationSummaryDto.getUnDenizenFee()
+							+lwCorporationSummaryDto.getBeforFee()
+							+lwCorporationSummaryDto.getLastFee()
+							+lwCorporationSummaryDto.getUnLineLoss())/1.17, AppConst.TWO_DOT_FLAG);
+					sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
 					;
 				}else{sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 						+ lwCorporationSummaryDto.getPowerRateFee()
 						+ lwCorporationSummaryDto.getContentFee()
 						+ lwCorporationSummaryDto.getNeedFee()
 						+ lwCorporationSummaryDto.getUnDenizenFee()
-						+lwCorporationSummaryDto.getUnLineLoss()
+						+lwCorporationSummaryDto.getUnLineLoss();
+				sumfc+=powerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()
+						+ lwCorporationSummaryDto.getPowerRateFee()
+						+ lwCorporationSummaryDto.getContentFee()
+						+ lwCorporationSummaryDto.getNeedFee()
+						+ lwCorporationSummaryDto.getUnDenizenFee()
+						+lwCorporationSummaryDto.getUnLineLoss())/1.17, AppConst.TWO_DOT_FLAG)
 						
-						;}
+						;
+				sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
+				
+				}
 			summfdianjinall += lwCorporationSummaryDto.getPowerFee();
+			summfdianjin+=powerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfdianjintax+=powerFeeCal.getValue((lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getPowerFee()/1.17), AppConst.TWO_DOT_FLAG);
 			sumfsanxiaall += lwCorporationSummaryDto.getSanXiaFee();
+			sumfsanxia+=powerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfsanxiatax+=powerFeeCal.getValue((lwCorporationSummaryDto.getSanXiaFee()-lwCorporationSummaryDto.getSanXiaFee()/1.17), AppConst.TWO_DOT_FLAG);
 			sumfjijinall += lwCorporationSummaryDto.getSurcharge();
+			sumfjijin+=powerFeeCal.getValue(lwCorporationSummaryDto.getSurcharge()/1.17, AppConst.TWO_DOT_FLAG);
+			sumfjijintax+=powerFeeCal.getValue((lwCorporationSummaryDto.getSurcharge()-lwCorporationSummaryDto.getSurcharge()/1.17), AppConst.TWO_DOT_FLAG);
 			sumffee += PowerFeeCal.getValue(lwCorporationSummaryDto.getSumFee(),AppConst.TWO_DOT_FLAG);
 
 		}
@@ -156,12 +188,29 @@ public class UIAllCountAction extends Action {
 		BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
 		LwAllWholeFeeDto lwAllWholeFeeDtogy = blLwAllWholeFeeFacade
 				.findByPrimaryKey("gy", statmonth);
+		if(lwAllWholeFeeDtogy==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		LwAllWholeFeeDto lwAllWholeFeeDtodm = blLwAllWholeFeeFacade
 				.findByPrimaryKey("dm", statmonth);
+		if(lwAllWholeFeeDtodm==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		LwAllWholeFeeDto lwAllWholeFeeDtoty = blLwAllWholeFeeFacade
 				.findByPrimaryKey("ty", statmonth);
+		if(lwAllWholeFeeDtoty==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
+		
 		LwAllWholeFeeDto lwAllWholeFeeDtojy = blLwAllWholeFeeFacade
 				.findByPrimaryKey("jy", statmonth);
+		if(lwAllWholeFeeDtojy==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		/*
 		 * sumwc = (Double
 		 * .parseDouble("".equals(lwAllWholeFeeDtogy.getDianfei()) ? "0" :
@@ -304,15 +353,7 @@ public class UIAllCountAction extends Action {
 						.parseDouble("".equals(lwAllWholeFeeDtojy.getFujia1()) ? "0"
 								: lwAllWholeFeeDtojy.getFujia1());
 		sumwdianfee = sumwc + sumwtax;
-		sumfc = sumfdianfee / 1.17;
-		sumftax = sumfdianfee / 1.17 * 0.17;
-		sumfdianjintax = summfdianjinall / 1.17 * 0.17;
-		sumfsanxiatax = sumfsanxiaall / 1.17 * 0.17;
-		sumfjijintax = sumfjijinall / 1.17 * 0.17;
-
-		summfdianjin = summfdianjinall / 1.17;
-		sumfsanxia = sumfsanxiaall / 1.17;
-		sumfjijin = sumfjijinall / 1.17;
+		
 
 		sumallfee = sumfdianfee + sumwdianfee;
 		sumallpower = sumfpower + sumwpower;
