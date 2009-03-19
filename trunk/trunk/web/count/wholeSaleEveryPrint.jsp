@@ -383,7 +383,7 @@
 					<span class="title"><font size="2">土右供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia11()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getFujia11()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity10kv()) %></font></span>
@@ -479,7 +479,7 @@
 			</tr>
 			<tr >
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtoty.getFujia12()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getFujia12()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity35kv()) %></font></span>
@@ -650,7 +650,7 @@
 					<span class="title"><font size="2">达茂供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia11() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtodm.getFujia11())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()) %></font></span>
@@ -746,7 +746,7 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia12() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtodm.getFujia12())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()) %></font></span>
@@ -924,7 +924,7 @@
 					<span class="title"><font size="2">九原供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia11()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtojy.getFujia11()))%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -1024,7 +1024,7 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtojy.getFujia12()%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtojy.getFujia12()))%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -1203,7 +1203,7 @@
 					<span class="title"><font size="2">固阳供电局</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia11()  %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtogy.getFujia11() )) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
@@ -1303,7 +1303,7 @@
 			<tr >
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=lwAllWholeFeeDtogy.getFujia12() %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtogy.getFujia12())) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
