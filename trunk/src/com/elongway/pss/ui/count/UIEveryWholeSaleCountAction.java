@@ -1,9 +1,6 @@
 package com.elongway.pss.ui.count;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,17 +10,10 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import antlr.collections.List;
-
 import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
-import com.elongway.pss.bl.facade.BLLwDcodeFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
-import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
-import com.elongway.pss.dto.custom.WholeSaleFee;
 import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
-import com.elongway.pss.dto.domain.LwDcodeDto;
 import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
-import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.sinosoft.sysframework.common.datatype.DateTime;
 
 public class UIEveryWholeSaleCountAction extends Action {
@@ -344,6 +334,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 		 		lwAllWholeFeeDto.setDuobian(String.valueOf(Double.parseDouble(lwAllWholeFeeDtodm.getDuobian())+Double.parseDouble(lwAllWholeFeeDtogy.getDuobian())+Double.parseDouble(lwAllWholeFeeDtoty.getDuobian())+Double.parseDouble(lwAllWholeFeeDtojy.getDuobian())));
 		 		
 		 		lwAllWholeFeeDto.setFujia5(String.valueOf(Double.parseDouble(tuibudianfeejy)+Double.parseDouble(tuibudianfeety)+Double.parseDouble(tuibudianfeedm)+Double.parseDouble(tuibudianfeegy)));
+		 		lwAllWholeFeeDto.setSumfee(String.valueOf((Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))+((Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))+((Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))+((Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9())))))));
 		 		httpServletRequest.setAttribute("sumwc", df.format(sumwc));
 		 httpServletRequest.setAttribute("sumwfee", df.format(sumwfee));
 		 httpServletRequest.setAttribute("sumwpower",Math.round(sumwpower));
