@@ -273,11 +273,11 @@ public class UIEveryWholeSaleCountAction extends Action {
 		 double Sumlilv = Double.parseDouble(fuJia3ty)+Double.parseDouble(fuJia3dm)+Double.parseDouble(fuJia3jy)+Double.parseDouble(fuJia3gy);
 		 LwWholeSaleDetailDto  lwWholeSaleDetailDto=new LwWholeSaleDetailDto();
 		 lwWholeSaleDetailDto.setDenizenQuantity10kv(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()+lwWholeSaleDetailDtogy.getDenizenQuantity10kv()+lwWholeSaleDetailDtojy.getDenizenQuantity10kv()+lwWholeSaleDetailDtoty.getDenizenQuantity10kv());
-		 lwWholeSaleDetailDto.setDenizenMoney10kv(lwWholeSaleDetailDtodm.getBizMoney10kv()+lwWholeSaleDetailDtogy.getBizMoney10kv()+lwWholeSaleDetailDtojy.getBizMoney10kv()+lwWholeSaleDetailDtoty.getBizMoney10kv());
+		 lwWholeSaleDetailDto.setDenizenMoney10kv(lwWholeSaleDetailDtodm.getDenizenMoney10kv()+lwWholeSaleDetailDtogy.getDenizenMoney10kv()+lwWholeSaleDetailDtojy.getDenizenMoney10kv()+lwWholeSaleDetailDtoty.getDenizenMoney10kv());
 		 
 
 		 lwWholeSaleDetailDto.setDenizenQuantity35kv(lwWholeSaleDetailDtodm.getDenizenQuantity35kv()+lwWholeSaleDetailDtogy.getDenizenQuantity35kv()+lwWholeSaleDetailDtojy.getDenizenQuantity35kv()+lwWholeSaleDetailDtoty.getDenizenQuantity35kv());
-		 		 lwWholeSaleDetailDto.setDenizenMoney35kv(lwWholeSaleDetailDtodm.getBizMoney35kv()+lwWholeSaleDetailDtogy.getBizMoney35kv()+lwWholeSaleDetailDtojy.getBizMoney35kv()+lwWholeSaleDetailDtoty.getBizMoney35kv());
+		 		 lwWholeSaleDetailDto.setDenizenMoney35kv(lwWholeSaleDetailDtodm.getDenizenMoney35kv()+lwWholeSaleDetailDtogy.getDenizenMoney35kv()+lwWholeSaleDetailDtojy.getDenizenMoney35kv()+lwWholeSaleDetailDtoty.getDenizenMoney35kv());
 		 		lwWholeSaleDetailDto.setUnDenizenQuantity10kv(lwWholeSaleDetailDtodm.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtogy.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtojy.getUnDenizenQuantity10kv()+lwWholeSaleDetailDtoty.getUnDenizenQuantity10kv());
 		 		lwWholeSaleDetailDto.setUnDenizenQuantity35kv(lwWholeSaleDetailDtodm.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtogy.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtojy.getUnDenizenQuantity35kv()+lwWholeSaleDetailDtoty.getUnDenizenQuantity35kv());
 		 		lwWholeSaleDetailDto.setUnDenizenMoney10kv(lwWholeSaleDetailDtodm.getUnDenizenMoney10kv()+lwWholeSaleDetailDtogy.getUnDenizenMoney10kv()+lwWholeSaleDetailDtojy.getUnDenizenMoney10kv()+lwWholeSaleDetailDtoty.getUnDenizenMoney10kv());

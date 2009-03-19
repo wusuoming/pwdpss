@@ -116,9 +116,9 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setDianfei(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17));
 		lwAllWholeFeeDto.setDianfeitax(df.format((Double.parseDouble(sum10fee)+Double.parseDouble(sum35fee))/1.17*0.17));
 		lwAllWholeFeeDto.setJijin(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17));
-		lwAllWholeFeeDto.setFujia1(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17*0.17));
+		lwAllWholeFeeDto.setFujia1(df.format((Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))-(Double.parseDouble(jijin1)+Double.parseDouble(jijin2)+Double.parseDouble(jijin3))/1.17));
 		lwAllWholeFeeDto.setDianjin(df.format(Double.parseDouble(dianjin)/1.17));
-		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)/1.17*0.17));
+		lwAllWholeFeeDto.setDianjintax(df.format(Double.parseDouble(dianjin)-Double.parseDouble(dianjin)/1.17));
 		lwAllWholeFeeDto.setPower1(zongdianliang);
 		//名称
 		if(arr.length>8){
@@ -133,8 +133,8 @@ public class UIwholeSaleprintAction extends Action {
 		lwAllWholeFeeDto.setFujia12(Power35);
 		//总电费
 		lwAllWholeFeeDto.setSumfee(arr[7]);
-		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));
-		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)/1.17*0.17));
+		lwAllWholeFeeDto.setSanxia(df.format(Double.parseDouble(sanxia)/1.17));	
+		lwAllWholeFeeDto.setSanxiatax(df.format(Double.parseDouble(sanxia)-Double.parseDouble(sanxia)/1.17));
 		lwAllWholeFeeDto.setHaiminglu(arr[1]);
 		lwAllWholeFeeDto.setDuobian(arr[3]);
 		lwAllWholeFeeDto.setFujia2(arr[5]);
@@ -143,7 +143,7 @@ public class UIwholeSaleprintAction extends Action {
 		blLwAllWholeFeeFacade.delete(company, serchDate);
 		blLwAllWholeFeeFacade.insert(lwAllWholeFeeDto);
 		LwAllWholeFeeDto tem= blLwAllWholeFeeFacade.findByPrimaryKey(company, serchDate);
-		System.out.println("ssssssss"+tem.getFujia9());
+		
 		
 		httpServletRequest.setAttribute("arr", arr);
 		
