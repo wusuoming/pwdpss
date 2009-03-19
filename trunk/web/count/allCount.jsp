@@ -90,11 +90,23 @@ if(fm.inputDate.value==''){
 	alert("ÇëÂ¼ÈëÈÕÆÚ!");
 	return;
 }
+var now=fm.inputDate.value;
+var temp=now.substring(0,7) ;
+
+if(temp=='2009-01'){
+
+	fm.action="/iacontact/UIYiYueAllCountAction.do";
+	
+	}
+	if(temp!='2009-01'){
 if(fm.counttype.value=='1'){
 	fm.action="/iacontact/UIAllCountAction.do";
-	}
+	}	
+	
+	
 	if(fm.counttype.value=='2'){
 	fm.action="/iacontact/UIAllCountljAction.do";
+	}
 	}
 	fm.submit();
 }
