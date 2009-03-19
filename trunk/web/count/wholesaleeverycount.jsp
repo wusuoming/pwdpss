@@ -585,7 +585,7 @@
 				<br></td>
 	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getDianfei())+Double.parseDouble(lwAllWholeFeeDtoty.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia3())+Double.parseDouble(lwAllWholeFeeDtoty.getFujia2())+Double.parseDouble(lwAllWholeFeeDtoty.getHaiminglu())+Double.parseDouble(tuibuty)+Double.parseDouble(lwAllWholeFeeDtoty.getDuobian()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtoty.getSumfee())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxia())-Double.parseDouble(lwAllWholeFeeDtoty.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtoty.getJijin())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia1())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjin())-Double.parseDouble(lwAllWholeFeeDtoty.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtoty.getFujia9()))%></font></span>
 				<br></td>
 				
 						
@@ -858,7 +858,7 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxdm)) %></font></span>
 				<br></td>
 				--%><td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getDianfei())+Double.parseDouble(lwAllWholeFeeDtodm.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia3())+Double.parseDouble(lwAllWholeFeeDtodm.getFujia2())+Double.parseDouble(lwAllWholeFeeDtodm.getHaiminglu())+Double.parseDouble(tuibudm)+Double.parseDouble(lwAllWholeFeeDtodm.getDuobian()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtodm.getSumfee())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxia())-Double.parseDouble(lwAllWholeFeeDtodm.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtodm.getJijin())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia1())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjin())-Double.parseDouble(lwAllWholeFeeDtodm.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtodm.getFujia9()))%></font></span>
 				<br></td>
 				
 						
@@ -1137,7 +1137,7 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxjy)) %></font></span>
 				<br></td>
 				--%><td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtojy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtojy.getFujia2())+Double.parseDouble(lwAllWholeFeeDtojy.getHaiminglu())+Double.parseDouble(tuibujy)+Double.parseDouble(lwAllWholeFeeDtojy.getDuobian()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtojy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtojy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtojy.getJijin())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtojy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtojy.getFujia9()))%></font></span>
 				<br></td>
 				
 						
@@ -1417,7 +1417,7 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxgy)) %></font></span>
 				<br></td>
 				--%><td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getDianfei())+Double.parseDouble(lwAllWholeFeeDtogy.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia3())+Double.parseDouble(lwAllWholeFeeDtogy.getFujia2())+Double.parseDouble(lwAllWholeFeeDtogy.getHaiminglu())+Double.parseDouble(tuibugy)+Double.parseDouble(lwAllWholeFeeDtogy.getDuobian()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDtogy.getSumfee())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxia())-Double.parseDouble(lwAllWholeFeeDtogy.getSanxiatax())-Double.parseDouble(lwAllWholeFeeDtogy.getJijin())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia1())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjin())-Double.parseDouble(lwAllWholeFeeDtogy.getDianjintax())-Double.parseDouble(lwAllWholeFeeDtogy.getFujia9()))%></font></span>
 				<br></td>
 				
 						
@@ -1660,7 +1660,7 @@
 			
 				<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df1.format(Double.parseDouble(lwAllWholeFeeDto.getPower1())) %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDto.getPower1())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianfei())) %></font></span>
@@ -1690,7 +1690,7 @@
 					<span class="title"><font size="2"><%=df.format(Double.parseDouble(Dianjintaxdm)) %></font></span>
 				<br></td>
 				--%><td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getDianfei())+Double.parseDouble(lwAllWholeFeeDto.getDianfeitax())+Double.parseDouble(lwAllWholeFeeDto.getFujia3())+Double.parseDouble(lwAllWholeFeeDto.getFujia2())+Double.parseDouble(lwAllWholeFeeDto.getHaiminglu())+Double.parseDouble(lwAllWholeFeeDto.getFujia5())+Double.parseDouble(lwAllWholeFeeDto.getDuobian()))%></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(lwAllWholeFeeDto.getSumfee()))%></font></span>
 				<br></td>
 				
 						
