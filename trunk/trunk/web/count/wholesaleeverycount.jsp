@@ -10,6 +10,7 @@
 <jsp:directive.page import="com.elongway.pss.dto.custom.WholeSaleFee"/>
 <%@page import="com.elongway.pss.dto.domain.LwWholeSaleDetailDto"%>
 <%@page import="com.elongway.pss.dto.domain.LwAllWholeFeeDto"%>
+<jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -318,7 +319,7 @@
 		if(tuibujy.equals("")||tuibujy==null){
 			tuibujy="0";
 		}
-		
+		PowerFeeCal  powerFeeCal=new PowerFeeCal();
 		//求总电量
 	
 		 %>
@@ -651,7 +652,7 @@
 					<span class="title"><font size="2"><%=lwAllWholeFeeDtodm.getFujia11() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
@@ -1483,7 +1484,7 @@
 					<span class="title"><font size="2"><%=df1.format(Double.parseDouble(lwAllWholeFeeDto.getFujia11())) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()) %></font></span>
+					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(lwWholeSaleDetailDto.getDenizenMoney10kv()) %></font></span>

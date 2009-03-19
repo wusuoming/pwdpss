@@ -653,7 +653,7 @@
 					<span class="title"><font size="4"><%=lwAllWholeFeeDtodm.getFujia11() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="4"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
+					<span class="title"><font size="4"><%=df.format(lwWholeSaleDetailDtodm.getDenizenQuantity10kv()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="4"><%=df.format(lwWholeSaleDetailDtodm.getDenizenMoney10kv()) %></font></span>
