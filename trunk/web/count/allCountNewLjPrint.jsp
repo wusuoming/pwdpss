@@ -121,8 +121,14 @@ String inputDate=(String)request.getAttribute("inputDate");
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
-		
-
+		<tr>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单(累计)</font></td>
+		</tr>
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=inputDate.substring(0,7) %></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="4">单位</font></span>
@@ -328,12 +334,7 @@ String inputDate=(String)request.getAttribute("inputDate");
 							
 			</tr>
 	</table>
-	<table cellpadding="0" cellspacing="0" width="100%"> 
-        <tr> 
-        <tr class="listtitle" align="center">             
-            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="printCount()">        </td> 
-        </tr> 
-    </table>
+	
 
 </form>
 </body>
