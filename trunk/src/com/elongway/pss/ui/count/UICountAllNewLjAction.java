@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwShouShuTableFacade;
 import com.elongway.pss.dto.domain.LwShouShuTableDto;
+import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UICountAllNewLjAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
@@ -155,6 +156,11 @@ public class UICountAllNewLjAction extends Action {
 		double dunshoushoushusumallfee=0;
 		//趸售写
 		Collection colwholesaleshoushu=blLwShouShuTableFacade.findByConditions(tempCondition+" and feetype='shoushuwholesale' ");
+		if(colwholesaleshoushu==null||colwholesaleshoushu.size()==0){
+			
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有输入数据！");
+		}
 		Iterator itwholesaleshoushu=colwholesaleshoushu.iterator();
 		while(itwholesaleshoushu.hasNext()){
 			LwShouShuTableDto lwShouShuTableDto=(LwShouShuTableDto)itwholesaleshoushu.next();
@@ -200,6 +206,15 @@ public class UICountAllNewLjAction extends Action {
 		double corporationshoushudianjintax=0;
 		double corporationshoushusumallfee=0;
 		Collection colcorporationshoushu=blLwShouShuTableFacade.findByConditions(tempCondition+" and feetype='shoushucorporation' ");
+		
+if(colcorporationshoushu==null||colcorporationshoushu.size()==0){
+			
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有输入数据！");
+		}
+		
+		
+		
 		Iterator itcorporationshoushu=colcorporationshoushu.iterator();
 		while(itcorporationshoushu.hasNext()){
 			LwShouShuTableDto lwShouShuTableDto=(LwShouShuTableDto)itcorporationshoushu.next();
