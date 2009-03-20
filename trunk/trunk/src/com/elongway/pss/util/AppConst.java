@@ -61,6 +61,9 @@ interface IFlag {
 	/** 差额算费信息 */
 	public static final String CHA_CAL_FLAG = "9";	
 	
+	/** 打印 */
+	public static final String PRINT_FLAG = "1";	
+	
 	
 }
 /**
