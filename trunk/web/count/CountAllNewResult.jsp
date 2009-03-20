@@ -190,44 +190,44 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="2"><input  name="lwsumfpower" style="width: 80px" value="<%=Math.round(corporationshoushulwShouShuTableDto.getPower()) %>" onblur="addpower()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfc" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getChunDianFei() %>"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfc" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getChunDianFei()) %>"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"  readonly="readonly"  value="<%=corporationshoushulwShouShuTableDto.getDianFeiTax() %>" onblur="dianfei();addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"  readonly="readonly"  value="<%=df.format(corporationshoushulwShouShuTableDto.getDianFeiTax()) %>" onblur="dianfei();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfdianfee" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getSumDianFee() %>" onblur="addalldianfee()"></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwdiffrentfee" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="chabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getSumDianFee() )%>" onblur="addalldianfee()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" style="width: 80px" readonly="readonly" value="<%=corporationshoushulwShouShuTableDto.getDiffrentFeiTax() %>"onblur="adddiffrentallfeetax()"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getDiffrentFei()) %>" onblur="chabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsummfdianjin" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getDianJin() %> " onblur="dianjin();addlldianjin();addalldianjintax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfdianjintax" style="width: 80px"  readonly="readonly"  value="<%=corporationshoushulwShouShuTableDto.getDianJinTax() %>" onblur="addalldianjintax();"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfsanxia" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getSanXia() %>" onblur="sanxia();addallsanxia();addallsanxiatax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" style="width: 80px"  readonly="readonly" value="<%=corporationshoushulwShouShuTableDto.getSanXiaTax() %>" onblur="addallsanxiatax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfjijin" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getJijin() %>" onblur="jijin();addalljijin();addalljijintax();fheji()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumfjijintax" style="width: 80px" readonly="readonly" value="<%=corporationshoushulwShouShuTableDto.getJinjinTax() %>" onblur="addalljijintax();fheji()"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" style="width: 80px" readonly="readonly" value="<%=df.format(corporationshoushulwShouShuTableDto.getDiffrentFeiTax()) %>"onblur="adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumffee" style="width: 80px" value="<%=corporationshoushulwShouShuTableDto.getSumFee() %>" ></font></span>
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getDianJin()) %> " onblur="dianjin();addlldianjin();addalldianjintax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" style="width: 80px"  readonly="readonly"  value="<%=df.format(corporationshoushulwShouShuTableDto.getDianJinTax()) %>" onblur="addalldianjintax();"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getSanXia()) %>" onblur="sanxia();addallsanxia();addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" style="width: 80px"  readonly="readonly" value="<%=df.format(corporationshoushulwShouShuTableDto.getSanXiaTax()) %>" onblur="addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijin" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getJijin()) %>" onblur="jijin();addalljijin();addalljijintax();fheji()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" style="width: 80px" readonly="readonly" value="<%=df.format(corporationshoushulwShouShuTableDto.getJinjinTax()) %>" onblur="addalljijintax();fheji()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumffee" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getSumFee()) %>" ></font></span>
 				<br></td>
 				
 							
@@ -240,45 +240,45 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="2"><input  name="lwsumwpower" style="width: 80px" value="<%=Math.round( wholesaleshoushulwShouShuTableDto.getPower()) %>" onblur="addpower()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwc" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getChunDianFei() %>" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwc" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getChunDianFei()) %>" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px" readonly="readonly" value="<%=wholesaleshoushulwShouShuTableDto.getDianFeiTax() %>" onblur="addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px" readonly="readonly" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDianFeiTax() )%>" onblur="addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwdianfee" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getSumDianFee() %>" onblur="addalldianfee()"></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentwfee" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFei() %>" onblur="wchabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumwdianfee" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getSumDianFee()) %>" onblur="addalldianfee()"></font></span>
 				<br></td>
 				
+				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" style="width: 80px" readonly="readonly" value="<%=wholesaleshoushulwShouShuTableDto.getDiffrentFeiTax() %>" onblur="adddiffrentallfeetax()"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfee" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDiffrentFei()) %>" onblur="wchabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsummwdianjin" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getDianJin() %>" onblur="wdianjin();addlldianjin();addalldianjintax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwdianjintax" style="width: 80px" readonly="readonly"  value="<%=wholesaleshoushulwShouShuTableDto.getDianJinTax() %>" onblur="addalldianjintax();"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwsanxia" value="<%=wholesaleshoushulwShouShuTableDto.getSanXia() %>" onblur="wsanxia();addallsanxia();addallsanxiatax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" style="width: 80px" readonly="readonly"  value="<%=wholesaleshoushulwShouShuTableDto.getSanXiaTax() %>" onblur="addallsanxiatax()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwjijin" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getJijin() %>" onblur="wjijin();addalljijin();addalljijintax();wheji()"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwjijintax" style="width: 80px" readonly="readonly" value="<%=wholesaleshoushulwShouShuTableDto.getJinjinTax() %>" onblur="wheji();allsum()"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" style="width: 80px" readonly="readonly" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDiffrentFeiTax()) %>" onblur="adddiffrentallfeetax()"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumwfee" style="width: 80px" value="<%=wholesaleshoushulwShouShuTableDto.getSumFee() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsummwdianjin" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDianJin()) %>" onblur="wdianjin();addlldianjin();addalldianjintax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwdianjintax" style="width: 80px" readonly="readonly"  value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDianJinTax()) %>" onblur="addalldianjintax();"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxia" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getSanXia()) %>" onblur="wsanxia();addallsanxia();addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" style="width: 80px" readonly="readonly"  value="<%=df.format(wholesaleshoushulwShouShuTableDto.getSanXiaTax() )%>" onblur="addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijin" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getJijin()) %>" onblur="wjijin();addalljijin();addalljijintax();wheji()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijintax" style="width: 80px" readonly="readonly" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getJinjinTax()) %>" onblur="wheji();allsum()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwfee" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getSumFee()) %>"></font></span>
 				<br></td>			
 			</tr>
 			<tr >
@@ -289,45 +289,45 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="2"><input readonly="readonly" style="width: 80px" name="lwsumallpower" value="<%=Math.round( shoushulwShouShuTableDto.getPower()) %>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  readonly="readonly" style="width: 80px" name="lwsumallc" value="<%=shoushulwShouShuTableDto.getChunDianFei() %>"></font></span>
+					<span class="title"><font size="2"><input  readonly="readonly" style="width: 80px" name="lwsumallc" value="<%=df.format(shoushulwShouShuTableDto.getChunDianFei() )%>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  readonly="readonly"  style="width: 80px" name="lwsumalltax" value="<%=shoushulwShouShuTableDto.getDianFeiTax() %>"></font></span>
+					<span class="title"><font size="2"><input  readonly="readonly"  style="width: 80px" name="lwsumalltax" value="<%=df.format(shoushulwShouShuTableDto.getDianFeiTax()) %>"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input   readonly="readonly" style="width: 80px" name="lwsumalldianfee" value="<%=shoushulwShouShuTableDto.getSumDianFee() %>"></font></span>
-				<br></td>
-				
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentallfee"  style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getDiffrentFei() %>"></font></span>
+					<span class="title"><font size="2"><input   readonly="readonly" style="width: 80px" name="lwsumalldianfee" value="<%=df.format(shoushulwShouShuTableDto.getSumDianFee()) %>"></font></span>
 				<br></td>
 				
+				
 				<td nowrap width="10%" align="center">
-				<span class="title"><font size="2"><input  name="lwdiffrentallfeetax" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getDiffrentFeiTax() %>"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentallfee"  style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getDiffrentFei()) %>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsummalldianjin" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getDianJin()%>"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumalldianjintax" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getDianJinTax() %>"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumallsanxia" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getSanXia() %>"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumallsanxiatax" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getSanXiaTax() %>"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumalljijin" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getJijin() %>"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumalljijintax" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getJinjinTax() %>"></font></span>
+				<span class="title"><font size="2"><input  name="lwdiffrentallfeetax" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getDiffrentFeiTax()) %>"></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumallfee" style="width: 80px" readonly="readonly" value="<%=shoushulwShouShuTableDto.getSumFee() %>"></font></span>
+					<span class="title"><font size="2"><input  name="lwsummalldianjin" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getDianJin())%>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalldianjintax" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getDianJinTax()) %>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallsanxia" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getSanXia()) %>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallsanxiatax" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getSanXiaTax()) %>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalljijin" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getJijin()) %>"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalljijintax" style="width: 80px" readonly="readonly" value="<%=df.format(shoushulwShouShuTableDto.getJinjinTax()) %>"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallfee" style="width: 80px" readonly="readonly" value="<%=df.format( shoushulwShouShuTableDto.getSumFee()) %>"></font></span>
 				<br></td>			
 			</tr>
 	</table>
