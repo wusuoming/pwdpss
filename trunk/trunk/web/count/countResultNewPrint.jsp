@@ -332,13 +332,23 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 			</tr>
 	</table>
 
-
+ <br>
+    <table class=common width="500%" cellspacing="0" cellpadding="5" >
+    <tr style="hight:60px">
+    <td height="30">
+    </td>
+    </tr>
+    </table>
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	<tr>
 			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
 		</tr>
-		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=corporationlwShouShuTableDto.getMonth()%></span>
+					</td>
+	</tr>
 
 		<tr class=listtitle>
 				<td width="10%">
