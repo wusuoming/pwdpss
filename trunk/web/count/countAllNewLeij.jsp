@@ -337,7 +337,13 @@ String inputDate=(String)request.getAttribute("inputDate");
 			</tr>
 	</table>
 
-
+ <br>
+    <table class=common width="500%" cellspacing="0" cellpadding="5" >
+    <tr style="hight:60px">
+    <td height="30">
+    </td>
+    </tr>
+    </table>
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
