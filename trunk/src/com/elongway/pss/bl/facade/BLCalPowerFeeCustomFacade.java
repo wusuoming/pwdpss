@@ -567,22 +567,27 @@ public class BLCalPowerFeeCustomFacade {
 		// 纯电金
 		purePowerFee = powerFee / 1.17;
 		// 电费税
-		powerFeeTax = purePowerFee * 0.17;
+		//powerFeeTax = purePowerFee * 0.17;
+		powerFeeTax = powerFee - purePowerFee;
 
 		// 纯电金
 		pureDianJin = sumDianJin / 1.17;
 		// 电金税
-		dianJinTax = pureDianJin * 0.17;
-
+		//dianJinTax = pureDianJin * 0.17;
+		dianJinTax = sumDianJin - pureDianJin;
+		
 		// 纯三峡
 		pureSanXia = sumSanXia / 1.17;
 		// 三峡税
-		sanXiaTax = pureSanXia * 0.17;
+		//sanXiaTax = pureSanXia * 0.17;
+		sanXiaTax = sumSanXia - pureSanXia;
 
 		// 纯基金
 		pureJiJin = sumJiJin / 1.17;
 		// 基金税
-		jiJinTax = pureJiJin * 0.17;
+		//jiJinTax = pureJiJin * 0.17;
+		jiJinTax = sumJiJin - pureJiJin;
+		
 
 		townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,
 				AppConst.TWO_DOT_FLAG));

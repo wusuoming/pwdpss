@@ -77,6 +77,7 @@ public class UIListPostTownCalAction extends Action {
 		String town = httpServletRequest.getParameter("town");
 		String bookNo = httpServletRequest.getParameter("bookNo");
 		Collection<UITownCalForm> formList = new ArrayList();
+	
 		
 
 		lwAmmeterBookDto = blLwAmmeterBookFacade.findByPrimaryKey(bookNo);
@@ -84,6 +85,8 @@ public class UIListPostTownCalAction extends Action {
 		if (cal == null) {
 			townCondition = "";
 			String userNo = "";
+			String userName = "";
+			String address = "";
 			httpServletRequest.setAttribute("query", "1");
 			statMonth = PowerFeeCal.getCurrentBillMonth();
 			// 得到该表本的用电用户列表
@@ -105,6 +108,10 @@ public class UIListPostTownCalAction extends Action {
 						.next();
 				userNo = lwTownIndicatorDto.getUserNo();
 				userDto = blLwPowerUserFacade.findByPrimaryKey(userNo);
+				userName = userDto.getUserName();
+				address = userDto.getAddress();
+				lwTownIndicatorDto.setUserName(userName);
+				lwTownIndicatorDto.setAddress(address);
 				salePriceDto = blCalPowerFeeCustomFacade
 						.getIndicatorPrice(userDto.getSaleVoltLevel());
 				changeList = blLwAmmeterChangeFacade
