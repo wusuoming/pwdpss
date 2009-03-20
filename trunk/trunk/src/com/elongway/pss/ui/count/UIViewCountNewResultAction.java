@@ -52,11 +52,18 @@ public  class UIViewCountNewResultAction extends Action {
 		
 		LwShouShuTableDto wholesaleshoushulwShouShuTableDto=new LwShouShuTableDto();
 		wholesaleshoushulwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "shoushuwholesale");
+		if(wholesaleshoushulwShouShuTableDto==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		
 		
 		LwShouShuTableDto  corporationshoushulwShouShuTableDto=new LwShouShuTableDto();
 		corporationshoushulwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "shoushucorporation");
-		
+		if(corporationshoushulwShouShuTableDto==null){
+			throw new UserException(-6, -706, this.getClass().getName(),
+			"该月还没有算过费！");
+		}
 		
 		LwShouShuTableDto shoushulwShouShuTableDto=new LwShouShuTableDto();
 		shoushulwShouShuTableDto.setPower(wholesaleshoushulwShouShuTableDto.getPower()+corporationshoushulwShouShuTableDto.getPower());

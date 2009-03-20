@@ -10,6 +10,7 @@ import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwShouShuTableFacade;
 import com.elongway.pss.dto.domain.LwShouShuTableDto;
+import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UIViewCountNewResultPrintAction extends Action {
 	public ActionForward execute(ActionMapping actionMapping,
@@ -47,6 +48,7 @@ public class UIViewCountNewResultPrintAction extends Action {
 		
 		LwShouShuTableDto  corporationshoushulwShouShuTableDto=new LwShouShuTableDto();
 		corporationshoushulwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "shoushucorporation");
+	
 		
 		
 		LwShouShuTableDto shoushulwShouShuTableDto=new LwShouShuTableDto();
