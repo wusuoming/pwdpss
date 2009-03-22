@@ -178,7 +178,7 @@ BODY {
 				</td>
 				<td class="title">
 					<input name="thisWorkNum" type="text" class="text" width="20"
-						value=<%=dto.getThisWorkNum() %> onblur="getSum();"
+						value=<%=dto.getThisWorkNum() %> onblur="getSum();"  onclick="selectAll(this)" 
 						style="width: 90px">
 				</td>
 				<td class="title">
@@ -196,7 +196,7 @@ BODY {
 				</td>
 				<td class="title">
 					<input name="tranferLossQuantity" type="text" class="text"
-						width="20"  onblur="getSum();" 
+						width="20"  onblur="getSum();"   onclick="selectAll(this)" 
 						 value=<%=dto.getTranferLossQuantity() %>
 						style="width: 90px">
 				</td>
@@ -208,7 +208,7 @@ BODY {
 						style="width: 90px">
 				</td>
 				<td class="title">
-					<input name="compensateQuantity" type="text" class="text"
+					<input name="compensateQuantity" type="text" class="text"  onclick="selectAll(this)" 
 						width="20" value=<%=dto.getCompensateQuantity()%>  onblur="getSum();" 
 						style="width: 90px">
 				</td>
@@ -405,7 +405,18 @@ function result()
             	}
             }	
 } 
-
+function   selectAll(obj){   
+    
+        var   array   =   document.getElementsByTagName("input");   
+      
+        for(var   i   =   0;i<array.length;   i++){   
+            if(array[i]   ==   obj){   
+        obj.focus(); 
+        obj.select();
+        break;   
+    }   
+        }   
+  }  
 
      
 </script>
