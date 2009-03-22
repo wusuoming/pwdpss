@@ -165,7 +165,7 @@
 
 				<%
 					List list2 = (List) request.getAttribute("allPointer");
-
+					int count = 0;
 					Iterator it2 = list2.iterator();
 					while (it2.hasNext()) {
 						lwWholeSaleIndicatorDto = (LwWholeSaleIndicatorDto) it2.next();
@@ -197,9 +197,9 @@
 					</td>
 					
 					<td class="input" align="center">
-						<input name="ThisWorkNum"
+						<input name="ThisWorkNum1" id="idwork<%=count %>" 
 							value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>"
-							onblur="checkWork();result();resultall()" style="width:65px">
+							onblur="checkWork();result();resultall()"  onclick="selectAll(this)" style="width:65px">
 					</td>
 				
 					<td class="input" align="center">
@@ -209,9 +209,9 @@
 					</td>
 					
 					<td class="input" align="center">
-						<input name="ThisIdleNum"
+						<input name="ThisIdleNum" id="ididle<%=count %>" 
 							value="<%=lwWholeSaleIndicatorDto.getThisIdleNum()%>"
-							onblur="checkunWork();result();resultall()" style="width:65px">
+							onblur="checkunWork();result();resultall()"  onclick="selectAll(this)" style="width:65px">
 					</td>
 	
 
@@ -308,6 +308,7 @@
 							value="<%=lwWholeSaleIndicatorDto.getFlag()%>" style="width:65px">
 				</tr>
 				<%
+				count++;
 				}
 				%>
 
@@ -375,6 +376,18 @@ function savePointer(){
 	fm.action="/iacontact/inputLWWholeSalePointerShow.do";
 	fm.submit();
 }
+function   selectAll(obj){   
+    
+        var   array   =   document.getElementsByTagName("input");   
+      
+        for(var   i   =   0;i<array.length;   i++){   
+            if(array[i]   ==   obj){   
+        obj.focus(); 
+        obj.select();
+        break;   
+    }   
+        }   
+  }   
 function checkWork()
 {	
   
