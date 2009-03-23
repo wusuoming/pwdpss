@@ -197,7 +197,7 @@
 					</td>
 					
 					<td class="input" align="center">
-						<input name="ThisWorkNum1" id="idwork<%=count %>" 
+						<input name="ThisWorkNum" id="idwork<%=count %>" 
 							value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>"
 							onblur="checkWork();result();resultall()"  onclick="selectAll(this)" style="width:65px">
 					</td>
@@ -392,7 +392,7 @@ function checkWork()
 {	
   
     var count = document.getElementsByName('ThisWorkNum').length;
-   
+   alert("work:"+count);
             if(count ==1){
             
              if(fm.ThisWorkNum.value!=null&&fm.LastWorkNum.value!=""){
@@ -417,7 +417,7 @@ function checkunWork()
 {	
   
     var count = document.getElementsByName('ThisIdleNum').length;
-   
+
             if(count ==1){
             if(fm.ThisIdleNum.value!=null&&fm.ThisIdleNum.value!=""){
             if(fm.ThisIdleNum.value>=fm.LastIdleNum.value){
