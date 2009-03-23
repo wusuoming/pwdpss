@@ -36,6 +36,22 @@ public class UIwholeSaleprintAction extends Action {
 		String serchDate=inputDate.substring(0, 7);
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
+		
+		String exends1=arr[0];
+	 	String exends2=arr[1];
+	 	String exends3=arr[2];
+	 	String exends4=arr[3];
+	 	String exends5=arr[4];
+	 	String exends6=arr[5];
+	 	String exends7=arr[6];
+	 	String exends8=arr[7];
+	 	if(arr.length>8){
+	 	String exends9=arr[8];
+	 	String exends10=arr[9];
+	 	httpServletRequest.setAttribute("exends9", exends9);
+	 	httpServletRequest.setAttribute("exends10", exends10);
+	 	}
+	 
 	
 		
 		String zongdianliang = httpServletRequest.getParameter("zongdianliang");
@@ -433,6 +449,17 @@ public class UIwholeSaleprintAction extends Action {
 			httpServletRequest.setAttribute("differenceQuantity", String.valueOf(differenceQuantity));
 			httpServletRequest.setAttribute("differencePrice", String.valueOf(differencePrice));
 			httpServletRequest.setAttribute("differenceQuantityFee", df.format(differenceQuantityFee));
+			
+			httpServletRequest.setAttribute("exends1", exends1);
+			httpServletRequest.setAttribute("exends2", exends2);
+			httpServletRequest.setAttribute("exends3", exends3);
+			httpServletRequest.setAttribute("exends4", exends4);
+			httpServletRequest.setAttribute("exends5", exends5);
+			httpServletRequest.setAttribute("exends6", exends6);
+			httpServletRequest.setAttribute("exends7", exends7);
+			httpServletRequest.setAttribute("exends8", exends8);
+			
+			
 			return actionMapping.findForward("WholeSaleprint");
 			
 			
