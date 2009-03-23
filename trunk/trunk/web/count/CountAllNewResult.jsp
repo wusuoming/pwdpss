@@ -85,18 +85,18 @@
 <body class=interface>&nbsp; 
 <html:errors />
 <%
-LwShouShuTableDto wholesalelwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesalelwShouShuTableDto");
+//LwShouShuTableDto wholesalelwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesalelwShouShuTableDto");
 
-LwShouShuTableDto lwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("lwShouShuTableDto");
-LwShouShuTableDto corporationlwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("corporationlwShouShuTableDto");
+//LwShouShuTableDto lwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("lwShouShuTableDto");
+//LwShouShuTableDto corporationlwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("corporationlwShouShuTableDto");
 
 
 LwShouShuTableDto wholesaleshoushulwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("wholesaleshoushulwShouShuTableDto");
 
 LwShouShuTableDto shoushulwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("shoushulwShouShuTableDto");
 LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request.getAttribute("corporationshoushulwShouShuTableDto");
-
-
+String inputDate=(String)request.getAttribute("inputDate") ;
+String StatMonth=inputDate.substring(0, 7);
 
 
 
@@ -110,8 +110,233 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
  <%
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
-		
+		if(wholesaleshoushulwShouShuTableDto==null||shoushulwShouShuTableDto==null||corporationshoushulwShouShuTableDto==null){
+
+
 %>
+<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
+	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
+		
+	<tr>
+			<td class=title0 colspan="14"><font size="4">大户局电量发行单</font></td>
+		</tr>
+		
+		<tr>
+		<td nowrap colspan="2">
+						<span class="title">月份:<%=StatMonth %></span>
+					</td>
+	</tr>
+		<tr class=listtitle>
+				<td width="10%">
+					<span class="title"><font size="2">单位</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电量</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">纯电费</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电费税</font></span>
+				<br></td>
+		
+				<td nowrap width="10%">
+					<span class="title"><font size="2">合计</font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费</font></span>
+				<br></td>	
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">差别电费税</font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电金</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电金税</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">三峡</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">三峡税</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">基金</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">基金税</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总计</font></span>
+				<br></td>
+							
+			</tr>
+			<tr >
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2">大用户</font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfpower" style="width: 80px" value="0" onblur="addpower()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfc" style="width: 80px" value="0"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"  readonly="readonly"  value="0" onblur="dianfei();addalltax();addalldianfee()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" style="width: 80px" value="0" onblur="addalldianfee()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" style="width: 80px" value="0" onblur="chabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" style="width: 80px" readonly="readonly" value="0"onblur="adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" style="width: 80px" value="0" onblur="dianjin();addlldianjin();addalldianjintax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" style="width: 80px"  readonly="readonly"  value="0" onblur="addalldianjintax();"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" style="width: 80px" value="0" onblur="sanxia();addallsanxia();addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" style="width: 80px"  readonly="readonly" value="0" onblur="addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijin" style="width: 80px" value="0" onblur="jijin();addalljijin();addalljijintax();fheji()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" style="width: 80px" readonly="readonly" value="0" onblur="addalljijintax();fheji()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumffee" style="width: 80px" value="0" ></font></span>
+				<br></td>
+				
+							
+			</tr>
+			<tr >
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2">趸售</font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwpower" style="width: 80px" value="0" onblur="addpower()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwc" style="width: 80px" value="0" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px" readonly="readonly" value="0" onblur="addalltax();addalldianfee()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwdianfee" style="width: 80px" value="0" onblur="addalldianfee()"></font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><input  name="lwdiffrentwfee" style="width: 80px" value="0" onblur="wchabie();adddiffrentallfee();adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><input  name="lwdiffrentwfeetax" style="width: 80px" readonly="readonly" value="0" onblur="adddiffrentallfeetax()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsummwdianjin" style="width: 80px" value="0" onblur="wdianjin();addlldianjin();addalldianjintax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwdianjintax" style="width: 80px" readonly="readonly"  value="0" onblur="addalldianjintax();"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxia" style="width: 80px" value="0" onblur="wsanxia();addallsanxia();addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwsanxiatax" style="width: 80px" readonly="readonly"  value="0" onblur="addallsanxiatax()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijin" style="width: 80px" value="0" onblur="wjijin();addalljijin();addalljijintax();wheji()"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwjijintax" style="width: 80px" readonly="readonly" value="0" onblur="wheji();allsum()"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumwfee" style="width: 80px" value="0"></font></span>
+				<br></td>			
+			</tr>
+			<tr >
+				<td nowrap width="10%"  align="center">
+					<span class="title"><font size="2">总计</font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input readonly="readonly" style="width: 80px" name="lwsumallpower" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  readonly="readonly" style="width: 80px" name="lwsumallc" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  readonly="readonly"  style="width: 80px" name="lwsumalltax" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input   readonly="readonly" style="width: 80px" name="lwsumalldianfee" value="0"></font></span>
+				<br></td>
+				
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><input  name="lwdiffrentallfee"  style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+				<span class="title"><font size="2"><input  name="lwdiffrentallfeetax" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsummalldianjin" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalldianjintax" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallsanxia" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallsanxiatax" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalljijin" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumalljijintax" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>
+				
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><input  name="lwsumallfee" style="width: 80px" readonly="readonly" value="0"></font></span>
+				<br></td>			
+			</tr>
+	</table>
+
+
+
+
+<%}else{ %>
 
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
@@ -122,7 +347,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 		
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=corporationlwShouShuTableDto.getMonth()%></span>
+						<span class="title">月份:<%=StatMonth %></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
@@ -332,9 +557,9 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 			</tr>
 	</table>
 
+<%} %>
 
-
-	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6" style="display: none">
+	<%--<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6" style="display: none">
 	
 		<tr>
 			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
@@ -545,6 +770,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 							
 			</tr>
 	</table>
+	--%>
 	<table cellpadding="0" cellspacing="0" width="100%"> 
         <tr> 
         <tr class="listtitle" align="center">             
