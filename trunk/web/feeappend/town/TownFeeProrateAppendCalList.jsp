@@ -120,7 +120,7 @@ LwAmmeterBookDto lwAmmeterBookDto = (LwAmmeterBookDto)request.getAttribute("lwAm
         </tr> 
        <tr>
               
-         <td class=title0 colspan="6">追收电费年月：
+         <td  colspan="6">追收电费年月：
 				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
 						value="2009-02"   />			
 				 <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
@@ -130,7 +130,7 @@ LwAmmeterBookDto lwAmmeterBookDto = (LwAmmeterBookDto)request.getAttribute("lwAm
 					onmouseout="this.style.background=''" />
 					&nbsp;<img src="../../images/redstar.gif" >	
 					</td>
-					  <td class=title0 colspan="10"></td> 
+					  <td  colspan="10"></td> 
           </tr>
         <tr class=listtitle> 
             <td  nowrap colspan="3" ><span class="title">用户信息</span> </td> 

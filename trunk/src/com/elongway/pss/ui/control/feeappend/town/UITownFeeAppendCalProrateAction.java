@@ -166,7 +166,7 @@ public class UITownFeeAppendCalProrateAction extends Action {
 			Collection<LwTownProrateAppendDto> prorateAppendList) {
 		StringBuffer buffer = new StringBuffer();
 		String userNo = null;
-		if (prorateAppendList != null || prorateAppendList.size() == 0) {
+		if (prorateAppendList != null && prorateAppendList.size() != 0) {
 			for (Iterator iterator = prorateAppendList.iterator(); iterator
 					.hasNext();) {
 				LwTownProrateAppendDto append = (LwTownProrateAppendDto) iterator
@@ -180,7 +180,7 @@ public class UITownFeeAppendCalProrateAction extends Action {
 			buffer.insert(0, "and userNo in(");
 			buffer.append(")");
 		} else {
-			buffer.append("1=0");
+			buffer.append("and 1=0");
 		}
 		return buffer.toString();
 	}
