@@ -108,6 +108,17 @@
 		String indecisivePrice35=(String)request.getAttribute("indecisivePrice35");
 		String industryPrice35=(String)request.getAttribute("industryPrice35");
 		String businessPrice35=(String)request.getAttribute("businessPrice35");
+		
+		String exends1=(String)request.getAttribute("exends1");
+		String exends2=(String)request.getAttribute("exends2");
+		String exends3=(String)request.getAttribute("exends3");
+		String exends4=(String)request.getAttribute("exends4");
+		String exends5=(String)request.getAttribute("exends5");
+		String exends6=(String)request.getAttribute("exends6");
+		String exends7=(String)request.getAttribute("exends7");
+		String exends8=(String)request.getAttribute("exends8");
+		String exends9=(String)request.getAttribute("exends9");
+		String exends10=(String)request.getAttribute("exends10");
 					
 				String Rate10Fee = (String) request
 						.getAttribute("Rate10Fee");
@@ -713,12 +724,29 @@
    
            <td nowrap colspan="2"><span class="title"><font size="3">×ÜºÏ¼Æ</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends8") %></font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends9") %></font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends10") %></font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends11") %></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">
+			<%
+			if(request.getAttribute("exends9")!=null){
+			 %>
+			
+			
+			<%=request.getAttribute("exends9") %>
+			
+			<%} %>
+			</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">
+			<% if(request.getAttribute("exends10")!=null){
+			 %>
+			
+			
+			<%=request.getAttribute("exends10") %>
+			
+			<%} %></font></span></td>
+			
+			<%--<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends11") %></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends12") %></font></span></td>
 			
-    </tr>
+    --%></tr><%--
     <tr>
    
            <td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends13") %></font></span></td>
@@ -729,7 +757,7 @@
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=request.getAttribute("exends18") %></font></span></td>
 			
     </tr>
-     </table>
+     --%></table>
     
 </form>
 </body>
