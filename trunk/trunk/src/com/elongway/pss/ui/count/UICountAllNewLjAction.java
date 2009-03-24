@@ -29,7 +29,7 @@ public class UICountAllNewLjAction extends Action {
 		LwShouShuTableDto  allduLwShouShuTableDto=new LwShouShuTableDto();
 		
 		
-		double dunshoudupower=0;
+	 double dunshoudupower=0;
 		double dunshoududianfee=0;
 		double dunshoududianfeeshui=0;
 		double dunshoudusumdianfee=0;
@@ -48,6 +48,7 @@ public class UICountAllNewLjAction extends Action {
 		while(itwholesaledu.hasNext()){
 			LwShouShuTableDto lwShouShuTableDto=(LwShouShuTableDto)itwholesaledu.next();
 			dunshoudupower+=lwShouShuTableDto.getPower();
+			
 			dunshoududianfee+=lwShouShuTableDto.getChunDianFei();
 			dunshoududianfeeshui+=lwShouShuTableDto.getDianFeiTax();
 			dunshoudusumdianfee+=lwShouShuTableDto.getSumDianFee();
@@ -118,7 +119,7 @@ public class UICountAllNewLjAction extends Action {
 		corporationduLwShouShuTableDto.setSanXiaTax(corporationdusanxiatax);
 		corporationduLwShouShuTableDto.setDianJin(corporationdudianjin);
 		corporationduLwShouShuTableDto.setDianJinTax(corporationdudianjintax);
-		corporationduLwShouShuTableDto.setSumFee(dunshoudusumallfee);
+		corporationduLwShouShuTableDto.setSumFee(corporationdusumallfee);
 		//全部读
 		allduLwShouShuTableDto.setPower(wholesaleduLwShouShuTableDto.getPower()+corporationduLwShouShuTableDto.getPower());
 		allduLwShouShuTableDto.setChunDianFei(wholesaleduLwShouShuTableDto.getChunDianFei()+corporationduLwShouShuTableDto.getChunDianFei());
@@ -244,7 +245,7 @@ if(colcorporationshoushu==null||colcorporationshoushu.size()==0){
 		corporationshoushuLwShouShuTableDto.setSanXiaTax(corporationshoushusanxiatax);
 		corporationshoushuLwShouShuTableDto.setDianJin(corporationshoushudianjin);
 		corporationshoushuLwShouShuTableDto.setDianJinTax(corporationshoushudianjintax);
-		corporationshoushuLwShouShuTableDto.setSumFee(dunshoushoushusumallfee);
+		corporationshoushuLwShouShuTableDto.setSumFee(corporationshoushusumallfee);
 		//全部写
 		allshoushuLwShouShuTableDto.setPower(wholesaleshoushuLwShouShuTableDto.getPower()+corporationshoushuLwShouShuTableDto.getPower());
 		allshoushuLwShouShuTableDto.setChunDianFei(wholesaleshoushuLwShouShuTableDto.getChunDianFei()+corporationshoushuLwShouShuTableDto.getChunDianFei());
