@@ -117,7 +117,7 @@ public class UICountAllNewResultljPrintAction extends Action {
 		corporationduLwShouShuTableDto.setSanXiaTax(corporationdusanxiatax);
 		corporationduLwShouShuTableDto.setDianJin(corporationdudianjin);
 		corporationduLwShouShuTableDto.setDianJinTax(corporationdudianjintax);
-		corporationduLwShouShuTableDto.setSumFee(dunshoudusumallfee);
+		corporationduLwShouShuTableDto.setSumFee(corporationdusumallfee);
 		//全部读
 		allduLwShouShuTableDto.setPower(wholesaleduLwShouShuTableDto.getPower()+corporationduLwShouShuTableDto.getPower());
 		allduLwShouShuTableDto.setChunDianFei(wholesaleduLwShouShuTableDto.getChunDianFei()+corporationduLwShouShuTableDto.getChunDianFei());
@@ -229,7 +229,7 @@ public class UICountAllNewResultljPrintAction extends Action {
 		corporationshoushuLwShouShuTableDto.setSanXiaTax(corporationshoushusanxiatax);
 		corporationshoushuLwShouShuTableDto.setDianJin(corporationshoushudianjin);
 		corporationshoushuLwShouShuTableDto.setDianJinTax(corporationshoushudianjintax);
-		corporationshoushuLwShouShuTableDto.setSumFee(dunshoushoushusumallfee);
+		corporationshoushuLwShouShuTableDto.setSumFee(corporationshoushusumallfee);
 		//全部写
 		allshoushuLwShouShuTableDto.setPower(wholesaleshoushuLwShouShuTableDto.getPower()+corporationshoushuLwShouShuTableDto.getPower());
 		allshoushuLwShouShuTableDto.setChunDianFei(wholesaleshoushuLwShouShuTableDto.getChunDianFei()+corporationshoushuLwShouShuTableDto.getChunDianFei());

@@ -21,18 +21,27 @@ public  class UIViewCountNewResultAction extends Action {
 		String inputDate=httpServletRequest.getParameter("inputDate");
 		String StatMonth=inputDate.substring(0, 7);
 		BLLwShouShuTableFacade  blLwShouShuTableFacade=new BLLwShouShuTableFacade();
-		LwShouShuTableDto wholesalelwShouShuTableDto=new LwShouShuTableDto();
-		wholesalelwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "duwholesale");
-		if(wholesalelwShouShuTableDto==null){
-			throw new UserException(-6, -706, this.getClass().getName(),
-			"该月还没有算过费！");
-		}
+		LwShouShuTableDto wholesalelwShouShuTableDto= null;
 		LwShouShuTableDto  corporationlwShouShuTableDto=new LwShouShuTableDto();
+		
+		wholesalelwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "duwholesale");
+
+		if(wholesalelwShouShuTableDto==null){
+			wholesalelwShouShuTableDto=new LwShouShuTableDto();
+		}
+			
+		//		if(wholesalelwShouShuTableDto==null){
+		//}
+//			throw new UserException(-6, -706, this.getClass().getName(),
+//			"该月还没有算过费！");
+//		}
+		
+		
 		corporationlwShouShuTableDto=blLwShouShuTableFacade.findByPrimaryKey(StatMonth, "ducorporation");
 		if(corporationlwShouShuTableDto==null){
-			throw new UserException(-6, -706, this.getClass().getName(),
-			"该月还没有算过费！");
+			corporationlwShouShuTableDto=new LwShouShuTableDto();
 		}
+		
 		
 		LwShouShuTableDto lwShouShuTableDto=new LwShouShuTableDto();
 		lwShouShuTableDto.setPower(wholesalelwShouShuTableDto.getPower()+corporationlwShouShuTableDto.getPower());
