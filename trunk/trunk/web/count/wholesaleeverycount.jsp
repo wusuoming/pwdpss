@@ -478,7 +478,7 @@
 			</tr>
 			<tr >
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getFujia12())%></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(lwAllWholeFeeDtoty.getFujia12()))%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=Math.round(lwWholeSaleDetailDtoty.getDenizenQuantity35kv()) %></font></span>
