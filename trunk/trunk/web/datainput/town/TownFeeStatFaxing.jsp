@@ -117,6 +117,7 @@ function save(){
 function result()
 {	
     var count = document.getElementsByName('pureFee').length;
+
     var sumPurefee = 0.0;
     var sumfee1 = 0.0;
     var sumfeeTax = 0.0;
@@ -126,19 +127,37 @@ function result()
     var sumdianjinTax = 0.0;
     var sumjijin = 0.0;
     var sumjijinTax = 0.0;
+    
             if(count ==1){
-            fm.feeTax.value = parseFloat(fm.pureFee.value) * 0.17;
-            fm.sanxiaTax.value = parseFloat(fm.sanxia.value) * 0.17;
-            fm.dianjinTax.value = parseFloat(fm.dianjin.value) * 0.17;
-            fm.jijinTax.value = parseFloat(fm.jijin.value)* 0.17;
-            fm.sumFee.value = parseFloat(fm.pureFee.value)+parseFloat(fm.feeTax.value)+parseFloat(fm.dianjin.value)+parseFloat(fm.dianjinTax.value)+parseFloat(fm.jijin.value)+parseFloat(fm.jijinTax.value)+parseFloat(fm.sanxia.value)+parseFloat(fm.sanxiaTax.value);
+          // 电费
+            	fm.pureFee.value = (parseFloat(fm.pingFee.value) /1.17).toFixed(2);
+                fm.feeTax.value = parseFloat(fm.pingFee.value) -parseFloat(fm.pureFee.value);
+                // 三峡
+                fm.sanxia.value = (parseFloat(fm.allsanxia.value) /1.17).toFixed(2);                
+                fm.sanxiaTax.value = parseFloat(fm.allsanxia.value) -parseFloat(fm.sanxia.value);
+                // 电金
+                fm.dianjin.value = (parseFloat(fm.alldianjin.value) / 1.17).toFixed(2);
+                fm.dianjinTax.value = parseFloat(fm.alldianjin.value) -parseFloat(fm.dianjin.value);               
+                // 基金
+                fm.jijin.value = (parseFloat(fm.alljijin.value)/ 1.17).toFixed(2);
+                fm.jijinTax.value = parseFloat(fm.alljijin.value)-parseFloat(fm.jijin.value);
+                fm.sumFee.value = parseFloat(fm.pureFee.value)+parseFloat(fm.feeTax.value)+parseFloat(fm.dianjin.value)+parseFloat(fm.dianjinTax.value)+parseFloat(fm.jijin.value)+parseFloat(fm.jijinTax.value)+parseFloat(fm.sanxia.value)+parseFloat(fm.sanxiaTax.value);
             
             }else{
             	for(var i=0;i<count-1;i++){
-                fm.feeTax[i].value = (parseFloat(fm.pureFee[i].value) * 0.17).toFixed(2);
-                fm.sanxiaTax[i].value = (parseFloat(fm.sanxia[i].value) * 0.17).toFixed(2);
-                fm.dianjinTax[i].value = (parseFloat(fm.dianjin[i].value) * 0.17).toFixed(2);
-                fm.jijinTax[i].value = (parseFloat(fm.jijin[i].value)* 0.17).toFixed(2);
+            	// 电费
+            	fm.pureFee[i].value = (parseFloat(fm.pingFee[i].value) /1.17).toFixed(2);
+            	
+                fm.feeTax[i].value = (parseFloat(fm.pingFee[i].value) -parseFloat(fm.pureFee[i].value)).toFixed(2);
+                // 三峡
+                fm.sanxia[i].value = (parseFloat(fm.allsanxia[i].value) /1.17).toFixed(2);                
+                fm.sanxiaTax[i].value = (parseFloat(fm.allsanxia[i].value) -parseFloat(fm.sanxia[i].value)).toFixed(2);
+                // 电金
+                fm.dianjin[i].value = (parseFloat(fm.alldianjin[i].value) / 1.17).toFixed(2);
+                fm.dianjinTax[i].value = (parseFloat(fm.alldianjin[i].value) -parseFloat(fm.dianjin[i].value)).toFixed(2);               
+                // 基金
+                fm.jijin[i].value = (parseFloat(fm.alljijin[i].value)/ 0.17).toFixed(2);
+                fm.jijinTax[i].value = (parseFloat(fm.alljijin[i].value)-parseFloat(fm.jijin[i].value)).toFixed(2);
                 fm.sumFee[i].value = (parseFloat(fm.pureFee[i].value)+parseFloat(fm.feeTax[i].value)+parseFloat(fm.dianjin[i].value)+parseFloat(fm.dianjinTax[i].value)+parseFloat(fm.jijin[i].value)+parseFloat(fm.jijinTax[i].value)+parseFloat(fm.sanxia[i].value)+parseFloat(fm.sanxiaTax[i].value)).toFixed(2);
               
                 sumPurefee = (parseFloat(sumPurefee) + parseFloat(fm.pureFee[i].value)).toFixed(2);
@@ -204,7 +223,7 @@ function result()
 			%>
 
 			<tr>
-				<td class=title0 colspan="11">
+				<td class=title0 colspan="15">
 					<font size="2"><%=townSataDto.getCompanyName()%><%=townSataDto.getStatMonth()%>电费电量发行单</font>
 				</td>
 			</tr>
@@ -220,6 +239,10 @@ function result()
 					<br>
 				</td>
 				<td nowrap width="10%">
+					<span class="title"><font size="2">平电费</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
 					<span class="title"><font size="2">纯电费</font> </span>
 					<br>
 				</td>
@@ -227,6 +250,9 @@ function result()
 					<span class="title"><font size="2">电费税</font> </span>
 					<br>
 				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电金</font> </span>
+					<br>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">电金</font> </span>
 					<br>
@@ -236,6 +262,9 @@ function result()
 					<br>
 				</td>
 				<td nowrap width="10%">
+					<span class="title"><font size="2">总三峡</font> </span>
+					<br>
+				<td nowrap width="10%">
 					<span class="title"><font size="2">三峡</font> </span>
 					<br>
 				</td>
@@ -243,6 +272,9 @@ function result()
 					<span class="title"><font size="2">三峡税</font> </span>
 					<br>
 				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总基金</font> </span>
+					<br>
 				<td nowrap width="10%">
 					<span class="title"><font size="2">基金</font> </span>
 					<br>
@@ -271,47 +303,67 @@ function result()
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="pureFee"
+					<span class="title"><input type="text" name="pingFee"
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="feeTax"
+					<span class="title"><input type="text" name="pureFee" readonly="readonly"
+							value="0.0" style="width: 80px" onblur="result();" style="border:0px"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="feeTax" readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="dianjin"
+					<span class="title"><input type="text" name="alldianjin"
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="dianjinTax"
+					<span class="title"><input type="text" name="dianjin"  readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="sanxia"
+					<span class="title"><input type="text" name="dianjinTax"  readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="sanxiaTax"
+					<span class="title"><input type="text" name="allsanxia" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="jijin"
+					<span class="title"><input type="text" name="sanxia" readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="jijinTax"
+					<span class="title"><input type="text" name="sanxiaTax" readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><input type="text" name="sumFee"
+					<span class="title"><input type="text" name="alljijin"
+							value="0.0" style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="jijin" readonly="readonly"  style="border:0px" 
+							value="0.0" style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="jijinTax" readonly="readonly"  style="border:0px" 
+							value="0.0" style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="sumFee" readonly="readonly"  style="border:0px" 
 							value="0.0" style="width: 80px" onblur="result();"> </span>
 					<br>
 				</td>

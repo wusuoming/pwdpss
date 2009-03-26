@@ -438,7 +438,7 @@
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title"><font size="3">利率电费</font></span></td>
+           <td nowrap colspan="2"><span class="title"><font size="3">力率电费</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=corporation.getPowerRateFee()%></font></span></td>
 			<td nowrap><span class="title"><font size="3">税</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=tax%></font></span></td>

@@ -46,6 +46,9 @@ interface IFlag {
 	/** 小数点后四位	 */
 	public static final String FOUR_DOT_FLAG = "#.####";
 	
+	/** 小数点后三位	 */
+	public static final String THREE_DOT_FLAG = "#.###";
+	
 	/** 当前比例	 */
 	public static final String NEW_PRORATE_FLAG = "0";	
 	

@@ -154,7 +154,7 @@ String s=(String)request.getAttribute("inputDate");
 				
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=Math.round(faxingDto.getQuantity()) %></font></span>
+					<span class="title"><font size="2"><%=faxingDto.getQuantity() %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><%=df.format(faxingDto.getPurePowerFee())  %></font></span>

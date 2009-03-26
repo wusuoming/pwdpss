@@ -122,7 +122,7 @@
 			<td nowrap><span class="title">调整值</span></td>
 			
 			<td nowrap><span class="title">总电费</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 			
 					</tr>
@@ -183,7 +183,7 @@
 			<td nowrap><span class="title">调整值</span></td>
 			
 			<td nowrap><span class="title">总电费</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 			
 					</tr>

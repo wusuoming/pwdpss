@@ -985,7 +985,7 @@ BODY {
 				<tr>
 
 					<td nowrap colspan="2">
-						<span class="title">利率电费</span>
+						<span class="title">力率电费</span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><input type="text" name="liLvDianFei" readOnly=true value="<%=powerRateFee%>"></span>
