@@ -5,6 +5,7 @@ import com.sinosoft.sysframework.log.*;
 import com.sinosoft.sysframework.common.util.*;
 import com.sinosoft.sysframework.common.datatype.*;
 import com.sinosoft.sysframework.reference.DBManager;
+import com.elongway.pss.bl.action.domain.BLLwPowerFeeFaxingAction;
 import com.elongway.pss.dto.domain.LwPowerFeeFaxingDto;
 
 /**
@@ -19,5 +20,28 @@ public class BLLwPowerFeeFaxingFacade extends BLLwPowerFeeFaxingFacadeBase{
      */
     public BLLwPowerFeeFaxingFacade(){
         super();
+    }
+    
+    /**
+     * 插入多条数据
+     * @param lwPowerFeeFaxingDto lwPowerFeeFaxingDto
+     * @throws Exception
+     */
+    public void insertAll(Collection<LwPowerFeeFaxingDto>collection)
+        throws Exception{
+        DBManager dbManager = new DBManager();
+        BLLwPowerFeeFaxingAction blLwPowerFeeFaxingAction = new BLLwPowerFeeFaxingAction();
+        try{
+            dbManager.open("pssDataSource");
+            dbManager.beginTransaction();
+            //插入记录
+            blLwPowerFeeFaxingAction.insertAll(dbManager, collection);
+            dbManager.commitTransaction();
+        }catch(Exception exception){
+            dbManager.rollbackTransaction();
+            throw exception;
+        }finally{
+            dbManager.close();
+        }
     }
 }

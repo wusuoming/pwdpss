@@ -35,7 +35,24 @@ public class UIThisMonthAllCount extends Action {
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws Exception {
 	
-String counttype = httpServletRequest.getParameter("counttype");
+		String counttype = httpServletRequest.getParameter("counttype");
+		
+		/************************************************************************
+		 * 1、读取表单数据
+		 ************************************************************************/
+		String []userNo = httpServletRequest.getParameterValues("userNo");
+		String []electricQuantity = httpServletRequest.getParameterValues("electricQuantity");
+		String []fee = httpServletRequest.getParameterValues("fee");
+		String []sanXiaFee = httpServletRequest.getParameterValues("sanXiaFee");
+		String []dianJin = httpServletRequest.getParameterValues("dianJin");
+		String []jiJin = httpServletRequest.getParameterValues("jiJin");
+		String []feeTax = httpServletRequest.getParameterValues("feeTax");
+		String []sanXiaTax = httpServletRequest.getParameterValues("sanXiaTax");
+		String []dianJinTax = httpServletRequest.getParameterValues("dianJinTax");
+		String []jiJinTax = httpServletRequest.getParameterValues("jiJinTax");
+		String []chabie = httpServletRequest.getParameterValues("chabie");
+		String []chabieTax = httpServletRequest.getParameterValues("chabieTax");
+		String []sumFee = httpServletRequest.getParameterValues("sumFee");
 		
 		double sumffee = 0;
 		double sumfpower = 0;
@@ -131,8 +148,9 @@ String counttype = httpServletRequest.getParameter("counttype");
 		
 
 			String inputDate = httpServletRequest.getParameter("inputDate");
-			httpServletRequest.setAttribute("inputDate", inputDate);
 			String statmonth = inputDate.substring(0, 7);
+			httpServletRequest.setAttribute("inputDate", statmonth);
+			
 
 			DecimalFormat df = new DecimalFormat("###0.00");
 

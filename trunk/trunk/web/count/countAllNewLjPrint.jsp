@@ -122,7 +122,7 @@ String inputDate=(String)request.getAttribute("inputDate");
 	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="14"><font size="4">大户局电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">大户局电费电量发行单（累计）</font></td>
 		</tr>
 		
 		<tr>
@@ -348,7 +348,7 @@ String inputDate=(String)request.getAttribute("inputDate");
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
 		<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单（累计）</font></td>
 		</tr>
 
 		<tr class=listtitle>

@@ -97,7 +97,7 @@ String s=(String)request.getAttribute("inputDate");
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=s.substring(0,7) %></span>
+						<span class="title">月份:<%=s %></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
