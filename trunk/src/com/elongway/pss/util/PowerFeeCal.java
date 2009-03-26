@@ -2019,6 +2019,20 @@ public class PowerFeeCal {
 			}
 			return townSataDto2;
 		}
+	 /**
+	  * 组织条件
+	  * @param startMonth 起始月份
+	  * @param endMonth 终止月份
+	  * @param column 列名
+	  * @return 条件
+	  */
+		public static String getAddMonthCondition(String startMonth, String endMonth,
+				String column) {
+			StringBuffer buffer = new StringBuffer();
+			buffer.append("1=1 and ").append(column).append(" between '").append(
+					startMonth).append("' and '").append(endMonth).append("'");
+			return buffer.toString();
+		}
 	 public static LwCorporationSummaryDto findonecorporation(String userno,String date)  throws Exception{
 			
 			BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();

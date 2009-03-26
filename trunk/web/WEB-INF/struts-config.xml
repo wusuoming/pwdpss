@@ -1786,6 +1786,17 @@
 			</forward>
 			</action>
 			
+			<action path="/saveReport" name="lwUserLineForm"
+			type="com.elongway.pss.ui.count.UIThisMonthAllCountSave"
+			scope="request"
+			input="/count/thismonthcountresult.jsp">
+			<forward name="Success" path="/common/pub/Success.jsp" />
+			<forward name="storetable"
+				path="/count/Storeresult.jsp"/>
+			
+			</action>		
+			
+			
 			<action path="/thismonthSumPrint" name="lwUserLineForm"
 			type="com.elongway.pss.ui.count.UIThisMonthAllCountPrintAction"
 			scope="request"

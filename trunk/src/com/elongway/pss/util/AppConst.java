@@ -64,6 +64,12 @@ interface IFlag {
 	/** 打印 */
 	public static final String PRINT_FLAG = "1";	
 	
+	/** 当月 */
+	public static final String STAT_CURRENT_FLAG = "1";	
+	
+	/** 累计 */
+	public static final String STAT_LEIJI_FLAG = "2";	
+	
 	
 }
 /**

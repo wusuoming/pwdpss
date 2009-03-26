@@ -33,4 +33,17 @@ public class BLLwPowerFeeFaxingAction extends BLLwPowerFeeFaxingActionBase{
     public void convertDto(DBManager dbManager,LwPowerFeeFaxingDto lwPowerFeeFaxingDto,String mode)
             throws Exception{
     }
+    
+    /**
+     * 插入多条数据
+     * @param dbManager DB管理器
+     * @param lwPowerFeeFaxingDto lwPowerFeeFaxingDto
+     * @throws Exception
+     */
+    public void insertAll(DBManager dbManager,Collection<LwPowerFeeFaxingDto>collection)
+            throws Exception{
+        DBLwPowerFeeFaxing dbLwPowerFeeFaxing = new DBLwPowerFeeFaxing(dbManager);
+        //插入记录
+        dbLwPowerFeeFaxing.insertAll(collection);
+    }
 }

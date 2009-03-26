@@ -3,6 +3,7 @@ package com.elongway.pss.ui.count;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -132,6 +133,8 @@ public class UIThisMonthAllCountAction extends Action {
 		BLLwTownPriceSummaryFacade blLwTownPriceSummaryFacade = new BLLwTownPriceSummaryFacade();
 		BLCalPowerFeeCustomFacade blCalPowerFeeCustomFacade = new BLCalPowerFeeCustomFacade();
 		BLLwPowerUserFacade blLwPowerUserFacade = new BLLwPowerUserFacade();
+		StringBuffer buffer = new StringBuffer();
+		Collection<LwPowerFeeFaxingDto>faXingList =  null;
 		// 当月统计
 		if ("1".equals(counttype)) {
 
@@ -140,11 +143,9 @@ public class UIThisMonthAllCountAction extends Action {
 			httpServletRequest.setAttribute("inputDate", inputDate);
 			String statmonth = inputDate.substring(0, 7);
 			String forward = "";
-			if ("2009-01".equals(statmonth)) {
-				StringBuffer buffer = new StringBuffer();
-				
-				Collection<LwPowerFeeFaxingDto> faXingList = null;
-				buffer.append("statMonth = '").append(statmonth).append("' order by remark");
+			buffer.append("statMonth = '").append(statmonth).append("' order by remark,userno");
+			faXingList = blLwPowerFeeFaxingFacade.findByConditions(buffer.toString());
+			if(faXingList!=null&&faXingList.size()==18){
 				faXingList = blLwPowerFeeFaxingFacade.findByConditions(buffer.toString());
 				httpServletRequest.setAttribute("faXingList", faXingList);
 				httpServletRequest.setAttribute("counttype", counttype);
@@ -414,6 +415,7 @@ public class UIThisMonthAllCountAction extends Action {
 				townSataDto = PowerFeeCal.getSumCompanyStat(resultList,
 						inputDate);
 				townSataDto.setCompanyName("小计");
+				townSataDto.setComCode("sumtown");
 				resultList.add(townSataDto);
 				httpServletRequest.setAttribute("resultList", resultList);
 
@@ -722,265 +724,128 @@ public class UIThisMonthAllCountAction extends Action {
 						lwAllWholeFeeDtojy);
 				httpServletRequest.setAttribute("lwAllWholeFeeDtoty",
 						lwAllWholeFeeDtoty);
-
+				httpServletRequest.setAttribute("counttype", counttype);
 				return actionMapping.findForward("viewthisallcount");
 
 			}
 			// 累计
 		} else {
-			
-			
-			String inputDate = httpServletRequest.getParameter("inputDate");
-			inputDate = new DateTime(inputDate, DateTime.YEAR_TO_MONTH)
+			/** 属性录入日期 */
+		     String inputDate = "";
+		     /** 属性统计年月 */
+		     String statMonth = httpServletRequest.getParameter("inputDate");
+			statMonth = new DateTime(statMonth, DateTime.YEAR_TO_MONTH)
 					.toString();
-			String forward = "";
+			Collection <LwPowerFeeFaxingDto> currentList = null;
+			Collection <LwPowerFeeFaxingDto> allList = null;
+			buffer.append("statMonth = '").append(statMonth).append("'").append("  order by remark");
+			currentList = blLwPowerFeeFaxingFacade.findByConditions(buffer.toString());
+			buffer.delete(0, buffer.length());
+			buffer.append(PowerFeeCal.getAddMonthCondition("2009-01", statMonth, "statMonth"));
 			
-			if ("2009-01".equals(inputDate)) {
-				StringBuffer buffer = new StringBuffer();
+			allList = blLwPowerFeeFaxingFacade.findByConditions(buffer.toString());
+			String tempUserNo = "";
+			String tempNo = "";
+			LwPowerFeeFaxingDto faXingDto = null; 
+			faXingList = new ArrayList<LwPowerFeeFaxingDto>();
+			for (Iterator iterator = currentList.iterator(); iterator.hasNext();) {
+				LwPowerFeeFaxingDto lwPowerFeeFaxingDto = (LwPowerFeeFaxingDto) iterator
+						.next();
+			   	  tempUserNo = lwPowerFeeFaxingDto.getUserNo();
+			   	    String userNo = "";
+				    /** 属性户名 */
+				     String userName = "";
 				
-				Collection<LwPowerFeeFaxingDto> faXingList = null;
-				buffer.append("statMonth = '").append(inputDate).append("' order by remark");
-				faXingList = blLwPowerFeeFaxingFacade.findByConditions(buffer.toString());
+				    /** 属性统计方式 */
+				     String statStyle = "";
+				    
+				    /** 属性电量 */
+				     long quantity = 0L;
+				    /** 属性电费 */
+				     double purePowerFee = 0D;
+				    /** 属性电费税 */
+				     double powerFeeTax = 0D;
+				    /** 属性三峡 */
+				     double sanXiaFee = 0D;
+				    /** 属性三峡税 */
+				     double sanXiaTax = 0D;
+				    /** 属性电金 */
+				     double pureDianJin = 0D;
+				    /** 属性电金税 */
+				     double dianJinTax = 0D;
+				    /** 属性基金 */
+				     double pureJiJin = 0D;
+				    /** 属性基金税 */
+				     double jiJinTax = 0D;
+				    /** 属性差别电费 */
+				     double chaBieFee = 0D;
+				    /** 属性差别电费税 */
+				     double chaBieTax = 0D;
+				    /** 属性总计 */
+				     double sumFee = 0D;
+				    /** 属性注释 */
+				     String remark = "";
+			   	  for (Iterator iterator2 = allList.iterator(); iterator2
+						.hasNext();) {
+					LwPowerFeeFaxingDto lwPowerFeeFaxingDto1 = (LwPowerFeeFaxingDto) iterator2
+							.next();
+					    tempNo = lwPowerFeeFaxingDto1.getUserNo();
+				 if(tempNo.equals(tempUserNo)){
+			      userName = lwPowerFeeFaxingDto1.getUserName();
+			   
+			      inputDate = new DateTime(new Date(),DateTime.YEAR_TO_DAY).toString();
+			      
+			      quantity += lwPowerFeeFaxingDto1.getQuantity();
+			      purePowerFee += lwPowerFeeFaxingDto1.getPurePowerFee();
+			      powerFeeTax += lwPowerFeeFaxingDto1.getPowerFeeTax();
+			      sanXiaFee += lwPowerFeeFaxingDto1.getSanXiaFee();
+			      sanXiaTax += lwPowerFeeFaxingDto1.getSanXiaTax();
+			      pureDianJin += lwPowerFeeFaxingDto1.getPureDianJin();
+			      dianJinTax += lwPowerFeeFaxingDto1.getDianJinTax();
+			      pureJiJin += lwPowerFeeFaxingDto1.getPureJiJin();
+			      jiJinTax += lwPowerFeeFaxingDto1.getJiJinTax();
+			      chaBieFee += lwPowerFeeFaxingDto1.getChaBieFee();
+			      chaBieTax += lwPowerFeeFaxingDto1.getChaBieTax();
+			      sumFee += lwPowerFeeFaxingDto1.getSumFee();
+			    
+			      remark = lwPowerFeeFaxingDto1.getRemark();
+				 }
+			   	  }
+			      faXingDto = new LwPowerFeeFaxingDto();
+			      faXingDto.setUserName(userName);
+			      faXingDto.setUserNo(userNo);
+			      faXingDto.setInputDate(inputDate);
+			      faXingDto.setStatMonth(statMonth);
+			      faXingDto.setQuantity(quantity);
+			      faXingDto.setPurePowerFee(purePowerFee);
+			      faXingDto.setPowerFeeTax(powerFeeTax);
+			      faXingDto.setSanXiaFee(sanXiaFee);
+			      faXingDto.setSanXiaTax(sanXiaTax);
+			      faXingDto.setPureDianJin(pureDianJin);
+			      faXingDto.setDianJinTax(dianJinTax);
+			      faXingDto.setPureJiJin(pureJiJin);
+			      faXingDto.setJiJinTax(jiJinTax);
+			      faXingDto.setChaBieFee(chaBieFee);
+			      faXingDto.setChaBieTax(chaBieTax);
+			      faXingDto.setSumFee(sumFee);
+			      faXingList.add(faXingDto);
+			}
+		        String forward = null;
 				httpServletRequest.setAttribute("faXingList", faXingList);
 				httpServletRequest.setAttribute("counttype", counttype);
-				httpServletRequest.setAttribute("inputDate", inputDate);
+				httpServletRequest.setAttribute("inputDate", statMonth);
 				if(AppConst.PRINT_FLAG.equals(print)){
 					forward = "leijistoretableprint";
 				}else{
 					forward = "leijistoretable";
 				}
 				
+				
 				return actionMapping.findForward(forward);
 			
-			}else{
-			BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
-			// 组织累计条件
-			conditions = this.getAddMonthCondition("2009-01", inputDate,
-					"statMonth");
-			/**
-			 * 0 -- 得到累计所有大工业的计算结果
-			 */
-			Collection colf = getCorporationSumStat(conditions);
-			// 趸售各个局累计计算条件
-			String tempCondition = this.getAddMonthCondition("2009-01",
-					inputDate, "inputdate");
-			String conditionsgy = tempCondition + " and upcompany='gy' ";
-			String conditionsdm = tempCondition + " and upcompany='dm' ";
-			String conditionsjy = tempCondition + " and upcompany='jy' ";
-			String conditionsty = tempCondition + " and upcompany='ty' ";
-
-			TownSataDto townSataDto2 = null;
-			Iterator itf = colf.iterator();
-			double pureDianFee = 0;
-			double dianFeeTax = 0;
-			double pureSanXia = 0;
-			double pureDianJin = 0;
-			double dianJinTax = 0;
-			double sanXiaTax = 0;
-			double pureJiJin = 0;
-			double jiJinTax = 0;
-			double sumPowerFee = 0;
-			// 遍历结构，得出电量、电费、电金、三峡、基金、
-			while (itf.hasNext()) {
-				townSataDto2 = (TownSataDto) itf.next();
-				sumfpower += townSataDto2.getSumPower();
-				sumPowerFee += townSataDto2.getSumPowerFee();
-				pureDianFee += townSataDto2.getPurePowerFee();
-				dianFeeTax += townSataDto2.getPowerFeeTax();
-				pureDianJin += townSataDto2.getPureDianJin();
-				dianJinTax += townSataDto2.getDianJinTax();
-				pureSanXia += townSataDto2.getPureSanXia();
-
-				sanXiaTax += townSataDto2.getSanXiaTax();
-				pureJiJin += townSataDto2.getPureJiJin();
-				jiJinTax += townSataDto2.getJiJinTax();
 			}
-			townSataDto2 = new TownSataDto();
-			townSataDto2.setSumPower(sumfpower);
-			townSataDto2.setPurePowerFee(pureDianFee);
-			townSataDto2.setPowerFeeTax(PowerFeeCal.getValue(dianFeeTax,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setPureDianJin(PowerFeeCal.getValue(pureDianJin,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianJinTax,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setPureSanXia(PowerFeeCal.getValue(pureSanXia,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setSanXiaTax(PowerFeeCal.getValue(sanXiaTax,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setPureJiJin(PowerFeeCal.getValue(pureJiJin,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setJiJinTax(PowerFeeCal.getValue(jiJinTax,
-					AppConst.TWO_DOT_FLAG));
-
-			townSataDto2.setSumPowerFee(PowerFeeCal.getValue(sumPowerFee,
-					AppConst.TWO_DOT_FLAG));
-			townSataDto2.setCompanyName("小计");
-			colf.add(townSataDto2);
-
-			/**
-			 * 1 -- 得到累计所有趸售的计算结果
-			 */
-
-			BLLwAllWholeFeeFacade blLwAllWholeFeeFacade = new BLLwAllWholeFeeFacade();
-
-			Collection<LwAllWholeFeeDto> allWholeFeeListgy = blLwAllWholeFeeFacade
-					.findByConditions(tempCondition + " and company = 'gy'");
-			LwAllWholeFeeDto lwAllWholeFeeDtogy = this.getAllWholeFee(
-					allWholeFeeListgy, "gy", inputDate);
-			Collection allWholeFeeListdm = blLwAllWholeFeeFacade
-					.findByConditions(tempCondition + " and company = 'dm'");
-			LwAllWholeFeeDto lwAllWholeFeeDtodm = this.getAllWholeFee(
-					allWholeFeeListdm, "dm", inputDate);
-			Collection allWholeFeeListty = blLwAllWholeFeeFacade
-					.findByConditions(tempCondition + " and company = 'ty'");
-			LwAllWholeFeeDto lwAllWholeFeeDtoty = this.getAllWholeFee(
-					allWholeFeeListty, "ty", inputDate);
-			Collection allWholeFeeListjy = blLwAllWholeFeeFacade
-					.findByConditions(tempCondition + " and company = 'jy'");
-			LwAllWholeFeeDto lwAllWholeFeeDtojy = this.getAllWholeFee(
-					allWholeFeeListjy, "jy", inputDate);
-
-			Collection<LwAllWholeFeeDto> wholeResultList = new ArrayList<LwAllWholeFeeDto>();
-			wholeResultList.add(lwAllWholeFeeDtogy);
-			wholeResultList.add(lwAllWholeFeeDtodm);
-			wholeResultList.add(lwAllWholeFeeDtoty);
-			wholeResultList.add(lwAllWholeFeeDtojy);
-			double power1 = 0D;
-			/** 属性电费 */
-			double dianfei = 0D;
-			/** 属性三峡 */
-			double sanxia = 0D;
-			/** 属性电力资金 */
-			double dianjin = 0D;
-			/** 属性基金 */
-			double jijin = 0D;
-			/** 属性电费税 */
-			double dianfeitax = 0D;
-			/** 属性三峡税 */
-			double sanxiatax = 0D;
-			/** 属性电金税 */
-			double dianjintax = 0D;
-			/** 属性总计 */
-			double sumfee = 0D;
-			/** 属性海明炉 */
-			double haiminglu = 0D;
-			/** 属性多边 */
-			double duobian = 0D;
-			/** 属性追加 */
-			double zhuijia = 0D;
-			/** 属性附加1 */
-			double fujia1 = 0D;
-			/** 属性附加2 */
-			double fujia2 = 0D;
-			/** 属性附加3 */
-			double fujia3 = 0D;
-			/** 属性附加5 */
-			double fujia5 = 0D;
-			/** 属性附加9 */
-			double fujia9 = 0D;
-			LwAllWholeFeeDto o = new LwAllWholeFeeDto();
-			for (Iterator iterator = wholeResultList.iterator(); iterator
-					.hasNext();) {
-				LwAllWholeFeeDto lwAllWholeFeeDto = (LwAllWholeFeeDto) iterator
-						.next();
-				power1 += Double.parseDouble(lwAllWholeFeeDto.getPower1());
-				/** 属性电费 */
-				dianfei += Double.parseDouble(lwAllWholeFeeDto.getDianfei());
-				/** 属性三峡 */
-				sanxia += Double.parseDouble(lwAllWholeFeeDto.getDianfei());
-				/** 属性电力资金 */
-				dianjin += Double.parseDouble(lwAllWholeFeeDto.getDianjin());
-				/** 属性基金 */
-				jijin += Double.parseDouble(lwAllWholeFeeDto.getJijin());
-				/** 属性电费税 */
-				dianfeitax += Double.parseDouble(lwAllWholeFeeDto
-						.getDianfeitax());
-				/** 属性三峡税 */
-				sanxiatax += Double
-						.parseDouble(lwAllWholeFeeDto.getSanxiatax());
-				/** 属性电金税 */
-				dianjintax += Double.parseDouble(lwAllWholeFeeDto
-						.getDianjintax());
-				/** 属性总计 */
-				sumfee += Double.parseDouble(lwAllWholeFeeDto.getSumfee());
-				/** 属性海明炉 */
-				haiminglu += Double
-						.parseDouble(lwAllWholeFeeDto.getHaiminglu());
-				/** 属性多边 */
-				duobian += Double.parseDouble(lwAllWholeFeeDto.getDuobian());
-				/** 属性追加 */
-				zhuijia += Double.parseDouble(lwAllWholeFeeDto.getZhuijia());
-				/** 属性附加1 */
-				fujia1 += Double.parseDouble(lwAllWholeFeeDto.getFujia1());
-				/** 属性附加2 */
-				fujia2 += Double.parseDouble(lwAllWholeFeeDto.getFujia2());
-				/** 属性附加3 */
-				fujia3 += Double.parseDouble(lwAllWholeFeeDto.getFujia3());
-				/** 属性附加5 */
-				fujia5 += Double.parseDouble(lwAllWholeFeeDto.getFujia5());
-				/** 属性附加9 */
-				fujia9 += Double.parseDouble(lwAllWholeFeeDto.getFujia9());
-			}
-			double puredianFei = sumfee - sanxia - sanxiatax - jijin - fujia1
-					- dianjin - dianjintax - fujia9;
-			o.setPower1(new Double(power1).toString());
-			o.setDianfei(new Double(puredianFei / 1.17).toString());
-			o.setSanxia(new Double(sanxia).toString());
-			o.setDianjin(new Double(dianjin).toString());
-			o.setJijin(new Double(jijin).toString());
-			o.setDianfeitax(new Double(puredianFei / 1.17 * 0.17).toString());
-			o.setSanxiatax(new Double(sanxiatax).toString());
-			o.setDianjintax(new Double(dianjintax).toString());
-			o.setSumfee(new Double(sumfee).toString());
-			o.setHaiminglu(new Double(haiminglu).toString());
-			o.setDuobian(new Double(duobian).toString());
-			o.setZhuijia(new Double(zhuijia).toString());
-			o.setFujia1(new Double(fujia1).toString());
-			o.setFujia2(new Double(fujia2).toString());
-			o.setFujia3(new Double(fujia3).toString());
-			o.setFujia5(new Double(fujia5).toString());
-			o.setFujia9(new Double(fujia9).toString());
-			o.setCompany("小计");
-			wholeResultList.add(o);
-			httpServletRequest.setAttribute("wholeResultList", wholeResultList);
-			Collection<LwDcodeDto> comList = blLwDcodeFacade
-					.findByConditions(" codetype = 'SupplyCom'");
-			// 得到四个局的统计数据
-			for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
-				LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
-				company = lwDcodeDto.getCodeCode();
-
-				userList = blLwPowerUserFacade
-						.findByConditions("superclass = '" + company + "'");
-				condition = PowerFeeCal.getUserCondition(userList);
-				priceSummaryList = blLwTownPriceSummaryFacade
-						.findByConditions(this.getAddMonthCondition("2009-01",
-								inputDate, "statMonth")
-								+ condition);
-				townSataDto = blCalPowerFeeCustomFacade.townStatByCompany(
-						priceSummaryList, inputDate);
-				townSataDto.setComCode(company);
-				townSataDto.setCompanyName(lwDcodeDto.getCodeCName());
-				resultList.add(townSataDto);
-			}
-			// 四个局的统计汇总
-			townSataDto = PowerFeeCal.getSumCompanyStat(resultList, inputDate);
-			townSataDto.setCompanyName("小计");
-			resultList.add(townSataDto);
-			
-			TownSataDto sum = this.getAllSumStat(townSataDto2, townSataDto, o);
-			httpServletRequest.setAttribute("sum", sum);
-			httpServletRequest.setAttribute("resultList", resultList);
-			httpServletRequest.setAttribute("colf", colf);
-			httpServletRequest.setAttribute("inputDate", inputDate);
-			httpServletRequest.setAttribute("counttype", counttype);
-			
-
-			return actionMapping.findForward("leijicount");
-		}}
 	}
-
+	
 	public String getAddMonthCondition(String startMonth, String endMonth,
 			String column) {
 		StringBuffer buffer = new StringBuffer();

@@ -709,10 +709,17 @@
 					<td nowrap>
 						<span class="title">µç½ð</span>
 					</td>
+					<%if("20699999069".equals(corporation.getLineCode())){%>
+					<td nowrap colspan="2">
+						<span class="title"><%=Math.round(corporation.getUnDenizenQuantity())%>
+						</span>
+					</td>
+					<%}else{ %>
 					<td nowrap colspan="2">
 						<span class="title"><%=Math.round(corporation.getElectricQuantity())%>
 						</span>
 					</td>
+					<%} %>
 					<td nowrap>
 						<span class="title"><%=corporation.getPowerPrice()%>
 						</span>

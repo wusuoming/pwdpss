@@ -197,7 +197,7 @@ String differenceQuantityty=request.getAttribute("differenceQuantityty").toStrin
 
 
 
-String inputDate1  =(String)request.getAttribute("ssss");
+String inputDate1  =(String)request.getAttribute("inputDate");
 %>
 <form  name="fm" method="post">
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
@@ -297,17 +297,17 @@ String inputDate1  =(String)request.getAttribute("ssss");
 			<tr >
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
+					<span class="title"><font size="5"><%=lwCorporationSummaryDto.getUserNo() %></font></span>
 				<br></td>
 				<%
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(lwCorporationSummaryDto.getElectricQuantity())%></font></span>
 				<br></td>
 				<%} %>
 				
@@ -318,7 +318,7 @@ String inputDate1  =(String)request.getAttribute("ssss");
 				
 				 %>
 				 <td nowrap width="10%"  align="center">
-					<span class="title"><font size="2"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} else{
 				System.out.println(lwCorporationSummaryDto.getUserNo());

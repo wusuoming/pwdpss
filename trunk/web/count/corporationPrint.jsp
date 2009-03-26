@@ -380,7 +380,18 @@
     <tr>
    
            <td nowrap><span class="title"><font size="3">µç½ð</font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font></span></td>
+           <%if("20699999069".equals(corporation.getLineCode())){%>
+					<td nowrap colspan="2">
+						<span class="title"><font size="3"><%=Math.round(corporation.getUnDenizenQuantity())%></font>
+						</span>
+					</td>
+					<%}else{ %>
+					<td nowrap colspan="2">
+						<span class="title"><font size="3"><%=Math.round(corporation.getElectricQuantity())%></font>
+						</span>
+					</td>
+					<%} %>
+			
 			<td nowrap><span class="title"><font size="3"><%=corporation.getPowerPrice()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getPowerFee())%></font></span></td>
 			<%

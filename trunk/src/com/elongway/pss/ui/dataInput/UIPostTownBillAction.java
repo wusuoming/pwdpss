@@ -82,7 +82,7 @@ public class UIPostTownBillAction extends Action {
 			uiTownBill.setTownCode(townCode);
 			uiTownBill.setTownName(townName);
 			uiTownBill.setPowerQuantity(new Long(Math.round(lwTownPriceSummaryDto.getSumQuantity())).toString());
-			uiTownBill.setPowerFee(new Double(PowerFeeCal.getValue(lwTownPriceSummaryDto.getElectricFee(), AppConst.TWO_DOT_FLAG)).toString());
+			uiTownBill.setPowerFee(new Double(PowerFeeCal.getValue(lwTownPriceSummaryDto.getElectricFee(), AppConst.FOUR_DOT_FLAG)).toString());
 			uiTownBill.setBillDate(statMonth);
 			sumQuantity += Math.round(lwTownPriceSummaryDto.getSumQuantity());
 			sumFee +=PowerFeeCal.getValue(lwTownPriceSummaryDto.getElectricFee(), AppConst.TWO_DOT_FLAG);
