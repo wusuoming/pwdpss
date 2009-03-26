@@ -532,7 +532,7 @@
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">广播费</font></span>
@@ -800,7 +800,7 @@
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">广播费</font></span>
@@ -1079,7 +1079,7 @@
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">广播费</font></span>
@@ -1359,7 +1359,7 @@
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">广播费</font></span>
@@ -1632,7 +1632,7 @@
 					<span class="title"><font size="2">电费税</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2">广播费</font></span>

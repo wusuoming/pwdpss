@@ -343,7 +343,7 @@
     </tr>
      <tr>
    
-           <td nowrap colspan="2"><span class="title">利率电费</span></td>
+           <td nowrap colspan="2"><span class="title">力率电费</span></td>
 			<td nowrap colspan="2"><span class="title"><%=corporation.getPowerRateFee()%></span></td>
 			<td nowrap><span class="title">税</span></td>
 			<td nowrap colspan="2"><span class="title"><%=tax%></span></td>

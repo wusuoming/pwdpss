@@ -564,30 +564,41 @@ public class BLCalPowerFeeCustomFacade {
 
 		}
 		TownSataDto townSataDto = new TownSataDto();
-		// 纯电金
-		purePowerFee = powerFee / 1.17;
+		
+		
+		powerFee = PowerFeeCal.getValue(powerFee, AppConst.TWO_DOT_FLAG);
+		sumPower = PowerFeeCal.getValue(sumPower, AppConst.TWO_DOT_FLAG);
+		sumPowerFee = PowerFeeCal.getValue(sumPowerFee, AppConst.TWO_DOT_FLAG);
+		sumDianJin = PowerFeeCal.getValue(sumDianJin, AppConst.TWO_DOT_FLAG);
+		sumSanXia = PowerFeeCal.getValue(sumSanXia, AppConst.TWO_DOT_FLAG);
+		sumJiJin = PowerFeeCal.getValue(sumJiJin, AppConst.TWO_DOT_FLAG);
+		
+		// 纯电费
+		purePowerFee = PowerFeeCal.getValue(powerFee/1.17, AppConst.TWO_DOT_FLAG);
+		
 		// 电费税
 		//powerFeeTax = purePowerFee * 0.17;
-		powerFeeTax = powerFee - purePowerFee;
+		powerFeeTax = PowerFeeCal.getValue(powerFee - purePowerFee, AppConst.TWO_DOT_FLAG);
 
 		// 纯电金
-		pureDianJin = sumDianJin / 1.17;
+		pureDianJin = PowerFeeCal.getValue(sumDianJin / 1.17, AppConst.TWO_DOT_FLAG);
 		// 电金税
 		//dianJinTax = pureDianJin * 0.17;
-		dianJinTax = sumDianJin - pureDianJin;
+		dianJinTax = PowerFeeCal.getValue(sumDianJin - pureDianJin, AppConst.TWO_DOT_FLAG);
 		
 		// 纯三峡
-		pureSanXia = sumSanXia / 1.17;
+		pureSanXia = PowerFeeCal.getValue(sumSanXia / 1.17, AppConst.TWO_DOT_FLAG);
 		// 三峡税
 		//sanXiaTax = pureSanXia * 0.17;
-		sanXiaTax = sumSanXia - pureSanXia;
+		sanXiaTax = PowerFeeCal.getValue(sumSanXia - pureSanXia, AppConst.TWO_DOT_FLAG);
 
 		// 纯基金
-		pureJiJin = sumJiJin / 1.17;
+		pureJiJin = PowerFeeCal.getValue(sumJiJin / 1.17, AppConst.TWO_DOT_FLAG);
 		// 基金税
 		//jiJinTax = pureJiJin * 0.17;
-		jiJinTax = sumJiJin - pureJiJin;
+		jiJinTax = PowerFeeCal.getValue(sumJiJin - pureJiJin, AppConst.TWO_DOT_FLAG);
 		
+
 
 		townSataDto.setPurePowerFee(PowerFeeCal.getValue(purePowerFee,
 				AppConst.TWO_DOT_FLAG));

@@ -205,7 +205,7 @@
 				
 				
 				<td nowrap width="10%" colspan="2">
-					<span class="title"><font size="2">利率电费</font></span>
+					<span class="title"><font size="2">力率电费</font></span>
 				<br></td>
 				
 			

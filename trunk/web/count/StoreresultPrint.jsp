@@ -102,11 +102,11 @@ String s=(String)request.getAttribute("inputDate");
 	<input type="hidden" name="counttype" value="<%=(String)request.getAttribute("counttype") %>">
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="5">包头市农电公司电费电量发行单（当月）</font></td>
+			<td class=title0 colspan="13" ><font size="5">包头市农电公司电费电量发行单（当月）</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=s.substring(0,7) %></span>
+						<span class="title"><font size="5">月份:<%=s.substring(0,7) %></font></span>
 					</td>
 	</tr>
 		<tr class=listtitle>

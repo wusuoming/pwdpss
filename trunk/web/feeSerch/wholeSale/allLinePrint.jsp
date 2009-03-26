@@ -206,7 +206,7 @@
 			<td nowrap><span class="title">功率因素</span></td>
 			<td nowrap><span class="title">调整值</span></td>
 			<td nowrap><span class="title">总电费</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 					</tr>
 					<tr>
@@ -224,14 +224,14 @@
 	--%>
 	<tr>
 	<td nowrap><span class="title">10kv</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 			<td nowrap><span class="title"><%=Rate10Fee%></span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 				<td nowrap><span class="title"><%=sum10Fee%></span></td>
 	</tr>
 	<tr>
 	<td nowrap><span class="title">趸售工业</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 			<td nowrap><span class="title"><%=RatefFee%></span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 				<td nowrap><span class="title"><%=sumfFee%></span></td>
@@ -239,7 +239,7 @@
 	
 	<tr>
 	<td nowrap><span class="title">35kv</span></td>
-			<td nowrap><span class="title">利率电费</span></td>
+			<td nowrap><span class="title">力率电费</span></td>
 			<td nowrap><span class="title"><%=Rate35Fee%></span></td>
 				<td nowrap><span class="title">电费合计</span></td>
 				<td nowrap><span class="title"><%=sum35Fee%></span></td>
