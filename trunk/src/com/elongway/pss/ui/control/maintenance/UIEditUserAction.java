@@ -25,6 +25,7 @@ public class UIEditUserAction extends Action {
 		 */
 		/** 1-声明变量 */
 		BLLwSysUserFacade blLwSysUserFacade = new BLLwSysUserFacade();
+		
 		// 原密码
 		String oldpassword = "";
 		// 新密码
@@ -41,8 +42,10 @@ public class UIEditUserAction extends Action {
 		String userName = "";
 		// 用户DTO
 		LwSysUserDto lwSysUserDto = null;
+		
+		String tempPwd = "";
+		
 		/** 2-获取表单数据 */
-
 		userCode = httpServletRequest.getParameter("userCode");
 		userName = httpServletRequest.getParameter("userName");
 		oldpassword = httpServletRequest.getParameter("oldpassword");
@@ -66,11 +69,13 @@ public class UIEditUserAction extends Action {
 		/**
 		 * modify by qiaoyouliang 2008-12-31 end 修改对用户信息修改的代码，格式化代码
 		 */
+		
+		tempPwd = new BLPwdEncodeAction().fenCode(newpassword);
 
 		lwSysUserDto.setUserGrade(USERGRADE);
 		lwSysUserDto.setUserName(userName);
 		lwSysUserDto.setValidStatus(VALIDSTATUS);
-		lwSysUserDto.setPassword(newpassword);
+		lwSysUserDto.setPassword(tempPwd);
 		blLwSysUserFacade.update(lwSysUserDto);
 
 		return actionMapping.findForward("Success");

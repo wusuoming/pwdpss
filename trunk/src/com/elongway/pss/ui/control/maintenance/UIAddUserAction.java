@@ -18,37 +18,41 @@ import com.elongway.pss.dto.domain.LwSysUserDto;
 import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UIAddUserAction extends Action {
-	public ActionForward execute(ActionMapping actionMapping, ActionForm actionForm, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-		String USERCODE=httpServletRequest.getParameter("USERCODE");
-		String USERNAME=httpServletRequest.getParameter("USERNAME");
-		String PASSWORD=httpServletRequest.getParameter("PASSWORD");
-		String PASSWORD1=httpServletRequest.getParameter("PASSWORD1");
-		String USERGRADE=httpServletRequest.getParameter("USERGRADE");
-		String VALIDSTATUS=httpServletRequest.getParameter("VALIDSTATUS");
-		String oldpassword=httpServletRequest.getParameter("oldpassword");
-		LwSysUserDto lwSysUserDto=new LwSysUserDto();
+	public ActionForward execute(ActionMapping actionMapping,
+			ActionForm actionForm, HttpServletRequest httpServletRequest,
+			HttpServletResponse httpServletResponse) throws Exception {
+		
+		/** 1 - 声明变量	 */
+		BLLwSysUserFacade blLwSysUserFacade = new BLLwSysUserFacade();
+		LwSysUserDto lwSysUserDto = null;
+		LwSysUserDto tempDto = null;
+		
+		/** 2 - 获得表单数据	 */
+		String USERCODE = httpServletRequest.getParameter("USERCODE");
+		String USERNAME = httpServletRequest.getParameter("USERNAME");
+		String PASSWORD = httpServletRequest.getParameter("PASSWORD");
+		String USERGRADE = httpServletRequest.getParameter("USERGRADE");
+		String VALIDSTATUS = httpServletRequest.getParameter("VALIDSTATUS");
+		String oldpassword = httpServletRequest.getParameter("oldpassword");
+		
+		/** 3 - 用户校验	 */
+		tempDto = blLwSysUserFacade.findByPrimaryKey(USERCODE);		
+		if (tempDto!=null) {
+			throw new UserException(-6, -710, this.getClass().getName(),
+					"用户已存在");
+		}
+		
+		/** 4 - 组织用户信息	 */
+		lwSysUserDto = new LwSysUserDto();
 		lwSysUserDto.setUserCode(USERCODE);
 		lwSysUserDto.setUserGrade(USERGRADE);
 		lwSysUserDto.setUserName(USERNAME);
 		lwSysUserDto.setValidStatus(VALIDSTATUS);
-		
-	
-		
-			lwSysUserDto.setPassword(new BLPwdEncodeAction().fenCode(PASSWORD));
-		
-		BLLwSysUserFacade  blLwSysUserFacade=new BLLwSysUserFacade();
-		Collection user=new ArrayList();
-		user=blLwSysUserFacade.findByConditions("");
-		Iterator it =user.iterator();
-		if(it.hasNext()){
+		lwSysUserDto.setPassword(new BLPwdEncodeAction().fenCode(PASSWORD));		
 			
-			LwSysUserDto lwSysUserDto1=new LwSysUserDto();
-			if(USERCODE.equals(lwSysUserDto1.getUserCode())){
-				throw new UserException(-6,-710,this.getClass().getName(),"用户已存在");
-			}
-		}
+		/** 5 - 插入数据	 */
 		blLwSysUserFacade.insert(lwSysUserDto);
 		return actionMapping.findForward("Success");
-		
-}
+
+	}
 }

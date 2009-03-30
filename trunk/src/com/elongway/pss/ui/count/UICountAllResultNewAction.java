@@ -94,7 +94,7 @@ public class UICountAllResultNewAction extends Action {
 		shoushulwShouShuTableDto.setChunDianFei(wholesaleshoushulwShouShuTableDto.getChunDianFei()+corporationshoushulwShouShuTableDto.getChunDianFei());
 		shoushulwShouShuTableDto.setDianFeiTax(wholesaleshoushulwShouShuTableDto.getDianFeiTax()+corporationshoushulwShouShuTableDto.getDianFeiTax());
 		shoushulwShouShuTableDto.setSumDianFee(wholesaleshoushulwShouShuTableDto.getSumDianFee()+corporationshoushulwShouShuTableDto.getSumDianFee());
-		shoushulwShouShuTableDto.setJijin(wholesaleshoushulwShouShuTableDto.getJijin()+corporationshoushulwShouShuTableDto.getJinjinTax());
+		shoushulwShouShuTableDto.setJijin(wholesaleshoushulwShouShuTableDto.getJijin()+corporationshoushulwShouShuTableDto.getJijin());
 		shoushulwShouShuTableDto.setJinjinTax(wholesaleshoushulwShouShuTableDto.getJinjinTax()+corporationshoushulwShouShuTableDto.getJinjinTax());
 		shoushulwShouShuTableDto.setDianJin(wholesaleshoushulwShouShuTableDto.getDianJin()+corporationshoushulwShouShuTableDto.getDianJin());
 		shoushulwShouShuTableDto.setDianJinTax(wholesaleshoushulwShouShuTableDto.getDianJinTax() +corporationshoushulwShouShuTableDto.getDianJinTax());

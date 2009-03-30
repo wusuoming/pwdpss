@@ -194,7 +194,7 @@ String StatMonth=inputDate.substring(0, 7);
 					<span class="title"><font size="2"><input  name="lwsumfc" style="width: 80px" value="0"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"  readonly="readonly"  value="0" onblur="dianfei();addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"   value="0" onblur="dianfei1();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><input  name="lwsumfdianfee" style="width: 80px" value="0" onblur="addalldianfee()"></font></span>
@@ -244,7 +244,7 @@ String StatMonth=inputDate.substring(0, 7);
 					<span class="title"><font size="2"><input  name="lwsumwc" style="width: 80px" value="0" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px" readonly="readonly" value="0" onblur="addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px"  value="0" onblur="dianfei2();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><input  name="lwsumwdianfee" style="width: 80px" value="0" onblur="addalldianfee()"></font></span>
@@ -418,7 +418,7 @@ String StatMonth=inputDate.substring(0, 7);
 					<span class="title"><font size="2"><input  name="lwsumfc" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getChunDianFei()) %>"   onblur="dianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"  readonly="readonly"  value="<%=df.format(corporationshoushulwShouShuTableDto.getDianFeiTax()) %>" onblur="dianfei();addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" style="width: 80px"   value="<%=df.format(corporationshoushulwShouShuTableDto.getDianFeiTax()) %>" onblur="dianfei1();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><input  name="lwsumfdianfee" style="width: 80px" value="<%=df.format(corporationshoushulwShouShuTableDto.getSumDianFee() )%>" onblur="addalldianfee()"></font></span>
@@ -468,7 +468,7 @@ String StatMonth=inputDate.substring(0, 7);
 					<span class="title"><font size="2"><input  name="lwsumwc" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getChunDianFei()) %>" onblur="wdianfei();addallc();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px" readonly="readonly" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDianFeiTax() )%>" onblur="addalltax();addalldianfee()"></font></span>
+					<span class="title"><font size="2"><input    name="lwsumwtax" style="width: 80px"  value="<%=df.format(wholesaleshoushulwShouShuTableDto.getDianFeiTax() )%>" onblur="dianfei2();addalltax();addalldianfee()"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="2"><input  name="lwsumwdianfee" style="width: 80px" value="<%=df.format(wholesaleshoushulwShouShuTableDto.getSumDianFee()) %>" onblur="addalldianfee()"></font></span>
@@ -797,6 +797,27 @@ function dianfei(){
 	fm.lwsumfdianfee.value=fdianfee;
 	
 }
+
+function dianfei1(){
+
+	var fdianfeishui=0.0;
+	var fdianfee=0.0;
+	fdianfeishui=parseFloat(fm.lwsumftax.value);
+	fdianfee=parseFloat(fdianfeishui)+parseFloat(fm.lwsumfc.value);
+	fm.lwsumftax.value=fdianfeishui;
+	fm.lwsumfdianfee.value=(fdianfee).toFixed(2);
+}
+
+function dianfei2(){
+
+	var fdianfeishui=0.0;
+	var fdianfee=0.0;
+	fdianfeishui=parseFloat(fm.lwsumwtax.value);
+	fdianfee=parseFloat(fdianfeishui)+parseFloat(fm.lwsumwc.value);
+	fm.lwsumwtax.value=fdianfeishui;
+	fm.lwsumwdianfee.value=(fdianfee).toFixed(2);
+}
+
 function chabie(){
 	var chabieshui=0.0;
 	chabieshui=(parseFloat(fm.lwdiffrentfee.value)*0.17).toFixed(2);
