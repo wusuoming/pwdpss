@@ -156,7 +156,7 @@ function result()
                 fm.dianjin[i].value = (parseFloat(fm.alldianjin[i].value) / 1.17).toFixed(2);
                 fm.dianjinTax[i].value = (parseFloat(fm.alldianjin[i].value) -parseFloat(fm.dianjin[i].value)).toFixed(2);               
                 // »ù½ð
-                fm.jijin[i].value = (parseFloat(fm.alljijin[i].value)/ 0.17).toFixed(2);
+                fm.jijin[i].value = (parseFloat(fm.alljijin[i].value)/ 1.17).toFixed(2);
                 fm.jijinTax[i].value = (parseFloat(fm.alljijin[i].value)-parseFloat(fm.jijin[i].value)).toFixed(2);
                 fm.sumFee[i].value = (parseFloat(fm.pureFee[i].value)+parseFloat(fm.feeTax[i].value)+parseFloat(fm.dianjin[i].value)+parseFloat(fm.dianjinTax[i].value)+parseFloat(fm.jijin[i].value)+parseFloat(fm.jijinTax[i].value)+parseFloat(fm.sanxia[i].value)+parseFloat(fm.sanxiaTax[i].value)).toFixed(2);
               

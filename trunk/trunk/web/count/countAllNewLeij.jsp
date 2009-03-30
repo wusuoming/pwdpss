@@ -122,12 +122,12 @@ String inputDate=(String)request.getAttribute("inputDate");
 	<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		
 	<tr>
-			<td class=title0 colspan="14"><font size="4">大户局电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="5">大户局电费电量发行单</font></td>
 		</tr>
 		
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title"><%=inputDate.substring(0,7) %>月</span>
+						<span class="title"><font size="2"><%=inputDate.substring(0,7) %>月</font></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
@@ -348,9 +348,13 @@ String inputDate=(String)request.getAttribute("inputDate");
 	<table class=common width="500%"  border="1" cellspacing="0" cellpadding="6">
 	
 		<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="5">包头市农电公司电费电量发行单</font></td>
 		</tr>
-
+<tr>
+		<td nowrap colspan="2">
+						<span class="title"><font size="2"><%=inputDate.substring(0,7) %>月</font></span>
+					</td>
+	</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">单位</font></span>
