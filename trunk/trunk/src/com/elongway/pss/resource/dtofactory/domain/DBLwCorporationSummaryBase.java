@@ -86,7 +86,12 @@ public class DBLwCorporationSummaryBase{
         buffer.append("NeedPointer,");
         buffer.append("LineLoss,");
         buffer.append("UnLineLoss,");
-        buffer.append("UnLossQuantity ");
+        buffer.append("TaobiaoQuantity,");
+        buffer.append("TaobiaoPrice,");
+        buffer.append("TaobiaoFee,");
+        buffer.append("UnLossQuantity,");
+        buffer.append("TaobiaoName,");
+        buffer.append("Taobiaoflag ");
         buffer.append(") ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -142,11 +147,16 @@ public class DBLwCorporationSummaryBase{
             debugBuffer.append("").append(lwCorporationSummaryDto.getNeedPointer()).append(",");
             debugBuffer.append("").append(lwCorporationSummaryDto.getLineLoss()).append(",");
             debugBuffer.append("").append(lwCorporationSummaryDto.getUnLineLoss()).append(",");
-            debugBuffer.append("").append(lwCorporationSummaryDto.getUnLossQuantity()).append(")");
+            debugBuffer.append("").append(lwCorporationSummaryDto.getTaobiaoQuantity()).append(",");
+            debugBuffer.append("").append(lwCorporationSummaryDto.getTaobiaoPrice()).append(",");
+            debugBuffer.append("").append(lwCorporationSummaryDto.getTaobiaoFee()).append(",");
+            debugBuffer.append("").append(lwCorporationSummaryDto.getUnLossQuantity()).append(",");
+            debugBuffer.append("'").append(lwCorporationSummaryDto.getTaobiaoName()).append("',");
+            debugBuffer.append("'").append(lwCorporationSummaryDto.getTaobiaoflag()).append("')");
             logger.debug(debugBuffer.toString());
         }
 
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         dbManager.prepareStatement(buffer.toString());
         dbManager.setString(1,lwCorporationSummaryDto.getLineCode());
         dbManager.setString(2,lwCorporationSummaryDto.getStatMonth());
@@ -198,7 +208,12 @@ public class DBLwCorporationSummaryBase{
         dbManager.setDouble(48,lwCorporationSummaryDto.getNeedPointer());
         dbManager.setDouble(49,lwCorporationSummaryDto.getLineLoss());
         dbManager.setDouble(50,lwCorporationSummaryDto.getUnLineLoss());
-        dbManager.setDouble(51,lwCorporationSummaryDto.getUnLossQuantity());
+        dbManager.setDouble(51,lwCorporationSummaryDto.getTaobiaoQuantity());
+        dbManager.setDouble(52,lwCorporationSummaryDto.getTaobiaoPrice());
+        dbManager.setDouble(53,lwCorporationSummaryDto.getTaobiaoFee());
+        dbManager.setDouble(54,lwCorporationSummaryDto.getUnLossQuantity());
+        dbManager.setString(55,lwCorporationSummaryDto.getTaobiaoName());
+        dbManager.setString(56,lwCorporationSummaryDto.getTaobiaoflag());
         dbManager.executePreparedUpdate();
 
     }
@@ -262,9 +277,14 @@ public class DBLwCorporationSummaryBase{
         buffer.append("NeedPointer,");
         buffer.append("LineLoss,");
         buffer.append("UnLineLoss,");
-        buffer.append("UnLossQuantity ");
+        buffer.append("TaobiaoQuantity,");
+        buffer.append("TaobiaoPrice,");
+        buffer.append("TaobiaoFee,");
+        buffer.append("UnLossQuantity,");
+        buffer.append("TaobiaoName,");
+        buffer.append("Taobiaoflag ");
         buffer.append(") ");
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         if(logger.isDebugEnabled()){
             logger.debug(buffer.toString());
         }
@@ -321,7 +341,12 @@ public class DBLwCorporationSummaryBase{
             dbManager.setDouble(48,lwCorporationSummaryDto.getNeedPointer());
             dbManager.setDouble(49,lwCorporationSummaryDto.getLineLoss());
             dbManager.setDouble(50,lwCorporationSummaryDto.getUnLineLoss());
-            dbManager.setDouble(51,lwCorporationSummaryDto.getUnLossQuantity());
+            dbManager.setDouble(51,lwCorporationSummaryDto.getTaobiaoQuantity());
+            dbManager.setDouble(52,lwCorporationSummaryDto.getTaobiaoPrice());
+            dbManager.setDouble(53,lwCorporationSummaryDto.getTaobiaoFee());
+            dbManager.setDouble(54,lwCorporationSummaryDto.getUnLossQuantity());
+            dbManager.setString(55,lwCorporationSummaryDto.getTaobiaoName());
+            dbManager.setString(56,lwCorporationSummaryDto.getTaobiaoflag());
             dbManager.addBatch();
         }
         dbManager.executePreparedUpdateBatch();
@@ -414,7 +439,12 @@ public class DBLwCorporationSummaryBase{
         buffer.append("NeedPointer = ?, ");
         buffer.append("LineLoss = ?, ");
         buffer.append("UnLineLoss = ?, ");
-        buffer.append("UnLossQuantity = ? ");
+        buffer.append("TaobiaoQuantity = ?, ");
+        buffer.append("TaobiaoPrice = ?, ");
+        buffer.append("TaobiaoFee = ?, ");
+        buffer.append("UnLossQuantity = ?, ");
+        buffer.append("TaobiaoName = ?, ");
+        buffer.append("Taobiaoflag = ? ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
             debugBuffer.append("UPDATE LwCorporationSummary SET ");
@@ -466,7 +496,12 @@ public class DBLwCorporationSummaryBase{
             debugBuffer.append("NeedPointer = " + lwCorporationSummaryDto.getNeedPointer() + ", ");
             debugBuffer.append("LineLoss = " + lwCorporationSummaryDto.getLineLoss() + ", ");
             debugBuffer.append("UnLineLoss = " + lwCorporationSummaryDto.getUnLineLoss() + ", ");
-            debugBuffer.append("UnLossQuantity = " + lwCorporationSummaryDto.getUnLossQuantity() + " ");
+            debugBuffer.append("TaobiaoQuantity = " + lwCorporationSummaryDto.getTaobiaoQuantity() + ", ");
+            debugBuffer.append("TaobiaoPrice = " + lwCorporationSummaryDto.getTaobiaoPrice() + ", ");
+            debugBuffer.append("TaobiaoFee = " + lwCorporationSummaryDto.getTaobiaoFee() + ", ");
+            debugBuffer.append("UnLossQuantity = " + lwCorporationSummaryDto.getUnLossQuantity() + ", ");
+            debugBuffer.append("TaobiaoName = '" + lwCorporationSummaryDto.getTaobiaoName() + "', ");
+            debugBuffer.append("Taobiaoflag = '" + lwCorporationSummaryDto.getTaobiaoflag() + "' ");
             debugBuffer.append("WHERE ");
             debugBuffer.append("LineCode=").append("'").append(lwCorporationSummaryDto.getLineCode()).append("' AND ");
             debugBuffer.append("StatMonth=").append("'").append(lwCorporationSummaryDto.getStatMonth()).append("'");
@@ -527,10 +562,15 @@ public class DBLwCorporationSummaryBase{
         dbManager.setDouble(46,lwCorporationSummaryDto.getNeedPointer());
         dbManager.setDouble(47,lwCorporationSummaryDto.getLineLoss());
         dbManager.setDouble(48,lwCorporationSummaryDto.getUnLineLoss());
-        dbManager.setDouble(49,lwCorporationSummaryDto.getUnLossQuantity());
+        dbManager.setDouble(49,lwCorporationSummaryDto.getTaobiaoQuantity());
+        dbManager.setDouble(50,lwCorporationSummaryDto.getTaobiaoPrice());
+        dbManager.setDouble(51,lwCorporationSummaryDto.getTaobiaoFee());
+        dbManager.setDouble(52,lwCorporationSummaryDto.getUnLossQuantity());
+        dbManager.setString(53,lwCorporationSummaryDto.getTaobiaoName());
+        dbManager.setString(54,lwCorporationSummaryDto.getTaobiaoflag());
         //设置条件字段;
-        dbManager.setString(50,lwCorporationSummaryDto.getLineCode());
-        dbManager.setString(51,lwCorporationSummaryDto.getStatMonth());
+        dbManager.setString(55,lwCorporationSummaryDto.getLineCode());
+        dbManager.setString(56,lwCorporationSummaryDto.getStatMonth());
         dbManager.executePreparedUpdate();
 
     }
@@ -597,7 +637,12 @@ public class DBLwCorporationSummaryBase{
         buffer.append("NeedPointer,");
         buffer.append("LineLoss,");
         buffer.append("UnLineLoss,");
-        buffer.append("UnLossQuantity ");
+        buffer.append("TaobiaoQuantity,");
+        buffer.append("TaobiaoPrice,");
+        buffer.append("TaobiaoFee,");
+        buffer.append("UnLossQuantity,");
+        buffer.append("TaobiaoName,");
+        buffer.append("Taobiaoflag ");
         buffer.append("FROM LwCorporationSummary ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -670,7 +715,12 @@ public class DBLwCorporationSummaryBase{
             lwCorporationSummaryDto.setNeedPointer(dbManager.getDouble(resultSet,48));
             lwCorporationSummaryDto.setLineLoss(dbManager.getDouble(resultSet,49));
             lwCorporationSummaryDto.setUnLineLoss(dbManager.getDouble(resultSet,50));
-            lwCorporationSummaryDto.setUnLossQuantity(dbManager.getDouble(resultSet,51));
+            lwCorporationSummaryDto.setTaobiaoQuantity(dbManager.getDouble(resultSet,51));
+            lwCorporationSummaryDto.setTaobiaoPrice(dbManager.getDouble(resultSet,52));
+            lwCorporationSummaryDto.setTaobiaoFee(dbManager.getDouble(resultSet,53));
+            lwCorporationSummaryDto.setUnLossQuantity(dbManager.getDouble(resultSet,54));
+            lwCorporationSummaryDto.setTaobiaoName(dbManager.getString(resultSet,55));
+            lwCorporationSummaryDto.setTaobiaoflag(dbManager.getString(resultSet,56));
         }
         resultSet.close();
         return lwCorporationSummaryDto;
@@ -739,7 +789,12 @@ public class DBLwCorporationSummaryBase{
         buffer.append("NeedPointer,");
         buffer.append("LineLoss,");
         buffer.append("UnLineLoss,");
-        buffer.append("UnLossQuantity ");
+        buffer.append("TaobiaoQuantity,");
+        buffer.append("TaobiaoPrice,");
+        buffer.append("TaobiaoFee,");
+        buffer.append("UnLossQuantity,");
+        buffer.append("TaobiaoName,");
+        buffer.append("Taobiaoflag ");
         buffer.append("FROM LwCorporationSummary WHERE ");
         buffer.append(conditions);
         boolean supportPaging = false;//数据库是否支持分页
@@ -836,7 +891,12 @@ public class DBLwCorporationSummaryBase{
             lwCorporationSummaryDto.setNeedPointer(dbManager.getDouble(resultSet,"NeedPointer"));
             lwCorporationSummaryDto.setLineLoss(dbManager.getDouble(resultSet,"LineLoss"));
             lwCorporationSummaryDto.setUnLineLoss(dbManager.getDouble(resultSet,"UnLineLoss"));
+            lwCorporationSummaryDto.setTaobiaoQuantity(dbManager.getDouble(resultSet,"TaobiaoQuantity"));
+            lwCorporationSummaryDto.setTaobiaoPrice(dbManager.getDouble(resultSet,"TaobiaoPrice"));
+            lwCorporationSummaryDto.setTaobiaoFee(dbManager.getDouble(resultSet,"TaobiaoFee"));
             lwCorporationSummaryDto.setUnLossQuantity(dbManager.getDouble(resultSet,"UnLossQuantity"));
+            lwCorporationSummaryDto.setTaobiaoName(dbManager.getString(resultSet,"TaobiaoName"));
+            lwCorporationSummaryDto.setTaobiaoflag(dbManager.getString(resultSet,"Taobiaoflag"));
             collection.add(lwCorporationSummaryDto);
         }
         resultSet.close();

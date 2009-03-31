@@ -334,7 +334,13 @@ create by wangrongjia
 						<%
 						}
 						 %>
-
+<%
+						if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("2")){
+						 %>
+						<td class="title" align="center">套表<input  readOnly=true name="useStyle" style="width:65px" value="2" type="hidden" readonly="readonly"></td>										
+						<%
+						}
+						 %>
 
 						                  
 					</tr>
@@ -343,20 +349,14 @@ create by wangrongjia
 					if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")){
 					 %>
 					<tr class=listtitle >
-			<td nowrap ><span class="title">月中停产/生产 </span></td>
-			<td nowrap><span class="title">上月有功指针 </span></td>
-			<td nowrap><span class="title">当月有功指针</span></td>
-			<td nowrap><span class="title">上月无功指针</span></td>
-			<td nowrap><span class="title">当月无功指针</span></td>
-			<td nowrap><span class="title">倍率</span></td>
-			<td nowrap><span class="title">有功电量</span></td>
+						<td nowrap ><span class="title">月中停产/生产 </span></td>
+						<td nowrap><span class="title">上月有功指针 </span></td>
+						<td nowrap><span class="title">当月有功指针</span></td>
+						<td nowrap><span class="title">上月无功指针</span></td>
+						<td nowrap><span class="title">当月无功指针</span></td>
+						<td nowrap><span class="title">倍率</span></td>
+						<td nowrap><span class="title">有功电量</span></td>
 			<td nowrap><span class="title">无功电量  </span></td>
-		
-			
-
-			
-			
-			
 		</tr>
 					<tr >
 						<td class="input" rowspan="3"><input name="changeAmmeterNo" value="大工业" style="border:0" readonly="readonly" style="width:65px"></td>

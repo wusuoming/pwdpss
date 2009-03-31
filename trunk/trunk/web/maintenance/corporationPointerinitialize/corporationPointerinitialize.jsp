@@ -241,6 +241,7 @@
 			<br>
 		</p>
 		<!-- °´Å¥µÄÏÔÊ¾-->
+		<%if(wholesaleUser!=null&&wholesaleUser.size()>0){ %>
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td>
@@ -256,6 +257,7 @@
 
 			</tr>
 		</table>
+		<%} %>
 	</form>
 </body>
 <script language="javascript">

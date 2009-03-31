@@ -73,6 +73,13 @@ interface IFlag {
 	/** 累计 */
 	public static final String STAT_LEIJI_FLAG = "2";	
 	
+	/** 套表标志 */
+	public static final String 	IS_TAOBIAO_FLAG = "1";
+	
+	/** 不存在套表*/
+	public static final String 	NOT_TAOBIAO_FLAG = "0";
+	
+	
 	
 }
 /**
@@ -121,6 +128,13 @@ interface IValue {
 	// 序号-100
 	public static final String SERIALNO_900 = "900";
 	
+	/** 电表类型	 */
+	// 套表
+	public static final String USERSTYLE_TAOBIAO_2 = "2";
+	// 大工业
+	public static final String USERSTYLE_INDUSTRY_0 = "0";
+	// 居民电表
+	public static final String USERSTYLE_PEOPLE_1 = "1";
 	
 	
 }

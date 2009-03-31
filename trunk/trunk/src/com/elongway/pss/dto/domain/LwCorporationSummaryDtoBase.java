@@ -111,8 +111,18 @@ public class LwCorporationSummaryDtoBase implements Serializable{
     private double lineLoss = 0D;
     /** 属性无功线损电量 */
     private double unLineLoss = 0D;
+    /** 属性套表电量 */
+    private double taobiaoQuantity = 0D;
+    /** 属性套表电价 */
+    private double taobiaoPrice = 0D;
+    /** 属性套表电费 */
+    private double taobiaoFee = 0D;
     /** 属性无功变损电量 */
     private double unLossQuantity = 0D;
+    /** 属性套表表名 */
+    private String taobiaoName = "";
+    /** 属性套表标志 */
+    private String taobiaoflag = "";
 
     /**
      *  默认构造方法,构造一个默认的LwCorporationSummaryDtoBase对象
@@ -921,6 +931,54 @@ public class LwCorporationSummaryDtoBase implements Serializable{
     }
 
     /**
+     * 设置属性套表电量
+     * @param taobiaoQuantity 待设置的属性套表电量的值
+     */
+    public void setTaobiaoQuantity(double taobiaoQuantity){
+        this.taobiaoQuantity = taobiaoQuantity;
+    }
+
+    /**
+     * 获取属性套表电量
+     * @return 属性套表电量的值
+     */
+    public double getTaobiaoQuantity(){
+        return taobiaoQuantity;
+    }
+
+    /**
+     * 设置属性套表电价
+     * @param taobiaoPrice 待设置的属性套表电价的值
+     */
+    public void setTaobiaoPrice(double taobiaoPrice){
+        this.taobiaoPrice = taobiaoPrice;
+    }
+
+    /**
+     * 获取属性套表电价
+     * @return 属性套表电价的值
+     */
+    public double getTaobiaoPrice(){
+        return taobiaoPrice;
+    }
+
+    /**
+     * 设置属性套表电费
+     * @param taobiaoFee 待设置的属性套表电费的值
+     */
+    public void setTaobiaoFee(double taobiaoFee){
+        this.taobiaoFee = taobiaoFee;
+    }
+
+    /**
+     * 获取属性套表电费
+     * @return 属性套表电费的值
+     */
+    public double getTaobiaoFee(){
+        return taobiaoFee;
+    }
+
+    /**
      * 设置属性无功变损电量
      * @param unLossQuantity 待设置的属性无功变损电量的值
      */
@@ -934,5 +992,37 @@ public class LwCorporationSummaryDtoBase implements Serializable{
      */
     public double getUnLossQuantity(){
         return unLossQuantity;
+    }
+
+    /**
+     * 设置属性套表表名
+     * @param taobiaoName 待设置的属性套表表名的值
+     */
+    public void setTaobiaoName(String taobiaoName){
+        this.taobiaoName = StringUtils.rightTrim(taobiaoName);
+    }
+
+    /**
+     * 获取属性套表表名
+     * @return 属性套表表名的值
+     */
+    public String getTaobiaoName(){
+        return taobiaoName;
+    }
+
+    /**
+     * 设置属性套表标志
+     * @param taobiaoflag 待设置的属性套表标志的值
+     */
+    public void setTaobiaoflag(String taobiaoflag){
+        this.taobiaoflag = StringUtils.rightTrim(taobiaoflag);
+    }
+
+    /**
+     * 获取属性套表标志
+     * @return 属性套表标志的值
+     */
+    public String getTaobiaoflag(){
+        return taobiaoflag;
     }
 }

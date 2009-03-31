@@ -20,6 +20,7 @@
 <jsp:directive.page import="com.elongway.pss.util.PowerFeeCal" />
 <jsp:directive.page
 	import="com.elongway.pss.dto.domain.LwNewFactoryIndicatorBakDto" />
+<%@page import="com.elongway.pss.util.AppConst"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
@@ -751,22 +752,24 @@
 					%>
 					<%
 					if (corporation.getIfchange().equals("0")) {
+					 
 					%>
-					<td nowrap colspan="2">
-						<span class="title"></span>
-					</td>
-					<td nowrap>
-						<span class="title"></span>
-					</td>
-					<td nowrap>
-						<span class="title"></span>
+					<td nowrap colspan="1">
+						<span class="title">""</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"></span>
+						<span class="title"><%=corporation.getTaobiaoQuantity() %></span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=corporation.getTaobiaoPrice() %></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=corporation.getTaobiaoFee() %></span>
 					</td>
 					<%
 					}
 					%>
+					
 				</tr>
 
 				<tr class=listtitle align="center">

@@ -1431,6 +1431,8 @@
 			<forward name="corporationPointerinitialize"
 				path="/maintenance/corporationPointerinitialize/corporationPointerinitializeShow.jsp">
 			</forward>
+			
+            <forward name="Success" path="/common/pub/Success.jsp"/>
 		</action>
 		<action path="/corporationInputBefore" name="LWUserLineForm"
 			type="com.elongway.pss.ui.dataInput.UIShowCorporationUserAction"

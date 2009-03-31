@@ -71,6 +71,6 @@ public class UISaveCorporationPointerinitializeAction extends Action {
 	    Collection allPointer=new ArrayList();
 		allPointer=blLwNewFactoryIndicatorFacade.findByConditions(conditions);
 		httpServletRequest.setAttribute("allPointer", allPointer);
-		return actionMapping.findForward("corporationPointerinitialize");
+		return actionMapping.findForward("Success");
 	}
 }

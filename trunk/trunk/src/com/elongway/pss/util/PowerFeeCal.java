@@ -1952,6 +1952,7 @@ public class PowerFeeCal {
 	        }
 	        return 0;
 	    }
+	
 	 public static TownSataDto getSumCompanyStat(Collection <TownSataDto>resultList,String statMonth){
 			
 			TownSataDto townSataDto2= new TownSataDto();
@@ -1969,9 +1970,6 @@ public class PowerFeeCal {
 			double sumJiJin = 0.0;
 			// 总库区
 			double sumKuQu = 0.0;
-
-			
-
 			// 纯电金
 			double pureDianJin = 0.0;
 			// 电金税
