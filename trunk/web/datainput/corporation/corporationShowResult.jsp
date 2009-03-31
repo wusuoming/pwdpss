@@ -39,8 +39,9 @@
 		 LwCorporationSummaryDto corporation=(LwCorporationSummaryDto)request.getAttribute("LwCorporationSummaryDto2");
 		DecimalFormat df = new DecimalFormat("###0.00");
 		
-		
+		// ÊÇ·ñÍ£²ú
 	if(corporation.getIfchange().equals("0")){
+	// 
       	if(corporation.getQuantityStyle().equals("1") ){
 		 %>
 		   <table border="1" >

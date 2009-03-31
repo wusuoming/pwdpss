@@ -291,11 +291,10 @@ create by wangrongjia
         
         <td class="input" ><input name="day" value=""  style="width:65px"></td>
 							
-							<%} %>					<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
+							<%} %>					
+							<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
 										
-						<td class="input" >
-						
-					
+						<td class="input" ></td>
       
 							
 							<%} %>
@@ -319,7 +318,7 @@ create by wangrongjia
 							
 							<%} %>					<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
 										
-						<td class="input" >
+						<td class="input" ></td>
 						
 					
       
@@ -341,7 +340,13 @@ create by wangrongjia
 						<%
 						}
 						 %>
-
+<%
+						if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("2")){
+						 %>
+						<td class="title" align="center">Ì×±í<input name="useStyle" style="width:65px" value="2" type="hidden" readonly="readonly"></td>										
+						<%
+						}
+						 %>
 
 						                  
 					</tr>
