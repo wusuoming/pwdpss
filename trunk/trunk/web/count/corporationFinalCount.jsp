@@ -752,10 +752,12 @@
 					%>
 					<%
 					if (corporation.getIfchange().equals("0")) {
-					 
+					 String taoBiaoName = corporation.getTaobiaoName() ;
+					  if(!"".equals(taoBiaoName)){
 					%>
+					
 					<td nowrap colspan="1">
-						<span class="title">""</span>
+						<span class="title"><%=corporation.getTaobiaoName() %></span>
 					</td>
 					<td nowrap colspan="2">
 						<span class="title"><%=corporation.getTaobiaoQuantity() %></span>
@@ -767,7 +769,20 @@
 						<span class="title"><%=corporation.getTaobiaoFee() %></span>
 					</td>
 					<%
-					}
+					}else{%>
+						<td nowrap colspan="1">
+						<span class="title"></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"></span>
+					</td>
+					<td nowrap>
+						<span class="title"></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"></span>
+					</td>
+					<% }}
 					%>
 					
 				</tr>

@@ -162,9 +162,23 @@
   </table>
   <%} else{%>
   <table border="1">
+  <% String taobiaoName = corporation.getTaobiaoName();
+  double taobiaoPrice = corporation.getTaobiaoPrice();
+  double taobiaoQuantity = corporation.getTaobiaoQuantity();
+  double taobiaoFee = corporation.getTaobiaoFee();
+          Boolean b = false;
+          if(taobiaoName!=null&&!"".equals(taobiaoName)){
+          b = true;
+          }
+           if(b){%>
   <tr class=listtitle align="center">
+			<td class=title0 colspan="9"><B><%=corporation.getUserNo()%></B></td>
+		</tr>
+		<%}else{ %>
+		  <tr class=listtitle align="center">
 			<td class=title0 colspan="8"><B><%=corporation.getUserNo()%></B></td>
 		</tr>
+		<%} %>
  
     <tr>
       
@@ -177,7 +191,15 @@
 			<td nowrap><span class="title"><%=corporation.getAjustRate()%></span></td>
 			<td nowrap><span class="title"></span></td>
 			<td nowrap><span class="title">力率电费</span></td>
-            <td nowrap><span class="title"><%=df.format(corporation.getPowerRateFee())%></span></td>
+            <td nowrap colspan="1"><span class="title"><%=df.format(corporation.getPowerRateFee())%></span></td>
+       <% 
+           if(b){%>
+            <td nowrap colspan="1">
+						<span class="title"></span>
+					</td>
+            <% }else{%>
+               
+            <%} %>
     </tr>
     <tr>
       <td nowrap><span class="title"></span></td>
@@ -198,6 +220,15 @@
 			<td nowrap><span class="title">电金</span></td>
 			<td nowrap><span class="title">三峡</span></td>
             <td nowrap><span class="title">基金</span></td>
+             <% 
+           if(b){%>
+            <td nowrap colspan="1">
+						<span class="title"><%=taobiaoName %></span>
+					</td>
+            <% }else{%>
+               
+            <%} %>
+            
     </tr>
     <tr>
      <td nowrap><span class="title">电量</span></td>
@@ -217,6 +248,14 @@
 			<td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
 			<td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
             <td nowrap><span class="title"><%=corporation.getElectricQuantity()%></td>
+             <% 
+           if(b){%>
+            <td nowrap colspan="1">
+						<span class="title"><%=taobiaoQuantity %></span>
+					</td>
+            <% }else{%>
+               
+            <%} %>
     </tr>
     <tr>
       <td nowrap><span class="title">电价</span></td>
@@ -236,6 +275,14 @@
 			<td nowrap><span class="title"><%=corporation.getPowerPrice()%></span></td>
 			<td nowrap><span class="title"><%=corporation.getSanXiaPrice()%></span></td>
             <td nowrap><span class="title"><%=corporation.getSurchargePrice()%></span></td>
+             <% 
+           if(b){%>
+            <td nowrap colspan="1">
+						<span class="title"><%=taobiaoPrice%></span>
+					</td>
+            <% }else{%>
+               
+            <%} %>
     </tr>
     <tr>
       <td nowrap><span class="title">电费</span></td>
@@ -255,6 +302,14 @@
 			<td nowrap><span class="title"><%=df.format(corporation.getPowerFee())%></span></td>
 			<td nowrap><span class="title"><%=df.format(corporation.getSanXiaFee())%></span></td>
             <td nowrap><span class="title"><%=df.format(corporation.getSurcharge())%></span></td>
+             <% 
+           if(b){%>
+            <td nowrap colspan="1">
+						<span class="title"><%=taobiaoFee %></span>
+					</td>
+            <% }else{%>
+               
+            <%} %>
     </tr>
     <tr>
     <td nowrap><span class="title">电费合计</span></td>

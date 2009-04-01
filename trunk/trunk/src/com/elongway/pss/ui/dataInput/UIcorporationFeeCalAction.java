@@ -23,6 +23,7 @@ import com.elongway.pss.bl.facade.BLLwSalePriceFacade;
 import com.elongway.pss.bl.facade.BLLwUserLineFacade;
 import com.elongway.pss.bl.facade.BLLwindicatorFacade;
 
+import com.elongway.pss.dto.custom.CommonDto;
 import com.elongway.pss.dto.domain.LwAmmeterChangeDto;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
@@ -263,9 +264,11 @@ public class UIcorporationFeeCalAction extends Action {
 			 */
 			double isPointerQuantity = 0D;
 			String taoBiaoFlag = AppConst.NOT_TAOBIAO_FLAG;
+			// 声明通用Dto
+			CommonDto commonDto = new CommonDto();
 			taobiaoQuantity = this.getTaoBiaoQuantity(AmmeterNo, ThisWorkNum,
 					LastWorkNum, Rate, useStyle, ChgAmmeterQuantity,
-					CompensateQuantity,taoBiaoFlag);
+					CompensateQuantity,taoBiaoFlag,commonDto);
 			isPointerQuantity = Math.round(PointerQuantity - unDenizenFeePower
 					- taobiaoQuantity);
 			String taoPriceType = AppConst.METERIALS_TYPE_0;
@@ -429,10 +432,21 @@ public class UIcorporationFeeCalAction extends Action {
 			 * modify by qiaoyouliang 2009-03-31 beijing begin
 			 * 大工业计算增加套表保存 
 			 */
-			lwCorporationSummaryDto.setTaobiaoFee(taobiaoFee);
-			lwCorporationSummaryDto.setTaobiaoPrice(taobiaoPrice);
-			lwCorporationSummaryDto.setTaobiaoQuantity(taobiaoQuantity);
+			lwCorporationSummaryDto.setTaobiaoFee(PowerFeeCal.getValue(taobiaoFee, AppConst.TWO_DOT_FLAG));
+			lwCorporationSummaryDto.setTaobiaoPrice(PowerFeeCal.getValue(taobiaoPrice, AppConst.TWO_DOT_FLAG));
+			lwCorporationSummaryDto.setTaobiaoQuantity(PowerFeeCal.getValue(taobiaoQuantity, AppConst.ZERO_DOT_FLAG));
 			lwCorporationSummaryDto.setTaobiaoflag(taoBiaoFlag);
+			
+			BLLwAmmeterChangeFacade blLwAmmeterChangeFacade1 = new BLLwAmmeterChangeFacade();
+			Integer index =  commonDto.getInteger();
+			if(index!=null){
+			String ammeterNo = AmmeterNo[index];
+			Collection taoBiaoList = blLwAmmeterChangeFacade1.findByConditions("ammeterNo = '"+ammeterNo+"'");
+			Iterator<LwAmmeterChangeDto> it = taoBiaoList.iterator();
+			if(it.hasNext()){
+			lwCorporationSummaryDto.setTaobiaoName(((LwAmmeterChangeDto)it.next()).getFactoryName());
+			}
+			}
 			/**
 			 * modify by qiaoyouliang 2009-03-31 beijing end
 			 *  大工业计算增加套表保存
@@ -1098,7 +1112,7 @@ public class UIcorporationFeeCalAction extends Action {
 	 */
 	public double getTaoBiaoQuantity(String[] AmmeterNo, String ThisWorkNum[],
 			String LastWorkNum[], String Rate[], String useStyle[],
-			String ChgAmmeterQuantity[], String CompensateQuantity[],String taoBiaoFlag) {
+			String ChgAmmeterQuantity[], String CompensateQuantity[],String taoBiaoFlag,CommonDto commonDto) {
 		double taoQuantity = 0D;
 		for (int i = 0; i < AmmeterNo.length; i++) {
 
@@ -1111,9 +1125,11 @@ public class UIcorporationFeeCalAction extends Action {
 								+ Double.parseDouble(CompensateQuantity[i]));
 				
 				taoBiaoFlag = "1";
+				commonDto.setInteger(i);
 			}
 
 		}
+		
 		return taoQuantity;
 	}
 
