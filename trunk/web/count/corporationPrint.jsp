@@ -402,14 +402,40 @@
 			<td nowrap><span class="title"><font size="3"><%=corporation.getLastPrice()%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getLastFee())%></font></span></td>
     	<%} %>
-    				<%
-              if(corporation.getIfchange().equals("0")){
-              %>
-			<td nowrap colspan="2"><span class="title"></span></td>
-			<td nowrap><span class="title"></span></td>
-			<td nowrap><span class="title"></span></td>
-			<td nowrap colspan="2" ><span class="title"></span></td>
-    	<%} %>
+    		<%
+					if (corporation.getIfchange().equals("0")) {
+					 String taoBiaoName = corporation.getTaobiaoName() ;
+					  if(!"".equals(taoBiaoName)){
+					%>
+					
+					<td nowrap colspan="1">
+						<span class="title"><%=corporation.getTaobiaoName() %></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=corporation.getTaobiaoQuantity() %></span>
+					</td>
+					<td nowrap>
+						<span class="title"><%=corporation.getTaobiaoPrice() %></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"><%=corporation.getTaobiaoFee() %></span>
+					</td>
+					<%
+					}else{%>
+						<td nowrap colspan="1">
+						<span class="title"></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"></span>
+					</td>
+					<td nowrap>
+						<span class="title"></span>
+					</td>
+					<td nowrap colspan="2">
+						<span class="title"></span>
+					</td>
+					<% }}
+					%>
     </tr>
   
      <tr class=listtitle align="center">
