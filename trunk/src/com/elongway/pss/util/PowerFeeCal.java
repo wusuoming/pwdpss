@@ -1198,42 +1198,48 @@ public class PowerFeeCal {
 		lwTownPriceSummaryDto.setPeopleFeeSanXia(peopleSanXia);
 		lwTownPriceSummaryDto.setPeopleJiJin(peopleJiJin);
 		lwTownPriceSummaryDto.setPeopleKuQu(peopleKuQu);
-		lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.FOUR_DOT_FLAG));
+		//lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(sumPeopleFee, AppConst.FOUR_DOT_FLAG));
 
 		// 非居民
 		lwTownPriceSummaryDto.setNotPeopleDianJin(notPeopleDianJin);
 		lwTownPriceSummaryDto.setNotPeopleFeeSanXia(notPeopleSanXia);
 		lwTownPriceSummaryDto.setNotPeopleJiJin(notPeopleJiJin);
 		lwTownPriceSummaryDto.setNotPeopleKuQu(notPeopleKuQu);
-		lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.FOUR_DOT_FLAG));
-
+		//lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(sunNotPeopleFee, AppConst.FOUR_DOT_FLAG));
+		
 		// 农业生产
 		lwTownPriceSummaryDto.setProduceDianJin(produceDianJin);
 		lwTownPriceSummaryDto.setProduceSanXia(produceSanXia);
 		lwTownPriceSummaryDto.setProduceJiJin(produceJiJin);
 		lwTownPriceSummaryDto.setProduceKuQu(produceKuQu);
-		lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(productFee, AppConst.FOUR_DOT_FLAG));
+		//lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(productFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(sumProduceFee, AppConst.FOUR_DOT_FLAG));
 
 		// 农灌
 		lwTownPriceSummaryDto.setFarmDianJin(farmDianJin);
 		lwTownPriceSummaryDto.setFarmSanXia(farmSanXia);
 		lwTownPriceSummaryDto.setFarmJiJin(farmJiJin);
 		lwTownPriceSummaryDto.setFarmKuQu(farmKuQu);
-		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(sumFarmFee, AppConst.FOUR_DOT_FLAG));
 
 		// 商业
 		lwTownPriceSummaryDto.setBizDianJin(bizDianJin);
 		lwTownPriceSummaryDto.setBizSanXia(bizSanXia);
 		lwTownPriceSummaryDto.setBizJiJin(bizJiJin);
 		lwTownPriceSummaryDto.setBizKuQu(bizKuQu);
-		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(bizFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(bizFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(sumBizFee, AppConst.FOUR_DOT_FLAG));
 
 		// 非普工业
 		lwTownPriceSummaryDto.setIndustryDianJin(industryDianJin);
 		lwTownPriceSummaryDto.setIndustrySanXia(industrySanXia);
 		lwTownPriceSummaryDto.setIndustryJiJin(industryJiJin);
 		lwTownPriceSummaryDto.setIndustryKuQu(industryKuQu);
-		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(sumIndustryFee, AppConst.FOUR_DOT_FLAG));
 
 		return lwTownPriceSummaryDto;
 	}
@@ -2018,26 +2024,67 @@ public class PowerFeeCal {
 			return townSataDto2;
 		}
 	 /**
-	  * 组织条件
-	  * @param startMonth 起始月份
-	  * @param endMonth 终止月份
-	  * @param column 列名
-	  * @return 条件
-	  */
-		public static String getAddMonthCondition(String startMonth, String endMonth,
-				String column) {
-			StringBuffer buffer = new StringBuffer();
-			buffer.append("1=1 and ").append(column).append(" between '").append(
-					startMonth).append("' and '").append(endMonth).append("'");
-			return buffer.toString();
+		 * 组织条件
+		 * 
+		 * @param startMonth
+		 *            起始月份
+		 * @param endMonth
+		 *            终止月份
+		 * @param column
+		 *            列名
+		 * @return 条件
+		 */
+	public static String getAddMonthCondition(String startMonth,
+			String endMonth, String column) {
+		StringBuffer buffer = new StringBuffer();
+		startMonth = new DateTime(startMonth, DateTime.YEAR_TO_MONTH).toString();
+		endMonth = new DateTime(endMonth, DateTime.YEAR_TO_MONTH).toString();
+		buffer.append("1=1 and ").append(column).append(" between '").append(
+				startMonth).append("' and '").append(endMonth).append("'");
+		return buffer.toString();
+	}
+
+	/**
+	 * 得到起始某一年度的1月。
+	 * 
+	 * @param stateMonth
+	 * @return 某一年度的1月。
+	 */
+	public static String getFirstMonth(String stateMonth) {
+		StringBuffer buffer = new StringBuffer();
+		String year = new Integer(new DateTime(stateMonth).getYear())
+				.toString();
+		buffer.append(year).append("-").append(AppConst.START_MONTH);
+		return buffer.toString();
+	}
+	/**
+	 * 根据当月、累计的标志组织时间条件。
+	 * @param countType 当月、累计
+	 * @param endMonth 结束月份
+	 * @param column 列名
+	 * @return 时间条件
+	 */
+	public static String orgTimeCondition(String countType,String endMonth,String column) {
+		StringBuffer buffer = new StringBuffer();
+		// 当月统计
+		if(AppConst.STAT_CURRENT_FLAG.equals(countType)){
+			buffer.append(PowerFeeCal.getAddMonthCondition(endMonth, endMonth, column));
+		}else{
+			// 累计
+			buffer.append(PowerFeeCal.getAddMonthCondition(PowerFeeCal.getFirstMonth(endMonth), endMonth, column));
 		}
-	 public static LwCorporationSummaryDto findonecorporation(String userno,String date)  throws Exception{
-			
-			BLLwCorporationSummaryFacade  blLwCorporationSummaryFacade=new BLLwCorporationSummaryFacade();
-			LwCorporationSummaryDto  lwCorporationSummaryDto=new LwCorporationSummaryDto();
-			lwCorporationSummaryDto=blLwCorporationSummaryFacade.findByPrimaryKey(userno, date);
-			return  lwCorporationSummaryDto;
-		}
+		return buffer.toString();
+	}
+
+	public static LwCorporationSummaryDto findonecorporation(String userno,
+			String date) throws Exception {
+
+		BLLwCorporationSummaryFacade blLwCorporationSummaryFacade = new BLLwCorporationSummaryFacade();
+		LwCorporationSummaryDto lwCorporationSummaryDto = new LwCorporationSummaryDto();
+		lwCorporationSummaryDto = blLwCorporationSummaryFacade
+				.findByPrimaryKey(userno, date);
+		return lwCorporationSummaryDto;
+	}
 	}
 	
 

@@ -919,7 +919,7 @@ BODY {
 										.format(Double
 												.parseDouble(differenceQuantityjy) / 1.17 * 0.17)%></font>
 					<input type="hidden" name="chabieTax" value="<%=df.format(Double
-												.parseDouble(differenceQuantityjy) / 1.17)%>" >	
+												.parseDouble(differenceQuantityjy) / 1.17 * 0.17)%>" >	
 					</span>
 					<br>
 				</td>

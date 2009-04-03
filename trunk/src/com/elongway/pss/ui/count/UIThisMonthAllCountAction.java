@@ -834,6 +834,7 @@ public class UIThisMonthAllCountAction extends Action {
 				httpServletRequest.setAttribute("faXingList", faXingList);
 				httpServletRequest.setAttribute("counttype", counttype);
 				httpServletRequest.setAttribute("inputDate", statMonth);
+				httpServletRequest.setAttribute("print", print);
 				if(AppConst.PRINT_FLAG.equals(print)){
 					forward = "leijistoretableprint";
 				}else{

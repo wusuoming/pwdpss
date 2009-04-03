@@ -79,6 +79,8 @@ interface IFlag {
 	/** 不存在套表*/
 	public static final String 	NOT_TAOBIAO_FLAG = "0";
 	
+
+	
 	
 	
 }
@@ -135,6 +137,12 @@ interface IValue {
 	public static final String USERSTYLE_INDUSTRY_0 = "0";
 	// 居民电表
 	public static final String USERSTYLE_PEOPLE_1 = "1";
+	
+	// 起始月份
+	public static final String START_MONTH = "01-01";
+	
+	// 字段名称
+	public static final String COLUMN_STATMONTH = "statmonth";
 	
 	
 }
