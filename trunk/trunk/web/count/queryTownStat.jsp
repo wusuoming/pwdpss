@@ -73,19 +73,34 @@ create by wangrongjia
          <%String flag = (String)request.getAttribute("flag"); 
          String faXing = (String)request.getAttribute("faXing"); 
             if(flag==null){%>
-			<td class=title0 colspan="7"><B>直供乡统计</B></td>
+			<td class=title0 colspan="8"><B>直供乡统计</B></td>
 			<%}else{ %>
-			<td class=title0 colspan="7"><B>直供乡购电结算单查询</B></td>
+			<td class=title0 colspan="8"><B>直供乡购电结算单查询</B></td>
 			<%} %>
 		</tr>        
           <tr>
           <%if(!"1".equals(faXing)) {%>
-          <td class="title">选择统计模式：
+          <td class="title">统计维度：</td>
+          <td class="title">
 	<select name="countStyle" onchange="changeF()">
 	<option value="1">按局统计</option>
 	<option value="2">按电价统计</option></select></td>
+	
+	<td class="title" id="a">统计方式：</td>
+         <td class="input" id="b"><select name="counttype" >
+				   
+				  <option value="1">当月统计</option>
+				  <option value="2">累加统计</option>
+				
+				  
+				
+				  
+              </select>	
+              </td>
 	<%} %>
-              <td align="center" class="title">所属供电公司：
+	
+              <td class="title" id="c">供电公司：</td>
+              <td class="title" id="d">
             <%Collection list = (Collection)request.getAttribute("supplycom"); 
             LwDcodeDto lwDcodeDto1 = new LwDcodeDto();
 		lwDcodeDto1.setCodeCode("sum");
@@ -105,8 +120,9 @@ create by wangrongjia
               <%}} %>
                    </select>	
                    </td>
-          <td align="center"  class="title">统计年月：
-				<input class="title" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
+                   <td class="title">统计年月：</td>
+          <td align="center"  class="title">
+				<input class="title" name="inputDate" style="width:120px" id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" 
 						value="<% out.println(formatter.format(currentDate));%>"   />			
 				 <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
 					style="cursor: pointer; border: 1px solid #0083da;"
@@ -169,8 +185,16 @@ function changeF(){
 
 
 if(fm.countStyle.value=="2"){
-
-fm.company.disabled="disabled";
+a.style.display="";
+b.style.display="";
+c.style.display="none";
+d.style.display="none";
+}
+if(fm.countStyle.value=="1"){
+a.style.display="none";
+b.style.display="none";
+c.style.display="";
+d.style.display="";
 }
 }
 </script>

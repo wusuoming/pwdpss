@@ -167,12 +167,20 @@ public class UIQueryTownStatAction extends Action {
 				 * 按电价进行统计
 				 **************************************************************/
 			else {
+
+				// 声明变量
+				StringBuffer buffer = new StringBuffer();
+				
+				// 得到统计类型 当月、累计
+				String countType = httpServletRequest.getParameter("counttype");
+				statMonth = httpServletRequest.getParameter("inputDate");
+				
+				// 组织时间条件
+				buffer.append(PowerFeeCal.orgTimeCondition(countType, statMonth, AppConst.COLUMN_STATMONTH));
 				String print = (String) httpServletRequest
 						.getParameter("print");
 				List<TownFeeSumCustomDto> feeList = new ArrayList<TownFeeSumCustomDto>();
-				statMonth = httpServletRequest.getParameter("inputDate");
-				statMonth = new DateTime(statMonth, DateTime.YEAR_TO_MONTH)
-						.toString();
+				
 				String codeCondition = null;
 				TownFeeSumCustomDto sumFeeDto = new TownFeeSumCustomDto();
 				dcodeList = blLwDcodeFacade
@@ -188,8 +196,7 @@ public class UIQueryTownStatAction extends Action {
 					if (userList != null && userList.size() != 0) {
 						condition = PowerFeeCal.getUserCondition(userList);
 						priceSummaryList = blLwTownPriceSummaryFacade
-								.findByConditions("statMonth = '" + statMonth
-										+ "'" + condition);
+								.findByConditions(buffer.toString() + condition);
 						if (priceSummaryList != null
 								&& priceSummaryList.size() != 0) {
 							// 按照比例分摊分电压等级进行计算
@@ -204,6 +211,9 @@ public class UIQueryTownStatAction extends Action {
 				Collections.sort(feeList,
 						new TownFeeSumCustomDto.ListComparator());
 				httpServletRequest.setAttribute("feeList", feeList);
+				statMonth = new DateTime(statMonth, DateTime.YEAR_TO_MONTH)
+				.toString();
+
 				httpServletRequest.setAttribute("statMonth", statMonth);
 				httpServletRequest.setAttribute("countStyle", countStyle);
 				if ("1".equals(print)) {

@@ -102,7 +102,7 @@ String s=(String)request.getAttribute("inputDate");
 	<input type="hidden" name="counttype" value="<%=(String)request.getAttribute("counttype") %>">
 		
 	<tr>
-			<td class=title0 colspan="13"><font size="5">包头市农电公司电费电量发行单（累计）</font></td>
+			<td class=title0 colspan="13"><font size="5"><b>包头市农电公司电费电量发行单（累计）</b></font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">
@@ -111,43 +111,43 @@ String s=(String)request.getAttribute("inputDate");
 	</tr>
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="5">单位</font></span>
+					<span class="title"><font size="5"><b>单位</b></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="5">售电量</font></span>
+					<span class="title"><font size="5"><b>售电量</b></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="5">纯电费</font></span>
+					<span class="title"><font size="5"><b>纯电费</b></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="5">电费税</font></span>
+					<span class="title"><font size="5"><b>电费税</b></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="5">电金</font></span>
+					<span class="title"><font size="5"><b>电金</b></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="5">电金税</font></span>
+					<span class="title"><font size="5"><b>电金税</b></font></span>
 				<br></td>			
 				<td nowrap width="10%">
-					<span class="title"><font size="5">三峡</font></span>
+					<span class="title"><font size="5"><b>三峡</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">三峡税</font></span>
+					<span class="title"><font size="5"><b>三峡税</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">基金</font></span>
+					<span class="title"><font size="5"><b>基金</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">基金税</font></span>
+					<span class="title"><font size="5"><b>基金税</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">差别电费</font></span>
+					<span class="title"><font size="5"><b>差别电费</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">差别电费税</font></span>
+					<span class="title"><font size="5"><b>差别电费税</b></font></span>
 				<br></td>	
 				<td nowrap width="10%">
-					<span class="title"><font size="5">总计</font></span>
+					<span class="title"><font size="5"><b>总计</b></font></span>
 				<br></td>	
 							
 			</tr>
@@ -207,12 +207,17 @@ String s=(String)request.getAttribute("inputDate");
 			
 			
 	</table>
-	<table cellpadding="0" cellspacing="0" width="100%"> 
+	<%String print = (String)request.getAttribute("print"); 
+	if(!AppConst.PRINT_FLAG.equals(print)){
+					%>
+					<table cellpadding="0" cellspacing="0" width="100%"> 
         <tr> 
         <tr class="listtitle" align="center">             
             <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="printCount();">        </td> 
         </tr> 
     </table>
+				<%} %>
+	
 
 </form>
 </body>
