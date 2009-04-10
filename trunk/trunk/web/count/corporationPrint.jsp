@@ -51,7 +51,7 @@
 %>
 		   <table width="100%" border="1" cellspacing="0" >
   <tr class=listtitle align="center" >
-			<td class=title0 colspan="11"><B><font size="4">结算单</font></B></td>
+			<td class=title0 colspan="12"><B><font size="4">结算单</font></B></td>
 		</tr>
 	<tr>
 	<td nowrap colspan="2" >
@@ -409,16 +409,16 @@
 					%>
 					
 					<td nowrap colspan="1">
-						<span class="title"><%=corporation.getTaobiaoName() %></span>
+						<span class="title"><font size="3"><%=corporation.getTaobiaoName() %></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=corporation.getTaobiaoQuantity() %></span>
+						<span class="title"><font size="3"><%=corporation.getTaobiaoQuantity() %></font></span>
 					</td>
 					<td nowrap>
-						<span class="title"><%=corporation.getTaobiaoPrice() %></span>
+						<span class="title"><font size="3"><%=corporation.getTaobiaoPrice() %></font></span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=corporation.getTaobiaoFee() %></span>
+						<span class="title"><font size="3"><%=corporation.getTaobiaoFee() %></font></span>
 					</td>
 					<%
 					}else{%>

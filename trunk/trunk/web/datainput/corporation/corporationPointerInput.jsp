@@ -63,15 +63,7 @@ create by wangrongjia
 </STYLE>
 </head>
 
-<body class=interface>
-
-
-
-
-
-
-
-  
+<body class=interface
     <!--CONTENT BEGIN-->
     
       <form name="fm" method="post">
@@ -109,8 +101,6 @@ create by wangrongjia
             
             <td class="input"><input class="text" name="UserName" type="text" value="<%=lwCoporationUserInfoDto.getUserName()%>" ></td>
           
-				
-         
          </tr>
           <tr>
            <td class="title">月中停产或生产</td>				
@@ -118,7 +108,6 @@ create by wangrongjia
 				  
 				  <option value="0">否</option>
 				  <option value="1">是</option>
-				 
               </select>	
 			 </td>
 			 <%
@@ -132,7 +121,6 @@ create by wangrongjia
 		<td class=input >
 		<td class=input >
 		<%} %>
-		
 		
 			 <%--<td class="title">电金电量</td>				
 				<td class="input" ><select name="dianjinPower"  >
@@ -177,7 +165,7 @@ create by wangrongjia
 		 </tr>
 		 <%} %>
 		 <tr>
-		 		       <td class="title" id="z3" style="display: none">状态改变日期：</td>				
+		 		<td class="title" id="z3" style="display: none">状态改变日期：</td>				
 				<td class=input  id="z1" style="display: none">
 				<input class="text" name="changeDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly"   />				
 			
@@ -236,12 +224,6 @@ create by wangrongjia
 			<td nowrap><span class="title">倍率</span></td>
 			<td nowrap><span class="title">有功电量</span></td>
 			<td nowrap><span class="title">无功电量  </span></td>
-			
-			
-
-			
-			
-			
 		</tr>
 
 					<tr >
@@ -316,16 +298,10 @@ create by wangrongjia
 					<option value="1">生产</option>
 				  <option value="2" >停产</option></td>
 							
-							<%} %>					<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
-										
+							<%} %>	
+						<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
 						<td class="input" ></td>
-						
-					
-      
-							
-							<%} %>		
-						 		
-						 		
+							<%} %>	
 						 		<%
 						if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("0")){
 						 %>
@@ -343,12 +319,12 @@ create by wangrongjia
 <%
 						if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("2")){
 						 %>
+						 <td class="input" ></td>
+						 <td class="input" ></td>
 						<td class="title" align="center">套表<input name="useStyle" style="width:65px" value="2" type="hidden" readonly="readonly"></td>										
 						<%
 						}
-						 %>
-
-						                  
+						 %>             
 					</tr>
 					<%} %>
 					<tr class=listtitle id="c2" style="display: none">
@@ -360,12 +336,6 @@ create by wangrongjia
 			<td nowrap><span class="title">倍率</span></td>
 			<td nowrap><span class="title">有功电量</span></td>
 			<td nowrap><span class="title">无功电量  </span></td>
-		
-			
-
-			
-			
-			
 		</tr>
 					<tr id="c1" style="display: none">
 						<td class="input" rowspan="3"><input name="changeAmmeterNo" value="大工业" style="border:0" readonly="readonly" style="width:65px"></td>
@@ -375,16 +345,10 @@ create by wangrongjia
 						 <td class="input" ><input name="changeThisWorkNum" value="" onblur="checkchangeWork()" style="width:65px"></td>
 						
 						<td class="input" ><input name="changeLastIdleNum" value=""  onblur="checkchangeunWork()" style="width:65px" ></td>
-						
-						
-					
 						 <td class="input" ><input name="changeThisIdleNum" value="" onblur="checkchangeunWork()" style="width:65px"></td>
 						
 						
-						<td class="input" ><input name="changeRate" value="<%=LwNewFactoryIndicatorDto2.getRate()%>" style="width:65px" onblur="checkchangeRate()"></td>
-
-						
-						
+						<td class="input" ><input name="changeRate" value="<%=LwNewFactoryIndicatorDto2.getRate()%>" style="width:65px" onblur="checkchangeRate()"></td>				
 						
 						
 						 <td class="input" ><input name="changeworkQuantity" value="" style="width:65px"></td>

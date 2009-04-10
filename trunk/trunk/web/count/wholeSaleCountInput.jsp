@@ -64,72 +64,47 @@ create by wangrongjia
 </STYLE>
 </head>
 
-<body class=interface>
-
-
-
-
-
-
-
-  
+<body class=interface  onload="javascript:sexy();">
     <!--CONTENT BEGIN-->
-    
       <form name="fm" method="post" style="display:block;">
         <table class=common width="100%" cellspacing="0" cellpadding="5">
         <tr class=listtitle align="center">
 			<td class=title0 colspan="7"><B>趸售统计</B></td>
 		</tr>
-
-         
-         
           <tr>
            <td class="title">趸售统计：</td>	
-         <td class="input"><select name="wholesaleStyle" onchange="sexy()">
+           <td class="input"><select name="wholesaleStyle" onchange="sexy()">
 				   <option value="3">按局统计</option>
-				<%--<option value="1">按电价统计</option>
-				  --%><option value="2">各局按电价统计</option>
-				
-				  
-				
-				  
+				     <option value="2">按电价统计</option>
+				 
               </select>	
-          <td class="title">录入年月：</td>				
-				<td class=input>
-				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" value="<% out.println(formatter.format(currentDate));%>"   />				
-			
-				<td> <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
-					style="cursor: pointer; border: 1px solid #0083da;"
-					title="Date selector"					
-					onmouseover="this.style.background='#4CA8EB';"
-					onmouseout="this.style.background=''" /></td>	
-					
-          <td style="display:none;"><input styleClass="text" name="powerClass" type="text" value="2" ></td>
-          
-  
-          
-          
-          </tr>
-          
-          <tr>
-            <td class="title" id="s">趸售公司：</td>	
+           <td class="title" id="s1">选择：</td>	 
+           <td class="input" id="d1"><select name="counttype" >
+				  <option value="1">当月统计</option>
+				  <option value="2">累加统计</option>
+              </select>	
+           </td>
+           <td class="title" id="s">趸售公司：</td>	
          <td class="input" id="d"><select name="company" >
 				  <option value="gy">固阳</option>
 				  <option value="dm">达茂</option>
 				  <option value="ty">土佑</option>
 				   <option value="jy">九原</option>
-				
-				  
-              </select>	
-			<td class=input>
-			<td class=input>
-			</tr>
+              </select>
+              </td>
+           <td class="title">录入年月：</td>				
+				<td class=input>
+				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly" value="<% out.println(formatter.format(currentDate));%>"   />				
 			
-			
-		  
-		  <tr class="listtitle" align="center"><td class=button align="center"><input class=button name="serch" type="button"  value=" 统计 " onClick="javascript:wholeSaleSerch();"></td>
-		 
-</tr>
+				<td class="title"> <img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
+					style="cursor: pointer; border: 1px solid #0083da;"
+					title="Date selector"					
+					onmouseover="this.style.background='#4CA8EB';"
+					onmouseout="this.style.background=''" /></td>	
+                <td style="display:none;"><input styleClass="text" name="powerClass" type="text" value="2" ></td>
+          </tr>
+		  <tr class="listtitle" align="center"><td class=button align="center"><input class=button name="serch" type="button"  value=" 统计 " onClick="javascript:wholeSaleSerch();"></td>	 
+          </tr>
         </table>
       
      <br />
@@ -165,16 +140,15 @@ function sexy(){
 if(fm.wholesaleStyle.value=='3'){
 	s.style.display="";
 	d.style.display="";
-	
+	s1.style.display="none";
+	d1.style.display="none";
 }
-
-
-if(fm.wholesaleStyle.value=='1'||fm.wholesaleStyle.value=='2'){
+if(fm.wholesaleStyle.value=='2'){
 	s.style.display="none";
 	d.style.display="none";
-	
+	s1.style.display="";
+	d1.style.display="";
 }
-
 }
 
 Calendar.setup({

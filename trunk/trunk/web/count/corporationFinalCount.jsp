@@ -66,7 +66,7 @@
 %>
 			<table style='width:100%' border="1" cellspacing="0">
 				<tr class=listtitle align="center">
-					<td class=title0 colspan="11">
+					<td class=title0 colspan="12">
 						<B>Ω·À„µ•</B>
 					</td>
 				</tr>
@@ -105,7 +105,7 @@
 					<td nowrap colspan="2">
 						<span class="title">µÿ÷∑</span>
 					</td>
-					<td nowrap colspan="2">
+					<td nowrap colspan="1">
 						<span class="title"><%=lwCoporationUserInfoDto.getAddress()%>
 						</span>
 					</td>
@@ -452,9 +452,7 @@
 					%>
 
 				</tr>
-
-
-				<%
+<%
 					}
 					}
 				%>

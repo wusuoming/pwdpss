@@ -58,10 +58,15 @@ public class UIwholeSaleprintAction extends Action {
 		String sum10fee = httpServletRequest.getParameter("sum10fee");
 		String sum35fee = httpServletRequest.getParameter("sum35fee");
 		String sanxia = httpServletRequest.getParameter("sanxia");
+		// 农网还贷
 		String dianjin = httpServletRequest.getParameter("dianjin");
+		// 库区移民
 		String jijin1 = httpServletRequest.getParameter("jijin1");
+		// 可再生能源
 		String jijin2 = httpServletRequest.getParameter("jijin2");
+		// 可再生能源
 		String jijin3 = httpServletRequest.getParameter("jijin3");
+		// 差别电费
 		String chabiedianfei = httpServletRequest.getParameter("chabiedianfei");
 		
 		

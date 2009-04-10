@@ -120,6 +120,7 @@
 			<% TownFeeSumCustomDto feeDto = null;
 			int count = feeList.size()/6;
 			int tempCount = 1;
+			DecimalFormat df = new DecimalFormat("###0.00");
 			for (Iterator iterator = feeList.iterator(); iterator.hasNext();) {
 			feeDto = (TownFeeSumCustomDto)iterator.next();
 		
@@ -132,18 +133,18 @@
 				<br></td>
 				<%}%>
 				<td width="10%"  align="center">
-					<span class="title"><font size="2"><%=feeDto.getVoltLevelName() %></font></span>
+					<span class="title"><font size="2"><%=feeDto.getVoltLevelName()%></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getQuantity() %></font></span>
+					<span class="title"><font size="2"><%=df.format(feeDto.getQuantity()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getPowerFee() %></font></span>
+					<span class="title"><font size="2"><%=df.format(feeDto.getPowerFee()) %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=feeDto.getSumFee() %></font></span>
+					<span class="title"><font size="2"><%=df.format(feeDto.getSumFee()) %></font></span>
 				<br></td>				
 							
 			</tr>
