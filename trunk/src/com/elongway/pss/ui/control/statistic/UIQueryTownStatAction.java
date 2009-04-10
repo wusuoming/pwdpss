@@ -1,5 +1,6 @@
 package com.elongway.pss.ui.control.statistic;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -174,7 +175,6 @@ public class UIQueryTownStatAction extends Action {
 				// 得到统计类型 当月、累计
 				String countType = httpServletRequest.getParameter("counttype");
 				statMonth = httpServletRequest.getParameter("inputDate");
-				
 				// 组织时间条件
 				buffer.append(PowerFeeCal.orgTimeCondition(countType, statMonth, AppConst.COLUMN_STATMONTH));
 				String print = (String) httpServletRequest
@@ -379,6 +379,7 @@ public class UIQueryTownStatAction extends Action {
 		double quantity = 0D;
 		double powerFee = 0D;
 		double sumFee = 0D;
+		DecimalFormat df = new DecimalFormat("###0.00");
 		for (Iterator iterator = feeList.iterator(); iterator.hasNext();) {
 			TownFeeSumCustomDto townFeeSumCustomDto = (TownFeeSumCustomDto) iterator
 					.next();
@@ -387,12 +388,9 @@ public class UIQueryTownStatAction extends Action {
 			sumFee += townFeeSumCustomDto.getSumFee();
 
 		}
-		sumFeeDto.setPowerFee(PowerFeeCal.getValue(powerFee,
-				AppConst.TWO_DOT_FLAG));
-		sumFeeDto.setQuantity(PowerFeeCal.getValue(quantity,
-				AppConst.TWO_DOT_FLAG));
-		sumFeeDto
-				.setSumFee(PowerFeeCal.getValue(sumFee, AppConst.TWO_DOT_FLAG));
+		sumFeeDto.setPowerFee(powerFee);
+		sumFeeDto.setQuantity(quantity);
+		sumFeeDto.setSumFee(sumFee);
 		sumFeeDto.setClassId("合计");
 		sumFeeDto.setVoltLevelName("");
 		sumFeeDto.setSerialNo(AppConst.SERIALNO_900);

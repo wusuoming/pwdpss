@@ -337,6 +337,8 @@ create by wangrongjia
 <%
 						if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("2")){
 						 %>
+						<td class="title" align="center"></td>
+						<td class="title" align="center"></td>
 						<td class="title" align="center">Ì×±í<input  readOnly=true name="useStyle" style="width:65px" value="2" type="hidden" readonly="readonly"></td>										
 						<%
 						}

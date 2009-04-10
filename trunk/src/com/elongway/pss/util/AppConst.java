@@ -79,6 +79,12 @@ interface IFlag {
 	/** 不存在套表*/
 	public static final String 	NOT_TAOBIAO_FLAG = "0";
 	
+	/** 保存*/
+	public static final String 	IS_SAVE_FLAG = "1";
+	
+	/** 没有保存*/
+	public static final String 	NOT_SAVE_FLAG = "0";
+	
 
 	
 	
@@ -143,6 +149,9 @@ interface IValue {
 	
 	// 字段名称
 	public static final String COLUMN_STATMONTH = "statmonth";
+	
+	// 字段名称
+	public static final String COLUMN_INPUTDATE = "inputdate";
 	
 	
 }

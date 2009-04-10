@@ -72,26 +72,16 @@ create by wangrongjia
       <form name="fm" method="post">
         <table class=common width="100%" cellspacing="0" cellpadding="5">
         <tr class=listtitle align="center">
-			<td class=title0 colspan="7"><B>当月电费电量发行单</B></td>
+			<td class=title0 colspan="5"><B>当月电费电量发行单</B></td>
 		</tr>
           <tr>
-          <td class="title">选择：</td>	
-         <td class="input"><select name="counttype" >
-				   
+          <td class="title">&nbsp;&nbsp;&nbsp;&nbsp;选择：&nbsp;<select name="counttype" >
 				  <option value="1">当月统计</option>
 				  <option value="2">累加统计</option>
-				
-				  
-				
-				  
               </select>	
               </td>
-          
-          
-         <td align="center"  style="display: " id='jianren'>录入年月：				
-				
-				<input styleClass="text" name="inputDate"	id="f_date_shqqs"  size="31" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly"   />				
-			
+         <td align="right"  id='jianren'  class="title" >录入年月：			
+			<input class="text" name="inputDate"	id="f_date_shqqs"  style="width:120px" onkeyPress="return pressFullDate(event)"   onblur="checkFullDate(this);" readonly="readonly"   />				
 				<img src="../../../../iacontact/images/img.gif"	id="f_trigger_shqqs"				
 					style="cursor: pointer; border: 1px solid #0083da;"
 					title="Date selector"					

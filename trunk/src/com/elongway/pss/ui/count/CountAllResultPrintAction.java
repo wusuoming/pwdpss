@@ -13,22 +13,15 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.elongway.pss.bl.facade.BLLwAllWholeFeeFacade;
-import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
 import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
-import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
 import com.elongway.pss.bl.facade.BLLwShouShuTableFacade;
-import com.elongway.pss.bl.facade.BLLwWholeSaleDetailFacade;
 import com.elongway.pss.bl.facade.BLLwWholeSaleSummaryFacade;
 import com.elongway.pss.dto.domain.LwAllWholeFeeDto;
-import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
 import com.elongway.pss.dto.domain.LwShouShuTableDto;
-import com.elongway.pss.dto.domain.LwWholeSaleDetailDto;
 import com.elongway.pss.dto.domain.LwWholeSaleSummaryDto;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
-import com.sinosoft.sysframework.common.datatype.DateTime;
-import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class CountAllResultPrintAction extends Action {
 
