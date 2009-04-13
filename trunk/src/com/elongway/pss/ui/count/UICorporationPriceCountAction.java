@@ -542,8 +542,6 @@ public class UICorporationPriceCountAction extends Action {
 			dagongye10lilv+=lwCorporationSummaryDto.getPowerRateFee();
 			dagongye10contentfee+=lwCorporationSummaryDto.getContentFee();
 			dagongye10needfee+=lwCorporationSummaryDto.getNeedFee();
-			
-			
 		}
 		//10kv普通
 		
@@ -553,8 +551,6 @@ public class UICorporationPriceCountAction extends Action {
 			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)it104.next();
 			dagongye10sumfee+=lwCorporationSummaryDto.getPointerFee();
 			dagongye10power+=lwCorporationSummaryDto.getElectricQuantity();
-			
-			
 		}
 		
 		
@@ -578,11 +574,7 @@ public class UICorporationPriceCountAction extends Action {
 			guitie10lilv+=lwCorporationSummaryDto.getPowerRateFee();
 			guitie10contentfee+=lwCorporationSummaryDto.getContentFee();
 			guitie10needfee+=lwCorporationSummaryDto.getNeedFee();
-			
-			
 		}
-		
-		
 		Collection  colguitie102=blLwCorporationSummaryFacade.findByConditions(conditionguitie102);
 		Iterator itguitie102=colguitie102.iterator();
 		while(itguitie102.hasNext()){
@@ -592,40 +584,28 @@ public class UICorporationPriceCountAction extends Action {
 			guitie10lilv+=lwCorporationSummaryDto.getPowerRateFee();
 			guitie10contentfee+=lwCorporationSummaryDto.getContentFee();
 			guitie10needfee+=lwCorporationSummaryDto.getNeedFee();
-			
-			
 		}
-		
-		
 		Collection  colguitie103=blLwCorporationSummaryFacade.findByConditions(conditionguitie103);
 		Iterator itguitie103=colguitie103.iterator();
 		while(itguitie103.hasNext()){
 			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie103.next();
 			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
 			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
-			
-			
 		}
-		
 		Collection  colguitie104=blLwCorporationSummaryFacade.findByConditions(conditionguitie104);
 		Iterator itguitie104=colguitie104.iterator();
 		while(itguitie104.hasNext()){
 			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)itguitie104.next();
 			guitie10sumfee+=lwCorporationSummaryDto.getPointerFee();
 			guitie10power+=lwCorporationSummaryDto.getElectricQuantity();
-			
-			
 		}
-		
 		//35化肥
-		
-		
 		String conditionhuafei10=" 1=1 and PointerPrice= '"+huafei35+"' and StatMonth= '"+serchDate+"'";
 		String conditionhuafei102=" 1=1 and PeakPrice= '"+huafei35+"' and StatMonth= '"+serchDate+"'";
 		String conditionhuafei103=" 1=1 and beforPrice= '"+huafei35+"' and StatMonth= '"+serchDate+"'";
 		String conditionhuafei104=" 1=1 and lastPrice= '"+huafei35+"' and StatMonth= '"+serchDate+"'";
-		//10kv普通打工
 		
+		//10kv普通打工		
 		Collection  colhuafei10=blLwCorporationSummaryFacade.findByConditions(conditionhuafei10);
 		Iterator ithuafei10=colhuafei10.iterator();
 		while(ithuafei10.hasNext()){
@@ -635,10 +615,7 @@ public class UICorporationPriceCountAction extends Action {
 			huafei35lilv+=lwCorporationSummaryDto.getPowerRateFee();
 			huafei35contentfee+=lwCorporationSummaryDto.getContentFee();
 			huafei35needfee+=lwCorporationSummaryDto.getNeedFee();
-			
-			
 		}
-		
 		Collection  colhuafei102=blLwCorporationSummaryFacade.findByConditions(conditionhuafei102);
 		Iterator ithuafei102=colhuafei102.iterator();
 		while(ithuafei102.hasNext()){
@@ -648,31 +625,21 @@ public class UICorporationPriceCountAction extends Action {
 			huafei35lilv+=lwCorporationSummaryDto.getPowerRateFee();
 			huafei35contentfee+=lwCorporationSummaryDto.getContentFee();
 			huafei35needfee+=lwCorporationSummaryDto.getNeedFee();
-			
-			
 		}
-		
-		
 		Collection  colhuafei103=blLwCorporationSummaryFacade.findByConditions(conditionhuafei103);
 		Iterator ithuafei103=colhuafei102.iterator();
 		while(ithuafei103.hasNext()){
 			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei103.next();
 			huafei35sumfee+=lwCorporationSummaryDto.getPointerFee();
 			huafei35power+=lwCorporationSummaryDto.getElectricQuantity();
-			
-			
 		}
-		
 		Collection  colhuafei104=blLwCorporationSummaryFacade.findByConditions(conditionhuafei104);
 		Iterator ithuafei104=colhuafei104.iterator();
 		while(ithuafei104.hasNext()){
 			LwCorporationSummaryDto lwCorporationSummaryDto=(LwCorporationSummaryDto)ithuafei104.next();
 			huafei35sumfee+=lwCorporationSummaryDto.getPointerFee();
 			huafei35power+=lwCorporationSummaryDto.getElectricQuantity();
-			
-			
 		}
-		
 		Collection allcol=blLwCorporationSummaryFacade.findByConditions(condition);
 		Iterator itall=allcol.iterator();
 		while(itall.hasNext()){
@@ -685,8 +652,6 @@ public class UICorporationPriceCountAction extends Action {
 			sumallall+=lwCorporationSummaryDto.getSumFee()-lwCorporationSummaryDto.getSanXiaFee()-lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getSurcharge();
 			sumallpower+=lwCorporationSummaryDto.getElectricQuantity();
 		}
-		
-		
 		httpServletRequest.setAttribute("dagongye10sumfee",df.format(dagongye10sumfee) );
 		 httpServletRequest.setAttribute("guitie10sumfee",df.format(guitie10sumfee) );
 		 httpServletRequest.setAttribute("huafei35sumfee",df.format(huafei35sumfee) );
@@ -714,33 +679,6 @@ public class UICorporationPriceCountAction extends Action {
 		 httpServletRequest.setAttribute("huafei35lilv",df.format(huafei35lilv) );
 		 
 		 httpServletRequest.setAttribute("inputDate",inputDate );
-		 
-		 
-		 
-		 
-		 
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		 
-		 
 		return actionMapping.findForward("corporationpriceCount");
 	}
 }
