@@ -170,8 +170,6 @@ public class UIwholeSaleprintAction extends Action {
 		
 		
 		String condition=" 1=1";
-		
-			
 			condition+=" and StatMonth like '"+serchDate+"%'";
 		
 			String conditions10=" upcompany='"+company+"'"+" and KV=10 and StatMonth='"+serchDate+"'";
