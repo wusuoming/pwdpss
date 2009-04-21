@@ -183,7 +183,7 @@ BODY {
 				</td>
 				<td class="title">
 					<input name="lastWorkNum" type="text" class="text" width="20"
-						value=<%=dto.getLastWorkNum() %> readonly="readonly"
+						value=<%=dto.getLastWorkNum() %> onblur="getSum();"
 						style="width: 90px">
 				</td>
 				<td class="title">

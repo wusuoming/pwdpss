@@ -73,7 +73,7 @@ public class UIListBookTownCalAction extends Action {
 		Collection <LwTownIndicatorDto>userIndicatorList = blLWTownIndicatorFacade.findByConditions("statMonth='"+statMonth+"' and "+condition);
 		int dint = userIndicatorList.size();
 		if(userIndicatorList== null||dint==0){
-			throw new UserException(-6,-705,this.getClass().getName(),"还没有进行指针初始化");
+			throw new UserException(-6,-705,this.getClass().getName(),"还没有进行月数据初始化");
 		}
 		Collection<LwTownIndicatorDto> userList = new ArrayList<LwTownIndicatorDto>();
 		for (Iterator iterator = userIndicatorList.iterator(); iterator

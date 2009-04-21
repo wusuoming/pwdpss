@@ -110,54 +110,53 @@ SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 			<td class=title0 colspan="10"><B><font size="3"></font></B></td>
 		</tr>
 		<tr>
-			<td class="blue" colspan="4">单位：包头市九原电力公司供电服务总站</td>
+			<td class="title" colspan="4"><font size="3">单位：包头市九原电力公司供电服务总站</font></td>
 			<td class="blue" colspan="5"></td>
-			<td class="blue" colspan="5"><input type="text" name="statMonth" value="<%=statMonth%>"></td>
+			<td class="blue" colspan="1"><span class="title"><font size="3"><input type="text" name="statMonth" value="<%=statMonth%>"></font></span></td>
 		</tr>
 		<!--人员代码，姓名-->
 		<tr class=listtitle>
-			<td ><span class="title">项目/单位</span> </td>
+			<td  nowrap width="10%"><span class="title"><font size="3">项目/单位</font></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			if(!"mcx".equals(dto.getTownCode())){
 			%>	
-			<td width=""><span class="title"><a href="<%=request.getContextPath()%>/saveAndStat.do?townCode=<%= dto.getTownCode()%>"><font color="F9FAFB"><%=dto.getTownName() %></font></a></span></td>
-			
+			<td nowrap width="10%"><span class="title"><font size="3"><%=dto.getTownName() %></font></span></td>
 			<%}}} %>
 			
 		</tr>
 		<tr>
-			<td class="title">电量</td>
+			<td  nowrap width="10%"><span class="title"><font size="3">电量</font></td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			if(!"mcx".equals(dto.getTownCode())){
 			%>	
-			<td class="title"><%=dto.getPowerQuantity() %></td>
+			<td  nowrap width="10%"><span class="title"><font size="3"><%=dto.getPowerQuantity() %></font></span></td>
 			
 			<%}}} %>
 			
 		</tr>
 	<tr>
-			<td class="title">电费 </td>
+			<td  nowrap width="10%"><span class="title"><font size="3">电费</font></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			if(!"mcx".equals(dto.getTownCode())){
 			%>	
-			<td class="title"><%=dto.getPowerFee()%></td>
+			<td  nowrap width="10%"><span class="title"><font size="3"><%=dto.getPowerFee()%></font></span></td>
 			
 			<%}}} %>
 			
 		</tr>
 	
-		 <tr>
+		<!--  <tr>
     <td  colspan="3">制表:</td>
     <td  colspan="3">审核:</td>
     <td></td>
     <td  colspan="3">负责人:</td>
-  </tr>
+  </tr> -->
   </table>
   <table width="100%">
   <tr >

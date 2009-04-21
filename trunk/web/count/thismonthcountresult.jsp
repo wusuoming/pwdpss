@@ -221,7 +221,7 @@ BODY {
 					"differenceQuantityty").toString();
 	%>
 	<form name="fm" method="post">
-		<table class=common width="500%" border="1" cellspacing="0"
+		<table width="500%" border="1" cellspacing="0"
 			cellpadding="6">
 			<td style="display: none">
 				<input type="hidden" name="StartMonth"
