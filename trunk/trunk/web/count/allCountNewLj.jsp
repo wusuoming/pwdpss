@@ -123,7 +123,7 @@ String inputDate=(String)request.getAttribute("inputDate");
 	
 		<td style="display:none"><input type="hidden" name="inputDate" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 	<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单(累加)</font></td>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司电费电量发行单(累计)</font></td>
 		</tr>
 		<tr>
 		<td nowrap colspan="2">

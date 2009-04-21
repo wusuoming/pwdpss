@@ -158,11 +158,8 @@ Calendar.setup({
         singleClick    :    true
     }); 
 
-
 </script>
 <br />
-  
-
 </body>
 </html>
 </html:html>

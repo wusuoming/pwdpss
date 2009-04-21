@@ -122,7 +122,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 		
 		<tr>
 		<td nowrap colspan="2">
-						<span class="title">月份:<%=corporationlwShouShuTableDto.getMonth()%></span>
+						<span class="title"><font size="5">月份:<%=corporationlwShouShuTableDto.getMonth()%></font></span>
 					</td>
 	</tr>
 		<tr class=listtitle>
@@ -412,7 +412,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="5">大用户</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=df.format(corporationlwShouShuTableDto.getPower())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(corporationlwShouShuTableDto.getPower())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="5"><%=df.format(corporationlwShouShuTableDto.getChunDianFei())%></font></span>
@@ -462,7 +462,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="5">趸售</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=df.format(wholesalelwShouShuTableDto.getPower())%></font></span>
+					<span class="title"><font size="5"><%=Math.round(wholesalelwShouShuTableDto.getPower())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="5"><%=df.format(wholesalelwShouShuTableDto.getChunDianFei())%></font></span>
@@ -511,7 +511,7 @@ LwShouShuTableDto corporationshoushulwShouShuTableDto=(LwShouShuTableDto)request
 					<span class="title"><font size="5">总计</font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=df.format( lwShouShuTableDto.getPower())%></font></span>
+					<span class="title"><font size="5"><%=Math.round( lwShouShuTableDto.getPower())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><font size="5"><%=df.format( lwShouShuTableDto.getChunDianFei())%></font></span>

@@ -3,6 +3,8 @@
 <%@page import="com.elongway.pss.dto.domain.LwAmmeterBookDto"%>
 <%@page import="com.elongway.pss.dto.domain.LwPowerUserDto"%>
 <%@page import="java.util.*"%>
+<%@page import="com.elongway.pss.bl.facade.BLLwDcodeFacade"%>
+<%@page import="com.elongway.pss.dto.domain.LwDcodeDto"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -103,7 +105,9 @@
 		<%
 	
 	List userlist=(List)request.getAttribute("allList");
-	
+	BLLwDcodeFacade blLwDcodeFacade = new BLLwDcodeFacade();
+    Collection codeList = blLwDcodeFacade.findByConditions("codetype = 'towncode'");
+
 	Iterator it=userlist.iterator();
       while(it.hasNext()){
       	LwPowerUserDto 	 user=(LwPowerUserDto)it.next();
@@ -123,18 +127,17 @@
 			<td class="input" nowrap colspan="1"><%=user.getUserNo()%></td>
 			<td class="input" nowrap colspan="1"><%=user.getUserName()%></td>
 			<td class="input" nowrap colspan="1"><%=user.getAddress()%></td>
-			<td class="input" nowrap colspan="1"><%=user.getTownCode()%></td>
-			<%--<td class="input" nowrap colspan="1"><%=userLine.getLineCode()%></td>
-			--%>
+			<%for(Iterator it1=codeList.iterator();it1.hasNext();){ 
+			LwDcodeDto d = (LwDcodeDto)it1.next();
+			if(d.getCodeCode().equals(user.getTownCode())){	%>
+			<td class="input" nowrap colspan="1"><%=d.getCodeCName()%></td>
+			<% }
+			}%>
 			<td class="input" nowrap colspan="1" width="30"><input name="SerialNo" type="text"  class="text" value=<%= user.getSerialNo()%>></td>
-			
-			
-	
-		</tr>
+       </tr>
 		<%} %>
 		
-		<%--<tr><td colspan="10" >第1页/第1-10条共120条  下一页  尾页 </td></tr>
-	--%></table>
+		</table>
 		
     <br />
 <!--一大堆的按钮-->
