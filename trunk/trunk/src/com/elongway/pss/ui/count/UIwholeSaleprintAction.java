@@ -69,7 +69,20 @@ public class UIwholeSaleprintAction extends Action {
 		// ²î±ðµç·Ñ
 		String chabiedianfei = httpServletRequest.getParameter("chabiedianfei");
 		
+		String chabiedianfei1=(String)httpServletRequest.getParameter("chabiedianfei1");
+		String chabieQuantity1=(String)httpServletRequest.getParameter("chabieQuantity1");
+		String chabiePrice1=(String)httpServletRequest.getParameter("chabiePrice1");
 		
+		if(chabiedianfei1==null||chabiedianfei1.equals("")){
+			chabiedianfei1 = "0";
+		}
+		double tempchabiedianfei = 0;
+		
+		double t1 = Double.parseDouble(chabiedianfei);
+		double t2 = Double.parseDouble(chabiedianfei1);
+		
+		tempchabiedianfei =t1+t2;
+		chabiedianfei = new Double(tempchabiedianfei).toString();
 		String Power35 = httpServletRequest.getParameter("Power35");
 		String Power10 = httpServletRequest.getParameter("Power10");
 		
@@ -99,6 +112,10 @@ public class UIwholeSaleprintAction extends Action {
 		String BizQuantity35kv = httpServletRequest.getParameter("BizQuantity35kv");
 		String BizMoney35kv = httpServletRequest.getParameter("BizMoney35kv");
 		String liLvDianFei = httpServletRequest.getParameter("liLvDianFei");
+		
+
+		
+		
 		LwWholeSaleDetailDto lwWholeSaleDetailDto = new LwWholeSaleDetailDto();
 		lwWholeSaleDetailDto.setCompanyName(company);
 		lwWholeSaleDetailDto.setInputDate(inputDate);
@@ -164,8 +181,6 @@ public class UIwholeSaleprintAction extends Action {
 		blLwAllWholeFeeFacade.delete(company, serchDate);
 		blLwAllWholeFeeFacade.insert(lwAllWholeFeeDto);
 		LwAllWholeFeeDto tem= blLwAllWholeFeeFacade.findByPrimaryKey(company, serchDate);
-		
-		
 		httpServletRequest.setAttribute("arr", arr);
 		
 		
@@ -465,11 +480,6 @@ public class UIwholeSaleprintAction extends Action {
 			
 			return actionMapping.findForward("WholeSaleprint");
 			
-			
-			
-		
-		
-		
 }
 
 }

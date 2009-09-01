@@ -1,5 +1,6 @@
 package com.elongway.pss.ui.dataInput;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -58,6 +59,7 @@ public class UIPostTownBillAction extends Action {
 		// 统计年月
 		String statMonth = PowerFeeCal.getCurrentBillMonth();
 		// 
+		DecimalFormat df = new DecimalFormat("###0.00");
 		Collection<LwDcodeDto> collection = blLwDcodeFacade.findByConditions(" codetype = 'TownCode'");
 		Collection<UITownBill> billList = new ArrayList<UITownBill>();
 		double sumQuantity = 0.0;
@@ -87,17 +89,15 @@ public class UIPostTownBillAction extends Action {
 			sumQuantity += Math.round(lwTownPriceSummaryDto.getSumQuantity());
 			sumFee +=PowerFeeCal.getValue(lwTownPriceSummaryDto.getElectricFee(), AppConst.TWO_DOT_FLAG);
 			billList.add(uiTownBill);
-			
-		//	}
 		}
 		uiTownBill = new UITownBill();
 		uiTownBill.setBillDate(statMonth);
 		uiTownBill.setTownName("合计");
-		uiTownBill.setPowerFee(new Double(PowerFeeCal.getValue(sumFee, AppConst.TWO_DOT_FLAG)).toString());
-		uiTownBill.setPowerQuantity(new Double(sumQuantity).toString());
+		uiTownBill.setPowerFee(df.format(sumFee));
+		uiTownBill.setPowerQuantity(df.format(sumQuantity));
 		billList.add(uiTownBill);
 		
-		/***********************************************************************
+		/********************************************************************** 
 		 *    【3 -- 为页面展现赋值】
 		 **********************************************************************/		
 		httpServletRequest.setAttribute("billList", billList);

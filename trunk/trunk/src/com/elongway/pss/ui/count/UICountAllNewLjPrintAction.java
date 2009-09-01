@@ -135,7 +135,7 @@ public class UICountAllNewLjPrintAction extends Action {
 		corporationduLwShouShuTableDto.setSanXiaTax(corporationdusanxiatax);
 		corporationduLwShouShuTableDto.setDianJin(corporationdudianjin);
 		corporationduLwShouShuTableDto.setDianJinTax(corporationdudianjintax);
-		corporationduLwShouShuTableDto.setSumFee(dunshoudusumallfee);
+		corporationduLwShouShuTableDto.setSumFee(corporationdusumallfee);
 		//È«²¿¶Á
 		allduLwShouShuTableDto.setPower(wholesaleduLwShouShuTableDto.getPower()+corporationduLwShouShuTableDto.getPower());
 		allduLwShouShuTableDto.setChunDianFei(wholesaleduLwShouShuTableDto.getChunDianFei()+corporationduLwShouShuTableDto.getChunDianFei());

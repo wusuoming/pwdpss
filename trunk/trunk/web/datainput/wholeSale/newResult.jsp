@@ -53,7 +53,7 @@
 <html:errors />
 
 <form  name="fm" method="post">
-
+<%double dh312quantity = 0; %>
 	<table class=common width="100%" cellspacing="1" cellpadding="5">
 		<tr class=listtitle align="center">
 			<td class=title0 colspan="11" width="100%"><B><font size="3">计算结果显示</font></B></td>
@@ -128,15 +128,30 @@
 					</tr>
 					<tr>
 			 <td class=input>		
-            <td class=input><input name="sum10Power" type="text" class="text" value="<%=sum10Power%>" ></td>
-            <td class=input><input name="usum10power" type="text" class="text" value="<%=usum10power%>" ></td>
-             <td class=input><input name="allRateCode10" type="text" class="text" value="<%=allRateCode10%>" ></td>
-            <td class=input><input name="allPowerRateFee10" type="text" class="text" value="<%=allPowerRateFee10%>" ></td>
-             <td class=input><input name="count10Fee" type="text" class="text" value="<%=count10Fee%>" ></td>
-            <td class=input><input name="Rate10Fee" type="text" class="text" value="<%=Rate10Fee%>" ></td>
-             <td class=input><input name="sum10Fee" type="text" class="text" value="<%=sum10Fee%>" ></td>
+            <td class=input><input name="sum10Power" type="text" class="text" style="width:90px" value="<%=sum10Power%>" ></td>
+            <td class=input><input name="usum10power" type="text" class="text" style="width:90px"  value="<%=usum10power%>" ></td>
+             <td class=input><input name="allRateCode10" type="text" class="text" style="width:90px"  value="<%=allRateCode10%>" ></td>
+            <td class=input><input name="allPowerRateFee10" type="text" class="text" style="width:90px"  value="<%=allPowerRateFee10%>" ></td>
+             <td class=input><input name="count10Fee" type="text" class="text" style="width:90px"  value="<%=count10Fee%>" ></td>
+            <td class=input><input name="Rate10Fee" type="text" class="text" style="width:90px"  value="<%=Rate10Fee%>" ></td>
+             <td class=input><input name="sum10Fee" type="text" class="text" style="width:90px"  value="<%=sum10Fee%>" ></td>
 
 					</tr>
+					<tr >
+					
+						<td class="input">线路代码</td>
+						<td class="input">有功电量</td>
+						<td class="input">无功电量</td>
+						<td class="input">功率因数</td>
+						<td class="input">调整值</td>
+						<td class="input">有功变损</td>
+						<td class="input">无功变损</td>
+						<td class="input">线损</td>
+						<td class="input">电费</td>
+						
+						<td class="input">力率电费</td>
+						<td class="input">电费合计</td>
+						</tr>
 						<%
 						String sum35Fee=(String)request.getAttribute("sum35Fee");
 						
@@ -151,26 +166,33 @@
 			List list35=(List)request.getAttribute("kv35");
 			if(list35!=null){
 			Iterator it35=list35.iterator();
+			
 			while(it35.hasNext()){
 			LwWholeSaleSummaryDto  lwWholeSaleSummaryDto=(LwWholeSaleSummaryDto)it35.next();
-			
+			String lingCode = lwWholeSaleSummaryDto.getLineCode();
 			
 			 %>
 
 					<tr >
-					
-						<td class="input" align="center"><input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="pointerPower" value="<%=lwWholeSaleSummaryDto.getPointerQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="unworkPower" value="<%=lwWholeSaleSummaryDto.getUnPointerQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getUnTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="sumPower" value="<%=lwWholeSaleSummaryDto.getElectricQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+					<td class="input"><input   name="UserName" value="<%=lwWholeSaleSummaryDto.getLineCode()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="pointerPower" value="<%=lwWholeSaleSummaryDto.getPointerQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<%if("东河变312".equals(lingCode)) {
+						dh312quantity = lwWholeSaleSummaryDto.getLineLoss();
+						%>
+						<td class="input"><input   name="unworkPower" value="<%=lwWholeSaleSummaryDto.getUnPointerQuantity()+lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%}else{ %>
+						<td class="input"><input   name="unworkPower" value="<%=lwWholeSaleSummaryDto.getUnPointerQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%} %>
 						
-						<td class="input" align="center"><input   name="rateCode" value="<%=lwWholeSaleSummaryDto.getRateCode()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="ajustRate" value="<%=lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="powerFee" value="<%=lwWholeSaleSummaryDto.getPowerRateFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" align="center"><input   name="sumFee" value="<%=lwWholeSaleSummaryDto.getSumFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="rateCode" value="<%=lwWholeSaleSummaryDto.getRateCode()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="ajustRate" value="<%=lwWholeSaleSummaryDto.getAdjustRate()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getUnTransLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="transLoss" value="<%=lwWholeSaleSummaryDto.getLineLoss()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="sumPower" value="<%=lwWholeSaleSummaryDto.getElectricQuantity()%>"  style="border:0" readonly="readonly" style="width:65px"></td>
+						
+						<td class="input"><input   name="powerFee" value="<%=lwWholeSaleSummaryDto.getPowerRateFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input"><input   name="sumFee" value="<%=lwWholeSaleSummaryDto.getSumFee()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						</tr>
 					<%} 
 					}
@@ -190,7 +212,7 @@
 					<tr>
 				 <td class=input>	
             <td class=input><input name="sum35power" type="text" class="text" value="<%=sum35power%>" ></td>
-            <td class=input><input name="usum35power" type="text" class="text" value="<%=usum35power%>" ></td>
+            <td class=input><input name="usum35power" type="text" class="text" value="<%=Double.parseDouble(usum35power)+dh312quantity%>" ></td>
              <td class=input><input name="allRateCode35" type="text" class="text" value="<%=allRateCode35%>" ></td>
             <td class=input><input name="allPowerRateFee35" type="text" class="text" value="<%=allPowerRateFee35%>" ></td>
              <td class=input><input name="count35Fee" type="text" class="text" value="<%=count35Fee%>" ></td>

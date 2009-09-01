@@ -40,9 +40,14 @@ public class UICorporationPointerInputAction extends Action {
 		Iterator one=colone.iterator();
 		LwNewFactoryIndicatorDto  lwNewFactoryIndicatorDto2=new LwNewFactoryIndicatorDto();
 		double needPower=0;
+		double rlquantityaf = 0;
+		double rlpriceaf = 0;
+		
 		while(one.hasNext()){
 			lwNewFactoryIndicatorDto2=(LwNewFactoryIndicatorDto)one.next();
 			needPower+=lwNewFactoryIndicatorDto2.getNeedQuantity();
+			rlquantityaf=lwNewFactoryIndicatorDto2.getRlquantityaf();
+			rlpriceaf = lwNewFactoryIndicatorDto2.getRlpriceaf();
 		}
 		PowerFeeCal  powerFeeCal=new PowerFeeCal();
 		double  contentPrice=powerFeeCal.rongliangFee(lwCoporationUserInfoDto.getUserNo());
@@ -51,6 +56,8 @@ public class UICorporationPointerInputAction extends Action {
 		httpServletRequest.setAttribute("factiory", factiory);
 		httpServletRequest.setAttribute("contentPrice", contentPrice);
 		httpServletRequest.setAttribute("needPower", needPower);
+		httpServletRequest.setAttribute("rlquantityaf", rlquantityaf);
+		httpServletRequest.setAttribute("rlpriceaf", rlpriceaf);
 		//httpServletRequest.setAttribute("dianjinPrice", dianjinPrice);
 		return actionMapping.findForward("corporationInput");
 		

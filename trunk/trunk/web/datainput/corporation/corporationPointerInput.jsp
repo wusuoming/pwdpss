@@ -13,6 +13,7 @@ create by wangrongjia
 <jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwNewFactoryIndicatorDto"/>
 <jsp:directive.page import="org.omg.CORBA.Request"/>
+<%@page import="com.elongway.pss.util.AppConst"%>
     <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -75,6 +76,8 @@ create by wangrongjia
        LwNewFactoryIndicatorDto LwNewFactoryIndicatorDto2=(LwNewFactoryIndicatorDto)request.getAttribute("lwNewFactoryIndicatorDto2");
        String cotentPrice=request.getAttribute("contentPrice").toString();
         String needPower=request.getAttribute("needPower").toString();
+        String rlquantityaf = request.getAttribute("rlquantityaf").toString();        
+        String rlpriceaf = request.getAttribute("rlpriceaf").toString();
         %>
 		<tr>
 			<td class="title">核算日期</td>				
@@ -104,18 +107,23 @@ create by wangrongjia
          </tr>
           <tr>
            <td class="title">月中停产或生产</td>				
-				<td class="input" ><select name="stopProduce" onchange="corn()" class="text">
-				  
-				  <option value="0">否</option>
-				  <option value="1">是</option>
+				<td class="input" >
+				<select name="stopProduce" onchange="corn()">
+				 <option value="0"  <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("0")){ %>selected="selected"<%} %>>否</option>
+				  <option value="1"  <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")){ %>selected="selected"<%} %>>是</option>
+				 
               </select>	
 			 </td>
 			 <%
 		if(lwCoporationUserInfoDto.getIndustryType().equals("1")) {
 		 %>
-		 <td class="title" >容量电量</td>				
+		 <td class="title" >容量电量（变化前）</td>				
 				<td class=input >
+				 <%if(LwNewFactoryIndicatorDto2.getRlquantityafbefore()==0){%>
 				<input  class="text" name="RongliangQuantity"	  value="<%=lwCoporationUserInfoDto.getRongliangPower()%>"  />	
+				<%}else{ %>
+				<input  class="text" name="RongliangQuantity"	  value="<%=LwNewFactoryIndicatorDto2.getRlquantityafbefore()%>"  />
+				<%} %>
 		<input  type="hidden" name="appStyle"	  value="0"  />	
 		<%} else{%>
 		<td class=input >
@@ -177,7 +185,24 @@ create by wangrongjia
 					<td class=input  id="z4" style="display: none">
 					
 		 </tr>
-		 
+		 <!-- 添加变更后容量电价、电费 2009-05-22 begin-->
+		
+		  <tr>
+		     <div id="rlchange">
+		        <td class="title" id="rl">停产/生产后容量电量是否发生变化</td>				
+				<td class="input" id="r2" ><select name="rlflag"  onchange="rlcorn()" class="text">			  
+				  <option value="0">否</option>
+				  <option value="1">是</option>
+              </select>	
+			 </td>
+			 <td class="title" ><div id="r3">容量电量（变化后）</div></td>				
+				<td class=input ><div id="r4"><input  class="text" name="rongliangAf"	 value="<%=rlquantityaf%>"   />	</div>
+				</td>
+				 </div>
+	        </tr>
+	     
+		
+		  <!-- 添加变更后容量电价、电费 2009-05-22 end-->
          <%--<tr>
 			<td class="title">居民照明电金价格</td>				
 				<td class=input>
@@ -230,16 +255,23 @@ create by wangrongjia
 						<td class="input" rowspan="3"><input name="AmmeterNo" value="<%=lwNewFactoryIndicatorDto.getAmmeterNo()%>" style="border:0"  style="width:65px" ></td>
 						<td class="input" ><input name="LastWorkNum" value="<%=lwNewFactoryIndicatorDto.getLastWorkNum()%>" onblur="checkWork()" style="border:0"  style="width:65px"></td>
 						
-						
-						 <td class="input" ><input name="ThisWorkNum" value="<%=lwNewFactoryIndicatorDto.getThisWorkNum()%>" onblur="checkWork()" style="width:65px"></td>
-						
+						<%
+					if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")&&lwNewFactoryIndicatorDto.getAmmeterStyle().equals("0")){
+					 %>
+						 <td class="input" ><input name="ThisWorkNum" value="<%=LwNewFactoryIndicatorDto2.getChangeWorkPointer()%>" onblur="checkWork()" style="width:65px"></td>
+						<%}else{ %>
+						<td class="input" ><input name="ThisWorkNum" value="<%=lwNewFactoryIndicatorDto.getThisWorkNum()%>" onblur="checkWork()" style="width:65px"></td>
+						<%} %>
 						<td class="input" ><input name="LastIdleNum" value="<%=lwNewFactoryIndicatorDto.getLastIdleNum()%>" onblur="checkunWork()" style="border:0"  style="width:65px"></td>
 						
-						
+						<%
+					if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")&&lwNewFactoryIndicatorDto.getAmmeterStyle().equals("0")){
+					 %>
 					
+						 <td class="input" ><input name="ThisIdleNum" value="<%=LwNewFactoryIndicatorDto2.getChangeunWorkPointer()%>" onblur="checkunWork()" style="width:65px"></td>
+						<%}else{ %>
 						 <td class="input" ><input name="ThisIdleNum" value="<%=lwNewFactoryIndicatorDto.getThisIdleNum()%>" onblur="checkunWork()" style="width:65px"></td>
-						
-						
+						<%} %>
 						<td class="input" ><input name="Rate" value="<%=lwNewFactoryIndicatorDto.getRate()%>" style="width:65px" onblur="checkRate()"></td>
 
 						
@@ -268,18 +300,11 @@ create by wangrongjia
 							
 							<tr>
 							<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("0")){ %>
-							
-       
-        
-        <td class="input" ><input name="day" value=""  style="width:65px"></td>
-							
+        <td class="input" ><input name="day" value="<%=lwNewFactoryIndicatorDto.getDay() %>"  style="width:65px"></td>						
 							<%} %>					
 							<%if(lwNewFactoryIndicatorDto.getAmmeterStyle().equals("1")){ %>
-										
 						<td class="input" ></td>
-      
-							
-							<%} %>
+                            <%} %>
 
 						 <td class="input" ><input name="ChgAmmeterQuantity" value="<%=lwNewFactoryIndicatorDto.getChgAmmeterQuantity()%>"   style="width:65px"></td>
 						
@@ -327,7 +352,96 @@ create by wangrongjia
 						 %>             
 					</tr>
 					<%} %>
-					<tr class=listtitle id="c2" style="display: none">
+					
+		
+		
+			<%--<tr class=oddrow>
+				<td colspan="5" align="right"><img src="../../images/jia-jia.gif" border="0" align="absmiddle" name="img_DataPower_Insert" onclick="insertRow('DataPower')">
+				</td>
+			</tr>
+		--%>
+			 		<%
+					if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")){
+					 %>
+					<tr class=listtitle >
+						<td nowrap ><span class="title">月中停产/生产 </span></td>
+						<td nowrap><span class="title">上月有功指针 </span></td>
+						<td nowrap><span class="title">当月有功指针</span></td>
+						<td nowrap><span class="title">上月无功指针</span></td>
+						<td nowrap><span class="title">当月无功指针</span></td>
+						<td nowrap><span class="title">倍率</span></td>
+						<td nowrap><span class="title">有功电量</span></td>
+			<td nowrap><span class="title">无功电量  </span></td>
+		</tr>
+					<tr >
+						<td class="input" rowspan="3"><input name="changeAmmeterNo" value="大工业" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td class="input" ><input  readOnly=true  name="changeLastWorkNum" value="<%=LwNewFactoryIndicatorDto2.getChangeWorkPointer()%>" onblur="checkchangeWork()" style="width:65px"></td>
+						
+						
+						 <td class="input" ><input  readOnly=true name="changeThisWorkNum" value="<%=LwNewFactoryIndicatorDto2.getThisWorkNum()%>" onblur="checkchangeWork()"  style="width:65px"></td>
+						
+						<td class="input" ><input  readOnly=true name="changeLastIdleNum" value="<%=LwNewFactoryIndicatorDto2.getChangeunWorkPointer()%>"  onblur="checkchangeunWork()" style="width:65px" ></td>
+						
+						
+					
+						 <td class="input" ><input  readOnly=true name="changeThisIdleNum" value="<%=LwNewFactoryIndicatorDto2.getThisIdleNum()%>" onblur="checkchangeunWork()" style="width:65px"></td>
+						
+						
+						<td class="input" ><input  readOnly=true name="changeRate" value="<%=LwNewFactoryIndicatorDto2.getRate()%>" style="width:65px" onblur="checkchangeRate()"></td>
+
+						
+						
+						
+						
+						 <td class="input" ><input  readOnly=true name="changeworkQuantity" value="<%=LwNewFactoryIndicatorDto2.getChangeworkQuantity()%>" style="width:65px"></td>
+						
+						
+						
+						 <td class="input" ><input  readOnly=true name="changeunworkQuantity" value="<%=LwNewFactoryIndicatorDto2.getChangeUnworkQuantity()%>" style="width:65px"></td>
+						
+       </tr>
+       <tr class=listtitle >
+						
+			<td nowrap><span class="title">天数</span></td>
+			<td nowrap><span class="title">换表有功电量</span></td>
+			<td nowrap><span class="title">换表无功电量</span></td>
+			<td nowrap><span class="title">退补有功电量</span></td>
+			<td nowrap><span class="title">退补无功电量</span></td>
+			<td nowrap><span class="title">状态</span></td>
+			<td nowrap><span class="title">电表类型</span></td>
+							</tr>
+       <tr >
+       
+        <td class="input" ><input  readOnly=true name="changeday" value="<%=LwNewFactoryIndicatorDto2.getChangeday()%>"  style="width:65px"></td>
+							
+							
+					
+						 <td class="input" ><input  readOnly=true name="changeChgAmmeterQuantity" value="<%=LwNewFactoryIndicatorDto2.getChageChgAmmeterQuantity()%>"   style="width:65px"></td>
+						
+						 <td class="input" ><input  readOnly=true name="changeUnChgAmmeterQuantity" value="<%=LwNewFactoryIndicatorDto2.getChangeunChgAmmeterQuantity()%>"   style="width:65px"></td>
+						
+						 <td class="input" ><input  readOnly=true name="changeCompensateQuantity" value="<%=LwNewFactoryIndicatorDto2.getChangeCompensateQuantity()%>" style="width:65px"></td>
+						
+	
+						
+						 <td class="input" ><input  readOnly=true name="changeUnCompensateQuantity" value="<%=LwNewFactoryIndicatorDto2.getChangeunCompensateQuantity()%>" style="width:65px"></td>
+						 		
+						
+							
+       
+        
+        <td class="input" ><select name="changestate" style="width:60px">
+					<option value="1" <%if(LwNewFactoryIndicatorDto2.getChangeAfter().equals("1")) {%>selected="selected"<%} %>>生产</option>
+				  <option value="2" <%if(LwNewFactoryIndicatorDto2.getChangeAfter().equals("2")) {%>selected="selected"<%} %>>停产</option></td>
+							
+											
+						<td class="title" align="center">大工业<input name="changeAmmeterStyle" style="width:65px" value="0" type="hidden" readonly="readonly"></td>										
+					
+						                  
+					</tr>
+		
+		<%}else{ %>
+		<tr class=listtitle id="c2" style="display: none">
 			<td nowrap ><span class="title">月中停产/生产 </span></td>
 			<td nowrap><span class="title">上月有功指针 </span></td>
 			<td nowrap><span class="title">当月有功指针</span></td>
@@ -337,7 +451,7 @@ create by wangrongjia
 			<td nowrap><span class="title">有功电量</span></td>
 			<td nowrap><span class="title">无功电量  </span></td>
 		</tr>
-					<tr id="c1" style="display: none">
+		<tr id="c1" style="display: none">
 						<td class="input" rowspan="3"><input name="changeAmmeterNo" value="大工业" style="border:0" readonly="readonly" style="width:65px"></td>
 						<td class="input" ><input name="changeLastWorkNum" value="" onblur="checkchangeWork()" style="width:65px"></td>
 						
@@ -397,14 +511,7 @@ create by wangrongjia
 					
 						                  
 					</tr>
-		
-		
-			<%--<tr class=oddrow>
-				<td colspan="5" align="right"><img src="../../images/jia-jia.gif" border="0" align="absmiddle" name="img_DataPower_Insert" onclick="insertRow('DataPower')">
-				</td>
-			</tr>
-		--%>
-			 	
+		<%} %>
 		
 		
         </table>
@@ -456,6 +563,27 @@ function corn(){
 	c2.style.display="";
 	c3.style.display="";
 	c4.style.display="";
+	}
+}
+function rlcorn(){
+	if(fm.rlflag.value=="0"){
+	r3.style.display="none";
+	r4.style.display="none";
+	}
+	if(fm.rlflag.value=="1"){
+    r3.style.display="";
+	r4.style.display="";
+	}
+}
+
+function rlpricecorn(){
+	if(fm.rlprice.value=="0"){
+	r7.style.display="none";
+	r8.style.display="none";
+	}
+	if(fm.rlprice.value=="1"){
+    r7.style.display="";
+	r8.style.display="";
 	}
 }
 

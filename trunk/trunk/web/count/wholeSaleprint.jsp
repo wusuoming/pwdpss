@@ -133,9 +133,15 @@
 						String sum35Fee = (String) request.getAttribute("sum35Fee");
 						String sum10Power = (String) request.getAttribute("sum10Power");
 						String sum35power = (String) request.getAttribute("sum35power");
+						
 		
+		String chabieQuantitysum=(String)request.getParameter("chabieQuantitysum");
+		String chabiedianfeisum=(String)request.getParameter("chabiedianfeisum");
+		String chabiedianfei1=(String)request.getParameter("chabiedianfei1");
+		String chabieQuantity1=(String)request.getParameter("chabieQuantity1");
+		String chabiePrice1=(String)request.getParameter("chabiePrice1");
 %>
-		   <table style='width:100%' border="1" cellspacing="0">
+  <table style='width:100%' border="1" cellspacing="0">
   <tr class=listtitle align="center">
 			<td class=title0 colspan="12"><B><font size="3">趸售结算单</font></B></td>
 				<td nowrap colspan="2" style="display: none"><span class="title"><input name="company" value="<%=company%>"  style="width:65px"></span></td>
@@ -694,7 +700,18 @@
 			<td nowrap><span class="title"><font size="3"><%=differencePrice%></font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3"><%=differenceQuantityFee%></font></td>
     </tr>
-
+    <%if(chabiedianfei1!=null&&Double.parseDouble(chabiedianfei1)!=0){ %>
+  <tr>   
+           <td nowrap colspan="2"><span class="title"><font size="3">差别电费</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=chabieQuantity1%></font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=chabiePrice1%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=chabiedianfei1%></font></td>
+			<td nowrap colspan="2"><span class="title"><font size="3">差别电量合计</font></span></td>
+			<td nowrap><span class="title"><font size="3"><%=chabieQuantitysum%></font></span></td>
+			<td nowrap><span class="title"><font size="3">差别电费合计</font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=chabiedianfeisum%></font></td>
+    </tr>
+    <%} %>
      <tr class=listtitle align="center">
 			<td class=title0 colspan="12"><B><font size="3">合计信息</font></B></td>
 		</tr>

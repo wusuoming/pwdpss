@@ -374,7 +374,7 @@
     <tr>
       <td nowrap><span class="title">电量</span></td>
             <td nowrap><span class="title"><%=corporation.getBeforPower()%></span></td>
-			<td nowrap><span class="title"><%=corporation.getLastPower()%></span></td>
+			<td nowrap><span class="title"><%=corporation.getLastPower()+corporation.getTaobiaoQuantity()%></span></td>
 			<td nowrap><span class="title"><%=corporation.getUnDenizenQuantity()%></span></td>
 			<% 
 			if(corporation.getFlag().equals("2")){
@@ -386,7 +386,7 @@
 			%>
 			<td nowrap><span class="title"><%=corporation.getNeedQuantity()%> </span></td>
 			<%} %>
-			<td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
+			<td nowrap><span class="title"><%=corporation.getTaobiaoQuantity()+corporation.getUnDenizenQuantity()+corporation.getLastPower()%></span></td>
 			<td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
             <td nowrap><span class="title"><%=corporation.getElectricQuantity()%></span></td>
     </tr>
@@ -412,7 +412,7 @@
     <tr>
       <td nowrap><span class="title">电费</span></td>
             <td nowrap><span class="title"><%=df.format(corporation.getBeforFee())%></span></td>
-			<td nowrap><span class="title"><%=df.format(corporation.getLastFee())%></span></td>
+			<td nowrap><span class="title"><%=df.format(corporation.getLastFee()+corporation.getTaobiaoFee())%></span></td>
 			<td nowrap><span class="title"><%=df.format(corporation.getUnDenizenFee())%></span></td>
 			<% 
 			if(corporation.getFlag().equals("2")){

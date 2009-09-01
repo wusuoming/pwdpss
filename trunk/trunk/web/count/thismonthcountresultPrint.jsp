@@ -274,7 +274,7 @@ String inputDate1  =(String)request.getAttribute("inputDate");
 					if(lwCorporationSummaryDto.getLineCode().equals("20699999065")||lwCorporationSummaryDto.getLineCode().equals("20699999072")){
 					sumfc+=PowerFeeCal.getValue((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG);
 				 	}else{
-				 	sumfc+=PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG);
+				 	sumfc+=PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss()+lwCorporationSummaryDto.getLastFee()+lwCorporationSummaryDto.getTaobiaoFee())/1.17,AppConst.TWO_DOT_FLAG);
 				 	}
 				 	sumfsanxia+=PowerFeeCal.getValue(lwCorporationSummaryDto.getSanXiaFee()/1.17,AppConst.TWO_DOT_FLAG);
 				 	summfdianjin+=PowerFeeCal.getValue(lwCorporationSummaryDto.getPowerFee()/1.17,AppConst.TWO_DOT_FLAG);
@@ -283,7 +283,30 @@ String inputDate1  =(String)request.getAttribute("inputDate");
 				sumftax+=	PowerFeeCal.getValue(((lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPeakFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
 				
 				}else{
-				sumftax+=PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG);
+				sumftax += PowerFeeCal
+									.getValue(
+											((lwCorporationSummaryDto
+													.getPointerFee()
+													+ lwCorporationSummaryDto
+															.getContentFee()
+													+ lwCorporationSummaryDto
+															.getNeedFee()
+													+ lwCorporationSummaryDto
+															.getPowerRateFee()
+													+ lwCorporationSummaryDto
+															.getUnDenizenFee() + lwCorporationSummaryDto
+													.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) - (lwCorporationSummaryDto
+													.getPointerFee()
+													+ lwCorporationSummaryDto
+															.getContentFee()
+													+ lwCorporationSummaryDto
+															.getNeedFee()
+													+ lwCorporationSummaryDto
+															.getPowerRateFee()
+													+ lwCorporationSummaryDto
+															.getUnDenizenFee() + lwCorporationSummaryDto
+													.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17),
+											AppConst.TWO_DOT_FLAG);
 				}
 				sumfsanxiatax+=PowerFeeCal.getValue((lwCorporationSummaryDto.getSanXiaFee()- lwCorporationSummaryDto.getSanXiaFee()/1.17),AppConst.TWO_DOT_FLAG);
 				sumfdianjintax+= PowerFeeCal.getValue((lwCorporationSummaryDto.getPowerFee()-lwCorporationSummaryDto.getPowerFee()/1.17),AppConst.TWO_DOT_FLAG);
@@ -328,13 +351,24 @@ String inputDate1  =(String)request.getAttribute("inputDate");
 				System.out.println(lwCorporationSummaryDto.getNeedFee());
 				System.out.println(lwCorporationSummaryDto.getPowerRateFee());
 				System.out.println(lwCorporationSummaryDto.getUnDenizenFee());
-					System.out.println(lwCorporationSummaryDto.getUnLineLoss());
+			    System.out.println(lwCorporationSummaryDto.getUnLineLoss());
 				
 				
 				%>
 				
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17,AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue((lwCorporationSummaryDto
+																		.getPointerFee()
+																		+ lwCorporationSummaryDto
+																				.getContentFee()
+																		+ lwCorporationSummaryDto
+																				.getNeedFee()
+																		+ lwCorporationSummaryDto
+																				.getPowerRateFee()
+																		+ lwCorporationSummaryDto
+																				.getUnDenizenFee() + lwCorporationSummaryDto
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17,
+																AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				
 				
@@ -359,7 +393,29 @@ String inputDate1  =(String)request.getAttribute("inputDate");
 				<br></td>
 				<%} else{%>
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue(((lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())-(lwCorporationSummaryDto.getPointerFee()+lwCorporationSummaryDto.getContentFee()+lwCorporationSummaryDto.getNeedFee()+lwCorporationSummaryDto.getPowerRateFee()+lwCorporationSummaryDto.getUnDenizenFee()+lwCorporationSummaryDto.getUnLineLoss())/1.17),AppConst.TWO_DOT_FLAG))%></font></span>
+					<span class="title"><font size="5"><%=df.format(PowerFeeCal.getValue(
+																((lwCorporationSummaryDto
+																		.getPointerFee()
+																		+ lwCorporationSummaryDto
+																				.getContentFee()
+																		+ lwCorporationSummaryDto
+																				.getNeedFee()
+																		+ lwCorporationSummaryDto
+																				.getPowerRateFee()
+																		+ lwCorporationSummaryDto
+																				.getUnDenizenFee() + lwCorporationSummaryDto
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) - (lwCorporationSummaryDto
+																		.getPointerFee()
+																		+ lwCorporationSummaryDto
+																				.getContentFee()
+																		+ lwCorporationSummaryDto
+																				.getNeedFee()
+																		+ lwCorporationSummaryDto
+																				.getPowerRateFee()
+																		+ lwCorporationSummaryDto
+																				.getUnDenizenFee() + lwCorporationSummaryDto
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17),
+																AppConst.TWO_DOT_FLAG))%></font></span>
 				<br></td>
 				<%} %>
 				

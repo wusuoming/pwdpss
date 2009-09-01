@@ -21,6 +21,7 @@
 <jsp:directive.page
 	import="com.elongway.pss.dto.domain.LwNewFactoryIndicatorBakDto" />
 <%@page import="com.elongway.pss.util.AppConst"%>
+<%@page import="com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<meta http-equiv=Content-Type content="text/html; charset=gb2312">
@@ -55,6 +56,8 @@
 		<form name="fm" method="post" action="">
 			<%
 		 LwCorporationSummaryDto corporation=(LwCorporationSummaryDto)request.getAttribute("LwCorporationSummaryDto2");
+		 double unchangeunPointerQuantity = (Double)request.getAttribute("unchangeunPointerQuantity");
+		 
 		 LwCoporationUserInfoDto lwCoporationUserInfoDto=(LwCoporationUserInfoDto)request.getAttribute("lwCoporationUserInfoDto");
 		Collection col=(List)request.getAttribute("colpoint");
 		
@@ -292,6 +295,15 @@
 					<%
 					}
 					%>
+					<%if (lwFactoryIndicatorDto.getAmmeterStyle().equals("2")) {
+					%>
+					<td class="input">
+						<input name="ammeterStyle" value="套表" readonly="readonly"
+							style="width:65px">
+					</td>
+					<%
+					}
+					%>
 					<td class="input">
 						<input name="Rate"
 							value="<%=Math.round(lwFactoryIndicatorDto.getRate())%>"
@@ -385,6 +397,17 @@
 					%>
 					<td class="input">
 						<input name="ammeterStyle" value="非居民照明" readonly="readonly"
+							style="width:65px">
+					</td>
+					<%
+					}
+					%>
+					<%
+								if (lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals(
+								"2")) {
+					%>
+					<td class="input">
+						<input name="ammeterStyle" value="套表" readonly="readonly"
 							style="width:65px">
 					</td>
 					<%
@@ -528,14 +551,21 @@
 
 				</tr>
 				<tr>
-
+            
 					<td nowrap>
 						<span class="title">无功总电量</span>
 					</td>
+					<%if(corporation.getIfchange().equals("0")){ %>	
 					<td nowrap colspan="2">
 						<span class="title"><%=Math.round(corporation.getUnPointerQuantity())%>
 						</span>
 					</td>
+					<%}else{ %>
+						<td nowrap colspan="2">
+						<span class="title"><%=Math.round(unchangeunPointerQuantity)%>
+						</span>
+					</td>
+					<%} %>
 					<td nowrap>
 						<span class="title">力率标准值</span>
 					</td>
@@ -710,7 +740,7 @@
 					</td>
 					<%if("20699999069".equals(corporation.getLineCode())){%>
 					<td nowrap colspan="2">
-						<span class="title"><%=Math.round(corporation.getUnDenizenQuantity())%>
+						<span class="title"><%=corporation.getLastPower()+corporation.getTaobiaoQuantity()+corporation.getUnDenizenQuantity()%>
 						</span>
 					</td>
 					<%}else{ %>
@@ -734,7 +764,7 @@
 						<span class="title">大工业</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=Math.round(corporation.getLastPower())%>
+						<span class="title"><%=Math.round(corporation.getLastPower()+corporation.getTaobiaoQuantity())%>
 						</span>
 					</td>
 					<td nowrap>
@@ -742,7 +772,7 @@
 						</span>
 					</td>
 					<td nowrap colspan="2">
-						<span class="title"><%=df.format(corporation.getLastFee())%>
+						<span class="title"><%=df.format(corporation.getLastFee()+corporation.getTaobiaoFee())%>
 						</span>
 					</td>
 					<%

@@ -34,7 +34,7 @@ public class UIFinalBookAction extends Action {
 		double sumFee=0;
 		BLLwWholeSaleIndicatorBakFacade  blLwWholeSaleIndicatorBakFacade=new BLLwWholeSaleIndicatorBakFacade();
 		BLLwWholeSaleIndicatorFacade  blLwWholeSaleIndicatorFacade=new BLLwWholeSaleIndicatorFacade();
-		String conditions="1=1 and userno='"+linecode+"' and statmonth like '"+date+"%'";
+		String conditions="1=1 and userno='"+linecode+"' and statmonth like '"+date+"%' order by statmonth desc";
 		//LwWholeSaleIndicatorBakDto  lwWholeSaleIndicatorBakDto=new LwWholeSaleIndicatorBakDto();
 		//LwWholeSaleIndicatorDto  lwWholeSaleIndicatorDto=new LwWholeSaleIndicatorDto();
 		Collection col=blLwWholeSaleIndicatorFacade.findByConditions(conditions);

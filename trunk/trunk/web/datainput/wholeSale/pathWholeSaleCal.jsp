@@ -154,76 +154,77 @@
 	Iterator it2=list2.iterator();
 	while(it2.hasNext()){
 	lwWholeSaleIndicatorDto=(LwWholeSaleIndicatorDto)it2.next();
-	
+	String lingCode = lwWholeSaleIndicatorDto.getUserNo();
+	if("ºö¼¦¹µ±ä913".equals(lingCode)){
 	 %>
-					<tr >
-						<td class="input" ><input name="UserName" value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" style="border:0" readonly="readonly" style="width:65px"></td>
-						<td class="input" ><input name="LastWorkNum" value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+					<tr class="listtitle1">
+						<td nowrap><input name="UserName" value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td nowrap><input name="LastWorkNum" value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						
 						
-						 <td class="input" ><input name="ThisWorkNum" value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>" onblur="workpower()" style="width:65px"></td>
+						 <td nowrap><input name="ThisWorkNum" value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>" onblur="workpower()" style="width:65px"></td>
 						
-						<td class="input" ><input name="LastIdleNum" value="<%=lwWholeSaleIndicatorDto.getLastIdleNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td nowrap><input name="LastIdleNum" value="<%=lwWholeSaleIndicatorDto.getLastIdleNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						
 						
 					
-						 <td class="input" ><input name="ThisIdleNum" value="<%=lwWholeSaleIndicatorDto.getThisIdleNum()%>" onblur="unworkpower()" style="width:65px"></td>
+						 <td nowrap><input name="ThisIdleNum" value="<%=lwWholeSaleIndicatorDto.getThisIdleNum()%>" onblur="unworkpower()" style="width:65px"></td>
 						
 						
-						<td class="input" ><input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorDto.getRate())%>" style="width:65px"></td>
-						<td class="input" ><input name="rateCode" value="<%=lwWholeSaleIndicatorDto.getPowerCode()%>" style="width:65px"></td>
-						
-						
-						
-						
-						 <td class="input" ><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getWorkQuantity()%>" style="width:65px"></td>
+						<td nowrap><input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorDto.getRate())%>" style="width:65px"></td>
+						<td nowrap><input name="rateCode" value="<%=lwWholeSaleIndicatorDto.getPowerCode()%>" style="width:65px"></td>
 						
 						
 						
-						 <td class="input" ><input name="unworkQuantity" value="<%=lwWholeSaleIndicatorDto.getUnworkQuantity()%>" style="width:65px"></td>
+						
+						 <td nowrap><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getWorkQuantity()%>" style="width:65px"></td>
+						
+						
+						
+						 <td nowrap><input name="unworkQuantity" value="<%=lwWholeSaleIndicatorDto.getUnworkQuantity()%>" style="width:65px"></td>
 						
 							 <%
 						if(lwWholeSaleIndicatorDto.getLossRate()==0){
 						 %>
-						<td class="input" ><input name="LossRate" style="width:65px">%</td>
+						<td nowrap><input name="LossRate" style="width:65px">%</td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="LossRate" value="<%=lwWholeSaleIndicatorDto.getLossRate()%>" style="width:65px">%</td>
+						 <td nowrap><input name="LossRate" value="<%=lwWholeSaleIndicatorDto.getLossRate()%>" style="width:65px">%</td>
 						 <%} %>
 						 <%
 						if(lwWholeSaleIndicatorDto.getLineLossQuantity()==0){
 						 %>
-						<td class="input" ><input name="LineLossQuantity" style="width:65px"></td>
+						<td nowrap><input name="LineLossQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="LineLossQuantity" value="<%=lwWholeSaleIndicatorDto.getLineLossQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="LineLossQuantity" value="<%=lwWholeSaleIndicatorDto.getLineLossQuantity()%>" style="width:65px"></td>
 						 <%} %>
 						
 						 <%
 						if(lwWholeSaleIndicatorDto.getTransLossQuantity()==0){
 						 %>
-						<td class="input" ><input name="TransLossQuantity" style="width:65px"></td>
+						<td nowrap><input name="TransLossQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="TransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getTransLossQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="TransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getTransLossQuantity()%>" style="width:65px"></td>
 						 <%} %>
 						 <%
 						if(lwWholeSaleIndicatorDto.getUnTransLossQuantity()==0){
 						 %>
-						<td class="input" ><input name="unTransLossQuantity" style="width:65px"></td>
+						<td nowrap><input name="unTransLossQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="unTransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getUnTransLossQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="unTransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getUnTransLossQuantity()%>" style="width:65px"></td>
 						 <%} %>
-						<td class="input" align="center">
+						<td nowrap align="center">
 						<input name="differenceQuantity"
 							value="<%=lwWholeSaleIndicatorDto.getDifferenceQuantity()%>"
 							style="width:65px">
@@ -233,58 +234,187 @@
 						<%
 						if(lwWholeSaleIndicatorDto.getChgAmmeterQuantity()==0 ){
 						 %>
-						<td class="input" ><input name="ChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td nowrap><input name="ChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
 						<%}
 						else{
 						 %>
-						 <td class="input" ><input name="ChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						 <td nowrap><input name="ChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<%} %>
 						<%
 						if(lwWholeSaleIndicatorDto.getUnChgAmmeterQuantity()==0 ){
 						 %>
-						<td class="input" ><input name="UnChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td nowrap><input name="UnChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
 						<%}
 						else{
 						 %>
-						 <td class="input" ><input name="UnChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getUnChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						 <td nowrap><input name="UnChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getUnChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
 						<%} %><%--
 						 <%
 						if(lwWholeSaleIndicatorDto.getExcepQuantity()==0){
 						 %>
-						<td class="input" ><input name="ExcepQuantity" style="width:65px"></td>
+						<td nowrap><input name="ExcepQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="ExcepQuantity" value="<%=lwWholeSaleIndicatorDto.getExcepQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="ExcepQuantity" value="<%=lwWholeSaleIndicatorDto.getExcepQuantity()%>" style="width:65px"></td>
 						 <%} %>
 						  --%><%
 						if(lwWholeSaleIndicatorDto.getCompensateQuantity() ==0){
 						 %>
-						<td class="input" ><input name="CompensateQuantity" style="width:65px"></td>
+						<td nowrap><input name="CompensateQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="CompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getCompensateQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="CompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getCompensateQuantity()%>" style="width:65px"></td>
 						 <%} %>
 						 	  <%
 						if(lwWholeSaleIndicatorDto.getUnCompensateQuantity() ==0){
 						 %>
-						<td class="input" ><input name="UnCompensateQuantity" style="width:65px"></td>
+						<td nowrap><input name="UnCompensateQuantity" style="width:65px"></td>
 						<%
 						}
 						else{
 						 %>
-						 <td class="input" ><input name="UnCompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getUnCompensateQuantity()%>" style="width:65px"></td>
+						 <td nowrap><input name="UnCompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getUnCompensateQuantity()%>" style="width:65px"></td>
 						 <%} %>
 						
 						
-						 <td class="input" ><input name="Remark" value="<%=lwWholeSaleIndicatorDto.getRemark()%>" style="width:65px"></td>
-						<td class="input" style="display: none"><input name="flag" type="hidden" value="<%=lwWholeSaleIndicatorDto.getFlag()%>" style="width:65px">
+						 <td nowrap><input name="Remark" value="<%=lwWholeSaleIndicatorDto.getRemark()%>" style="width:65px"></td>
+						<td nowrapstyle="display: none"><input name="flag" type="hidden" value="<%=lwWholeSaleIndicatorDto.getFlag()%>" style="width:65px">
 						                  
-					<br></tr>
-					<%} %>
+					</tr>
+					<%}else{ %>
+					<tr >
+						<td nowrap><input name="UserName" value="<%=lwWholeSaleIndicatorDto.getUserNo()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<td nowrap><input name="LastWorkNum" value="<%=lwWholeSaleIndicatorDto.getLastWorkNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						
+						
+						 <td nowrap><input name="ThisWorkNum" value="<%=lwWholeSaleIndicatorDto.getThisWorkNum()%>" onblur="workpower()" style="width:65px"></td>
+						
+						<td nowrap><input name="LastIdleNum" value="<%=lwWholeSaleIndicatorDto.getLastIdleNum()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						
+						
+					
+						 <td nowrap><input name="ThisIdleNum" value="<%=lwWholeSaleIndicatorDto.getThisIdleNum()%>" onblur="unworkpower()" style="width:65px"></td>
+						
+						
+						<td nowrap><input name="Rate" value="<%=Math.round(lwWholeSaleIndicatorDto.getRate())%>" style="width:65px"></td>
+						<td nowrap><input name="rateCode" value="<%=lwWholeSaleIndicatorDto.getPowerCode()%>" style="width:65px"></td>
+						
+						
+						
+						
+						 <td nowrap><input name="workQuantity" value="<%=lwWholeSaleIndicatorDto.getWorkQuantity()%>" style="width:65px"></td>
+						
+						
+						
+						 <td nowrap><input name="unworkQuantity" value="<%=lwWholeSaleIndicatorDto.getUnworkQuantity()%>" style="width:65px"></td>
+						
+							 <%
+						if(lwWholeSaleIndicatorDto.getLossRate()==0){
+						 %>
+						<td nowrap><input name="LossRate" style="width:65px">%</td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="LossRate" value="<%=lwWholeSaleIndicatorDto.getLossRate()%>" style="width:65px">%</td>
+						 <%} %>
+						 <%
+						if(lwWholeSaleIndicatorDto.getLineLossQuantity()==0){
+						 %>
+						<td nowrap><input name="LineLossQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="LineLossQuantity" value="<%=lwWholeSaleIndicatorDto.getLineLossQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						
+						 <%
+						if(lwWholeSaleIndicatorDto.getTransLossQuantity()==0){
+						 %>
+						<td nowrap><input name="TransLossQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="TransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getTransLossQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						 <%
+						if(lwWholeSaleIndicatorDto.getUnTransLossQuantity()==0){
+						 %>
+						<td nowrap><input name="unTransLossQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="unTransLossQuantity" value="<%=lwWholeSaleIndicatorDto.getUnTransLossQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						<td nowrap align="center">
+						<input name="differenceQuantity"
+							value="<%=lwWholeSaleIndicatorDto.getDifferenceQuantity()%>"
+							style="width:65px">
+					</td>
+					 
+						
+						<%
+						if(lwWholeSaleIndicatorDto.getChgAmmeterQuantity()==0 ){
+						 %>
+						<td nowrap><input name="ChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%}
+						else{
+						 %>
+						 <t nowrap ><input name="ChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%} %>
+						<%
+						if(lwWholeSaleIndicatorDto.getUnChgAmmeterQuantity()==0 ){
+						 %>
+						<td nowrap><input name="UnChgAmmeterQuantity" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%}
+						else{
+						 %>
+						 <td nowrap><input name="UnChgAmmeterQuantity" value="<%=lwWholeSaleIndicatorDto.getUnChgAmmeterQuantity()%>" style="border:0" readonly="readonly" style="width:65px"></td>
+						<%} %><%--
+						 <%
+						if(lwWholeSaleIndicatorDto.getExcepQuantity()==0){
+						 %>
+						<td nowrap><input name="ExcepQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="ExcepQuantity" value="<%=lwWholeSaleIndicatorDto.getExcepQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						  --%><%
+						if(lwWholeSaleIndicatorDto.getCompensateQuantity() ==0){
+						 %>
+						<td nowrap><input name="CompensateQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="CompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getCompensateQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						 	  <%
+						if(lwWholeSaleIndicatorDto.getUnCompensateQuantity() ==0){
+						 %>
+						<td nowrap><input name="UnCompensateQuantity" style="width:65px"></td>
+						<%
+						}
+						else{
+						 %>
+						 <td nowrap><input name="UnCompensateQuantity" value="<%=lwWholeSaleIndicatorDto.getUnCompensateQuantity()%>" style="width:65px"></td>
+						 <%} %>
+						
+						
+						 <td nowrap><input name="Remark" value="<%=lwWholeSaleIndicatorDto.getRemark()%>" style="width:65px"></td>
+						<td nowrap style="display: none"><input name="flag" type="hidden" value="<%=lwWholeSaleIndicatorDto.getFlag()%>" style="width:65px">
+						                  
+					</tr>
+					<%}} %>
 		
 	</table>
 	<p><br>

@@ -194,6 +194,9 @@
     tr.listtitle { background-color: #0083da;
                    text-align: center;
                    color: #ffffff }
+    tr.listtitle1 { background-color: #C2F1EF;
+                   text-align: center;
+                   color: #ffffff }
 
     tr.listodd { background-color: #eff9ff;
                  text-align: center;
@@ -222,7 +225,7 @@
 /*--INPUTµÄÑùÊ½--*/
     input { font-size: 9pt;
             }
- input.inputprint { background-color: #eff9ff;
+    input.inputprint { background-color: #eff9ff;
                 border: 1px #819E81 solid;
                font-size: 13pt;
                

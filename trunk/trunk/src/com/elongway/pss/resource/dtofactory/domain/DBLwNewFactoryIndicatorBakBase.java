@@ -77,7 +77,11 @@ public class DBLwNewFactoryIndicatorBakBase{
         buffer.append("ChageChgAmmeterQuantity,");
         buffer.append("ChangeunChgAmmeterQuantity,");
         buffer.append("ChangeCompensateQuantity,");
-        buffer.append("ChangeunCompensateQuantity ");
+        buffer.append("ChangeunCompensateQuantity,");
+        buffer.append("Rlquantityafbefore,");
+        buffer.append("Rlquantityaf,");
+        buffer.append("Rlpriceaf,");
+        buffer.append("Chgpriceafflag ");
         buffer.append(") ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -124,11 +128,15 @@ public class DBLwNewFactoryIndicatorBakBase{
             debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChageChgAmmeterQuantity()).append("',");
             debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChangeunChgAmmeterQuantity()).append("',");
             debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChangeCompensateQuantity()).append("',");
-            debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity()).append("')");
+            debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity()).append("',");
+            debugBuffer.append("").append(lwNewFactoryIndicatorBakDto.getRlquantityafbefore()).append(",");
+            debugBuffer.append("").append(lwNewFactoryIndicatorBakDto.getRlquantityaf()).append(",");
+            debugBuffer.append("").append(lwNewFactoryIndicatorBakDto.getRlpriceaf()).append(",");
+            debugBuffer.append("'").append(lwNewFactoryIndicatorBakDto.getChgpriceafflag()).append("')");
             logger.debug(debugBuffer.toString());
         }
 
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         dbManager.prepareStatement(buffer.toString());
         dbManager.setString(1,lwNewFactoryIndicatorBakDto.getUnChgAmmeterQuantity());
         dbManager.setString(2,lwNewFactoryIndicatorBakDto.getUserNo());
@@ -172,6 +180,10 @@ public class DBLwNewFactoryIndicatorBakBase{
         dbManager.setString(40,lwNewFactoryIndicatorBakDto.getChangeunChgAmmeterQuantity());
         dbManager.setString(41,lwNewFactoryIndicatorBakDto.getChangeCompensateQuantity());
         dbManager.setString(42,lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity());
+        dbManager.setDouble(43,lwNewFactoryIndicatorBakDto.getRlquantityafbefore());
+        dbManager.setDouble(44,lwNewFactoryIndicatorBakDto.getRlquantityaf());
+        dbManager.setDouble(45,lwNewFactoryIndicatorBakDto.getRlpriceaf());
+        dbManager.setString(46,lwNewFactoryIndicatorBakDto.getChgpriceafflag());
         dbManager.executePreparedUpdate();
 
     }
@@ -226,9 +238,13 @@ public class DBLwNewFactoryIndicatorBakBase{
         buffer.append("ChageChgAmmeterQuantity,");
         buffer.append("ChangeunChgAmmeterQuantity,");
         buffer.append("ChangeCompensateQuantity,");
-        buffer.append("ChangeunCompensateQuantity ");
+        buffer.append("ChangeunCompensateQuantity,");
+        buffer.append("Rlquantityafbefore,");
+        buffer.append("Rlquantityaf,");
+        buffer.append("Rlpriceaf,");
+        buffer.append("Chgpriceafflag ");
         buffer.append(") ");
-        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        buffer.append("VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         if(logger.isDebugEnabled()){
             logger.debug(buffer.toString());
         }
@@ -277,6 +293,10 @@ public class DBLwNewFactoryIndicatorBakBase{
             dbManager.setString(40,lwNewFactoryIndicatorBakDto.getChangeunChgAmmeterQuantity());
             dbManager.setString(41,lwNewFactoryIndicatorBakDto.getChangeCompensateQuantity());
             dbManager.setString(42,lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity());
+            dbManager.setDouble(43,lwNewFactoryIndicatorBakDto.getRlquantityafbefore());
+            dbManager.setDouble(44,lwNewFactoryIndicatorBakDto.getRlquantityaf());
+            dbManager.setDouble(45,lwNewFactoryIndicatorBakDto.getRlpriceaf());
+            dbManager.setString(46,lwNewFactoryIndicatorBakDto.getChgpriceafflag());
             dbManager.addBatch();
         }
         dbManager.executePreparedUpdateBatch();
@@ -363,7 +383,11 @@ public class DBLwNewFactoryIndicatorBakBase{
         buffer.append("ChageChgAmmeterQuantity = ?, ");
         buffer.append("ChangeunChgAmmeterQuantity = ?, ");
         buffer.append("ChangeCompensateQuantity = ?, ");
-        buffer.append("ChangeunCompensateQuantity = ? ");
+        buffer.append("ChangeunCompensateQuantity = ?, ");
+        buffer.append("Rlquantityafbefore = ?, ");
+        buffer.append("Rlquantityaf = ?, ");
+        buffer.append("Rlpriceaf = ?, ");
+        buffer.append("Chgpriceafflag = ? ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
             debugBuffer.append("UPDATE LwNewFactoryIndicatorBak SET ");
@@ -405,7 +429,11 @@ public class DBLwNewFactoryIndicatorBakBase{
             debugBuffer.append("ChageChgAmmeterQuantity = '" + lwNewFactoryIndicatorBakDto.getChageChgAmmeterQuantity() + "', ");
             debugBuffer.append("ChangeunChgAmmeterQuantity = '" + lwNewFactoryIndicatorBakDto.getChangeunChgAmmeterQuantity() + "', ");
             debugBuffer.append("ChangeCompensateQuantity = '" + lwNewFactoryIndicatorBakDto.getChangeCompensateQuantity() + "', ");
-            debugBuffer.append("ChangeunCompensateQuantity = '" + lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity() + "' ");
+            debugBuffer.append("ChangeunCompensateQuantity = '" + lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity() + "', ");
+            debugBuffer.append("Rlquantityafbefore = " + lwNewFactoryIndicatorBakDto.getRlquantityafbefore() + ", ");
+            debugBuffer.append("Rlquantityaf = " + lwNewFactoryIndicatorBakDto.getRlquantityaf() + ", ");
+            debugBuffer.append("Rlpriceaf = " + lwNewFactoryIndicatorBakDto.getRlpriceaf() + ", ");
+            debugBuffer.append("Chgpriceafflag = '" + lwNewFactoryIndicatorBakDto.getChgpriceafflag() + "' ");
             debugBuffer.append("WHERE ");
             debugBuffer.append("UserNo=").append("'").append(lwNewFactoryIndicatorBakDto.getUserNo()).append("' AND ");
             debugBuffer.append("StatMonth=").append("'").append(lwNewFactoryIndicatorBakDto.getStatMonth()).append("' AND ");
@@ -459,10 +487,14 @@ public class DBLwNewFactoryIndicatorBakBase{
         dbManager.setString(37,lwNewFactoryIndicatorBakDto.getChangeunChgAmmeterQuantity());
         dbManager.setString(38,lwNewFactoryIndicatorBakDto.getChangeCompensateQuantity());
         dbManager.setString(39,lwNewFactoryIndicatorBakDto.getChangeunCompensateQuantity());
+        dbManager.setDouble(40,lwNewFactoryIndicatorBakDto.getRlquantityafbefore());
+        dbManager.setDouble(41,lwNewFactoryIndicatorBakDto.getRlquantityaf());
+        dbManager.setDouble(42,lwNewFactoryIndicatorBakDto.getRlpriceaf());
+        dbManager.setString(43,lwNewFactoryIndicatorBakDto.getChgpriceafflag());
         //设置条件字段;
-        dbManager.setString(40,lwNewFactoryIndicatorBakDto.getUserNo());
-        dbManager.setString(41,lwNewFactoryIndicatorBakDto.getStatMonth());
-        dbManager.setString(42,lwNewFactoryIndicatorBakDto.getAmmeterNo());
+        dbManager.setString(44,lwNewFactoryIndicatorBakDto.getUserNo());
+        dbManager.setString(45,lwNewFactoryIndicatorBakDto.getStatMonth());
+        dbManager.setString(46,lwNewFactoryIndicatorBakDto.getAmmeterNo());
         dbManager.executePreparedUpdate();
 
     }
@@ -521,7 +553,11 @@ public class DBLwNewFactoryIndicatorBakBase{
         buffer.append("ChageChgAmmeterQuantity,");
         buffer.append("ChangeunChgAmmeterQuantity,");
         buffer.append("ChangeCompensateQuantity,");
-        buffer.append("ChangeunCompensateQuantity ");
+        buffer.append("ChangeunCompensateQuantity,");
+        buffer.append("Rlquantityafbefore,");
+        buffer.append("Rlquantityaf,");
+        buffer.append("Rlpriceaf,");
+        buffer.append("Chgpriceafflag ");
         buffer.append("FROM LwNewFactoryIndicatorBak ");
         if(logger.isDebugEnabled()){
             StringBuffer debugBuffer =  new StringBuffer(buffer.length()*4);
@@ -589,6 +625,10 @@ public class DBLwNewFactoryIndicatorBakBase{
             lwNewFactoryIndicatorBakDto.setChangeunChgAmmeterQuantity(dbManager.getString(resultSet,40));
             lwNewFactoryIndicatorBakDto.setChangeCompensateQuantity(dbManager.getString(resultSet,41));
             lwNewFactoryIndicatorBakDto.setChangeunCompensateQuantity(dbManager.getString(resultSet,42));
+            lwNewFactoryIndicatorBakDto.setRlquantityafbefore(dbManager.getDouble(resultSet,43));
+            lwNewFactoryIndicatorBakDto.setRlquantityaf(dbManager.getDouble(resultSet,44));
+            lwNewFactoryIndicatorBakDto.setRlpriceaf(dbManager.getDouble(resultSet,45));
+            lwNewFactoryIndicatorBakDto.setChgpriceafflag(dbManager.getString(resultSet,46));
         }
         resultSet.close();
         return lwNewFactoryIndicatorBakDto;
@@ -648,7 +688,11 @@ public class DBLwNewFactoryIndicatorBakBase{
         buffer.append("ChageChgAmmeterQuantity,");
         buffer.append("ChangeunChgAmmeterQuantity,");
         buffer.append("ChangeCompensateQuantity,");
-        buffer.append("ChangeunCompensateQuantity ");
+        buffer.append("ChangeunCompensateQuantity,");
+        buffer.append("Rlquantityafbefore,");
+        buffer.append("Rlquantityaf,");
+        buffer.append("Rlpriceaf,");
+        buffer.append("Chgpriceafflag ");
         buffer.append("FROM LwNewFactoryIndicatorBak WHERE ");
         buffer.append(conditions);
         boolean supportPaging = false;//数据库是否支持分页
@@ -737,6 +781,10 @@ public class DBLwNewFactoryIndicatorBakBase{
             lwNewFactoryIndicatorBakDto.setChangeunChgAmmeterQuantity(dbManager.getString(resultSet,"ChangeunChgAmmeterQuantity"));
             lwNewFactoryIndicatorBakDto.setChangeCompensateQuantity(dbManager.getString(resultSet,"ChangeCompensateQuantity"));
             lwNewFactoryIndicatorBakDto.setChangeunCompensateQuantity(dbManager.getString(resultSet,"ChangeunCompensateQuantity"));
+            lwNewFactoryIndicatorBakDto.setRlquantityafbefore(dbManager.getDouble(resultSet,"Rlquantityafbefore"));
+            lwNewFactoryIndicatorBakDto.setRlquantityaf(dbManager.getDouble(resultSet,"Rlquantityaf"));
+            lwNewFactoryIndicatorBakDto.setRlpriceaf(dbManager.getDouble(resultSet,"Rlpriceaf"));
+            lwNewFactoryIndicatorBakDto.setChgpriceafflag(dbManager.getString(resultSet,"Chgpriceafflag"));
             collection.add(lwNewFactoryIndicatorBakDto);
         }
         resultSet.close();

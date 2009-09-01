@@ -3,6 +3,7 @@ package com.elongway.pss.ui.count;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorBakFacade;
 import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
+import com.elongway.pss.dto.domain.LwNewFactoryIndicatorDto;
 import com.sinosoft.sysframework.exceptionlog.UserException;
 
 public class UIcorporationPrintAction extends Action {
@@ -92,6 +94,16 @@ public class UIcorporationPrintAction extends Action {
 		
 		DecimalFormat df = new DecimalFormat("###0.00");
 		double tax=0;
+		
+		 Collection list = blLwNewFactoryIndicatorFacade.findByConditions("userNo = '"+lwCoporationUserInfoDto.getUserNo()+"' and ammeterstyle = '0'");
+         LwNewFactoryIndicatorDto lwNewFactoryIndicatorDto = null;
+         Iterator it = list.iterator();
+         if(it.hasNext()){
+         lwNewFactoryIndicatorDto = (LwNewFactoryIndicatorDto)it.next();
+         }
+         double 	unchangeunPointerQuantity = (lwNewFactoryIndicatorDto.getThisIdleNum() - lwNewFactoryIndicatorDto.getLastIdleNum())
+						* lwNewFactoryIndicatorDto.getRate();
+         httpServletRequest.setAttribute("unchangeunPointerQuantity", unchangeunPointerQuantity);
 		LwCorporationSummaryDto LwCorporationSummaryDto2=blLwCorporationSummaryFacade.findByPrimaryKey(corporationName, serchDate);
 		tax=LwCorporationSummaryDto2.getSumFee()/1.17*0.17;
 		httpServletRequest.setAttribute("colpointbak", colpointbak);

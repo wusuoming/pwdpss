@@ -15,29 +15,14 @@ import org.apache.struts.action.ActionMapping;
 import com.elongway.pss.bl.facade.BLLwAmmeterChangeFacade;
 import com.elongway.pss.bl.facade.BLLwCoporationUserInfoFacade;
 import com.elongway.pss.bl.facade.BLLwCorporationSummaryFacade;
-import com.elongway.pss.bl.facade.BLLwFactoryIndicatorFacade;
-import com.elongway.pss.bl.facade.BLLwLineAmmeterFacade;
 import com.elongway.pss.bl.facade.BLLwNewFactoryIndicatorFacade;
-import com.elongway.pss.bl.facade.BLLwPowerUserFacade;
-import com.elongway.pss.bl.facade.BLLwSalePriceFacade;
-import com.elongway.pss.bl.facade.BLLwUserLineFacade;
-import com.elongway.pss.bl.facade.BLLwindicatorFacade;
-
 import com.elongway.pss.dto.custom.CommonDto;
 import com.elongway.pss.dto.domain.LwAmmeterChangeDto;
 import com.elongway.pss.dto.domain.LwCoporationUserInfoDto;
 import com.elongway.pss.dto.domain.LwCorporationSummaryDto;
-import com.elongway.pss.dto.domain.LwFactoryIndicatorDto;
-import com.elongway.pss.dto.domain.LwLineAmmeterDto;
 import com.elongway.pss.dto.domain.LwNewFactoryIndicatorDto;
-import com.elongway.pss.dto.domain.LwPowerUserDto;
-import com.elongway.pss.dto.domain.LwSalePriceDto;
-import com.elongway.pss.dto.domain.LwUserLineDto;
-import com.elongway.pss.dto.domain.LwindicatorDto;
-import com.elongway.pss.ui.control.maintenance.BLLWUserLine;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.PowerFeeCal;
-import com.sinosoft.sysframework.exceptionlog.UserException;
 
 /**
  * 大工业算费Action
@@ -136,19 +121,22 @@ public class UIcorporationFeeCalAction extends Action {
 				.getParameter("changeCompensateQuantity");
 		String changeUnCompensateQuantity = httpServletRequest
 				.getParameter("changeUnCompensateQuantity");
-
+		BLLwNewFactoryIndicatorFacade blLwNewFactoryIndicatorFacade = new BLLwNewFactoryIndicatorFacade();
 		PowerFeeCal powerFeeCal = new PowerFeeCal();
 		BLLwCoporationUserInfoFacade blLwCoporationUserInfoFacade = new BLLwCoporationUserInfoFacade();
 		LwCoporationUserInfoDto lwCoporationUserInfoDto = blLwCoporationUserInfoFacade
 				.findByPrimaryKey(UserNo);
 		double TransLoss = lwCoporationUserInfoDto.getLineLossScale();
 		String AmmeterStyle = "";
+		LwNewFactoryIndicatorDto lwNewFactoryIndicatorDto = null;
 		if (lwCoporationUserInfoDto.getLineLossScale() > 0) {
 			AmmeterStyle = "1";
 		}
 		if (lwCoporationUserInfoDto.getLineLossScale() == 0) {
 			AmmeterStyle = "0";
 		}
+		
+		// 没有生产停产的改变
 		if (stopProduce.equals("0")) {
 			/**
 			 * modify by qiaoyouliang 2009-03-31 beijing begin 大工业计算增加套表-定义
@@ -179,26 +167,7 @@ public class UIcorporationFeeCalAction extends Action {
 				rongliangQuantity = lwCoporationUserInfoDto.getRongliangPower();
 			}
 
-			/*
-			 * if(pepolepowerStyle.equals("0")){
-			 * unDenizenFeePower=Math.round(Double.parseDouble(PeopleQuantity)+Double.parseDouble(PepoleUnChgAmmeterQuantity)+Double.parseDouble(otherPeopleQuantity));
-			 * if(AmmeterStyle.equals("0")){
-			 * PointerQuantity=Math.round((Double.parseDouble(ThisWorkNum)-Double.parseDouble(LastWorkNum))*Double.parseDouble(Rate));
-			 * }else{
-			 * PointerQuantity=Math.round((Double.parseDouble(ThisWorkNum)-Double.parseDouble(LastWorkNum))*Double.parseDouble(Rate)); } }
-			 * if(pepolepowerStyle.equals("1")){
-			 * 
-			 * unDenizenFeePower=Math.round((Double.parseDouble(PeopleThisWorkNum)-Double.parseDouble(PeopleLastWorkNum))*Double.parseDouble(PeopleRate)+Double.parseDouble(PepoleUnChgAmmeterQuantity)+Double.parseDouble(otherPeopleQuantity));
-			 * if(AmmeterStyle.equals("0")){
-			 * PointerQuantity=Math.round((Double.parseDouble(ThisWorkNum)-Double.parseDouble(LastWorkNum))*Double.parseDouble(Rate));
-			 * }else{
-			 * PointerQuantity=Math.round((Double.parseDouble(ThisWorkNum)-Double.parseDouble(LastWorkNum))*Double.parseDouble(Rate)); } }
-			 */
-			/*
-			 * else{
-			 * unDenizenFeePower=(Double.parseDouble(PeopleThisWorkNum)-Double.parseDouble(PeopleLastWorkNum))*Double.parseDouble(PeopleRate);
-			 * PointerQuantity=(Double.parseDouble(ThisWorkNum)-Double.parseDouble(LastWorkNum))*Double.parseDouble(Rate)-(Double.parseDouble(PeopleThisWorkNum)-Double.parseDouble(PeopleLastWorkNum))*Double.parseDouble(PeopleRate); }
-			 */
+	
 			double PeakQuantity = 0; // 峰段电量
 			double ValleyQuantity = 0;// 谷段电量
 
@@ -361,10 +330,27 @@ public class UIcorporationFeeCalAction extends Action {
 				dianJinFee = powerFeeCal.getValue(sumpower * dianjinPrice,
 						AppConst.TWO_DOT_FLAG);// 电金
 			}
+		
+			
 			if (lwCoporationUserInfoDto.getDianJinPower().equals("2")) {
 				dianJinFee = powerFeeCal.getValue(unDenizenFeePower
 						* dianjinPrice, AppConst.TWO_DOT_FLAG);// 电金
 			}
+			
+			/**
+			 * 土右化肥厂优惠begin 2009-06-26
+			 */
+			if(state.equals("2")){
+				if(lwCoporationUserInfoDto.getUserNo().equals("20699999069")){
+					dianJinFee = powerFeeCal.getValue(sumpower * dianjinPrice,
+							AppConst.TWO_DOT_FLAG);// 电金
+				}
+			}
+			
+			/**
+			 * 土右化肥厂优惠end 2009-06-26
+			 */
+			
 			double sanXiaFee = powerFeeCal.getValue(sumpower * 0.004,
 					AppConst.TWO_DOT_FLAG);// 三峡金
 			double jiJinFee = powerFeeCal.getValue(sumpower * 0.0051,
@@ -433,7 +419,7 @@ public class UIcorporationFeeCalAction extends Action {
 			 * 大工业计算增加套表保存 
 			 */
 			lwCorporationSummaryDto.setTaobiaoFee(PowerFeeCal.getValue(taobiaoFee, AppConst.TWO_DOT_FLAG));
-			lwCorporationSummaryDto.setTaobiaoPrice(PowerFeeCal.getValue(taobiaoPrice, AppConst.TWO_DOT_FLAG));
+			lwCorporationSummaryDto.setTaobiaoPrice(taobiaoPrice);
 			lwCorporationSummaryDto.setTaobiaoQuantity(PowerFeeCal.getValue(taobiaoQuantity, AppConst.ZERO_DOT_FLAG));
 			lwCorporationSummaryDto.setTaobiaoflag(taoBiaoFlag);
 			
@@ -556,9 +542,9 @@ public class UIcorporationFeeCalAction extends Action {
 					Rate[i] = "0";
 				}
 
-				BLLwNewFactoryIndicatorFacade blLwNewFactoryIndicatorFacade = new BLLwNewFactoryIndicatorFacade();
+				
 				Collection factory = new ArrayList();
-				LwNewFactoryIndicatorDto lwNewFactoryIndicatorDto = new LwNewFactoryIndicatorDto();
+				
 				factory = blLwNewFactoryIndicatorFacade
 						.findByConditions(conditionx);
 				Iterator fc = factory.iterator();
@@ -584,7 +570,15 @@ public class UIcorporationFeeCalAction extends Action {
 			}
 		}
 		if (stopProduce.equals("1")) {
-
+			/**
+			 * modify by qiaoyouliang 2009-03-31 beijing begin 大工业计算增加套表-定义
+			 */
+			double taobiaoQuantity = 0D;// 套表电量
+			double taobiaoFee = 0D;// 套表电费
+			double taobiaoPrice = 0D; // 大工业电价
+			/**
+			 * modify by qiaoyouliang 2009-03-31 beijing end 大工业计算增加套表-定义
+			 */
 			double PointerQuantity = 0; // 抄见电量
 			double unDenizenFeePower = 0;// 居民电量
 			double rongliangQuantity = 0;
@@ -651,6 +645,8 @@ public class UIcorporationFeeCalAction extends Action {
 					* Double.parseDouble(changeRate)
 					+ Double.parseDouble(changeUnChgAmmeterQuantity)
 					+ Double.parseDouble(changeUnCompensateQuantity));
+			
+			
 			for (int i = 0; i < AmmeterNo.length; i++) {
 				if (ChgAmmeterQuantity[i].equals("")
 						|| ChgAmmeterQuantity[i] == null) {
@@ -709,7 +705,7 @@ public class UIcorporationFeeCalAction extends Action {
 			 * if(PepoleUnChgAmmeterQuantity.equals("")||PepoleUnChgAmmeterQuantity==null){
 			 * PepoleUnChgAmmeterQuantity="0"; }
 			 */
-			/*
+	   		/*
 			 * if(RongliangQuantity.equals("")||RongliangQuantity==null){
 			 * rongliangQuantity=0; }else{
 			 * rongliangQuantity=Double.parseDouble(RongliangQuantity); }
@@ -772,12 +768,11 @@ public class UIcorporationFeeCalAction extends Action {
 						- unDenizenFeePower - TransLosspower;
 
 			}
-
+			
 			PointerQuantity = unchangePointerQuantity + changePointerQuantity;
 			double isPointerQuantity = (unchangePointerQuantity + changePointerQuantity)
 					- unDenizenFeePower;
-			double UnPointerQuantity = unchangeunPointerQuantity
-					+ changePointerQuantity;
+			double UnPointerQuantity = unchangeunPointerQuantity;
 			double AdjustRate = powerFeeCal.poweradjustmentCorporationValue(
 					String.valueOf(PointerQuantity), String
 							.valueOf(UnPointerQuantity), "3");
@@ -826,12 +821,79 @@ public class UIcorporationFeeCalAction extends Action {
 				needFee = needPower * needPrice;
 			}
 			double contentFee = 0;
-			if (lwCoporationUserInfoDto.getIndustryType().endsWith("1")) {
-				contentFee = contentPower * contentPrice * calday / 30
-						+ contentPower * changecontentPrice * uncalday / 30;
+			/**
+			 * 计算大工业停产时改变容量 begin
+			 */
+			// 查找指针用户
+			Collection <LwNewFactoryIndicatorDto>indicatorList = null;
+			
+			indicatorList = blLwNewFactoryIndicatorFacade.findByConditions("userNo = '"+UserNo+"'");
+			Iterator<LwNewFactoryIndicatorDto> it = indicatorList.iterator();
+			LwNewFactoryIndicatorDto o	 = null;
+			if(it.hasNext()){
+				 o	 = 	(LwNewFactoryIndicatorDto)it.next();
 			}
-			double PointerFee = isPointerQuantity * factoryprice;
-
+			// 容量改变电量
+			double rlquantityaf = o.getRlquantityaf();
+			// 大工业生产时的容量电费
+			double beginContentFee = 0D;
+			double endContentFee = 0D;
+			
+			contentPrice = powerFeeCal.rongLiangPrice(state, UserNo);
+			changecontentPrice = powerFeeCal.rongLiangPrice(changestate,
+					UserNo);
+			// 容量电量发生改变时，进行更新。
+			lwCoporationUserInfoDto.setRongliangPower(new Double(rlquantityaf).intValue());
+			blLwCoporationUserInfoFacade.update(lwCoporationUserInfoDto);
+			// 大工业停产时的容量电费
+			
+			if (lwCoporationUserInfoDto.getIndustryType().endsWith("1")) {
+				beginContentFee = contentPower * contentPrice * calday / 30;
+				endContentFee = rlquantityaf * changecontentPrice * uncalday / 30;
+				contentFee = beginContentFee + endContentFee;
+				contentPower = (contentPower + rlquantityaf)/2;
+			}
+			
+			
+			/**
+			 * 计算大工业停产时改变容量 end
+			 */
+			/**
+			 * modify by qiaoyouliang 2009-03-31 beijing begin 大工业计算增加套表-套表电量
+			 */
+			isPointerQuantity = 0D;
+			String taoBiaoFlag = AppConst.NOT_TAOBIAO_FLAG;
+			// 声明通用Dto
+			CommonDto commonDto = new CommonDto();
+			taobiaoQuantity = this.getTaoBiaoQuantity(AmmeterNo, ThisWorkNum,
+					LastWorkNum, Rate, useStyle, ChgAmmeterQuantity,
+					CompensateQuantity,taoBiaoFlag,commonDto);
+			// 生产 - > 停产
+			double factoryPriceFee = 0D;
+			double factoryPriceQuantity = 0D;
+			if(AppConst.START_PRODUCE_VALUE.equals(state)){
+				// 生产转停产
+				isPointerQuantity = unchangePointerQuantity;
+				factoryPriceQuantity = changePointerQuantity;
+				factoryPriceFee =  factoryPriceQuantity * powerFeeCal.factorySalePrice(lwCoporationUserInfoDto.getVoltage(), AppConst.METERIALS_TYPE_0);
+			}else{
+				isPointerQuantity = changePointerQuantity;
+				factoryPriceQuantity = unchangePointerQuantity - unDenizenFeePower;
+			}
+//			isPointerQuantity = Math.round(PointerQuantity - unDenizenFeePower
+//					- taobiaoQuantity);
+			String taoPriceType = AppConst.METERIALS_TYPE_0;
+			taobiaoPrice = powerFeeCal.factorySalePrice(lwCoporationUserInfoDto.getVoltage(), taoPriceType);
+			taobiaoFee = taobiaoQuantity * taobiaoPrice;
+			
+			
+			/**
+			 * modify by qiaoyouliang 2009-03-31 beijing end 大工业计算增加套表-套表电量
+			 */
+			// 生产时有功电量 = 停产前有功电量 + 停产后有功电量 - 非居民电量 - （停产后电量 + 套表电量）；
+			double tempIsPointerQuantity = isPointerQuantity + changePointerQuantity - unDenizenFeePower - (changePointerQuantity + taobiaoQuantity);
+			double PointerFee = (isPointerQuantity + changePointerQuantity - unDenizenFeePower - (changePointerQuantity + taobiaoQuantity)) * factoryprice ;
+			
 			double fengFee = (unchangePointerQuantity - unchangePointerQuantity
 					* TransLoss / 100)
 					* factoryprice;
@@ -849,7 +911,8 @@ public class UIcorporationFeeCalAction extends Action {
 							* TransLoss / 100)
 					* changedianjinPrice
 					+ unDenizenFeePower * dianjinPrice;// 电金
-
+			// 电金电量
+			dianJinFee = (unDenizenFeePower + taobiaoQuantity + changePointerQuantity) * dianjinPrice;
 			double sanXiaFee = sumpower * 0.004;// 三峡金
 			double jiJinFee = sumpower * 0.0051;// 基金
 			double sumFee = 0;
@@ -858,36 +921,36 @@ public class UIcorporationFeeCalAction extends Action {
 			double PowerRateFee = 0;
 			if (lwCoporationUserInfoDto.getIndustryType().equals("1")) {
 				if (AmmeterStyle.equals("0")) {
-					sumotherFee = contentFee + unDenizenFee + PointerFee;
+					sumotherFee = contentFee + unDenizenFee + PointerFee+ taobiaoFee;
 					PowerRateFee = sumotherFee * AdjustRate;
-					sumFee = contentFee + unDenizenFee + PointerFee
-							+ PowerRateFee + dianJinFee + sanXiaFee + jiJinFee;
+//					sumFee = contentFee + unDenizenFee + PointerFee
+//							+ PowerRateFee + dianJinFee + sanXiaFee + jiJinFee+ taobiaoFee;
+					
+					sumFee = contentFee + unDenizenFee+dianJinFee + sanXiaFee + jiJinFee+PowerRateFee+PointerFee+factoryPriceFee+taobiaoFee;
 				}
 				if (AmmeterStyle.equals("1")) {
 					sumotherFee = contentFee + unDenizenFee + fengFee
-							+ changefengFee;
+							+ changefengFee+ taobiaoFee;
 					PowerRateFee = sumotherFee * AdjustRate;
 					sumFee = contentFee + unDenizenFee + fengFee
 							+ changefengFee + PowerRateFee + dianJinFee
-							+ sanXiaFee + jiJinFee;
+							+ sanXiaFee + jiJinFee+ taobiaoFee;
 				}
-
 			}
 			if (lwCoporationUserInfoDto.getIndustryType().equals("2")) {
 				if (AmmeterStyle.equals("0")) {
 					sumotherFee = needFee + unDenizenFee + PointerFee;
 					PowerRateFee = sumotherFee * AdjustRate;
 					sumFee = needFee + unDenizenFee + PointerFee + PowerRateFee
-							+ dianJinFee + sanXiaFee + jiJinFee;
+							+ dianJinFee + sanXiaFee + jiJinFee+ taobiaoFee;
 				}
 				if (AmmeterStyle.equals("1")) {
 					sumotherFee = needFee + unDenizenFee + fengFee
 							+ changefengFee;
 					PowerRateFee = sumotherFee * AdjustRate;
 					sumFee = needFee + unDenizenFee + fengFee + changefengFee
-							+ PowerRateFee + dianJinFee + sanXiaFee + jiJinFee;
+							+ PowerRateFee + dianJinFee + sanXiaFee + jiJinFee+ taobiaoFee;
 				}
-
 			}
 
 			LwCorporationSummaryDto lwCorporationSummaryDto = new LwCorporationSummaryDto();
@@ -910,7 +973,30 @@ public class UIcorporationFeeCalAction extends Action {
 			 * 
 			 * lwCorporationSummaryDto.setLossQuantity(TransLosspower); }
 			 */
-
+			
+			/**
+			 * modify by qiaoyouliang 2009-05-26 beijing begin
+			 * 大工业计算增加套表保存 
+			 */
+			lwCorporationSummaryDto.setTaobiaoFee(PowerFeeCal.getValue(taobiaoFee, AppConst.TWO_DOT_FLAG));
+			lwCorporationSummaryDto.setTaobiaoPrice(taobiaoPrice);
+			lwCorporationSummaryDto.setTaobiaoQuantity(PowerFeeCal.getValue(taobiaoQuantity, AppConst.ZERO_DOT_FLAG));
+			lwCorporationSummaryDto.setTaobiaoflag(taoBiaoFlag);
+			
+			BLLwAmmeterChangeFacade blLwAmmeterChangeFacade1 = new BLLwAmmeterChangeFacade();
+			Integer index =  commonDto.getInteger();
+			if(index!=null){
+			String ammeterNo = AmmeterNo[index];
+			Collection taoBiaoList = blLwAmmeterChangeFacade1.findByConditions("ammeterNo = '"+ammeterNo+"'");
+			Iterator<LwAmmeterChangeDto> ittaobiao = taoBiaoList.iterator();
+			if(ittaobiao.hasNext()){
+			lwCorporationSummaryDto.setTaobiaoName(((LwAmmeterChangeDto)ittaobiao.next()).getFactoryName());
+			}
+			}
+			/**
+			 * modify by qiaoyouliang 2009-05-26 beijing end
+			 *  大工业计算增加套表保存
+			 */
 			lwCorporationSummaryDto.setElectricQuantity(sumpower);
 			lwCorporationSummaryDto.setSanXiaFee(sanXiaFee);
 			lwCorporationSummaryDto.setSurcharge(jiJinFee);
@@ -955,14 +1041,12 @@ public class UIcorporationFeeCalAction extends Action {
 			lwCorporationSummaryDto.setSumFee(sumFee);
 			lwCorporationSummaryDto.setIfchange("1");
 			if (AmmeterStyle.equals("0")) {
-				lwCorporationSummaryDto.setBeforPower(unchangePointerQuantity
-						- unchangePointerQuantity * TransLoss / 100);
+				lwCorporationSummaryDto.setBeforPower(tempIsPointerQuantity);
 				lwCorporationSummaryDto.setBeforPrice(factoryprice);
-				lwCorporationSummaryDto.setBeforFee(fengFee);
-				lwCorporationSummaryDto.setLastFee(changefengFee);
+				lwCorporationSummaryDto.setBeforFee(PointerFee);
+				lwCorporationSummaryDto.setLastFee(factoryPriceFee);
 				lwCorporationSummaryDto.setLastPrice(changefactoryprice);
-				lwCorporationSummaryDto.setLastPower(changePointerQuantity
-						- changePointerQuantity * TransLoss / 100);
+				lwCorporationSummaryDto.setLastPower(factoryPriceQuantity);
 				lwCorporationSummaryDto.setQuantityStyle("1");
 			}
 			if (AmmeterStyle.equals("1")) {
@@ -1028,9 +1112,8 @@ public class UIcorporationFeeCalAction extends Action {
 					ThisIdleNum[i] = "0";
 				}
 
-				BLLwNewFactoryIndicatorFacade blLwNewFactoryIndicatorFacade = new BLLwNewFactoryIndicatorFacade();
 				Collection factory = new ArrayList();
-				LwNewFactoryIndicatorDto lwNewFactoryIndicatorDto = new LwNewFactoryIndicatorDto();
+				
 				factory = blLwNewFactoryIndicatorFacade
 						.findByConditions(conditionx);
 				Iterator fc = factory.iterator();
@@ -1133,7 +1216,12 @@ public class UIcorporationFeeCalAction extends Action {
 		return taoQuantity;
 	}
 
-	public static void main(String[] args) {
-		System.out.println(475 * 0.02 + 2253260 * 0.01 + 376 * 0.01);
+
+	/**
+	 * 得到容量电费
+	 * @return
+	 */
+	public double getContentFee(double contentPower){
+		return 0;
 	}
 }

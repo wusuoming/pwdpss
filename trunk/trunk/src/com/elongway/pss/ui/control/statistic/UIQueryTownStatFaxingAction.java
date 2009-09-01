@@ -68,6 +68,7 @@ public class UIQueryTownStatFaxingAction extends Action {
 		resultList = new ArrayList<TownSataDto>();
 		LwTownGouDianFaxingDto lwTownGouDianFaxingDto = null;
 		BLLwTownGouDianFaxingFacade blLwTownGouDianFaxingFacade = new BLLwTownGouDianFaxingFacade();
+		statMonth = httpServletRequest.getParameter("inputDate");
 		/** 1-进入查询页面 */
 		if ("1".equals(firstquery)) {
 			httpServletRequest.setAttribute("supplycom", comList);
@@ -76,15 +77,15 @@ public class UIQueryTownStatFaxingAction extends Action {
 			forward = "Success";
 		} else if(firstquery == null) {
 	
-			Collection goudianList = blLwTownGouDianFaxingFacade.findByConditions("statMonth = '"+PowerFeeCal.getCurrentBillMonth()+"'");
+			Collection goudianList = blLwTownGouDianFaxingFacade.findByConditions("statMonth = '"+statMonth.substring(0, 7)+"'");
 			if(goudianList.size()>0){
-				throw new UserException(-6,-704,this.getClass().getName(),PowerFeeCal.getCurrentBillMonth()+"购电结算单已经进行录入");
-			}
+				httpServletRequest.setAttribute("goudianList", goudianList);
+				//throw new UserException(-6,-704,this.getClass().getName(),PowerFeeCal.getCurrentBillMonth()+"购电结算单已经进行录入");
+			}else{
 				// 如果选择多个机构
 				for (Iterator iterator = comList.iterator(); iterator.hasNext();) {
 					LwDcodeDto lwDcodeDto = (LwDcodeDto) iterator.next();
 					company = lwDcodeDto.getCodeCode();
-					statMonth = PowerFeeCal.getCurrentBillMonth();
 					statMonth = new DateTime(statMonth, DateTime.YEAR_TO_MONTH)
 							.toString();
 					userList = blLwPowerUserFacade
@@ -104,9 +105,10 @@ public class UIQueryTownStatFaxingAction extends Action {
 				townSataDto.setComCode("sum");
 				resultList.add(townSataDto);
 				httpServletRequest.setAttribute("resultList", resultList);
-				httpServletRequest.setAttribute("statMonth", statMonth);
-				forward = "statSuccess";
-
+				
+			}
+			httpServletRequest.setAttribute("statMonth", statMonth);
+			forward = "statSuccess";
 			}
 		else{
 			// 得到机构代码

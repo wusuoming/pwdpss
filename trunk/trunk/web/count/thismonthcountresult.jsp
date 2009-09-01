@@ -221,7 +221,7 @@ BODY {
 					"differenceQuantityty").toString();
 	%>
 	<form name="fm" method="post">
-		<table width="500%" border="1" cellspacing="0"
+		<table width="100%" border="1" cellspacing="0"
 			cellpadding="6">
 			<td style="display: none">
 				<input type="hidden" name="StartMonth"
@@ -358,7 +358,7 @@ BODY {
 															.getPowerRateFee()
 													+ lwCorporationSummaryDto
 															.getUnDenizenFee() + lwCorporationSummaryDto
-													.getUnLineLoss()) / 1.17,
+													.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17,
 											AppConst.TWO_DOT_FLAG);
 						}
 						sumfsanxia += PowerFeeCal.getValue(lwCorporationSummaryDto
@@ -409,7 +409,7 @@ BODY {
 															.getPowerRateFee()
 													+ lwCorporationSummaryDto
 															.getUnDenizenFee() + lwCorporationSummaryDto
-													.getUnLineLoss()) - (lwCorporationSummaryDto
+													.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) - (lwCorporationSummaryDto
 													.getPointerFee()
 													+ lwCorporationSummaryDto
 															.getContentFee()
@@ -419,7 +419,7 @@ BODY {
 															.getPowerRateFee()
 													+ lwCorporationSummaryDto
 															.getUnDenizenFee() + lwCorporationSummaryDto
-													.getUnLineLoss()) / 1.17),
+													.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17),
 											AppConst.TWO_DOT_FLAG);
 						}
 						sumfsanxiatax += PowerFeeCal
@@ -453,6 +453,7 @@ BODY {
 					</span>
 					<br>
 				</td>
+					<!--电量 -->
 				<%
 					if (lwCorporationSummaryDto.getLineCode().equals(
 									"20699999065")
@@ -486,7 +487,7 @@ BODY {
 				<%
 					}
 				%>
-
+	<!--纯电费-->
 				<%
 					if (lwCorporationSummaryDto.getLineCode().equals(
 									"20699999065")
@@ -531,7 +532,9 @@ BODY {
 				%>
 
 				<td nowrap width="10%" align="center">
-				<% String fee =  df.format(PowerFeeCal.getValue((lwCorporationSummaryDto
+				<% 
+				
+				String fee =  df.format(PowerFeeCal.getValue((lwCorporationSummaryDto
 																		.getPointerFee()
 																		+ lwCorporationSummaryDto
 																				.getContentFee()
@@ -541,7 +544,7 @@ BODY {
 																				.getPowerRateFee()
 																		+ lwCorporationSummaryDto
 																				.getUnDenizenFee() + lwCorporationSummaryDto
-																		.getUnLineLoss()) / 1.17,
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17,
 																AppConst.TWO_DOT_FLAG));%>
 					<span class="title"><font size="2"><%=fee%></font>
 					<input type="hidden" name="fee" value="<%=fee %>" >
@@ -636,7 +639,7 @@ BODY {
 																				.getPowerRateFee()
 																		+ lwCorporationSummaryDto
 																				.getUnDenizenFee() + lwCorporationSummaryDto
-																		.getUnLineLoss()) - (lwCorporationSummaryDto
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) - (lwCorporationSummaryDto
 																		.getPointerFee()
 																		+ lwCorporationSummaryDto
 																				.getContentFee()
@@ -646,7 +649,7 @@ BODY {
 																				.getPowerRateFee()
 																		+ lwCorporationSummaryDto
 																				.getUnDenizenFee() + lwCorporationSummaryDto
-																		.getUnLineLoss()) / 1.17),
+																		.getUnLineLoss()+lwCorporationSummaryDto.getTaobiaoFee()+lwCorporationSummaryDto.getLastFee()) / 1.17),
 																AppConst.TWO_DOT_FLAG)); %>
 					<span class="title"><font size="2"><%=feeTax%></font>
 					<input type="hidden" name="feeTax" value="<%=feeTax %>" >

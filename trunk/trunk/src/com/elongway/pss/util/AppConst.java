@@ -152,6 +152,10 @@ interface IValue {
 	
 	// 字段名称
 	public static final String COLUMN_INPUTDATE = "inputdate";
+	// 大工业生产
+	public static final String START_PRODUCE_VALUE = "1";
+	// 大工业停产
+	public static final String STOP_PRODUCE_VALUE = "2";
 	
 	
 }

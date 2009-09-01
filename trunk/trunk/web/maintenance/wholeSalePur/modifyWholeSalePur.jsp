@@ -148,32 +148,27 @@ create by wangrongjiar
 						</td>
 						<td class="input" nowrap colspan="1">
 							<input  name="ProducePrice"
-								value="<%=lwWholeSalePurePriceDto.getProducePrice()%>">
+								value="<%=lwWholeSalePurePriceDto.getFarmPrice()%>">
 						</td>
 						<td class="input" nowrap colspan="1">
 							<input name="BusinessPrice"
-								value="<%=lwWholeSalePurePriceDto.getBusinessPrice()%>">
+								value="<%=lwWholeSalePurePriceDto.getProducePrice()%>">
 						</td>
 						
 						<td class="input" nowrap colspan="1">
 							<input name="IndustryPrice"
-								value="<%=lwWholeSalePurePriceDto.getIndustryPrice()%>">
+								value="<%=lwWholeSalePurePriceDto.getBusinessPrice()%>">
 						</td>
 						
 						<td class="input" nowrap colspan="1">
 							<input name="FarmPrice"
-								value="<%=lwWholeSalePurePriceDto.getFarmPrice()%>">
+								value="<%=lwWholeSalePurePriceDto.getIndustryPrice()%>">
 						</td>
 						
 						<td class="input" nowrap colspan="1">
 							<input name="VoltLevel"
 								value="<%=lwWholeSalePurePriceDto.getVoltLevel() %>">
 						</td>
-						
-
-
-
-
 					</tr>
 					<%
 					}

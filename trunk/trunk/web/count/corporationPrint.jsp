@@ -48,6 +48,7 @@
 		String tax=(String)request.getAttribute("tax");
 		DecimalFormat df = new DecimalFormat("###0.00");
 		Collection colbak=(List)request.getAttribute("colpointbak");
+		double unchangeunPointerQuantity = (Double)request.getAttribute("unchangeunPointerQuantity");
 %>
 		   <table width="100%" border="1" cellspacing="0" >
   <tr class=listtitle align="center" >
@@ -194,6 +195,12 @@
 						 %>
 						<td class="input" ><font size="3">非居民照明</font></td>
 						<%} %>
+						
+						<%
+						if(lwFactoryIndicatorDto.getAmmeterStyle().equals("2") ){
+						 %>
+						<td class="input" ><font size="3">套表</font></td>
+						<%} %>
 						<td class="input" ><font size="3"><%=Math.round(lwFactoryIndicatorDto.getRate())%></font></td>
 						<td class="input" ><font size="3"><%=lwFactoryIndicatorDto.getLastWorkNum()%></font></td>
 						
@@ -237,6 +244,11 @@
 						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("1") ){
 						 %>
 						<td class="input" ><font size="3">非居民照明</font></td>
+						<%} %>
+						<%
+						if(lwNewFactoryIndicatorBakDto.getAmmeterStyle().equals("2") ){
+						 %>
+						<td class="input" ><font size="3">套表</font></td>
 						<%} %>
 						<td class="input" ><font size="3"><%=Math.round(lwNewFactoryIndicatorBakDto.getRate())%></font></td>
 						<td class="input" ><font size="3"><%=lwNewFactoryIndicatorBakDto.getLastWorkNum()%></font></td>
@@ -305,7 +317,17 @@
      <tr>
    
            <td nowrap><span class="title"><font size="3">无功总电量</font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getUnPointerQuantity())%></font></span></td>
+			<%if(corporation.getIfchange().equals("0")){ %>	
+					<td nowrap colspan="2">
+						<span class="title"><%=Math.round(corporation.getUnPointerQuantity())%>
+						</span>
+					</td>
+					<%}else{ %>
+						<td nowrap colspan="2">
+						<span class="title"><%=Math.round(unchangeunPointerQuantity)%>
+						</span>
+					</td>
+					<%} %>
 			<td nowrap><span class="title"><font size="3">力率标准值</font></span></td>
 			<td nowrap colspan="2"><span class="title"><font size="3">0.90</font></span></td>
 			<td nowrap><span class="title"><font size="3">力率实际值</font></span></td>
@@ -382,7 +404,7 @@
            <td nowrap><span class="title"><font size="3">电金</font></span></td>
            <%if("20699999069".equals(corporation.getLineCode())){%>
 					<td nowrap colspan="2">
-						<span class="title"><font size="3"><%=Math.round(corporation.getUnDenizenQuantity())%></font>
+						<span class="title"><font size="3"><%=corporation.getLastPower()+corporation.getTaobiaoQuantity()+corporation.getUnDenizenQuantity()%></font>
 						</span>
 					</td>
 					<%}else{ %>
@@ -398,9 +420,9 @@
               if(corporation.getIfchange().equals("1")){
               %>
 			<td nowrap><span class="title"><font size="3">大工业</font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getLastPower())%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=Math.round(corporation.getLastPower()+corporation.getTaobiaoQuantity())%></font></span></td>
 			<td nowrap><span class="title"><font size="3"><%=corporation.getLastPrice()%></font></span></td>
-			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getLastFee())%></font></span></td>
+			<td nowrap colspan="2"><span class="title"><font size="3"><%=df.format(corporation.getLastFee()+corporation.getTaobiaoFee())%></font></span></td>
     	<%} %>
     		<%
 					if (corporation.getIfchange().equals("0")) {

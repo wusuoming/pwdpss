@@ -177,13 +177,13 @@
     </tr>
     <tr>
             <td nowrap align="center"><span class="title">抄表月日</span></td>
-			<td nowrap align="center"><span class="title">指示数</span></td>
+			<td nowrap align="center" colspan="2"><span class="title">指示数</span></td>
 			<td nowrap align="center"><span class="title">倍率</span></td>
 			<td nowrap align="center"><span class="title">抄见电量</span></td>
 			<td nowrap align="center"><span class="title">变损</span></td>
 			<td nowrap align="center"><span class="title">线损</span></td>
-			<td nowrap align="center" colspan="2"><span class="title">电量</span></td>
-			<td nowrap align="center" colspan="3"><span class="title">电费合计</span></td>
+			<td nowrap align="center" colspan="4"><span class="title">电量</span></td>
+		
 
     </tr>
     <%
@@ -199,13 +199,13 @@
      <tr>
    
            	<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getStatMonth()%></span></td>
-			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getThisWorkNum()%></span></td>
+			<td nowrap align="center" colspan="2"><span class="title"><%=lwWholeSaleIndicatorDto.getThisWorkNum()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getRate()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getWorkQuantity()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getTransLossQuantity()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorDto.getLineLossQuantity()%></span></td>
-			<td nowrap align="center" colspan="2"><span class="title"><%=lwWholeSaleSummaryDto.getElectricQuantity()%></span></td>
-			<td nowrap align="center" colspan="3"><span class="title"><%=lwWholeSaleSummaryDto.getSumFee()%></span></td>
+			<td nowrap align="center" colspan="4"><span class="title"><%=lwWholeSaleSummaryDto.getElectricQuantity()%></span></td>
+		
 			
     </tr>
 <%} %>
@@ -224,21 +224,21 @@
      <tr>
    
            	<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getStatMonth()%></span></td>
-			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getThisWorkNum()%></span></td>
+			<td nowrap align="center" colspan="2"><span class="title"><%=lwWholeSaleIndicatorBakDto.getThisWorkNum()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getRate()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getWorkQuantity()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getTransLossQuantity()%></span></td>
 			<td nowrap align="center"><span class="title"><%=lwWholeSaleIndicatorBakDto.getLineLossQuantity()%></span></td>
-			<td nowrap align="center" colspan="2"><span class="title"><%=lwWholeSaleSummaryDto.getElectricQuantity()%></span></td>
-			<td nowrap align="center" colspan="3"><span class="title"><%=lwWholeSaleSummaryDto.getSumFee()%></span></td>
+			<td nowrap align="center" colspan="4"><span class="title"><%=lwWholeSaleSummaryDto.getElectricQuantity()%></span></td>
+		
     </tr>
 <%} %>
-    <tr>
+   <tr>
    <td nowrap align="center" colspan=2><span class="title">总电量</span></td>
    <td nowrap align="center" colspan=3><span class="title"><%=sumPower%></span></td>
-   <td nowrap align="center" colspan=2><span class="title">总电费</span></td>
+   <td nowrap align="center" colspan=2><span class="title">累计电量</span></td>
    <td nowrap align="center" colspan=4><span class="title"><%=sumFee%></span></td>
-    </tr>
+   </tr>
     
      </table>
     

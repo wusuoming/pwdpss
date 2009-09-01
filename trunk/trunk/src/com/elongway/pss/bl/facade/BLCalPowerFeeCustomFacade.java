@@ -573,6 +573,16 @@ public class BLCalPowerFeeCustomFacade {
 		sumSanXia = PowerFeeCal.getValue(sumSanXia, AppConst.TWO_DOT_FLAG);
 		sumJiJin = PowerFeeCal.getValue(sumJiJin, AppConst.TWO_DOT_FLAG);
 		
+		/**
+		 * Modify by qiaoyouliang 2009-06-04 begin
+		 * 调整电费的数值，使得报表平衡 
+		 */
+		powerFee = sumPowerFee - sumDianJin - sumSanXia - sumJiJin;
+		/**
+		 * Modify by qiaoyouliang 2009-06-04 end
+		 * 调整电费的数值，使得报表平衡 
+		 */
+		
 		// 纯电费
 		purePowerFee = PowerFeeCal.getValue(powerFee/1.17, AppConst.TWO_DOT_FLAG);
 		

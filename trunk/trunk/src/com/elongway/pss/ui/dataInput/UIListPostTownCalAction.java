@@ -97,9 +97,7 @@ public class UIListPostTownCalAction extends Action {
 			condition.append(" 1=1 ").append(tempCondition).append(" and ").append(" statmonth = '").append(statMonth).append("'");
 			calList = blLwTownPriceSummaryFacade.findByConditions(condition.toString());			
 			promoteStr = lwAmmeterBookDto.getBookName()+"表本已经计算过 "+statMonth+" 的电费。";
-			if(calList.size()>0){
-				throw new UserException(-6, -712, this.getClass().getName(),promoteStr);
-			}
+			
 			Collection<LwTownIndicatorDto> indicatorList = blLWTownIndicatorFacade
 					.findByConditions(condition.toString());
 			for (Iterator iterator = indicatorList.iterator(); iterator

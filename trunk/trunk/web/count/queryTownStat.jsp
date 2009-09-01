@@ -65,7 +65,7 @@ create by wangrongjia
        }
 </STYLE>
 </head>
-<body class=interface>
+<body class=interface onload="changeF()">
     <!--CONTENT BEGIN-->
       <form name="fm" method="post" style="display:block;">
        <table class=common width="100%" cellspacing="1" cellpadding="5" border=0>

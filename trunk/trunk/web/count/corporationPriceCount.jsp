@@ -82,45 +82,6 @@
 <body >
 <html:errors />
 <%
-//String dagongye10Power=request.getAttribute("dagongye10Power").toString();
-//String dagongye35Power=request.getAttribute("dagongye35Power").toString();
-//String guitie10Power=request.getAttribute("guitie10Power").toString();
-//String guitie35Power=request.getAttribute("guitie35Power").toString();
-//String dianshi10Power=request.getAttribute("dianshi10Power").toString();
-//String dianshi35Power=request.getAttribute("dianshi35Power").toString();
-//String huafei10Power=request.getAttribute("huafei10Power").toString();
-
-//String huafei35Power=request.getAttribute("huafei35Power").toString();
-//String sumPower=request.getAttribute("sumPower").toString();
-
-//String dagongye10Fee=(String)request.getAttribute("dagongye10Fee");
-//String dagongye35Fee=(String)request.getAttribute("dagongye35Fee");
-//String guitie10Fee=(String)request.getAttribute("guitie10Fee");
-//String guitie35Fee=(String)request.getAttribute("guitie35Fee");
-//String dianshi10Fee=(String)request.getAttribute("dianshi10Fee");
-//String dianshi35Fee=(String)request.getAttribute("dianshi35Fee");
-//String huafei10Fee=(String)request.getAttribute("huafei10Fee");
-//String huafei35Fee=(String)request.getAttribute("huafei35Fee");
-//String dagongye10tax=(String)request.getAttribute("dagongye10tax");
-//String dagongye35tax=(String)request.getAttribute("dagongye35tax");
-//String guitie10tax=(String)request.getAttribute("guitie10tax");
-//String guitie35tax=(String)request.getAttribute("guitie35tax");
-//String dianshi10tax=(String)request.getAttribute("dianshi10tax");
-//String dianshi35tax=(String)request.getAttribute("dianshi35tax");
-//String huafei10tax=(String)request.getAttribute("huafei10tax");
-//String huafei35tax=(String)request.getAttribute("huafei35tax");
-//String dagongye10chun=(String)request.getAttribute("dagongye10chun");
-//String dagongye35chun=(String)request.getAttribute("dagongye35chun");
-//String guitie10chun=(String)request.getAttribute("guitie10chun");
-//String guitie35chun=(String)request.getAttribute("guitie35chun");
-//String dianshi10chun=(String)request.getAttribute("dianshi10chun");
-//String dianshi35chun=(String)request.getAttribute("dianshi35chun");
-//String huafei10chun=(String)request.getAttribute("huafei10chun");
-//String huafei35chun=(String)request.getAttribute("huafei35chun");
-//String sumTax=(String)request.getAttribute("sumTax");
-//String sumChun=(String)request.getAttribute("sumChun");
-//String sumFee=(String)request.getAttribute("sumFee");
-
 	DecimalFormat df = new DecimalFormat("###0.00");
 	String dagongye10sumfee=(String)request.getAttribute("dagongye10sumfee");
 	
@@ -159,8 +120,14 @@
 	String huafei35needfee=(String)request.getAttribute("huafei35needfee");
 	String huafei35lilv=(String)request.getAttribute("huafei35lilv");
 	
-	
-	
+	String factoryPower=(String)request.getAttribute("factoryPower");
+	String factoryFee=(String)request.getAttribute("factoryFee");
+	String tiePower=(String)request.getAttribute("tiePower");
+	String tieFee=(String)request.getAttribute("tieFee");
+	String huafeiPower=(String)request.getAttribute("huafeiPower");
+	String huafeiFee=(String)request.getAttribute("huafeiFee");
+	String sumQuantity=(String)request.getAttribute("sumQuantity");
+	String sumPowerFee=(String)request.getAttribute("sumPowerFee");
 	
 
 
@@ -178,11 +145,13 @@
 	<table class=common width="100%" cellspacing="0"  border="1" >
 		
 	<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司大工业电费电量发行单</font></td>
+			<td class=title0 colspan="14"><font size="4">包头市农电公司大工业电费电量发行单（当月）</font></td>
 <td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		</tr>
 		
-		
+		<tr>
+			<td class=title0 colspan="8"></td><td class=title0 colspan="2"><%=(String)request.getAttribute("inputDate") %></td>
+		</tr>
 		<tr class=listtitle>
 				<td width="10%">
 					<span class="title"><font size="2">项目</font></span>
@@ -610,11 +579,11 @@
 					<span class="title"><font size="2">0.3939</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10power %></font></span>
+					<span class="title"><font size="2"><%=factoryPower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10sumfee %></font></span>
+					<span class="title"><font size="2"><%=factoryFee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2"><%
@@ -691,11 +660,11 @@
 					<span class="title"><font size="2">0.3609</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=guitie10power %></font></span>
+					<span class="title"><font size="2"><%=tiePower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(guitie10sumfee)) %></font></span>
+					<span class="title"><font size="2"><%=tieFee %></font></span>
 				<br></td>
 					<td nowrap width="10%">
 					<span class="title"><font size="2"><%
@@ -773,11 +742,11 @@
 					<span class="title"><font size="2">0.2249</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=huafei35power %></font></span>
+					<span class="title"><font size="2"><%=huafeiPower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(huafei35sumfee)) %></font></span>
+					<span class="title"><font size="2"><%=huafeiFee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2"><%
@@ -857,10 +826,10 @@
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(juminpower)+Double.parseDouble(sumallpower)) %></font></span>
+					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(sumQuantity)) %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(dagongye10sumfee)+Double.parseDouble(guitie10sumfee)+Double.parseDouble(huafei35sumfee)+Double.parseDouble(juminfee))) %></font></span>
+					<span class="title"><font size="2"><%=df.format(Double.parseDouble(sumPowerFee)) %></font></span>
 				<br></td>
 				<td nowrap width="10%">
 					<span class="title"><font size="2"><%
