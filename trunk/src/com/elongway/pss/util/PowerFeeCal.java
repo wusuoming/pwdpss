@@ -213,7 +213,8 @@ public class PowerFeeCal {
 		float b2 = a2 * a2;
 		double c1 = Math.sqrt(1 + b2 / b1);
 		double c2 = 1 / c1;
-		double a = Double.parseDouble(df.format(c2));
+		double a = c2;
+		//double a = Double.parseDouble(df.format(c2));
 
 		powerFactor = Math.round(a * 100);}
 		return powerFactor;
@@ -276,8 +277,10 @@ public class PowerFeeCal {
 		// -- 得到功率因数
 		double powerFactor = poweradjustrate(workQuantity, unworkQuantity);
 		
+		
+		
 		if(powerFactor==0){
-			ajust=0;
+			ajust=0; 
 		}else{
 		// -- 查找调整率
 		String sql = "1=1 and POWERFACTOR =" + powerFactor
@@ -1047,39 +1050,39 @@ public class PowerFeeCal {
 		lwTownPriceSummaryDto.setRateFee(zero);
 		lwTownPriceSummaryDto.setStatMonth(statMonth);
 		// 电费合计
-		lwTownPriceSummaryDto.setSumFee(PowerFeeCal.getValue(sumFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumFee(PowerFeeCal.getValue(sumFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setUserNo(userNo);
 		lwTownPriceSummaryDto.setValidStatus("1");
 		// -- 组织商业用电的电费、电价、电量、比例
-		lwTownPriceSummaryDto.setBizFee(PowerFeeCal.getValue(bizFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setBizFee(PowerFeeCal.getValue(bizFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setBizPrice(bizPrice);
-		lwTownPriceSummaryDto.setBizQuantity(PowerFeeCal.getValue(bizQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setBizQuantity(PowerFeeCal.getValue(bizQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setBizScale(bizScale);
 		// -- 组织农灌用电的电费、电价、电量、比例
-		double tt = PowerFeeCal.getValue(farmUseFee, AppConst.FOUR_DOT_FLAG);
-		lwTownPriceSummaryDto.setFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.FOUR_DOT_FLAG));
+		double tt = PowerFeeCal.getValue(farmUseFee, AppConst.TWO_DOT_FLAG);
+		lwTownPriceSummaryDto.setFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setFarmPrice(farmUsePrice);
-		lwTownPriceSummaryDto.setFarmQuantity(PowerFeeCal.getValue(farmUseQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setFarmQuantity(PowerFeeCal.getValue(farmUseQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setFarmScale(farmUseScale);
 		// -- 非工业、普通工业用电的电费、电价、电量、比例
-		lwTownPriceSummaryDto.setIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setIndustryPrice(industryPrice);
-		lwTownPriceSummaryDto.setIndustryQuantity(PowerFeeCal.getValue(industryQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setIndustryQuantity(PowerFeeCal.getValue(industryQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setIndustryScale(industryScale);
 		// -- 非居民用电的电费、电价、电量、比例
-		lwTownPriceSummaryDto.setNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setNotPeoplePrice(notPeopleUsePrice);
-		lwTownPriceSummaryDto.setNotPeopleQuantity(PowerFeeCal.getValue(notPeopleUseQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setNotPeopleQuantity(PowerFeeCal.getValue(notPeopleUseQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setNotPeopleScale(notPeopleUseScale);
 		// -- 居民用电的电费、电价、电量、比例
-		lwTownPriceSummaryDto.setPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setPeoplePrice(peopleUsePrice);
-		lwTownPriceSummaryDto.setPeopleQuantity(PowerFeeCal.getValue(peopleUseQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setPeopleQuantity(PowerFeeCal.getValue(peopleUseQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setPeopleScale(peopleUseScale);
 		// -- 农业生产用电的电费、电价、电量、比例
-		lwTownPriceSummaryDto.setProduceFee(PowerFeeCal.getValue(productFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setProduceFee(PowerFeeCal.getValue(productFee, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setProducePrice(productPrice);
-		lwTownPriceSummaryDto.setProduceQuantity(PowerFeeCal.getValue(productQuantity, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setProduceQuantity(PowerFeeCal.getValue(productQuantity, AppConst.TWO_DOT_FLAG));
 		lwTownPriceSummaryDto.setProduceScale(productScale);
 
 		/***********************************************************************
@@ -1094,17 +1097,17 @@ public class PowerFeeCal {
 		// 库区移民
 		sumKuQu = getTownkuQu(lwTownPriceSummaryDto, 0.0031, 0.88);
 		// 总基金
-		lwTownPriceSummaryDto.setRemark(new Double(PowerFeeCal.getValue(sumJiJin+sumKuQu, AppConst.FOUR_DOT_FLAG)).toString());
+		lwTownPriceSummaryDto.setRemark(new Double(PowerFeeCal.getValue(sumJiJin+sumKuQu, AppConst.TWO_DOT_FLAG)).toString());
 		// -- 为DTO 赋值
-		lwTownPriceSummaryDto.setSumDianJin(PowerFeeCal.getValue(sumDianJin, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumSanXia(PowerFeeCal.getValue(sumSanXia, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumJiJin(PowerFeeCal.getValue(sumJiJin+sumKuQu, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumKuQu(PowerFeeCal.getValue(sumKuQu, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumDianJin(PowerFeeCal.getValue(sumDianJin, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumSanXia(PowerFeeCal.getValue(sumSanXia, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumJiJin(PowerFeeCal.getValue(sumJiJin+sumKuQu, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumKuQu(PowerFeeCal.getValue(sumKuQu, AppConst.TWO_DOT_FLAG));
 
 		// 总电费 = 电费合计+电金合计+三峡+基金合计+库区合计
 		electricityFee = sumFee + sumDianJin + sumSanXia + sumJiJin + sumKuQu;
 	//	lwTownPriceSummaryDto.setElectricFee(electricityFee);
-		lwTownPriceSummaryDto.setElectricFee(PowerFeeCal.getValue(electricityFee, AppConst.FOUR_DOT_FLAG));
+		lwTownPriceSummaryDto.setElectricFee(PowerFeeCal.getValue(electricityFee, AppConst.TWO_DOT_FLAG));
 		/***********************************************************************
 		 * 【6 -- 计算农业还贷资金、三峡建设资金、可再生能源附加费、库区移民的比例分摊值】
 		 **********************************************************************/
@@ -1198,48 +1201,48 @@ public class PowerFeeCal {
 		lwTownPriceSummaryDto.setPeopleFeeSanXia(peopleSanXia);
 		lwTownPriceSummaryDto.setPeopleJiJin(peopleJiJin);
 		lwTownPriceSummaryDto.setPeopleKuQu(peopleKuQu);
-		//lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(sumPeopleFee, AppConst.FOUR_DOT_FLAG));
+		//lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(peopleUseFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumPeopleFee(PowerFeeCal.getValue(sumPeopleFee, AppConst.TWO_DOT_FLAG));
 
 		// 非居民
 		lwTownPriceSummaryDto.setNotPeopleDianJin(notPeopleDianJin);
 		lwTownPriceSummaryDto.setNotPeopleFeeSanXia(notPeopleSanXia);
 		lwTownPriceSummaryDto.setNotPeopleJiJin(notPeopleJiJin);
 		lwTownPriceSummaryDto.setNotPeopleKuQu(notPeopleKuQu);
-		//lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(sunNotPeopleFee, AppConst.FOUR_DOT_FLAG));
+		//lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(notPeopleUseFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumNotPeopleFee(PowerFeeCal.getValue(sunNotPeopleFee, AppConst.TWO_DOT_FLAG));
 		
 		// 农业生产
 		lwTownPriceSummaryDto.setProduceDianJin(produceDianJin);
 		lwTownPriceSummaryDto.setProduceSanXia(produceSanXia);
 		lwTownPriceSummaryDto.setProduceJiJin(produceJiJin);
 		lwTownPriceSummaryDto.setProduceKuQu(produceKuQu);
-		//lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(productFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(sumProduceFee, AppConst.FOUR_DOT_FLAG));
+		//lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(productFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumProduceFee(PowerFeeCal.getValue(sumProduceFee, AppConst.TWO_DOT_FLAG));
 
 		// 农灌
 		lwTownPriceSummaryDto.setFarmDianJin(farmDianJin);
 		lwTownPriceSummaryDto.setFarmSanXia(farmSanXia);
 		lwTownPriceSummaryDto.setFarmJiJin(farmJiJin);
 		lwTownPriceSummaryDto.setFarmKuQu(farmKuQu);
-//		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(sumFarmFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(farmUseFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumFarmFee(PowerFeeCal.getValue(sumFarmFee, AppConst.TWO_DOT_FLAG));
 
 		// 商业
 		lwTownPriceSummaryDto.setBizDianJin(bizDianJin);
 		lwTownPriceSummaryDto.setBizSanXia(bizSanXia);
 		lwTownPriceSummaryDto.setBizJiJin(bizJiJin);
 		lwTownPriceSummaryDto.setBizKuQu(bizKuQu);
-//		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(bizFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(sumBizFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(bizFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumBizFee(PowerFeeCal.getValue(sumBizFee, AppConst.TWO_DOT_FLAG));
 
 		// 非普工业
 		lwTownPriceSummaryDto.setIndustryDianJin(industryDianJin);
 		lwTownPriceSummaryDto.setIndustrySanXia(industrySanXia);
 		lwTownPriceSummaryDto.setIndustryJiJin(industryJiJin);
 		lwTownPriceSummaryDto.setIndustryKuQu(industryKuQu);
-//		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.FOUR_DOT_FLAG));
-		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(sumIndustryFee, AppConst.FOUR_DOT_FLAG));
+//		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(industryFee, AppConst.TWO_DOT_FLAG));
+		lwTownPriceSummaryDto.setSumIndustryFee(PowerFeeCal.getValue(sumIndustryFee, AppConst.TWO_DOT_FLAG));
 
 		return lwTownPriceSummaryDto;
 	}
@@ -2007,20 +2010,21 @@ public class PowerFeeCal {
 				jiJinTax += townSataDto.getJiJinTax();
 				
 				
-				townSataDto2.setPurePowerFee(PowerFeeCal.getValue(purePowerFee, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setPowerFeeTax(PowerFeeCal.getValue(powerFeeTax, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setPureDianJin(PowerFeeCal.getValue(pureDianJin, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianJinTax, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setPureSanXia(PowerFeeCal.getValue(pureSanXia, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setSanXiaTax(PowerFeeCal.getValue(sanXiaTax, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setPureJiJin(PowerFeeCal.getValue(pureJiJin, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setJiJinTax(PowerFeeCal.getValue(jiJinTax, AppConst.TWO_DOT_FLAG));
-				
-				townSataDto2.setSumPower(PowerFeeCal.getValue(sumPower, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setSumPowerFee(PowerFeeCal.getValue(sumPowerFee, AppConst.TWO_DOT_FLAG));
-				townSataDto2.setStatMonth(statMonth);
-				townSataDto2.setCompanyName("东、青、昆、高");
 			}
+
+			townSataDto2.setPurePowerFee(PowerFeeCal.getValue(purePowerFee, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPowerFeeTax(PowerFeeCal.getValue(powerFeeTax, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureDianJin(PowerFeeCal.getValue(pureDianJin, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setDianJinTax(PowerFeeCal.getValue(dianJinTax, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureSanXia(PowerFeeCal.getValue(pureSanXia, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setSanXiaTax(PowerFeeCal.getValue(sanXiaTax, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setPureJiJin(PowerFeeCal.getValue(pureJiJin, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setJiJinTax(PowerFeeCal.getValue(jiJinTax, AppConst.TWO_DOT_FLAG));
+			
+			townSataDto2.setSumPower(PowerFeeCal.getValue(sumPower, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setSumPowerFee(PowerFeeCal.getValue(sumPowerFee, AppConst.TWO_DOT_FLAG));
+			townSataDto2.setStatMonth(statMonth);
+			townSataDto2.setCompanyName("东、青、昆、高");
 			return townSataDto2;
 		}
 	 /**

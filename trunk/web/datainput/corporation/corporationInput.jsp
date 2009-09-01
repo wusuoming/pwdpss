@@ -62,21 +62,10 @@ create by wangrongjia
        }
 </STYLE>
 </head>
-
 <body class=interface>
-
-
-
-
-
-
-
-  
-    <!--CONTENT BEGIN-->
-    
+ <!--CONTENT BEGIN-->
       <form name="fm" method="post">
-      
-      <table class=common width="100%" cellspacing="1" cellpadding="4">
+       <table class=common width="100%" cellspacing="1" cellpadding="4">
         <%
        List list=(List)request.getAttribute("factiory");
        LwNewFactoryIndicatorDto lwNewFactoryIndicatorDto=(LwNewFactoryIndicatorDto)list.get(0);
@@ -91,7 +80,6 @@ create by wangrongjia
 <td class=input>
 				<td class=input>
 		</tr>
-		
 		</table>
         <table class=common width="100%" cellspacing="1" cellpadding="5">
         <tr class=listtitle align="center">
@@ -108,16 +96,13 @@ create by wangrongjia
             <td class="title">大工业名称</td>
             
             <td class="input"><input class="text" name="UserName"  readOnly=true type="text" value="<%=lwCoporationUserInfoDto.getUserName()%>" ></td>
-          
-				
-         
-         </tr>
+       </tr>
           <tr>
            <td class="title">月中停产或生产</td>				
 				<td class="input" >
-				<select name="stopProduce">
-				 <option value="0"  readOnly=true <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("0")){ %>selected="selected"<%} %>>否</option>
-				  <option value="1"  readOnly=true <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")){ %>selected="selected"<%} %>>是</option>
+				<select name="stopProduce" >
+				 <option value="0"  <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("0")){ %>selected="selected"<%} %>>否</option>
+				  <option value="1"  <%if(LwNewFactoryIndicatorDto2.getIfChange().equals("1")){ %>selected="selected"<%} %>>是</option>
 				 
               </select>	
 			 </td>
@@ -126,12 +111,25 @@ create by wangrongjia
 		 %>
 		 <td class="title" >容量电量</td>				
 				<td class=input >
-				<input  class="text" readOnly=true name="RongliangQuantity"  value="<%=lwCoporationUserInfoDto.getRongliangPower()%>"  />	
+				<input  class="text" readOnly=true name="RongliangQuantity"  value="<%=LwNewFactoryIndicatorDto2.getRlquantityafbefore()%>"  />	
 		<input  type="hidden" name="appStyle"	  value="0"  />	
 		<%} else{%>
 		<td class=input >
 		<td class=input >
 		<%} %>
+		<%if("1".equals(LwNewFactoryIndicatorDto2.getIfChange())) {%>
+			  <tr>
+		        <td class="title" id="rl">停产/生产后容量电量是否发生变化</td>				
+				<td class="input" id="r2" ><select  name="rlflag"  onchange="rlcorn()" class="text">			  
+				  <option value="1" >是</option>
+				  <option value="0" >否</option>
+              </select>	
+			 </td>
+			 <td class="title" ><div id="r3">容量电量（变化后）</div></td>				
+				<td class=input ><div id="r4"><input  class="text" name="rongliangAf"	 value="<%=LwNewFactoryIndicatorDto2.getRlquantityaf()%>"   />	</div>
+				</td>
+	        </tr>
+	        <%} %>
 			 <%--<td class="title">电金电量</td>				
 				<td class="input" ><select name="dianjinPower"  >
 				  
@@ -221,12 +219,6 @@ create by wangrongjia
 			<td nowrap><span class="title">倍率</span></td>
 			<td nowrap><span class="title">有功电量</span></td>
 			<td nowrap><span class="title">无功电量  </span></td>
-			
-			
-
-			
-			
-			
 		</tr>
 
 					<tr >
@@ -481,19 +473,22 @@ function corn(){
 }
 
 function feecal(){
-//if(fm.ThisWorkNum.value==""||fm.ThisWorkNum.value==null){
- // alert("当月有功指针不能为空");
- // return false;
-//}
-//if(fm.ThisIdleNum.value==""||fm.ThisIdleNum.value==null){
- // alert("当月无功指针不能为空");
-  //return false;
-//}
+if(fm.stopProduce.value==1){
+if(fm.rlflag.value=="1"){
+if(!confirm('停产后容量电量发生变化，计算后将更新新的容量电量，确定计算么？') ){
+return;
+}}
+fm.action="/iacontact/corporationFeeCal.do";
+	fm.target="fm2";
+	fm.submit();
+
+}else{
+
 
 fm.action="/iacontact/corporationFeeCal.do";
 	fm.target="fm2";
 	fm.submit();
-	
+}	
 }
 function checkWork()
 {	

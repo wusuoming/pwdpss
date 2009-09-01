@@ -6,6 +6,8 @@
 <%@page import="com.elongway.pss.dto.custom.TownSataDto"%>
 <%@page import="com.elongway.pss.util.AppConst"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
+<%@page import="com.elongway.pss.dto.domain.LwTownGouDianFaxingDto"%>
+<%@page import="com.elongway.pss.util.PowerFeeCal"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -127,9 +129,13 @@ function result()
     var sumdianjinTax = 0.0;
     var sumjijin = 0.0;
     var sumjijinTax = 0.0;
+    var pingFee1 = 0.0;
+    var alldianjin1 = 0.0;
+    var allsanxia1 = 0.0;
+    var alljijin1 = 0.0;
     
             if(count ==1){
-          // 电费
+                // 电费
             	fm.pureFee.value = (parseFloat(fm.pingFee.value) /1.17).toFixed(2);
                 fm.feeTax.value = parseFloat(fm.pingFee.value) -parseFloat(fm.pureFee.value);
                 // 三峡
@@ -146,8 +152,7 @@ function result()
             }else{
             	for(var i=0;i<count-1;i++){
             	// 电费
-            	fm.pureFee[i].value = (parseFloat(fm.pingFee[i].value) /1.17).toFixed(2);
-            	
+            	fm.pureFee[i].value = (parseFloat(fm.pingFee[i].value) /1.17).toFixed(2);            	
                 fm.feeTax[i].value = (parseFloat(fm.pingFee[i].value) -parseFloat(fm.pureFee[i].value)).toFixed(2);
                 // 三峡
                 fm.sanxia[i].value = (parseFloat(fm.allsanxia[i].value) /1.17).toFixed(2);                
@@ -160,6 +165,12 @@ function result()
                 fm.jijinTax[i].value = (parseFloat(fm.alljijin[i].value)-parseFloat(fm.jijin[i].value)).toFixed(2);
                 fm.sumFee[i].value = (parseFloat(fm.pureFee[i].value)+parseFloat(fm.feeTax[i].value)+parseFloat(fm.dianjin[i].value)+parseFloat(fm.dianjinTax[i].value)+parseFloat(fm.jijin[i].value)+parseFloat(fm.jijinTax[i].value)+parseFloat(fm.sanxia[i].value)+parseFloat(fm.sanxiaTax[i].value)).toFixed(2);
               
+              
+                pingFee1 = (parseFloat(pingFee1) + parseFloat(fm.pingFee[i].value)).toFixed(2);
+                  alldianjin1 = (parseFloat(alldianjin1) + parseFloat(fm.alldianjin[i].value)).toFixed(2);
+                   allsanxia1 = (parseFloat(allsanxia1) + parseFloat(fm.allsanxia[i].value)).toFixed(2);
+                   alljijin1 = (parseFloat(alljijin1) + parseFloat(fm.alljijin[i].value)).toFixed(2);
+
                 sumPurefee = (parseFloat(sumPurefee) + parseFloat(fm.pureFee[i].value)).toFixed(2);
     
                 sumfeeTax = (parseFloat(sumfeeTax) + parseFloat(fm.feeTax[i].value)).toFixed(2);
@@ -177,6 +188,10 @@ function result()
     		
     			sumjijinTax = (parseFloat(sumjijinTax)+parseFloat(fm.jijinTax[i].value)).toFixed(2);
             	}
+            	            fm.pingFee[count-1].value = parseFloat(pingFee1);
+            	            fm.alldianjin[count-1].value = parseFloat(alldianjin1);
+            	            fm.allsanxia[count-1].value = parseFloat(allsanxia1);
+            	            fm.alljijin[count-1].value = parseFloat(alljijin1);
             				fm.pureFee[count-1].value = parseFloat(sumPurefee);
 							fm.feeTax[count-1].value =parseFloat(sumfeeTax);
 							fm.sumFee[count-1].value= parseFloat(sumfee1);    
@@ -217,6 +232,9 @@ function result()
 			<%
 				Collection resultList = (Collection) request
 							.getAttribute("resultList");
+				Collection goudianList = (Collection) request
+							.getAttribute("goudianList");
+				if(resultList!=null&&resultList.size()>0){
 					for (Iterator iterator = resultList.iterator(); iterator
 							.hasNext();) {
 						TownSataDto townSataDto = (TownSataDto) iterator.next();
@@ -383,9 +401,179 @@ function result()
 			</tr>
 
 			<%
-				}
+				}}
+			%>
+<%
+			
+				if(goudianList!=null&&goudianList.size()>0){
+					for (Iterator iterator = goudianList.iterator(); iterator
+							.hasNext();) {
+						LwTownGouDianFaxingDto townSataDto = (LwTownGouDianFaxingDto) iterator.next();
 			%>
 
+			<tr>
+				<td class=title0 colspan="15">
+					<font size="2"><%=townSataDto.getTownName()%><%=townSataDto.getStatMonth()%>电费电量发行单</font>
+				</td>
+			</tr>
+
+			<!--人员代码，姓名-->
+			<tr class=listtitle>
+				<td width="10%">
+					<span class="title"><font size="2">单位</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">售电量</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">平电费</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">纯电费</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电费税</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总电金</font> </span>
+					<br>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电金</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">电金税</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总三峡</font> </span>
+					<br>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">三峡</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">三峡税</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总基金</font> </span>
+					<br>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">基金</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">基金税</font> </span>
+					<br>
+				</td>
+				<td nowrap width="10%">
+					<span class="title"><font size="2">总计</font> </span>
+					<br>
+				</td>
+
+			</tr>
+			<tr>
+				<td nowrap width="10%" align="center">
+					<span class="title"><font size="2"><%=townSataDto.getTownName()%></font>
+					<input type="hidden" name="company" value="<%=townSataDto.getTownName()%>">
+					<input type="hidden" name="comCode" value="<%=townSataDto.getTownCode()%>">
+					</span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><%=townSataDto.getPowerQuantity()%></span>
+					<input type="hidden" name="sumPower" value="<%=townSataDto.getPowerQuantity()%>">
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="pingFee"
+							value=<%=PowerFeeCal.getValue((townSataDto.getPureFee()+townSataDto.getPowerFeeTax()),AppConst.TWO_DOT_FLAG)%> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="pureFee" readonly="readonly"
+							value=<%=townSataDto.getPureFee() %> style="width: 80px" onblur="result();" style="border:0px"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="feeTax" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getPowerFeeTax()%> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="alldianjin"
+							value=<%=PowerFeeCal.getValue((townSataDto.getDianJinTax()+townSataDto.getPureDianJin()),AppConst.TWO_DOT_FLAG) %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="dianjin"  readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getPureDianJin() %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="dianjinTax"  readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getDianJinTax() %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="allsanxia" 
+							value=<%=PowerFeeCal.getValue((townSataDto.getSanXiaTax()+townSataDto.getPureSanXia()),AppConst.TWO_DOT_FLAG) %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="sanxia" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getPureSanXia() %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="sanxiaTax" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getSanXiaTax() %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="alljijin"
+							value=<%=PowerFeeCal.getValue((townSataDto.getJiJinTax()+townSataDto.getPureJiJin()),AppConst.TWO_DOT_FLAG) %> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="jijin" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getPureJiJin()%> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="jijinTax" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getJiJinTax()%> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+				<td nowrap width="10%" align="center">
+					<span class="title"><input type="text" name="sumFee" readonly="readonly"  style="border:0px" 
+							value=<%=townSataDto.getSumFee()%> style="width: 80px" onblur="result();"> </span>
+					<br>
+				</td>
+
+			</tr>
+			<tr>
+				<td colspan="4">
+					制表:
+				</td>
+				<td colspan="4">
+					审核:
+				</td>
+
+				<td colspan="3">
+					负责人:
+				</td>
+			</tr>
+
+			<%
+				}}
+			%>
 		</table>
 
 		<table cellpadding="0" cellspacing="0" width="100%">

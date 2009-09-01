@@ -19,6 +19,7 @@ import com.elongway.pss.ui.control.UIBaseAction;
 import com.elongway.pss.ui.view.common.LogonForm;
 import com.elongway.pss.util.AppConst;
 import com.elongway.pss.util.ConfigKey;
+import com.sinosoft.sysframework.common.datatype.DateTime;
 import com.sinosoft.sysframework.exceptionlog.UserException;
 import com.sinosoft.sysframework.log.Logger;
 import com.sinosoft.sysframework.reference.AppConfig;
@@ -33,12 +34,16 @@ public class UILogonAction extends UIBaseAction {
 	/** 调试日志 */
 	private static Logger bugLogger = Logger.getLogger(UILogonAction.class);
 	private static Logger uiLogger = Logger.getLogger(AppConst.SYSTEM_LOG);
+	
 
 	public ActionForward execute(ActionMapping actionMapping,
 			ActionForm actionForm, HttpServletRequest httpServletRequest,
 			HttpServletResponse httpServletResponse) throws UserException,
 			Exception {
 		BLLwSysUserFacade blLwSysUserFacade = new BLLwSysUserFacade();
+		DateTime expiredDate = null; 
+		expiredDate = new DateTime("2009-07-10",DateTime.YEAR_TO_DAY);
+		
 		// 清空现有
 		HttpSession httpSession = httpServletRequest.getSession();
 		httpSession.setAttribute(AppConst.SYSUSER_SESSION, null);
@@ -51,7 +56,8 @@ public class UILogonAction extends UIBaseAction {
 		String cssStyle = logonForm.getCssStyle();
 		uiLogger.info("用户尝试登录：" + userCode);
 
-		String areaCode = "330000";
+		String areaCode = null;
+		areaCode = "330000";
 
 		// 数据校验
 		ActionMessages errors = new ActionMessages();
@@ -85,9 +91,9 @@ public class UILogonAction extends UIBaseAction {
 			uiLogger.info("用户尝试登录：" + userCode + "，失败(密码不正确)。");
 			return (actionMapping.getInputForward());
 		}
-
+ 
 	
-
+   
 		// 3. 保存Session
 		SysUser sysUser = new SysUser();
 
@@ -121,4 +127,5 @@ public class UILogonAction extends UIBaseAction {
 
 		return actionMapping.findForward(AppConst.SUCCESS_FORWARD);
 	}
+	 
 }

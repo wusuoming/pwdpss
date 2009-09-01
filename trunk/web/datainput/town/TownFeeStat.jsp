@@ -7,6 +7,7 @@
 <%@page import="com.elongway.pss.util.AppConst"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
 <%@page import="com.elongway.pss.dto.domain.LwDcodeDto"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -124,7 +125,7 @@ String inputDate = (String)request.getAttribute("statMonth");
 		
 		
 		Collection resultList = (Collection)request.getAttribute("resultList"); 
-	
+	DecimalFormat df = new DecimalFormat("###0.00");
 		for (Iterator iterator = resultList.iterator(); iterator.hasNext();) {
 				TownSataDto townSataDto = (TownSataDto) iterator
 						.next();
@@ -181,34 +182,34 @@ String inputDate = (String)request.getAttribute("statMonth");
 					<input type="hidden" name="company" value="<%=townSataDto.getComCode()%>">
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPower() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getSumPower())  %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPurePowerFee() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getPurePowerFee()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPowerFeeTax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getPowerFeeTax()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureDianJin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getPureDianJin()) %></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getDianJinTax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getDianJinTax()) %></font></span>
 				<br></td>			
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureSanXia() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getPureSanXia()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSanXiaTax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getSanXiaTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getPureJiJin() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getPureJiJin()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getJiJinTax() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getJiJinTax()) %></font></span>
 				<br></td>	
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="2"><%=townSataDto.getSumPowerFee() %></font></span>
+					<span class="title"><font size="2"><%=df.format(townSataDto.getSumPowerFee()) %></font></span>
 				<br></td>	
 							
 			</tr>

@@ -123,7 +123,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 					industryPower10+=lwWholeSaleSummaryDto.getIndustryQuantity();
 				}
 				if(lwWholeSaleSummaryDto.getWholesaletype().equals("1")){
-					industryPower10+=lwWholeSaleSummaryDto.getElectricQuantity();
+					//industryPower10+=lwWholeSaleSummaryDto.getElectricQuantity();
 					 sumwholesalefa+=lwWholeSaleSummaryDto.getElectricQuantity();
 				}	
 				agriculturalFee10+=lwWholeSaleSummaryDto.getFarmUseFee();
@@ -226,6 +226,7 @@ public class UIWholeSaleFinalCountAction extends Action {
 			//kezaishengnotpepolePower=indecisivePower10+businessPower10+industryPower10+indecisivePower35+businessPower35+industryPower35;
 			
 			kezaishengnotpepolePower=sumPower-agriculturalPower35-residentPower35-producePower35-agriculturalPower10-residentPower10-producePower10;
+			double tempke = indecisivePower10 + indecisivePower35 +industryPower10 + industryPower35 + businessPower10 + businessPower35;
 			kezaishengnotpepoleFee=kezaishengnotpepolePower*0.002*0.88;
 			//kuquPower=residentPower10+indecisivePower10+industryPower10+businessPower10+residentPower35+indecisivePower35+industryPower35+businessPower35;
 			kuquPower=sumPower-agriculturalPower35-producePower35-agriculturalPower10-producePower10;

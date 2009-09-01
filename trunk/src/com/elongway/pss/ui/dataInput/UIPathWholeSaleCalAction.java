@@ -233,9 +233,6 @@ public class UIPathWholeSaleCalAction extends Action {
 					lwAmmeterChangeDto.setRate(Rate[i]);
 					blLwAmmeterChangeFacade.update(lwAmmeterChangeDto);
 				}
-				
-				
-				
 			}
 			if(wholeSaleStyle.equals("1")){
 				if(differenceQuantity[i].equals("")||differenceQuantity[i]==null){
@@ -263,7 +260,6 @@ public class UIPathWholeSaleCalAction extends Action {
 					LineLossQuantity[i]="0";
 				}
 			
-				
 				LwWholeSalePurePriceDto lwWholeSalePurePriceDto=powerFeeCal.getPurWholeSalePrice(comcode, KV);
 				double rworkQuantity=Double.parseDouble(workQuantity[i])+Double.parseDouble(ChgAmmeterQuantity[i]+Double.parseDouble(CompensateQuantity[i]));
 				double runworkQuantity=Double.parseDouble(unworkQuantity[i])+Double.parseDouble(UnChgAmmeterQuantity[i])+Double.parseDouble(UnCompensateQuantity[i]);
@@ -341,12 +337,7 @@ public class UIPathWholeSaleCalAction extends Action {
 					lwAmmeterChangeDto.setRate(Rate[i]);
 					blLwAmmeterChangeFacade.update(lwAmmeterChangeDto);
 				}
-				
-				
-				
 			}
-			
-			
 		}
 	
 		String conditions10=" upcompany='"+comcode+"'"+" and KV=10 and StatMonth='"+inputdate+"'"+" and WHOLESALETYPE=0 order by linecode";
@@ -373,12 +364,8 @@ public class UIPathWholeSaleCalAction extends Action {
 			dtotemp=blLwWholeSaleUserInfoFacade.findByPrimaryKey(userno);
 			if(dtotemp.getWholesaletype().equals("0")){
 				sum10Power+=lwWholeSaleSummaryDto.getElectricQuantity();
-				
 				usum10power+=lwWholeSaleSummaryDto.getUnPointerQuantity();
 			}
-			
-			
-			
 		}
 	/*	if(flag[0].equals("dm")){
 			String conditondm=" readdate=1 and flag='dm'";

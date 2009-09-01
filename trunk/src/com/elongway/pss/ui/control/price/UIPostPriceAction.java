@@ -81,32 +81,33 @@ public class UIPostPriceAction extends DispatchAction {
 				 price = new Double(lwSalePriceDto2.getPrice()).toString();
 				if ("3".equals(priceCategroy)) {
 					if(1==voltageEnd){
-						form.setKV1(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setKV1(kv1[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(kv1[i]));
 					}else if(10==voltageEnd){
-						form.setKV10(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setKV10(kv10[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(kv10[i]));
 					}else if(110==voltageEnd){
-						form.setKV110(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setKV110(kv110[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(kv110[i]));
 					}else if(220==voltageEnd){
-						form.setKv220(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setKv220(kv220[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(kv220[i]));
 					}else if(220==voltageBegin){
-						form.setKv220More(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setKv220More(kvMore220[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(kvMore220[i]));
 					}
 				}else  if ("4".equals(priceCategroy)) {
 					if(1==voltageBegin){
-						form.setMaxXuLiang(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setMaxXuLiang(xuliang[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(xuliang[i]));
 					}else if(0==voltageEnd){
-						form.setRongLiang(price);
-						lwSalePriceDto2.setPrice(Double.parseDouble(price));
+						form.setRongLiang(rongliang[i]);
+						lwSalePriceDto2.setPrice(Double.parseDouble(rongliang[i]));
 					}
 			 }
+				bLwSalePriceFacade.update(lwSalePriceDto2);
 			}
-			bLwSalePriceFacade.update(lwSalePriceDto2);
+			
 		}
 		Collection<LwDcodeDto> codeList = bLwDcodeFacade.findByConditions("codetype = 'PowerClass' Order By codeename Desc ,codecode Asc");
 		Collection <UIPriceForm>priceFormList = new ArrayList<UIPriceForm>();

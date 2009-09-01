@@ -82,51 +82,10 @@
 <body class="interface" onload="javascript:doPrint();window.close()">&nbsp; 
 <html:errors />
 <%
-//String dagongye10Power=request.getAttribute("dagongye10Power").toString();
-//String dagongye35Power=request.getAttribute("dagongye35Power").toString();
-//String guitie10Power=request.getAttribute("guitie10Power").toString();
-//String guitie35Power=request.getAttribute("guitie35Power").toString();
-//String dianshi10Power=request.getAttribute("dianshi10Power").toString();
-//String dianshi35Power=request.getAttribute("dianshi35Power").toString();
-//String huafei10Power=request.getAttribute("huafei10Power").toString();
 
-//String huafei35Power=request.getAttribute("huafei35Power").toString();
-//String sumPower=request.getAttribute("sumPower").toString();
-
-//String dagongye10Fee=(String)request.getAttribute("dagongye10Fee");
-//String dagongye35Fee=(String)request.getAttribute("dagongye35Fee");
-//String guitie10Fee=(String)request.getAttribute("guitie10Fee");
-//String guitie35Fee=(String)request.getAttribute("guitie35Fee");
-//String dianshi10Fee=(String)request.getAttribute("dianshi10Fee");
-//String dianshi35Fee=(String)request.getAttribute("dianshi35Fee");
-//String huafei10Fee=(String)request.getAttribute("huafei10Fee");
-//String huafei35Fee=(String)request.getAttribute("huafei35Fee");
-//String dagongye10tax=(String)request.getAttribute("dagongye10tax");
-//String dagongye35tax=(String)request.getAttribute("dagongye35tax");
-//String guitie10tax=(String)request.getAttribute("guitie10tax");
-//String guitie35tax=(String)request.getAttribute("guitie35tax");
-//String dianshi10tax=(String)request.getAttribute("dianshi10tax");
-//String dianshi35tax=(String)request.getAttribute("dianshi35tax");
-//String huafei10tax=(String)request.getAttribute("huafei10tax");
-//String huafei35tax=(String)request.getAttribute("huafei35tax");
-//String dagongye10chun=(String)request.getAttribute("dagongye10chun");
-//String dagongye35chun=(String)request.getAttribute("dagongye35chun");
-//String guitie10chun=(String)request.getAttribute("guitie10chun");
-//String guitie35chun=(String)request.getAttribute("guitie35chun");
-//String dianshi10chun=(String)request.getAttribute("dianshi10chun");
-//String dianshi35chun=(String)request.getAttribute("dianshi35chun");
-//String huafei10chun=(String)request.getAttribute("huafei10chun");
-//String huafei35chun=(String)request.getAttribute("huafei35chun");
-//String sumTax=(String)request.getAttribute("sumTax");
-//String sumChun=(String)request.getAttribute("sumChun");
-//String sumFee=(String)request.getAttribute("sumFee");
 
 	DecimalFormat df = new DecimalFormat("###0.00");
 	String dagongye10sumfee=(String)request.getAttribute("dagongye10sumfee");
-	
-	
-	String serchDate=(String)request.getAttribute("serchDate");
-	
 	
 	String guitie10sumfee=(String)request.getAttribute("guitie10sumfee");
 	
@@ -163,70 +122,72 @@
 	String huafei35needfee=(String)request.getAttribute("huafei35needfee");
 	String huafei35lilv=(String)request.getAttribute("huafei35lilv");
 	
-	
-	
+	String factoryPower=(String)request.getAttribute("factoryPower");
+	String factoryFee=(String)request.getAttribute("factoryFee");
+	String tiePower=(String)request.getAttribute("tiePower");
+	String tieFee=(String)request.getAttribute("tieFee");
+	String huafeiPower=(String)request.getAttribute("huafeiPower");
+	String huafeiFee=(String)request.getAttribute("huafeiFee");
+	String sumQuantity=(String)request.getAttribute("sumQuantity");
+	String sumPowerFee=(String)request.getAttribute("sumPowerFee");
 	
 
 
-//LwCorporationSummaryDto lwCorporationSummaryDtoguitie1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie1");
-
-//LwCorporationSummaryDto lwCorporationSummaryDtoguitie2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtoguitie2");
-//LwCorporationSummaryDto lwCorporationSummaryDtodagongye1=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye1");
-//LwCorporationSummaryDto lwCorporationSummaryDtodagongye2=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye2");
-//LwCorporationSummaryDto lwCorporationSummaryDtodagongye3=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtodagongye3");
-//LwCorporationSummaryDto lwCorporationSummaryDtohuafei=(LwCorporationSummaryDto)request.getAttribute("lwCorporationSummaryDtohuafei");
 
  %>
 
 <form  name="fm" method="post">
-	<table class=common width="100%" cellspacing="0" cellpadding="5" border="1" >
+	<table class=common width="100%" cellspacing="0"  border="0" >
 		
-	<tr>
-			<td class=title0 colspan="14"><font size="4">包头市农电公司大工业电费电量发行单</font></td>
-
+	<tr style="height:30px">
+			<td class=title0 colspan="14"><font size="5">包头市农电公司大工业电费电量发行单（当月）</font></td>
+<td style="display:none"><input type="hidden" name="StartMonth" value="<%=(String)request.getAttribute("inputDate") %>"></td>
 		</tr>
+		<tr class=title style="height:30px">
+			<td align="center" colspan="10"></td>
+		</tr>
+		</table>
+		<table class=common width="100%" cellspacing="0"  border="1" >
 		<tr>
-		<td ><%=serchDate %></td>
+			<td class=title0 colspan="8"></td><td class=title0 colspan="2"><font size="4"><%=(String)request.getAttribute("inputDate") %></font></td>
 		</tr>
-		
-		
 		<tr class=listtitle>
 				<td width="10%">
-					<span class="title"><font size="2">项目</font></span>
+					<span class="title"><font size="4">项目</font></span>
 				<br></td>
 				
 				<td width="10%">
-					<span class="title"><font size="2">电压等级</font></span>
+					<span class="title"><font size="4">电压等级</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电价</font></span>
+					<span class="title"><font size="4">电价</font></span>
 				<br></td>
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">售电量</font></span>
+					<span class="title"><font size="4">售电量</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">电费</font></span>
+					<span class="title"><font size="4">电费</font></span>
 				<br></td>
 				
 				
 				<td nowrap width="10%" colspan="2">
-					<span class="title"><font size="2">力率电费</font></span>
+					<span class="title"><font size="4">力率电费</font></span>
 				<br></td>
 				
 			
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">需量电费</font></span>
+					<span class="title"><font size="4">需量电费</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">容量电费</font></span>
+					<span class="title"><font size="4">容量电费</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">合计(含税)</font></span>
+					<span class="title"><font size="4">合计(含税)</font></span>
 				<br></td>
 		
 				
@@ -234,67 +195,67 @@
 			</tr>
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">居民生活</font></span>
+					<span class="title"><font size="4">居民生活</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.43</font></span>
+					<span class="title"><font size="4">0.43</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.3769</font></span>
+					<span class="title"><font size="4">0.3769</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			
 			
@@ -302,203 +263,203 @@
 			
 					<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">非居民照明</font></span>
+					<span class="title"><font size="4">非居民照明</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.512</font></span>
+					<span class="title"><font size="4">0.512</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.4731</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=juminpower %></font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=juminfee %></font></span>
+					<span class="title"><font size="4">0.4731</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4"><%=juminpower %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4"><%=juminfee %></font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=juminfee %></font></span>
+					<span class="title"><font size="4"><%=juminfee %></font></span>
 				<br></td>
 			
 			</tr>
 			
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">商业</font></span>
+					<span class="title"><font size="4">商业</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.761</font></span>
+					<span class="title"><font size="4">0.761</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.4731</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.4731</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			
 			</tr>
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">非普工业</font></span>
+					<span class="title"><font size="4">非普工业</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.493</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.493</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.4842</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.4842</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			
@@ -507,67 +468,67 @@
 			
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">排灌</font></span>
+					<span class="title"><font size="4">排灌</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.18</font></span>
+					<span class="title"><font size="4">0.18</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.177</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.177</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			
 				
@@ -577,54 +538,54 @@
 			
 			<tr >
 				<td width="10%" rowspan="3">
-					<span class="title"><font size="2">大工业</font></span>
+					<span class="title"><font size="4">大工业</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">不满1KV</font></span>
+					<span class="title"><font size="4">不满1KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.18</font></span>
+					<span class="title"><font size="4">0.18</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">10KV</font></span>
+					<span class="title"><font size="4">10KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.3939</font></span>
+					<span class="title"><font size="4">0.3939</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10power %></font></span>
+					<span class="title"><font size="4"><%=factoryPower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10sumfee %></font></span>
+					<span class="title"><font size="4"><%=factoryFee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(dagongye10lilv)>0){
 					out.write(dagongye10lilv);
 					}else{
@@ -634,7 +595,7 @@
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(dagongye10lilv)<0){
 					out.write(dagongye10lilv);
 					}else{
@@ -643,69 +604,69 @@
 					 %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10needfee %></font></span>
+					<span class="title"><font size="4"><%=dagongye10needfee %></font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2"><%=dagongye10contentfee %></font></span>
+					<span class="title"><font size="4"><%=dagongye10contentfee %></font></span>
 				<br></td>
 			<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(dagongye10sumfee)+Double.parseDouble(dagongye10lilv)+Double.parseDouble(dagongye10needfee)+Double.parseDouble(dagongye10contentfee)) %></font></span>
+					<span class="title"><font size="4"><%=df.format(Double.parseDouble(dagongye10sumfee)+Double.parseDouble(dagongye10lilv)+Double.parseDouble(dagongye10needfee)+Double.parseDouble(dagongye10contentfee)) %></font></span>
 				<br></td>
 				
 			
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">35KV</font></span>
+					<span class="title"><font size="4">35KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.3539</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.3539</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 		
 			</tr>
 			<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">硅铁</font></span>
+					<span class="title"><font size="4">硅铁</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">10kv</font></span>
+					<span class="title"><font size="4">10kv</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.3609</font></span>
+					<span class="title"><font size="4">0.3609</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=guitie10power %></font></span>
+					<span class="title"><font size="4"><%=tiePower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(guitie10sumfee)) %></font></span>
+					<span class="title"><font size="4"><%=tieFee %></font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(guitie10lilv)>0){
 					out.write(guitie10lilv);
 					}else{
@@ -714,7 +675,7 @@
 					 %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(guitie10lilv)<0){
 					out.write(guitie10lilv);
 					}else{
@@ -723,45 +684,45 @@
 					 %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=guitie10needfee %></font></span>
+					<span class="title"><font size="4"><%=guitie10needfee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=guitie10contentfee %></font></span>
+					<span class="title"><font size="4"><%=guitie10contentfee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=Double.parseDouble(guitie10sumfee)+Double.parseDouble(guitie10lilv)+Double.parseDouble(guitie10needfee)+Double.parseDouble(guitie10contentfee) %></font></span>
+					<span class="title"><font size="4"><%=Double.parseDouble(guitie10sumfee)+Double.parseDouble(guitie10lilv)+Double.parseDouble(guitie10needfee)+Double.parseDouble(guitie10contentfee) %></font></span>
 				<br></td>
 				
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">35KV</font></span>
+					<span class="title"><font size="4">35KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.3539</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0 </font></span>
+					<span class="title"><font size="4">0.3539</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0 </font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			
@@ -771,23 +732,23 @@
 			
 					<tr >
 				<td width="10%" rowspan="2">
-					<span class="title"><font size="2">化肥</font></span>
+					<span class="title"><font size="4">化肥</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">10kv</font></span>
+					<span class="title"><font size="4">10kv</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.2249</font></span>
+					<span class="title"><font size="4">0.2249</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=huafei35power %></font></span>
+					<span class="title"><font size="4"><%=huafeiPower %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format(Double.parseDouble(huafei35sumfee)) %></font></span>
+					<span class="title"><font size="4"><%=huafeiFee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(huafei35lilv)>0){
 					out.write(huafei35lilv);
 					}else{
@@ -796,7 +757,7 @@
 					 %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(huafei35lilv)<0){
 					out.write(huafei35lilv);
 					}else{
@@ -805,45 +766,45 @@
 					 %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=huafei35needfee %></font></span>
+					<span class="title"><font size="4"><%=huafei35needfee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=huafei35contentfee %></font></span>
+					<span class="title"><font size="4"><%=huafei35contentfee %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=Double.parseDouble(huafei35sumfee)+Double.parseDouble(huafei35lilv)+Double.parseDouble(huafei35needfee)+Double.parseDouble(huafei35contentfee) %></font></span>
+					<span class="title"><font size="4"><%=Double.parseDouble(huafei35sumfee)+Double.parseDouble(huafei35lilv)+Double.parseDouble(huafei35needfee)+Double.parseDouble(huafei35contentfee) %></font></span>
 				<br></td>
 			</tr>
 			<tr>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">35KV</font></span>
+					<span class="title"><font size="4">35KV</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0.2987</font></span>
-				<br></td>
-				
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
-				<br></td>
-				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0.2987</font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
+				<br></td>
+				<td nowrap width="10%">
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 			<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 					<td nowrap width="10%">
-					<span class="title"><font size="2">0</font></span>
+					<span class="title"><font size="4">0</font></span>
 				<br></td>
 				
 			
@@ -852,25 +813,25 @@
 				
 			<tr >
 				<td width="10%">
-					<span class="title"><font size="2">总计</font></span>
+					<span class="title"><font size="4">总计</font></span>
 				<br></td>
 				
 				<td width="10%">
-					<span class="title"><font size="2"></font></span>
+					<span class="title"><font size="4"></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"></font></span>
+					<span class="title"><font size="4"></font></span>
 				<br></td>
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=Math.round(Double.parseDouble(juminpower)+Double.parseDouble(sumallpower)) %></font></span>
+					<span class="title"><font size="4"><%=Math.round(Double.parseDouble(sumQuantity)) %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=df.format((Double.parseDouble(dagongye10sumfee)+Double.parseDouble(guitie10sumfee)+Double.parseDouble(huafei35sumfee)+Double.parseDouble(juminfee))) %></font></span>
+					<span class="title"><font size="4"><%=df.format(Double.parseDouble(sumPowerFee)) %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(lilv)>0){
 					out.write(lilv);
 					}else{
@@ -880,7 +841,7 @@
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%
+					<span class="title"><font size="4"><%
 					if(Double.parseDouble(lilv)<0){
 					out.write(lilv);
 					}else{
@@ -893,14 +854,14 @@
 				
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=needfee %></font></span>
+					<span class="title"><font size="4"><%=needfee %></font></span>
 				<br></td>
 				
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=contentfee %></font></span>
+					<span class="title"><font size="4"><%=contentfee %></font></span>
 				<br></td>
 				<td nowrap width="10%">
-					<span class="title"><font size="2"><%=sumallall %></font></span>
+					<span class="title"><font size="4"><%=sumallall %></font></span>
 				<br></td>
 		
 				
@@ -908,9 +869,13 @@
 			</tr>
 			
 			
-			
 	</table>
-	
+	<table cellpadding="0" cellspacing="0" width="100%"> 
+        <tr> 
+        <tr class="listtitle" align="center">             
+            <td class=button align="center"><input type=button class=button name=button2 value=" 打 印 " onClick="getPage()">        </td> 
+        </tr> 
+    </table>
 
 </form>
 </body>

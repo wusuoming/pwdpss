@@ -170,7 +170,7 @@ BODY {
 				</td>
 				<!-- 35-110KV以下 -->
 				<td class="title" nowrap align="center">
-					<input name="kv10" style="width: 90px" value=<%=kv110%>>
+					<input name="kv110" style="width: 90px" value=<%=kv110%>>
 				</td>
 				<!-- 110-220KV及以下 -->
 				<td class="title" nowrap align="center">

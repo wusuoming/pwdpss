@@ -144,18 +144,18 @@ create by wangrongjia
 							<%=lwWholeSalePurePriceDto.getNotPeoplePrice()%>
 						</td>
 						<td class="input" nowrap colspan="1">
+							<%=lwWholeSalePurePriceDto.getFarmPrice()%>
+						</td>
+						<td class="input" nowrap colspan="1">
 							<%=lwWholeSalePurePriceDto.getProducePrice()%>
 						</td>
+						
 						<td class="input" nowrap colspan="1">
 							<%=lwWholeSalePurePriceDto.getBusinessPrice()%>
 						</td>
 						
 						<td class="input" nowrap colspan="1">
 							<%=lwWholeSalePurePriceDto.getIndustryPrice()%>
-						</td>
-						
-						<td class="input" nowrap colspan="1">
-							<%=lwWholeSalePurePriceDto.getFarmPrice()%>
 						</td>
 						
 						<td class="input" nowrap colspan="1">

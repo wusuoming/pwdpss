@@ -1,4 +1,4 @@
-package com.elongway.pss.ui.count;
+ package com.elongway.pss.ui.count;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -212,9 +212,7 @@ public class UIThisMonthAllCountAction extends Action {
 								+ lwCorporationSummaryDto.getUnDenizenFee()
 								+ lwCorporationSummaryDto.getBeforFee()
 								+ lwCorporationSummaryDto.getLastFee()
-								+ lwCorporationSummaryDto.getUnLineLoss()
-
-						;
+								+ lwCorporationSummaryDto.getUnLineLoss();
 					} else {
 						sumfdianfee += lwCorporationSummaryDto.getPointerFee()
 								+ lwCorporationSummaryDto.getPowerRateFee()
@@ -708,13 +706,13 @@ public class UIThisMonthAllCountAction extends Action {
 				httpServletRequest.setAttribute("differenceQuantity",
 						differenceQuantity * 0.2);
 				httpServletRequest.setAttribute("differenceQuantitygy",
-						differenceQuantitygy * 0.2);
+						lwAllWholeFeeDtogy.getFujia9());
 				httpServletRequest.setAttribute("differenceQuantitydm",
-						differenceQuantitydm * 0.2);
+						lwAllWholeFeeDtodm.getFujia9());
 				httpServletRequest.setAttribute("differenceQuantityjy",
-						differenceQuantityjy * 0.2);
+						lwAllWholeFeeDtojy.getFujia9());
 				httpServletRequest.setAttribute("differenceQuantityty",
-						differenceQuantityty * 0.2);
+						lwAllWholeFeeDtoty.getFujia9());
 
 				httpServletRequest.setAttribute("lwAllWholeFeeDtogy",
 						lwAllWholeFeeDtogy);

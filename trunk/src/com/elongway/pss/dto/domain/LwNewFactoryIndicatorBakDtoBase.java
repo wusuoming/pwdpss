@@ -95,6 +95,14 @@ public class LwNewFactoryIndicatorBakDtoBase implements Serializable{
     private String changeCompensateQuantity = "";
     /** 属性改变后的退补无功电量 */
     private String changeunCompensateQuantity = "";
+    /** 属性改变前容量电量 */
+    private double rlquantityafbefore = 0D;
+    /** 属性改变后容量电量 */
+    private double rlquantityaf = 0D;
+    /** 属性改变后容量电价 */
+    private double rlpriceaf = 0D;
+    /** 属性改变后是否调价 */
+    private String chgpriceafflag = "";
 
     /**
      *  默认构造方法,构造一个默认的LwNewFactoryIndicatorBakDtoBase对象
@@ -773,6 +781,68 @@ public class LwNewFactoryIndicatorBakDtoBase implements Serializable{
     public String getChangeunCompensateQuantity(){
         return changeunCompensateQuantity;
     }
-  
-	
+
+    /**
+     * 设置属性改变前容量电量
+     * @param rlquantityafbefore 待设置的属性改变前容量电量的值
+     */
+    public void setRlquantityafbefore(double rlquantityafbefore){
+        this.rlquantityafbefore = rlquantityafbefore;
+    }
+
+    /**
+     * 获取属性改变前容量电量
+     * @return 属性改变前容量电量的值
+     */
+    public double getRlquantityafbefore(){
+        return rlquantityafbefore;
+    }
+
+    /**
+     * 设置属性改变后容量电量
+     * @param rlquantityaf 待设置的属性改变后容量电量的值
+     */
+    public void setRlquantityaf(double rlquantityaf){
+        this.rlquantityaf = rlquantityaf;
+    }
+
+    /**
+     * 获取属性改变后容量电量
+     * @return 属性改变后容量电量的值
+     */
+    public double getRlquantityaf(){
+        return rlquantityaf;
+    }
+
+    /**
+     * 设置属性改变后容量电价
+     * @param rlpriceaf 待设置的属性改变后容量电价的值
+     */
+    public void setRlpriceaf(double rlpriceaf){
+        this.rlpriceaf = rlpriceaf;
+    }
+
+    /**
+     * 获取属性改变后容量电价
+     * @return 属性改变后容量电价的值
+     */
+    public double getRlpriceaf(){
+        return rlpriceaf;
+    }
+
+    /**
+     * 设置属性改变后是否调价
+     * @param chgpriceafflag 待设置的属性改变后是否调价的值
+     */
+    public void setChgpriceafflag(String chgpriceafflag){
+        this.chgpriceafflag = StringUtils.rightTrim(chgpriceafflag);
+    }
+
+    /**
+     * 获取属性改变后是否调价
+     * @return 属性改变后是否调价的值
+     */
+    public String getChgpriceafflag(){
+        return chgpriceafflag;
+    }
 }

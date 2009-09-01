@@ -7,6 +7,7 @@
 <%@page import="com.elongway.pss.util.AppConst"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
 <%@page import="com.elongway.pss.dto.domain.LwTownGouDianFaxingDto"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -201,6 +202,7 @@ function result()
 			<%
 				Collection resultList = (Collection) request
 							.getAttribute("queryResult");
+				DecimalFormat df = new DecimalFormat("###0.00");
 					for (Iterator iterator = resultList.iterator(); iterator
 							.hasNext();) {
 						LwTownGouDianFaxingDto lwTownGouDianFaxingDto = (LwTownGouDianFaxingDto) iterator.next();
@@ -269,53 +271,53 @@ function result()
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><%=lwTownGouDianFaxingDto.getPowerQuantity()%></span>
+					<span class="title"><%=df.format(lwTownGouDianFaxingDto.getPowerQuantity())%></span>
 					<input type="hidden" name="sumPower" value="<%=lwTownGouDianFaxingDto.getPowerQuantity()%>">
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="pureFee"
-							value="<%=lwTownGouDianFaxingDto.getPureFee()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getPureFee())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="feeTax"
-							value="<%=lwTownGouDianFaxingDto.getPowerFeeTax()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getPowerFeeTax())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="dianjin"
-							value="<%=lwTownGouDianFaxingDto.getPureDianJin()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getPureDianJin())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="dianjinTax"
-							value="<%=lwTownGouDianFaxingDto.getDianJinTax()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getDianJinTax())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sanxia"
-							value="<%=lwTownGouDianFaxingDto.getPureSanXia()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getPureSanXia())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sanxiaTax"
-							value="<%=lwTownGouDianFaxingDto.getSanXiaTax()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getSanXiaTax())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="jijin"
-							value="<%=lwTownGouDianFaxingDto.getPureJiJin()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getPureJiJin())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="jijinTax"
-							value="<%=lwTownGouDianFaxingDto.getJiJinTax()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getJiJinTax())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 				<td nowrap width="10%" align="center">
 					<span class="title"><input type="text" name="sumFee"
-							value="<%=lwTownGouDianFaxingDto.getSumFee()%>" style="width: 80px" > </span>
+							value="<%=df.format(lwTownGouDianFaxingDto.getSumFee())%>" style="width: 80px" > </span>
 					<br>
 				</td>
 

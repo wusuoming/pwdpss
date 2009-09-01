@@ -1,10 +1,11 @@
-<%@ page contentType="text/html; charset=GBK"%>
+`<%@ page contentType="text/html; charset=GBK"%>
 <%@page import="java.util.*"%>
 <%@page import="com.elongway.pss.ui.view.datainput.UITownCalForm"%>
 <%@page import="com.elongway.pss.dto.domain.LwTownIndicatorDto"%>
 <%@page import="com.elongway.pss.ui.view.price.UITownBill"%>
 <%@page import="com.elongway.pss.ui.control.common.pub.SysUser"%>
 <%@page import="com.elongway.pss.util.AppConst"%>
+<%@page import="java.text.DecimalFormat"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -101,6 +102,7 @@ function   doPrintSetup(){
 <OBJECT   classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2   height=10   id=WB   width=10></OBJECT>
 <html:errors />
 <%Collection billList = (Collection)request.getAttribute("billList");
+DecimalFormat df = new DecimalFormat("###0.00");
 String statMonth = (String)request.getAttribute("statMonth");
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 <form  name="fm"

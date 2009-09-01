@@ -901,6 +901,23 @@ public class UIEveryWholeSaleCountAction extends Action {
 				
 				statList.add(lwWholeSaleStatDetailDto);
 			}
+			Collection <LwWholeSaleStatDetailDto>paixuList = new ArrayList<LwWholeSaleStatDetailDto>();
+			String serial = "ty,dm,jy,gy,sum";
+			String []date = serial.split(",");
+			String companyCode = null;
+			String tempCom = null;
+			for (int i = 0; i < date.length; i++) {
+				companyCode = date[i];
+				for (Iterator iterator = statList.iterator(); iterator.hasNext();) {
+					LwWholeSaleStatDetailDto o = (LwWholeSaleStatDetailDto) iterator.next();
+					tempCom = o.getCompanyCode();
+					if(tempCom.equals(companyCode)){
+						paixuList.add(o);
+						break;
+					}
+				}
+			}
+			
 			if(AppConst.PRINT_FLAG.equals(print)){
 				forward = "leijiwholesaleprint";
 			}else{
@@ -910,7 +927,7 @@ public class UIEveryWholeSaleCountAction extends Action {
 			httpServletRequest.setAttribute("counttype", counttype);
 			httpServletRequest.setAttribute("print", print);
 			httpServletRequest.setAttribute("statMonth", inputDate);
-			httpServletRequest.setAttribute("statList", statList);
+			httpServletRequest.setAttribute("statList", paixuList);
 			return actionMapping.findForward(forward);
 		}
 	}

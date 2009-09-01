@@ -1031,4 +1031,6 @@ prompt.iAUtiRouteRemark=备注
 prompt.iAUtiRouteValidStatus=效力状态
 prompt.iAUtiRouteFlag=标志位
 
+soft.license=您的软件license已经过期，请与公司取得联系。
+
 #Generateor Tag End,Don't modify

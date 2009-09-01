@@ -64,9 +64,11 @@ public class UIPostTownStatFaxingAction extends Action {
 		String []jijinTax = httpServletRequest.getParameterValues("jijinTax");
 		String []sumFee = httpServletRequest.getParameterValues("sumFee");
 		
+		blLwTownGouDianFaxingFacade.deleteByConditions("statMonth = '"+statMonth.substring(0, 7)+"'");
+		
 		for (int i = 0; i < sumFee.length; i++) {
 			gouDianDto = new LwTownGouDianFaxingDto();
-			gouDianDto.setStatMonth(statMonth);
+			gouDianDto.setStatMonth(statMonth.substring(0, 7));
 			gouDianDto.setTownCode(comCode[i]);
 			gouDianDto.setTownName(company[i]);
 			gouDianDto.setPowerQuantity(Double.parseDouble(sumPower[i]));

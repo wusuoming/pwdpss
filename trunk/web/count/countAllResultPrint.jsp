@@ -8,6 +8,7 @@
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCorporationSummaryDto"/>
 <jsp:directive.page import="com.elongway.pss.dto.domain.LwCoporationUserInfoDto"/>
 <jsp:directive.page import="com.elongway.pss.util.PowerFeeCal"/>
+<%@page import="com.elongway.pss.dto.domain.LwPowerFeeFaxingDto"%>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="app"%>
 <%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
 <%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
@@ -208,223 +209,109 @@ String differenceQuantityFee=(String)request.getAttribute("differenceQuantityFee
 				<br></td>
 							
 			</tr>
+				<%
+			List list = (List)request.getAttribute("list");
+
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+				LwPowerFeeFaxingDto faxingDto = (LwPowerFeeFaxingDto) iterator
+						.next();
+				String userNanme = faxingDto.getUserNo();		
+						
+						 %>
 			<tr >
 				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5">大用户</font></span>
+				<%if("sumwhole".equals(userNanme)){ %>
+					<span class="title"><font size="2">趸售</font></span>
+					<%} %>
+					<%if("sumcorp".equals(userNanme)){ %>
+					<span class="title"><font size="2">大用户</font></span>
+					<%} %>
+					<%if("sumFaXing".equals(userNanme)){ %>
+					<span class="title"><font size="2">合计</font></span>
+					<%} %>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfpower%></font></span>
+					<span class="title"><font size="2"><%=faxingDto.getQuantity()%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfpower" value="<%=sumfpower%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfpower" value="<%=faxingDto.getQuantity()%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfc%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getPurePowerFee())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfc" value="<%=sumfc%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfc" value="<%=df.format(faxingDto.getPurePowerFee())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumftax%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getPowerFeeTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumftax" value="<%=sumftax%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumftax" value="<%=df.format(faxingDto.getPowerFeeTax())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfdianfee%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getPurePowerFee()+faxingDto.getPowerFeeTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfdianfee" value="<%=sumfdianfee%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianfee" value="<%=df.format(faxingDto.getPurePowerFee()+faxingDto.getPowerFeeTax())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=0%></font></span>
+					<span class="title"><font size="2"><%=0%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwdiffrentfee" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfee" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=0%></font></span>
+					<span class="title"><font size="2"><%=0%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwdiffrentfeetax" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwdiffrentfeetax" value="<%=0%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=summfdianjin%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getPureDianJin())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsummfdianjin" value="<%=summfdianjin%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsummfdianjin" value="<%=df.format(faxingDto.getPureDianJin())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfdianjintax%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getDianJinTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfdianjintax" value="<%=sumfdianjintax%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfdianjintax" value="<%=df.format(faxingDto.getDianJinTax())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfsanxia%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getSanXiaFee())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfsanxia" value="<%=sumfsanxia%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfsanxia" value="<%=df.format(faxingDto.getSanXiaFee())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfsanxiatax%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getSanXiaTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfsanxiatax" value="<%=sumfsanxiatax%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfsanxiatax" value="<%=df.format(faxingDto.getSanXiaTax())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfjijin%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getPureJiJin())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfjijin" value="<%=sumfjijin%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfjijin" value="<%=df.format(faxingDto.getPureJiJin())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumfjijintax%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getJiJinTax())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumfjijintax" value="<%=sumfjijintax%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumfjijintax" value="<%=df.format(faxingDto.getJiJinTax())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumffee%></font></span>
+					<span class="title"><font size="2"><%=df.format(faxingDto.getSumFee())%></font></span>
 				<br></td>
 				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumffee" value="<%=sumffee%>" style="border: 0" readonly="readonly"></font></span>
+					<span class="title"><font size="2"><input  name="lwsumffee" value="<%=df.format(faxingDto.getSumFee())%>" style="border: 0" readonly="readonly"></font></span>
 				<br></td>
 				
 							
 			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5">趸售</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwpower%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwpower" value="<%=sumwpower%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwc%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwc" value="<%=sumwc%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwtax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwtax" value="<%=sumwtax%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwdianfee%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwdianfee" value="<%=sumwdianfee%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-				<span class="title"><font size="5"><input  name="lwdiffrentwfee" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-				<span class="title"><font size="5"><input  name="lwdiffrentwfeetax" value="<%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=summwdianjin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsummwdianjin" value="<%=summwdianjin%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwdianjintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwdianjintax" value="<%=sumwdianjintax%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwsanxia%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwsanxia" value="<%=sumwsanxia%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwsanxiatax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwsanxiatax" value="<%=sumwsanxiatax%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwjijin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwjijin" value="<%=sumwjijin%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwjijintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwjijintax" value="<%=sumwjijintax%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumwfee%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center" style="display: none">
-					<span class="title"><font size="5"><input  name="lwsumwfee" value="<%=sumwfee%>" style="border: 0" readonly="readonly"></font></span>
-				<br></td>			
-			</tr>
-			<tr >
-				<td nowrap width="10%"  align="center">
-					<span class="title"><font size="5">总计</font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallpower%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallc%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalltax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallfee%></font></span>
-				<br></td>
-				
-					
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17)%></font></span>
-				<br></td>
-				
-				<td nowrap width="10%" align="center">
-				<span class="title"><font size="5"><%=df.format(Double.parseDouble(differenceQuantityFee)/1.17*0.17)%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalldianjin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalldianjintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallsanxia%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallsanxiatax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalljijin%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumalljijintax%></font></span>
-				<br></td>
-				<td nowrap width="10%" align="center">
-					<span class="title"><font size="5"><%=sumallall%></font></span>
-				<br></td>
-							
-			</tr>
+						<%} %>
 	</table>
 
 </form>

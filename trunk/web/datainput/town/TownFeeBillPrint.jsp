@@ -95,53 +95,65 @@ String statMonth = (String)request.getAttribute("statMonth");
 SysUser user = (SysUser)session.getAttribute(AppConst.SYSUSER_SESSION);%>
 <form  name="fm"
 	onsubmit="return validateUserQueryForm(this);" enctype="multipart/form-data">
-	    <table width="100%" border="0" cellspacing="0" >
-		<tr class=listtitle>
-			<td align="center" colspan="10"><B><font size="5">直供乡电费结算单</font></B></td>
+	    <table class=common width="500%"  border="0" cellspacing="0" cellpadding="6">
+	    <tr style="height:100px">
+			<td align="center" colspan="12"><font size="5"></font></td>
+		</tr>
+		<tr class=title >
+			<td align="center" colspan="12"><font size="5">直供乡电费结算单</font></td>
+		</tr>
+		
+		<tr class=title style="height:80px">
+			<td align="center" colspan="10"></td>
 		</tr>
 		<tr>
-			<td class="blue" width="80%"  colspan="10"><font size="5">单位：包头市九原电力公司供电服务总站</font></td>
+			<td class="blue" width="80%"  colspan="10"><font size="4">单位：包头市九原电力公司供电服务总站</font></td>
 
-			<td class="blue" width="20%"><font size="5"><%=statMonth%></font></td>
+			<td class="blue" width="20%"><font size="4"></font></td>
+		</tr>
+		<tr>
+			<td class="blue" width="80%"  colspan="10"></td>
+
+			<td class="blue" width="20%"><font size="4"><%=statMonth%></font></td>
 		</tr>
 		</table>
 		
-		<table width="100%" border="1" cellspacing="0">
+		<table class=common width="100%"  border="1" cellspacing="0" cellpadding="6">
 			
-		<!--人员代码，姓名-->
+		
 		<tr class=listtitle>
-			<td ><span class="title"><b><font size="5">项目/单位</font></b></span> </td>
+			<td  nowrap><span class="title"><font size="4">项目/单位</font></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			if(!"mcx".equals(dto.getTownCode())){
 		%>	
-			<td width=""><span class="title"><b><font size="5"><%=dto.getTownName() %></font></b></span></td>
+			<td  nowrap><span class="title"><font size="4"><%=dto.getTownName() %></font></span></td>
 			
 			<%}}} %>
 			
 		</tr>
-		<tr>
-			<td class="title"><font size="5">电量</font></td>
+		<tr style="height:35px">
+			<td  nowrap><span class="title"><font size="4">电量</font></span></td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			
 			if(!"mcx".equals(dto.getTownCode())){
 			%>	
-			<td class="title"><font size="5"><%=dto.getPowerQuantity() %></font></td>
+			<td class="title"><span class="title"><font size="4"><%=dto.getPowerQuantity() %></font></span></td>
 			
 			<%}}} %>
 			
 		</tr>
-	<tr>
-			<td class="title"><font size="5">电费</font> </td>
+	<tr style="height:35px">
+			<td  nowrap><span class="title"><font size="4">电费</font></span> </td>
 			<%if(billList!=null){ 
 		for (Iterator iterator = billList.iterator(); iterator.hasNext();) {
 			UITownBill dto = (UITownBill) iterator.next();
 			if(!"mcx".equals(dto.getTownCode())){
 			%>	
-			<td class="title"><font size="5"><%=dto.getPowerFee()%></font></td>
+			<td class="title"><span class="title"><font size="4"><%=dto.getPowerFee()%></font></span></td>
 			
 			<%}}} %>
 			

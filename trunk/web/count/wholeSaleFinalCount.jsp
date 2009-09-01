@@ -964,8 +964,7 @@ BODY {
 			<td nowrap><span class="title">0.001</span></td>
 			<td nowrap colspan="2"><span class="title"><input name="jijin2" value="<%=kezaishengpepoleFee%>"style="width:65px"></span></td>
     </tr>
-    <tr>
-   
+    <tr>   
            <td nowrap colspan="2"><span class="title">可再生能源</span></td>
 			<td nowrap><span class="title"><%=Math.round(Double.parseDouble(kezaishengnotpepolePower))%></span></td>
 			<td nowrap><span class="title">0.002</span></td>
@@ -974,9 +973,18 @@ BODY {
 			<td nowrap><span class="title"><input name="chabieQuantity" value="<%=Math.round(Double.parseDouble(differenceQuantity))%>"  style="width:65px"></span></td>
 			<td nowrap><span class="title"><input name="chabiePrice" value="<%=differencePrice%>"  style="width:65px"></span></td>
 			<td nowrap colspan="2"><span class="title"><input name="chabiedianfei" value="<%=differenceQuantityFee%>"  style="width:65px"></td>
+    </tr>    
+      <tr>   
+           <td nowrap colspan="2"><span class="title">差别电费</span></td>
+			<td nowrap><span class="title"><input name="chabieQuantity1" value="0"  style="width:65px" onblur="calChaBie1();sumChaBieQuantityFee();"></span></td>
+			<td nowrap><span class="title"><input name="chabiePrice1" value="0"  style="width:65px" onblur="calChaBie1();sumChaBieQuantityFee();"></span></td>
+			<td nowrap colspan="2"><span class="title"><input name="chabiedianfei1"   style="width:65px"></td>
+			<td nowrap colspan="2"><span class="title">差别电量合计</span></td>
+			<td nowrap><span class="title"><input name="chabieQuantitysum"   style="width:65px"></span></td>
+			<td nowrap><span class="title">差别电费合计</span></td>
+			<td nowrap colspan="2"><span class="title"><input name="chabiedianfeisum"   style="width:65px"></td>
     </tr>
-
-				<tr class=listtitle align="center">
+     <tr class=listtitle align="center">
 					<td class=title0 colspan="12">
 						<B>合计信息</B>
 					</td>
@@ -1175,11 +1183,13 @@ BODY {
 		</form>
 	</body>
 	<script type="text/javascript">
-		function  calChaBie(){
+	function  calChaBie(){
 	var aaa=fm.exends10.value;
 	if(aaa==""||aaa==null){
 	aaa='0';
 	}}
+    
+	
 	function  sum(){
 	var aaa=fm.exends10.value;
 	if(aaa==""||aaa==null){
@@ -1201,10 +1211,10 @@ BODY {
 	if(fm.exends6.value==""||fm.exends6.value==null){
 	fm.exends6.value='0';
 	}
-	
-	
-	
-	var last=parseFloat(fm.before.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value)+parseFloat(aaa)+parseFloat(bbb);
+	if(fm.chabiedianfei1.value==""||fm.chabiedianfei1.value==null){
+	fm.chabiedianfei1.value='0';
+	}
+	var last=parseFloat(fm.before.value)+parseFloat(fm.chabiedianfei1.value)+parseFloat(fm.exends2.value)+parseFloat(fm.exends4.value)+parseFloat(fm.exends6.value)+parseFloat(aaa)+parseFloat(bbb);
 	fm.exends8.value=last.toFixed(2);
 	
 	}
@@ -1215,6 +1225,14 @@ BODY {
    // 乔有良 add 2009-03-23 begin
    var chabieQuantity = fm.chabieQuantity.value;
    var chabiePrice = fm.chabiePrice.value;
+  
+   
+   var chabieQuantity1 = fm.chabieQuantity1.value;
+   var chabiePrice1 = fm.chabiePrice1.value;
+   var chabiedianfei1 = fm.chabiedianfei1.value;
+   var chabieQuantitysum = fm.chabieQuantitysum.value;
+   var chabiedianfeisum = fm.chabiedianfeisum.value;
+
    
    
    var exends1 = fm.exends1.value;
@@ -1243,11 +1261,11 @@ BODY {
    
    
     var zongdianliang = fm.zongdianliang.value;
-     var sum10fee = fm.sum10fee.value;
-      var sum35fee = fm.sum35fee.value;
-       var sanxia = fm.sanxia.value;
-        var dianjin = fm.dianjin.value;
-         var jijin1 = fm.jijin1.value;
+    var sum10fee = fm.sum10fee.value;
+    var sum35fee = fm.sum35fee.value;
+    var sanxia = fm.sanxia.value;
+    var dianjin = fm.dianjin.value;
+    var jijin1 = fm.jijin1.value;
           var jijin2 = fm.jijin2.value;
            var jijin3 = fm.jijin3.value;
    var UnDenizenQuantity10kv = fm.UnDenizenQuantity10kv.value;
@@ -1299,15 +1317,24 @@ BODY {
  	arr+=exends16+",";
  	arr+=exends17+",";
  	arr+=exends18;
- 	
-
-  
     
-  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&arr="+arr+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei+"&&Power10="+Power10+"&&Power35="+Power35+"&&chabiedianfei="+chabiedianfei+"&chabieQuantity="+chabieQuantity+"&chabiePrice="+chabiePrice;     
-
-  window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
+  strURL   =   "<%=request.getContextPath()%>/wholeSaleprint.do?company="+a+"&&inputDate="+b+"&&arr="+arr+"&&zongdianliang="+zongdianliang+"&&sum10fee="+sum10fee+"&&sum35fee="+sum35fee+"&&sanxia="+sanxia+"&&dianjin="+dianjin+"&&jijin1="+jijin1+"&&jijin2="+jijin2+"&&jijin3="+jijin3+"&&exends11="+exends11+"&&exends12="+exends12+"&&exends13="+exends13+"&&exends14="+exends14+"&&exends15="+exends15+"&&exends16="+exends16+"&&exends17="+exends17+"&&exends18="+exends18+"&&UnDenizenQuantity10kv="+UnDenizenQuantity10kv+"&&UnDenizenMoney10kv="+UnDenizenMoney10kv+"&&DenizenQuantity10kv="+DenizenQuantity10kv+"&&DenizenMoney10kv="+DenizenMoney10kv+"&&ProductQuantity10kv="+ProductQuantity10kv+"&&ProductMoney10kv="+ProductMoney10kv+"&&UnIndustryQuantity10kv="+UnIndustryQuantity10kv+"&&UnIndustryMoney10kv="+UnIndustryMoney10kv+"&&FarmUseQuantity10kv="+FarmUseQuantity10kv+"&&FarmUseMoney10kv="+FarmUseMoney10kv+"&&BizQuantity10kv="+BizQuantity10kv+"&&BizMoney10kv="+BizMoney10kv+"&&UnDenizenQuantity35kv="+UnDenizenQuantity35kv+"&&UnDenizenMoney35kv="+UnDenizenMoney35kv+"&&DenizenQuantity35kv="+DenizenQuantity35kv+"&&DenizenMoney35kv="+DenizenMoney35kv+"&&ProductQuantity35kv="+ProductQuantity35kv+"&&ProductMoney35kv="+ProductMoney35kv+"&&UnIndustryQuantity35kv="+UnIndustryQuantity35kv+"&&UnIndustryMoney35kv="+UnIndustryMoney35kv+"&&FarmUseQuantity35kv="+FarmUseQuantity35kv+"&&FarmUseMoney35kv="+FarmUseMoney35kv+"&&BizQuantity35kv="+BizQuantity35kv+"&&BizMoney35kv="+BizMoney35kv+"&&liLvDianFei="+liLvDianFei+"&&Power10="+Power10+"&&Power35="+Power35+"&&chabiedianfei="+chabiedianfei+"&chabieQuantity="+chabieQuantity+"&chabiePrice="+chabiePrice+"&chabiedianfei1="+chabiedianfei1+"&chabiePrice1="+chabiePrice1+"&chabieQuantity1="+chabieQuantity1+"&chabiedianfeisum="+chabiedianfeisum+"&chabieQuantitysum="+chabieQuantitysum;     
+ window.open(strURL,"","left=2000,top=2000,fullscreen=yes,resizable=yes,scrollbars=yes,resizable=yes");     
   
   }  
 
-</script>
+</script>	
+<script type="text/javascript">
+    function  calChaBie1(){
+	var chabieQ1= fm.chabieQuantity1.value;
+    var chabieP1= fm.chabiePrice1.value;
+    var chabieF1= parseFloat(chabieQ1)*parseFloat(chabieP1);
+    fm.chabiedianfei1.value = parseFloat(chabieQ1)*parseFloat(chabieP1);
+	}
+    function  sumChaBieQuantityFee(){	
+    fm.chabieQuantitysum.value = parseFloat(fm.chabieQuantity.value)+parseFloat(fm.chabieQuantity1.value);
+    fm.chabiedianfeisum.value = parseFloat(fm.chabiedianfei.value)+parseFloat(fm.chabiedianfei1.value); 
+    fm.exends8.value = parseFloat(fm.exends8.value)+ parseFloat(fm.chabiedianfei1.value);
+	}
+	</script>	
 </html>
